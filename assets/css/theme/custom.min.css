@@ -54,7 +54,9 @@
 }
 
 .footer-top-logo-desc p {
-  max-width: 670px;
+  /* REV 4: 670px'te üç satıra düşüyordu. Ölçülen iki-satır eşiği 730px;
+     font değişimlerine pay bırakmak için 940px. Metin kısaltılmadı. */
+  max-width: 940px;
   text-align: center;
 }
 
