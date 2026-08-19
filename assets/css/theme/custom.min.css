@@ -2359,3 +2359,49 @@ html.uc-dark .dh-footer-brand {
   color: var(--dh-brand);
   transform: translateY(-3px);
 }
+
+.dh-store-badges {
+  display: flex;
+  gap: 14px;
+}
+
+.dh-store-badge {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 20px;
+  border-radius: 16px;
+  background: var(--color-gray-900);
+  color: #fff !important;
+  text-decoration: none;
+  transition: 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-store-badge:hover {
+  transform: translateY(-3px);
+  color: #fff !important;
+}
+
+.dh-store-badge i {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.dh-store-badge span {
+  display: block;
+  line-height: 1.2;
+}
+
+.dh-store-badge small {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.dh-store-badge b {
+  display: block;
+  font-family: var(--font-family-secondary);
+  font-size: 15px;
+  font-weight: 700;
+}
