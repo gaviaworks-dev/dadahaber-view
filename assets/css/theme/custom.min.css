@@ -2559,3 +2559,442 @@ body {
 .fw-medium { font-weight: 500 !important; }
 .fw-semibold,
 .fw-bold { font-weight: 700 !important; }
+
+/* ===========================================================
+   R2-2 — VİDEO AKIŞI (Dada Akış kalıbı)
+   Playwright ile dadagastro.com/video-mutfagi'den ÖLÇÜLDÜ:
+     kart      160x284 · aspect 9/16 · radius 16px
+               gölge rgba(10,9,6,.4) 0 16px 44px · geçiş transform .25s
+     ray       flex · gap 18px · overflow-x auto · snap x mandatory
+               padding 6px 2px 12px
+     süre      top 10px right 10px
+     oynat     46px daire · rgba(#fff,.16) · 1px rgba(#fff,.34) · blur 6px
+     gövde     bottom/left/right 13px · başlık 14px/700 lh 18.2 clamp 2
+               meta 11.5px/500 rgba(#fff,.78) gap 6px
+     overlay   fixed inset 0 · z 120 · overflow-y auto · snap y mandatory
+     sahne     435x774 · aspect 9/16 · radius 24px
+     segment   top 14px · 3px yükseklik · gap 5px
+     playbtn   64px daire · blur 8px
+     aksiyon   kolon · gap 16px · 52px daire rgba(#fff,.1) 1px rgba(#fff,.16)
+     kapat     46px · radius 12px · 1px rgba(#fff,.22)
+   RENK oradan alınmadı — kategori rozeti ve vurgular Dadahaber sarısı.
+   =========================================================== */
+.dh-shorts {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 6px 2px 12px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dh-shorts::-webkit-scrollbar {
+  display: none;
+}
+
+.dh-short {
+  position: relative;
+  flex: 0 0 auto;
+  width: 168px;
+  aspect-ratio: 9 / 16;
+  border: 0;
+  padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  scroll-snap-align: start;
+  background: var(--color-gray-800);
+  box-shadow: 0 16px 44px rgba(10, 9, 6, 0.4);
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+  text-align: left;
+}
+
+.dh-short:hover,
+.dh-short:focus-visible {
+  transform: translateY(-4px);
+}
+
+.dh-short:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+}
+
+.dh-short__media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.dh-short::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, transparent 34%, transparent 46%, rgba(0, 0, 0, 0.78) 100%);
+}
+
+.dh-short__dur,
+.dh-short__play,
+.dh-short__body {
+  position: absolute;
+  z-index: 2;
+}
+
+.dh-short__dur {
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-family: var(--font-family-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.dh-short__play {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(6px);
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-short:hover .dh-short__play {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.dh-short__body {
+  left: 13px;
+  right: 13px;
+  bottom: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dh-short__title {
+  color: #fff;
+  font-family: var(--font-family-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dh-short__views {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11.5px;
+  font-weight: 500;
+}
+
+/* ---------- REELS KATMANI ---------- */
+.dh-reels {
+  position: fixed;
+  inset: 0;
+  z-index: 1040;
+  background: rgba(12, 12, 12, 0.96);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.dh-reels.is-open {
+  opacity: 1;
+}
+
+.dh-reels[hidden] {
+  display: none;
+}
+
+.dh-reels__scroll {
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.dh-reels__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.dh-reel {
+  height: 100%;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dh-reel__stage {
+  position: relative;
+  height: min(86vh, 780px);
+  aspect-ratio: 9 / 16;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #000;
+}
+
+.dh-reel__media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.dh-reel__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dh-reel__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 26%, transparent 52%, rgba(0, 0, 0, 0.82) 100%);
+}
+
+.dh-reel__segs {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  gap: 5px;
+}
+
+.dh-reel__segs i {
+  flex: 1;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.dh-reel__segs i.on {
+  background: #fff;
+}
+
+.dh-reel__cat {
+  position: absolute;
+  top: 28px;
+  left: 14px;
+  padding: 5px 11px;
+  border-radius: 8px;
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.dh-reel__playbtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+
+.dh-reel__playbtn.is-playing {
+  opacity: 0;
+}
+
+.dh-reel__stage:hover .dh-reel__playbtn {
+  opacity: 1;
+}
+
+.dh-reel__info {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 20px;
+  color: #fff;
+}
+
+.dh-reel__info h3 {
+  color: #fff;
+  font-size: 18.5px;
+  font-weight: 700;
+  line-height: 1.32;
+  margin: 0 0 8px;
+}
+
+.dh-reel__views {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.dh-reel__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dh-reel__act {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.dh-reel__act .ic {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: background 0.2s ease;
+}
+
+.dh-reel__act:hover .ic {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.dh-reels__brand {
+  position: absolute;
+  top: 24px;
+  left: 26px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+.dh-reels__brand .ic {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+  font-size: 15px;
+}
+
+.dh-reels__brand b {
+  display: block;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.dh-reels__brand small {
+  display: block;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.dh-reels__close {
+  position: absolute;
+  top: 22px;
+  right: 26px;
+  z-index: 3;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  color: #fff;
+  background: rgba(20, 18, 12, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+}
+
+.dh-reels__close:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.dh-reels__count {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 767.98px) {
+  .dh-reel {
+    gap: 0;
+  }
+
+  .dh-reel__stage {
+    height: 100%;
+    width: 100%;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+
+  .dh-reel__actions {
+    position: absolute;
+    right: 12px;
+    bottom: 96px;
+    z-index: 2;
+  }
+
+  .dh-reel__info {
+    right: 78px;
+  }
+
+  .dh-short {
+    width: 148px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-short,
+  .dh-short__play,
+  .dh-reels {
+    transition: none;
+  }
+
+  .dh-reels__scroll {
+    scroll-behavior: auto;
+  }
+}
