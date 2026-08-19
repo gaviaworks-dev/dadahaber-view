@@ -1613,6 +1613,8 @@ p.h1, p.h2, p.h3, p.h4, p.h5, p.h6 {
   /* Açık gri zeminde AA geçen tek kurumsal ton: #7a5f01 / #efefef = 5.27:1 */
   --dh-accent-ink: var(--color-primary-700);
   --dh-breaking-h: 50px;
+  /* Beyaz zeminde AA geçen kurumsal ton: #7a5f01 / #fff = 6,06:1 */
+  --dh-menu-ink: var(--color-primary-700);
 }
 
 /* ---------- SON DAKİKA ŞERİDİ ---------- */
@@ -1792,36 +1794,81 @@ p.h1, p.h2, p.h3, p.h4, p.h5, p.h6 {
   }
 }
 
-/* ---------- VARYANT A / B (geçici önizleme) ----------
-   B = varsayılan: ana bar beyaz, sadece etiket ve vurgular kurumsal renkte.
-   A = ana bar kurumsal renk zeminli, üstündeki metin --dh-on-brand (10.58:1).
-   Seçim yapıldıktan sonra kaybeden varyantın kuralları silinecek. */
-body.dh-header-a .uc-center-navbar {
-  background: var(--dh-brand);
+/* ---------- REV 1 — BANT RENKLERİ ----------
+   Üst bant (tarih · hava · format kısayolları)  -> KURUMSAL SARI, koyu metin
+   Ana menü şeridi (logo · menü · arama)         -> BEYAZ, marka rengi metin
+   Ölçülen kontrastlar aşağıda kuralların yanında. */
+
+/* --- Üst bant: sarı zemin, koyu metin (#121212 / #fcb623 = 10,58:1  AA+AAA) --- */
+.dh-shortcuts {
+  background-color: var(--dh-brand);
+  border-bottom-color: rgba(0, 0, 0, 0.12) !important;
 }
 
-body.dh-header-a .uc-center-navbar .uc-navbar,
-body.dh-header-a .uc-center-navbar .uc-navbar-nav > li > a,
-body.dh-header-a .uc-center-navbar .uc-navbar-nav > li > a > span,
-body.dh-header-a .uc-center-navbar .uc-search-trigger,
-body.dh-header-a .uc-center-navbar .uc-menu-trigger {
-  color: var(--dh-on-brand) !important;
+.dh-shortcuts,
+.dh-shortcuts a,
+.dh-shortcuts span,
+.dh-shortcuts .datetime {
+  color: var(--color-gray-900) !important;
 }
 
-body.dh-header-a .uc-center-navbar .uc-navbar-nav > li > a:hover,
-body.dh-header-a .uc-center-navbar .uc-search-trigger:hover {
-  opacity: 0.75;
+.dh-shortcuts .text-primary,
+.dh-shortcuts i {
+  color: var(--color-gray-900) !important;
 }
 
-/* Hamburger çizgileri de mürekkep renginde olsun */
-body.dh-header-a .uc-center-navbar .uc-menu-trigger::before,
-body.dh-header-a .uc-center-navbar .uc-menu-trigger::after,
-body.dh-header-a .uc-center-navbar .uc-menu-trigger > span {
-  background-color: var(--dh-on-brand) !important;
+.dh-shortcuts a:hover {
+  opacity: 0.7;
 }
 
-/* Not: en üstteki beyaz bant (.uc-top-navbar — tarih, hava, kısayollar)
-   bilerek DIŞARIDA bırakıldı, hiçbir kuralı değişmiyor. */
+:where(.uc-dark) .dh-shortcuts,
+html.uc-dark .dh-shortcuts {
+  background-color: var(--dh-brand);
+}
+
+/* Sarı zeminde maske de sarıya solmalı */
+@media (max-width: 991.98px) {
+  .dh-shortcuts__track {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent 100%);
+    mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent 100%);
+  }
+}
+
+/* --- Ana menü şeridi: beyaz zemin, marka rengi metin --- */
+.uc-center-navbar {
+  background-color: #fff;
+}
+
+:where(.uc-dark) .uc-center-navbar,
+html.uc-dark .uc-center-navbar {
+  background-color: var(--color-gray-900);
+}
+
+/* Menü linkleri marka renginin AA geçen koyu tonunda
+   (#7a5f01 / #fff = 6,06:1  AA). Saf #fcb623 beyaz üstünde 1,77:1 kalırdı. */
+.uc-center-navbar .uc-navbar-nav > li > a,
+.uc-center-navbar .uc-search-trigger {
+  color: var(--dh-menu-ink) !important;
+}
+
+.uc-center-navbar .uc-navbar-nav > li > a:hover,
+.uc-center-navbar .uc-search-trigger:hover {
+  color: var(--color-primary-500) !important;
+}
+
+:where(.uc-dark) .uc-center-navbar .uc-navbar-nav > li > a,
+:where(.uc-dark) .uc-center-navbar .uc-search-trigger,
+html.uc-dark .uc-center-navbar .uc-navbar-nav > li > a,
+html.uc-dark .uc-center-navbar .uc-search-trigger {
+  color: var(--color-primary-200) !important;
+}
+
+/* Hamburger çizgileri */
+.uc-center-navbar .uc-menu-trigger::before,
+.uc-center-navbar .uc-menu-trigger::after,
+.uc-center-navbar .uc-menu-trigger > span {
+  background-color: var(--dh-menu-ink) !important;
+}
 
 /* ===========================================================
    İŞ 3 — FOOTER PERDESİ (DadaGastro deseni)
