@@ -2183,3 +2183,148 @@ html.uc-dark .dh-footer-brand {
     height: auto;
   }
 }
+
+/* ===========================================================
+   REV 2 EK — DadaGastro bandı: partner kurumsal rengi + logo + tarifler
+   Bu bölümde ÖZEL İSTEK üzerine DadaGastro'nun kendi kurumsal rengi
+   (#E14827, tokens.css --tomato) kullanılıyor; kapsam yalnız bu bandın
+   içi. Sitenin geri kalanı Dadahaber paletinde kalır.
+   Ölçüm: beyaz / #E14827 = 4,07:1 (büyük metin AA). Bu yüzden kurumsal
+   renk sadece buton, çip ve etiket gibi büyük/kalın öğelerde kullanıldı.
+   =========================================================== */
+.dh-band--gastro {
+  --dh-partner: #e14827;
+}
+
+.dh-band__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  align-items: center;
+  gap: 40px;
+}
+
+/* Logo beyaz çip üzerinde — marka varlığı hiç değiştirilmedi */
+.dh-band__logo {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 14px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.dh-band__logo img {
+  display: block;
+  width: 158px;
+  height: auto;
+}
+
+.dh-band--gastro .dh-band__tag {
+  border-color: color-mix(in srgb, var(--dh-partner) 60%, transparent);
+  background: color-mix(in srgb, var(--dh-partner) 22%, transparent);
+  color: #fff;
+}
+
+.dh-band--gastro .dh-band__cta {
+  background: var(--dh-partner);
+  color: #fff;
+}
+
+.dh-band--gastro .dh-band__cta:hover {
+  color: #fff;
+}
+
+/* --- Tarif kartları (dadagastro.com .r-card kompozisyonu) --- */
+.dh-band__recipes {
+  display: grid;
+  gap: 14px;
+}
+
+.dh-recipe {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.dh-recipe:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.dh-recipe__media {
+  position: relative;
+  flex: none;
+  width: 108px;
+  height: 81px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dh-recipe__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dh-recipe__chip {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: var(--dh-partner);
+  color: #fff;
+  font-family: var(--font-family-secondary);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.dh-recipe__title {
+  color: #fff;
+  font-family: var(--font-family-secondary);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 1199.98px) {
+  .dh-band__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+    gap: 28px;
+  }
+
+  .dh-recipe__media {
+    width: 92px;
+    height: 69px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .dh-band__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .dh-band__recipes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .dh-band__recipes {
+    grid-template-columns: 1fr;
+  }
+}
