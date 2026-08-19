@@ -1809,34 +1809,91 @@ p.h1, p.h2, p.h3, p.h4, p.h5, p.h6 {
    Ana menü şeridi (logo · menü · arama)         -> BEYAZ, marka rengi metin
    Ölçülen kontrastlar aşağıda kuralların yanında. */
 
-/* --- Üst bant: sarı zemin, koyu metin (#121212 / #fcb623 = 10,58:1  AA+AAA) --- */
+/* --- Üst bant: SİYAH zemin, açık metin -------------------------------
+   Geometri/tipografi dadagourmet.com/gurme-lezzetler .topbar'dan ÖLÇÜLDÜ
+   (Playwright, 1440px):
+     yükseklik 40px · font 12.5px/500 · ikon 12.5px
+     ikon-metin gap 7px · öğeler arası 14px
+     ayraç 1px × 14px, rgba(metin, .22) · wrap padding 0 32px
+   RENK oradan ALINMADI: gourmet #211E16 (kendi slate token'ı) yerine
+   kendi paletimizden --color-gray-900 (#121212) kullanıldı.
+   Kontrast: #fff / #121212 = 18,88:1 · rgba(#fff,.88) = 14,7:1 (AA+AAA) */
 .dh-shortcuts {
-  background-color: var(--dh-brand);
-  border-bottom-color: rgba(0, 0, 0, 0.12) !important;
+  --dh-sc-ink: rgba(255, 255, 255, 0.88);
+  background-color: var(--color-gray-900);
+  border-bottom: 0 !important;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.dh-shortcuts__track {
+  min-height: 40px;
 }
 
 .dh-shortcuts,
 .dh-shortcuts a,
 .dh-shortcuts span,
 .dh-shortcuts .datetime {
-  color: var(--color-gray-900) !important;
+  color: var(--dh-sc-ink) !important;
 }
 
-.dh-shortcuts .text-primary,
+/* Kompakt öğe: sade metin + ikon, çerçevesiz/zeminsiz */
+.dh-shortcuts .uc-navbar-right a {
+  gap: 7px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: color 0.15s ease;
+}
+
+.dh-shortcuts .uc-navbar-right,
+.dh-shortcuts .uc-navbar-left {
+  gap: 14px !important;
+}
+
+.dh-shortcuts .uc-navbar-item {
+  gap: 14px;
+}
+
+/* İkonlar metinle aynı boyda; kurumsal sarı vurgu siyah zeminde okunur
+   (#fcb623 / #121212 = 10,58:1) */
 .dh-shortcuts i {
-  color: var(--color-gray-900) !important;
+  font-size: 12.5px !important;
+  color: var(--dh-brand) !important;
 }
 
-.dh-shortcuts a:hover {
-  opacity: 0.7;
+.dh-shortcuts .datetime {
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+}
+
+/* Hover: metin tam beyaza çıkar — siyah zeminde belirgin */
+.dh-shortcuts a:hover,
+.dh-shortcuts a:hover i {
+  color: #fff !important;
+  opacity: 1;
+}
+
+/* Ayraç — gourmet ölçüsü: 1px × 14px, %22 opak */
+.dh-sc-div {
+  flex: none;
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.22);
+  align-self: center;
 }
 
 :where(.uc-dark) .dh-shortcuts,
 html.uc-dark .dh-shortcuts {
-  background-color: var(--dh-brand);
+  background-color: var(--color-gray-900);
 }
 
-/* Sarı zeminde maske de sarıya solmalı */
+/* Mobil: yatay kaydırmada sağ kenarda kesilme hissi */
 @media (max-width: 991.98px) {
   .dh-shortcuts__track {
     -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent 100%);
