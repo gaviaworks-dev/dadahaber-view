@@ -1,0 +1,6 @@
+/* Bu dosya index.html'e (ve diğer sayfalara) bağlı DEĞİLDİR — kullanılmıyor.
+   Eski içeriği 11 aileyi Google Fonts'tan çeken bir @import'tu; R1 tipografi
+   çalışmasında kaldırıldı. Site fontları artık self-host ediliyor ve
+   @font-face tanımları assets/css/theme/demo-six.min.css dosyasının başındadır:
+     Archivo   -> assets/fonts/archivo/     (başlık + arayüz)
+     Noto Sans -> assets/fonts/noto-sans/   (gövde metni) */

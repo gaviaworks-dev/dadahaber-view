@@ -1,0 +1,7 @@
+tasks/
+docs/screenshots/
+outputs/*.png
+outputs/*.jpg
+.DS_Store
+.env
+.env.*
