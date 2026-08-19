@@ -2328,3 +2328,34 @@ html.uc-dark .dh-footer-brand {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===========================================================
+   REV 5 / 6 — FOOTER: uygulama rozetleri ve sosyal ikonlar
+   İkisi de dadagastro.com'daki bileşenlerin birebir karşılığı.
+   dadagastro'da bunlar görsel dosya DEĞİL; Font Awesome marka ikonu +
+   metin ile kuruluyor (.store-badge / .foot-soc). Aynı yapı, aynı
+   ölçüler kullanıldı; ikon biçimi değiştirilmedi, yeniden çizilmedi.
+   Renk: zemin sarı olduğu için mürekkep beyaz (Dadahaber paleti).
+   =========================================================== */
+.dh-foot-soc {
+  display: flex;
+  gap: 11px;
+}
+
+.dh-foot-soc a {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.22);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 16px;
+  transition: 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-foot-soc a:hover {
+  background: #fff;
+  color: var(--dh-brand);
+  transform: translateY(-3px);
+}
