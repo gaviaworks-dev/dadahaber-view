@@ -74,11 +74,19 @@
 }
 
 .position-right-turn {
+  /* REV 7: sekme kenardan 28px içerideydi. 90° döndürülmüş kutunun görsel
+     genişliği kendi YÜKSEKLİĞİ kadar (40px), o yüzden merkez etrafında dönüş
+     sonrası sağ kenar (W-H)/2 kadar içeride kalıyordu.
+     right:0 + translate(calc(50% - H/2)) ile sağ kenar tam viewport kenarına
+     oturur; metin uzasa bile (%50 kendi genişliğinin) formül bozulmaz. */
+  --dh-tab-h: 40px;
   position: fixed;
-  right: -30px;
+  right: 0;
   top: 50%;
-  transform: translateY(-50%) rotate(90deg);
+  transform: translate(calc(50% - (var(--dh-tab-h) / 2)), -50%) rotate(90deg);
   transform-origin: center;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
   z-index: 1000;
 }
 
