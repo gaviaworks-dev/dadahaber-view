@@ -2413,3 +2413,92 @@ html.uc-dark .dh-footer-brand {
   font-size: 15px;
   font-weight: 700;
 }
+
+/* ===========================================================
+   REV 9 — TİPOGRAFİ SİSTEMİ: DadaGastro (Gilroy)
+   Kaynak ölçümü (dadagastro.com tokens.css / portal.css):
+     --font       : "Gilroy", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif
+     body         : font-weight 500,  line-height 1.55
+     h1..h4       : font-weight 700,  line-height 1.12,  letter-spacing -.02em
+     h2           : clamp(1.45rem, 1.1rem + 1.4vw, 1.9rem)      <- birebir
+     h3           : clamp(1.2rem,  1rem   + .8vw,  1.45rem)     <- birebir
+     h4           : 1.1rem                                       <- birebir
+     .foot-col h5 : 15px                                         <- h6 için alındı
+   Yükleme yöntemi de aynı: self-host @font-face (ttf/otf),
+   font-display:swap — tanımlar demo-six.min.css başında.
+   h1, h5: DadaGastro'da genel kural yok; altı seviyeli hiyerarşi
+   kaybolmasın diye h2/h3 eğrisinden türetildi (aşağıda işaretli).
+   =========================================================== */
+:root {
+  --font-family-primary: "Gilroy", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-family-secondary: "Gilroy", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-family-tertiary: "Gilroy", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-family-body-copy: "Gilroy", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Ağırlık skalası — yüklenen dosyalar: 300 Light, 500 Medium, 700/800 ExtraBold */
+  --font-weight-light: 300;
+  --font-weight-normal: 500;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 700;
+  --font-weight-bold: 700;
+  --font-text-weight: 500;
+  --font-heading-weight: 700;
+  --font-display-weight: 800;
+
+  /* Satır yüksekliği ve harf aralığı */
+  --lh-body: 1.55;
+  --lh-head: 1.12;
+  --ls-head: -0.02em;
+
+  /* Başlık boyutları */
+  --sizes-heading-h1-size: clamp(1.9rem, 1.35rem + 2.2vw, 2.5rem);   /* türetildi */
+  --sizes-heading-h2-size: clamp(1.45rem, 1.1rem + 1.4vw, 1.9rem);   /* birebir */
+  --sizes-heading-h3-size: clamp(1.2rem, 1rem + 0.8vw, 1.45rem);     /* birebir */
+  --sizes-heading-h4-size: 1.1rem;                                   /* birebir */
+  --sizes-heading-h5-size: 1rem;                                     /* türetildi */
+  --sizes-heading-h6-size: 0.9375rem;                                /* .foot-col h5 */
+
+  /* Satır yüksekliği ve harf aralığı — tema token'ları üzerinden */
+  --sizes-heading-h1-lh: 1.12;
+  --sizes-heading-h2-lh: 1.12;
+  --sizes-heading-h3-lh: 1.12;
+  --sizes-heading-h4-lh: 1.12;
+  --sizes-heading-h5-lh: 1.12;
+  --sizes-heading-h6-lh: 1.12;
+  --sizes-heading-h1-lp: -0.02em;
+  --sizes-heading-h2-lp: -0.02em;
+  --sizes-heading-h3-lp: -0.02em;
+  --sizes-heading-h4-lp: -0.02em;
+  --sizes-heading-h5-lp: -0.02em;
+  --sizes-heading-h6-lp: -0.02em;
+
+  /* DadaGastro başlıkları BÜYÜK HARFE çevirmiyor. Tema çeviriyordu ve
+     lang="zxx" yüzünden Türkçe i -> İ dönüşümü de bozuluyordu. */
+  --heading-font-transform: none;
+}
+
+html,
+body {
+  line-height: var(--lh-body);
+}
+
+/* Tema .h1..h6 sınıfları bu token'ları zaten okuyor; sınıfları EZMİYORUZ,
+   yoksa responsive varyantlar (lg:h4 / xl:h3) de ezilir ve hiyerarşi çöker. */
+h1, h2, h3, h4, h5, h6 {
+  /* Tema bunları token'dan değil sabit 600 ile yazıyor; Gilroy'da 600 yok. */
+  font-weight: var(--font-heading-weight);
+  text-transform: none;
+}
+
+/* Tema gövdeyi --bs-body-font-weight:400 ile sürüyor; DadaGastro gövdesi 500. */
+body {
+  --bs-body-font-weight: 500;
+  font-weight: var(--font-text-weight);
+}
+
+/* Ağırlık utility'leri yüklenen dosyalara otursun (tema 600 diyordu, Gilroy'da 600 yok) */
+.fw-light { font-weight: 300 !important; }
+.fw-normal,
+.fw-medium { font-weight: 500 !important; }
+.fw-semibold,
+.fw-bold { font-weight: 700 !important; }
