@@ -280,21 +280,21 @@
   </div>
 
   <!-- Header start -->
-  <header class="uc-header header-six uc-navbar-sticky-wrap z-999 border-3 border-danger"
+  <header class="uc-header header-six uc-navbar-sticky-wrap z-999"
     data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">
     <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">
 
-      <div class="uc-top-navbar panel z-3 min-h-32px overflow-hidden border-bottom d-lg-block d-none"
+      <div class="uc-top-navbar dh-shortcuts panel z-3 min-h-40px d-block"
         style="--uc-nav-height: 32px" data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
         <div class="container max-w-xl">
-          <div class="hstack panel z-1">
+          <div class="hstack dh-shortcuts__track panel z-1">
             <div class="uc-navbar-left gap-2 lg:gap-3">
               <div class="uc-navbar-item">
                 <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
                   <i class="fas fa-calendar-alt text-primary"></i>
                   12 Kasım
                   2025</span>
-                <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+                <span class="dh-sc-div" aria-hidden="true"></span>
 
                 <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
                   <img src="./assets/images/cloudy.png" class="w-20px h-20px ratio-1x1 " alt="">
@@ -309,25 +309,25 @@
                 <i class="fa-solid fa-ear-muffs text-primary"></i>
                 HABER DİNLE
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="foto-fokus.html" data-uc-toggle>
                 <i class="fas fa-camera text-primary"></i>
                 FOTO FOKUS
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="video-galeri.html" data-uc-toggle>
                 <i class="fas fa-play text-primary"></i>
                 VİDEO GALERİ
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="infografik.html" data-uc-toggle>
                 <i class="fas fa-info-circle text-primary"></i>
                 İNFOGRAFİK
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="podcast.html" data-uc-toggle>
                 <i class="fas fa-podcast text-primary"></i>
@@ -501,65 +501,47 @@
 
   <!-- Wrapper start -->
   <div id="wrapper" class="wrap overflow-hidden-x">
-    <div class="breadcrumbs panel z-1 py-2 bg-gray-25 dark:bg-gray-100 dark:bg-opacity-5 dark:text-white">
+    <!-- HABER DETAY BANNER — kompakt (referans 504px, burada ~300px) -->
+    <header class="dh-art-hero">
       <div class="container max-w-xl">
-        <ul class="breadcrumb nav-x justify-center gap-1 fs-7 sm:fs-6 m-0">
-          <li><a href="index.html">
-              <i class="fas fa-home-lg-alt"></i>
-            </a></li>
-          <li><i class="unicon-chevron-right opacity-50"></i></li>
-          <li><a href="haber-liste.html">
-              Gündem
-            </a></li>
-          <li><i class="unicon-chevron-right opacity-50"></i></li>
-          <li><span class="opacity-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe dolorum
-              dolor </span></li>
-        </ul>
-      </div>
-    </div>
+        <nav class="dh-art-crumb" aria-label="Sayfa yolu">
+          <a href="index.html"><i class="fas fa-home-lg-alt" aria-hidden="true"></i> Anasayfa</a>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <a href="haber-liste.html">Gündem</a>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <span aria-current="page">Yer tutucu haber başlığı — detay sayfası</span>
+        </nav>
 
-    <article class="post type-post single-post py-4 lg:py-8">
-      <div class="container max-w-xl">
-        <div class="post-header">
-          <div class="panel vstack gap-4 md:gap-4 xl:gap-4 text-center">
-            <header class="page-header panel vstack text-center mb-3">
-              <h1 class="h3 lg:h1">The Rise of Gourmet Street Food: Trends
-                and
-                Top
-                Picks</h1>
-            </header>
-            <figure
-              class="featured-image m-0 ratio ratio-2x1 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-              <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                src="./assets/images/common/img-fallback.png" data-src="./assets/images/demo-six/posts/post-full.jpg"
-                alt="The Rise of Gourmet Street Food: Trends and Top Picks" data-uc-img="loading: lazy">
-            </figure>
-            <div class="meta d-flex justify-between items-center gap-2">
-              <div class="hstack gap-2 flex-nowrap text-nowrap custom-scroll pb-0" style="overflow-x: auto;">
-                <div>
-                  <span class="opacity-50  d-flex align-items-center justify-content-start gap-1 fs-7">
-                    <i class="fas fa-comment-alt"></i>
-                    <span class="minimizeNumber">12345</span>
-                  </span>
-                </div>
-                <i class="fas fa-circle opacity-20" style="font-size: 5px;"></i>
-                <div>
-                  <span class="opacity-50  d-flex align-items-center justify-content-start gap-1 fs-7">
-                    <i class="fas fa-eye"></i>
-                    <span class="minimizeNumber">12345</span>
-                  </span>
-                </div>
-              </div>
-              <div class="d-flex gap-1 items-center">
-                <span class="opacity-50 lg:d-inline-block md:d-inline-block d-none">Abone Olun:</span>
-                <a target="_blank" href="www.google-news.com" class="google-news-link rounded">
-                  <img class="google-icon" src="./assets/images/google-news-logo.svg" alt="Google News">
-                </a>
-              </div>
-            </div>
+        <div class="dh-art-hero__main">
+          <span class="dh-art-cat">Gündem</span>
+          <h1 class="dh-art-title">Yer tutucu haber başlığı — detay sayfası düzeni burada görünecek</h1>
+          <div class="dh-art-hmeta">
+            <span class="dh-art-hauthor">
+              <img src="./assets/images/avatars/03.png" alt="" width="34" height="34">
+              <span><b>Dada Haber</b><small>Haber Merkezi</small></span>
+            </span>
+            <span class="dh-art-hsep" aria-hidden="true"></span>
+            <span class="dh-art-hstat"><i class="far fa-calendar" aria-hidden="true"></i> 12 Aralık 2025</span>
+            <span class="dh-art-hsep" aria-hidden="true"></span>
+            <span class="dh-art-hstat"><i class="far fa-clock" aria-hidden="true"></i> 4 dk okuma</span>
+            <span class="dh-art-hsep" aria-hidden="true"></span>
+            <span class="dh-art-hstat"><i class="far fa-eye" aria-hidden="true"></i> 12.345 görüntülenme</span>
           </div>
         </div>
       </div>
+    </header>
+
+    <article class="post type-post single-post dh-art">
+      <!-- ANA GÖRSEL — referanstan FARKLI: banner'ın altında, içerikten önce -->
+      <div class="container max-w-xl">
+        <figure class="dh-art-lead">
+          <img src="./assets/images/common/img-fallback.png"
+            data-src="./assets/images/demo-six/posts/post-full.jpg"
+            alt="" loading="eager" decoding="async" data-uc-img>
+          <figcaption>Yer tutucu görsel altyazısı — fotoğrafın kaynağı ve açıklaması buraya gelir.</figcaption>
+        </figure>
+      </div>
+
       <div>
         <div class="container max-w-lg mt-2">
           <div style="position: relative;" class="post-content panel fs-6 md:fs-5">
@@ -802,120 +784,39 @@
               <span class="text-nowrap">Anadolu Ajansı</span>
             </div>
           </div>
-          <div class="post-footer panel vstack sm:hstack gap-3 justify-between border-top py-4 xl:py-4 w-100">
-            <div class="hstack gap-2 items-center justify-center">
-              <span class="text-black dark:text-white me-narrow">Etiketler:</span>
-              <ul
-                class="nav-x gap-narrow text-primary flex items-center justify-start flex-nowrap custom-scroll text-nowrap pb-0"
-                style="overflow-x: auto; max-width: 560px;">
-
-                <li>
-                  <a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Food
-                    <span class="text-black dark:text-white"></span></a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Life
-                    Style <span class="text-black dark:text-white"></span></a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Tech
-                    <span class="text-black dark:text-white"></span></a>
-                </li>
-                <li><a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Travel</a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Food
-                    <span class="text-black dark:text-white"></span></a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Life
-                    Style <span class="text-black dark:text-white"></span></a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Tech
-                    <span class="text-black dark:text-white"></span></a>
-                </li>
-                <li><a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Travel</a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Food
-                    <span class="text-black dark:text-white"></span></a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Life
-                    Style <span class="text-black dark:text-white"></span></a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Tech
-                    <span class="text-black dark:text-white"></span></a>
-                </li>
-                <li><a href="#"
-                    class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Travel</a>
-                </li>
-              </ul>
+          <!-- PAYLAŞ — etiket bloğu KALDIRILDI (istek). Tek bileşen:
+               native paylaşım + kopyala geri bildirimi + 44px dokunma hedefi -->
+          <div class="dh-share" data-dh-share>
+            <span class="dh-share__label">Bu haberi paylaş</span>
+            <div class="dh-share__row">
+              <button type="button" class="dh-share__btn dh-share__btn--native" data-dh-share-native hidden>
+                <i class="fas fa-share-alt" aria-hidden="true"></i><span>Paylaş</span>
+              </button>
+              <a class="dh-share__btn" data-dh-share-url="https://x.com/intent/tweet?url={url}&amp;text={title}"
+                href="#" target="_blank" rel="noopener" aria-label="X'te paylaş">
+                <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+              </a>
+              <a class="dh-share__btn" data-dh-share-url="https://wa.me/?text={title}%20{url}"
+                href="#" target="_blank" rel="noopener" aria-label="WhatsApp'ta paylaş">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              </a>
+              <a class="dh-share__btn" data-dh-share-url="https://www.facebook.com/sharer/sharer.php?u={url}"
+                href="#" target="_blank" rel="noopener" aria-label="Facebook'ta paylaş">
+                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+              </a>
+              <a class="dh-share__btn" data-dh-share-url="https://www.linkedin.com/sharing/share-offsite/?url={url}"
+                href="#" target="_blank" rel="noopener" aria-label="LinkedIn'de paylaş">
+                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+              </a>
+              <a class="dh-share__btn" data-dh-share-url="mailto:?subject={title}&amp;body={url}"
+                href="#" aria-label="E-posta ile gönder">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+              </a>
+              <button type="button" class="dh-share__btn dh-share__btn--copy" data-dh-share-copy>
+                <i class="fas fa-link" aria-hidden="true"></i><span>Bağlantıyı kopyala</span>
+              </button>
             </div>
-            <div
-              class="lg:hstack md:hstack vstack lg:items-center md:items-center items-start lg:justify-center md:justify-center justify-start gap-2">
-              <span class="text-black dark:text-white me-narrow">Paylaş:</span>
-              <ul class="nav-x gap-1 flex-wrap justify-center p-0">
-                <li>
-                  <a class="" href="#">
-                    <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/google.png" alt="">
-                  </a>
-                </li>
-                <li>
-                  <a class="" href="#">
-                    <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/facebook.png" alt="">
-                  </a>
-                </li>
-                <li>
-                  <a class="" href="#">
-                    <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/twitter.png" alt="">
-                  </a>
-                </li>
-                <li>
-                  <a class="" href="#">
-                    <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/linkedin.png" alt="">
-                  </a>
-                </li>
-                <li>
-                  <a class="" href="#">
-                    <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/whatsapp.png" alt="">
-                  </a>
-                </li>
-                <li>
-                  <a class="" href="#">
-                    <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/telegram.png" alt="">
-                  </a>
-                </li>
-                <li>
-                  <a class="" href="#">
-                    <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/email.png" alt="">
-                  </a>
-                </li>
-                <li>
-                  <a class="" href="#">
-                    <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/spotify.png" alt="">
-                  </a>
-                </li>
-                <li>
-                  <a class="" href="#">
-                    <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/link.png" alt="">
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <span class="dh-share__toast" data-dh-share-toast role="status" aria-live="polite"></span>
           </div>
 
           <div class="post-navigation panel vstack sm:hstack justify-content-between w-100 gap-2 mt-3 xl:mt-3">
@@ -1445,6 +1346,9 @@
   <!-- include app script -->
   <script defer src="./assets/js/audio.js"></script>
   <script defer src="./assets/js/app.js"></script>
+
+  <!-- paylaş bileşeni (R2-4) -->
+  <script defer src="./assets/js/dh-share.js"></script>
 
   <script>
     // Schema toggle via URL
