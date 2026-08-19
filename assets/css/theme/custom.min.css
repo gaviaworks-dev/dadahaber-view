@@ -2998,3 +2998,251 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* ===========================================================
+   R2-3 — HABER KARTI (.dh-card) · Gurme Lezzetler kalıbı
+   Playwright ile dadagourmet.com/gurme-lezzetler .disc-card ölçüldü:
+     ızgara   3 kolon · gap 26px · kart 374,7 x 415,2
+     figür    aspect-ratio 16/10 · radius 16px · gölge sh-sm
+              alt boşluk 16px · bg cover center
+              hover: .bg scale(1.05), geçiş .5s cubic-bezier(.22,.61,.36,1)
+     rozet    .m-types .mt: 11px/700 · pad 6px 10px · radius 8px · blur 4px
+     başlık   h3 18px · lh 1.3 · ls -0.02em · clamp 2 · alt boşluk 8px
+              hover: renk marka tonuna geçer (.2s)
+     meta     flex · gap 16px · üst çizgi 1px · padding-top 12px
+              12,5px/500 · ikon-metin gap 6px
+   ÇIKARILANLAR (istek): özet paragrafı (.disc-card p 13,5px clamp 2)
+     ve üst etiket (.disc-cat 11px/700 uppercase) UYGULANMADI.
+   RENK alınmadı: gourmet --tomato yerine Dadahaber kurumsal tonu.
+   UX eklemeleri: tüm kart tek <a> (büyük tıklama alanı), :focus-visible
+     halkası, img loading=lazy + decoding=async, aspect-ratio ile
+     yer tutma (CLS yok), 2 satır kırpma, prefers-reduced-motion.
+   =========================================================== */
+.dh-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.dh-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* tema sarmalayıcısı .text-center miras bırakıyor; kart hep sola hizalı */
+  text-align: left;
+}
+
+/* flex-basis:0 KULLANILMAZ: yükseklik belirsiz sütun flex'te döngüsel
+   çözülüp kartı 0px'e düşürüyor. Eşit yükseklik ızgara stretch'inden,
+   metanın dibe yapışması .dh-card__meta{margin-top:auto} ile geliyor. */
+.dh-card__link {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 18px;
+}
+
+.dh-card__link:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 4px;
+}
+
+.dh-card__fig {
+  position: relative;
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: var(--color-gray-25);
+  box-shadow: 0 1px 2px rgba(18, 18, 18, 0.04), 0 2px 6px rgba(18, 18, 18, 0.05);
+}
+
+/* Oran GÖRSELE veriliyor, sarmalayıcıya değil: sütun yönlü flex içinde
+   sarmalayıcının yüksekliği içerikten geldiği için aspect-ratio çözülmüyor
+   ve kart 0px'e çöküyordu. Gourmet da .art-fig .bg'de aynısını yapıyor. */
+.dh-card__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-card__link:hover .dh-card__img,
+.dh-card__link:focus-visible .dh-card__img {
+  transform: scale(1.05);
+}
+
+.dh-card__badge {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-family: var(--font-family-secondary);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.dh-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.dh-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-900);
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-card__link:hover .dh-card__title,
+.dh-card__link:focus-visible .dh-card__title {
+  color: var(--dh-menu-ink);
+}
+
+/* Meta en altta sabitlensin — farklı başlık uzunluklarında hizalı kalır */
+.dh-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-gray-100);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--color-gray-400);
+}
+
+.dh-card__meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- YATAY VARYANT: aynı bileşen, tek değiştirici ---------- */
+.dh-cards--list {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.dh-card--row .dh-card__link {
+  flex-direction: row;
+  align-items: stretch;
+  gap: 14px;
+  padding: 10px;
+  border-radius: 14px;
+  background: #fff;
+  transition: background 0.2s ease;
+}
+
+.dh-card--row .dh-card__link:hover {
+  background: var(--color-gray-10);
+}
+
+.dh-card--row .dh-card__fig {
+  flex: 0 0 132px;
+  width: 132px;
+  margin-bottom: 0;
+  border-radius: 12px;
+  align-self: flex-start;
+}
+
+.dh-card--row .dh-card__img {
+  aspect-ratio: 16 / 10;
+}
+
+.dh-card--row .dh-card__title {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.dh-card--row .dh-card__meta {
+  gap: 12px;
+  padding-top: 10px;
+  font-size: 11.5px;
+}
+
+/* ---------- Dark mode ---------- */
+:where(.uc-dark) .dh-card__title,
+html.uc-dark .dh-card__title {
+  color: #fff;
+}
+
+:where(.uc-dark) .dh-card__meta,
+html.uc-dark .dh-card__meta {
+  color: var(--color-gray-300);
+  border-top-color: var(--color-gray-700);
+}
+
+:where(.uc-dark) .dh-card--row .dh-card__link,
+html.uc-dark .dh-card--row .dh-card__link {
+  background: var(--color-gray-900);
+}
+
+:where(.uc-dark) .dh-card--row .dh-card__link:hover,
+html.uc-dark .dh-card--row .dh-card__link:hover {
+  background: var(--color-gray-800);
+}
+
+:where(.uc-dark) .dh-card__link:hover .dh-card__title,
+html.uc-dark .dh-card__link:hover .dh-card__title {
+  color: var(--color-primary-200);
+}
+
+/* ---------- Duyarlı ---------- */
+@media (max-width: 991.98px) {
+  .dh-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .dh-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-card__title {
+    font-size: 17px;
+  }
+
+  .dh-card--row .dh-card__fig {
+    flex-basis: 104px;
+    width: 104px;
+  }
+
+  .dh-card--row .dh-card__title {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-card__img,
+  .dh-card__title {
+    transition: none;
+  }
+
+  .dh-card__link:hover .dh-card__img {
+    transform: none;
+  }
+}
