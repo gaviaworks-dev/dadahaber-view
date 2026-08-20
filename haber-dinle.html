@@ -472,15 +472,15 @@
               <div class="swiper dh-catbar__swiper"
                 data-uc-swiper="items: auto; gap: 8; free: true; grab-cursor: true; next: .dh-catbar__nav--next; prev: .dh-catbar__nav--prev; disable-class: is-off; watchOverflow: true;">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide"><a class="dh-catbar__chip is-on" href="haber-dinle.html" aria-current="page">Tümü</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-dinle.html">Son Dakika</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-dinle.html">Gündem</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-dinle.html">Ekonomi</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-dinle.html">Spor</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-dinle.html">Teknoloji</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-dinle.html">Sağlık</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-dinle.html">Dünya</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-dinle.html">Kültür</a></div>
+                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip is-on" data-dinle-cat="" aria-current="true">Tümü</button></div>
+                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="gundem">Gündem</button></div>
+                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="ekonomi">Ekonomi</button></div>
+                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="spor">Spor</button></div>
+                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="savunma">Savunma</button></div>
+                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="teknoloji">Teknoloji</button></div>
+                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="saglik">Sağlık</button></div>
+                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="dunya">Dünya</button></div>
+                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="yasam">Yaşam</button></div>
                 </div>
               </div>
               <div class="dh-catbar__nav dh-catbar__nav--prev" role="button" aria-label="Önceki kategoriler"><i class="unicon-chevron-left"></i></div>
@@ -680,97 +680,97 @@
               <div class="lg:col-8">
                 <div class="dh-mbox">
                   <div class="dh-mbox__head">
-                    <h2 class="dh-mbox__title">Bugünün sesli haberleri</h2>
-                    <span class="dh-mbox__note">10 kayıt &middot; 54 dk</span>
+                    <h2 class="dh-mbox__title" id="dinleBaslik">Bugünün sesli haberleri</h2>
+                    <span class="dh-mbox__note" id="dinleSayac">10 kayıt &middot; 47 dk</span>
                   </div>
-                  <div class="dh-eps dh-eps--sq">
-            <a class="dh-ep is-now" href="haber-detay.html" aria-current="true">
+                  <div class="dh-eps dh-eps--sq" id="dinleListe">
+            <a class="dh-ep is-now" data-dinle-cat="gundem" data-dinle-bulten="sabah" data-dinle-sn="492" href="haber-detay.html" aria-current="true">
               <span class="dh-ep__num">1</span>
               <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-01.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">08:12</span></span>
               <span class="dh-ep__body">
                 <b class="dh-ep__title">Günün bülteni: 12 Aralık sabahı</b>
-                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>07:00 &middot; Gündem</span>
+                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>07:05 &middot; Gündem</span>
               </span>
               <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-headphones"></i></span>
             </a>
-            <a class="dh-ep" href="haber-detay.html">
+            <a class="dh-ep" data-dinle-cat="ekonomi" data-dinle-bulten="sabah" data-dinle-sn="278" href="haber-detay.html">
               <span class="dh-ep__num">2</span>
               <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-02.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">04:38</span></span>
               <span class="dh-ep__body">
                 <b class="dh-ep__title">Enflasyon verisi açıklandı: sepette ne değişti?</b>
-                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>10:24 &middot; Ekonomi</span>
+                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>07:12 &middot; Ekonomi</span>
               </span>
               <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-headphones"></i></span>
             </a>
-            <a class="dh-ep" href="haber-detay.html">
+            <a class="dh-ep" data-dinle-cat="gundem" data-dinle-bulten="sabah" data-dinle-sn="195" href="haber-detay.html">
               <span class="dh-ep__num">3</span>
               <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-03.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">03:15</span></span>
               <span class="dh-ep__body">
                 <b class="dh-ep__title">Meclis&#x27;te bütçe görüşmeleri sürüyor</b>
-                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>11:40 &middot; Gündem</span>
+                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>07:20 &middot; Gündem</span>
               </span>
               <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-headphones"></i></span>
             </a>
-            <a class="dh-ep" href="haber-detay.html">
+            <a class="dh-ep" data-dinle-cat="spor" data-dinle-bulten="ogle" data-dinle-sn="302" href="haber-detay.html">
               <span class="dh-ep__num">4</span>
               <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-04.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">05:02</span></span>
               <span class="dh-ep__body">
                 <b class="dh-ep__title">Derbi öncesi son durum: kadrolar netleşti</b>
-                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>12:15 &middot; Spor</span>
+                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>12:34 &middot; Spor</span>
               </span>
               <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-headphones"></i></span>
             </a>
-            <a class="dh-ep" href="haber-detay.html">
+            <a class="dh-ep" data-dinle-cat="yasam" data-dinle-bulten="ogle" data-dinle-sn="168" href="haber-detay.html">
               <span class="dh-ep__num">5</span>
               <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-05.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">02:48</span></span>
               <span class="dh-ep__body">
                 <b class="dh-ep__title">Kar yağışı için turuncu kod uyarısı</b>
-                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>13:30 &middot; Yaşam</span>
+                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>12:41 &middot; Yaşam</span>
               </span>
               <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-headphones"></i></span>
             </a>
-            <a class="dh-ep" href="haber-detay.html">
+            <a class="dh-ep" data-dinle-cat="savunma" data-dinle-bulten="ogle" data-dinle-sn="251" href="haber-detay.html">
               <span class="dh-ep__num">6</span>
               <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-06.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">04:11</span></span>
               <span class="dh-ep__body">
                 <b class="dh-ep__title">Savunma sanayiinde yeni ihracat anlaşması</b>
-                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>14:05 &middot; Savunma</span>
+                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>12:48 &middot; Savunma</span>
               </span>
               <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-headphones"></i></span>
             </a>
-            <a class="dh-ep" href="haber-detay.html">
+            <a class="dh-ep" data-dinle-cat="saglik" data-dinle-bulten="aksam" data-dinle-sn="224" href="haber-detay.html">
               <span class="dh-ep__num">7</span>
-              <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-07.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">03:52</span></span>
+              <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-07.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">03:44</span></span>
               <span class="dh-ep__body">
                 <b class="dh-ep__title">Sağlıkta randevu sisteminde değişiklik</b>
-                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>15:20 &middot; Sağlık</span>
+                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>19:04 &middot; Sağlık</span>
               </span>
               <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-headphones"></i></span>
             </a>
-            <a class="dh-ep" href="haber-detay.html">
+            <a class="dh-ep" data-dinle-cat="teknoloji" data-dinle-bulten="aksam" data-dinle-sn="336" href="haber-detay.html">
               <span class="dh-ep__num">8</span>
-              <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-08.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">06:24</span></span>
+              <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-08.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">05:36</span></span>
               <span class="dh-ep__body">
                 <b class="dh-ep__title">Teknoloji: yerli işlemcide seri üretim adımı</b>
-                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>16:10 &middot; Teknoloji</span>
+                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>19:11 &middot; Teknoloji</span>
               </span>
               <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-headphones"></i></span>
             </a>
-            <a class="dh-ep" href="haber-detay.html">
+            <a class="dh-ep" data-dinle-cat="dunya" data-dinle-bulten="aksam" data-dinle-sn="289" href="haber-detay.html">
               <span class="dh-ep__num">9</span>
-              <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-09.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">07:36</span></span>
+              <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-09.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">04:49</span></span>
               <span class="dh-ep__body">
                 <b class="dh-ep__title">Dünya turu: seçim sonuçları ve piyasalar</b>
-                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>17:45 &middot; Dünya</span>
+                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>19:19 &middot; Dünya</span>
               </span>
               <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-headphones"></i></span>
             </a>
-            <a class="dh-ep" href="haber-detay.html">
+            <a class="dh-ep" data-dinle-cat="gundem" data-dinle-bulten="gece" data-dinle-sn="300" href="haber-detay.html">
               <span class="dh-ep__num">10</span>
-              <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-10.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">09:05</span></span>
+              <span class="dh-ep__th"><img src="./assets/images/demo-six/posts/img-10.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">05:00</span></span>
               <span class="dh-ep__body">
                 <b class="dh-ep__title">Akşam bülteni: günün özeti</b>
-                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>19:00 &middot; Gündem</span>
+                <span class="dh-ep__meta"><i class="fas fa-clock" aria-hidden="true"></i>23:05 &middot; Gündem</span>
               </span>
               <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-headphones"></i></span>
             </a>
@@ -783,10 +783,10 @@
                     <h2 class="dh-mbox__title">Yayın saatleri</h2>
                   </div>
                   <div class="dh-eps">
-                    <div class="dh-ep is-now"><span class="dh-ep__num">1</span><span class="dh-ep__body"><b class="dh-ep__title">Sabah bülteni</b><span class="dh-ep__meta">07.00 &middot; 8 dk</span></span></div>
-                    <div class="dh-ep"><span class="dh-ep__num">2</span><span class="dh-ep__body"><b class="dh-ep__title">Öğle bülteni</b><span class="dh-ep__meta">12.30 &middot; 6 dk</span></span></div>
-                    <div class="dh-ep"><span class="dh-ep__num">3</span><span class="dh-ep__body"><b class="dh-ep__title">Akşam bülteni</b><span class="dh-ep__meta">19.00 &middot; 9 dk</span></span></div>
-                    <div class="dh-ep"><span class="dh-ep__num">4</span><span class="dh-ep__body"><b class="dh-ep__title">Gece özeti</b><span class="dh-ep__meta">23.00 &middot; 5 dk</span></span></div>
+                    <button type="button" class="dh-ep dh-ep--btn" data-dinle-bulten="sabah" aria-pressed="false"><span class="dh-ep__num">1</span><span class="dh-ep__body"><b class="dh-ep__title">Sabah bülteni</b><span class="dh-ep__meta">07.00 &middot; 3 haber &middot; 16 dk</span></span></button>
+                    <button type="button" class="dh-ep dh-ep--btn" data-dinle-bulten="ogle" aria-pressed="false"><span class="dh-ep__num">2</span><span class="dh-ep__body"><b class="dh-ep__title">Öğle bülteni</b><span class="dh-ep__meta">12.30 &middot; 3 haber &middot; 12 dk</span></span></button>
+                    <button type="button" class="dh-ep dh-ep--btn" data-dinle-bulten="aksam" aria-pressed="false"><span class="dh-ep__num">3</span><span class="dh-ep__body"><b class="dh-ep__title">Akşam bülteni</b><span class="dh-ep__meta">19.00 &middot; 3 haber &middot; 14 dk</span></span></button>
+                    <button type="button" class="dh-ep dh-ep--btn" data-dinle-bulten="gece" aria-pressed="false"><span class="dh-ep__num">4</span><span class="dh-ep__body"><b class="dh-ep__title">Gece özeti</b><span class="dh-ep__meta">23.05 &middot; 1 haber &middot; 5 dk</span></span></button>
                   </div>
                 </div>
                 <div class="dh-mbox">
@@ -1034,6 +1034,9 @@
     </script>
 
     <script defer src="./assets/js/audio.js"></script>
+
+    <!-- Haber Dinle: kategori süzgeci + bülten seçimi -->
+    <script defer src="./assets/js/dh-listen.js"></script>
 
     <!-- include app script -->
     <script defer src="./assets/js/app.js"></script>

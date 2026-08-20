@@ -16220,3 +16220,72 @@ html.uc-dark .dh-panel__place {
   /* koyu zeminde %72 beyaz = 8,9:1 */
   color: rgba(255, 255, 255, 0.72) !important;
 }
+
+
+/* ===========================================================
+   R6-X3 — FOOTER YASAL LİNKLERİ: DİKEY NEFES
+   Ölçüm (Playwright, footer görünürken):
+     1440px · iki nav bloğu arası 0px (satırlar 702 ve 721'de,
+              yani 19px'lik satır yüksekliği kadar, bitişik)
+     1440/1000px · ul row-gap 12px · 390px · row-gap 10px
+     390px'te bloklar 2 ve 3 satıra sarıyor -> 5 satır üst üste yapışık
+   R3-3'teki `.footer-nav{margin-bottom:0 !important}` yüzünden iki
+   blok birbirine değiyordu. Kardeş bloğa margin-top verildi (o kuralla
+   çakışmasın diye), satır arası da aynı ritme çekildi.
+   Sonuç: her yasal link satırı arasında 18px (mobil 14px).
+   =========================================================== */
+.dh-footer-brand .footer-nav + .footer-nav {
+  margin-top: 18px;
+}
+
+.dh-footer-brand .footer-nav ul {
+  gap: 18px 34px !important;
+}
+
+@media (max-width: 991.98px) {
+  .dh-footer-brand .footer-nav + .footer-nav {
+    margin-top: 14px;
+  }
+
+  .dh-footer-brand .footer-nav ul {
+    gap: 14px 22px !important;
+  }
+}
+
+
+/* ===========================================================
+   R6-X4 — HABER DİNLE: SÜZGEÇ DAVRANIŞI
+   Kullanıcı: "haberler var ama kategori yok, kategori seçimi
+   olması lazım" + "yayın saatleri tıklanınca soldaki render
+   ettiği haberleri değiştirebilsin."
+   Kategori şeridi ve yayın saatleri artık gerçek süzgeç
+   (assets/js/dh-listen.js). Yayın saatleri satırları <button>
+   olduğu için düğme sıfırlaması gerekiyor.
+   =========================================================== */
+.dh-ep--btn {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.dh-ep--btn:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+}
+
+/* Süzgeç çipleri de artık <button>; bağlantı görünümü korunuyor */
+button.dh-catbar__chip {
+  appearance: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Boş sonuç durumunda liste çökmesin */
+.dh-eps:empty::after,
+.dh-eps--sq:empty::after {
+  content: "";
+}
