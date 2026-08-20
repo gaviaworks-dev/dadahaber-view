@@ -121,6 +121,27 @@
     c.addEventListener('click', function () { open(i); });
   });
 
+  /* Ray oklarıyla yatay gezinme + uçlarda butonu pasifleştirme */
+  var prev = document.querySelector('[data-dh-shorts-prev]');
+  var next = document.querySelector('[data-dh-shorts-next]');
+  function step(dir) {
+    var card = cards[0];
+    if (!card) return;
+    var w = card.getBoundingClientRect().width + 18;
+    track.scrollBy({ left: dir * w * 2, behavior: 'smooth' });
+  }
+  function syncNav() {
+    if (!prev || !next) return;
+    var max = track.scrollWidth - track.clientWidth;
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= max - 2;
+  }
+  if (prev) prev.addEventListener('click', function () { step(-1); });
+  if (next) next.addEventListener('click', function () { step(1); });
+  track.addEventListener('scroll', syncNav, { passive: true });
+  window.addEventListener('resize', syncNav);
+  syncNav();
+
   closeBtn.addEventListener('click', close);
 
   reels.addEventListener('click', function (e) {

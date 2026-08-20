@@ -3309,77 +3309,133 @@
     </div>
     <!-- SAVUNAM Section end -->
     <!-- VİDEO GALERİ Section start — Dada Akış kalıbı (dadagastro.com/video-mutfagi) -->
-    <div class="section panel overflow-hidden bg-gray-10 dark:bg-gray-800">
-      <div class="section-outer panel py-4 lg:py-8 dark:text-white">
-        <div class="container max-w-xl">
-          <div class="section-inner panel vstack gap-2">
-            <div class="section-header panel">
-              <h2 class="h5 xl:h4 m-0 text-black dark:text-white">
-                <div class="hstack justify-between">
-                  <span>VİDEO GALERİ</span>
-                  <a class="fs-5 text-underline-none hstack items-center justify-center" href="video-galeri.html">
-                    Daha Fazla
-                    <i class="icon-1 fw-bold unicon-chevron-right -translate-y-px"></i>
-                  </a>
-                </div>
-              </h2>
-            </div>
-            <div class="section-content panel">
-              <div class="dh-shorts" id="dhShorts" role="list">
-                <button type="button" class="dh-short" data-dh-short="0"
-                  data-video="./assets/images/videos/vid-01.webm"
-                  data-poster="./assets/images/410x410.png"
-                  data-title="Yer tutucu — dikey kısa video akışı" data-cat="GÜNDEM" data-views="524B" data-dur="00:31">
-                  <span class="dh-short__media" style="background-image:url(./assets/images/410x410.png)"></span>
-                  <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:31</span>
-                  <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
-                  <span class="dh-short__body">
-                    <b class="dh-short__title">Yer tutucu — dikey kısa video akışı</b>
-                    <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 524B</span>
-                  </span>
-                </button>
-                <button type="button" class="dh-short" data-dh-short="1"
-                  data-video="./assets/images/videos/vid-03.webm"
-                  data-poster="./assets/images/410x410.png"
-                  data-title="Yer tutucu — ikinci kısa video" data-cat="SPOR" data-views="318B" data-dur="00:24">
-                  <span class="dh-short__media" style="background-image:url(./assets/images/410x410.png)"></span>
-                  <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:24</span>
-                  <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
-                  <span class="dh-short__body">
-                    <b class="dh-short__title">Yer tutucu — ikinci kısa video</b>
-                    <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 318B</span>
-                  </span>
-                </button>
-                <button type="button" class="dh-short" data-dh-short="2"
-                  data-video="./assets/images/videos/vid-04.webm"
-                  data-poster="./assets/images/410x410.png"
-                  data-title="Yer tutucu — üçüncü kısa video" data-cat="TEKNOLOJİ" data-views="206B" data-dur="00:18">
-                  <span class="dh-short__media" style="background-image:url(./assets/images/410x410.png)"></span>
-                  <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:18</span>
-                  <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
-                  <span class="dh-short__body">
-                    <b class="dh-short__title">Yer tutucu — üçüncü kısa video</b>
-                    <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 206B</span>
-                  </span>
-                </button>
-                <button type="button" class="dh-short" data-dh-short="3"
-                  data-video="./assets/images/videos/vid-05.webm"
-                  data-poster="./assets/images/410x410.png"
-                  data-title="Yer tutucu — dördüncü kısa video" data-cat="SAĞLIK" data-views="142B" data-dur="00:27">
-                  <span class="dh-short__media" style="background-image:url(./assets/images/410x410.png)"></span>
-                  <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:27</span>
-                  <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
-                  <span class="dh-short__body">
-                    <b class="dh-short__title">Yer tutucu — dördüncü kısa video</b>
-                    <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 142B</span>
-                  </span>
-                </button>
-              </div>
+    <section class="section panel dh-akis">
+      <div class="dh-akis__clip" aria-hidden="true"><div class="dh-akis__media"></div></div>
+      <div class="dh-akis__veil" aria-hidden="true"></div>
+      <div class="container max-w-xl">
+        <div class="dh-akis__head">
+          <div class="dh-akis__intro">
+            <span class="dh-akis__eyebrow"><i class="fas fa-bolt" aria-hidden="true"></i> Video Akışı</span>
+            <h2 class="dh-akis__title">30 saniyede bir haber</h2>
+            <p class="dh-akis__lead">15–30 saniyelik dikey kısa videolar — kaydır, izle, habere git.</p>
+          </div>
+          <div class="dh-akis__tools">
+            <a class="dh-akis__all" href="video-galeri.html">Tümünü İzle <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            <div class="dh-akis__nav">
+              <button type="button" data-dh-shorts-prev aria-label="Önceki"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-dh-shorts-next aria-label="Sonraki"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>
+
+        <div class="dh-shorts" id="dhShorts">
+              <button type="button" class="dh-short" data-dh-short="0"
+                data-video="./assets/images/videos/vid-01.webm"
+                data-poster="./assets/images/videos/posters/vid-01.jpg"
+                data-title="Yer tutucu — dikey kısa video akışı" data-cat="GÜNDEM" data-views="524B" data-dur="00:31">
+                <img class="dh-short__img" src="./assets/images/videos/posters/vid-01.jpg" alt="" loading="lazy" decoding="async">
+                <span class="dh-short__cat">GÜNDEM</span>
+                <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:31</span>
+                <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
+                <span class="dh-short__body">
+                  <b class="dh-short__title">Yer tutucu — dikey kısa video akışı</b>
+                  <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 524B</span>
+                </span>
+              </button>
+              <button type="button" class="dh-short" data-dh-short="1"
+                data-video="./assets/images/videos/vid-03.webm"
+                data-poster="./assets/images/videos/posters/vid-03.jpg"
+                data-title="Yer tutucu — ikinci kısa video" data-cat="SPOR" data-views="318B" data-dur="00:24">
+                <img class="dh-short__img" src="./assets/images/videos/posters/vid-03.jpg" alt="" loading="lazy" decoding="async">
+                <span class="dh-short__cat">SPOR</span>
+                <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:24</span>
+                <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
+                <span class="dh-short__body">
+                  <b class="dh-short__title">Yer tutucu — ikinci kısa video</b>
+                  <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 318B</span>
+                </span>
+              </button>
+              <button type="button" class="dh-short" data-dh-short="2"
+                data-video="./assets/images/videos/vid-04.webm"
+                data-poster="./assets/images/videos/posters/vid-04.jpg"
+                data-title="Yer tutucu — üçüncü kısa video" data-cat="TEKNOLOJİ" data-views="206B" data-dur="00:18">
+                <img class="dh-short__img" src="./assets/images/videos/posters/vid-04.jpg" alt="" loading="lazy" decoding="async">
+                <span class="dh-short__cat">TEKNOLOJİ</span>
+                <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:18</span>
+                <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
+                <span class="dh-short__body">
+                  <b class="dh-short__title">Yer tutucu — üçüncü kısa video</b>
+                  <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 206B</span>
+                </span>
+              </button>
+              <button type="button" class="dh-short" data-dh-short="3"
+                data-video="./assets/images/videos/vid-05.webm"
+                data-poster="./assets/images/videos/posters/vid-05.jpg"
+                data-title="Yer tutucu — dördüncü kısa video" data-cat="SAĞLIK" data-views="142B" data-dur="00:27">
+                <img class="dh-short__img" src="./assets/images/videos/posters/vid-05.jpg" alt="" loading="lazy" decoding="async">
+                <span class="dh-short__cat">SAĞLIK</span>
+                <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:27</span>
+                <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
+                <span class="dh-short__body">
+                  <b class="dh-short__title">Yer tutucu — dördüncü kısa video</b>
+                  <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 142B</span>
+                </span>
+              </button>
+              <button type="button" class="dh-short" data-dh-short="4"
+                data-video="./assets/images/videos/vid-01.webm"
+                data-poster="./assets/images/videos/posters/vid-01.jpg"
+                data-title="Yer tutucu — beşinci kısa video" data-cat="DÜNYA" data-views="118B" data-dur="00:22">
+                <img class="dh-short__img" src="./assets/images/videos/posters/vid-01.jpg" alt="" loading="lazy" decoding="async">
+                <span class="dh-short__cat">DÜNYA</span>
+                <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:22</span>
+                <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
+                <span class="dh-short__body">
+                  <b class="dh-short__title">Yer tutucu — beşinci kısa video</b>
+                  <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 118B</span>
+                </span>
+              </button>
+              <button type="button" class="dh-short" data-dh-short="5"
+                data-video="./assets/images/videos/vid-03.webm"
+                data-poster="./assets/images/videos/posters/vid-03.jpg"
+                data-title="Yer tutucu — altıncı kısa video" data-cat="KADIN" data-views="96B" data-dur="00:35">
+                <img class="dh-short__img" src="./assets/images/videos/posters/vid-03.jpg" alt="" loading="lazy" decoding="async">
+                <span class="dh-short__cat">KADIN</span>
+                <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:35</span>
+                <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
+                <span class="dh-short__body">
+                  <b class="dh-short__title">Yer tutucu — altıncı kısa video</b>
+                  <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 96B</span>
+                </span>
+              </button>
+              <button type="button" class="dh-short" data-dh-short="6"
+                data-video="./assets/images/videos/vid-04.webm"
+                data-poster="./assets/images/videos/posters/vid-04.jpg"
+                data-title="Yer tutucu — yedinci kısa video" data-cat="FİNANS" data-views="74B" data-dur="00:41">
+                <img class="dh-short__img" src="./assets/images/videos/posters/vid-04.jpg" alt="" loading="lazy" decoding="async">
+                <span class="dh-short__cat">FİNANS</span>
+                <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:41</span>
+                <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
+                <span class="dh-short__body">
+                  <b class="dh-short__title">Yer tutucu — yedinci kısa video</b>
+                  <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 74B</span>
+                </span>
+              </button>
+              <button type="button" class="dh-short" data-dh-short="7"
+                data-video="./assets/images/videos/vid-05.webm"
+                data-poster="./assets/images/videos/posters/vid-05.jpg"
+                data-title="Yer tutucu — sekizinci kısa video" data-cat="SAVUNMA" data-views="61B" data-dur="00:29">
+                <img class="dh-short__img" src="./assets/images/videos/posters/vid-05.jpg" alt="" loading="lazy" decoding="async">
+                <span class="dh-short__cat">SAVUNMA</span>
+                <span class="dh-short__dur"><i class="fas fa-play" aria-hidden="true"></i> 00:29</span>
+                <span class="dh-short__play"><i class="fas fa-play" aria-hidden="true"></i></span>
+                <span class="dh-short__body">
+                  <b class="dh-short__title">Yer tutucu — sekizinci kısa video</b>
+                  <span class="dh-short__views"><i class="fas fa-eye" aria-hidden="true"></i> 61B</span>
+                </span>
+              </button>
+        </div>
       </div>
-    </div>
+    </section>
     <!--  VİDEO GALERİ Section end -->
 
 
