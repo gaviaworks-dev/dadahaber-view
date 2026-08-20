@@ -3664,3 +3664,106 @@ html.uc-dark .dh-share__btn--copy {
     transition: none;
   }
 }
+
+/* ===========================================================
+   R3-3 — FOOTER: minimal yasal linkler, compact metin, görünür ayraç
+   Ölçülen sorunlar (Playwright, 1440px):
+     yasal linkler 16px/500 uppercase, ul gap 16px  -> çok iri
+     uygulama/sosyal metni 16px/lh 24,8px           -> çok iri
+     hr: rgba(255,255,255,.28) ama opacity .1       -> sarı zeminde görünmüyor
+   =========================================================== */
+
+/* --- Yasal sayfa linkleri: minimal --- */
+.dh-footer-brand .footer-nav ul {
+  gap: 10px 22px !important;
+  font-size: 12.5px !important;
+}
+
+.dh-footer-brand .footer-nav a {
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em;
+  line-height: 1.5 !important;
+  opacity: 0.92;
+  transition: opacity 0.15s ease;
+}
+
+.dh-footer-brand .footer-nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dh-footer-brand .footer-nav {
+  margin-bottom: 0 !important;
+}
+
+/* --- Uygulama / sosyal metni: compact --- */
+.dh-footer-brand .footer-social p {
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+  max-width: 30ch;
+}
+
+.dh-footer-brand .footer-social {
+  margin-top: 1rem !important;
+}
+
+/* Sosyal ikonlar biraz küçülsün — metinle aynı ölçek ailesinde kalsın */
+.dh-foot-soc a {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  font-size: 15px;
+}
+
+.dh-store-badge {
+  padding: 9px 16px;
+  border-radius: 14px;
+}
+
+.dh-store-badge i {
+  font-size: 22px;
+}
+
+.dh-store-badge b {
+  font-size: 13.5px;
+}
+
+.dh-store-badge small {
+  font-size: 10px;
+}
+
+/* --- Ayraçlar: sarı zeminde görünür ---
+   Beyaz çizgi %28 opaklıkta kayboluyordu; sarı üzerinde koyu çizgi okunur. */
+.dh-footer-brand hr {
+  border: 0 !important;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.22) !important;
+  opacity: 1 !important;
+  margin: 18px 0 !important;
+}
+
+/* Telif satırının üstündeki ayraç da aynı dilde */
+.dh-footer-brand .footer-copyright {
+  border-top: 1px solid rgba(0, 0, 0, 0.22);
+  padding-top: 14px;
+  margin-top: 4px !important;
+}
+
+.dh-footer-brand .footer-copyright p {
+  font-size: 12.5px !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 575.98px) {
+  .dh-footer-brand .footer-nav ul {
+    gap: 8px 16px !important;
+  }
+
+  .dh-footer-brand .footer-social p {
+    max-width: none;
+    text-align: center;
+  }
+}
