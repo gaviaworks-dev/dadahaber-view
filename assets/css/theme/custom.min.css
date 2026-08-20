@@ -3446,9 +3446,17 @@ body {
   aspect-ratio: 16 / 10;
 }
 
+.dh-card--row .dh-card__body {
+  justify-content: center;
+}
+
 .dh-card--row .dh-card__title {
   font-size: 16px;
   margin-bottom: 6px;
+}
+
+.dh-card--row .dh-card__foot {
+  margin-top: 10px;
 }
 
 .dh-card--row .dh-card__meta {
@@ -4977,5 +4985,91 @@ html.uc-dark .dh-rev {
   .dh-rev__chip,
   .dh-watch {
     transition: none;
+  }
+}
+
+/* ===========================================================
+   R3-10 — GENİŞ YATAY KART (.dh-card--wide)
+   DİĞER HABERLER akışı için. Aynı .dh-card bileşeninden türer,
+   sadece ölçek ve kategori rozeti eklenir. Üçüncü kart sistemi yok.
+   =========================================================== */
+.dh-cards--feed {
+  gap: 16px;
+}
+
+.dh-card--wide .dh-card__link {
+  gap: 20px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid var(--color-gray-100);
+}
+
+.dh-card--wide .dh-card__fig {
+  flex: 0 0 268px;
+  width: 268px;
+  border-radius: 12px;
+}
+
+.dh-card--wide .dh-card__img {
+  aspect-ratio: 16 / 10;
+}
+
+.dh-card--wide .dh-card__title {
+  font-size: 19px;
+  line-height: 1.28;
+  margin-bottom: 10px;
+}
+
+/* Gövde dikey ortalı — dadagastro .r-body deseni. Aksi halde foot
+   margin-top:auto ile dibe yapışıp başlıkla arasında boşluk bırakıyordu. */
+.dh-card--wide .dh-card__body {
+  justify-content: center;
+  gap: 0;
+}
+
+.dh-card--wide .dh-card__foot {
+  margin-top: 14px;
+  padding-top: 14px;
+}
+
+.dh-card--wide .dh-card__meta {
+  font-size: 12px;
+}
+
+/* Kategori rozeti — görselin sol üstünde */
+.dh-card__cat {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+  font-family: var(--font-family-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+
+:where(.uc-dark) .dh-card--wide .dh-card__link,
+html.uc-dark .dh-card--wide .dh-card__link {
+  border-color: var(--color-gray-700);
+}
+
+@media (max-width: 767.98px) {
+  .dh-card--wide .dh-card__link {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .dh-card--wide .dh-card__fig {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .dh-card--wide .dh-card__title {
+    font-size: 17px;
   }
 }
