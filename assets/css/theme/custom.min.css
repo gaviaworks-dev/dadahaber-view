@@ -16289,3 +16289,59 @@ button.dh-catbar__chip {
 .dh-eps--sq:empty::after {
   content: "";
 }
+
+
+/* ===========================================================
+   R6-X5 — HABER DİNLE: SÜZGEÇ LİSTENİN YANINA TAŞINDI
+   Kullanıcı: "bu sağ altta niye kategori çıkıyor anlamadım" +
+   "bu sesli haberin üstünde 'Akşam bülteni' yazıyor ya, onun
+   üstünde ya da daha uygun bir yerde kategori seçme özelliği olsun."
+   1) Sayfa üstündeki kategori şeridi KALDIRILDI. Diğer liste
+      sayfalarında o şerit alt kategorilere GEZİNME bağlantısı;
+      burada alt kategori sayfası yok, süzgeç görevi görüyordu.
+      Süzgeç, süzdüğü şeyin yanında durmalı.
+   2) Çipler liste kutusunun başlığının ALTINA alındı — "Akşam
+      bülteni" başlığı ile listenin arasına.
+   3) "Arşivde 3.840 sesli haber var" + zaman aralığı sekmeleri
+      ızgaranın DIŞINDA öksüz kalmıştı, sağ alt köşede yan
+      sütunun altına düşüyordu. Kendi kolonunun içine, listenin
+      hemen altına alındı.
+   =========================================================== */
+.dh-mbox__filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 0 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+html.uc-dark .dh-mbox__filter {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.dh-mbox__filter .dh-catbar__chip {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 12.5px;
+}
+
+/* Dar ekranda çipler sarmak yerine yatay kaysın —
+   liste kutusunun yüksekliğini üç satır çip yemesin. */
+@media (max-width: 767.98px) {
+  .dh-mbox__filter {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .dh-mbox__filter::-webkit-scrollbar { display: none; }
+
+  .dh-mbox__filter .dh-catbar__chip { flex: 0 0 auto; }
+}
+
+/* Arşiv satırı: listenin altında, kolonun içinde */
+.dh-arclin {
+  margin-top: 16px;
+}

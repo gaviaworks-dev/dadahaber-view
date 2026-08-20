@@ -466,29 +466,7 @@
     <span class="dh-rail" aria-hidden="true"></span>
     <div id="wrapper" class="wrap overflow-hidden-x">
         <span class="dh-mark" aria-hidden="true">DADA</span>
-        <section class="section panel dh-catbar" aria-label="Kategoriler">
-          <div class="container max-w-xl">
-            <div class="dh-catbar__inner swiper-parent">
-              <div class="swiper dh-catbar__swiper"
-                data-uc-swiper="items: auto; gap: 8; free: true; grab-cursor: true; next: .dh-catbar__nav--next; prev: .dh-catbar__nav--prev; disable-class: is-off; watchOverflow: true;">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip is-on" data-dinle-cat="" aria-current="true">Tümü</button></div>
-                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="gundem">Gündem</button></div>
-                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="ekonomi">Ekonomi</button></div>
-                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="spor">Spor</button></div>
-                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="savunma">Savunma</button></div>
-                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="teknoloji">Teknoloji</button></div>
-                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="saglik">Sağlık</button></div>
-                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="dunya">Dünya</button></div>
-                  <div class="swiper-slide"><button type="button" class="dh-catbar__chip" data-dinle-cat="yasam">Yaşam</button></div>
-                </div>
-              </div>
-              <div class="dh-catbar__nav dh-catbar__nav--prev" role="button" aria-label="Önceki kategoriler"><i class="unicon-chevron-left"></i></div>
-              <div class="dh-catbar__nav dh-catbar__nav--next" role="button" aria-label="Sonraki kategoriler"><i class="unicon-chevron-right"></i></div>
-            </div>
-          </div>
-        </section>
-        <!-- Section Start -->        <!-- data-cat boş: kurumsal amber -->
+                <!-- Section Start -->        <!-- data-cat boş: kurumsal amber -->
         <div class="block-slider block-slider-miniposts panel swiper-parent uc-dark dh-lb" data-cat="">
             <div class="dh-lb__veil" aria-hidden="true"></div>
             <div class="swiper-main swiper"
@@ -683,6 +661,17 @@
                     <h2 class="dh-mbox__title" id="dinleBaslik">Bugünün sesli haberleri</h2>
                     <span class="dh-mbox__note" id="dinleSayac">10 kayıt &middot; 47 dk</span>
                   </div>
+                  <div class="dh-mbox__filter" role="group" aria-label="Kategori süzgeci">
+                      <button type="button" class="dh-catbar__chip is-on" data-dinle-cat="" aria-current="true">Tümü</button>
+                      <button type="button" class="dh-catbar__chip" data-dinle-cat="gundem">Gündem</button>
+                      <button type="button" class="dh-catbar__chip" data-dinle-cat="ekonomi">Ekonomi</button>
+                      <button type="button" class="dh-catbar__chip" data-dinle-cat="spor">Spor</button>
+                      <button type="button" class="dh-catbar__chip" data-dinle-cat="savunma">Savunma</button>
+                      <button type="button" class="dh-catbar__chip" data-dinle-cat="teknoloji">Teknoloji</button>
+                      <button type="button" class="dh-catbar__chip" data-dinle-cat="saglik">Sağlık</button>
+                      <button type="button" class="dh-catbar__chip" data-dinle-cat="dunya">Dünya</button>
+                      <button type="button" class="dh-catbar__chip" data-dinle-cat="yasam">Yaşam</button>
+                  </div>
                   <div class="dh-eps dh-eps--sq" id="dinleListe">
             <a class="dh-ep is-now" data-dinle-cat="gundem" data-dinle-bulten="sabah" data-dinle-sn="492" href="haber-detay.html" aria-current="true">
               <span class="dh-ep__num">1</span>
@@ -776,6 +765,16 @@
             </a>
                   </div>
                 </div>
+
+                <div class="dh-arclin vstack sm:hstack justify-between items-center gap-2 sm:gap-3">
+                  <span class="fs-6 m-0 opacity-80">Arşivde 3.840 sesli haber var</span>
+                  <div class="dh-sort" role="tablist" aria-label="Zaman aralığı">
+                    <button type="button" class="dh-sort__tab is-on" role="tab" aria-selected="true">Bugün</button>
+                    <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">Dün</button>
+                    <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">Bu Hafta</button>
+                    <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">Bu Ay</button>
+                  </div>
+                </div>
               </div>
               <div class="lg:col-4">
                 <div class="dh-mbox">
@@ -799,19 +798,10 @@
                 </div>
               </div>
             </div>
-        <div class="vstack sm:hstack justify-between items-center gap-2 sm:gap-4 mb-4">
-            <span class="fs-6 m-0 opacity-80">Arşivde 3.840 sesli haber var</span>
-            <div class="dh-sort" role="tablist" aria-label="Sıralama">
-              <button type="button" class="dh-sort__tab is-on" role="tab" aria-selected="true">Bugün</button>
-              <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">Dün</button>
-              <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">Bu Hafta</button>
-              <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">Bu Ay</button>
-            </div>
-        </div>
-              </div>
-            </div>
           </div>
         </div>
+      </div>
+    </div>
 
     </div>
 
