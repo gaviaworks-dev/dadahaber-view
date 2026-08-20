@@ -16921,3 +16921,1504 @@ html.uc-dark .dh-zeb--w::after {
     padding-bottom: 28px;
   }
 }
+
+/* ===========================================================
+   R7-Y — YORUM ETKİLEŞİMLERİ: YANITLA (.dh-yn) + BİLDİR (.dh-bil)
+   -----------------------------------------------------------
+   Kullanıcı: "Bildir seçeneğinin detay sayfası oluşturulacak.
+   Yanıtla'ya tıklanıldığında içerik yazacak yer yapılacak."
+
+   KARAR — Bildir için ayrı sayfa DEĞİL modal:
+   bildirme, uzun haber metninin dibindeki tek bir yoruma ait
+   mikro görev. Ayrı sayfa okuma konumunu düşürür, hangi yorumun
+   bildirildiği bilgisini backend olmadan taşıyamaz, vazgeçme
+   maliyetini artırır. Modal bildirilen yorumu ekranda tutar.
+
+   İMZA — AMBER RAY. Açık yanıt alanı ve modaldeki alıntı bloğu,
+   .dh-rev__replies'in gri 2px sol rayının aynısını AMBER olarak
+   taşır. Tek bir görsel aygıt, iki yerde: "konuşmanın canlı dalı
+   burası". Yeni görsel dil uydurulmadı; ray, ölçü (18px girinti)
+   ve köşe imzası (8/8/8/0) mevcut bileşenden geliyor.
+
+   Kontrast (ölçülen):
+     · amber düğme #fcb623 üstü #121212 mürekkep — 10,58:1
+     · amber tint (%16) beyaz üstü #7a5f01 etiket  — 5,9:1
+     · hata kırmızısı #b42318 beyaz üstü           — 6,4:1
+     · koyu temada #ffe373 / #242424               — ~12:1
+   Hata durumu renge tek başına GÜVENMEZ: ikon + metin +
+   aria-invalid birlikte. Odak halkası her yerde 3px.
+   =========================================================== */
+
+/* ---------- Ortak: yanıt alanı + modal düğmeleri ---------- */
+.dh-yn__btn {
+  appearance: none;
+  min-height: 40px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 8px 8px 8px 0;
+  font-family: var(--font-family-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+}
+
+.dh-yn__btn--go {
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+}
+
+.dh-yn__btn--go:hover {
+  background: var(--color-primary-200);
+}
+
+.dh-yn__btn--go:focus-visible {
+  outline: 3px solid var(--color-gray-900);
+  outline-offset: 2px;
+}
+
+.dh-yn__btn--ghost {
+  background: transparent;
+  border-color: var(--color-gray-100);
+  color: var(--color-gray-500);
+}
+
+.dh-yn__btn--ghost:hover {
+  border-color: var(--color-gray-300);
+  color: var(--color-gray-900);
+}
+
+.dh-yn__btn--ghost:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+}
+
+html.uc-dark .dh-yn__btn--ghost {
+  border-color: var(--color-gray-700);
+  color: var(--color-gray-200);
+}
+
+html.uc-dark .dh-yn__btn--ghost:hover {
+  border-color: var(--color-gray-500);
+  color: #fff;
+}
+
+html.uc-dark .dh-yn__btn--go:focus-visible {
+  outline-color: #fff;
+}
+
+/* ---------- 1) Satır içi yanıt alanı ----------
+   .dh-rev__replies ile BİREBİR aynı girinti (18px) ve ray
+   kalınlığı (2px); yalnız rengi amber. Aynı hizada durur. */
+.dh-yn {
+  margin-top: 14px;
+  padding-left: 18px;
+  border-left: 2px solid var(--dh-brand);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dh-yn__to {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.3;
+  color: var(--color-gray-500);
+}
+
+.dh-yn__to i {
+  font-size: 11px;
+  color: var(--dh-menu-ink);
+}
+
+.dh-yn__to b {
+  color: var(--color-gray-900);
+  font-weight: 700;
+}
+
+.dh-yn__label,
+.dh-bil__label {
+  display: block;
+  margin: 0;
+  font-family: var(--font-family-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+
+.dh-yn__area,
+.dh-bil__in {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 12px 12px 12px 0;
+  background: var(--color-gray-10);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-gray-900);
+}
+
+.dh-yn__area {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.dh-yn__area::placeholder,
+.dh-bil__in::placeholder {
+  color: var(--color-gray-300);
+}
+
+.dh-yn__area:focus-visible,
+.dh-bil__in:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.dh-yn__area[aria-invalid="true"],
+.dh-bil__in[aria-invalid="true"] {
+  border-color: #b42318;
+  background: rgba(180, 35, 24, 0.04);
+}
+
+.dh-yn__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dh-yn__count,
+.dh-bil__count {
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-gray-400);
+}
+
+.dh-yn__count.is-near,
+.dh-bil__count.is-near {
+  color: var(--dh-menu-ink);
+  font-weight: 700;
+}
+
+.dh-yn__btns {
+  display: inline-flex;
+  gap: 8px;
+}
+
+/* Hata: renk TEK BAŞINA taşımıyor — ikon + metin + aria-invalid */
+.dh-yn__err,
+.dh-bil__err {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  font-weight: 600;
+  color: #b42318;
+}
+
+.dh-yn__err[hidden],
+.dh-bil__err[hidden] {
+  display: none;
+}
+
+.dh-yn__err i,
+.dh-bil__err i {
+  margin-top: 1px;
+  font-size: 12px;
+}
+
+/* Gönderim onayı — sahte yorum DEĞİL, makbuz. */
+.dh-yn__ok {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 14px 0 0;
+  padding: 11px 14px;
+  border-left: 2px solid var(--dh-brand);
+  background: rgba(252, 182, 35, 0.13);
+  border-radius: 0 12px 12px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-gray-900);
+}
+
+.dh-yn__ok i {
+  margin-top: 2px;
+  color: var(--dh-menu-ink);
+}
+
+html.uc-dark .dh-yn__to,
+html.uc-dark .dh-yn__label,
+html.uc-dark .dh-bil__label {
+  color: var(--color-gray-300);
+}
+
+html.uc-dark .dh-yn__to b {
+  color: #fff;
+}
+
+html.uc-dark .dh-yn__to i,
+html.uc-dark .dh-yn__count.is-near,
+html.uc-dark .dh-bil__count.is-near {
+  color: var(--color-primary-100);
+}
+
+html.uc-dark .dh-yn__area,
+html.uc-dark .dh-bil__in {
+  background: var(--color-gray-800);
+  border-color: var(--color-gray-700);
+  color: #fff;
+}
+
+html.uc-dark .dh-yn__err,
+html.uc-dark .dh-bil__err {
+  color: #ffb4ab;
+}
+
+html.uc-dark .dh-yn__area[aria-invalid="true"],
+html.uc-dark .dh-bil__in[aria-invalid="true"] {
+  border-color: #ffb4ab;
+}
+
+html.uc-dark .dh-yn__ok {
+  background: rgba(252, 182, 35, 0.14);
+  color: #fff;
+}
+
+html.uc-dark .dh-yn__ok i {
+  color: var(--color-primary-100);
+}
+
+/* ---------- 2) Bildir modalı ---------- */
+html.dh-bil-lock,
+html.dh-bil-lock body {
+  overflow: hidden;
+}
+
+.dh-bil {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.dh-bil[hidden] {
+  display: none;
+}
+
+.dh-bil__veil {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.62);
+}
+
+.dh-bil__box {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px 16px 16px 0;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: dh-bil-in 0.18s ease-out;
+}
+
+@keyframes dh-bil-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.dh-bil__box:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: -3px;
+}
+
+.dh-bil__head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px 14px;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.dh-bil__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+}
+
+.dh-bil__x {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 8px 8px 8px 0;
+  background: transparent;
+  color: var(--color-gray-400);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.dh-bil__x:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--color-gray-900);
+}
+
+.dh-bil__x:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+}
+
+.dh-bil__form,
+.dh-bil__done {
+  overflow-y: auto;
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dh-bil__form[hidden],
+.dh-bil__done[hidden] {
+  display: none;
+}
+
+/* Bildirilen yorumun özeti — İMZA: amber ray */
+.dh-bil__quote {
+  padding-left: 14px;
+  border-left: 2px solid var(--dh-brand);
+}
+
+.dh-bil__qwho {
+  display: block;
+  font-family: var(--font-family-secondary);
+  font-size: 12.5px;
+  color: var(--color-gray-400);
+}
+
+.dh-bil__qwho b {
+  color: var(--color-gray-900);
+  font-weight: 700;
+}
+
+.dh-bil__qtext {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--color-gray-500);
+}
+
+.dh-bil__set {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dh-bil__legend {
+  float: none;
+  width: auto;
+  margin: 0 0 8px;
+  padding: 0;
+  font-family: var(--font-family-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+
+.dh-bil__opt {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0;
+  padding: 10px 13px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+  font-size: 14px;
+  color: var(--color-gray-800);
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.dh-bil__opt:hover {
+  border-color: var(--color-gray-300);
+}
+
+.dh-bil__opt input {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--dh-brand);
+}
+
+.dh-bil__opt input:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 3px;
+}
+
+/* Seçili: amber tint + koyu mürekkep. Renk tek işaret değil —
+   native radyo noktası da doludur. */
+.dh-bil__opt.is-on {
+  background: rgba(252, 182, 35, 0.16);
+  border-color: var(--dh-brand);
+  color: var(--color-gray-900);
+  font-weight: 600;
+}
+
+.dh-bil__cond,
+.dh-bil__field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.dh-bil__cond[hidden] {
+  display: none;
+}
+
+.dh-bil__area {
+  min-height: 78px;
+  resize: vertical;
+}
+
+.dh-bil__opt-tag {
+  margin-left: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-gray-400);
+}
+
+.dh-bil__kvkk {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding-top: 2px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-gray-500);
+}
+
+.dh-bil__kvkk i {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--color-gray-400);
+}
+
+.dh-bil__kvkk a {
+  color: var(--dh-menu-ink);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.dh-bil__foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+/* Onay durumu */
+.dh-bil__done {
+  align-items: flex-start;
+  gap: 10px;
+  padding: 26px 18px 22px;
+}
+
+.dh-bil__done i {
+  font-size: 26px;
+  color: var(--dh-menu-ink);
+}
+
+.dh-bil__done h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+
+.dh-bil__done p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-gray-500);
+}
+
+.dh-bil__done .dh-yn__btn {
+  margin-top: 4px;
+}
+
+/* Koyu tema */
+html.uc-dark .dh-bil__box {
+  background: var(--color-gray-900);
+}
+
+html.uc-dark .dh-bil__head {
+  border-bottom-color: var(--color-gray-700);
+}
+
+html.uc-dark .dh-bil__title,
+html.uc-dark .dh-bil__qwho b,
+html.uc-dark .dh-bil__done h3 {
+  color: #fff;
+}
+
+html.uc-dark .dh-bil__x {
+  color: var(--color-gray-200);
+}
+
+html.uc-dark .dh-bil__x:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+html.uc-dark .dh-bil__qtext,
+html.uc-dark .dh-bil__kvkk,
+html.uc-dark .dh-bil__done p,
+html.uc-dark .dh-bil__legend {
+  color: var(--color-gray-200);
+}
+
+html.uc-dark .dh-bil__qwho,
+html.uc-dark .dh-bil__opt-tag,
+html.uc-dark .dh-bil__kvkk i {
+  color: var(--color-gray-300);
+}
+
+html.uc-dark .dh-bil__kvkk a,
+html.uc-dark .dh-bil__done i {
+  color: var(--color-primary-100);
+}
+
+html.uc-dark .dh-bil__opt {
+  border-color: var(--color-gray-700);
+  color: var(--color-gray-200);
+}
+
+html.uc-dark .dh-bil__opt:hover {
+  border-color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-bil__opt.is-on {
+  background: rgba(252, 182, 35, 0.15);
+  border-color: var(--dh-brand);
+  color: #fff;
+}
+
+/* Mobil: düğmeler tam genişlik, dokunma hedefi 44px */
+@media (max-width: 575.98px) {
+  .dh-bil {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .dh-bil__box {
+    max-width: none;
+    max-height: 92vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .dh-yn__btn {
+    min-height: 44px;
+    flex: 1 1 auto;
+  }
+
+  .dh-yn__btns {
+    width: 100%;
+  }
+
+  .dh-yn__foot {
+    align-items: flex-start;
+  }
+
+  .dh-bil__foot {
+    flex-direction: column-reverse;
+  }
+
+  .dh-bil__opt {
+    padding: 12px 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-yn__btn,
+  .dh-bil__x,
+  .dh-bil__opt {
+    transition: none;
+  }
+
+  .dh-bil__box {
+    animation: none;
+  }
+}
+
+
+/* ===========================================================
+   R7-A — ÖNE ÇIKAN KART: ZİKZAK YERLEŞİM
+   Kullanıcı: "büyük slider görseli bir sağda bir solda olsun,
+   bu şekilde aşağıya doğru gidildikçe."
+   Liste sayfalarında (savunma · sağlık · teknoloji · kadın · oyun)
+   üç öne çıkan bölüm arka arkaya geliyordu ve büyük kart üçünde de
+   SAĞDA duruyordu — sayfa aşağı indikçe ritim tekrarlıyordu.
+   Artık 1. sağda · 2. solda · 3. sağda.
+   Yalnız masaüstünde; mobilde tek kolonda büyük kart her zaman
+   ÜSTTE (order-0) kalır — yön değişimi orada anlamsız.
+   =========================================================== */
+@media (min-width: 768px) {
+  .dh-feat-left {
+    order: 0 !important;
+  }
+
+  .dh-list-right {
+    order: 1 !important;
+  }
+}
+
+
+/* ===========================================================
+   R7-M — YAZAR ADI MÜREKKEBİ + UNVAN SATIRI
+   HATA: R3-13'teki `.post-header .post-meta .post-author > a:last-child
+   { color: #fff !important }` kuralı KOYU görsel üstündeki hero kartları
+   için yazılmıştı, ama seçici bağlamdan bağımsız — açık zeminli bölüm
+   kartlarında da beyaz uyguluyordu. Sonuç: gri-10 zemin üstünde beyaz
+   yazar adı, ölçülen kontrast 1,1:1 — okunmuyordu (kullanıcı yakaladı).
+   Beyaz yalnız koyu bağlamda kalıyor; açık zeminde gray-900 (16,1:1).
+   =========================================================== */
+.post-header .post-meta .post-author > a:last-child {
+  color: var(--color-gray-900) !important;
+}
+
+/* Koyu bağlam: hero, liste bannerı, görsel üstü kartlar */
+.uc-dark .post-header .post-meta .post-author > a:last-child,
+.dh-lb .post-header .post-meta .post-author > a:last-child,
+.dh-feat .post-header .post-meta .post-author > a:last-child,
+.dh-hero .post-header .post-meta .post-author > a:last-child,
+html.uc-dark .post-header .post-meta .post-author > a:last-child {
+  color: #fff !important;
+}
+
+/* Yazar bloğu: ad üstte, unvan altında */
+.post-header .post-meta .post-author {
+  align-items: center;
+  gap: 8px !important;
+}
+
+.post-header .post-meta .post-author .dh-byline {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  line-height: 1.15;
+}
+
+.post-header .post-meta .post-author .dh-byline > a {
+  color: var(--color-gray-900) !important;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-header .post-meta .post-author .dh-byline > small {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+}
+
+.uc-dark .post-header .post-meta .post-author .dh-byline > a,
+.dh-lb .post-header .post-meta .post-author .dh-byline > a,
+.dh-feat .post-header .post-meta .post-author .dh-byline > a,
+.dh-hero .post-header .post-meta .post-author .dh-byline > a,
+html.uc-dark .post-header .post-meta .post-author .dh-byline > a {
+  color: #fff !important;
+}
+
+.uc-dark .post-header .post-meta .post-author .dh-byline > small,
+.dh-lb .post-header .post-meta .post-author .dh-byline > small,
+.dh-feat .post-header .post-meta .post-author .dh-byline > small,
+.dh-hero .post-header .post-meta .post-author .dh-byline > small,
+html.uc-dark .post-header .post-meta .post-author .dh-byline > small {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ===========================================================
+   R7-F1 — FİNANS: PİYASA ÖZETİ (.dh-finsum)
+   SORUN (ölçüldü, 1440x900, finans.html):
+     · haber bölümünün üst kenarı 2615px — sayfanın %62,6'sı
+     · 540-2615 arası, yani 2075px, saf veri (ticker + 4 tablo
+       paneli + emtia + KAP + vitrin + uyarı)
+     · ilk ekranda (900px) tek bir haber kartı yok
+   Finans bir HABER sayfası, veri terminali değil.
+   KARAR: dört dağınık tablo paneli + emtia + KAP + vitrin
+   TEK kompakt bloğa indi. Tam tablolar zaten iç sayfalarda
+   (doviz/altin/borsa/kripto — üst küme, hiçbir satır kaybolmadı).
+   AKRABALIK: kabuk .dh-finpanel (aynı 16px yarıçap, sol alt 0,
+   aynı 3px kimlik rayı); hücreler .dh-panel__cells / .dh-cell
+   dilinde (eşit paylı, hairline ayraçlı, tabular rakam).
+   FARK: .dh-cell "bugün hava" der, burada hücre bir KAPI —
+   tamamı link, hedefi iç sayfa. Gün aralığı çubuğu ticker'ın
+   veremediği derinliği ekler ve .dh-finrange ile aynı işaret.
+   =========================================================== */
+.dh-finsec--sum { padding: 20px 0 0; }
+
+@media (min-width: 992px) {
+  .dh-finsec--sum { padding: 24px 0 0; }
+}
+
+/* Başlık satırındaki iç sayfa kapıları — çip geometrisi 8px 8px 8px 0 */
+.dh-finsum__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.dh-finsum__links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border: 1px solid var(--fin-line);
+  border-radius: 8px 8px 8px 0;
+  font-family: var(--font-family-secondary);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+  color: var(--dh-fin-ink);
+  text-decoration: none;
+  background: transparent;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.dh-finsum__links a:hover {
+  background: rgba(42, 161, 169, 0.1);
+  border-color: rgba(42, 161, 169, 0.4);
+}
+
+.dh-finsum__links a:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+}
+
+/* --- Hücreler: .dh-panel__cells ile aynı kurgu --- */
+.dh-finsum__cells {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dh-finsum__cells::-webkit-scrollbar { display: none; }
+
+.dh-finsum__cell {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 16px 18px 18px;
+  border-right: 1px solid var(--fin-line);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.16s ease;
+}
+
+.dh-finsum__cell:last-child { border-right: 0; }
+
+.dh-finsum__cell:hover { background: rgba(42, 161, 169, 0.05); }
+
+/* Hover imzası — .dh-cell.is-now ile aynı 3px alt çizgi dili,
+   rengi bölüm aksanı (şimdi/veri değil, GİDİLECEK YER anlatıyor) */
+.dh-finsum__cell::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--fin-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.18s ease;
+}
+
+.dh-finsum__cell:hover::after,
+.dh-finsum__cell:focus-visible::after { transform: scaleX(1); }
+
+.dh-finsum__cell:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: -3px;
+}
+
+.dh-finsum__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dh-finsum__name {
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  /* gray-400 4,17:1 ile AA'yı geçmiyordu (R6-F10) — gray-500 5,74:1 */
+  color: var(--color-gray-500);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dh-finsum__top .dh-chg { font-size: 12px; }
+
+.dh-finsum__val {
+  font-family: var(--font-family-secondary);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--color-gray-900);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Gün aralığı: en düşük — konum — en yüksek --- */
+.dh-finsum__rng {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.dh-finsum__rng b {
+  flex: 0 0 auto;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--color-gray-500);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+.dh-finsum__bar {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 24px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--fin-line);
+}
+
+/* .dh-finrange__mark ile birebir aynı işaret */
+.dh-finsum__mark {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  left: var(--fin-pos, 50%);
+  width: 3px;
+  margin-left: -1.5px;
+  border-radius: 3px;
+  background: var(--dh-brand);
+}
+
+/* --- Koyu tema --- */
+:where(.uc-dark) .dh-finsum__val,
+html.uc-dark .dh-finsum__val { color: #fff; }
+
+:where(.uc-dark) .dh-finsum__name,
+:where(.uc-dark) .dh-finsum__rng b,
+html.uc-dark .dh-finsum__name,
+html.uc-dark .dh-finsum__rng b { color: var(--color-gray-300); }
+
+:where(.uc-dark) .dh-finsum__links a,
+html.uc-dark .dh-finsum__links a { color: var(--dh-fin-ink); }
+
+:where(.uc-dark) .dh-finsum__cell:hover,
+html.uc-dark .dh-finsum__cell:hover { background: rgba(95, 208, 216, 0.08); }
+
+:where(.uc-dark) .dh-finsum__links a:hover,
+html.uc-dark .dh-finsum__links a:hover {
+  background: rgba(95, 208, 216, 0.12);
+  border-color: rgba(95, 208, 216, 0.4);
+}
+
+/* --- Duyarlı: hücreler yatay kayar, .dh-panel__cells ile aynı --- */
+@media (max-width: 1199.98px) {
+  .dh-finsum__cell { padding: 14px 14px 16px; }
+  .dh-finsum__val { font-size: 21px; }
+  .dh-finsum__rng { gap: 6px; }
+}
+
+@media (max-width: 991.98px) {
+  .dh-finsum__cells { scroll-snap-type: x proximity; }
+
+  .dh-finsum__cell {
+    flex: 0 0 200px;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .dh-finsum__links { gap: 5px; }
+
+  .dh-finsum__links a {
+    padding: 5px 9px;
+    font-size: 11.5px;
+  }
+}
+
+/* ===========================================================
+   R7-F2 — FİNANS HABER OMURGASI (.dh-finnews)
+   Veri özetinden hemen sonra gelir. Ana sayfa kalıpları:
+   .dh-secbar başlık + .dh-feat büyük öne çıkan (Swiper) +
+   .dh-cards--list dört satırlık liste, altında .dh-listgrid.
+   Bölüm başlığı ile içerik arası .dh-secbar'ın kendi 26px'i.
+   =========================================================== */
+.dh-finnews { padding: 26px 0 0; }
+
+@media (min-width: 992px) {
+  .dh-finnews { padding: 30px 0 0; }
+}
+
+/* .dh-feat yan sütundaki listeyle eşit yükseklikte kalsın;
+   col-match yalnız md+ çalışıyor, altında 16:9 oranı devreye giriyor. */
+.dh-finnews .dh-feat { min-height: 100%; }
+
+@media (max-width: 767.98px) {
+  .dh-finnews .dh-cards--list { margin-top: 16px; }
+}
+
+/* ===========================================================
+   R7-F3 — YATIRIM UYARISI TAM GENİŞLİKTE (.dh-findisc--wide)
+   Yan sütundan sayfa sonuna taşındı (yasal metin, korunuyor).
+   1440px'te tek sütunda satır ~112 karaktere çıkıyordu;
+   iki sütuna bölününce ölçülen satır uzunluğu 56-62 karakter.
+   =========================================================== */
+.dh-findisc--wide .dh-finpanel__body { padding-bottom: 20px; }
+
+@media (min-width: 992px) {
+  .dh-findisc--wide .dh-finpanel__body {
+    column-count: 2;
+    column-gap: 44px;
+  }
+
+  .dh-findisc--wide .dh-finconv__note { break-inside: avoid; }
+}
+
+/* ===========================================================
+   R7-F4 — DÜZELTME: HABER BÖLÜMÜNÜ İLK EKRANA ÇEK
+   ÖLÇÜM (1440x900): ilk turda haber bölümünün üst kenarı
+   867px'e geldi (öncesi 2615px). 900px'lik ilk ekranda
+   bölüm başlığının yalnız 33px'i görünüyordu.
+   Kısaltmalar: özet başlığı 52 -> 48px, hücre dolgusu
+   16/18 -> 14/16px, bölüm nefesleri 24/30 -> 20/26px.
+   Ölçülen sonuç bu bloktan sonra raporda.
+   =========================================================== */
+.dh-finsum .dh-finpanel__head {
+  min-height: 48px;
+  padding: 11px 16px 11px 19px;
+}
+
+.dh-finsum .dh-finpanel__head::before {
+  top: 12px;
+  bottom: 12px;
+}
+
+.dh-finsum__cell {
+  gap: 6px;
+  padding: 14px 18px 16px;
+}
+
+.dh-finsum__cell::after {
+  left: 16px;
+  right: 16px;
+}
+
+@media (min-width: 992px) {
+  .dh-finsec--sum { padding: 20px 0 0; }
+  .dh-finnews { padding: 26px 0 0; }
+}
+
+@media (max-width: 1199.98px) {
+  .dh-finsum__cell { padding: 13px 14px 15px; }
+}
+
+
+/* ===========================================================
+   R7-S — SPOR: LİG MERKEZİ + TAKIM ÇİPLERİ
+   ------------------------------------------------------------
+   ÜÇ İŞ, ÜÇ KARAR.
+
+   1) LİG KAPSAMI — İKİ KADEME, TEK KADEME DEĞİL
+   Ölçüm (.dh-catbar__chip kalıbı, 8px aralık, panel içi genişlik):
+     tek kademe, 11 futbol ligi        = 1184,1px
+     1440px'te kullanılabilir genişlik = 1210px  -> 11/11 çip görünür
+     1000px'te                         =  930px  ->  8/11 çip görünür
+      390px'te                         =  320px  ->  2/11 çip görünür
+   Yani tek kademede "3. Lig" mobilde dokuz çip ötede kalıyordu.
+   İki kademede (önce ülke/bölge, sonra lig) aynı ölçümde:
+     kapsam satırı            = 305,7px  (390px'te SIĞAR)
+     Türkiye ligleri          = 261,1px  (390px'te SIĞAR)
+     Avrupa ligleri           = 398,7px  (390px'te 1 çip taşar)
+     Avrupa kupaları          = 220,4px  (390px'te SIĞAR)
+   En kötü kaydırma mesafesi 1184px -> 466px (%61 azalma), en derin
+   gizli öğe 11. sıradan 5. sıraya çekildi. İki kademe seçildi.
+
+   ÇİPTE KISA AD, BAŞLIKTA TAM AD. Çip bir kumandadır, dar olmalı;
+   "TÜRKİYE · TRENDYOL SÜPER LİG" bilgisini panelin kicker'ı taşır.
+
+   İKİ FARKLI İŞARET, İKİSİ DE MEVCUT DİLDEN:
+     kapsam seçili  -> .is-now imzası (inset 0 -3px 0 amber) — "buradasın"
+     lig seçili     -> .dh-catbar__chip.is-on amber dolgu   — "gösterilen bu"
+   Yeni bir görsel dil kurulmadı.
+
+   2) SEKMELER — .dh-sort kalıbı, gerçekten çalışır
+   Panel artık yalnız puan durumu değil: Puan Durumu · Fikstür ·
+   Sonuçlar · Kral/İstatistik. Bu yüzden panel başlığı "Lig Merkezi".
+   role=tablist + aria-selected + aria-controls, ok tuşlarıyla gezinme
+   (assets/js/dh-tabs.js). Lig seçici sekme DEĞİL: görünen bölümü
+   değiştirmez, o bölümün verisini değiştirir -> radiogroup/aria-checked.
+
+   3) LİG DEĞİŞİMİ SÜTUNLARI DEĞİL VERİYİ DEĞİŞTİRİR
+   Sütun kümesi hâlâ .dh-stand[data-branch] ile gelir (R6-S kararı).
+   Lige bağlı olan tek yapısal şey KENAR ŞERİDİ: alt liglerde
+   Şampiyonlar Ligi yerine yükselme/play-off, küme düşme yanında
+   play-out hattı var. Bu yüzden şerit ailesi genişletildi:
+     yükselme ailesi (amber merdiveni)  is-ucl · is-up | is-uel · is-po | is-uecl · is-pi
+     düşme ailesi   (gri)               is-pout (kesikli) | is-drop (düz)
+   Kesikli/düz ayrımı renk körlüğünde de ayrışır.
+   =========================================================== */
+
+/* ---------- Lig seçici: iki kademeli çip şeridi ---------- */
+.dh-lgpick {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 18px 15px;
+  border-bottom: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+  background: rgba(18, 18, 18, 0.016);
+}
+
+.dh-lgpick__line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* İki satırın etiketi aynı genişlikte: çipler tek dikey hatta hizalanır */
+.dh-lgpick__lead {
+  flex: 0 0 34px;
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  line-height: 1;
+}
+
+/* Kayan şerit: kenar NET biter (mask ile solma yasak — HANDOFF) */
+.dh-lgpick__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  /* odak halkası kırpılmasın */
+  padding: 3px 1px;
+  margin: -3px -1px;
+  scroll-snap-type: x proximity;
+}
+
+.dh-lgpick__row::-webkit-scrollbar { display: none; }
+.dh-lgpick__row > .dh-catbar__chip { flex: 0 0 auto; scroll-snap-align: start; }
+.dh-lgpick__row > [hidden] { display: none !important; }
+
+/* Kapsam çipi: seçili olan .is-now imzasını taşır — dolgu DEĞİL.
+   Amber dolgu ligin (gösterilen verinin) işareti olarak korunur. */
+.dh-lgpick__scope.is-on {
+  background: linear-gradient(180deg, rgba(252, 182, 35, 0.14), rgba(252, 182, 35, 0.04));
+  border-color: rgba(252, 182, 35, 0.55);
+  box-shadow: inset 0 -3px 0 var(--dh-brand);
+  color: var(--dh-menu-ink);
+  font-weight: 700;
+}
+
+.dh-lgpick__scope.is-on:hover { background: linear-gradient(180deg, rgba(252, 182, 35, 0.2), rgba(252, 182, 35, 0.06)); }
+
+html.uc-dark .dh-lgpick {
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom-color: rgba(255, 255, 255, 0.09);
+}
+
+html.uc-dark .dh-lgpick__lead { color: rgba(255, 255, 255, 0.45); }
+
+html.uc-dark .dh-lgpick__scope.is-on {
+  background: rgba(252, 182, 35, 0.14);
+  border-color: rgba(252, 182, 35, 0.5);
+  color: var(--dh-brand);
+}
+
+@media (max-width: 575.98px) {
+  .dh-lgpick { padding: 12px 14px 13px; gap: 7px; }
+  .dh-lgpick__line { gap: 9px; }
+  .dh-lgpick__lead { flex-basis: 30px; font-size: 9.5px; letter-spacing: 0.1em; }
+  .dh-lgpick__row { gap: 6px; }
+  /* 390px ölçümü: 36px/13px çiple Türkiye satırı 415,9px (taşar),
+     32px/12,5px çiple 261,1px (sığar). Mobilde çip küçülür. */
+  .dh-lgpick .dh-catbar__chip { height: 32px; padding: 0 11px; font-size: 12.5px; }
+}
+
+/* ---------- Panel sekmeleri (.dh-sort kalıbı) ---------- */
+.dh-sort--tabs {
+  margin: 14px 18px 0;
+  max-width: calc(100% - 36px);
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dh-sort--tabs::-webkit-scrollbar { display: none; }
+.dh-sort--tabs .dh-sort__tab { flex: 0 0 auto; }
+
+.dh-tabpane { display: block; }
+.dh-tabpane[hidden] { display: none !important; }
+
+.dh-tabpane:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: -3px;
+}
+
+/* Sekme içeriğiyle sekme çubuğu arasındaki nefes */
+.dh-tabpane > .dh-stand__wrap,
+.dh-tabpane > .dh-fx { margin-top: 14px; }
+
+.dh-sport--lig .dh-stand thead th { top: 0; }
+
+@media (max-width: 575.98px) {
+  .dh-sort--tabs { margin: 12px 14px 0; max-width: calc(100% - 28px); }
+}
+
+/* ---------- Fikstür: sütun etiketleri + ev/deplasman ---------- */
+.dh-fx__cols {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) minmax(0, 150px) 76px;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  border-bottom: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+  font-family: var(--font-family-secondary);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+}
+
+.dh-fx__cols > span:nth-child(2) { text-align: center; }
+.dh-fx__cols > span:nth-child(2) i { font-style: normal; opacity: 0.5; margin: 0 5px; }
+.dh-fx__cols > span:last-child { text-align: right; }
+
+.dh-fx__meta i { margin-right: 5px; opacity: 0.65; }
+
+/* Takip edilen takımın maçı — .is-live ile aynı şerit, farklı yoğunluk */
+.dh-fx__row.is-fav {
+  border-left-color: rgba(252, 182, 35, 0.55);
+  background: linear-gradient(90deg, rgba(252, 182, 35, 0.07), transparent 55%);
+}
+
+/* Ev / deplasman: takip edilen takımın adına bitişik, konumdan bağımsız */
+.dh-fx__ha {
+  display: inline-block;
+  margin: 0 0 0 6px;
+  padding: 2px 5px;
+  border-radius: 4px 4px 4px 0;
+  background: rgba(18, 18, 18, 0.07);
+  font-family: var(--font-family-secondary);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--color-gray-600);
+  vertical-align: 2px;
+}
+
+.dh-fx__side--away .dh-fx__ha { margin: 0 6px 0 0; }
+
+.dh-fx__side.is-win { color: var(--color-gray-900); }
+.dh-fx__row.is-done .dh-fx__side:not(.is-win) { color: var(--color-gray-500, #737373); font-weight: 600; }
+.dh-fx__row.is-done .dh-fx__vs { background: rgba(18, 18, 18, 0.07); color: var(--color-gray-900); }
+
+html.uc-dark .dh-fx__cols { color: rgba(255, 255, 255, 0.45); border-bottom-color: rgba(255, 255, 255, 0.08); }
+html.uc-dark .dh-fx__ha { background: rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.8); }
+html.uc-dark .dh-fx__row.is-fav { background: linear-gradient(90deg, rgba(252, 182, 35, 0.1), transparent 55%); }
+html.uc-dark .dh-fx__side.is-win { color: #fff; }
+html.uc-dark .dh-fx__row.is-done .dh-fx__side:not(.is-win) { color: rgba(255, 255, 255, 0.55); }
+html.uc-dark .dh-fx__row.is-done .dh-fx__vs { color: #fff; }
+
+@media (max-width: 991.98px) {
+  .dh-fx__cols { grid-template-columns: 52px minmax(0, 1fr) 70px; padding: 8px 14px; }
+  .dh-fx__cols > span:nth-child(3) { display: none; }
+}
+
+@media (max-width: 575.98px) {
+  .dh-fx__cols { grid-template-columns: 46px minmax(0, 1fr); }
+  .dh-fx__cols > span:last-child { display: none; }
+}
+
+/* ---------- Bölge şeridi: alt lig hatları ---------- */
+/* Yükselme ailesi amber merdiveninde, düşme ailesi gride kalır. */
+.dh-stand__row.is-up  .dh-stand__c-rank { box-shadow: inset 3px 0 0 var(--dh-brand); }
+.dh-stand__row.is-po  .dh-stand__c-rank { box-shadow: inset 3px 0 0 rgba(252, 182, 35, 0.55); }
+.dh-stand__row.is-pi  .dh-stand__c-rank { box-shadow: inset 3px 0 0 rgba(252, 182, 35, 0.28); }
+
+/* Play-out düz değil kesikli: küme düşmeyle renk değil DOKU farkı var,
+   renk körlüğünde de ayrışır. */
+.dh-stand__row.is-pout .dh-stand__c-rank {
+  background-image: repeating-linear-gradient(180deg,
+    var(--color-gray-400) 0 4px, transparent 4px 8px);
+  background-size: 3px 100%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.dh-legend .is-up .dh-legend__key { background: var(--dh-brand); }
+.dh-legend .is-po .dh-legend__key { background: rgba(252, 182, 35, 0.55); }
+.dh-legend .is-pi .dh-legend__key { background: rgba(252, 182, 35, 0.28); }
+.dh-legend .is-pout .dh-legend__key {
+  background: repeating-linear-gradient(180deg,
+    var(--color-gray-400) 0 4px, transparent 4px 8px);
+}
+
+html.uc-dark .dh-stand__row.is-pout .dh-stand__c-rank {
+  background-image: repeating-linear-gradient(180deg,
+    rgba(255, 255, 255, 0.45) 0 4px, transparent 4px 8px);
+}
+html.uc-dark .dh-legend .is-pout .dh-legend__key {
+  background: repeating-linear-gradient(180deg,
+    rgba(255, 255, 255, 0.45) 0 4px, transparent 4px 8px);
+}
+
+/* ---------- Kral / istatistik tablosu ---------- */
+.dh-stand--stat .dh-stand__c-name { min-width: 186px; }
+
+.dh-stand__who {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.dh-stand__club {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-gray-500, #737373);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html.uc-dark .dh-stand__club { color: rgba(255, 255, 255, 0.5); }
+
+
+/* ===========================================================
+   R7-S/3 — TAKIM ÇİPLERİNDE ARMA YUVASI
+   ------------------------------------------------------------
+   ŞİKÂYET: "Takımlar kısmında logolar rahat görünmüyor."
+   ÖLÇÜM (spor.html, 1440px, düzeltme öncesi):
+     .dh-tchip display        : block   (inline-flex olması gerekiyordu)
+     çip yüksekliği           : 48px
+     iç boşluk                : 16px 10px 14px  -> içerik 16+40+14 = 70px
+     arma alt taşması         : -9px   (arma çipin ALTINDAN 9px taşıyor,
+                                        swiper overflow:hidden ile kırpıyor)
+     arma ile ad arası        : 0px    (gap:9px tanımlıydı ama display block
+                                        olduğu için flex gap uygulanmıyordu)
+     arma genişlikleri        : 27,7 / 36,7 / 39,0px  (armalar 961x1388,
+                                        1194x1302, 1149x1177 — üç ayrı oran,
+                                        yükseklik sabit olunca genişlik oynak)
+   SEBEP: R3-6'daki `.dh-teams .swiper-slide > a` (0,2,1) kuralı
+   `.dh-tchip` (0,1,0) sınıfını yeniyor; üstelik padding ve img yüksekliği
+   `!important`. Şerit `.dh-teams`'in çocuğu olduğu için miras aldı.
+   ÇÖZÜM: sabit KARE arma yuvası + object-fit: contain + iç boşluk.
+   Farklı en-boy oranındaki armalar aynı optik ağırlıkta durur, çip
+   genişliği yalnız ADA göre değişir. Yeterli özgüllük (0,3,1) + !important.
+
+   ARMA ZEMİNİ: emblemler çok renkli ve bir kısmı çok koyu (#1a2859).
+   Koyu temada koyu arma kayboluyordu. Yuva her iki temada da AÇIK
+   bir plaka: arma her zeman kendi renginde okunur. Plaka kurumsal
+   köşe imzasını taşır (sol alt keskin).
+   =========================================================== */
+
+.dh-tstrip .swiper-slide > .dh-tchip,
+.dh-teams.dh-tstrip .swiper-slide > a.dh-tchip {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 14px 0 8px !important;
+  border-radius: 12px 12px 12px 0 !important;
+  overflow: hidden;
+}
+
+/* Arma yuvası: kare plaka, oran ne olursa olsun aynı optik ağırlık */
+.dh-tchip__crest,
+.dh-tstrip .swiper-slide > .dh-tchip > img,
+.dh-teams.dh-tstrip .swiper-slide > a.dh-tchip > img {
+  display: block;
+  flex: 0 0 36px;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 4px;
+  object-fit: contain !important;
+  border-radius: 8px 8px 8px 0;
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  margin-inline: 0 !important;
+}
+
+.dh-tchip span {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-gray-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* R3-6'daki alt çubuk imzası çipte iki kez çıkmasın */
+.dh-teams.dh-tstrip .swiper-slide > a.dh-tchip.is-now::after { display: none; }
+
+.dh-teams.dh-tstrip .swiper-slide > a.dh-tchip.is-now {
+  border-color: rgba(252, 182, 35, 0.55);
+  box-shadow: inset 0 -3px 0 var(--dh-brand);
+}
+
+.dh-teams.dh-tstrip .swiper-slide > a.dh-tchip:hover {
+  transform: translateY(-2px);
+  border-color: var(--dh-brand);
+  box-shadow: 0 8px 18px rgba(18, 18, 18, 0.09);
+}
+
+.dh-teams.dh-tstrip .swiper-slide > a.dh-tchip.is-now:hover {
+  box-shadow: inset 0 -3px 0 var(--dh-brand), 0 8px 18px rgba(18, 18, 18, 0.09);
+}
+
+.dh-tstrip .swiper-slide { height: auto; }
+
+html.uc-dark .dh-tchip span { color: #fff; }
+html.uc-dark .dh-tstrip .swiper-slide > .dh-tchip > img,
+html.uc-dark .dh-teams.dh-tstrip .swiper-slide > a.dh-tchip > img {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* ---------- Takım kartı ızgarası: aynı yuva ---------- */
+.dh-tcard { padding: 11px 14px 11px 11px; gap: 12px; }
+
+.dh-tcard__crest {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  padding: 5px;
+  border-radius: 10px 10px 10px 0;
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+}
+
+.dh-tcard__crest img { width: 100%; height: 100%; object-fit: contain; }
+.dh-tcard__nm { line-height: 1.25; white-space: normal; overflow-wrap: anywhere; }
+
+html.uc-dark .dh-tcard__crest {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* ---------- Tablo ve maç kartı armaları da aynı plakayı alır ---------- */
+.dh-stand__crest {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  padding: 2px;
+  border-radius: 6px 6px 6px 0;
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, 0.07);
+}
+
+.dh-mc__crest {
+  padding: 4px;
+  border-radius: 9px 9px 9px 0;
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, 0.07);
+}
+
+html.uc-dark .dh-stand__crest,
+html.uc-dark .dh-mc__crest {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-teams.dh-tstrip .swiper-slide > a.dh-tchip:hover { transform: none; }
+}
+
+/* ===========================================================
+   R7-F5 — DÜZELTME: MOBİLDE ÖNE ÇIKAN KARTIN PERDESİ
+   PİKSEL ÖLÇÜMÜ (metin visibility:hidden, ekran görüntüsünden
+   en açık piksel): 1440px 10,05:1 · 1000px 8,79:1 · 390px
+   2,66:1 -> AA X. Mobilde kart 16:9'a düşünce (201px) başlık
+   gradyanın soluk bölgesine biniyordu.
+   Perde yeniden dağıtıldı; ölçülen yeni değer raporda.
+   =========================================================== */
+@media (max-width: 767.98px) {
+  .dh-finnews .swiper-slide .position-cover.bg-gradient-to-t {
+    background-image: linear-gradient(to top,
+        rgba(0, 0, 0, 0.94) 0%,
+        rgba(0, 0, 0, 0.78) 42%,
+        rgba(0, 0, 0, 0.42) 72%,
+        rgba(0, 0, 0, 0) 100%) !important;
+    opacity: 1 !important;
+  }
+}
