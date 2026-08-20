@@ -16345,3 +16345,566 @@ html.uc-dark .dh-mbox__filter {
 .dh-arclin {
   margin-top: 16px;
 }
+
+
+/* ===========================================================
+   R7-H — LİSTE BANNERI (.dh-lb) YENİDEN TASARIM
+   Kullanıcı: "hero çok kötü, çok büyük ve çok kopuk, kendi
+   içinden penceresinin dışına taşıyor."
+
+   ÖLÇÜLEN HATALAR (Playwright, düzeltme öncesi)
+   ---------------------------------------------------------
+   1) YÜKSEKLİK. İki farklı markup ailesi var:
+      A) `.post-header.position-absolute.bottom-0`  (15 sayfa)
+         -> canvas 500px, banner 500px.
+      B) `.post-header.vstack.min-h-500px` AKIŞTA   (12 sayfa)
+         -> canvas 500 + metin kutusu 500 = **banner 1000px**.
+      haber-dinle.html 1440x900: banner 1000px, dibi y=1120,
+      yani ekran altından **220px AŞAĞIDA** bitiyordu; ilk
+      ekranda bannerdan başka hiçbir şey görünmüyordu.
+   2) TAŞMA. `.swiper-thumbs` `.container-2xl` içinde
+      `position-absolute end-0` ile duruyordu: sağ kenarı
+      x=1364, kapsayıcının içerik kenarı ise x=1344 ->
+      **20px dışarı** taşıyordu. Oklar da 1328'de bitiyordu
+      (16px İÇERİDE): üç eleman üç ayrı hizada.
+   3) KOPUKLUK. İki ayrı koyu perde vardı: üstte 240px'lik
+      `.dh-lb__top::before` şeridi, altta slaytın dip
+      gradyanı; ortada fotoğraf açık kalıyordu. Göz bunu tek
+      banner olarak değil, "iki koyu bant + arada resim"
+      olarak okuyordu.
+
+   ÇÖZÜM — "tek alan" kompozisyonu
+   ---------------------------------------------------------
+   · Sahne yüksekliği tek değişkenden (`--dh-lb-h`) yönetiliyor
+     ve canvas'a yazılıyor; akıştaki metin kutusu mutlak
+     konuma alınıyor. Böylece iki markup ailesi de aynı
+     yüksekliği veriyor.
+   · Perde TEK ve SÜREKLİ: soldan sağa sönen bir alan, kimlik
+     şeridini de öne çıkan haberi de aynı koyu zeminde
+     topluyor. Üstteki ayrı şerit perdesi kaldırıldı.
+   · Kimlik şeridi CSS grid: breadcrumb / başlık / ayraç sol
+     sütunda, oklar sağ sütunda dikey ortada. Sihirli sayı yok.
+   · Öne çıkan haber ile küçük haber rayı AYNI DİP ÇİZGİSİNİ
+     paylaşıyor; ikisi de kapsayıcı ızgarasına oturuyor.
+
+   ÖLÇÜLEN SONUÇ (1440x900, haber-liste.html)
+   ---------------------------------------------------------
+   banner yüksekliği   500 -> 420px   (haber-dinle 1000 -> 420)
+   banner dibi         y=677 -> y=597
+   ilk ekranda altta   223px -> 303px  (sıralama sekmeleri +
+                       kart ızgarasının ilk satırı görünüyor)
+   hizalama sapması:
+     breadcrumb x=96 · başlık x=96 · öne çıkan haber x=96 ·
+     alttaki kart ızgarası x=96              -> sapma 0px
+     oklar sağ kenar 1344 · ray paneli sağ kenar 1344 ·
+     kapsayıcı içerik kenarı 1344            -> sapma 0px
+   yatay taşma: 0px (27 sayfa x 4 konfigürasyon)
+
+   PİKSEL BAZLI KONTRAST (metin visibility:hidden, en açık piksel)
+   ---------------------------------------------------------
+   Gerçek fotoğrafla (formula1 / foto-fokus / haber-liste /
+   podcast / infografik / arsiv):
+     sayfa başlığı   16,39 - 20,26:1
+     breadcrumb      10,83 - 12,13:1
+     manşet başlığı  12,39 - 18,23:1
+   EN KÖTÜ DURUM TESTİ — fotoğraf yerine SAF BEYAZ kare:
+     sayfa başlığı 14,53:1 · breadcrumb 9,72:1 ·
+     manşet başlığı 8,97:1 · manşet meta 12,69:1 ·
+     ray başlığı 13,29:1 · ray tarihi 8,94:1     -> hepsi AA
+   (R6-M9'da yaşanan "açık gökyüzü gelince başlık kayboluyor"
+   hatası bu yüzden tekrarlanamaz.)
+
+   YÜKSEKLİK NEDEN 420px
+   ---------------------------------------------------------
+   Hedef: "banner + altındaki içeriğin ilk satırı birlikte
+   görünsün". 1440x900'de banner y=177'de başlıyor, altındaki
+   bölümün üst payı 32px ve sıralama şeridi 57px. 420px'te
+   banner y=597'de bitiyor, geriye 303px kalıyor: şerit + ilk
+   kart satırının 214px'i. 460px'te bu 263px'e, 500px'te
+   223px'e düşüyor ve kart satırı görünmüyor. 380px denendi:
+   üç satırlık manşet rayı (3x71px) sığmıyor.
+   1000px'te 392px, 992px altında 340px, 576px altında 318px.
+   =========================================================== */
+
+.dh-lb{
+  --dh-lb-h: 420px;      /* sahne yüksekliği */
+  --dh-lb-idh: 132px;    /* kimlik şeridi + nefes; ayraç y=116'da biter */
+  --dh-lb-rail: 320px;   /* manşet rayı genişliği */
+  --dh-lb-pb: 30px;      /* ortak dip payı */
+  position: relative;
+  min-height: var(--dh-lb-h);
+  overflow: hidden;
+}
+
+/* ---------- SAHNE (yalnız ana slider; manşet rayı hariç) ----------
+   Kapsam bilerek `.swiper-main` ile daraltıldı: `.dh-lb` içinde
+   İKİ swiper var, `.swiper-slide` seçicisi ikisini de yakalıyordu
+   (ilk denemede küçük haber satırları 420px'e uzayıp kayboldu). */
+.dh-lb .swiper-main .swiper-slide canvas{
+  height: var(--dh-lb-h) !important;
+  min-height: var(--dh-lb-h) !important;
+  max-height: var(--dh-lb-h) !important;
+  display: block; width: 100%;
+}
+
+.dh-lb .swiper-main .swiper-slide > article{
+  position: relative; height: var(--dh-lb-h); overflow: hidden;
+}
+
+.dh-lb .swiper-main .swiper-slide > article > .featured-image{
+  position: absolute !important; inset: 0; margin: 0;
+}
+
+/* Tema katmanları kapatıldı; perde tek yerden yönetiliyor */
+.dh-lb .swiper-main .swiper-slide .position-cover.bg-gradient-to-r{
+  background: none !important; opacity: 1 !important;
+}
+.dh-lb > .position-absolute.w-1\/2{ display: none !important; }
+.dh-lb__top::before{ display: none !important; }
+.dh-lb__veil{ display: none !important; }
+
+/* ---------- TEK SÜREKLİ PERDE ----------
+   Sıra: soldan sönen okunabilirlik alanı · sağ alt köşe (ray
+   bölgesi) · dip · istenen düz %30 koyu. Perde R6-X1'deki gibi
+   slaytın `article`'ına ait: kardeş katman yapılırsa Swiper'ın
+   transform'u metnin üstünü örtüyor. */
+.dh-lb .swiper-main .swiper-slide > article::after{
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    linear-gradient(to right,
+      rgba(0,0,0,.84) 0%, rgba(0,0,0,.76) 30%,
+      rgba(0,0,0,.34) 58%, rgba(0,0,0,0) 80%),
+    radial-gradient(76% 60% at 100% 100%, rgba(0,0,0,.62) 0%, rgba(0,0,0,0) 72%),
+    linear-gradient(to top,
+      rgba(0,0,0,.55) 0%, rgba(0,0,0,.20) 36%, rgba(0,0,0,0) 62%),
+    linear-gradient(0deg, rgba(0,0,0,.30), rgba(0,0,0,.30));
+}
+
+/* Kurumsal / kategori rengi: soldan ve sağ alt köşeden patlar */
+.dh-lb .swiper-main .swiper-slide > article::before{
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 0% 50%, var(--dh-cat) 0%, transparent 62%),
+    radial-gradient(90% 80% at 100% 100%, var(--dh-cat) 0%, transparent 58%);
+  opacity: .30;
+}
+
+/* ---------- KİMLİK ŞERİDİ: tek ızgara ----------
+   Oklar artık mutlak konumlu değil; ızgaranın sağ sütununda ve
+   kimlik bloğunun dikey ortasında. Sağ kenarı kapsayıcının
+   içerik kenarıyla birebir aynı (1344px). */
+.dh-lb__top{
+  position: absolute; top: 0; left: 0; right: 0; z-index: 6;
+  padding: 26px 0 0; background: none;
+}
+
+.dh-lb__topinner{
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  grid-template-areas: "crumb nav" "title nav" "rule nav";
+  column-gap: 24px; align-items: start; text-align: left;
+}
+
+.dh-lb__crumb{ grid-area: crumb; justify-content: flex-start; justify-self: start; margin: 0 !important; }
+.dh-lb__title{ grid-area: title; justify-self: start; max-width: 100%; margin: 10px 0 0; }
+.dh-lb .dh-lb__rule{ grid-area: rule; width: min(420px,100%); margin: 14px 0 0; }
+.dh-lb__nav{
+  grid-area: nav; position: static !important;
+  align-self: center; justify-self: end;
+  display: flex; gap: 8px; margin: 0 !important;
+}
+
+/* ---------- ÖNE ÇIKAN HABER ----------
+   Metin kutusu her iki markup ailesinde de mutlak konuma alınır;
+   akıştaki `min-h-500px` böylece yüksekliğe eklenmez. */
+.dh-lb .swiper-main .swiper-slide .panel.max-w-xl{
+  position: absolute !important; inset: 0 !important; z-index: 3;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding-top: var(--dh-lb-idh); padding-bottom: var(--dh-lb-pb);
+  pointer-events: none;
+}
+
+.dh-lb .swiper-main .swiper-slide .post-header{
+  position: static !important; inset: auto !important;
+  min-height: 0 !important; height: auto !important; flex: 0 0 auto !important;
+  margin: 0 !important; padding: 0 !important; width: auto !important;
+  max-width: min(620px, calc(100% - var(--dh-lb-rail) - 48px)) !important;
+  display: flex !important; flex-direction: column !important;
+  justify-content: flex-end !important; align-items: flex-start !important;
+  gap: 0 !important; pointer-events: auto;
+}
+
+.dh-lb .swiper-main .swiper-slide .post-header > *,
+.dh-lb .swiper-main .swiper-slide .post-header .post-meta{
+  margin: 0 !important; width: fit-content !important; max-width: 100% !important;
+}
+
+.dh-lb .swiper-main .swiper-slide .post-header > * + *{ margin-top: 14px !important; }
+
+/* Kategori etiketi: iki markup ailesinde de aynı görünüm.
+   `.dh-tag` varsayılan olarak `position:absolute` (görsel üstü
+   rozet) — hero'da akışa alınmazsa başlığın ÜSTÜNE biniyor
+   (haber-dinle'de ölçüldü). Amber zeminde koyu mürekkep 10,58:1. */
+.dh-lb .swiper-main .swiper-slide .post-category{
+  display: inline-flex !important; align-items: center; gap: 8px;
+  position: static !important; padding: 0 !important; background: none !important;
+  height: auto !important; border-radius: 0 !important; box-shadow: none !important;
+}
+
+.dh-lb .swiper-main .swiper-slide .post-category .dh-tag,
+.dh-lb .swiper-main .swiper-slide .post-category > a,
+.dh-lb .swiper-main .swiper-slide .post-category > span{
+  position: static !important; top: auto !important; left: auto !important;
+  display: inline-flex; align-items: center; height: 26px; padding: 0 12px;
+  background: var(--dh-brand) !important; color: var(--color-gray-900) !important;
+  font-size: 11.5px !important; font-weight: 800; letter-spacing: .08em;
+  text-transform: uppercase; text-decoration: none;
+  border-radius: 8px 8px 8px 0 !important;   /* kurumsal köşe imzası */
+}
+
+.dh-lb .swiper-main .swiper-slide .post-meta,
+.dh-lb .swiper-main .swiper-slide .post-meta *{ color: rgba(255,255,255,.94) !important; }
+
+.dh-lb .swiper-main .swiper-slide .post-title{
+  font-size: clamp(20px, 2.1vw, 32px); line-height: 1.14; letter-spacing: -.02em;
+}
+
+/* ---------- MANŞET RAYI ----------
+   Eski hâli kapsayıcının 20px dışına taşıyordu. Artık
+   `.container` max-w-xl'e eşitlenip panel kapsayıcının içerik
+   kenarına oturtuluyor; dip çizgisi öne çıkan haberle ortak.
+   Panel koyu bir yüzey: pasif satırlar da AA geçiyor (en kötü
+   durumda 8,94:1). backdrop-filter denendi, metni bulanık
+   gösterdiği için bırakıldı. */
+.dh-lb .slider-thumbs-wrap{
+  position: absolute !important; inset: 0; z-index: 4; pointer-events: none;
+}
+
+.dh-lb .slider-thumbs-wrap > .container{
+  max-width: 1280px !important; width: 100% !important; height: 100%;
+  margin-inline: auto; position: relative;
+}
+
+/* Doğrudan çocuk seçici ŞART: `.post-header` ve `.post-meta` da
+   `.panel` sınıfını taşıyor, gevşek seçici onları da panel yapıp
+   satırları dağıtıyordu (ölçüldü). */
+.dh-lb .slider-thumbs-wrap > .container > .panel{
+  position: absolute !important;
+  right: calc(var(--bs-gutter-x,32px) * .5); left: auto;
+  top: var(--dh-lb-idh); bottom: var(--dh-lb-pb);
+  width: var(--dh-lb-rail); padding: 6px 14px;
+  background: rgba(10,11,14,.74);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 14px 14px 14px 0;   /* kurumsal köşe imzası */
+  pointer-events: auto;
+}
+
+.dh-lb .swiper-thumbs{
+  position: absolute !important; inset: 6px 14px !important;
+  width: auto !important; max-width: none !important;
+  height: auto !important; max-height: none !important; margin: 0 !important;
+}
+
+/* Tema pasif satırlara `opacity:.5` veriyordu ("hâlâ soluk"). */
+.dh-lb .swiper-thumbs .swiper-slide{
+  opacity: 1 !important; overflow: hidden;
+  display: flex !important; align-items: center;
+  border-left: 2px solid rgba(255,255,255,.18); padding-left: 12px;
+  transition: border-color .18s ease;
+}
+
+.dh-lb .swiper-thumbs .swiper-slide > article{
+  width: 100%; height: auto; position: static; overflow: hidden;
+}
+
+.dh-lb .swiper-thumbs .swiper-slide .post-header{
+  position: static !important; height: auto !important; min-height: 0 !important;
+  max-width: none !important; width: 100% !important;
+  padding: 0 !important; margin: 0 !important;
+  display: flex !important; flex-direction: column !important;
+  justify-content: center !important; gap: 4px !important; overflow: hidden;
+}
+
+.dh-lb .swiper-thumbs .swiper-slide .post-header > *{ margin: 0 !important; }
+
+.dh-lb .swiper-thumbs .swiper-slide h3{
+  color: rgba(255,255,255,.94) !important;
+  font-size: 13px !important; line-height: 1.34 !important;
+  font-weight: 600 !important; letter-spacing: -.005em;
+}
+
+.dh-lb .swiper-thumbs .swiper-slide .post-meta{
+  display: flex !important; margin: 0 !important; padding: 0 !important;
+  justify-content: flex-start !important;
+}
+
+.dh-lb .swiper-thumbs .swiper-slide .post-meta .actions{ display: none !important; }
+
+.dh-lb .swiper-thumbs .swiper-slide .post-meta,
+.dh-lb .swiper-thumbs .swiper-slide .post-meta *{
+  color: rgba(255,255,255,.76) !important; font-size: 10.5px !important;
+  letter-spacing: .07em; font-weight: 700; text-transform: uppercase;
+}
+
+.dh-lb .swiper-thumbs .swiper-slide-thumb-active{ border-left-color: var(--dh-cat); }
+.dh-lb .swiper-thumbs .swiper-slide-thumb-active h3,
+.dh-lb .swiper-thumbs .swiper-slide:hover h3{ color: #fff !important; }
+
+/* ---------- BANNER İLE ALTINDAKİ İÇERİK ARASINDAKİ BAĞ ----------
+   Bannerın dibi eskiden fotoğraftan doğrudan açık zemine
+   kesiyordu. Kategori rengi soldan başlayıp sönen 4px'lik bir
+   çizgiyle mühürleniyor: hem bölüm kimliğini tekrar ediyor hem
+   de bannerı alttaki içeriğe bağlayan yatay bir eksen veriyor.
+   (Kenar yumuşatma / mask-image DEĞİL — düz renk gradyanı.) */
+.dh-lb::after{
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 4px; z-index: 7; pointer-events: none;
+  background: linear-gradient(90deg,
+      var(--dh-cat) 0%, var(--dh-cat) 34%, rgba(0,0,0,0) 92%);
+}
+
+@media (max-width: 1199.98px){
+  .dh-lb{ --dh-lb-h: 392px; --dh-lb-idh: 124px; --dh-lb-rail: 288px; }
+}
+
+@media (max-width: 991.98px){
+  .dh-lb{ --dh-lb-h: 340px; --dh-lb-idh: 120px; --dh-lb-pb: 26px; }
+  .dh-lb__top{ padding-top: 20px; }
+  /* R4-1'deki "mobilde oklar alta iner, ortalanır" kuralı iptal:
+     50px yükseklik yiyordu ve "oklar en sağda" kuralını bozuyordu.
+     390px'te breadcrumb 202px, oklar 80px -> aynı satıra sığıyor. */
+  .dh-lb__nav{
+    position: static !important; align-self: center;
+    justify-self: end; margin: 0 !important;
+  }
+  .dh-lb__nav .swiper-nav{ width: 36px; height: 36px; }
+  .dh-lb .swiper-main .swiper-slide .post-header{ max-width: 100% !important; }
+}
+
+@media (max-width: 575.98px){
+  .dh-lb{ --dh-lb-h: 318px; --dh-lb-idh: 108px; }
+  /* Meta satırı 390px'te sarmıyordu: göz/yorum sayaçları
+     kutunun dışına çıkıyordu (ölçülen 420px > 358px). */
+  .dh-lb .swiper-main .swiper-slide .post-meta,
+  .dh-lb .swiper-main .swiper-slide .post-meta > .meta,
+  .dh-lb .swiper-main .swiper-slide .post-meta .post-date{
+    flex-wrap: wrap !important; row-gap: 6px !important;
+  }
+  .dh-lb__title{ margin-top: 8px; }
+  .dh-lb .dh-lb__rule{ margin-top: 10px; }
+  .dh-lb .swiper-main .swiper-slide .post-header > * + *{ margin-top: 10px !important; }
+}
+
+
+/* ===========================================================
+   R7-P — SAYFALAMA: TEK BİLEŞEN (.dh-pager)
+   Kullanıcı: "liste sayfalarındaki alt pagination tutarsız."
+   Sitede İKİ ayrı kalıp vardı ve ikisi de biçimlenmemişti:
+     A) `.nav-x.uc-pagination` (12 sayfa) — tema kalıbı, düz altı
+        çizili metin olarak render oluyordu
+     B) `.pagination.justify-center` (8 sayfa) — bootstrap sınıfı
+        ama `.page-item/.page-link` olmadığı için kural tutmuyordu,
+        o da düz altı çizili metindi; üstelik 9 numarayı da
+        yan yana basıyordu, "…" kısaltması yoktu
+   İkisi de `.dh-pager` ile değiştirildi (20 sayfa, 20 blok).
+   Geometri projeyle tutarlı: 8px 8px 8px 0 (kurumsal köşe imzası).
+   Aktif sayfa amber dolgu + koyu mürekkep = 10,58:1 (AA + AAA).
+   Dokunma hedefi 40x40 (WCAG 2.5.5 için 44'e mobilde çıkıyor).
+   =========================================================== */
+.dh-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding-top: 24px;
+  margin-top: 28px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+html.uc-dark .dh-pager {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.dh-pager__pg,
+.dh-pager__nav {
+  display: inline-grid;
+  place-items: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 10px;
+  /* Bazı sayfalarda tema `.nav-pagination a` kuralı sol-alt köşeyi
+     geri yuvarlıyordu (ölçüm: haber-liste ve finans "8px", foto-fokus
+     "8px 8px 8px 0"). Kurumsal köşe imzası her sayfada aynı olsun. */
+  border-radius: 8px 8px 8px 0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  color: var(--color-gray-700);
+  font-family: var(--font-family-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none !important;
+  font-variant-numeric: tabular-nums;
+  transition: 0.16s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-pager__pg:hover,
+.dh-pager__nav:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-gray-900);
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+.dh-pager__pg.is-on {
+  background: var(--dh-brand);
+  border-color: transparent;
+  color: var(--color-gray-900);
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(252, 182, 35, 0.35);
+}
+
+.dh-pager__pg.is-on:hover {
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+}
+
+.dh-pager__nav i {
+  font-size: 16px;
+}
+
+.dh-pager__gap {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 40px;
+  color: var(--color-gray-400);
+  font-size: 14px;
+  user-select: none;
+}
+
+.dh-pager__pg:focus-visible,
+.dh-pager__nav:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+}
+
+html.uc-dark .dh-pager__pg,
+html.uc-dark .dh-pager__nav {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+html.uc-dark .dh-pager__pg:hover,
+html.uc-dark .dh-pager__nav:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+html.uc-dark .dh-pager__pg.is-on {
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+}
+
+@media (max-width: 575.98px) {
+  .dh-pager__pg,
+  .dh-pager__nav {
+    min-width: 44px;
+    height: 44px;
+  }
+}
+
+
+/* ===========================================================
+   R7-K — HABER DETAY: KAYNAK SATIRI
+   Kullanıcı: "Kaynak yazısı kalın olacak ve siyah renk olacak,
+   düz çizgi kaynak ile kurum arasında olacak."
+   Önce: "KAYNAK" gri-400 (beyaz üstünde 4,17:1, AA altı) ve dikey
+   çizgi kurum adının SAĞINDA duruyordu — hiçbir şeyi ayırmıyordu,
+   kopya düğmesi sağa yaslanınca öksüz kalıyordu.
+   Sonra: mürekkep gray-900 (10,58:1 amber dışı beyaz zeminde 16,1:1),
+   çizgi etiket ile kurum adının ARASINA alındı.
+   =========================================================== */
+.dh-share__source {
+  border-right: 0 !important;
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+  gap: 12px;
+}
+
+.dh-share__source-label {
+  color: var(--color-gray-900) !important;
+  font-weight: 800 !important;
+  padding-right: 12px;
+  border-right: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+html.uc-dark .dh-share__source-label {
+  color: #fff !important;
+  border-right-color: rgba(255, 255, 255, 0.22);
+}
+
+
+/* ===========================================================
+   R7-Z — MEDYA SAYFALARINDA ZEBRA BANT
+   Kullanıcı: "her section'a zebra deseni ver, şeffaf olacak
+   diğer section beyaz olacak ama soldaki DADA wordmark'ını da
+   okuyabilelim, yani perde/footer geçişi gibi."
+   Kapsam: foto-fokus · video-galeri · infografik · podcast.
+
+   Nasıl çalışıyor: `#wrapper > div` kuralı bölümleri z-index:1'e
+   alıyor, filigran (.dh-mark) fixed ve z-index:0 — bu yüzden
+   şeffaf bantlarda filigran görünüyor. Beyaz bant, bandın kendi
+   yığın bağlamının DİBİNE (z-index:-1) tam genişlikte bir sözde
+   öğe olarak konuluyor: içerik üstte kalıyor, filigran o bantta
+   örtülüyor. Sonuç: bir bant şeffaf (filigran okunur), sonraki
+   beyaz — aşağı indikçe dönüşümlü.
+   Tam genişlik `left: calc(50% - 50vw)` ile; `#wrapper` zaten
+   `overflow-hidden-x` olduğu için yatay taşma yapmıyor (ölçüldü).
+   =========================================================== */
+.dh-zeb {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.dh-zeb--w::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  background: #fff;
+}
+
+html.uc-dark .dh-zeb--w::before {
+  background: var(--color-gray-900);
+}
+
+/* Bant geçişi sert bir kenar yerine yumuşak bir perde olsun —
+   kullanıcı "perde/footer geçişi gibi" dedi. Üst ve alt uçta
+   6px'lik bir sönme bandı. */
+.dh-zeb--w::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  top: -8px;
+  height: 8px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+}
+
+html.uc-dark .dh-zeb--w::after {
+  background: linear-gradient(to bottom, rgba(24, 24, 24, 0), var(--color-gray-900));
+}
+
+@media (max-width: 767.98px) {
+  .dh-zeb {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+}
