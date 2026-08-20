@@ -67,6 +67,21 @@
     <!-- include scripts -->
     <script src="./assets/js/uni-core/js/uni-core-bundle.min.js"></script>
 
+    <style>
+        #audioTabs .nav-item button.active {
+            background-color: #fcb623 !important;
+            color: #fff !important;
+        }
+
+        #audioTabs .nav-item button:not(.active) {
+            background-color: #e5e5e5 !important;
+            color: #333 !important;
+        }
+
+        #audioTabs .nav-item button:not(.active):hover {
+            background-color: #d4d4d4 !important;
+        }
+    </style>
 </head>
 
 <body class="uni-body panel bg-gray-50 dark:bg-black text-gray-900  dark:text-white overflow-x-hidden">
@@ -237,8 +252,7 @@
                 <div>
                     <div class="panel vstack self-center p-4 md:py-8 text-center">
                         <h3 class="h3 md:h2">Bültenimize abone olun</h3>
-                        <p class="ft-tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos
-                            eveniet odit veritatis vero, eaque dignissimos exercitationem ratione ipsa.</p>
+                        <p class="ft-tertiary">Gündemi kaçırmayın: günün öne çıkan haberleri, analizler ve özel dosyalar her sabah e-postanıza gelsin.</p>
                         <div class="panel mt-2 lg:mt-4">
                             <form class="vstack gap-1">
                                 <input type="email"
@@ -264,6 +278,7 @@
             <button class="btn btn-sm btn-primary" id="uc-accept-gdpr">Kabul Et</button>
         </div>
     </div>
+
     <!--  Bottom Actions Sticky -->
     <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
         <div class="darkmode-trigger cstack w-40px h-40px rounded text-none bg-gray-100 dark:bg-gray-700 dark:text-white"
@@ -280,63 +295,63 @@
     </div>
 
     <!-- Header start -->
-    <header class="uc-header header-six uc-navbar-sticky-wrap z-999 border-3 border-danger"
+    <header class="uc-header header-six uc-navbar-sticky-wrap z-999"
         data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">
         <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">
 
-            <div class="uc-top-navbar panel z-3 min-h-32px overflow-hidden border-bottom d-lg-block d-none"
-                style="--uc-nav-height: 32px" data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
-                <div class="container max-w-xl">
-                    <div class="hstack panel z-1">
-                        <div class="uc-navbar-left gap-2 lg:gap-3">
-                            <div class="uc-navbar-item">
-                                <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
-                                    <i class="fas fa-calendar-day text-primary"></i>
-                                    12 Kasım
-                                    2025</span>
-                                <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+            <div class="uc-top-navbar dh-shortcuts panel z-3 min-h-40px d-block"
+        style="--uc-nav-height: 40px" data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
+        <div class="container max-w-xl">
+          <div class="hstack dh-shortcuts__track panel z-1">
+            <div class="uc-navbar-left gap-2 lg:gap-3">
+              <div class="uc-navbar-item">
+                <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
+                  <i class="fas fa-calendar-day text-primary"></i>
+                  12 Kasım
+                  2025</span>
+                <span class="dh-sc-div" aria-hidden="true"></span>
 
-                                <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
-                                    <img src="./assets/images/cloudy.png" class="w-20px h-20px ratio-1x1 " alt="">
-                                    24.4 °C Ankara </span>
+                <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
+                  <img src="./assets/images/cloudy.png" class="w-20px h-20px ratio-1x1 " alt="">
+                  24.4 °C Ankara </span>
 
-                            </div>
+              </div>
 
-                        </div>
-                        <div class="uc-navbar-right gap-1 fs-6">
-                            <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
-                                href="haber-dinle.html" data-uc-toggle>
-                                <i class="fa-solid fa-ear-muffs text-primary"></i>
-                                HABER DİNLE
-                            </a>
-                            <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
-                            <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
-                                href="foto-fokus.html" data-uc-toggle>
-                                <i class="fas fa-camera text-primary"></i>
-                                FOTO FOKUS
-                            </a>
-                            <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
-                            <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
-                                href="video-galeri.html" data-uc-toggle>
-                                <i class="fas fa-play text-primary"></i>
-                                VİDEO GALERİ
-                            </a>
-                            <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
-                            <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
-                                href="infografik.html" data-uc-toggle>
-                                <i class="fas fa-info-circle text-primary"></i>
-                                İNFOGRAFİK
-                            </a>
-                            <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
-                            <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
-                                href="podcast.html" data-uc-toggle>
-                                <i class="fas fa-podcast text-primary"></i>
-                                PODCAST
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
+            <div class="uc-navbar-right gap-1 fs-6">
+              <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
+                href="haber-dinle.html" data-uc-toggle>
+                <i class="fa-solid fa-ear-muffs text-primary"></i>
+                HABER DİNLE
+              </a>
+              <span class="dh-sc-div" aria-hidden="true"></span>
+              <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
+                href="foto-fokus.html" data-uc-toggle>
+                <i class="fas fa-camera text-primary"></i>
+                FOTO FOKUS
+              </a>
+              <span class="dh-sc-div" aria-hidden="true"></span>
+              <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
+                href="video-galeri.html" data-uc-toggle>
+                <i class="fas fa-play text-primary"></i>
+                VİDEO GALERİ
+              </a>
+              <span class="dh-sc-div" aria-hidden="true"></span>
+              <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
+                href="infografik.html" data-uc-toggle>
+                <i class="fas fa-info-circle text-primary"></i>
+                İNFOGRAFİK
+              </a>
+              <span class="dh-sc-div" aria-hidden="true"></span>
+              <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
+                href="podcast.html" data-uc-toggle>
+                <i class="fas fa-podcast text-primary"></i>
+                PODCAST
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
             <div class="uc-center-navbar panel z-2">
                 <div class="container max-w-xl">
                     <div class="uc-navbar min-h-72px lg:min-h-80px text-gray-900 dark:text-white"
@@ -447,757 +462,273 @@
         </nav>
 
     </header>
-    <!-- Header end -->
-
-    <!-- Wrapper start -->
+        <!-- Header end -->
+    <span class="dh-rail" aria-hidden="true"></span>
     <div id="wrapper" class="wrap overflow-hidden-x">
-        <div class="breadcrumbs panel z-1 py-2 bg-gray-25 dark:bg-gray-100 dark:bg-opacity-5 dark:text-white">
+        <span class="dh-mark" aria-hidden="true">DADA</span>
+        <div class="section pt-4 pb-0">
+          <div class="container max-w-xl">
+            <nav class="dh-art-crumb dh-art-crumb--light" aria-label="Sayfa yolu">
+            <a href="index.html" aria-label="Anasayfa"><i class="fas fa-home-lg-alt" aria-hidden="true"></i></a>
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            <a href="video-galeri.html">Video Galeri</a>
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            <a href="video-kategori-detay.html">Ekonomi Masası</a>
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            <span aria-current="page">Enflasyon rakamları ne anlatıyor?</span>
+            </nav>
+          </div>
+        </div>
+        <div class="section panel overflow-hidden">
+          <div class="section-outer panel py-4 lg:py-8 dark:text-white">
             <div class="container max-w-xl">
-                <ul class="breadcrumb nav-x justify-center gap-1 fs-7 sm:fs-6 m-0">
-                    <li><a href="index.html">
-                            <i class="fas fa-home-lg-alt"></i>
-                        </a></li>
-                    <li><i class="unicon-chevron-right opacity-50"></i></li>
-                    <li><a href="video-galeri.html">
-                            Video Galeri
-                        </a></li>
-                    <li><i class="unicon-chevron-right opacity-50"></i></li>
-                    <li><a href="video-kategori-detay.html">
-                            Video Kategori
-                        </a></li>
-                    <li><i class="unicon-chevron-right opacity-50"></i></li>
-                    <li><span class="opacity-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe dolorum
-                            dolor </span></li>
-                </ul>
+              <div class="section-inner panel">
+            <div class="row child-cols-12 lg:child-cols g-4 xl:g-6">
+              <div class="lg:col-8">
+            <div class="dh-vstage">
+              <video controls preload="none" poster="./assets/images/videos/posters/vid-01.jpg" playsinline>
+                <source src="./assets/images/videos/vid-01.webm" type="video/webm">
+                Tarayıcınız video oynatmayı desteklemiyor. <a href="./assets/images/videos/vid-01.webm">Videoyu indirin</a>.
+              </video>
             </div>
+            <h1 class="dh-mhead__title mt-4">Enflasyon rakamları ne anlatıyor?</h1>
+            <div class="dh-vmeta">
+              <span class="dh-vmeta__cat">Ekonomi</span>
+              <span><i class="fas fa-layer-group" aria-hidden="true"></i>Ekonomi Masası &middot; 1. Bölüm</span>
+              <span><i class="fas fa-clock" aria-hidden="true"></i>12:48</span>
+              <span><i class="fas fa-calendar-day" aria-hidden="true"></i>12.12.2025</span>
+              <span><i class="fas fa-eye" aria-hidden="true"></i>1,2Mn izlenme</span>
+            </div>
+            <p class="fs-5 mt-4 mb-0">Kasım ayı enflasyon verisi açıklandı. Sepetteki ağırlıklar
+              nasıl değişti, gıda ve kira kalemleri manşet rakamı ne kadar taşıdı, beklentiler
+              önümüzdeki çeyrek için ne söylüyor? Ekonomi Masası'nda konuk ekonomistlerle
+              rakamın arkasındaki tabloya bakıyoruz.</p>
+            <p class="fs-5 mt-2 mb-0">Bölümde ayrıca asgari ücret görüşmelerinin takvimi ve
+              merkez bankası faiz patikasının olası senaryoları ele alınıyor.</p>
+              </div>
+              <div class="lg:col-4">
+            <div class="dh-mbox">
+              <div class="dh-mbox__head">
+                <h2 class="dh-mbox__title">Sıradaki</h2>
+                <span class="dh-mbox__note">Otomatik oynatılır</span>
+              </div>
+              <a class="dh-vid" href="video-detay.html" style="width:100%">
+                <span class="dh-vid__fig">
+                  <img class="dh-vid__img" src="./assets/images/videos/posters/vid-03.jpg" alt="Derbi sonrası: hakem kararları tartışması" loading="lazy" decoding="async">
+                  <span class="dh-vid__ep">2. Bölüm</span>
+                  <span class="dh-vid__dur"><i class="fas fa-play" aria-hidden="true"></i>18:08</span>
+                  <span class="dh-vid__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                </span>
+                <b class="dh-vid__title">Derbi sonrası: hakem kararları tartışması</b>
+                <span class="dh-vid__meta">
+                  <span><i class="fas fa-calendar-day" aria-hidden="true"></i>11.12.2025</span>
+                  <span><i class="fas fa-eye" aria-hidden="true"></i>356B</span>
+                </span>
+              </a>
+            </div>
+            <div class="dh-mbox">
+              <div class="dh-mbox__head">
+                <h2 class="dh-mbox__title">Bölümler</h2>
+                <span class="dh-mbox__note">24 bölüm &middot; 8 sa 12 dk</span>
+              </div>
+              <div class="dh-eps">
+            <a class="dh-ep is-now" href="video-detay.html" aria-current="true">
+              <span class="dh-ep__num">1</span>
+              <span class="dh-ep__th"><img src="./assets/images/videos/posters/vid-01.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">12:48</span></span>
+              <span class="dh-ep__body">
+                <b class="dh-ep__title">Enflasyon rakamları ne anlatıyor?</b>
+                <span class="dh-ep__meta"><i class="fas fa-eye" aria-hidden="true"></i>1,2Mn &middot; 12.12.2025</span>
+              </span>
+              <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-play"></i></span>
+            </a>
+            <a class="dh-ep" href="video-detay.html">
+              <span class="dh-ep__num">2</span>
+              <span class="dh-ep__th"><img src="./assets/images/videos/posters/vid-03.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">18:08</span></span>
+              <span class="dh-ep__body">
+                <b class="dh-ep__title">Derbi sonrası: hakem kararları tartışması</b>
+                <span class="dh-ep__meta"><i class="fas fa-eye" aria-hidden="true"></i>356B &middot; 11.12.2025</span>
+              </span>
+              <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-play"></i></span>
+            </a>
+            <a class="dh-ep" href="video-detay.html">
+              <span class="dh-ep__num">3</span>
+              <span class="dh-ep__th"><img src="./assets/images/videos/posters/vid-04.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">05:24</span></span>
+              <span class="dh-ep__body">
+                <b class="dh-ep__title">Beş dakikada dünya: haftanın özeti</b>
+                <span class="dh-ep__meta"><i class="fas fa-eye" aria-hidden="true"></i>178B &middot; 10.12.2025</span>
+              </span>
+              <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-play"></i></span>
+            </a>
+            <a class="dh-ep" href="video-detay.html">
+              <span class="dh-ep__num">4</span>
+              <span class="dh-ep__th"><img src="./assets/images/videos/posters/vid-05.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">22:15</span></span>
+              <span class="dh-ep__body">
+                <b class="dh-ep__title">Deprem bölgesinde iki yılın bilançosu</b>
+                <span class="dh-ep__meta"><i class="fas fa-eye" aria-hidden="true"></i>412B &middot; 09.12.2025</span>
+              </span>
+              <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-play"></i></span>
+            </a>
+            <a class="dh-ep" href="video-detay.html">
+              <span class="dh-ep__num">5</span>
+              <span class="dh-ep__th"><img src="./assets/images/videos/posters/vid-01.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">16:32</span></span>
+              <span class="dh-ep__body">
+                <b class="dh-ep__title">Yapay zekâ haber odasına girerse</b>
+                <span class="dh-ep__meta"><i class="fas fa-eye" aria-hidden="true"></i>289B &middot; 08.12.2025</span>
+              </span>
+              <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-play"></i></span>
+            </a>
+            <a class="dh-ep" href="video-detay.html">
+              <span class="dh-ep__num">6</span>
+              <span class="dh-ep__th"><img src="./assets/images/videos/posters/vid-03.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">11:05</span></span>
+              <span class="dh-ep__body">
+                <b class="dh-ep__title">Asgari ücret masasında ne konuşuluyor?</b>
+                <span class="dh-ep__meta"><i class="fas fa-eye" aria-hidden="true"></i>312B &middot; 07.12.2025</span>
+              </span>
+              <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-play"></i></span>
+            </a>
+            <a class="dh-ep" href="video-detay.html">
+              <span class="dh-ep__num">7</span>
+              <span class="dh-ep__th"><img src="./assets/images/videos/posters/vid-04.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">14:20</span></span>
+              <span class="dh-ep__body">
+                <b class="dh-ep__title">Savunma sanayiinde yerlilik oranı</b>
+                <span class="dh-ep__meta"><i class="fas fa-eye" aria-hidden="true"></i>198B &middot; 06.12.2025</span>
+              </span>
+              <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-play"></i></span>
+            </a>
+            <a class="dh-ep" href="video-detay.html">
+              <span class="dh-ep__num">8</span>
+              <span class="dh-ep__th"><img src="./assets/images/videos/posters/vid-05.jpg" alt="" loading="lazy" decoding="async"><span class="dh-ep__dur">07:45</span></span>
+              <span class="dh-ep__body">
+                <b class="dh-ep__title">Kış lastiği zorunluluğu: bilinmesi gerekenler</b>
+                <span class="dh-ep__meta"><i class="fas fa-eye" aria-hidden="true"></i>142B &middot; 05.12.2025</span>
+              </span>
+              <span class="dh-ep__go" aria-hidden="true"><i class="fas fa-play"></i></span>
+            </a>
+              </div>
+            </div>
+              </div>
+            </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section panel overflow-hidden bg-gray-10 dark:bg-gray-800">
+          <div class="section-outer panel py-4 lg:py-8 dark:text-white">
+            <div class="container max-w-xl">
+              <div class="section-inner panel">
+            <div class="section-header panel dh-secbar">
+              <h2 class="h5 xl:h4 m-0 text-black dark:text-white">BENZER VİDEOLAR</h2>
+              <div class="dh-secbar__tools">
+                <a href="video-galeri.html" class="dh-secbar__all fs-5 text-underline-none text-black dark:text-white">Tümünü Gör</a>
+                <div class="dh-secbar__nav">
+                  <button type="button" data-dh-track-prev="dhVidRel" aria-label="Önceki"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                  <button type="button" data-dh-track-next="dhVidRel" aria-label="Sonraki"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="dh-track" id="dhVidRel">
+            <a class="dh-vid" href="video-detay.html">
+              <span class="dh-vid__fig">
+                <img class="dh-vid__img" src="./assets/images/videos/posters/vid-01.jpg" alt="Yapay zekâ haber odasına girerse" loading="lazy" decoding="async">
+                <span class="dh-vid__dur"><i class="fas fa-play" aria-hidden="true"></i>16:32</span>
+                <span class="dh-vid__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+              </span>
+              <b class="dh-vid__title">Yapay zekâ haber odasına girerse</b>
+              <span class="dh-vid__meta">
+                <span><i class="fas fa-calendar-day" aria-hidden="true"></i>08.12.2025</span>
+                <span><i class="fas fa-eye" aria-hidden="true"></i>289B</span>
+              </span>
+            </a>
+            <a class="dh-vid" href="video-detay.html">
+              <span class="dh-vid__fig">
+                <img class="dh-vid__img" src="./assets/images/videos/posters/vid-03.jpg" alt="Asgari ücret masasında ne konuşuluyor?" loading="lazy" decoding="async">
+                <span class="dh-vid__dur"><i class="fas fa-play" aria-hidden="true"></i>11:05</span>
+                <span class="dh-vid__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+              </span>
+              <b class="dh-vid__title">Asgari ücret masasında ne konuşuluyor?</b>
+              <span class="dh-vid__meta">
+                <span><i class="fas fa-calendar-day" aria-hidden="true"></i>07.12.2025</span>
+                <span><i class="fas fa-eye" aria-hidden="true"></i>312B</span>
+              </span>
+            </a>
+            <a class="dh-vid" href="video-detay.html">
+              <span class="dh-vid__fig">
+                <img class="dh-vid__img" src="./assets/images/videos/posters/vid-04.jpg" alt="Savunma sanayiinde yerlilik oranı" loading="lazy" decoding="async">
+                <span class="dh-vid__dur"><i class="fas fa-play" aria-hidden="true"></i>14:20</span>
+                <span class="dh-vid__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+              </span>
+              <b class="dh-vid__title">Savunma sanayiinde yerlilik oranı</b>
+              <span class="dh-vid__meta">
+                <span><i class="fas fa-calendar-day" aria-hidden="true"></i>06.12.2025</span>
+                <span><i class="fas fa-eye" aria-hidden="true"></i>198B</span>
+              </span>
+            </a>
+            <a class="dh-vid" href="video-detay.html">
+              <span class="dh-vid__fig">
+                <img class="dh-vid__img" src="./assets/images/videos/posters/vid-05.jpg" alt="Kış lastiği zorunluluğu: bilinmesi gerekenler" loading="lazy" decoding="async">
+                <span class="dh-vid__dur"><i class="fas fa-play" aria-hidden="true"></i>07:45</span>
+                <span class="dh-vid__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+              </span>
+              <b class="dh-vid__title">Kış lastiği zorunluluğu: bilinmesi gerekenler</b>
+              <span class="dh-vid__meta">
+                <span><i class="fas fa-calendar-day" aria-hidden="true"></i>05.12.2025</span>
+                <span><i class="fas fa-eye" aria-hidden="true"></i>142B</span>
+              </span>
+            </a>
+            <a class="dh-vid" href="video-detay.html">
+              <span class="dh-vid__fig">
+                <img class="dh-vid__img" src="./assets/images/videos/posters/vid-01.jpg" alt="Enerji faturalarında yeni dönem" loading="lazy" decoding="async">
+                <span class="dh-vid__dur"><i class="fas fa-play" aria-hidden="true"></i>09:58</span>
+                <span class="dh-vid__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+              </span>
+              <b class="dh-vid__title">Enerji faturalarında yeni dönem</b>
+              <span class="dh-vid__meta">
+                <span><i class="fas fa-calendar-day" aria-hidden="true"></i>04.12.2025</span>
+                <span><i class="fas fa-eye" aria-hidden="true"></i>96B</span>
+              </span>
+            </a>
+            <a class="dh-vid" href="video-detay.html">
+              <span class="dh-vid__fig">
+                <img class="dh-vid__img" src="./assets/images/videos/posters/vid-03.jpg" alt="Sağlıkta randevu sistemi nasıl değişiyor?" loading="lazy" decoding="async">
+                <span class="dh-vid__dur"><i class="fas fa-play" aria-hidden="true"></i>13:22</span>
+                <span class="dh-vid__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+              </span>
+              <b class="dh-vid__title">Sağlıkta randevu sistemi nasıl değişiyor?</b>
+              <span class="dh-vid__meta">
+                <span><i class="fas fa-calendar-day" aria-hidden="true"></i>03.12.2025</span>
+                <span><i class="fas fa-eye" aria-hidden="true"></i>124B</span>
+              </span>
+            </a>
+            <a class="dh-vid" href="video-detay.html">
+              <span class="dh-vid__fig">
+                <img class="dh-vid__img" src="./assets/images/videos/posters/vid-04.jpg" alt="Kuraklık raporu: barajlarda son durum" loading="lazy" decoding="async">
+                <span class="dh-vid__dur"><i class="fas fa-play" aria-hidden="true"></i>10:15</span>
+                <span class="dh-vid__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+              </span>
+              <b class="dh-vid__title">Kuraklık raporu: barajlarda son durum</b>
+              <span class="dh-vid__meta">
+                <span><i class="fas fa-calendar-day" aria-hidden="true"></i>02.12.2025</span>
+                <span><i class="fas fa-eye" aria-hidden="true"></i>176B</span>
+              </span>
+            </a>
+            <a class="dh-vid" href="video-detay.html">
+              <span class="dh-vid__fig">
+                <img class="dh-vid__img" src="./assets/images/videos/posters/vid-05.jpg" alt="Milli takım kampından ilk izlenimler" loading="lazy" decoding="async">
+                <span class="dh-vid__dur"><i class="fas fa-play" aria-hidden="true"></i>08:36</span>
+                <span class="dh-vid__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+              </span>
+              <b class="dh-vid__title">Milli takım kampından ilk izlenimler</b>
+              <span class="dh-vid__meta">
+                <span><i class="fas fa-calendar-day" aria-hidden="true"></i>01.12.2025</span>
+                <span><i class="fas fa-eye" aria-hidden="true"></i>229B</span>
+              </span>
+            </a>
+            </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <article class="post type-post single-post py-4 lg:py-8">
-            <div class="container max-w-xl">
-                <div class="post-header">
-                    <div class="panel vstack gap-4 md:gap-4 xl:gap-4 text-center">
-                        <header class="page-header panel vstack text-center mb-3">
-                            <h1 class="h3 lg:h1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos fuga
-                                reprehenderit quo ea quisquam.</h1>
-                        </header>
-                        <figure class="featured-image m-0 rounded">
-                            <div class="featured-video bg-gray-700 ratio ratio-16x9 rounded">
-                                <video class="video-cover video-lazyload min-h-100px rounded" preload="none" loop
-                                    playsinline>
-                                    <source src="./assets/images/common/img-fallback.png"
-                                        data-src="./assets/images/videos/vid-01.webm" type="video/webm">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                        </figure>
-                        <div class="meta d-flex justify-between items-center gap-2">
-                            <div class="hstack gap-2 flex-nowrap text-nowrap custom-scroll pb-0"
-                                style="overflow-x: auto;">
-                                <div>
-                                    <span
-                                        class="opacity-50  d-flex align-items-center justify-content-start gap-1 fs-7">
-                                        <i class="fas fa-comment-alt"></i>
-                                        <span class="minimizeNumber">12345</span>
-                                    </span>
-                                </div>
-                                <i class="fas fa-circle opacity-20" style="font-size: 5px;"></i>
-                                <div>
-                                    <span
-                                        class="opacity-50  d-flex align-items-center justify-content-start gap-1 fs-7">
-                                        <i class="fas fa-eye"></i>
-                                        <span class="minimizeNumber">12345</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="d-flex gap-1 items-center">
-                                <span class="opacity-50 lg:d-inline-block md:d-inline-block d-none">Abone Olun:</span>
-                                <a target="_blank" href="www.google-news.com" class="google-news-link rounded">
-                                    <img class="google-icon" src="./assets/images/google-news-logo.svg"
-                                        alt="Google News">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="container max-w-lg mt-2">
-                    <div style="position: relative;" class="post-content panel fs-6 md:fs-5">
-                        <div
-                            class="news-time-box border p-2 rounded-1 hstack lg:justify-between md:justify-between justify-center lg:flex-row md:flex-row flex-column lg:gap-0 md:gap-0 gap-3 items-center w-100 ">
-                            <div class="hstack lg:gap-3 md:gap-3 gap-2 lg:justify-between md:justify-between justify-start items-start custom-scroll lg:pb-0 md:pb-0 "
-                                style="overflow-x: auto;">
-
-                                <div
-                                    class="lg:vstack md:vstack hstack text-nowrap lg:gap-0 md:gap-0 gap-2 justify-start items-start">
-                                    <div class="lg:border-end-0 md:border-end-0 border-end pe-2">
-                                        <span class="fw-bold lg:d-inline-block md:d-inline-block d-block">Giriş: </span>
-                                        12 Haziran 2025 - 15:40
-                                    </div>
-                                    <div>
-                                        <span class="fw-bold lg:d-inline-block md:d-inline-block d-block">Güncelleme:
-                                        </span> 19 Haziran 2025 - 08:30
-                                    </div>
-                                </div>
-                            </div>
-                            <ul class="nav-x gap-1 flex-wrap">
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/google.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/facebook.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/twitter.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/linkedin.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/whatsapp.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/telegram.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/email.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/spotify.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/link.png"
-                                            alt="">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="audio-player w-100 bg-white dark:bg-gray-900 bg-white dark:bg-gray-900">
-
-                            <audio id="audio" src="./assets/media/Into the Night.mp3"></audio>
-
-                            <div class="w-100">
-                                <div class="audio-box">
-                                    <div class="control-box ">
-                                        <button id="play-pause"
-                                            class="play bg-primary text-white border-primary border-none">
-                                            <i class="fa-solid fa-play ms-1"></i>
-                                        </button>
-
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-0 fs-4 fw-bold">ŞİMDİ DİNLE</h6>
-                                            <p class="audio-info fst-italic fs-7">Yapay zeka ile seslendirildi</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex ">
-                                        <div class="speed-for-audio">
-                                            <label for="speed" class=" fw-bold m-0">Hız:</label>
-                                            <select style="max-width: 50px;" id="speed" name="speed" class="m-0">
-                                                <option value="0.5">0.5x</option>
-                                                <option value="1" selected>1x</option>
-                                                <option value="1.5">1.5x</option>
-                                                <option value="2">2x</option>
-                                            </select>
-                                        </div>
-                                        <div class="d-flex align-items-center audio-settings">
-                                            <div class="audio-control d-flex">
-                                                <button id="rewind" class="custom-btn bg-primary text-white">
-                                                    <i class="fa-solid fa-rotate-left"></i>
-                                                    <span class="fw-bold">5</span>
-                                                </button>
-                                                <button id="forward" class="custom-btn bg-primary text-white">
-                                                    <span class="fw-bold">5</span>
-                                                    <i class="fa-solid fa-rotate-right "></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-2 d-flex w-100 items-center justify-between gap-2">
-                                    <span id="current-time" style="width: 50px;">00:00</span>
-                                    <div class="progress-container">
-                                        <div id="progress" class="progress bg-primary"></div>
-                                    </div>
-                                    <span id="duration" class="ms-2">00:00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <p>She started her blog exactly six months before I launched Camels & Chocolate, and she really
-                            set the bar high for my own blog birthday, Y’all this summer! I’ve already been
-                            brainstorming party ideas … who wants to come? It’s no coincidence that Buster Keaton and
-                            Charlot’s movies of the and award-winning chefs about what exactly makes their hometowns In
-                            fact, not being able to rely on spoken word made them better storytellers. They fully
-                            understood and used the power of showing without words. A range of amenities provides many
-                            things to do in Bellevue. About 40 percent of the city’s population are minorities, which
-                            contributes to an overall diverse range of lifestyles and ideas.</p>
-                        <p class="mt-3">I talked to climbers, Olympic mountain bikers, musicians, and award-winning
-                            chefs about what exactly makes their hometowns so special and fun.</p>
-                        <div class="panel mt-3">
-                            <figure class="float-end ms-3 mb-1" data-uc-lightbox="animation: scale">
-                                <figure
-                                    class="featured-image m-0 ratio ratio-1x1 sm:w-300px rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                        src="./assets/images/common/img-fallback.png"
-                                        data-src="./assets/images/demo-six/posts/post-1.jpg"
-                                        alt="Holding flower, by Anthony Tran" data-uc-img="loading: lazy">
-                                    <a href="./assets/images/demo-six/posts/post-1.jpg" class="position-cover"
-                                        data-caption="Holding flower, by Anthony Tran"></a>
-                                </figure>
-                                <figcaption class="fs-7 mt-1 text-center text-gray-400 dark:text-gray-200">Holding
-                                    flower, by Anthony Tran</figcaption>
-                            </figure>
-                            <p>Bike paths and sidewalks make getting to and from the city’s many festivals, museums,
-                                restaurants and music venues easy. A range of amenities provides many things to do in
-                                Bellevue. About 40 percent of the city’s population are minorities, which contributes to
-                                an overall diverse range of lifestyles and ideas.</p>
-                            <p class="mt-3">While Denver sits at the base of the Rocky Mountains, it’s not considered a
-                                mountain town since it takes at least an hour to get to the Rockies for snowboarding and
-                                ski activities, a local expert explained. Olympic mountain bikers, musicians, and
-                                award-winning chefs about what exactly makes their hometowns so special and fun.</p>
-                            <p class="mt-3">In fact, not being able to rely on spoken word made them better
-                                storytellers. They fully understood and used the power of showing without words. They
-                                fully understood and used the power of showing without words. They fully understood and
-                                used the power of showing without words.</p>
-                        </div>
-                        <h4 class="h4 xl:h3 mt-4 mb-2 xl:mb-3">Capital of Texas</h4>
-                        <p>Visual storytelling is simply the way most brands will decide to go in 2016 & beyond, as they
-                            try to tell their story to their customers the oldest and most important unwritten rule in
-                            film industry says that you shouldn’t rely much on words to tell your story. In fact, you
-                            should rely on them as less as possible. It’s no coincidence that Buster Keaton and
-                            Charlot’s movies remain among the biggest classic movies of all time. In fact, not being
-                            able to rely on spoken word made them better storytellers. They fully understood and used
-                            the power of showing without words.</p>
-                        <p class="mt-3">While Denver sits at the base of the Rocky Mountains, it’s not considered a
-                            mountain town since it takes at least an hour to get to the Rockies for snowboarding and ski
-                            activities, a local expert explained sits at the base of the Rocky Mountains, it’s not
-                            considered a mountain town since it takes at least an hour to get to the Rockies for
-                            snowboarding and ski activities, a local expert explained.</p>
-                        <figure class="my-3 sm:my-4" data-uc-lightbox="animation: scale">
-                            <figure
-                                class="featured-image m-0 ratio ratio-3x2 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                    src="./assets/images/common/img-fallback.png"
-                                    data-src="./assets/images/demo-six/posts/post-2.jpg" alt="Pink Marketing, by Mak"
-                                    data-uc-img="loading: lazy">
-                                <a href="./assets/images/demo-six/posts/post-2.jpg" class="position-cover"
-                                    data-caption="Pink Marketing, by Mak"></a>
-                            </figure>
-                            <figcaption class="fs-7 mt-1 text-center text-gray-400 dark:text-gray-200">Pink Marketing,
-                                by Mak</figcaption>
-                        </figure>
-                        <p>
-                            While Denver sits at the base of the Rocky Mountains, it’s not considered a mountain town
-                            since it takes at least an hour to get to the Rockies for snowboarding and ski activities, a
-                            local expert explained. Olympic mountain bikers, musicians, and award-winning chefs about
-                            what exactly makes their hometowns so special and fun. <br>
-                            In fact, not being able to rely on spoken word made them better storytellers. They fully
-                            understood and used the power of showing without words.
-                        </p>
-                        <p class="mt-3">Probably the oldest and most important unwritten rule in film industry says that
-                            you shouldn’t rely much on words to tell your story. In fact, you should rely on them as
-                            less as possible is simply the way most brands will decide to go in 2016 & beyond, as they
-                            try to tell their story to their customers.</p>
-                        <h4 class="h4 xl:h3 mt-4 mb-2 xl:mb-3">Great Schools and Entertainment</h4>
-                        <p>Education is a high point when it comes to analyzing the quality of life factors that make
-                            Ann Arbor one of the best places to live. The University of Michigan, which has 43,000
-                            students, makes Ann Arbor a perennial candidate for our annual ranking of the best college
-                            towns and plays a big role in the city’s economy and culture.</p>
-                        <p class="mt-3">While Denver sits at the base of the Rocky Mountains, it’s not considered a
-                            mountain town since it takes considered at least an hour to get to the Rockies for
-                            snowboarding and ski activities, a local expert explained sits at the base of the Rocky
-                            Mountains, it’s not considered a mountain town since it takes at least an hour to get to the
-                            Rockies for snowboarding and ski activities, a local expert explained.</p>
-                        <div class="panel my-3">
-                            <figure class="float-start me-3 mb-0" data-uc-lightbox="animation: scale">
-                                <figure
-                                    class="featured-image m-0 ratio ratio-1x1 sm:w-300px rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                        src="./assets/images/common/img-fallback.png"
-                                        data-src="./assets/images/demo-six/posts/post-3.jpg"
-                                        alt="Great Schools and Entertainment" data-uc-img="loading: lazy">
-                                    <a href="./assets/images/demo-six/posts/post-3.jpg" class="position-cover"
-                                        data-caption="Great Schools and Entertainment"></a>
-                                </figure>
-                                <figcaption class="fs-7 mt-1 text-center text-gray-400 dark:text-gray-200">Great Schools
-                                    and Entertainment</figcaption>
-                            </figure>
-                            <p>Bike paths and sidewalks make getting to and from the city’s many festivals, museums,
-                                restaurants and music venues easy. A range of amenities provides many things to do in
-                                Bellevue. About 40 percent of the city’s population are minorities, which contributes to
-                                an overall diverse range of lifestyles and ideas.</p>
-                            <p>While Denver sits at the base of the Rocky Mountains, it’s not considered a mountain town
-                                since it takes at least an hour to get to the Rockies for snowboarding and ski
-                                activities, a local expert explained. Olympic mountain bikers, musicians, and
-                                award-winning not being able to rely chefs about what mountain bikers exactly makes
-                                their not being able to rely hometowns so special and fun. In fact, not being able to
-                                rely on spoken word made them better storytellers. They fully understood and used the
-                                power of showing without words. They fully understood and used the power of showing
-                                without words.</p>
-                        </div>
-                        <p>Probably the oldest and most important unwritten rule in film industry says that you
-                            shouldn’t rely much on words to tell your story. In fact, you should rely on them as less as
-                            possible is simply the way most brands will decide to go in 2016 & beyond, as they try to
-                            tell their story to their customers.</p>
-                        <p class="mt-3">I talked to climbers, Olympic mountain bikers, musicians, and award-winning
-                            chefs about what exactly makes their hometowns so special and fun.</p>
-                    </div>
-                    <div class="hstack border-top py-2 mt-2 items-center gap-1 reference lg:pe-2 md:pe-2 pe-1">
-                        <span class="fw-bold">Kaynak:</span>
-                        <div class="hstack items-center gap-1 reference lg:pe-2 md:pe-2 pe-1">
-                            <img src="./assets/images/anadolu-ajansi.svg" width="48" class="rounded-1" alt="">
-                            <span class="text-nowrap">Anadolu Ajansı</span>
-                        </div>
-                    </div>
-                    <div class="post-footer panel vstack sm:hstack gap-3 justify-between border-top py-4 xl:py-4 w-100">
-                        <div class="hstack gap-2 items-center justify-center">
-                            <span class="text-black dark:text-white me-narrow">Etiketler:</span>
-                            <ul class="nav-x gap-narrow text-primary flex items-center justify-start flex-nowrap custom-scroll text-nowrap pb-0"
-                                style="overflow-x: auto; max-width: 560px;">
-
-                                <li>
-                                    <a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Food
-                                        <span class="text-black dark:text-white"></span></a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Life
-                                        Style <span class="text-black dark:text-white"></span></a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Tech
-                                        <span class="text-black dark:text-white"></span></a>
-                                </li>
-                                <li><a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Travel</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Food
-                                        <span class="text-black dark:text-white"></span></a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Life
-                                        Style <span class="text-black dark:text-white"></span></a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Tech
-                                        <span class="text-black dark:text-white"></span></a>
-                                </li>
-                                <li><a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Travel</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Food
-                                        <span class="text-black dark:text-white"></span></a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Life
-                                        Style <span class="text-black dark:text-white"></span></a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Tech
-                                        <span class="text-black dark:text-white"></span></a>
-                                </li>
-                                <li><a href="#"
-                                        class="text-none bg-primary text-white px-1 rounded-1 shadow-xs gap-0 dark:text-white">Travel</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div
-                            class="lg:hstack md:hstack vstack lg:items-center md:items-center items-start lg:justify-center md:justify-center justify-start gap-2">
-                            <span class="text-black dark:text-white me-narrow">Paylaş:</span>
-                            <ul class="nav-x gap-1 flex-wrap justify-center p-0">
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/google.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/facebook.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/twitter.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/linkedin.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/whatsapp.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/telegram.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/email.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1"
-                                            src="./assets/images/social-media/spotify.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/link.png"
-                                            alt="">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div
-                        class="post-navigation panel vstack sm:hstack justify-content-between w-100 gap-2 mt-3 xl:mt-3">
-                        <div class="new-post panel hstack w-100 ">
-                            <div class="panel hstack justify-center w-100px h-100px">
-                                <figure
-                                    class="featured-image m-0 ratio ratio-1x1 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                        src="./assets/images/common/img-fallback.png"
-                                        data-src="./assets/images/demo-six/posts/img-02.jpg"
-                                        alt="Tech Innovations Reshaping the Retail Landscape: AI Payments"
-                                        data-uc-img="loading: lazy">
-                                    <a href="blog-details.html" class="position-cover"
-                                        data-caption="Tech Innovations Reshaping the Retail Landscape: AI Payments"></a>
-                                </figure>
-                            </div>
-                            <div class="panel vstack justify-center px-2 gap-1 w-1/3">
-                                <span class="fs-7 opacity-60 ">Önceki Haber</span>
-                                <h6 class="h6 lg:h5 m-0 line-3">Tech Innovations Reshaping the Retail Landscape: AI
-                                    Payments
-                                </h6>
-                            </div>
-                            <a href="blog-details.html" class="position-cover"></a>
-                        </div>
-                        <div class="new-post panel hstack w-100 ">
-                            <div class="panel vstack justify-center px-2 gap-1 w-1/3 text-end">
-                                <span class="fs-7 opacity-60">Sonraki Haber</span>
-                                <h6 class="h6 lg:h5 m-0 line-3">The Rise of AI-Powered Personal Assistants: How They
-                                    Manage
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias dicta esse iusto
-                                    tempora fugit voluptatem illum at! lorem19
-                                </h6>
-                            </div>
-                            <div class="panel hstack justify-center w-100px h-100px">
-                                <figure
-                                    class="featured-image m-0 ratio ratio-1x1 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                        src="./assets/images/common/img-fallback.png"
-                                        data-src="./assets/images/demo-six/posts/img-01.jpg"
-                                        alt="The Rise of AI-Powered Personal Assistants: How They Manage"
-                                        data-uc-img="loading: lazy">
-                                    <a href="blog-details.html" class="position-cover"
-                                        data-caption="The Rise of AI-Powered Personal Assistants: How They Manage"></a>
-                                </figure>
-                            </div>
-                            <a href="blog-details.html" class="position-cover"></a>
-                        </div>
-                    </div>
-                    <div class="post-related panel border-top pt-2 mt-4 xl:mt-6">
-                        <h4 class="h5 xl:h4 mb-5 xl:mb-6">BU KONUYLA İLGİLİ</h4>
-                        <div class="row child-cols-6 md:child-cols-3 gx-2 gy-4 sm:gx-3 sm:gy-6">
-                            <div>
-                                <article class="post type-post panel vstack gap-2">
-                                    <figure
-                                        class="featured-image m-0 ratio ratio-4x3 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                            src="./assets/images/300x218.png" data-src="./assets/images/300x218.png"
-                                            alt="The Art of Baking: From Classic Bread to Artisan Pastries"
-                                            data-uc-img="loading: lazy">
-                                        <a href="blog-details.html" class="position-cover"
-                                            data-caption="The Art of Baking: From Classic Bread to Artisan Pastries"></a>
-                                    </figure>
-                                    <div class="post-header panel vstack gap-1">
-                                        <h5 class="h6 md:h5 m-0">
-                                            <a class="text-none line-3" href="blog-details.html">The Art of Baking: From
-                                                Classic Bread to Artisan Pastries Lorem ipsum dolor sit amet
-                                                consectetur.</a>
-                                        </h5>
-                                        <div class="post-date hstack gap-narrow fs-7 opacity-60">
-                                            <span><span class="minimizeDate">12.12.2025</span></span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <div>
-                                <article class="post type-post panel vstack gap-2">
-                                    <figure
-                                        class="featured-image m-0 ratio ratio-4x3 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                            src="./assets/images/common/img-fallback.png"
-                                            data-src="./assets/images/demo-six/posts/img-08.jpg"
-                                            alt="AI and Marketing: Unlocking Customer Insights"
-                                            data-uc-img="loading: lazy">
-                                        <a href="blog-details.html" class="position-cover"
-                                            data-caption="AI and Marketing: Unlocking Customer Insights"></a>
-                                    </figure>
-                                    <div class="post-header panel vstack gap-1">
-                                        <h5 class="h6 md:h5 m-0">
-                                            <a class="text-none line-3" href="blog-details.html">AI and Marketing:
-                                                Unlocking
-                                                Customer Insights</a>
-                                        </h5>
-                                        <div class="post-date hstack gap-narrow fs-7 opacity-60">
-                                            <span><span class="minimizeDate">12.12.2025</span></span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <div>
-                                <article class="post type-post panel vstack gap-2">
-                                    <figure
-                                        class="featured-image m-0 ratio ratio-4x3 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                            src="./assets/images/common/img-fallback.png"
-                                            data-src="./assets/images/demo-six/posts/img-09.jpg"
-                                            alt="Hidden Gems: Underrated Travel Destinations Around the World"
-                                            data-uc-img="loading: lazy">
-                                        <a href="blog-details.html" class="position-cover"
-                                            data-caption="Hidden Gems: Underrated Travel Destinations Around the World"></a>
-                                    </figure>
-                                    <div class="post-header panel vstack gap-1">
-                                        <h5 class="h6 md:h5 m-0">
-                                            <a class="text-none line-3" href="blog-details.html">Hidden Gems: Underrated
-                                                Travel
-                                                Destinations Around the World</a>
-                                        </h5>
-                                        <div class="post-date hstack gap-narrow fs-7 opacity-60">
-                                            <span><span class="minimizeDate">12.12.2025</span></span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <div>
-                                <article class="post type-post panel vstack gap-2">
-                                    <figure
-                                        class="featured-image m-0 ratio ratio-4x3 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                            src="./assets/images/common/img-fallback.png"
-                                            data-src="./assets/images/demo-six/posts/img-10.jpg"
-                                            alt="Eco-Tourism: Traveling Responsibly and Sustainably"
-                                            data-uc-img="loading: lazy">
-                                        <a href="blog-details.html" class="position-cover"
-                                            data-caption="Eco-Tourism: Traveling Responsibly and Sustainably"></a>
-                                    </figure>
-                                    <div class="post-header panel vstack gap-1">
-                                        <h5 class="h6 md:h5 m-0">
-                                            <a class="text-none line-3" href="blog-details.html">Eco-Tourism: Traveling
-                                                Responsibly and Sustainably</a>
-                                        </h5>
-                                        <div class="post-date hstack gap-narrow fs-7 opacity-60">
-                                            <span><span class="minimizeDate">12.12.2025</span></span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- START COMMENTS -->
-                    <div id="blog-comment" class="panel border-top pt-2 mt-4 xl:mt-6">
-                        <div id="comment-form-wrapper" class="panel pb-2 mb-4 xl:mb-6">
-                            <h4 class="h5 xl:h4 mb-5 xl:mb-6">YORUM PAYLAŞ</h4>
-                            <div class="comment_form_holder">
-                                <form class="vstack">
-                                    <input
-                                        class="form-control form-control-sm h-40px w-full fs-6 bg-white dark:bg-opacity-0 dark:text-white mb-2 dark:border-gray-300 dark:border-opacity-30"
-                                        type="text" placeholder="Tam Adınız" required>
-
-                                    <input
-                                        class="form-control form-control-sm h-40px w-full fs-6 bg-white dark:bg-opacity-0 dark:text-white mb-2 dark:border-gray-300 dark:border-opacity-30"
-                                        type="email" placeholder="E Posta Adresiniz" required>
-                                    <textarea
-                                        class="form-control h-250px w-full fs-6 bg-white dark:bg-opacity-0 dark:text-white dark:border-gray-300 dark:border-opacity-30"
-                                        type="text" placeholder="Yorumunuz" required></textarea>
-                                    <div class="form-check text-start my-2">
-                                        <input
-                                            class="form-check-input p-0 rounded-0 dark:bg-gray-800 dark:bg-gray-800 dark:border-white dark:border-opacity-15 dark:border-opacity-15"
-                                            type="checkbox" id="kvkkOnay">
-                                        <label class=" form-check-label fs-7 sm:fs-6" for="kvkkOnay"><a
-                                                href="kvkk.html">KVKK</a>
-                                            metnini
-                                            okudum, onaylıyorum.</label>
-                                    </div>
-                                    <button class="btn btn-primary btn-sm " type="submit">Paylaş</button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <h4 class="h5 pt-2 xl:h4 mb-5 xl:mb-6 border-top">YORUMLAR (19)</h4>
-
-                        <div class="spacer-half"></div>
-
-                        <ol id="comments-list">
-                            <li data-comment-id="1">
-                                <div class="avatar">
-                                    <img src="./assets/images/avatars/03.png" alt="Avatar">
-                                </div>
-                                <div class="comment-info">
-                                    <span class="c_name">Merrill Rayos</span>
-                                    <span class="c_date id-color">2 days ago</span>
-                                    <div class="c_reply d-flex gap-1">
-                                        <a href="#" class="reply-btn"><i class=" fa-solid fa-reply "></i>
-                                            Cevapla</a>
-                                        |
-                                        <a href="#" class="report-btn"> <i class=" fa-solid fa-flag"></i>Bildir</a>
-                                        |
-                                        <a href="#" class="edit-btn"><i class=" fa-solid fa-pen"></i>Düzenle</a>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="comment">Sed ut perspiciatis unde omnis iste natus error
-                                    sit
-                                    voluptatem
-                                    accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                    inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-
-                                <div class="hstack gap-1 justify-end items-center">
-                                    <button data-uc-tooltip="Beğendim" class="event-btn">
-                                        <i class="fas fa-thumbs-up"></i>
-                                    </button>
-                                    <span>
-                                        |
-                                    </span>
-                                    <button data-uc-tooltip="Beğenmedim" class="event-btn">
-                                        <i class="fas fa-thumbs-down"></i>
-                                    </button>
-                                </div>
-
-                                <ol>
-                                    <li data-comment-id="2">
-                                        <div class="avatar">
-                                            <img src="./assets/images/avatars/01.png" alt="Avatar">
-                                        </div>
-                                        <div class="comment-info">
-                                            <span class="c_name">Jackqueline Sprang</span>
-                                            <span class="c_date id-color">2 days ago</span>
-                                            <div class="c_reply d-flex gap-1">
-                                                <a href="#" class="reply-btn"><i class=" fa-solid fa-reply "></i>
-                                                    Cevapla</a>
-                                                |
-                                                <a href="#" class="report-btn"> <i
-                                                        class=" fa-solid fa-flag"></i>Bildir</a>
-                                                |
-                                                <a href="#" class="edit-btn"><i class=" fa-solid fa-pen"></i>Düzenle</a>
-                                            </div>
-                                            <div class="clearfix"></div>
-
-                                        </div>
-                                        <div class="comment">Sed ut perspiciatis unde omnis iste natus error sit
-                                            voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                                            quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                            explicabo.</div>
-                                        <div class="hstack gap-1 justify-end items-center">
-                                            <button data-uc-tooltip="Beğendim" class="event-btn">
-                                                <i class="fas fa-thumbs-up"></i>
-                                            </button>
-                                            <span>
-                                                |
-                                            </span>
-                                            <button data-uc-tooltip="Beğenmedim" class="event-btn">
-                                                <i class="fas fa-thumbs-down"></i>
-                                            </button>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </li>
-
-                            <li data-comment-id="3">
-                                <div class="avatar">
-                                    <img src="./assets/images/avatars/02.png" alt="Avatar">
-                                </div>
-                                <div class="comment-info">
-                                    <span class="c_name">John Doe</span>
-                                    <span class="c_date id-color">1 day ago</span>
-                                    <div class="c_reply d-flex gap-1">
-                                        <a href="#" class="reply-btn"><i class=" fa-solid fa-reply "></i>
-                                            Cevapla</a>
-                                        |
-                                        <a href="#" class="report-btn"> <i class=" fa-solid fa-flag"></i>Bildir</a>
-                                        |
-                                        <a href="#" class="edit-btn"><i class=" fa-solid fa-pen"></i>Düzenle</a>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</div>
-                                <div class="hstack gap-1 justify-end items-center">
-                                    <button data-uc-tooltip="Beğendim" class="event-btn">
-                                        <i class="fas fa-thumbs-up"></i>
-                                    </button>
-                                    <span>
-                                        |
-                                    </span>
-                                    <button data-uc-tooltip="Beğenmedim" class="event-btn">
-                                        <i class="fas fa-thumbs-down"></i>
-                                    </button>
-                                </div>
-                            </li>
-                        </ol>
-
-
-                    </div>
-                    <!-- END COMMENT -->
-                </div>
-            </div>
-        </article>
-
-        <!-- Newsletter -->
     </div>
 
     <!-- Wrapper end -->
@@ -1295,150 +826,100 @@
         </div>
     </div>
     <!-- Footer start -->
-    <footer id="uc-footer" class="uc-footer panel uc-light">
-        <div
-            class="footer-outer pt-4 pb-2 lg:py-6 lg:pb-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-opacity-50">
-            <div class="container max-w-xl">
-                <div class="footer-inner vstack ">
-                    <div class="footer-top-logo-desc">
-                        <img src="./assets/images/logos/logo.png" width="300" alt="">
-                        <p><span class="text-gray-200 fw-bold">dadahaber.com</span> internet sitesinde yayınlanan yazı,
-                            haber, video ve
-                            fotoğrafların her türlü
-                            hakkı Dada İst Ajans Hiz. Tic.
-                            Ltd. Şti.’ye aittir. İzin alınmadan, kaynak gösterilerek dahi iktibas edilemez.</p>
-                    </div>
-                    <hr class="my-3">
-                    <div class="uc-footer-bottom panel  vstack  lg:fs-5">
-                        <div class="footer-nav mb-3">
-                            <ul class="nav-x gap-2 lg:gap-2 justify-center text-center text-uppercase fw-medium">
-                                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                                        href="reklam.html">REKLAM</a></li>
-                                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                                        href="arsiv.html">ARŞİV</a>
-                                </li>
-                                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                                        href="yazar-liste.html">YAZARLAR</a></li>
-                                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                                        href="kunye.html">KÜNYE</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="footer-nav">
-                            <ul class="nav-x gap-2 lg:gap-2 justify-center text-center text-uppercase fw-medium">
-                                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                                        href="cerezler.html">ÇEREZ
-                                        POLİTİKASI</a>
-                                </li>
-                                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                                        href="kullanim-sartlari.html">KULLANIM KOŞULLARI</a></li>
-                                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                                        href="aydinlatma-metni.html">AYDINALTMA METNİ</a>
-                                </li>
-                                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                                        href="kvkk.html">GİZLİLİK VE
-                                        KVKK POLİTİKASI</a>
-                                </li>
-                            </ul>
-                        </div>
+  <footer id="uc-footer" class="uc-footer panel uc-light">
+    <div
+      class="footer-outer dh-footer-brand pt-4 pb-2 lg:py-6 lg:pb-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-opacity-50">
+      <div class="container max-w-xl">
+        <div class="footer-inner vstack ">
+          <div class="footer-top-logo-desc">
+            <img src="./assets/images/logos/logo-white.png" width="300" alt="Dada Haber">
+            <p><span class="text-gray-200 fw-bold">dadahaber.com</span> internet sitesinde yayınlanan yazı,
+              haber, video ve
+              fotoğrafların her türlü
+              hakkı Dada İst Ajans Hiz. Tic.
+              Ltd. Şti.’ye aittir. İzin alınmadan, kaynak gösterilerek dahi iktibas edilemez.</p>
+          </div>
+          <hr class="my-3">
+          <div class="uc-footer-bottom panel  vstack  lg:fs-5">
+            <div class="footer-nav mb-3">
+              <ul class="nav-x gap-2 lg:gap-2 justify-center text-center text-uppercase fw-medium">
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="hakkimizda.html">HAKKIMIZDA</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="kunye.html">KÜNYE</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="reklam.html">REKLAM</a></li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="arsiv.html">ARŞİV</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="iletisim.html">İLETİŞİM</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="yazar-liste.html">YAZARLAR</a></li>
 
-                        <div
-                            class="mb-3 footer-social lg:hstack md:hstack vstack  justify-center mt-4 gap-2 lg:gap-0 items-center">
-                            <div
-                                class="footer-social lg:hstack items-center md:hstack vstack justify-center mt-3 gap-2 lg:gap-3">
-                                <p>Günlük gelişmeleri sosyal medya <br> hesaplarından takip edebilirsiniz.</p>
-                                <ul class="nav-x gap-1 flex-wrap">
-                                    <li>
-                                        <a class="" href="#">
-                                            <img class="w-24px h-24px ratio-1x1"
-                                                src="./assets/images/social-media/google.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="" href="#">
-                                            <img class="w-24px h-24px ratio-1x1"
-                                                src="./assets/images/social-media/facebook.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="" href="#">
-                                            <img class="w-24px h-24px ratio-1x1"
-                                                src="./assets/images/social-media/twitter.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="" href="#">
-                                            <img class="w-24px h-24px ratio-1x1"
-                                                src="./assets/images/social-media/linkedin.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="" href="#">
-                                            <img class="w-24px h-24px ratio-1x1"
-                                                src="./assets/images/social-media/whatsapp.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="" href="#">
-                                            <img class="w-24px h-24px ratio-1x1"
-                                                src="./assets/images/social-media/telegram.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="" href="#">
-                                            <img class="w-24px h-24px ratio-1x1"
-                                                src="./assets/images/social-media/email.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="" href="#">
-                                            <img class="w-24px h-24px ratio-1x1"
-                                                src="./assets/images/social-media/spotify.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="" href="#">
-                                            <img class="w-24px h-24px ratio-1x1"
-                                                src="./assets/images/social-media/link.png" alt="">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div
-                                class="footer-social lg:hstack items-center md:hstack vstack justify-center mt-3 gap-2 lg:gap-3">
-                                <p>Günlük gelişmeleri takip edebilmek için <br> dadahaber uygulamasını indirin</p>
-                                <ul class="nav-x gap-2">
-                                    <li>
-                                        <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="#ln">
-                                            <img style="width: 90px;" src="./assets/images/app-icons/google-play.svg"
-                                                class="ratio-3x2 w-90px" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="#ln">
-                                            <img style="width: 90px;" src="./assets/images/app-icons/app-store.svg"
-                                                class="ratio-3x2 w-90px" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="#ln">
-                                            <img style="width: 90px;" src="./assets/images/app-icons/huawei.png"
-                                                class="ratio-3x2 w-90px" alt="">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="footer-copyright vstack sm:hstack justify-center items-center mt-1">
-                            <p>Dada Haber &copy; 2025, Tüm Hakları Saklıdır.</p>
-                        </div>
-                    </div>
-                </div>
+              </ul>
             </div>
+            <div class="footer-nav">
+              <ul class="nav-x gap-2 lg:gap-2 justify-center text-center text-uppercase fw-medium">
+
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="cerezler.html">ÇEREZ
+                    POLİTİKASI</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="kullanim-sartlari.html">KULLANIM KOŞULLARI</a></li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="aydinlatma-metni.html">AYDINALTMA METNİ</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="kvkk.html">GİZLİLİK VE
+                    KVKK POLİTİKASI</a>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="yayin-ilkeleri.html">YAYIN
+                    İLKELERİ</a>
+                </li>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mb-3 footer-social lg:hstack md:hstack vstack  justify-center mt-4 gap-2 lg:gap-0 items-center">
+              <div class="footer-social lg:hstack items-center md:hstack vstack justify-center mt-3 gap-2 lg:gap-3">
+                <p>Günlük gelişmeleri sosyal medya <br> hesaplarından takip edebilirsiniz.</p>
+                <ul class="nav-x gap-1 flex-wrap dh-foot-soc">
+                  <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+              <div class="footer-social lg:hstack items-center md:hstack vstack justify-center mt-3 gap-2 lg:gap-3">
+                <p>Günlük gelişmeleri takip edebilmek için <br> dadahaber uygulamasını indirin</p>
+                <ul class="nav-x gap-2 dh-store-badges">
+                  <li>
+                    <a class="dh-store-badge" href="#ln">
+                      <i class="fa-brands fa-apple" aria-hidden="true"></i>
+                      <span><small>İndir</small><b>App Store</b></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dh-store-badge" href="#ln">
+                      <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+                      <span><small>İndir</small><b>Google Play</b></span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr>
+            <div class="footer-copyright vstack sm:hstack justify-center items-center mt-1">
+              <p>Dada Haber &copy; 2025, Tüm Hakları Saklıdır.</p>
+            </div>
+          </div>
         </div>
-    </footer>
-    <!-- Footer end -->
+      </div>
+    </div>
+  </footer>
+  <!-- Footer end -->
 
     <!-- include jquery & bootstrap js -->
     <script defer src="./assets/js/libs/jquery.min.js"></script>
@@ -1454,9 +935,30 @@
     <script defer src="./assets/js/helpers/anime-helper-defined-timelines.js"></script>
     <script defer src="./assets/js/uikit-components-bs.js"></script>
 
+    <!-- Sıralama sekmeleri (R4-L3) — açılır kutunun yerini aldı -->
+    <script>
+      document.addEventListener('click', function (e) {
+        var t = e.target.closest('.dh-sort__tab');
+        if (!t) return;
+        t.parentElement.querySelectorAll('.dh-sort__tab').forEach(function (b) {
+          b.classList.remove('is-on');
+          b.setAttribute('aria-selected', 'false');
+        });
+        t.classList.add('is-on');
+        t.setAttribute('aria-selected', 'true');
+      });
+    </script>
+
+    <script defer src="./assets/js/dh-track.js"></script>
+
     <!-- include app script -->
-    <script defer src="./assets/js/audio.js"></script>
     <script defer src="./assets/js/app.js"></script>
+
+    <!-- footer perdesi -->
+    <script defer src="./assets/js/footer-reveal.js"></script>
+
+    <!-- günlük panel -->
+    <script defer src="./assets/js/dh-panel.js"></script>
 
     <script>
         // Schema toggle via URL
@@ -1468,162 +970,6 @@
         } else if (getSchema === "light") {
             setDarkMode(0);
         }
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-
-            document.querySelectorAll('.reply-btn').forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    handleReply(this);
-                });
-            });
-
-            document.querySelectorAll('.report-btn').forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    handleReport(this);
-                });
-            });
-
-            document.querySelectorAll('.edit-btn').forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    handleEdit(this);
-                });
-            });
-        });
-
-        function handleReply(button) {
-            closeAllActionForms();
-
-            const commentItem = button.closest('li');
-
-            const commentDiv = commentItem.querySelector('.comment');
-
-            const replyForm = document.createElement('div');
-            replyForm.className = 'comment-actions reply-form';
-            replyForm.innerHTML = `
-                   <div class="hstack justify-between">
-                    <h4>Yorum Yaz</h4>
-            <button class="close-btn dark:text-white text-gray-800" onclick="closeActionForm(this)">×</button>
-        </div>
-                    <textarea class="form-control h-100px w-full" placeholder="Yorumunuzu buraya yazın..."></textarea>
-                    <div class="form-check text-start my-2">
-                        <input
-                            class="form-check-input p-0 rounded-0 dark:bg-gray-800 dark:bg-gray-800 dark:border-white dark:border-opacity-15 dark:border-opacity-15"
-                            type="checkbox" id="kvkkReply">
-                        <label class=" form-check-label fs-7 sm:fs-6" for="kvkkReply"><a href="kvkk.html">KVKK</a> metnini
-                            okudum, onaylıyorum.</label>
-                    </div>
-                    <button class="btn btn-primary btn-sm" onclick="submitReply(this)">Yorum Yap</button>
-                `;
-
-            commentDiv.parentNode.insertBefore(replyForm, commentDiv.nextSibling);
-        }
-
-        function handleReport(button) {
-            closeAllActionForms();
-
-            const commentItem = button.closest('li');
-
-            const commentDiv = commentItem.querySelector('.comment');
-
-            const reportForm = document.createElement('div');
-            reportForm.className = 'comment-actions report-form';
-            reportForm.innerHTML = `
-                    <div class="hstack justify-between">
-                        <h4>Yorumu Bildir</h4>
-            <button class="close-btn dark:text-white text-gray-800" onclick="closeActionForm(this)">×</button>
-        </div>
-                    <textarea class="form-control h-100px w-full" placeholder="Bildirme sebebinizi açıklayın..."></textarea>
-                    <button class="btn btn-primary btn-sm mt-2" onclick="submitReport(this)">Bildir</button>
-                `;
-
-            commentDiv.parentNode.insertBefore(reportForm, commentDiv.nextSibling);
-        }
-
-        // Düzenle işlevi
-        function handleEdit(button) {
-            closeAllActionForms();
-
-            const commentItem = button.closest('li');
-
-            const commentDiv = commentItem.querySelector('.comment');
-
-            const currentComment = commentDiv.textContent;
-
-            const editForm = document.createElement('div');
-            editForm.className = 'comment-actions edit-form';
-            editForm.innerHTML = `
-                   <div class="hstack justify-between">
-                    <h4>Yorumu Düzenle</h4>
-            <button class="close-btn dark:text-white text-gray-800" onclick="closeActionForm(this)">×</button>
-        </div>
-                    <textarea class="form-control h-100px w-full">${currentComment}</textarea>
-                    
-                    <button class="mt-2 btn btn-primary btn-sm" onclick="submitEdit(this)">Düzenle</button>
-                `;
-
-            commentDiv.parentNode.insertBefore(editForm, commentDiv.nextSibling);
-        }
-
-        function closeActionForm(button) {
-            const form = button.closest('.comment-actions');
-            form.remove();
-        }
-
-        function closeAllActionForms() {
-            document.querySelectorAll('.comment-actions').forEach(form => {
-                form.remove();
-            });
-        }
-
-        function submitReply(button) {
-            const textarea = button.parentElement.querySelector('textarea');
-            const replyText = textarea.value.trim();
-
-            if (replyText) {
-                alert('Cevap gönderildi: ' + replyText);
-                closeActionForm(button);
-            } else {
-                alert('Lütfen bir yorum yazın.');
-            }
-        }
-
-        function submitReport(button) {
-            const textarea = button.parentElement.querySelector('textarea');
-            const reportText = textarea.value.trim();
-
-            if (reportText) {
-                alert('Yorum bildirildi: ' + reportText);
-                closeActionForm(button);
-            } else {
-                alert('Lütfen bildirme sebebini açıklayın.');
-            }
-        }
-
-        function submitEdit(button) {
-            const textarea = button.parentElement.querySelector('textarea');
-            const editedText = textarea.value.trim();
-
-            if (editedText) {
-                const commentItem = button.closest('li');
-                const commentDiv = commentItem.querySelector('.comment');
-                commentDiv.textContent = editedText;
-
-                alert('Yorum güncellendi!');
-                closeActionForm(button);
-            } else {
-                alert('Lütfen yorum metnini girin.');
-            }
-        }
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                closeAllActionForms();
-            }
-        });
     </script>
 </body>
 

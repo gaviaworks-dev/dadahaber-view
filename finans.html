@@ -67,22 +67,10 @@
   <!-- include scripts -->
   <script src="./assets/js/uni-core/js/uni-core-bundle.min.js"></script>
 
-  <style>
-    :root {
-      --color-primary: #2aa1a9 !important;
-      --bs-primary: #2aa1a9 !important;
-      --bs-primary-rgb: 42, 161, 169 !important;
-    }
-
-    .btn-primary {
-      --bs-btn-bg: #2aa1a9 !important;
-      --bs-btn-border-color: #2aa1a9 !important;
-      --bs-btn-hover-color: #fff;
-      --bs-btn-hover-bg: #2aa1a9 !important;
-      --bs-btn-hover-border-color: #2aa1a9 !important;
-      --bs-btn-focus-shadow-rgb: 42, 161, 169 !important;
-    }
-  </style>
+  <!-- Kategori rengi artık sayfa geneline uygulanmıyor.
+       Ortak kabuk (üst bant, sarı footer, sağ ray, düğmeler) kurumsal
+       amber kalır; kategori kimliği yalnız .dh-lb bannerındaki
+       data-cat tonlamasından gelir. HANDOFF kural 1. -->
 </head>
 
 <body class="uni-body panel bg-gray-50 dark:bg-black text-gray-900  dark:text-white overflow-x-hidden">
@@ -243,14 +231,14 @@
       <div class="row md:child-cols-6 col-match g-0">
         <div class="d-none md:d-flex">
           <div class="position-relative w-100 ratio-1x1">
-            <img class="media-cover" src="./assets/images/demo-six/common/newsletter.jpg" alt="Newsletter image">
+            <img class="media-cover" src="./assets/images/demo-six/common/newsletter.jpg" alt="Bülten görseli">
           </div>
         </div>
         <div>
           <div class="panel vstack self-center p-4 md:py-8 text-center">
             <h3 class="h3 md:h2">Bültenimize abone olun</h3>
-            <p class="ft-tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos
-              eveniet odit veritatis vero, eaque dignissimos exercitationem ratione ipsa.</p>
+            <p class="ft-tertiary">Günün önemli haberlerini, piyasa özetini ve seçtiğimiz analizleri
+              her sabah e-postanıza gönderelim. Dilediğiniz an tek tıkla çıkabilirsiniz.</p>
             <div class="panel mt-2 lg:mt-4">
               <form class="vstack gap-1">
                 <input type="email"
@@ -293,21 +281,21 @@
   </div>
 
   <!-- Header start -->
-  <header class="uc-header header-six uc-navbar-sticky-wrap z-999 border-3 border-danger"
-    data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">
-    <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">
+    <header class="uc-header header-six uc-navbar-sticky-wrap z-999"
+        data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">
+        <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">
 
-      <div class="uc-top-navbar panel z-3 min-h-32px overflow-hidden border-bottom d-lg-block d-none"
-        style="--uc-nav-height: 32px" data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
+            <div class="uc-top-navbar dh-shortcuts panel z-3 min-h-40px d-block"
+        style="--uc-nav-height: 40px" data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
         <div class="container max-w-xl">
-          <div class="hstack panel z-1">
+          <div class="hstack dh-shortcuts__track panel z-1">
             <div class="uc-navbar-left gap-2 lg:gap-3">
               <div class="uc-navbar-item">
                 <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
                   <i class="fas fa-calendar-day text-primary"></i>
                   12 Kasım
                   2025</span>
-                <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+                <span class="dh-sc-div" aria-hidden="true"></span>
 
                 <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
                   <img src="./assets/images/cloudy.png" class="w-20px h-20px ratio-1x1 " alt="">
@@ -322,25 +310,25 @@
                 <i class="fa-solid fa-ear-muffs text-primary"></i>
                 HABER DİNLE
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="foto-fokus.html" data-uc-toggle>
                 <i class="fas fa-camera text-primary"></i>
                 FOTO FOKUS
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="video-galeri.html" data-uc-toggle>
                 <i class="fas fa-play text-primary"></i>
                 VİDEO GALERİ
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="infografik.html" data-uc-toggle>
                 <i class="fas fa-info-circle text-primary"></i>
                 İNFOGRAFİK
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="podcast.html" data-uc-toggle>
                 <i class="fas fa-podcast text-primary"></i>
@@ -350,1383 +338,1315 @@
           </div>
         </div>
       </div>
-      <div class="uc-center-navbar panel z-2">
-        <div class="container max-w-xl">
-          <div class="uc-navbar min-h-72px lg:min-h-80px text-gray-900 dark:text-white"
-            data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
-            <div class="uc-navbar-left">
-              <div class="d-block lg:d-none">
-                <a class="uc-menu-trigger" href="#uc-menu-panel" data-uc-toggle></a>
-              </div>
-              <div class="uc-logo d-block md:d-none">
-                <a href="index.html">
-                  <img class="w-140px d-none dark:d-block" src="./assets/images/logos/finans-logo.png" alt="News5">
-                  <img class="w-140px d-block dark:d-none" src="./assets/images/logos/finans-logo.png" alt="News5">
-                </a>
-              </div>
-              <div class="uc-logo d-none md:d-block">
-                <a href="index.html">
-                  <img class="logo-w-lg d-none dark:d-block" src="./assets/images/logos/finans-logo.png" alt="News5">
-                  <img class="logo-w-lg d-block dark:d-none" src="./assets/images/logos/finans-logo.png" alt="News5">
-                </a>
-              </div>
-            </div>
-            <div class="uc-navbar-right gap-2 lg:gap-3">
-              <ul class="uc-navbar-nav gap-4 fs-4 text-uppercase fw-bold me-2 d-none lg:d-flex"
-                style="--uc-nav-height: 80px">
-                <li>
-                  <a href="haber-liste.html">GÜNDEM</a>
-                </li>
-                <li>
-                  <a href="spor.html">SPOR</a>
-                </li>
-                <li>
-                  <a href="finans.html">FİNANS</a>
-                </li>
-                <li>
-                  <a href="savunma.html">SAVUNMA</a>
-                </li>
-                <li>
-                  <a href="haber-liste.html">DÜNYA</a>
-                </li>
-                <li>
-                  <a href="kadin.html">KADIN</a>
-                </li>
+            <div class="uc-center-navbar panel z-2">
+                <div class="container max-w-xl">
+                    <div class="uc-navbar min-h-72px lg:min-h-80px text-gray-900 dark:text-white"
+                        data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
+                        <div class="uc-navbar-left">
+                            <div class="d-block lg:d-none">
+                                <a class="uc-menu-trigger" href="#uc-menu-panel" data-uc-toggle></a>
+                            </div>
+                            <div class="uc-logo d-block md:d-none">
+                                <a href="index.html">
+                                    <img class="w-140px d-none dark:d-block" src="./assets/images/logos/logo.png"
+                                        alt="News5">
+                                    <img class="w-140px d-block dark:d-none" src="./assets/images/logos/logo.png"
+                                        alt="News5">
+                                </a>
+                            </div>
+                            <div class="uc-logo d-none md:d-block">
+                                <a href="index.html">
+                                    <img class="logo-w-lg d-none dark:d-block" src="./assets/images/logos/logo.png"
+                                        alt="News5">
+                                    <img class="logo-w-lg d-block dark:d-none" src="./assets/images/logos/logo.png"
+                                        alt="News5">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="uc-navbar-right gap-2 lg:gap-3">
+                            <ul class="uc-navbar-nav gap-4 fs-4 text-uppercase fw-bold me-2 d-none lg:d-flex"
+                                style="--uc-nav-height: 80px">
+                                <li>
+                                    <a href="haber-liste.html">GÜNDEM</a>
+                                </li>
+                                <li>
+                                    <a href="spor.html">SPOR</a>
+                                </li>
+                                <li>
+                                    <a href="finans.html">FİNANS</a>
+                                </li>
+                                <li>
+                                    <a href="savunma.html">SAVUNMA</a>
+                                </li>
+                                <li>
+                                    <a href="haber-liste.html">DÜNYA</a>
+                                </li>
+                                <li>
+                                    <a href="kadin.html">KADIN</a>
+                                </li>
 
-                <li>
-                  <a href="#">DİĞER <span data-uc-navbar-parent-icon></span></a>
-                  <div style="z-index: 100 !important;"
-                    class="uc-navbar-dropdown ft-primary text-unset p-3 pb-4 rounded-0 hide-scrollbar"
-                    data-uc-drop=" offset: 0; boundary: !.uc-navbar; stretch: x; animation: uc-animation-slide-top-small; duration: 150;">
-                    <div class="row child-cols g-4">
-                      <div>
-                        <div class="row child-cols g-4">
-                          <div>
-                            <ul class="uc-nav uc-navbar-dropdown-nav">
-                              <li>
-                                <a href="haber-liste.html">KÜLTÜR-SANAT</a>
-                              </li>
-                              <li>
-                                <a href="haber-liste.html">YAŞAM</a>
-                              </li>
-                              <li>
-                                <a href="haber-liste.html">ÇEVRE</a>
-                              </li>
-                              <li>
-                                <a target="_blank" href="https://dadamutfak.com/">MUTFAK</a>
-                              </li>
-                              <li>
-                                <a href="saglik.html">SAĞLIK</a>
-                              </li>
-                              <li>
-                                <a href="teknoloji.html">TEKNOLOJİ</a>
-                              </li>
-                              <li>
-                                <a href="haber-liste.html">EĞİTİM</a>
-                              </li>
-                              <li>
-                                <a href="oyun.html">OYUN</a>
-                              </li>
-                              <li>
-                                <a href="haber-liste.html">TÜM MANŞETLER</a>
-                              </li>
+                                <li>
+                                    <a href="#">DİĞER <span data-uc-navbar-parent-icon></span></a>
+                                    <div style="z-index: 100 !important;"
+                                        class="uc-navbar-dropdown ft-primary text-unset p-3 pb-4 rounded-0 hide-scrollbar"
+                                        data-uc-drop=" offset: 0; boundary: !.uc-navbar; stretch: x; animation: uc-animation-slide-top-small; duration: 150;">
+                                        <div class="row child-cols g-4">
+                                            <div>
+                                                <div class="row child-cols g-4">
+                                                    <div>
+                                                        <ul class="uc-nav uc-navbar-dropdown-nav">
+                                                            <li>
+                                                                <a href="haber-liste.html">KÜLTÜR-SANAT</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">YAŞAM</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">ÇEVRE</a>
+                                                            </li>
+                                                            <li>
+                                                                <a target="_blank"
+                                                                    href="https://dadamutfak.com/">MUTFAK</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="saglik.html">SAĞLIK</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="teknoloji.html">TEKNOLOJİ</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">EĞİTİM</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="oyun.html">OYUN</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">TÜM MANŞETLER</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
                             </ul>
-                          </div>
+
+
+                            <div class="uc-navbar-item">
+                                <a class="uc-search-trigger icon-2 cstack text-none text-dark dark:text-white"
+                                    href="#uc-search-modal" data-uc-toggle>
+                                    <i class="fas fa-search fs-4"></i>
+                                </a>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
-                </li>
+                </div>
+            </div>
 
-              </ul>
+        </nav>
 
-
-              <div class="uc-navbar-item">
-                <a class="uc-search-trigger icon-2 cstack text-none text-dark dark:text-white" href="#uc-search-modal"
-                  data-uc-toggle>
-                  <i class="fas fa-search fs-4"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </nav>
-
-  </header>
-  <div class="uc-top-navbar panel overflow-hidden bg-danger swiper-parent " style="--uc-nav-height: 32px"
-    data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
-    <div class="container container-full">
-      <div class="uc-navbar-item">
-        <div class="bg-primary h-100 p-1">
-          <span class="text-white d-flex text-nowrap fw-bold">SON HABERLER</span>
-        </div>
-        <div class="swiper swiper-ticker swiper-ticker-sep px-2" style="--uc-ticker-gap: 32px"
-          data-uc-swiper="items: auto; gap: 32; center: true; center-bounds: true; autoplay: 10000; speed: 10000; autoplay-delay: 0.1; loop: true; allowTouchMove: false; freeMode: true; autoplay-disableOnInteraction: true;">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">The
-                  Rise of AI-Powered Personal Assistants: How They Manage</a>
-              </div>
-            </div>
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">Tech
-                  Innovations Reshaping the Retail Landscape: AI Payments</a>
-              </div>
-            </div>
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">Balancing
-                  Work and
-                  Wellness:
-                  Tech Solutions for Healthy</a>
-              </div>
-            </div>
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">The
-                  Importance of Sleep: Tips for Better Rest and Recovery</a>
-              </div>
-            </div>
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">The
-                  Future of Sustainable Living: Driving Eco-Friendly Lifestyles</a>
-              </div>
-            </div>
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">Business
-                  Agility
-                  the Digital
-                  Age: Leveraging AI and Automation</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Header end -->
+    </header>
+        <!-- Header end -->
   <!-- Wrapper start -->
+  <span class="dh-rail" aria-hidden="true"></span>
   <div id="wrapper" class="wrap overflow-hidden-x">
+    <span class="dh-mark" aria-hidden="true">DADA</span>
 
-    <!-- Section start -->
-    <div class="section panel overflow-hidden swiper-parent border-bottom pt-1">
-      <div class="section-outer panel">
-        <div class="container max-w-xl">
-          <div class="section-inner panel vstack gap-2 lg:gap-4">
-            <div class="section-content panel">
-              <div class="swiper py-2"
-                data-uc-swiper="items: 2; gap: 0; next: .nav-next; prev: .nav-prev; disable-class: d-none;"
-                data-uc-swiper-s="items: 5; gap: 16;" data-uc-swiper-m="items: 5; gap: 16;"
-                data-uc-swiper-l="items: 9;, gap:16">
+<div class="block-slider block-slider-miniposts panel swiper-parent uc-dark dh-lb" data-cat="finans">
+            <div class="dh-lb__veil" aria-hidden="true"></div>
+            <div class="swiper-main swiper"
+                data-uc-swiper="connect: .swiper-thumbs; items: 1; autoplay: 5000; active: 1; gap: 0; dots: .swiper-pagination; disable-class: opacity-30; effect: fade; fade: true;">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <a href="altin.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Altın</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="borsa.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Borsa</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="doviz.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Döviz
-                    </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="kripto.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Kripto</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Kategori
-                      5</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">
-                      Kategori 6</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Kategori
-                      7</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Kategori
-                      8</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Kategori
-                      9</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Kategori
-                      10</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Kategori
-                      11</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Kategori
-                      12</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Golf</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Okçuluk</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Judo</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Güreş</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Boks</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Kickboks</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Triatlon</a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="haber-liste.html"
-                      class="text-black dark:text-white text-center px-1 border-end fs-3 line-1 text-decoration-none">Yelken</a>
-                  </div>
+                    <div class="swiper-slide">
+                        <article class="post type-post">
+                            <figure hidden class="post-featured-image panel m-0">
+                                <canvas class="h-300px sm:h-400px lg:h-500px"></canvas>
+                                <img class="media-cover image" src="../assets/images/main/posts/img-09.jpg"
+                                    alt="Merkez Bankası faiz kararını açıkladı"
+                                    data-uc-scrollspy="cls: uc-animation-kenburns; repeat: true">
+                                <a href="finans-detay.html" class="position-cover"></a>
+                            </figure>
+                            <div class="featured-image bg-gray-25 dark:bg-gray-800">
+                                <canvas class="min-h-300px lg:min-h-500px"></canvas>
+                                <img class="media-cover image" src="../assets/images/common/img-fallback.png"
+                                    data-src="../assets/images/main/posts/img-09.jpg"
+                                    alt="Merkez Bankası faiz kararını açıkladı"
+                                    data-uc-img="loading: lazy">
+                            </div>
+                            <div
+                                class="d-block position-cover bg-gradient-to-r from-black to-transparent z-1 opacity-60">
+                            </div>
+                            <div class="panel max-w-xl mx-auto px-2 z-3">
+                                <div
+                                    class="post-header panel position-absolute bottom-0 vstack justify-between gap-2 xl:gap-4 max-w-600px mb-4 xl:mb-8">
+                                    <div class="post-top hstack gap-narrow">
+                                        <div
+                                            class="post-category hstack gap-narrow fs-7 fw-bold h-24px px-1 rounded-1 shadow-xs bg-primary text-white">
+                                            <a class="text-none" href="finans.html">FİNANS</a>
+                                        </div>
+                                    </div>
+                                    <h3 class="post-title h4 lg:h3 xl:h2 m-0 text-truncate-2"
+                                        data-swiper-parallax="-48">
+                                        <a class="text-none" href="finans-detay.html">Merkez Bankası faiz kararını açıkladı: Piyasada ilk tepki ne oldu?</a>
+                                    </h3>
+                                    <div>
+                                        <div
+                                            class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                                            <div class="d-block">
+                                                <div
+                                                    class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex lg:gap-2 gap-1">
+                                                    <div>
+                                                        <div class="post-author hstack gap-1">
+                                                            <a href="yazar-detay.html"
+                                                                data-uc-tooltip="Selin Arıkan"><img
+                                                                    src="./assets/images/avatars/03.png"
+                                                                    alt="Selin Arıkan"
+                                                                    class="w-24px h-24px rounded"></a>
+                                                            <a href="yazar-detay.html"
+                                                                class="text-black dark:text-white text-none fw-bold">Selin Arıkan</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <span class="text-gray-50 dark:text-gray-100">
+                                                        <i class="fas fa-calendar-day"></i>
+                                                        <span class="minimizeDate">20.08.2026</span>
+                                                    </span>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <span class="text-gray-50 dark:text-gray-100">
+                                                        <i class="fas fa-clock"></i>
+                                                        123
+                                                    </span>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <span class="text-gray-50 dark:text-gray-100">
+                                                        <i class="fas fa-eye"></i>
+                                                        <span class="minimizeNumber">12345</span>
+                                                    </span>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <div class="text-gray-50">
+                                                        <i class="fas fa-comment-alt"></i>
+                                                        123
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="post type-post">
+                            <figure hidden class="post-featured-image panel m-0">
+                                <canvas class="h-300px sm:h-400px lg:h-500px"></canvas>
+                                <img class="media-cover image" src="../assets/images/main/posts/img-10.jpg"
+                                    alt="Enflasyon verisi öncesi temkinli seyir"
+                                    data-uc-scrollspy="cls: uc-animation-kenburns; repeat: true">
+                                <a href="finans-detay.html" class="position-cover"></a>
+                            </figure>
+                            <div class="featured-image bg-gray-25 dark:bg-gray-800">
+                                <canvas class="min-h-300px lg:min-h-500px"></canvas>
+                                <img class="media-cover image" src="../assets/images/common/img-fallback.png"
+                                    data-src="../assets/images/main/posts/img-10.jpg"
+                                    alt="Enflasyon verisi öncesi temkinli seyir"
+                                    data-uc-img="loading: lazy">
+                            </div>
+                            <div
+                                class="d-block position-cover bg-gradient-to-r from-black to-transparent z-1 opacity-60">
+                            </div>
+                            <div class="panel max-w-xl mx-auto px-2 z-3">
+                                <div
+                                    class="post-header panel position-absolute bottom-0 vstack justify-between gap-2 xl:gap-4 max-w-600px mb-4 xl:mb-8">
+                                    <div class="post-top hstack gap-narrow">
+                                        <div
+                                            class="post-category hstack gap-narrow fs-7 fw-bold h-24px px-1 rounded-1 shadow-xs bg-primary text-white">
+                                            <a class="text-none" href="finans.html">FİNANS</a>
+                                        </div>
+                                    </div>
+                                    <h3 class="post-title h4 lg:h3 xl:h2 m-0 text-truncate-2"
+                                        data-swiper-parallax="-48">
+                                        <a class="text-none" href="finans-detay.html">Enflasyon verisi öncesi piyasalarda temkinli seyir sürüyor</a>
+                                    </h3>
+                                    <div>
+                                        <div
+                                            class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                                            <div class="d-block">
+                                                <div
+                                                    class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex lg:gap-2 gap-1">
+                                                    <div>
+                                                        <div class="post-author hstack gap-1">
+                                                            <a href="yazar-detay.html"
+                                                                data-uc-tooltip="Selin Arıkan"><img
+                                                                    src="./assets/images/avatars/03.png"
+                                                                    alt="Selin Arıkan"
+                                                                    class="w-24px h-24px rounded"></a>
+                                                            <a href="yazar-detay.html"
+                                                                class="text-black dark:text-white text-none fw-bold">Selin Arıkan</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <span class="text-gray-50 dark:text-gray-100">
+                                                        <i class="fas fa-calendar-day"></i>
+                                                        <span class="minimizeDate">20.08.2026</span>
+                                                    </span>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <span class="text-gray-50 dark:text-gray-100">
+                                                        <i class="fas fa-clock"></i>
+                                                        123
+                                                    </span>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <span class="text-gray-50 dark:text-gray-100">
+                                                        <i class="fas fa-eye"></i>
+                                                        <span class="minimizeNumber">12345</span>
+                                                    </span>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <div class="text-gray-50">
+                                                        <i class="fas fa-comment-alt"></i>
+                                                        123
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="post type-post">
+                            <figure hidden class="post-featured-image panel m-0">
+                                <canvas class="h-300px sm:h-400px lg:h-500px"></canvas>
+                                <img class="media-cover image" src="../assets/images/main/posts/img-11.jpg"
+                                    alt="Gram altın rekor tazeledi"
+                                    data-uc-scrollspy="cls: uc-animation-kenburns; repeat: true">
+                                <a href="finans-detay.html" class="position-cover"></a>
+                            </figure>
+                            <div class="featured-image bg-gray-25 dark:bg-gray-800">
+                                <canvas class="min-h-300px lg:min-h-500px"></canvas>
+                                <img class="media-cover image" src="../assets/images/common/img-fallback.png"
+                                    data-src="../assets/images/main/posts/img-11.jpg"
+                                    alt="Gram altın rekor tazeledi"
+                                    data-uc-img="loading: lazy">
+                            </div>
+                            <div
+                                class="d-block position-cover bg-gradient-to-r from-black to-transparent z-1 opacity-60">
+                            </div>
+                            <div class="panel max-w-xl mx-auto px-2 z-3">
+                                <div
+                                    class="post-header panel position-absolute bottom-0 vstack justify-between gap-2 xl:gap-4 max-w-600px mb-4 xl:mb-8">
+                                    <div class="post-top hstack gap-narrow">
+                                        <div
+                                            class="post-category hstack gap-narrow fs-7 fw-bold h-24px px-1 rounded-1 shadow-xs bg-primary text-white">
+                                            <a class="text-none" href="finans.html">FİNANS</a>
+                                        </div>
+                                    </div>
+                                    <h3 class="post-title h4 lg:h3 xl:h2 m-0 text-truncate-2"
+                                        data-swiper-parallax="-48">
+                                        <a class="text-none" href="finans-detay.html">Gram altın rekor tazeledi: Uzmanlar yıl sonu için ne diyor?</a>
+                                    </h3>
+                                    <div>
+                                        <div
+                                            class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                                            <div class="d-block">
+                                                <div
+                                                    class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex lg:gap-2 gap-1">
+                                                    <div>
+                                                        <div class="post-author hstack gap-1">
+                                                            <a href="yazar-detay.html"
+                                                                data-uc-tooltip="Selin Arıkan"><img
+                                                                    src="./assets/images/avatars/03.png"
+                                                                    alt="Selin Arıkan"
+                                                                    class="w-24px h-24px rounded"></a>
+                                                            <a href="yazar-detay.html"
+                                                                class="text-black dark:text-white text-none fw-bold">Selin Arıkan</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <span class="text-gray-50 dark:text-gray-100">
+                                                        <i class="fas fa-calendar-day"></i>
+                                                        <span class="minimizeDate">20.08.2026</span>
+                                                    </span>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <span class="text-gray-50 dark:text-gray-100">
+                                                        <i class="fas fa-clock"></i>
+                                                        123
+                                                    </span>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <span class="text-gray-50 dark:text-gray-100">
+                                                        <i class="fas fa-eye"></i>
+                                                        <span class="minimizeNumber">12345</span>
+                                                    </span>
+                                                    <div class="sep  md:d-block text-white">
+                                                        ·
+                                                    </div>
+                                                    <div class="text-gray-50">
+                                                        <i class="fas fa-comment-alt"></i>
+                                                        123
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-              </div>
 
-              <div
-                class="swiper-nav nav-prev position-absolute top-50 start-0 translate-middle btn btn-alt-primary bg-primary text-white rounded p-0 border shadow-xs w-24px md:w-32px h-24px md:h-32px z-1">
-                <i class="icon-narrow fw-bold unicon-chevron-left"></i>
-              </div>
-              <div
-                class="swiper-nav nav-next position-absolute top-50 start-100 translate-middle btn btn-alt-primary bg-primary text-white rounded p-0 border shadow-xs w-24px md:w-32px h-24px md:h-32px z-1">
-                <i class="icon-narrow fw-bold unicon-chevron-right"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Section Start -->
-    <div class="block-slider block-slider-miniposts panel swiper-parent uc-dark">
-      <div class="swiper-main swiper"
-        data-uc-swiper="connect: .swiper-thumbs; items: 1; autoplay: 5000; active: 1; gap: 0; dots: .swiper-pagination; disable-class: opacity-30; effect: fade; fade: true;">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <article class="post type-post">
-              <figure hidden class="post-featured-image panel m-0">
-                <canvas class="h-300px sm:h-400px lg:h-500px"></canvas>
-                <img class="media-cover image" src="../assets/images/main/posts/img-09.jpg"
-                  alt="Hidden Gems: Underrated Travel Destinations Around the World"
-                  data-uc-scrollspy="cls: uc-animation-kenburns; repeat: true">
-                <a href="blog-details.html" class="position-cover"></a>
-              </figure>
-              <div class="featured-image bg-gray-25 dark:bg-gray-800">
-                <canvas class="min-h-300px lg:min-h-500px"></canvas>
-                <img class="media-cover image" src="../assets/images/common/img-fallback.png"
-                  data-src="../assets/images/main/posts/img-09.jpg"
-                  alt="Hidden Gems: Underrated Travel Destinations Around the World" data-uc-img="loading: lazy">
-              </div>
-              <div class="d-block position-cover bg-gradient-to-r from-black to-transparent z-1 opacity-60">
-              </div>
-              <div class="panel max-w-xl mx-auto px-2 z-3">
-                <div
-                  class="post-header panel position-absolute bottom-0 vstack justify-between gap-2 xl:gap-4 max-w-600px mb-4 xl:mb-8">
-                  <div class="post-top hstack gap-narrow">
-                    <div
-                      class="post-category hstack gap-narrow fs-7 fw-bold h-24px px-1 rounded-1 shadow-xs bg-primary text-white">
-                      <a class="text-none" href="blog-category.html">AI Powered</a>
-                    </div>
-                  </div>
-                  <h3 class="post-title h4 lg:h3 xl:h2 m-0 text-truncate-2" data-swiper-parallax="-48">
-                    <a class="text-none" href="blog-details.html">Hidden Gems: Underrated Travel
-                      Destinations Around the World</a>
-                  </h3>
-                  <div>
-                    <div
-                      class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
-                      <div class="d-block">
-                        <div
-                          class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex lg:gap-2 gap-1">
-                          <div>
-                            <div class="post-author hstack gap-1">
-                              <a href="yazar-detay.html" data-uc-tooltip="Sarah Eddrissi"><img
-                                  src="./assets/images/avatars/03.png" alt="Sarah Eddrissi"
-                                  class="w-24px h-24px rounded"></a>
-                              <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Sarah
-                                Eddrissi</a>
-                            </div>
-                          </div>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <span class="text-gray-50 dark:text-gray-100">
-                            <i class="fas fa-calendar-day"></i>
-                            <span class="minimizeDate">12.12.2025</span>
-                          </span>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <span class="text-gray-50 dark:text-gray-100">
-                            <i class="fas fa-clock"></i>
-                            123
-                          </span>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <span class="text-gray-50 dark:text-gray-100">
-                            <i class="fas fa-eye"></i>
-                            <span class="minimizeNumber">12345</span>
-                          </span>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <div class="text-gray-50">
-                            <i class="fas fa-comment-alt"></i>
-                            123
-                          </div>
-                        </div>
+                <!-- Banner üst şeridi: breadcrumb + sayfa başlığı (merkez) + oklar (sağ) -->
+                <div class="dh-lb__top">
+                  <div class="container max-w-xl dh-lb__topinner">
+                    <nav class="dh-art-crumb dh-lb__crumb" aria-label="Sayfa yolu">
+                      <a href="index.html" aria-label="Anasayfa"><i class="fas fa-home-lg-alt" aria-hidden="true"></i></a>
+                      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                      <a href="finans.html">Finans</a>
+                      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                      <span aria-current="page">Ekonomi</span>
+                    </nav>
+                    <h1 class="dh-lb__title">Finans</h1>
+                    <span class="dh-lb__rule" aria-hidden="true"></span>
+                    <div class="dh-lb__nav">
+                      <div class="swiper-nav swiper-prev" role="button" aria-label="Önceki">
+                        <i class="unicon-chevron-left icon-1"></i>
+                      </div>
+                      <div class="swiper-nav swiper-next" role="button" aria-label="Sonraki">
+                        <i class="unicon-chevron-right icon-1"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </article>
-          </div>
-          <div class="swiper-slide">
-            <article class="post type-post">
-              <figure hidden class="post-featured-image panel m-0">
-                <canvas class="h-300px sm:h-400px lg:h-500px"></canvas>
-                <img class="media-cover image" src="../assets/images/main/posts/img-10.jpg"
-                  alt="Eco-Tourism: Traveling Responsibly and Sustainably"
-                  data-uc-scrollspy="cls: uc-animation-kenburns; repeat: true">
-                <a href="blog-details.html" class="position-cover"></a>
-              </figure>
-              <div class="featured-image bg-gray-25 dark:bg-gray-800">
-                <canvas class="min-h-300px lg:min-h-500px"></canvas>
-                <img class="media-cover image" src="../assets/images/common/img-fallback.png"
-                  data-src="../assets/images/main/posts/img-10.jpg"
-                  alt="Eco-Tourism: Traveling Responsibly and Sustainably" data-uc-img="loading: lazy">
-              </div>
-              <div class="d-block position-cover bg-gradient-to-r from-black to-transparent z-1 opacity-60">
-              </div>
-              <div class="panel max-w-xl mx-auto px-2 z-3">
-                <div
-                  class="post-header panel position-absolute bottom-0 vstack justify-between gap-2 xl:gap-4 max-w-600px mb-4 xl:mb-8">
-                  <div class="post-top hstack gap-narrow">
-                    <div
-                      class="post-category hstack gap-narrow fs-7 fw-bold h-24px px-1 rounded-1 shadow-xs bg-primary text-white">
-                      <a class="text-none" href="blog-category.html">AI Powered</a>
-                    </div>
-                  </div>
-                  <h3 class="post-title h4 lg:h3 xl:h2 m-0 text-truncate-2" data-swiper-parallax="-48">
-                    <a class="text-none" href="blog-details.html">Eco-Tourism: Traveling Responsibly
-                      and
-                      Sustainably</a>
-                  </h3>
-                  <div>
-                    <div
-                      class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
-                      <div class="d-block">
-                        <div
-                          class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex lg:gap-2 gap-1">
-                          <div>
-                            <div class="post-author hstack gap-1">
-                              <a href="yazar-detay.html" data-uc-tooltip="Sarah Eddrissi"><img
-                                  src="./assets/images/avatars/03.png" alt="Sarah Eddrissi"
-                                  class="w-24px h-24px rounded"></a>
-                              <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Sarah
-                                Eddrissi</a>
-                            </div>
-                          </div>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <span class="text-gray-50 dark:text-gray-100">
-                            <i class="fas fa-calendar-day"></i>
-                            <span class="minimizeDate">12.12.2025</span>
-                          </span>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <span class="text-gray-50 dark:text-gray-100">
-                            <i class="fas fa-clock"></i>
-                            123
-                          </span>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <span class="text-gray-50 dark:text-gray-100">
-                            <i class="fas fa-eye"></i>
-                            <span class="minimizeNumber">12345</span>
-                          </span>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <div class="text-gray-50">
-                            <i class="fas fa-comment-alt"></i>
-                            123
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="swiper-slide">
-            <article class="post type-post">
-              <figure hidden class="post-featured-image panel m-0">
-                <canvas class="h-300px sm:h-400px lg:h-500px"></canvas>
-                <img class="media-cover image" src="../assets/images/main/posts/img-11.jpg"
-                  alt="Solo Travel: Some Tips and Destinations for the Adventurous Explorer"
-                  data-uc-scrollspy="cls: uc-animation-kenburns; repeat: true">
-                <a href="blog-details.html" class="position-cover"></a>
-              </figure>
-              <div class="featured-image bg-gray-25 dark:bg-gray-800">
-                <canvas class="min-h-300px lg:min-h-500px"></canvas>
-                <img class="media-cover image" src="../assets/images/common/img-fallback.png"
-                  data-src="../assets/images/main/posts/img-11.jpg"
-                  alt="Solo Travel: Some Tips and Destinations for the Adventurous Explorer"
-                  data-uc-img="loading: lazy">
-              </div>
-              <div class="d-block position-cover bg-gradient-to-r from-black to-transparent z-1 opacity-60">
-              </div>
-              <div class="panel max-w-xl mx-auto px-2 z-3">
-                <div
-                  class="post-header panel position-absolute bottom-0 vstack justify-between gap-2 xl:gap-4 max-w-600px mb-4 xl:mb-8">
-                  <div class="post-top hstack gap-narrow">
-                    <div
-                      class="post-category hstack gap-narrow fs-7 fw-bold h-24px px-1 rounded-1 shadow-xs bg-primary text-white">
-                      <a class="text-none" href="blog-category.html">AI Powered</a>
-                    </div>
-                  </div>
-                  <h3 class="post-title h4 lg:h3 xl:h2 m-0 text-truncate-2" data-swiper-parallax="-48">
-                    <a class="text-none" href="blog-details.html">Solo Travel: Some Tips and
-                      Destinations
-                      for the Adventurous Explorer</a>
-                  </h3>
-                  <div>
-                    <div
-                      class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
-                      <div class="d-block">
-                        <div
-                          class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex lg:gap-2 gap-1">
-                          <div>
-                            <div class="post-author hstack gap-1">
-                              <a href="yazar-detay.html" data-uc-tooltip="Sarah Eddrissi"><img
-                                  src="./assets/images/avatars/03.png" alt="Sarah Eddrissi"
-                                  class="w-24px h-24px rounded"></a>
-                              <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Sarah
-                                Eddrissi</a>
-                            </div>
-                          </div>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <span class="text-gray-50 dark:text-gray-100">
-                            <i class="fas fa-calendar-day"></i>
-                            <span class="minimizeDate">12.12.2025</span>
-                          </span>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <span class="text-gray-50 dark:text-gray-100">
-                            <i class="fas fa-clock"></i>
-                            123
-                          </span>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <span class="text-gray-50 dark:text-gray-100">
-                            <i class="fas fa-eye"></i>
-                            <span class="minimizeNumber">12345</span>
-                          </span>
-                          <div class="sep  md:d-block text-white">
-                            ·
-                          </div>
-                          <div class="text-gray-50">
-                            <i class="fas fa-comment-alt"></i>
-                            123
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Add Arrows -->
-        <div class="swiper-navigation position-cover panel max-w-xl mx-auto px-2 mt-2 xl:mt-8">
-          <div class="hstack justify-end md:justify-start gap-1">
-            <div
-              class="swiper-nav swiper-prev btn w-40px lg:w-48px h-40px lg:h-48px p-0 border-0 bg-white bg-opacity-30 hover:bg-primary hover:bg-opacity-100 text-white rounded shadow-xs z-1">
-              <i class="unicon-chevron-left icon-1"></i>
             </div>
             <div
-              class="swiper-nav swiper-next btn w-40px lg:w-48px h-40px lg:h-48px p-0 border-0 bg-white bg-opacity-30 hover:bg-primary hover:bg-opacity-100 text-white rounded shadow-xs z-1">
-              <i class="unicon-chevron-right icon-1"></i>
+                class="position-absolute top-0 end-0 bottom-0 w-1/2 bg-gradient-to-l from-black to-transparent opacity-70 z-1 d-none lg:d-block">
             </div>
-          </div>
+            <div class="slider-thumbs-wrap d-none lg:d-block">
+                <div class="container container-2xl">
+                    <div class="panel">
+                        <div class="swiper swiper-thumbs position-absolute end-0 bottom-0 max-h-300px max-w-300px mb-4 xl:mb-8 z-2"
+                            data-uc-swiper="items: 3; gap: 16; direction: vertical; mousewheel: true; freeMode: true;">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <article class="post type-post">
+                                        <div class="post-header panel vstack justify-between gap-1 lg:gap-2">
+                                            <div>
+                                                <div
+                                                    class="post-meta panel hstack justify-between fs-7 fw-medium text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
+                                                    <div class="meta">
+                                                        <div class="hstack gap-2">
+                                                            <div>
+                                                                <div class="post-date hstack gap-narrow">
+                                                                    <span><span
+                                                                            class="minimizeDate">20.08.2026</span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <div class="hstack gap-1"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h3 class="h6 m-0 text-truncate-2">Merkez Bankası faiz kararını açıkladı</h3>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="swiper-slide">
+                                    <article class="post type-post">
+                                        <div class="post-header panel vstack justify-between gap-1 lg:gap-2">
+                                            <div>
+                                                <div
+                                                    class="post-meta panel hstack justify-between fs-7 fw-medium text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
+                                                    <div class="meta">
+                                                        <div class="hstack gap-2">
+                                                            <div>
+                                                                <div class="post-date hstack gap-narrow">
+                                                                    <span><span
+                                                                            class="minimizeDate">20.08.2026</span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <div class="hstack gap-1"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h3 class="h6 m-0 text-truncate-2">Enflasyon verisi öncesi temkinli seyir</h3>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="swiper-slide">
+                                    <article class="post type-post">
+                                        <div class="post-header panel vstack justify-between gap-1 lg:gap-2">
+                                            <div>
+                                                <div
+                                                    class="post-meta panel hstack justify-between fs-7 fw-medium text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
+                                                    <div class="meta">
+                                                        <div class="hstack gap-2">
+                                                            <div>
+                                                                <div class="post-date hstack gap-narrow">
+                                                                    <span><span
+                                                                            class="minimizeDate">20.08.2026</span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <div class="hstack gap-1"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h3 class="h6 m-0 text-truncate-2">Gram altın rekor tazeledi</h3>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div
-        class="position-absolute top-0 end-0 bottom-0 w-1/2 bg-gradient-to-l from-black to-transparent opacity-70 z-1 d-none lg:d-block">
-      </div>
-      <div class="slider-thumbs-wrap d-none lg:d-block">
-        <div class="container container-2xl">
-          <div class="panel">
-            <div class="swiper swiper-thumbs position-absolute end-0 bottom-0 max-h-300px max-w-300px mb-4 xl:mb-8 z-2"
-              data-uc-swiper="items: 3; gap: 16; direction: vertical; mousewheel: true; freeMode: true;">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <article class="post type-post">
-                    <div class="post-header panel vstack justify-between gap-1 lg:gap-2">
-                      <div>
-                        <div
-                          class="post-meta panel hstack justify-between fs-7 fw-medium text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
-                          <div class="meta">
-                            <div class="hstack gap-2">
-                              <div>
-                                <div class="post-date hstack gap-narrow">
-                                  <span><span class="minimizeDate">12.12.2025</span></span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="actions">
-                            <div class="hstack gap-1"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <h3 class="h6 m-0 text-truncate-2">The Rise of AI-Powered Personal
-                        Assistants: How
-                        They Manage</h3>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide">
-                  <article class="post type-post">
-                    <div class="post-header panel vstack justify-between gap-1 lg:gap-2">
-                      <div>
-                        <div
-                          class="post-meta panel hstack justify-between fs-7 fw-medium text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
-                          <div class="meta">
-                            <div class="hstack gap-2">
-                              <div>
-                                <div class="post-date hstack gap-narrow">
-                                  <span><span class="minimizeDate">12.12.2025</span></span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="actions">
-                            <div class="hstack gap-1"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <h3 class="h6 m-0 text-truncate-2">Tech Innovations Reshaping the Retail
-                        Landscape:
-                        AI Payments</h3>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide">
-                  <article class="post type-post">
-                    <div class="post-header panel vstack justify-between gap-1 lg:gap-2">
-                      <div>
-                        <div
-                          class="post-meta panel hstack justify-between fs-7 fw-medium text-gray-900 dark:text-white text-opacity-60 d-none md:d-flex">
-                          <div class="meta">
-                            <div class="hstack gap-2">
-                              <div>
-                                <div class="post-date hstack gap-narrow">
-                                  <span><span class="minimizeDate">12.12.2025</span></span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="actions">
-                            <div class="hstack gap-1"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <h3 class="h6 m-0 text-truncate-2">Balancing Work and Wellness: Tech
-                        Solutions for
-                        Healthy</h3>
-                    </div>
-                  </article>
-                </div>
-              </div>
-            </div>
+
+    <div class="dh-fintick" role="region" aria-label="Canlı piyasa özeti">
+      <div class="container max-w-xl">
+        <div class="dh-fintick__row">
+          <span class="dh-fintick__live">
+            <span class="dh-fintick__livetop"><span class="dh-fintick__dot" aria-hidden="true"></span>Canlı</span>
+            <time class="dh-fintick__stamp" datetime="2026-08-20T18:54">18:54</time>
+          </span>
+          <div class="dh-fintick__cells">
+          <a class="dh-fintick__cell" href="finans-detay.html" data-dir="down">
+            <span class="dh-fintick__name">BİST 100</span>
+            <span class="dh-fintick__line">
+              <span class="dh-fintick__val">14.396,54</span>
+              <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,43<span class="sr-only"> düştü</span></span>
+            </span>
+          </a>
+          <a class="dh-fintick__cell" href="finans-detay.html" data-dir="up">
+            <span class="dh-fintick__name">DOLAR</span>
+            <span class="dh-fintick__line">
+              <span class="dh-fintick__val">47,9601</span>
+              <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,08<span class="sr-only"> yükseldi</span></span>
+            </span>
+          </a>
+          <a class="dh-fintick__cell" href="finans-detay.html" data-dir="up">
+            <span class="dh-fintick__name">EURO</span>
+            <span class="dh-fintick__line">
+              <span class="dh-fintick__val">56,1533</span>
+              <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,26<span class="sr-only"> yükseldi</span></span>
+            </span>
+          </a>
+          <a class="dh-fintick__cell" href="finans-detay.html" data-dir="down">
+            <span class="dh-fintick__name">GRAM ALTIN</span>
+            <span class="dh-fintick__line">
+              <span class="dh-fintick__val">6.969,05</span>
+              <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,02<span class="sr-only"> düştü</span></span>
+            </span>
+          </a>
+          <a class="dh-fintick__cell" href="finans-detay.html" data-dir="down">
+            <span class="dh-fintick__name">ONS ALTIN</span>
+            <span class="dh-fintick__line">
+              <span class="dh-fintick__val">4.518,95</span>
+              <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,07<span class="sr-only"> düştü</span></span>
+            </span>
+          </a>
+          <a class="dh-fintick__cell" href="finans-detay.html" data-dir="up">
+            <span class="dh-fintick__name">GÜMÜŞ</span>
+            <span class="dh-fintick__line">
+              <span class="dh-fintick__val">105,25</span>
+              <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%1,99<span class="sr-only"> yükseldi</span></span>
+            </span>
+          </a>
+          <a class="dh-fintick__cell" href="finans-detay.html" data-dir="up">
+            <span class="dh-fintick__name">BRENT</span>
+            <span class="dh-fintick__line">
+              <span class="dh-fintick__val">93,76</span>
+              <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%2,34<span class="sr-only"> yükseldi</span></span>
+            </span>
+          </a>
+          <a class="dh-fintick__cell" href="finans-detay.html" data-dir="up">
+            <span class="dh-fintick__name">BITCOIN</span>
+            <span class="dh-fintick__line">
+              <span class="dh-fintick__val">72.474</span>
+              <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%5,37<span class="sr-only"> yükseldi</span></span>
+            </span>
+          </a>
           </div>
         </div>
       </div>
     </div>
-    <!-- Section start -->
-    <div class="section panel overflow-hidden swiper-parent mt-3 border-top">
-      <div class="section-outer panel">
-        <div class="container max-w-xl">
-          <div class="section-inner panel vstack gap-2 lg:gap-4">
-            <div class="section-content panel">
-              <div class="swiper py-2"
-                data-uc-swiper="items: 2; gap: 0; next: .nav-next; prev: .nav-prev; disable-class: d-none;"
-                data-uc-swiper-s="items: 5; gap: 16;" data-uc-swiper-m="items: 5; gap: 16;"
-                data-uc-swiper-l="items: 9;, gap:16">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide ">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">BIST 100</span>
-                        <span class="d-block dark:text-gray-50 text-green fw-bold fs-2">9.234,27</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-up.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">DOLAR</span>
-                        <span class="d-block dark:text-gray-50 text-red fw-bold fs-2">50.23</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-down.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">BIST 100</span>
-                        <span class="d-block dark:text-gray-50 text-green fw-bold fs-2">9.234,27</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-up.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">Gümüş</span>
-                        <span class="d-block dark:text-gray-50 text-red fw-bold fs-2">50.23</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-down.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">Gram Altın</span>
-                        <span class="d-block dark:text-gray-50 text-green fw-bold fs-2">9.234,27</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-up.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">Çeyrek Altın</span>
-                        <span class="d-block dark:text-gray-50 text-red fw-bold fs-2">50.23</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-down.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">BIST 100</span>
-                        <span class="d-block dark:text-gray-50 text-green fw-bold fs-2">9.234,27</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-up.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">DOLAR</span>
-                        <span class="d-block dark:text-gray-50 text-red fw-bold fs-2">50.23</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-down.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">BIST 100</span>
-                        <span class="d-block dark:text-gray-50 text-green fw-bold fs-2">9.234,27</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-up.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">DOLAR</span>
-                        <span class="d-block dark:text-gray-50 text-red fw-bold fs-2">50.23</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-down.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
 
-
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">BIST 100</span>
-                        <span class="d-block dark:text-gray-50 text-green fw-bold fs-2">9.234,27</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-up.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">DOLAR</span>
-                        <span class="d-block dark:text-gray-50 text-red fw-bold fs-2">50.23</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-down.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">BIST 100</span>
-                        <span class="d-block dark:text-gray-50 text-green fw-bold fs-2">9.234,27</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-up.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="hstack items-center justify-center gap-1 p-1">
-                      <div>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50">DOLAR</span>
-                        <span class="d-block dark:text-gray-50 text-red fw-bold fs-2">50.23</span>
-                        <span class="d-block text-gray-700 d-block mb-0 dark:text-gray-50 fs-5">%1.2</span>
-                      </div>
-                      <div>
-                        <img src="./assets/images/arrow-down.svg" style="min-width: 32px; width: 32px !important; "
-                          alt="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="swiper-nav nav-prev position-absolute top-50 start-0 translate-middle btn btn-alt-primary bg-primary text-white rounded p-0 border shadow-xs w-24px md:w-32px h-24px md:h-32px z-1">
-                <i class="icon-narrow fw-bold unicon-chevron-left"></i>
-              </div>
-              <div
-                class="swiper-nav nav-next position-absolute top-50 start-100 translate-middle btn btn-alt-primary bg-primary text-white rounded p-0 border shadow-xs w-24px md:w-32px h-24px md:h-32px z-1">
-                <i class="icon-narrow fw-bold unicon-chevron-right"></i>
-              </div>
+    <section class="section panel dh-catbar" aria-label="Finans bölümleri">
+      <div class="container max-w-xl">
+        <div class="dh-catbar__inner swiper-parent">
+          <div class="swiper dh-catbar__swiper"
+            data-uc-swiper="items: auto; gap: 8; free: true; grab-cursor: true; next: .dh-catbar__nav--next; prev: .dh-catbar__nav--prev; disable-class: is-off; watchOverflow: true;">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><a class="dh-catbar__chip is-on" href="finans.html" aria-current="page">Finans</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="borsa.html">Borsa</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="doviz.html">Döviz</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="altin.html">Altın</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="kripto.html">Kripto</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="finans.html">Emtia</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="finans.html">Faiz</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="finans.html">Tahvil</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="finans.html">Fon</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="finans.html">Enflasyon</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="finans.html">Konut</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="finans.html">Vergi</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="finans.html">Enerji</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="finans.html">Sanayi</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="finans.html">Dış Ticaret</a></div>
             </div>
           </div>
+          <div class="dh-catbar__nav dh-catbar__nav--prev" role="button" aria-label="Önceki bölümler"><i class="unicon-chevron-left"></i></div>
+          <div class="dh-catbar__nav dh-catbar__nav--next" role="button" aria-label="Sonraki bölümler"><i class="unicon-chevron-right"></i></div>
         </div>
       </div>
-    </div>
-    <!-- Section end -->
-    <div class="section py-4 lg:py-8">
+    </section>
+
+    <section class="section dh-finsec">
+      <div class="container max-w-xl">
+        <div class="dh-finduo">
+      <section class="dh-finpanel" data-cat="finans">
+        <div class="dh-finpanel__head">
+          <div>
+            <h2 class="dh-finpanel__title">Döviz</h2>
+            <span class="dh-finpanel__sub">Serbest piyasa · 18.54</span>
+          </div>
+          <div class="dh-finpanel__tools"><a class="dh-finpanel__more" href="doviz.html">Tümünü Gör</a></div>
+        </div>
+        <div class="dh-fintable__scroll">
+          <table class="dh-fintable">
+            <thead>
+              <tr>
+              <th scope="col">Cins</th>
+              <th scope="col" class="is-num">Alış</th>
+              <th scope="col" class="is-num">Satış</th>
+              <th scope="col" class="is-num">Değişim</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">USD</span><span class="dh-fintable__desc">ABD Doları</span></a></th>
+                <td class="is-num">47,9494</td>
+                <td class="is-num">47,9594</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,08<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">EUR</span><span class="dh-fintable__desc">Euro</span></a></th>
+                <td class="is-num">56,1234</td>
+                <td class="is-num">56,1596</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,26<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">GBP</span><span class="dh-fintable__desc">İngiliz Sterlini</span></a></th>
+                <td class="is-num">65,2504</td>
+                <td class="is-num">65,5774</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,32<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">CAD</span><span class="dh-fintable__desc">Kanada Doları</span></a></th>
+                <td class="is-num">34,7103</td>
+                <td class="is-num">34,8843</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,27<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            <tr data-dir="down">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">CHF</span><span class="dh-fintable__desc">İsviçre Frangı</span></a></th>
+                <td class="is-num">59,8076</td>
+                <td class="is-num">60,1074</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,24<span class="sr-only"> düştü</span></span></td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">SAR</span><span class="dh-fintable__desc">Suudi Riyali</span></a></th>
+                <td class="is-num">12,7454</td>
+                <td class="is-num">12,8093</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,11<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="dh-finpanel" data-cat="finans">
+        <div class="dh-finpanel__head">
+          <div>
+            <h2 class="dh-finpanel__title">Altın Fiyatları</h2>
+            <span class="dh-finpanel__sub">Kapalıçarşı · 18.54</span>
+          </div>
+          <div class="dh-finpanel__tools"><a class="dh-finpanel__more" href="altin.html">Tümünü Gör</a></div>
+        </div>
+        <div class="dh-fintable__scroll">
+          <table class="dh-fintable">
+            <thead>
+              <tr>
+              <th scope="col">Altın Türü</th>
+              <th scope="col" class="is-num">Alış</th>
+              <th scope="col" class="is-num">Satış</th>
+              <th scope="col" class="is-num">Değişim</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr data-dir="down">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Gram Altın</span><span class="dh-fintable__desc">1 gram 24 ayar</span></a></th>
+                <td class="is-num">6.966,35</td>
+                <td class="is-num">6.967,32</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,02<span class="sr-only"> düştü</span></span></td>
+              </tr>
+            <tr data-dir="down">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Çeyrek Altın</span><span class="dh-fintable__desc">Yeni tarihli</span></a></th>
+                <td class="is-num">11.146,15</td>
+                <td class="is-num">11.391,56</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,02<span class="sr-only"> düştü</span></span></td>
+              </tr>
+            <tr data-dir="down">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Yarım Altın</span><span class="dh-fintable__desc">Yeni tarihli</span></a></th>
+                <td class="is-num">22.222,64</td>
+                <td class="is-num">22.783,13</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,02<span class="sr-only"> düştü</span></span></td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Tam Altın</span><span class="dh-fintable__desc">Yeni tarihli</span></a></th>
+                <td class="is-num">44.585,00</td>
+                <td class="is-num">45.210,00</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,03<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Cumhuriyet Altını</span><span class="dh-fintable__desc">Ziynet</span></a></th>
+                <td class="is-num">45.401,00</td>
+                <td class="is-num">46.087,00</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,66<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Ata Altın</span><span class="dh-fintable__desc">Ziynet</span></a></th>
+                <td class="is-num">45.310,68</td>
+                <td class="is-num">46.451,39</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,88<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+        </div>
+        <div class="dh-finduo mt-4">
+      <section class="dh-finpanel" data-cat="finans">
+        <div class="dh-finpanel__head">
+          <div>
+            <h2 class="dh-finpanel__title">BİST En Aktif Hisseler</h2>
+            <span class="dh-finpanel__sub">Borsa İstanbul · 18.10</span>
+          </div>
+          <div class="dh-finpanel__tools"><a class="dh-finpanel__more" href="borsa.html">Tümünü Gör</a></div>
+        </div>
+        <div class="dh-fintabs" role="tablist" aria-label="BİST En Aktif Hisseler görünümü">
+            <button type="button" class="dh-fintabs__tab is-on" role="tab" aria-selected="true">Artan</button>
+            <button type="button" class="dh-fintabs__tab" role="tab" aria-selected="false">Azalan</button>
+            <button type="button" class="dh-fintabs__tab" role="tab" aria-selected="false">Hacim</button>
+        </div>
+        <div class="dh-fintable__scroll">
+          <table class="dh-fintable">
+            <thead>
+              <tr>
+              <th scope="col">Hisse</th>
+              <th scope="col" class="is-num">Son</th>
+              <th scope="col" class="is-num">Fark</th>
+              <th scope="col" class="is-num">Hacim</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">SARAE</span><span class="dh-fintable__desc">Saray Matbaacılık Kağıtçılık</span></a></th>
+                <td class="is-num">83,05</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%10,00<span class="sr-only"> yükseldi</span></span></td>
+                <td class="is-num">4,89 mlr</td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">SANEL</span><span class="dh-fintable__desc">San-El Mühendislik Elektrik</span></a></th>
+                <td class="is-num">58,30</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%10,00<span class="sr-only"> yükseldi</span></span></td>
+                <td class="is-num">36,1 mn</td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">JANTS</span><span class="dh-fintable__desc">Jantsa Jant Sanayi</span></a></th>
+                <td class="is-num">16,52</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%9,99<span class="sr-only"> yükseldi</span></span></td>
+                <td class="is-num">58,3 mn</td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">NETAS</span><span class="dh-fintable__desc">Netaş Telekomünikasyon</span></a></th>
+                <td class="is-num">90,85</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%9,99<span class="sr-only"> yükseldi</span></span></td>
+                <td class="is-num">502,6 mn</td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">CRFSA</span><span class="dh-fintable__desc">CarrefourSA Carrefour Sabancı</span></a></th>
+                <td class="is-num">280,75</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%9,99<span class="sr-only"> yükseldi</span></span></td>
+                <td class="is-num">960,7 mn</td>
+              </tr>
+            <tr data-dir="down">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">ODINE</span><span class="dh-fintable__desc">Odine Solutions Teknoloji</span></a></th>
+                <td class="is-num">22,91</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%9,98<span class="sr-only"> düştü</span></span></td>
+                <td class="is-num">2,16 mlr</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="dh-finpanel" data-cat="finans">
+        <div class="dh-finpanel__head">
+          <div>
+            <h2 class="dh-finpanel__title">Kripto Para</h2>
+            <span class="dh-finpanel__sub">Küresel ortalama · 18.54</span>
+          </div>
+          <div class="dh-finpanel__tools"><a class="dh-finpanel__more" href="kripto.html">Tümünü Gör</a></div>
+        </div>
+        <div class="dh-fintable__scroll">
+          <table class="dh-fintable">
+            <thead>
+              <tr>
+              <th scope="col">Kripto</th>
+              <th scope="col" class="is-num">Fiyat ($)</th>
+              <th scope="col" class="is-num">24 Saat</th>
+              <th scope="col" class="is-num">Piyasa Değeri</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">BTC</span><span class="dh-fintable__desc">Bitcoin</span></a></th>
+                <td class="is-num">72.474,00</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%5,37<span class="sr-only"> yükseldi</span></span></td>
+                <td class="is-num">1,44 trl $</td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">ETH</span><span class="dh-fintable__desc">Ethereum</span></a></th>
+                <td class="is-num">4.128,00</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%3,12<span class="sr-only"> yükseldi</span></span></td>
+                <td class="is-num">496 mlr $</td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">BNB</span><span class="dh-fintable__desc">BNB</span></a></th>
+                <td class="is-num">651,86</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%5,32<span class="sr-only"> yükseldi</span></span></td>
+                <td class="is-num">94,2 mlr $</td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">SOL</span><span class="dh-fintable__desc">Solana</span></a></th>
+                <td class="is-num">87,33</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%2,08<span class="sr-only"> yükseldi</span></span></td>
+                <td class="is-num">41,8 mlr $</td>
+              </tr>
+            <tr data-dir="down">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">XRP</span><span class="dh-fintable__desc">XRP</span></a></th>
+                <td class="is-num">2,86</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%1,44<span class="sr-only"> düştü</span></span></td>
+                <td class="is-num">162 mlr $</td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">ADA</span><span class="dh-fintable__desc">Cardano</span></a></th>
+                <td class="is-num">0,20</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%9,87<span class="sr-only"> yükseldi</span></span></td>
+                <td class="is-num">7,1 mlr $</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dh-finsec">
+      <div class="container max-w-xl">
+        <div class="dh-fingrid">
+          <div class="dh-fingrid__main">
+      <section class="dh-finpanel" data-cat="finans">
+        <div class="dh-finpanel__head">
+          <div>
+            <h2 class="dh-finpanel__title">Gümüş ve Emtia</h2>
+            <span class="dh-finpanel__sub">Uluslararası piyasa · 15 dakika gecikmeli</span>
+          </div>
+        </div>
+        <div class="dh-fintable__scroll">
+          <table class="dh-fintable">
+            <thead>
+              <tr>
+              <th scope="col">Emtia Cinsi</th>
+              <th scope="col" class="is-num">Alış</th>
+              <th scope="col" class="is-num">Satış</th>
+              <th scope="col" class="is-num">Değişim</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Gram Gümüş</span><span class="dh-fintable__desc">1 gram 999</span></a></th>
+                <td class="is-num">105,15</td>
+                <td class="is-num">105,25</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%1,99<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Ons Gümüş</span><span class="dh-fintable__desc">ABD doları</span></a></th>
+                <td class="is-num">68,44</td>
+                <td class="is-num">68,52</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%1,89<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Platin</span><span class="dh-fintable__desc">Ons · ABD doları</span></a></th>
+                <td class="is-num">1.482,30</td>
+                <td class="is-num">1.486,10</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,74<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            <tr data-dir="down">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Paladyum</span><span class="dh-fintable__desc">Ons · ABD doları</span></a></th>
+                <td class="is-num">1.194,60</td>
+                <td class="is-num">1.199,20</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,41<span class="sr-only"> düştü</span></span></td>
+              </tr>
+            <tr data-dir="up">
+                <th scope="row" class="dh-fintable__name"><a href="finans-detay.html"><span class="dh-fintable__code">Brent Petrol</span><span class="dh-fintable__desc">Varil · ABD doları</span></a></th>
+                <td class="is-num">93,72</td>
+                <td class="is-num">93,76</td>
+                <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%2,34<span class="sr-only"> yükseldi</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="dh-finpanel dh-finkap-panel" data-cat="finans">
+        <div class="dh-finpanel__head">
+          <div>
+            <h2 class="dh-finpanel__title">KAP Açıklamaları</h2>
+          </div>
+          <div class="dh-finpanel__tools"><a class="dh-finpanel__more" href="borsa.html">Tümünü Gör</a></div>
+        </div>
+        <ul class="dh-finkap">
+          <li><time datetime="2026-08-20T18:47">18.47</time><a href="finans-detay.html">MAGEN — Payların geri alınmasına ilişkin bildirim</a></li>
+          <li><time datetime="2026-08-20T18:44">18.44</time><a href="finans-detay.html">NATEN — Katılım finans ilkeleri bilgi formu</a></li>
+          <li><time datetime="2026-08-20T18:44">18.44</time><a href="finans-detay.html">RR6 — İç tüzük değişikliği</a></li>
+          <li><time datetime="2026-08-20T18:31">18.31</time><a href="finans-detay.html">THYAO — Temmuz ayı trafik sonuçları açıklandı</a></li>
+          <li><time datetime="2026-08-20T18:12">18.12</time><a href="finans-detay.html">ASELS — Yurt dışı satış sözleşmesi imzalandı</a></li>
+        </ul>
+      </section>
+          </div>
+          <aside class="dh-fingrid__aside">
+      <section class="dh-finpanel dh-finspot" data-cat="finans" data-dir="down">
+        <div class="dh-fintabs" role="tablist" aria-label="Vitrin enstrümanı">
+          <button type="button" class="dh-fintabs__tab is-on" role="tab" aria-selected="true">BİST 100</button>
+          <button type="button" class="dh-fintabs__tab" role="tab" aria-selected="false">Dolar</button>
+          <button type="button" class="dh-fintabs__tab" role="tab" aria-selected="false">Euro</button>
+          <button type="button" class="dh-fintabs__tab" role="tab" aria-selected="false">Gram Altın</button>
+        </div>
+        <div class="dh-finspot__body">
+          <p class="dh-finspot__value">
+            <span class="dh-finspot__num">14.396,54</span>
+            <i class="dh-dir" aria-hidden="true"></i>
+            <span class="dh-finspot__unit">puan</span>
+          </p>
+          <dl class="dh-finspot__stats">
+            <div><dt>Değişim</dt><dd><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,43<span class="sr-only"> düştü</span></span></dd></div>
+            <div><dt>Açılış</dt><dd>14.469,07</dd></div>
+            <div><dt>Önceki Kapanış</dt><dd>14.458,98</dd></div>
+            <div><dt>İşlem Hacmi</dt><dd>112,4 mlr ₺</dd></div>
+          </dl>
+          <div class="dh-finrange" style="--fin-pos: 44%">
+            <div class="dh-finrange__labels">
+              <span>En Düşük<b>14.268,76</b></span>
+              <span>En Yüksek<b>14.562,51</b></span>
+            </div>
+            <div class="dh-finrange__bar"><span class="dh-finrange__mark" aria-hidden="true"></span></div>
+          </div>
+          <figure class="dh-finchart">
+            <svg class="dh-finchart__plot" viewBox="0 0 300 80" preserveAspectRatio="none" role="img"
+              aria-label="BİST 100 gün içi seyri — 10.00-18.10">
+              <polygon class="dh-finchart__area" points="0,80 0.0,16.6 27.3,13.8 54.5,26.7 81.8,36.1 109.1,40.4 136.4,45.4 163.6,54.1 190.9,58.4 218.2,55.5 245.5,50.5 272.7,48.3 300.0,49.0 300,80"></polygon>
+              <line class="dh-finchart__base" x1="0" y1="40" x2="300" y2="40"></line>
+              <polyline class="dh-finchart__line" points="0.0,16.6 27.3,13.8 54.5,26.7 81.8,36.1 109.1,40.4 136.4,45.4 163.6,54.1 190.9,58.4 218.2,55.5 245.5,50.5 272.7,48.3 300.0,49.0" vector-effect="non-scaling-stroke"></polyline>
+            </svg>
+            <div class="dh-finchart__axis"><span>10:00</span><span>12:30</span><span>15:30</span><span>18:10</span></div>
+            <figcaption class="dh-finchart__cap">BİST 100 gün içi seyri — 10.00-18.10 · kesikli çizgi önceki kapanış</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <div class="dh-finpanel dh-findisc">
+        <div class="dh-finpanel__head">
+          <h2 class="dh-finpanel__title">Yatırım Uyarısı</h2>
+        </div>
+        <div class="dh-finpanel__body">
+          <p class="dh-finconv__note">Bu sayfadaki fiyat, oran ve yorumlar yatırım danışmanlığı kapsamında
+            değildir. Yatırım danışmanlığı hizmeti; aracı kurumlar, portföy yönetim şirketleri ve mevduat kabul
+            etmeyen bankalar ile müşteri arasında imzalanacak sözleşme çerçevesinde sunulur. Burada yer alan
+            görüşler mali durumunuza, risk ve getiri tercihlerinize uygun olmayabilir; yalnızca bu bilgilere
+            dayanılarak verilen yatırım kararları beklentinizi karşılamayabilir.</p>
+          <p class="dh-finconv__note">Veriler 15 dakika gecikmelidir ve bilgilendirme amaçlıdır. Fiyatlar
+            sağlayıcı kaynaklardan alınır; Dada Haber gecikme ya da hatalardan sorumlu tutulamaz.</p>
+        </div>
+      </div>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dh-finsec">
       <div class="container max-w-xl">
         <div class="panel vstack gap-3 sm:gap-6 lg:gap-5">
-          <header class="page-header panel vstack text-center">
-            <h1 class="h3 lg:h1">FİNANS HABERLERİ</h1>
-            <div class="vstack sm:hstack justify-between items-center gap-2 sm:gap-4">
+          <header class="page-header panel vstack">
+            <h2 class="h3 lg:h2 m-0">Finans Haberleri</h2>
+            <div class="vstack sm:hstack justify-between items-center gap-2 sm:gap-4 mt-2">
               <div class="panel text-center sm:text-start">
-                <span class="fs-6 m-0 opacity-80">Toplam 100 haberden 16 gösteriliyor</span>
+                <span class="fs-6 m-0 opacity-80">Toplam 342 haberden 6 gösteriliyor</span>
               </div>
-              <div>
-                <div class="hstack gap-1 fs-6">
-                  <span class="text-opacity-80">Filtrele:</span>
-                  <select name="select" id="filter_by"
-                    class="form-select form-control-xs fs-6 w-150px dark:bg-gray-900 dark:text-white dark:border-gray-700">
-                    <option value="" selected>En Yeni</option>
-                    <option value="">En Eski</option>
-                    <option value="">En Çok Okunan</option>
-                    <option value="">En Çok Yorum Alan</option>
-                    <option value="">En Çok Görüntülenen</option>
-                  </select>
+                <div class="dh-sort" role="tablist" aria-label="Sıralama">
+                  <button type="button" class="dh-sort__tab is-on" role="tab" aria-selected="true">En Yeni</button>
+                  <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">En Eski</button>
+                  <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">En Çok Okunan</button>
+                  <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">En Çok Yorum Alan</button>
+                  <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">En Çok Görüntülenen</button>
                 </div>
-              </div>
             </div>
           </header>
-          <div class="row g-4 xl:g-8">
-            <div class="col">
-              <div class="panel text-center">
-                <div class="row child-cols-12 sm:child-cols-6 lg:child-cols-4 col-match gy-4 xl:gy-6 gx-2 sm:gx-4">
-                  <div>
-                    <article class="post type-post panel vstack gap-2">
-                      <div class="post-image panel overflow-hidden">
-                        <figure
-                          class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                          <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                            src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
-                            alt="Tech Innovations Reshaping the Retail Landscape: AI Payments"
-                            data-uc-img="loading: lazy">
-                          <a href="finans-detay.html" class="position-cover"
-                            data-caption="Tech Innovations Reshaping the Retail Landscape: AI Payments"></a>
-                        </figure>
-                        <div
-                          class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
-                          <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
-                            href="finans-detay.html">Tennis</a>
-                        </div>
-
-                        <div
-                          class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
-                        </div>
-                        <span class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
-                          <i class=" fas fa-play"></i>
-                          <i class=" fas fa-camera"></i>
-                          <i class=" fas fa-volume-up"></i>
-                        </span>
+          <div class="panel dh-listgrid">
+            <div class="row child-cols-12 sm:child-cols-6 lg:child-cols-4 col-match gy-4 xl:gy-6 gx-2 sm:gx-4">
+                <div>
+                  <article class="post type-post panel vstack gap-2">
+                    <div class="post-image panel overflow-hidden">
+                      <figure class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                          src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
+                          alt="Merkez Bankası faiz kararını açıkladı" data-uc-img="loading: lazy">
+                        <a href="finans-detay.html" class="position-cover" data-caption="Merkez Bankası faiz kararını açıkladı"></a>
+                      </figure>
+                      <div class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                        <a class="text-none bg-primary px-1 rounded-1 shadow-xs" href="finans-detay.html">Finans</a>
                       </div>
-                      <div class="post-header panel vstack gap-1 lg:gap-2">
-                        <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
-                          <a class="text-none" href="finans-detay.html">Tech Innovations
-                            Reshaping the Retail Landscape: AI Payments Lorem ipsum, dolor
-                            sit amet consectetur adipisicing elit. Repellendus optio nobis
-                            molestiae culpa aperiam facere, vel iusto esse?</a>
-                        </h3>
-                        <div>
-                          <div
-                            class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
-                            <div class="d-flex items-center justify-center">
-                              <div class="post-author hstack gap-1">
-                                <a href="yazar-detay.html" data-uc-tooltip="Sarah Eddrissi"><img
-                                    src="./assets/images/avatars/03.png" alt="Sarah Eddrissi"
-                                    class="w-24px h-24px rounded"></a>
-                                <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Sarah
-                                  Eddrissi</a>
-                              </div>
+                    </div>
+                    <div class="post-header panel vstack gap-1 lg:gap-2">
+                      <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2">
+                        <a class="text-none" href="finans-detay.html">Merkez Bankası faiz kararını açıkladı</a>
+                      </h3>
+                      <div>
+                        <div class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-author hstack gap-1">
+                              <a href="yazar-detay.html" data-uc-tooltip="Selin Arıkan"><img
+                                  src="./assets/images/avatars/03.png" alt="Selin Arıkan" class="w-24px h-24px rounded"></a>
+                              <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Selin Arıkan</a>
                             </div>
-                            <div class="sep lg:d-block d-none">·</div>
-                            <div class="d-flex items-center justify-center">
-                              <div
-                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
-                                <span class="text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-calendar-day"></i>
-                                  <span class="minimizeDate">12.12.2025</span>
-                                </span>
-                                <div class="sep">
-                                  ·
-                                </div>
-                                <span class=" text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-clock"></i>
-                                  123
-                                </span>
-                                <div class="sep d-block ">
-                                  ·
-                                </div>
-                                <span class="text-gray-400 d-block  dark:text-gray-100">
-                                  <i class="fas fa-eye"></i>
-                                  <span class="minimizeNumber">12345</span>
-                                </span>
-                              </div>
+                          </div>
+                          <div class="sep lg:d-block d-none">·</div>
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex gap-1">
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-calendar-day"></i>
+                                <span class="minimizeDate">20.08.2026</span>
+                              </span>
+                              <div class="sep">·</div>
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-clock"></i>
+                                3 dk
+                              </span>
+                              <div class="sep d-block">·</div>
+                              <span class="text-gray-400 d-block dark:text-gray-100">
+                                <i class="fas fa-eye"></i>
+                                <span class="minimizeNumber">4200</span>
+                              </span>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </article>
-                  </div>
-                  <div>
-                    <article class="post type-post panel vstack gap-2">
-                      <div class="post-image panel overflow-hidden">
-                        <figure
-                          class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                          <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                            src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
-                            alt="Tech Innovations Reshaping the Retail Landscape: AI Payments"
-                            data-uc-img="loading: lazy">
-                          <a href="finans-detay.html" class="position-cover"
-                            data-caption="Tech Innovations Reshaping the Retail Landscape: AI Payments"></a>
-                        </figure>
-                        <div
-                          class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
-                          <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
-                            href="finans-detay.html">Tennis</a>
-                        </div>
-
-                        <div
-                          class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
-                        </div>
-                        <span class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
-                          <i class=" fas fa-play"></i>
-                          <i class=" fas fa-camera"></i>
-                          <i class=" fas fa-volume-up"></i>
-                        </span>
-                      </div>
-                      <div class="post-header panel vstack gap-1 lg:gap-2">
-                        <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
-                          <a class="text-none" href="finans-detay.html">Tech Innovations
-                            Reshaping the Retail Landscape: AI Payments Lorem ipsum, dolor
-                            sit amet consectetur adipisicing elit. Repellendus optio nobis
-                            molestiae culpa aperiam facere, vel iusto esse?</a>
-                        </h3>
-                        <div>
-                          <div
-                            class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
-                            <div class="d-flex items-center justify-center">
-                              <div class="post-author hstack gap-1">
-                                <a href="yazar-detay.html" data-uc-tooltip="Sarah Eddrissi"><img
-                                    src="./assets/images/avatars/03.png" alt="Sarah Eddrissi"
-                                    class="w-24px h-24px rounded"></a>
-                                <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Sarah
-                                  Eddrissi</a>
-                              </div>
-                            </div>
-                            <div class="sep lg:d-block d-none">·</div>
-                            <div class="d-flex items-center justify-center">
-                              <div
-                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
-                                <span class="text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-calendar-day"></i>
-                                  <span class="minimizeDate">12.12.2025</span>
-                                </span>
-                                <div class="sep">
-                                  ·
-                                </div>
-                                <span class=" text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-clock"></i>
-                                  123
-                                </span>
-                                <div class="sep d-block ">
-                                  ·
-                                </div>
-                                <span class="text-gray-400 d-block  dark:text-gray-100">
-                                  <i class="fas fa-eye"></i>
-                                  <span class="minimizeNumber">12345</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  </div>
-                  <div>
-                    <article class="post type-post panel vstack gap-2">
-                      <div class="post-image panel overflow-hidden">
-                        <figure
-                          class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                          <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                            src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
-                            alt="Tech Innovations Reshaping the Retail Landscape: AI Payments"
-                            data-uc-img="loading: lazy">
-                          <a href="finans-detay.html" class="position-cover"
-                            data-caption="Tech Innovations Reshaping the Retail Landscape: AI Payments"></a>
-                        </figure>
-                        <div
-                          class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
-                          <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
-                            href="finans-detay.html">Tennis</a>
-                        </div>
-
-                        <div
-                          class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
-                        </div>
-                        <span class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
-                          <i class=" fas fa-play"></i>
-                          <i class=" fas fa-camera"></i>
-                          <i class=" fas fa-volume-up"></i>
-                        </span>
-                      </div>
-                      <div class="post-header panel vstack gap-1 lg:gap-2">
-                        <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
-                          <a class="text-none" href="finans-detay.html">Tech Innovations
-                            Reshaping the Retail Landscape: AI Payments Lorem ipsum, dolor
-                            sit amet consectetur adipisicing elit. Repellendus optio nobis
-                            molestiae culpa aperiam facere, vel iusto esse?</a>
-                        </h3>
-                        <div>
-                          <div
-                            class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
-                            <div class="d-flex items-center justify-center">
-                              <div class="post-author hstack gap-1">
-                                <a href="yazar-detay.html" data-uc-tooltip="Sarah Eddrissi"><img
-                                    src="./assets/images/avatars/03.png" alt="Sarah Eddrissi"
-                                    class="w-24px h-24px rounded"></a>
-                                <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Sarah
-                                  Eddrissi</a>
-                              </div>
-                            </div>
-                            <div class="sep lg:d-block d-none">·</div>
-                            <div class="d-flex items-center justify-center">
-                              <div
-                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
-                                <span class="text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-calendar-day"></i>
-                                  <span class="minimizeDate">12.12.2025</span>
-                                </span>
-                                <div class="sep">
-                                  ·
-                                </div>
-                                <span class=" text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-clock"></i>
-                                  123
-                                </span>
-                                <div class="sep d-block ">
-                                  ·
-                                </div>
-                                <span class="text-gray-400 d-block  dark:text-gray-100">
-                                  <i class="fas fa-eye"></i>
-                                  <span class="minimizeNumber">12345</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  </div>
-                  <div>
-                    <article class="post type-post panel vstack gap-2">
-                      <div class="post-image panel overflow-hidden">
-                        <figure
-                          class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                          <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                            src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
-                            alt="Tech Innovations Reshaping the Retail Landscape: AI Payments"
-                            data-uc-img="loading: lazy">
-                          <a href="finans-detay.html" class="position-cover"
-                            data-caption="Tech Innovations Reshaping the Retail Landscape: AI Payments"></a>
-                        </figure>
-                        <div
-                          class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
-                          <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
-                            href="finans-detay.html">Tennis</a>
-                        </div>
-
-                        <div
-                          class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
-                        </div>
-                        <span class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
-                          <i class=" fas fa-play"></i>
-                          <i class=" fas fa-camera"></i>
-                          <i class=" fas fa-volume-up"></i>
-                        </span>
-                      </div>
-                      <div class="post-header panel vstack gap-1 lg:gap-2">
-                        <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
-                          <a class="text-none" href="finans-detay.html">Tech Innovations
-                            Reshaping the Retail Landscape: AI Payments Lorem ipsum, dolor
-                            sit amet consectetur adipisicing elit. Repellendus optio nobis
-                            molestiae culpa aperiam facere, vel iusto esse?</a>
-                        </h3>
-                        <div>
-                          <div
-                            class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
-                            <div class="d-flex items-center justify-center">
-                              <div class="post-author hstack gap-1">
-                                <a href="yazar-detay.html" data-uc-tooltip="Sarah Eddrissi"><img
-                                    src="./assets/images/avatars/03.png" alt="Sarah Eddrissi"
-                                    class="w-24px h-24px rounded"></a>
-                                <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Sarah
-                                  Eddrissi</a>
-                              </div>
-                            </div>
-                            <div class="sep lg:d-block d-none">·</div>
-                            <div class="d-flex items-center justify-center">
-                              <div
-                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
-                                <span class="text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-calendar-day"></i>
-                                  <span class="minimizeDate">12.12.2025</span>
-                                </span>
-                                <div class="sep">
-                                  ·
-                                </div>
-                                <span class=" text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-clock"></i>
-                                  123
-                                </span>
-                                <div class="sep d-block ">
-                                  ·
-                                </div>
-                                <span class="text-gray-400 d-block  dark:text-gray-100">
-                                  <i class="fas fa-eye"></i>
-                                  <span class="minimizeNumber">12345</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  </div>
-                  <div>
-                    <article class="post type-post panel vstack gap-2">
-                      <div class="post-image panel overflow-hidden">
-                        <figure
-                          class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                          <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                            src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
-                            alt="Tech Innovations Reshaping the Retail Landscape: AI Payments"
-                            data-uc-img="loading: lazy">
-                          <a href="finans-detay.html" class="position-cover"
-                            data-caption="Tech Innovations Reshaping the Retail Landscape: AI Payments"></a>
-                        </figure>
-                        <div
-                          class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
-                          <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
-                            href="finans-detay.html">Tennis</a>
-                        </div>
-
-                        <div
-                          class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
-                        </div>
-                        <span class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
-                          <i class=" fas fa-play"></i>
-                          <i class=" fas fa-camera"></i>
-                          <i class=" fas fa-volume-up"></i>
-                        </span>
-                      </div>
-                      <div class="post-header panel vstack gap-1 lg:gap-2">
-                        <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
-                          <a class="text-none" href="finans-detay.html">Tech Innovations
-                            Reshaping the Retail Landscape: AI Payments Lorem ipsum, dolor
-                            sit amet consectetur adipisicing elit. Repellendus optio nobis
-                            molestiae culpa aperiam facere, vel iusto esse?</a>
-                        </h3>
-                        <div>
-                          <div
-                            class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
-                            <div class="d-flex items-center justify-center">
-                              <div class="post-author hstack gap-1">
-                                <a href="yazar-detay.html" data-uc-tooltip="Sarah Eddrissi"><img
-                                    src="./assets/images/avatars/03.png" alt="Sarah Eddrissi"
-                                    class="w-24px h-24px rounded"></a>
-                                <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Sarah
-                                  Eddrissi</a>
-                              </div>
-                            </div>
-                            <div class="sep lg:d-block d-none">·</div>
-                            <div class="d-flex items-center justify-center">
-                              <div
-                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
-                                <span class="text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-calendar-day"></i>
-                                  <span class="minimizeDate">12.12.2025</span>
-                                </span>
-                                <div class="sep">
-                                  ·
-                                </div>
-                                <span class=" text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-clock"></i>
-                                  123
-                                </span>
-                                <div class="sep d-block ">
-                                  ·
-                                </div>
-                                <span class="text-gray-400 d-block  dark:text-gray-100">
-                                  <i class="fas fa-eye"></i>
-                                  <span class="minimizeNumber">12345</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  </div>
-                  <div>
-                    <article class="post type-post panel vstack gap-2">
-                      <div class="post-image panel overflow-hidden">
-                        <figure
-                          class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
-                          <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
-                            src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
-                            alt="Tech Innovations Reshaping the Retail Landscape: AI Payments"
-                            data-uc-img="loading: lazy">
-                          <a href="finans-detay.html" class="position-cover"
-                            data-caption="Tech Innovations Reshaping the Retail Landscape: AI Payments"></a>
-                        </figure>
-                        <div
-                          class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
-                          <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
-                            href="finans-detay.html">Tennis</a>
-                        </div>
-
-                        <div
-                          class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
-                        </div>
-                        <span class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
-                          <i class=" fas fa-play"></i>
-                          <i class=" fas fa-camera"></i>
-                          <i class=" fas fa-volume-up"></i>
-                        </span>
-                      </div>
-                      <div class="post-header panel vstack gap-1 lg:gap-2">
-                        <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
-                          <a class="text-none" href="finans-detay.html">Tech Innovations
-                            Reshaping the Retail Landscape: AI Payments Lorem ipsum, dolor
-                            sit amet consectetur adipisicing elit. Repellendus optio nobis
-                            molestiae culpa aperiam facere, vel iusto esse?</a>
-                        </h3>
-                        <div>
-                          <div
-                            class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
-                            <div class="d-flex items-center justify-center">
-                              <div class="post-author hstack gap-1">
-                                <a href="yazar-detay.html" data-uc-tooltip="Sarah Eddrissi"><img
-                                    src="./assets/images/avatars/03.png" alt="Sarah Eddrissi"
-                                    class="w-24px h-24px rounded"></a>
-                                <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Sarah
-                                  Eddrissi</a>
-                              </div>
-                            </div>
-                            <div class="sep lg:d-block d-none">·</div>
-                            <div class="d-flex items-center justify-center">
-                              <div
-                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
-                                <span class="text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-calendar-day"></i>
-                                  <span class="minimizeDate">12.12.2025</span>
-                                </span>
-                                <div class="sep">
-                                  ·
-                                </div>
-                                <span class=" text-gray-400 dark:text-gray-100">
-                                  <i class="fas fa-clock"></i>
-                                  123
-                                </span>
-                                <div class="sep d-block ">
-                                  ·
-                                </div>
-                                <span class="text-gray-400 d-block  dark:text-gray-100">
-                                  <i class="fas fa-eye"></i>
-                                  <span class="minimizeNumber">12345</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  </div>
-
+                    </div>
+                  </article>
                 </div>
-                <div class="nav-pagination pt-3 mt-6 lg:mt-9 border-top border-gray-100 dark:border-gray-800">
-                  <ul class="nav-x uc-pagination hstack gap-1 justify-center ft-secondary" data-uc-margin="">
-                    <li>
-                      <a href="#"><span class="icon icon-1 unicon-chevron-left"></span></a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#" class="uc-active bg-primary">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li class="uc-disabled"><span>…</span></li>
-                    <li><a href="#">8</a></li>
-                    <li><a href="#">9</a></li>
-                    <li>
-                      <a href="#"><span class="icon icon-1 unicon-chevron-right"></span></a>
-                    </li>
-                  </ul>
+                <div>
+                  <article class="post type-post panel vstack gap-2">
+                    <div class="post-image panel overflow-hidden">
+                      <figure class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                          src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
+                          alt="TÜİK açıkladı: İşsizlik oranı yüzde 7,9'a geriledi" data-uc-img="loading: lazy">
+                        <a href="finans-detay.html" class="position-cover" data-caption="TÜİK açıkladı: İşsizlik oranı yüzde 7,9'a geriledi"></a>
+                      </figure>
+                      <div class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                        <a class="text-none bg-primary px-1 rounded-1 shadow-xs" href="finans-detay.html">Finans</a>
+                      </div>
+                    </div>
+                    <div class="post-header panel vstack gap-1 lg:gap-2">
+                      <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2">
+                        <a class="text-none" href="finans-detay.html">TÜİK açıkladı: İşsizlik oranı yüzde 7,9'a geriledi</a>
+                      </h3>
+                      <div>
+                        <div class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-author hstack gap-1">
+                              <a href="yazar-detay.html" data-uc-tooltip="Kerem Doğan"><img
+                                  src="./assets/images/avatars/05.png" alt="Kerem Doğan" class="w-24px h-24px rounded"></a>
+                              <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Kerem Doğan</a>
+                            </div>
+                          </div>
+                          <div class="sep lg:d-block d-none">·</div>
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex gap-1">
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-calendar-day"></i>
+                                <span class="minimizeDate">20.08.2026</span>
+                              </span>
+                              <div class="sep">·</div>
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-clock"></i>
+                                4 dk
+                              </span>
+                              <div class="sep d-block">·</div>
+                              <span class="text-gray-400 d-block dark:text-gray-100">
+                                <i class="fas fa-eye"></i>
+                                <span class="minimizeNumber">5117</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
                 </div>
-              </div>
+                <div>
+                  <article class="post type-post panel vstack gap-2">
+                    <div class="post-image panel overflow-hidden">
+                      <figure class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                          src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
+                          alt="Enflasyon verisi öncesi piyasalarda temkinli seyir" data-uc-img="loading: lazy">
+                        <a href="finans-detay.html" class="position-cover" data-caption="Enflasyon verisi öncesi piyasalarda temkinli seyir"></a>
+                      </figure>
+                      <div class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                        <a class="text-none bg-primary px-1 rounded-1 shadow-xs" href="finans-detay.html">Finans</a>
+                      </div>
+                    </div>
+                    <div class="post-header panel vstack gap-1 lg:gap-2">
+                      <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2">
+                        <a class="text-none" href="finans-detay.html">Enflasyon verisi öncesi piyasalarda temkinli seyir</a>
+                      </h3>
+                      <div>
+                        <div class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-author hstack gap-1">
+                              <a href="yazar-detay.html" data-uc-tooltip="Ayşe Tunç"><img
+                                  src="./assets/images/avatars/07.png" alt="Ayşe Tunç" class="w-24px h-24px rounded"></a>
+                              <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Ayşe Tunç</a>
+                            </div>
+                          </div>
+                          <div class="sep lg:d-block d-none">·</div>
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex gap-1">
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-calendar-day"></i>
+                                <span class="minimizeDate">20.08.2026</span>
+                              </span>
+                              <div class="sep">·</div>
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-clock"></i>
+                                5 dk
+                              </span>
+                              <div class="sep d-block">·</div>
+                              <span class="text-gray-400 d-block dark:text-gray-100">
+                                <i class="fas fa-eye"></i>
+                                <span class="minimizeNumber">6034</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div>
+                  <article class="post type-post panel vstack gap-2">
+                    <div class="post-image panel overflow-hidden">
+                      <figure class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                          src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
+                          alt="Konut kredisi faizlerinde yeni dönem başlıyor" data-uc-img="loading: lazy">
+                        <a href="finans-detay.html" class="position-cover" data-caption="Konut kredisi faizlerinde yeni dönem başlıyor"></a>
+                      </figure>
+                      <div class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                        <a class="text-none bg-primary px-1 rounded-1 shadow-xs" href="finans-detay.html">Finans</a>
+                      </div>
+                    </div>
+                    <div class="post-header panel vstack gap-1 lg:gap-2">
+                      <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2">
+                        <a class="text-none" href="finans-detay.html">Konut kredisi faizlerinde yeni dönem başlıyor</a>
+                      </h3>
+                      <div>
+                        <div class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-author hstack gap-1">
+                              <a href="yazar-detay.html" data-uc-tooltip="Mert Yılmaz"><img
+                                  src="./assets/images/avatars/02.png" alt="Mert Yılmaz" class="w-24px h-24px rounded"></a>
+                              <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Mert Yılmaz</a>
+                            </div>
+                          </div>
+                          <div class="sep lg:d-block d-none">·</div>
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex gap-1">
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-calendar-day"></i>
+                                <span class="minimizeDate">20.08.2026</span>
+                              </span>
+                              <div class="sep">·</div>
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-clock"></i>
+                                6 dk
+                              </span>
+                              <div class="sep d-block">·</div>
+                              <span class="text-gray-400 d-block dark:text-gray-100">
+                                <i class="fas fa-eye"></i>
+                                <span class="minimizeNumber">6951</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div>
+                  <article class="post type-post panel vstack gap-2">
+                    <div class="post-image panel overflow-hidden">
+                      <figure class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                          src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
+                          alt="Dış ticaret açığı temmuz ayında daraldı" data-uc-img="loading: lazy">
+                        <a href="finans-detay.html" class="position-cover" data-caption="Dış ticaret açığı temmuz ayında daraldı"></a>
+                      </figure>
+                      <div class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                        <a class="text-none bg-primary px-1 rounded-1 shadow-xs" href="finans-detay.html">Finans</a>
+                      </div>
+                    </div>
+                    <div class="post-header panel vstack gap-1 lg:gap-2">
+                      <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2">
+                        <a class="text-none" href="finans-detay.html">Dış ticaret açığı temmuz ayında daraldı</a>
+                      </h3>
+                      <div>
+                        <div class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-author hstack gap-1">
+                              <a href="yazar-detay.html" data-uc-tooltip="Deniz Kaya"><img
+                                  src="./assets/images/avatars/09.png" alt="Deniz Kaya" class="w-24px h-24px rounded"></a>
+                              <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Deniz Kaya</a>
+                            </div>
+                          </div>
+                          <div class="sep lg:d-block d-none">·</div>
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex gap-1">
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-calendar-day"></i>
+                                <span class="minimizeDate">20.08.2026</span>
+                              </span>
+                              <div class="sep">·</div>
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-clock"></i>
+                                7 dk
+                              </span>
+                              <div class="sep d-block">·</div>
+                              <span class="text-gray-400 d-block dark:text-gray-100">
+                                <i class="fas fa-eye"></i>
+                                <span class="minimizeNumber">7868</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div>
+                  <article class="post type-post panel vstack gap-2">
+                    <div class="post-image panel overflow-hidden">
+                      <figure class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                        <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                          src="./assets/images/410x410.png" data-src="./assets/images/410x410.png"
+                          alt="Sanayi üretimi yıllık bazda yüzde 4,1 arttı" data-uc-img="loading: lazy">
+                        <a href="finans-detay.html" class="position-cover" data-caption="Sanayi üretimi yıllık bazda yüzde 4,1 arttı"></a>
+                      </figure>
+                      <div class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                        <a class="text-none bg-primary px-1 rounded-1 shadow-xs" href="finans-detay.html">Finans</a>
+                      </div>
+                    </div>
+                    <div class="post-header panel vstack gap-1 lg:gap-2">
+                      <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2">
+                        <a class="text-none" href="finans-detay.html">Sanayi üretimi yıllık bazda yüzde 4,1 arttı</a>
+                      </h3>
+                      <div>
+                        <div class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-author hstack gap-1">
+                              <a href="yazar-detay.html" data-uc-tooltip="Burak Şen"><img
+                                  src="./assets/images/avatars/11.png" alt="Burak Şen" class="w-24px h-24px rounded"></a>
+                              <a href="yazar-detay.html" class="text-black dark:text-white text-none fw-bold">Burak Şen</a>
+                            </div>
+                          </div>
+                          <div class="sep lg:d-block d-none">·</div>
+                          <div class="d-flex items-center justify-center">
+                            <div class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex gap-1">
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-calendar-day"></i>
+                                <span class="minimizeDate">20.08.2026</span>
+                              </span>
+                              <div class="sep">·</div>
+                              <span class="text-gray-400 dark:text-gray-100">
+                                <i class="fas fa-clock"></i>
+                                3 dk
+                              </span>
+                              <div class="sep d-block">·</div>
+                              <span class="text-gray-400 d-block dark:text-gray-100">
+                                <i class="fas fa-eye"></i>
+                                <span class="minimizeNumber">8785</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
             </div>
+              <div class="nav-pagination pt-3 mt-6 lg:mt-9 border-top border-gray-100 dark:border-gray-800">
+                <ul class="nav-x uc-pagination hstack gap-1 justify-center ft-secondary" data-uc-margin="">
+                  <li><a href="#"><span class="icon icon-1 unicon-chevron-left"></span></a></li>
+                  <li><a href="#" class="uc-active bg-primary">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li class="uc-disabled"><span>…</span></li>
+                  <li><a href="#">8</a></li>
+                  <li><a href="#">9</a></li>
+                  <li><a href="#"><span class="icon icon-1 unicon-chevron-right"></span></a></li>
+                </ul>
+              </div>
           </div>
         </div>
-
-        <p style="font-size: 14px;" class="p-2 rounded-1 border-1  mt-2 dark:bg-gray-800 bg-white"><strong>Önemli
-            Uyarı:</strong> Bu
-          haberler
-          yatırım
-          tavsiyesiniteliği taşımaz. Kripto para
-          piyasaları yüksek risk içermektedir
-          ve
-          yatırımlarınızın değer kaybetme olasılığı vardır. Yatırım yapmadan önce kendi araştırmanızı yapmanızı ve
-          gerekirse
-          profesyonel yatırım danışmanı desteği almanızı öneririz.
-          <br><br>
-          "Burada yer alan yatırım bilgi, yorum ve tavsiyeleri yatırım danışmanlığı kapsamında değildir. Yatırım
-          danışmanlığı
-          hizmeti, aracı kurumlar, portföy yönetim şirketleri, mevduat kabul etmeyen bankalar ile müşteri arasında
-          imzalanacak
-          yatırım danışmanlığı sözleşmesi çerçevesinde sunulmaktadır. Burada yer alan yorum ve tavsiyeler, yatırım ve
-          tavsiyeleri
-          bulunulanların kişisel portföylerine dayandırılarak. Bu görüşler, mali durumunuz ve risk ve getiri
-          tercihlerinize uygun
-          olmayabilir. Bu nedenle, sadece burada yer alan bilgilere dayanılarak yatırım kararı verilmesi,
-          beklentilerinize uygun
-          sonuçlar doğurmayabilir."
-        </p>
       </div>
-    </div>
+    </section>
 
     <!-- Newsletter -->
   </div>
@@ -1828,11 +1748,11 @@
   <!-- Footer start -->
   <footer id="uc-footer" class="uc-footer panel uc-light">
     <div
-      class="footer-outer pt-4 pb-2 lg:py-6 lg:pb-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-opacity-50">
+      class="footer-outer dh-footer-brand pt-4 pb-2 lg:py-6 lg:pb-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-opacity-50">
       <div class="container max-w-xl">
         <div class="footer-inner vstack ">
           <div class="footer-top-logo-desc">
-            <img src="./assets/images/logos/finans-logo.png" width="300" alt="">
+            <img src="./assets/images/logos/logo-white.png" width="300" alt="Dada Haber">
             <p><span class="text-gray-200 fw-bold">dadahaber.com</span> internet sitesinde yayınlanan yazı,
               haber, video ve
               fotoğrafların her türlü
@@ -1844,18 +1764,25 @@
             <div class="footer-nav mb-3">
               <ul class="nav-x gap-2 lg:gap-2 justify-center text-center text-uppercase fw-medium">
                 <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                    href="reklam.html">REKLAM</a>
+                    href="hakkimizda.html">HAKKIMIZDA</a>
                 </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="kunye.html">KÜNYE</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="reklam.html">REKLAM</a></li>
                 <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="arsiv.html">ARŞİV</a>
                 </li>
                 <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                    href="yazar-liste.html">YAZARLAR</a></li>
-                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="kunye.html">KÜNYE</a>
+                    href="iletisim.html">İLETİŞİM</a>
                 </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="yazar-liste.html">YAZARLAR</a></li>
+
               </ul>
             </div>
             <div class="footer-nav">
               <ul class="nav-x gap-2 lg:gap-2 justify-center text-center text-uppercase fw-medium">
+
                 <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="cerezler.html">ÇEREZ
                     POLİTİKASI</a>
                 </li>
@@ -1866,6 +1793,10 @@
                 </li>
                 <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="kvkk.html">GİZLİLİK VE
                     KVKK POLİTİKASI</a>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="yayin-ilkeleri.html">YAYIN
+                    İLKELERİ</a>
+                </li>
                 </li>
               </ul>
             </div>
@@ -1873,73 +1804,27 @@
             <div class="mb-3 footer-social lg:hstack md:hstack vstack  justify-center mt-4 gap-2 lg:gap-0 items-center">
               <div class="footer-social lg:hstack items-center md:hstack vstack justify-center mt-3 gap-2 lg:gap-3">
                 <p>Günlük gelişmeleri sosyal medya <br> hesaplarından takip edebilirsiniz.</p>
-                <ul class="nav-x gap-1 flex-wrap">
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/google.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/facebook.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/twitter.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/linkedin.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/whatsapp.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/telegram.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/email.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/spotify.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/link.png" alt="">
-                    </a>
-                  </li>
+                <ul class="nav-x gap-1 flex-wrap dh-foot-soc">
+                  <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
                 </ul>
               </div>
               <div class="footer-social lg:hstack items-center md:hstack vstack justify-center mt-3 gap-2 lg:gap-3">
                 <p>Günlük gelişmeleri takip edebilmek için <br> dadahaber uygulamasını indirin</p>
-                <ul class="nav-x gap-2">
+                <ul class="nav-x gap-2 dh-store-badges">
                   <li>
-                    <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="#ln">
-                      <img style="width: 90px;" src="./assets/images/app-icons/google-play.svg" class="ratio-3x2 w-90px"
-                        alt="">
+                    <a class="dh-store-badge" href="#ln">
+                      <i class="fa-brands fa-apple" aria-hidden="true"></i>
+                      <span><small>İndir</small><b>App Store</b></span>
                     </a>
                   </li>
                   <li>
-                    <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="#ln">
-                      <img style="width: 90px;" src="./assets/images/app-icons/app-store.svg" class="ratio-3x2 w-90px"
-                        alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="#ln">
-                      <img style="width: 90px;" src="./assets/images/app-icons/huawei.png" class="ratio-3x2 w-90px"
-                        alt="">
+                    <a class="dh-store-badge" href="#ln">
+                      <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+                      <span><small>İndir</small><b>Google Play</b></span>
                     </a>
                   </li>
                 </ul>
@@ -1956,34 +1841,54 @@
   </footer>
   <!-- Footer end -->
 
-  <!-- include jquery & bootstrap js -->
-  <script defer src="./assets/js/libs/jquery.min.js"></script>
-  <script defer src="./assets/js/libs/bootstrap.min.js"></script>
+    <!-- include jquery & bootstrap js -->
+    <script defer src="./assets/js/libs/jquery.min.js"></script>
+    <script defer src="./assets/js/libs/bootstrap.min.js"></script>
 
-  <!-- include scripts -->
-  <script defer src="./assets/js/libs/anime.min.js"></script>
-  <script defer src="./assets/js/libs/swiper-bundle.min.js"></script>
-  <script defer src="./assets/js/libs/scrollmagic.min.js"></script>
-  <script defer src="./assets/js/helpers/data-attr-helper.js"></script>
-  <script defer src="./assets/js/helpers/swiper-helper.js"></script>
-  <script defer src="./assets/js/helpers/anime-helper.js"></script>
-  <script defer src="./assets/js/helpers/anime-helper-defined-timelines.js"></script>
-  <script defer src="./assets/js/uikit-components-bs.js"></script>
+    <!-- include scripts -->
+    <script defer src="./assets/js/libs/anime.min.js"></script>
+    <script defer src="./assets/js/libs/swiper-bundle.min.js"></script>
+    <script defer src="./assets/js/libs/scrollmagic.min.js"></script>
+    <script defer src="./assets/js/helpers/data-attr-helper.js"></script>
+    <script defer src="./assets/js/helpers/swiper-helper.js"></script>
+    <script defer src="./assets/js/helpers/anime-helper.js"></script>
+    <script defer src="./assets/js/helpers/anime-helper-defined-timelines.js"></script>
+    <script defer src="./assets/js/uikit-components-bs.js"></script>
 
-  <!-- include app script -->
-  <script defer src="./assets/js/app.js"></script>
+    <!-- Sıralama sekmeleri (R4-L3) — açılır kutunun yerini aldı -->
+    <script>
+      document.addEventListener('click', function (e) {
+        var t = e.target.closest('.dh-sort__tab');
+        if (!t) return;
+        t.parentElement.querySelectorAll('.dh-sort__tab').forEach(function (b) {
+          b.classList.remove('is-on');
+          b.setAttribute('aria-selected', 'false');
+        });
+        t.classList.add('is-on');
+        t.setAttribute('aria-selected', 'true');
+      });
+    </script>
 
-  <script>
-    // Schema toggle via URL
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const getSchema = urlParams.get("schema");
-    if (getSchema === "dark") {
-      setDarkMode(1);
-    } else if (getSchema === "light") {
-      setDarkMode(0);
-    }
-  </script>
+    <!-- include app script -->
+    <script defer src="./assets/js/app.js"></script>
+
+    <!-- footer perdesi -->
+    <script defer src="./assets/js/footer-reveal.js"></script>
+
+    <!-- günlük panel -->
+    <script defer src="./assets/js/dh-panel.js"></script>
+
+    <script>
+        // Schema toggle via URL
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const getSchema = urlParams.get("schema");
+        if (getSchema === "dark") {
+            setDarkMode(1);
+        } else if (getSchema === "light") {
+            setDarkMode(0);
+        }
+    </script>
 </body>
 
 </html>

@@ -74,227 +74,230 @@
 
 <body class="uni-body panel bg-gray-50 dark:bg-black text-gray-900  dark:text-white overflow-x-hidden">
 
-  <!--  Search modal -->
-  <div id="uc-search-modal" class="uc-modal-full uc-modal" data-uc-modal="overlay: true">
-    <div class="uc-modal-dialog d-flex justify-center bg-white text-dark dark:bg-gray-900 dark:text-white"
-      data-uc-height-viewport="">
-      <button
-        class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
-        type="button">
-        <i class="unicon-close"></i>
-      </button>
-      <div class="panel w-100 sm:w-500px px-2 py-5">
-        <h3 class="h2 text-center">Ara</h3>
-        <form class="hstack gap-1 mt-4 border-bottom p-narrow dark:border-gray-700" action="?">
-          <span class="d-inline-flex justify-center items-center w-24px sm:w-40 h-24px sm:h-40px opacity-50"><i
-              class="unicon-search icon-3"></i></span>
-          <input type="search" name="q" class="form-control-plaintext ms-1 fs-6 sm:fs-5 w-full dark:text-white"
-            placeholder="Anahtar kelime yaz.." aria-label="Ara" autofocus>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!--  Menu panel -->
-  <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">
-    <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
-      <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
-        <div class="uc-logo">
-          <a href="index.html" class="h5 text-none text-gray-900 dark:text-white">
-            <img class="w-48px" src="./assets/images/logos/logo-left.png" alt="News5" data-uc-svg>
-          </a>
+    <!--  Search modal -->
+    <div id="uc-search-modal" class="uc-modal-full uc-modal" data-uc-modal="overlay: true">
+        <div class="uc-modal-dialog d-flex justify-center bg-white text-dark dark:bg-gray-900 dark:text-white"
+            data-uc-height-viewport="">
+            <button
+                class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                type="button">
+                <i class="unicon-close"></i>
+            </button>
+            <div class="panel w-100 sm:w-500px px-2 py-5">
+                <h3 class="h2 text-center">Ara</h3>
+                <form class="hstack gap-1 mt-4 border-bottom p-narrow dark:border-gray-700" action="?">
+                    <span
+                        class="d-inline-flex justify-center items-center w-24px sm:w-40 h-24px sm:h-40px opacity-50"><i
+                            class="unicon-search icon-3"></i></span>
+                    <input type="search" name="q"
+                        class="form-control-plaintext ms-1 fs-6 sm:fs-5 w-full dark:text-white"
+                        placeholder="Anahtar kelime yaz.." aria-label="Ara" autofocus>
+                </form>
+            </div>
         </div>
-        <button
-          class="uc-offcanvas-close p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary  duration-150 transition-all"
-          type="button">
-          <i class="unicon-close"></i>
-        </button>
-      </header>
+    </div>
 
-      <div class="panel">
-        <ul class="nav-y gap-narrow fw-bold fs-5" data-uc-nav>
-          <li>
-            <a href="haber-liste.html">GÜNDEM</a>
-          </li>
-          <li>
-            <a href="spor.html">SPOR</a>
-          </li>
-          <li>
-            <a href="finans.html">FİNANS</a>
-          </li>
-          <li>
-            <a href="savunma.html">SAVUNMA</a>
-          </li>
-          <li>
-            <a href="haber-liste.html">DÜNYA</a>
-          </li>
-          <li>
-            <a href="kadin.html">KADIN</a>
-          </li>
-          <li class="uc-parent">
-            <a href="#">DİĞER</a>
-            <ul class="uc-nav-sub" data-uc-nav="">
-              <li>
-                <a href="haber-liste.html">KÜLTÜR-SANAT</a>
-              </li>
-              <li>
-                <a href="haber-liste.html">YAŞAM</a>
-              </li>
-              <li>
-                <a href="haber-liste.html">ÇEVRE</a>
-              </li>
-              <li>
-                <a target="_blank" href="https://dadamutfak.com/">MUTFAK</a>
-              </li>
-              <li>
-                <a href="saglik.html">SAĞLIK</a>
-              </li>
-              <li>
-                <a href="teknoloji.html">TEKNOLOJİ</a>
-              </li>
-              <li>
-                <a href="haber-liste.html">EĞİTİM</a>
-              </li>
-              <li>
-                <a href="oyun.html">OYUN</a>
-              </li>
-              <li>
-                <a href="haber-liste.html">TÜM MANŞETLER</a>
-              </li>
-            </ul>
-          </li>
-          <hr>
-          <ul class="vstack items-start gap-0">
-            <li>
-              <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
-                style="font-size: 12px;" href="haber-dinle.html" data-uc-toggle>
-                <i class="fa-solid fa-ear-muffs text-primary fs-6"></i>
-                HABER DİNLE
-              </a>
-            </li>
-            <li>
-              <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
-                style="font-size: 12px;" href="foto-fokus.html" data-uc-toggle>
-                <i class="fas text-primary fa-camera fs-6"></i>
-                FOTO FOKUS
-              </a>
-            </li>
+    <!--  Menu panel -->
+    <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">
+        <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
+            <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
+                <div class="uc-logo">
+                    <a href="index.html" class="h5 text-none text-gray-900 dark:text-white">
+                        <img class="w-48px" src="./assets/images/logos/logo-left.png" alt="News5" data-uc-svg>
+                    </a>
+                </div>
+                <button
+                    class="uc-offcanvas-close p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary  duration-150 transition-all"
+                    type="button">
+                    <i class="unicon-close"></i>
+                </button>
+            </header>
 
-            <li>
-              <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
-                style="font-size: 12px;" href="video-galeri.html" data-uc-toggle>
-                <i class="fas text-primary fa-play fs-6"></i>
-                VİDEO GALERİ
-              </a>
-            </li>
-            <li>
-              <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
-                style="font-size: 12px;" href="infografik.html" data-uc-toggle>
-                <i class="fas text-primary fa-info-circle fs-6"></i>
-                İNFOGRAFİK
-              </a>
-            </li>
-            <li>
-              <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
-                style="font-size: 12px;" href="podcast.html" data-uc-toggle>
-                <i class="fas text-primary fa-podcast fs-6"></i>
-                PODCAST
-              </a>
-            </li>
-          </ul>
-          <hr>
-        </ul>
-        <div class="py-2 hstack gap-2 bg-white dark:bg-gray-900">
-          <div class="hstack gap-1">
-            <span class="fs-7 opacity-60">Tema Rengi:</span>
-            <div class="darkmode-trigger" data-darkmode-switch="">
-              <label class="switch">
+            <div class="panel">
+                <ul class="nav-y gap-narrow fw-bold fs-5" data-uc-nav>
+                    <li>
+                        <a href="haber-liste.html">GÜNDEM</a>
+                    </li>
+                    <li>
+                        <a href="spor.html">SPOR</a>
+                    </li>
+                    <li>
+                        <a href="finans.html">FİNANS</a>
+                    </li>
+                    <li>
+                        <a href="savunma.html">SAVUNMA</a>
+                    </li>
+                    <li>
+                        <a href="haber-liste.html">DÜNYA</a>
+                    </li>
+                    <li>
+                        <a href="kadin.html">KADIN</a>
+                    </li>
+                    <li class="uc-parent">
+                        <a href="#">DİĞER</a>
+                        <ul class="uc-nav-sub" data-uc-nav="">
+                            <li>
+                                <a href="haber-liste.html">KÜLTÜR-SANAT</a>
+                            </li>
+                            <li>
+                                <a href="haber-liste.html">YAŞAM</a>
+                            </li>
+                            <li>
+                                <a href="haber-liste.html">ÇEVRE</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://dadamutfak.com/">MUTFAK</a>
+                            </li>
+                            <li>
+                                <a href="saglik.html">SAĞLIK</a>
+                            </li>
+                            <li>
+                                <a href="teknoloji.html">TEKNOLOJİ</a>
+                            </li>
+                            <li>
+                                <a href="haber-liste.html">EĞİTİM</a>
+                            </li>
+                            <li>
+                                <a href="oyun.html">OYUN</a>
+                            </li>
+                            <li>
+                                <a href="haber-liste.html">TÜM MANŞETLER</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <ul class="vstack items-start gap-0">
+                        <li>
+                            <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
+                                style="font-size: 12px;" href="haber-dinle.html" data-uc-toggle>
+                                <i class="fa-solid fa-ear-muffs text-primary fs-6"></i>
+                                HABER DİNLE
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
+                                style="font-size: 12px;" href="foto-fokus.html" data-uc-toggle>
+                                <i class="fas text-primary fa-camera fs-6"></i>
+                                FOTO FOKUS
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
+                                style="font-size: 12px;" href="video-galeri.html" data-uc-toggle>
+                                <i class="fas text-primary fa-play fs-6"></i>
+                                VİDEO GALERİ
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
+                                style="font-size: 12px;" href="infografik.html" data-uc-toggle>
+                                <i class="fas text-primary fa-info-circle fs-6"></i>
+                                İNFOGRAFİK
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
+                                style="font-size: 12px;" href="podcast.html" data-uc-toggle>
+                                <i class="fas text-primary fa-podcast fs-6"></i>
+                                PODCAST
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                </ul>
+                <div class="py-2 hstack gap-2 bg-white dark:bg-gray-900">
+                    <div class="hstack gap-1">
+                        <span class="fs-7 opacity-60">Tema Rengi:</span>
+                        <div class="darkmode-trigger" data-darkmode-switch="">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider fs-5"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Newsletter modal -->
+    <div id="uc-newsletter-modal" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog w-800px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <button
+                class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                type="button">
+                <i class="unicon-close"></i>
+            </button>
+            <div class="row md:child-cols-6 col-match g-0">
+                <div class="d-none md:d-flex">
+                    <div class="position-relative w-100 ratio-1x1">
+                        <img class="media-cover" src="./assets/images/demo-six/common/newsletter.jpg"
+                            alt="Newsletter image">
+                    </div>
+                </div>
+                <div>
+                    <div class="panel vstack self-center p-4 md:py-8 text-center">
+                        <h3 class="h3 md:h2">Bültenimize abone olun</h3>
+                        <p class="ft-tertiary">Gündemi kaçırmayın: günün öne çıkan haberleri, analizler ve özel dosyalar her sabah e-postanıza gelsin.</p>
+                        <div class="panel mt-2 lg:mt-4">
+                            <form class="vstack gap-1">
+                                <input type="email"
+                                    class="form-control form-control-sm w-full fs-6 bg-white dark:border-white dark:border-gray-700 dark:text-dark"
+                                    placeholder="E Posta Adresiniz" required>
+                                <button type="submit" class="btn btn-sm btn-primary">Kayıt Ol</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  GDPR modal -->
+    <div id="uc-gdpr-notification"
+        class="uc-gdpr-notification uc-notification uc-notification-bottom-left lg:m-2 border rounded">
+        <div class="uc-notification-message">
+            <a id="uc-close-gdpr-notification" class="uc-notification-close" data-uc-close></a>
+            <h2 class="h5 ft-primary fw-bold -ls-1 m-0">Çerezler</h2>
+            <p class="fs-7 mt-1 mb-2 text-gray-800 dark:text-white">Daha iyi bir kullanıcı deneyimi için <a
+                    class=" text-underline text-primary" href="cerezler.html">Çerezleri</a> kullanıyoruz.</p>
+            <button class="btn btn-sm btn-primary" id="uc-accept-gdpr">Kabul Et</button>
+        </div>
+    </div>
+
+    <!--  Bottom Actions Sticky -->
+    <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
+        <div class="darkmode-trigger cstack w-40px h-40px rounded text-none bg-gray-100 dark:bg-gray-700 dark:text-white"
+            data-darkmode-toggle="">
+            <label class="switch">
+                <span class="sr-only">Tema Rengi</span>
                 <input type="checkbox">
                 <span class="slider fs-5"></span>
-              </label>
-            </div>
-          </div>
+            </label>
         </div>
-      </div>
+        <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="to_top" data-uc-backtotop>
+            <i class="icon-2 unicon-chevron-up"></i>
+        </a>
     </div>
-  </div>
 
-  <!--  Newsletter modal -->
-  <div id="uc-newsletter-modal" data-uc-modal="overlay: true">
-    <div class="uc-modal-dialog w-800px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
-      <button
-        class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
-        type="button">
-        <i class="unicon-close"></i>
-      </button>
-      <div class="row md:child-cols-6 col-match g-0">
-        <div class="d-none md:d-flex">
-          <div class="position-relative w-100 ratio-1x1">
-            <img class="media-cover" src="./assets/images/demo-six/common/newsletter.jpg" alt="Newsletter image">
-          </div>
-        </div>
-        <div>
-          <div class="panel vstack self-center p-4 md:py-8 text-center">
-            <h3 class="h3 md:h2">Bültenimize abone olun</h3>
-            <p class="ft-tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos
-              eveniet odit veritatis vero, eaque dignissimos exercitationem ratione ipsa.</p>
-            <div class="panel mt-2 lg:mt-4">
-              <form class="vstack gap-1">
-                <input type="email"
-                  class="form-control form-control-sm w-full fs-6 bg-white dark:border-white dark:border-gray-700 dark:text-dark"
-                  placeholder="E Posta Adresiniz" required>
-                <button type="submit" class="btn btn-sm btn-primary">Kayıt Ol</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <!-- Header start -->
+    <header class="uc-header header-six uc-navbar-sticky-wrap z-999"
+        data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">
+        <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">
 
-  <!--  GDPR modal -->
-  <div id="uc-gdpr-notification"
-    class="uc-gdpr-notification uc-notification uc-notification-bottom-left lg:m-2 border rounded">
-    <div class="uc-notification-message">
-      <a id="uc-close-gdpr-notification" class="uc-notification-close" data-uc-close></a>
-      <h2 class="h5 ft-primary fw-bold -ls-1 m-0">Çerezler</h2>
-      <p class="fs-7 mt-1 mb-2 text-gray-800 dark:text-white">Daha iyi bir kullanıcı deneyimi için <a
-          class=" text-underline text-primary" href="cerezler.html">Çerezleri</a> kullanıyoruz.</p>
-      <button class="btn btn-sm btn-primary" id="uc-accept-gdpr">Kabul Et</button>
-    </div>
-  </div>
-
-  <!--  Bottom Actions Sticky -->
-  <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
-    <div class="darkmode-trigger cstack w-40px h-40px rounded text-none bg-gray-100 dark:bg-gray-700 dark:text-white"
-      data-darkmode-toggle="">
-      <label class="switch">
-        <span class="sr-only">Tema Rengi</span>
-        <input type="checkbox">
-        <span class="slider fs-5"></span>
-      </label>
-    </div>
-    <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="to_top" data-uc-backtotop>
-      <i class="icon-2 unicon-chevron-up"></i>
-    </a>
-  </div>
-
-  <!-- Header start -->
-  <header class="uc-header header-six uc-navbar-sticky-wrap z-999 border-3 border-danger"
-    data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">
-    <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">
-
-      <div class="uc-top-navbar panel z-3 min-h-32px overflow-hidden border-bottom d-lg-block d-none"
-        style="--uc-nav-height: 32px" data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
+            <div class="uc-top-navbar dh-shortcuts panel z-3 min-h-40px d-block"
+        style="--uc-nav-height: 40px" data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
         <div class="container max-w-xl">
-          <div class="hstack panel z-1">
+          <div class="hstack dh-shortcuts__track panel z-1">
             <div class="uc-navbar-left gap-2 lg:gap-3">
               <div class="uc-navbar-item">
                 <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
                   <i class="fas fa-calendar-day text-primary"></i>
                   12 Kasım
                   2025</span>
-                <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+                <span class="dh-sc-div" aria-hidden="true"></span>
 
                 <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
                   <img src="./assets/images/cloudy.png" class="w-20px h-20px ratio-1x1 " alt="">
@@ -309,25 +312,25 @@
                 <i class="fa-solid fa-ear-muffs text-primary"></i>
                 HABER DİNLE
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="foto-fokus.html" data-uc-toggle>
                 <i class="fas fa-camera text-primary"></i>
                 FOTO FOKUS
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="video-galeri.html" data-uc-toggle>
                 <i class="fas fa-play text-primary"></i>
                 VİDEO GALERİ
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="infografik.html" data-uc-toggle>
                 <i class="fas fa-info-circle text-primary"></i>
                 İNFOGRAFİK
               </a>
-              <span class="rotate-90"><i class="fal fa-horizontal-rule opacit-90 "></i></span>
+              <span class="dh-sc-div" aria-hidden="true"></span>
               <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
                 href="podcast.html" data-uc-toggle>
                 <i class="fas fa-podcast text-primary"></i>
@@ -337,363 +340,347 @@
           </div>
         </div>
       </div>
-      <div class="uc-center-navbar panel z-2">
-        <div class="container max-w-xl">
-          <div class="uc-navbar min-h-72px lg:min-h-80px text-gray-900 dark:text-white"
-            data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
-            <div class="uc-navbar-left">
-              <div class="d-block lg:d-none">
-                <a class="uc-menu-trigger" href="#uc-menu-panel" data-uc-toggle></a>
-              </div>
-              <div class="uc-logo d-block md:d-none">
-                <a href="index.html">
-                  <img class="w-140px d-none dark:d-block" src="./assets/images/logos/logo.png" alt="News5">
-                  <img class="w-140px d-block dark:d-none" src="./assets/images/logos/logo.png" alt="News5">
-                </a>
-              </div>
-              <div class="uc-logo d-none md:d-block">
-                <a href="index.html">
-                  <img class="logo-w-lg d-none dark:d-block" src="./assets/images/logos/logo.png" alt="News5">
-                  <img class="logo-w-lg d-block dark:d-none" src="./assets/images/logos/logo.png" alt="News5">
-                </a>
-              </div>
-            </div>
-            <div class="uc-navbar-right gap-2 lg:gap-3">
-              <ul class="uc-navbar-nav gap-4 fs-4 text-uppercase fw-bold me-2 d-none lg:d-flex"
-                style="--uc-nav-height: 80px">
-                <li>
-                  <a href="haber-liste.html">GÜNDEM</a>
-                </li>
-                <li>
-                  <a href="spor.html">SPOR</a>
-                </li>
-                <li>
-                  <a href="finans.html">FİNANS</a>
-                </li>
-                <li>
-                  <a href="savunma.html">SAVUNMA</a>
-                </li>
-                <li>
-                  <a href="haber-liste.html">DÜNYA</a>
-                </li>
-                <li>
-                  <a href="kadin.html">KADIN</a>
-                </li>
-
-                <li>
-                  <a href="#">DİĞER <span data-uc-navbar-parent-icon></span></a>
-                  <div style="z-index: 100 !important;"
-                    class="uc-navbar-dropdown ft-primary text-unset p-3 pb-4 rounded-0 hide-scrollbar"
-                    data-uc-drop=" offset: 0; boundary: !.uc-navbar; stretch: x; animation: uc-animation-slide-top-small; duration: 150;">
-                    <div class="row child-cols g-4">
-                      <div>
-                        <div class="row child-cols g-4">
-                          <div>
-                            <ul class="uc-nav uc-navbar-dropdown-nav">
-                              <li>
-                                <a href="haber-liste.html">KÜLTÜR-SANAT</a>
-                              </li>
-                              <li>
-                                <a href="haber-liste.html">YAŞAM</a>
-                              </li>
-                              <li>
-                                <a href="haber-liste.html">ÇEVRE</a>
-                              </li>
-                              <li>
-                                <a target="_blank" href="https://dadamutfak.com/">MUTFAK</a>
-                              </li>
-                              <li>
-                                <a href="saglik.html">SAĞLIK</a>
-                              </li>
-                              <li>
-                                <a href="teknoloji.html">TEKNOLOJİ</a>
-                              </li>
-                              <li>
-                                <a href="haber-liste.html">EĞİTİM</a>
-                              </li>
-                              <li>
-                                <a href="oyun.html">OYUN</a>
-                              </li>
-                              <li>
-                                <a href="haber-liste.html">TÜM MANŞETLER</a>
-                              </li>
-                            </ul>
-                          </div>
+            <div class="uc-center-navbar panel z-2">
+                <div class="container max-w-xl">
+                    <div class="uc-navbar min-h-72px lg:min-h-80px text-gray-900 dark:text-white"
+                        data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
+                        <div class="uc-navbar-left">
+                            <div class="d-block lg:d-none">
+                                <a class="uc-menu-trigger" href="#uc-menu-panel" data-uc-toggle></a>
+                            </div>
+                            <div class="uc-logo d-block md:d-none">
+                                <a href="index.html">
+                                    <img class="w-140px d-none dark:d-block" src="./assets/images/logos/logo.png"
+                                        alt="News5">
+                                    <img class="w-140px d-block dark:d-none" src="./assets/images/logos/logo.png"
+                                        alt="News5">
+                                </a>
+                            </div>
+                            <div class="uc-logo d-none md:d-block">
+                                <a href="index.html">
+                                    <img class="logo-w-lg d-none dark:d-block" src="./assets/images/logos/logo.png"
+                                        alt="News5">
+                                    <img class="logo-w-lg d-block dark:d-none" src="./assets/images/logos/logo.png"
+                                        alt="News5">
+                                </a>
+                            </div>
                         </div>
-                      </div>
+                        <div class="uc-navbar-right gap-2 lg:gap-3">
+                            <ul class="uc-navbar-nav gap-4 fs-4 text-uppercase fw-bold me-2 d-none lg:d-flex"
+                                style="--uc-nav-height: 80px">
+                                <li>
+                                    <a href="haber-liste.html">GÜNDEM</a>
+                                </li>
+                                <li>
+                                    <a href="spor.html">SPOR</a>
+                                </li>
+                                <li>
+                                    <a href="finans.html">FİNANS</a>
+                                </li>
+                                <li>
+                                    <a href="savunma.html">SAVUNMA</a>
+                                </li>
+                                <li>
+                                    <a href="haber-liste.html">DÜNYA</a>
+                                </li>
+                                <li>
+                                    <a href="kadin.html">KADIN</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">DİĞER <span data-uc-navbar-parent-icon></span></a>
+                                    <div style="z-index: 100 !important;"
+                                        class="uc-navbar-dropdown ft-primary text-unset p-3 pb-4 rounded-0 hide-scrollbar"
+                                        data-uc-drop=" offset: 0; boundary: !.uc-navbar; stretch: x; animation: uc-animation-slide-top-small; duration: 150;">
+                                        <div class="row child-cols g-4">
+                                            <div>
+                                                <div class="row child-cols g-4">
+                                                    <div>
+                                                        <ul class="uc-nav uc-navbar-dropdown-nav">
+                                                            <li>
+                                                                <a href="haber-liste.html">KÜLTÜR-SANAT</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">YAŞAM</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">ÇEVRE</a>
+                                                            </li>
+                                                            <li>
+                                                                <a target="_blank"
+                                                                    href="https://dadamutfak.com/">MUTFAK</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="saglik.html">SAĞLIK</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="teknoloji.html">TEKNOLOJİ</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">EĞİTİM</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="oyun.html">OYUN</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">TÜM MANŞETLER</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+
+                            <div class="uc-navbar-item">
+                                <a class="uc-search-trigger icon-2 cstack text-none text-dark dark:text-white"
+                                    href="#uc-search-modal" data-uc-toggle>
+                                    <i class="fas fa-search fs-4"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </li>
+                </div>
+            </div>
 
-              </ul>
+        </nav>
 
+    </header>
+        <!-- Header end -->
+    <!-- Wrapper start -->
+    <span class="dh-rail" aria-hidden="true"></span>
+    <div id="wrapper" class="wrap overflow-hidden-x">
+        <span class="dh-mark" aria-hidden="true">DADA</span>
 
-              <div class="uc-navbar-item">
-                <a class="uc-search-trigger icon-2 cstack text-none text-dark dark:text-white" href="#uc-search-modal"
-                  data-uc-toggle>
-                  <i class="fas fa-search fs-4"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </nav>
-
-  </header>
-  <div class="uc-top-navbar panel overflow-hidden bg-danger swiper-parent " style="--uc-nav-height: 32px"
-    data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
-    <div class="container container-full">
-      <div class="uc-navbar-item">
-        <div class="bg-primary h-100 p-1">
-          <span class="text-white d-flex text-nowrap fw-bold">SON HABERLER</span>
-        </div>
-        <div class="swiper swiper-ticker swiper-ticker-sep px-2" style="--uc-ticker-gap: 32px"
-          data-uc-swiper="items: auto; gap: 32; center: true; center-bounds: true; autoplay: 10000; speed: 10000; autoplay-delay: 0.1; loop: true; allowTouchMove: false; freeMode: true; autoplay-disableOnInteraction: true;">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">The
-                  Rise of AI-Powered Personal Assistants: How They Manage</a>
-              </div>
-            </div>
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">Tech
-                  Innovations Reshaping the Retail Landscape: AI Payments</a>
-              </div>
-            </div>
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">Balancing
-                  Work and
-                  Wellness:
-                  Tech Solutions for Healthy</a>
-              </div>
-            </div>
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">The
-                  Importance of Sleep: Tips for Better Rest and Recovery</a>
-              </div>
-            </div>
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">The
-                  Future of Sustainable Living: Driving Eco-Friendly Lifestyles</a>
-              </div>
-            </div>
-            <div class="swiper-slide text-white">
-              <div class="type-post post panel">
-                <a href="haber-detay.html" class="fs-7 fw-normal text-none text-inherit">Business
-                  Agility
-                  the Digital
-                  Age: Leveraging AI and Automation</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Header end -->
-  <!-- Wrapper start -->
-  <div id="wrapper" class="wrap overflow-hidden-x">
-
-    <!-- Section end -->
-    <div class="breadcrumbs panel z-1 py-2 bg-gray-25 dark:bg-gray-100 dark:bg-opacity-5 dark:text-white">
+    <!-- BELGE BAŞLIĞI — görsel banner yok, gerekçe R6-C blok yorumunda -->
+    <header class="dh-ph">
       <div class="container max-w-xl">
-        <ul class="breadcrumb nav-x justify-center gap-1 fs-7 sm:fs-6 m-0">
-          <li><a href="index.html">
-              <i class="fas fa-home-lg-alt"></i>
-            </a></li>
-          <li><i class="unicon-chevron-right opacity-50"></i></li>
-          <li><span class="opacity-50">Yayın İlkeleri</span></li>
-        </ul>
+        <nav class="dh-art-crumb dh-art-crumb--ink" aria-label="Sayfa yolu">
+          <a href="index.html" aria-label="Anasayfa"><i class="fas fa-home-lg-alt" aria-hidden="true"></i></a>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <span aria-current="page">Yayın İlkeleri</span>
+        </nav>
+
+        <span class="dh-ph__bar" aria-hidden="true"></span>
+        <span class="dh-ph__eyebrow">Kurumsal</span>
+        <h1 class="dh-ph__title">Yayın İlkeleri</h1>
+        <p class="dh-ph__sub">Haberi nasıl doğruladığımız, kaynakla nasıl çalıştığımız, hata yaptığımızda ne yaptığımız ve reklamı haberden nasıl ayırdığımız.</p>
+        <div class="dh-ph__meta">
+          <span>Yürürlük: <b>1 Ocak 2026</b></span>
+          <span class="dh-ph__sep" aria-hidden="true"></span>
+          <span>Son güncelleme: <b>27 Ocak 2026</b></span>
+          <span class="dh-ph__sep" aria-hidden="true"></span>
+          <span>Sürüm: <b>1.4</b></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="section py-4 lg:py-6">
+      <div class="container max-w-xl">
+        <div class="dh-doc">
+          <aside class="dh-doc__aside">
+          <nav class="dh-toc" data-dh-toc aria-label="İçindekiler">
+            <p class="dh-toc__label">İçindekiler</p>
+            <ol class="dh-toc__list">
+            <li><a class="dh-toc__link" href="#dogruluk">Doğruluk ve doğrulama</a></li>
+            <li><a class="dh-toc__link" href="#kaynak">Kaynak kullanımı</a></li>
+            <li><a class="dh-toc__link" href="#tarafsizlik">Tarafsızlık ve çoğulculuk</a></li>
+            <li><a class="dh-toc__link" href="#duzeltme">Düzeltme ve cevap hakkı</a></li>
+            <li><a class="dh-toc__link" href="#mahremiyet">Mahremiyet ve çocukların korunması</a></li>
+            <li><a class="dh-toc__link" href="#nefret">Nefret söylemi ve ayrımcılık</a></li>
+            <li><a class="dh-toc__link" href="#gorsel-yz">Görsel kullanımı ve yapay zekâ</a></li>
+            <li><a class="dh-toc__link" href="#cikar">Çıkar çatışması ve reklam ayrımı</a></li>
+            <li><a class="dh-toc__link" href="#sikayet">Şikâyet süreci</a></li>
+            </ol>
+          </nav>
+          </aside>
+          <div class="dh-doc__body">
+            <section class="dh-doc__sec" id="dogruluk">
+              <span class="dh-doc__num">İlke 01</span>
+              <h2 class="dh-doc__h">Doğruluk ve doğrulama</h2>
+              <p>Bir bilgi, en az iki bağımsız kaynakla doğrulanmadan haber yapılmaz. Tek kaynaklı yayımlanması zorunlu görülen durumlarda kaynağın tekliği haberde açıkça belirtilir.</p>
+              <p>Doğrulanamayan iddialar haber diliyle değil, iddia diliyle aktarılır. Başlıkta metnin desteklemediği hiçbir yargı yer almaz.</p>
+            </section>
+            <section class="dh-doc__sec" id="kaynak">
+              <span class="dh-doc__num">İlke 02</span>
+              <h2 class="dh-doc__h">Kaynak kullanımı</h2>
+              <p>Kaynak gösterimi okurun bilgiyi kendisinin de sınayabilmesi içindir.</p>
+              <ul class="dh-doc__list">
+                <li>Haberin kaynağı, mümkün olan her durumda ad ve unvanıyla belirtilir.</li>
+                <li>Kimliği gizlenen kaynak yalnızca haber değeri ve kaynağın riski birlikte tartıldıktan sonra kabul edilir; gerekçesi yayın yönetmenine yazılı olarak sunulur.</li>
+                <li>Ajans, kurum ve diğer yayın organlarından alınan içerikte kaynak kuruluş adı haber altında gösterilir.</li>
+                <li>Sosyal medya kaynaklı görüntüler doğrulanmadan yayımlanmaz.</li>
+              </ul>
+            </section>
+            <section class="dh-doc__sec" id="tarafsizlik">
+              <span class="dh-doc__num">İlke 03</span>
+              <h2 class="dh-doc__h">Tarafsızlık ve çoğulculuk</h2>
+              <p>Haberde taraflardan birinin iddiası aktarılıyorsa diğer tarafa da aynı haber içinde yanıt hakkı tanınır. Yanıt alınamamışsa bu durum haberde belirtilir.</p>
+              <p>Köşe yazıları yazarın kendi görüşüdür; kurumun yayın çizgisini bağlamaz. Köşe yazıları haberden görsel olarak ayrı sunulur.</p>
+            </section>
+            <section class="dh-doc__sec" id="duzeltme">
+              <span class="dh-doc__num">İlke 04</span>
+              <h2 class="dh-doc__h">Düzeltme ve cevap hakkı</h2>
+              <p>Hata yapıldığında hata düzeltilir ve düzeltildiği görünür kılınır — sessizce silinmez.</p>
+              <ul class="dh-doc__list dh-doc__list--num">
+                <li>Maddi hata tespit edildiğinde metin düzeltilir, haber altına düzeltme notu ve saati eklenir.</li>
+                <li>Haberin özünü değiştiren düzeltmelerde başlık da güncellenir ve değişiklik notta açıklanır.</li>
+                <li>5187 sayılı Basın Kanunu kapsamındaki cevap ve düzeltme talepleri, süresi içinde ve aynı görünürlükte yayımlanır.</li>
+              </ul>
+              <p>Düzeltme talebinizi <a href="iletisim.html">iletişim sayfasındaki</a> formdan iletebilirsiniz.</p>
+            </section>
+            <section class="dh-doc__sec" id="mahremiyet">
+              <span class="dh-doc__num">İlke 05</span>
+              <h2 class="dh-doc__h">Mahremiyet ve çocukların korunması</h2>
+              <p>Kamu yararı bulunmadıkça özel hayata ilişkin bilgi ve görüntü yayımlanmaz. Sağlık durumu, cinsel yönelim, etnik köken ve inanç bilgisi habere konu olmadıkça belirtilmez.</p>
+              <p>Çocukların kimliğini açık edecek bilgi ve görüntü kullanılmaz. Suç mağduru ve tanıklarının kimliği korunur. İntihar haberlerinde yöntem ve yer bilgisi verilmez.</p>
+            </section>
+            <section class="dh-doc__sec" id="nefret">
+              <span class="dh-doc__num">İlke 06</span>
+              <h2 class="dh-doc__h">Nefret söylemi ve ayrımcılık</h2>
+              <p>Dil, ırk, renk, cinsiyet, siyasi düşünce, felsefi inanç, din ve mezhep temelli ayrımcı ifadelere yayında yer verilmez. Bu ifadeler haber konusuysa aktarımı, meşrulaştırmayacak biçimde ve bağlamıyla birlikte yapılır.</p>
+              <p>Aynı kural yorum alanı için de geçerlidir; moderasyon bu ölçüte göre işler.</p>
+            </section>
+            <section class="dh-doc__sec" id="gorsel-yz">
+              <span class="dh-doc__num">İlke 07</span>
+              <h2 class="dh-doc__h">Görsel kullanımı ve yapay zekâ</h2>
+              <ul class="dh-doc__list">
+                <li>Arşiv görselleri “arşiv” ibaresiyle ve çekim tarihiyle kullanılır.</li>
+                <li>Temsilî görsellerde “temsilî” ibaresi görsel altyazısında yer alır.</li>
+                <li>Görselde kadraj dışında içeriğe müdahale edilmez; renk ve kontrast düzeltmesi bunun dışındadır.</li>
+                <li>Yapay zekâ ile üretilen görsel ve sesler açıkça etiketlenir. Haber metni yapay zekâ ile üretilmez; seslendirme yapılıyorsa “yapay zekâ ile seslendirildi” notu görünür.</li>
+              </ul>
+            </section>
+            <section class="dh-doc__sec" id="cikar">
+              <span class="dh-doc__num">İlke 08</span>
+              <h2 class="dh-doc__h">Çıkar çatışması ve reklam ayrımı</h2>
+              <p>Muhabir ve editörler, haber yaptıkları alanda maddi çıkar ilişkisi kuramaz; hediye ve ağırlama kabul edemez.</p>
+              <p>Reklam ve sponsorlu içerik, haber içeriğinden görsel olarak ayrılır ve “reklam” ya da “sponsorlu içerik” ibaresiyle etiketlenir. Reklam veren, haber içeriğine müdahale edemez.</p>
+            </section>
+            <section class="dh-doc__sec" id="sikayet">
+              <span class="dh-doc__num">İlke 09</span>
+              <h2 class="dh-doc__h">Şikâyet süreci</h2>
+              <p>Bir habere ilişkin şikâyetiniz, okur temsilcisine iletilir ve sırasıyla şu adımlar işletilir:</p>
+              <ul class="dh-doc__list dh-doc__list--num">
+                <li>Başvuru kaydedilir, 3 iş günü içinde alındı bilgisi verilir.</li>
+                <li>İlgili editörden yazılı görüş alınır.</li>
+                <li>Şikâyet haklı bulunursa düzeltme yayımlanır ve başvurana bildirilir.</li>
+                <li>Sonuç, en geç 15 iş günü içinde yazılı olarak paylaşılır.</li>
+              </ul>
+            </section>
+            <footer class="dh-doc__foot">Yayın ilkeleri, yayın yönetmeni ve okur temsilcisi tarafından yılda bir kez gözden geçirilir. Sürüm 1.4 — 27 Ocak 2026.</footer>
+          </div>
+        </div>
       </div>
     </div>
+    </div>
 
-    <div class="section py-3 lg:py-6 xl:py-8">
-      <div class="container max-w-lg">
-        <div class="page-wrap panel vstack gap-4 lg:gap-6 xl:gap-8">
-          <header class="page-header panel vstack justify-center gap-2 lg:gap-4 text-center">
-            <div class="panel">
-              <h1 class="h3 lg:h1 m-0">YAYIN İLKELERİ</h1>
+    <!-- Wrapper end -->
+
+    <a class="btn btn-primary btn-sm border-0 dark:text-white position-right-turn" href="#gorus_bildir_modal"
+        data-uc-toggle>
+        <i class="fa-solid fa-message "></i>
+        <span class="sm-hide-text">GÖRÜŞ BİLDİR</span>
+    </a>
+    <!--  Newsletter modal -->
+    <div id="gorus_bildir_modal" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <button
+                class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                type="button">
+                <i class="unicon-close"></i>
+            </button>
+            <div class="p-3 mt-5 d-flex w-100 flex-column gap-2">
+                <a class="btn btn-primary btn-sm w-100" href="#basit_bir_sorum_var" data-uc-toggle>
+                    BASİT BİR SORUM VAR
+                </a>
+                <a class="btn btn-primary btn-sm w-100" href="#teknik_sorun_var" data-uc-toggle>
+                    İHLAL DURUMU SÖZ KONUSU
+                </a>
+                <a class="btn btn-primary btn-sm w-100" href="#teknik_sorun_var" data-uc-toggle>
+                    TEKNİK BİR SORUN VAR
+                </a>
             </div>
-          </header>
-          <div class="page-content panel fs-6 md:fs-5">
-            <p>It is a long established fact that a reader will be distracted by the readable content of a
-              page when
-              looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here, content here', making it look
-              like
-              readable English.</p>
-            <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default
-              model
-              text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
-              Various
-              versions have evolved over the years, sometimes by accident, sometimes on purpose (injected
-              humour
-              and the like).</p>
-            <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
-              making
-              this the first true generator on the Internet. It uses a dictionary of over 200 Latin words,
-              combined with a handful of model sentence structures, to generate Lorem Ipsum which looks
-              reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected
-              humour, or
-              non-characteristic words etc.</p>
-            <h3 class="h4 md:h3 mt-3 lg:mt-6 mb-2">Determination of personal information of users</h3>
-            <ul class="list list-bullets">
-              <li>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as
-                necessary,
-                making this the first true generator on the Internet.</li>
-              <li>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence
-                structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is
-                therefore always free from repetition, injected humour, or non-characteristic words etc.
-              </li>
-              <li>There are many variations of passages of Lorem Ipsum available, but the majority have
-                suffered
-                alteration in some form, by injected humour, or randomised words which don't look even
-                slightly
-                believable.</li>
-            </ul>
-            <h3 class="h4 md:h3 mt-3 lg:mt-6 mb-2">Reasons for collecting and processing user personal
-              information
-            </h3>
-            <ul class="uk-list uk-list-decimal uk-margin-medium@m">
-              <li>It is a long established fact that a reader will be distracted by the readable content
-                of a page
-                when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                normal
-                distribution of letters.</li>
-              <li>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as
-                necessary,
-                making this the first true generator on the Internet.</li>
-              <li>It has survived not only five centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged.</li>
-            </ul>
-            <p>All generators on the Internet tend to repeat predefined chunks as necessary, making this the
-              first
-              true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
-              a
-              handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The
-              generated
-              Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic
-              words
-              etc.</p>
-          </div>
-          <div class="page-footer panel">
-            <p class="fs-7 opacity-60 m-0">Son Güncelleme: 27 Ocak 2026</p>
-          </div>
         </div>
-      </div>
     </div>
-    <!-- Newsletter -->
-  </div>
 
-  <!-- Wrapper end -->
-
-  <!-- Wrapper end -->
-  <a class="btn btn-primary btn-sm border-0 dark:text-white position-right-turn" href="#gorus_bildir_modal"
-    data-uc-toggle>
-    <i class="fa-solid fa-message "></i>
-    <span class="sm-hide-text">GÖRÜŞ BİLDİR</span>
-  </a>
-  <!--  Newsletter modal -->
-  <div id="gorus_bildir_modal" data-uc-modal="overlay: true">
-    <div
-      class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
-      <button
-        class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
-        type="button">
-        <i class="unicon-close"></i>
-      </button>
-      <div class="p-3 mt-5 d-flex w-100 flex-column gap-2">
-        <a class="btn btn-primary btn-sm w-100" href="#basit_bir_sorum_var" data-uc-toggle>
-          BASİT BİR SORUM VAR
-        </a>
-        <a class="btn btn-primary btn-sm w-100" href="#teknik_sorun_var" data-uc-toggle>
-          İHLAL DURUMU SÖZ KONUSU
-        </a>
-        <a class="btn btn-primary btn-sm w-100" href="#teknik_sorun_var" data-uc-toggle>
-          TEKNİK BİR SORUN VAR
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div id="basit_bir_sorum_var" data-uc-modal="overlay: true">
-    <div
-      class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
-      <div class="modal-header">
-        <a class="back-modal" href="#gorus_bildir_modal" data-uc-toggle>
-          Geri Dön
-        </a>
-        <button
-          class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
-          type="button">
-          <i class="unicon-close"></i>
-        </button>
-      </div>
-      <div class="p-3 mt-2 d-flex w-100 flex-column">
-        <p>Sorununuza ilişkin çözüm aşağıda olabilir!</p>
-        <hr class="w-100">
-        <span class="fw-semibold">Neden ?</span>
-        <p>Yeni eklediğim içerik Ana Sayfa'da görünmüyor ne yapmalıyım?</p>
-        <span class="fw-semibold pt-2">Çözüm</span>
-        <p>Ana sayfa içerik seçimlerimizde, site içi işleyişin ve içerik akışının bozulmaması adına
-          editörlerimizin
-          öncelik ve
-          tercihleri etkili olmaktadır. Bu sebeple, sürekliliğin sağlanması ve olabildiğince tüm kullanıcı
-          içeriklerine yer
-          verilmesi adına kategori sayfaları sürekli olarak güncellenmektedir.
-        </p>
-        <hr>
-        <p><i class="fa-solid fa-circle-info"></i> Eğer sorununuz halen daha çözülmediyse bizimle <a
-            href="iletisim.html">iletişime geçebilirsiniz.</a></p>
-      </div>
-    </div>
-  </div>
-
-  <div id="teknik_sorun_var" data-uc-modal="overlay: true">
-    <div
-      class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
-      <div class="modal-header">
-        <a class="back-modal" href="#gorus_bildir_modal" data-uc-toggle>
-          Geri Dön
-        </a>
-        <button
-          class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
-          type="button">
-          <i class="unicon-close"></i>
-        </button>
-      </div>
-      <div class="p-3 mt-2 d-flex w-100 flex-column">
-        <input class="form-control mb-1" type="text" placeholder="Adınız ve Soyadınız (Opsiyonel)" name="" id="">
-        <input class="form-control mb-1" type="email" required placeholder="Mail Adresiniz *" name="" id="">
-        <input class="form-control mb-1" id="page-url" readonly disabled type="text">
-        <textarea class="form-control" rows="6" name="" id="" placeholder="Mesajınızı Buraya Yazabilirsiniz *"
-          required></textarea>
-        <div class="form-check text-start my-2">
-          <input
-            class="form-check-input p-0 rounded-0 dark:bg-gray-800 dark:bg-gray-800 dark:border-white dark:border-opacity-15 dark:border-opacity-15"
-            type="checkbox" id="kvkkOnay">
-          <label class=" form-check-label fs-7 sm:fs-6" for="kvkkOnay"><a href="kvkk.html">KVKK</a> metnini
-            okudum, onaylıyorum.</label>
+    <div id="basit_bir_sorum_var" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <div class="modal-header">
+                <a class="back-modal" href="#gorus_bildir_modal" data-uc-toggle>
+                    Geri Dön
+                </a>
+                <button
+                    class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                    type="button">
+                    <i class="unicon-close"></i>
+                </button>
+            </div>
+            <div class="p-3 mt-2 d-flex w-100 flex-column">
+                <p>Sorununuza ilişkin çözüm aşağıda olabilir!</p>
+                <hr class="w-100">
+                <span class="fw-semibold">Neden ?</span>
+                <p>Yeni eklediğim içerik Ana Sayfa'da görünmüyor ne yapmalıyım?</p>
+                <span class="fw-semibold pt-2">Çözüm</span>
+                <p>Ana sayfa içerik seçimlerimizde, site içi işleyişin ve içerik akışının bozulmaması adına
+                    editörlerimizin
+                    öncelik ve
+                    tercihleri etkili olmaktadır. Bu sebeple, sürekliliğin sağlanması ve olabildiğince tüm kullanıcı
+                    içeriklerine yer
+                    verilmesi adına kategori sayfaları sürekli olarak güncellenmektedir.
+                </p>
+                <hr>
+                <p><i class="fa-solid fa-circle-info"></i> Eğer sorununuz halen daha çözülmediyse bizimle <a
+                        href="iletisim.html">iletişime geçebilirsiniz.</a></p>
+            </div>
         </div>
-        <button class="w-100 btn btn-primary btn-sm">GÖNDER</button>
-      </div>
     </div>
-  </div>
-  <!-- Footer start -->
+
+    <div id="teknik_sorun_var" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <div class="modal-header">
+                <a class="back-modal" href="#gorus_bildir_modal" data-uc-toggle>
+                    Geri Dön
+                </a>
+                <button
+                    class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                    type="button">
+                    <i class="unicon-close"></i>
+                </button>
+            </div>
+            <div class="p-3 mt-2 d-flex w-100 flex-column">
+                <input class="form-control mb-1" type="text" placeholder="Adınız ve Soyadınız (Opsiyonel)" name=""
+                    id="">
+                <input class="form-control mb-1" type="email" required placeholder="Mail Adresiniz *" name="" id="">
+                <input class="form-control mb-1" id="page-url" readonly disabled type="text">
+                <textarea class="form-control" rows="6" name="" id="" placeholder="Mesajınızı Buraya Yazabilirsiniz *"
+                    required></textarea>
+                <div class="form-check text-start my-2">
+                    <input
+                        class="form-check-input p-0 rounded-0 dark:bg-gray-800 dark:bg-gray-800 dark:border-white dark:border-opacity-15 dark:border-opacity-15"
+                        type="checkbox" id="kvkkOnay">
+                    <label class=" form-check-label fs-7 sm:fs-6" for="kvkkOnay"><a href="kvkk.html">KVKK</a> metnini
+                        okudum, onaylıyorum.</label>
+                </div>
+                <button class="w-100 btn btn-primary btn-sm">GÖNDER</button>
+            </div>
+        </div>
+    </div>
+    <!-- Footer start -->
   <footer id="uc-footer" class="uc-footer panel uc-light">
     <div
-      class="footer-outer pt-4 pb-2 lg:py-6 lg:pb-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-opacity-50">
+      class="footer-outer dh-footer-brand pt-4 pb-2 lg:py-6 lg:pb-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-opacity-50">
       <div class="container max-w-xl">
         <div class="footer-inner vstack ">
           <div class="footer-top-logo-desc">
-            <img src="./assets/images/logos/logo.png" width="300" alt="">
+            <img src="./assets/images/logos/logo-white.png" width="300" alt="Dada Haber">
             <p><span class="text-gray-200 fw-bold">dadahaber.com</span> internet sitesinde yayınlanan yazı,
               haber, video ve
               fotoğrafların her türlü
@@ -705,17 +692,25 @@
             <div class="footer-nav mb-3">
               <ul class="nav-x gap-2 lg:gap-2 justify-center text-center text-uppercase fw-medium">
                 <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="hakkimizda.html">HAKKIMIZDA</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="kunye.html">KÜNYE</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
                     href="reklam.html">REKLAM</a></li>
                 <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="arsiv.html">ARŞİV</a>
                 </li>
                 <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
-                    href="yazar-liste.html">YAZARLAR</a></li>
-                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="kunye.html">KÜNYE</a>
+                    href="iletisim.html">İLETİŞİM</a>
                 </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="yazar-liste.html">YAZARLAR</a></li>
+
               </ul>
             </div>
             <div class="footer-nav">
               <ul class="nav-x gap-2 lg:gap-2 justify-center text-center text-uppercase fw-medium">
+
                 <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="cerezler.html">ÇEREZ
                     POLİTİKASI</a>
                 </li>
@@ -726,6 +721,10 @@
                 </li>
                 <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="kvkk.html">GİZLİLİK VE
                     KVKK POLİTİKASI</a>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="yayin-ilkeleri.html">YAYIN
+                    İLKELERİ</a>
+                </li>
                 </li>
               </ul>
             </div>
@@ -733,73 +732,27 @@
             <div class="mb-3 footer-social lg:hstack md:hstack vstack  justify-center mt-4 gap-2 lg:gap-0 items-center">
               <div class="footer-social lg:hstack items-center md:hstack vstack justify-center mt-3 gap-2 lg:gap-3">
                 <p>Günlük gelişmeleri sosyal medya <br> hesaplarından takip edebilirsiniz.</p>
-                <ul class="nav-x gap-1 flex-wrap">
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/google.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/facebook.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/twitter.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/linkedin.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/whatsapp.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/telegram.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/email.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/spotify.png" alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="" href="#">
-                      <img class="w-24px h-24px ratio-1x1" src="./assets/images/social-media/link.png" alt="">
-                    </a>
-                  </li>
+                <ul class="nav-x gap-1 flex-wrap dh-foot-soc">
+                  <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
                 </ul>
               </div>
               <div class="footer-social lg:hstack items-center md:hstack vstack justify-center mt-3 gap-2 lg:gap-3">
                 <p>Günlük gelişmeleri takip edebilmek için <br> dadahaber uygulamasını indirin</p>
-                <ul class="nav-x gap-2">
+                <ul class="nav-x gap-2 dh-store-badges">
                   <li>
-                    <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="#ln">
-                      <img style="width: 90px;" src="./assets/images/app-icons/google-play.svg" class="ratio-3x2 w-90px"
-                        alt="">
+                    <a class="dh-store-badge" href="#ln">
+                      <i class="fa-brands fa-apple" aria-hidden="true"></i>
+                      <span><small>İndir</small><b>App Store</b></span>
                     </a>
                   </li>
                   <li>
-                    <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="#ln">
-                      <img style="width: 90px;" src="./assets/images/app-icons/app-store.svg" class="ratio-3x2 w-90px"
-                        alt="">
-                    </a>
-                  </li>
-                  <li>
-                    <a class="hover:text-gray-900 dark:hover:text-white duration-150" href="#ln">
-                      <img style="width: 90px;" src="./assets/images/app-icons/huawei.png" class="ratio-3x2 w-90px"
-                        alt="">
+                    <a class="dh-store-badge" href="#ln">
+                      <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+                      <span><small>İndir</small><b>Google Play</b></span>
                     </a>
                   </li>
                 </ul>
@@ -816,34 +769,43 @@
   </footer>
   <!-- Footer end -->
 
-  <!-- include jquery & bootstrap js -->
-  <script defer src="./assets/js/libs/jquery.min.js"></script>
-  <script defer src="./assets/js/libs/bootstrap.min.js"></script>
+    <!-- include jquery & bootstrap js -->
+    <script defer src="./assets/js/libs/jquery.min.js"></script>
+    <script defer src="./assets/js/libs/bootstrap.min.js"></script>
 
-  <!-- include scripts -->
-  <script defer src="./assets/js/libs/anime.min.js"></script>
-  <script defer src="./assets/js/libs/swiper-bundle.min.js"></script>
-  <script defer src="./assets/js/libs/scrollmagic.min.js"></script>
-  <script defer src="./assets/js/helpers/data-attr-helper.js"></script>
-  <script defer src="./assets/js/helpers/swiper-helper.js"></script>
-  <script defer src="./assets/js/helpers/anime-helper.js"></script>
-  <script defer src="./assets/js/helpers/anime-helper-defined-timelines.js"></script>
-  <script defer src="./assets/js/uikit-components-bs.js"></script>
+    <!-- include scripts -->
+    <script defer src="./assets/js/libs/anime.min.js"></script>
+    <script defer src="./assets/js/libs/swiper-bundle.min.js"></script>
+    <script defer src="./assets/js/libs/scrollmagic.min.js"></script>
+    <script defer src="./assets/js/helpers/data-attr-helper.js"></script>
+    <script defer src="./assets/js/helpers/swiper-helper.js"></script>
+    <script defer src="./assets/js/helpers/anime-helper.js"></script>
+    <script defer src="./assets/js/helpers/anime-helper-defined-timelines.js"></script>
+    <script defer src="./assets/js/uikit-components-bs.js"></script>
 
-  <!-- include app script -->
-  <script defer src="./assets/js/app.js"></script>
+    <!-- include app script -->
+    <script defer src="./assets/js/app.js"></script>
 
-  <script>
-    // Schema toggle via URL
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const getSchema = urlParams.get("schema");
-    if (getSchema === "dark") {
-      setDarkMode(1);
-    } else if (getSchema === "light") {
-      setDarkMode(0);
-    }
-  </script>
+    <!-- footer perdesi -->
+    <script defer src="./assets/js/footer-reveal.js"></script>
+
+    <!-- günlük panel -->
+    <script defer src="./assets/js/dh-panel.js"></script>
+
+    <!-- yapışkan içindekiler: aktif bölüm işareti (R6-C2) -->
+    <script defer src="./assets/js/dh-toc.js"></script>
+
+    <script>
+        // Schema toggle via URL
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const getSchema = urlParams.get("schema");
+        if (getSchema === "dark") {
+            setDarkMode(1);
+        } else if (getSchema === "light") {
+            setDarkMode(0);
+        }
+    </script>
 </body>
 
 </html>
