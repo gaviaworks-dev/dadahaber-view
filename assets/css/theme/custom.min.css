@@ -3923,26 +3923,45 @@ html.uc-dark .dh-share__btn--copy {
   font-size: 10px;
 }
 
-/* --- Ayraçlar: sarı zeminde görünür ---
-   Beyaz çizgi %28 opaklıkta kayboluyordu; sarı üzerinde koyu çizgi okunur. */
+/* --- Ayraçlar: yumuşak ---
+   %22 düz siyah sert bir cetvel gibi duruyordu. Artık %13 opaklıkta ve
+   uçlara doğru sönen bir gradyan: görünür ama sert değil. */
 .dh-footer-brand hr {
   border: 0 !important;
   height: 1px;
-  background: rgba(0, 0, 0, 0.22) !important;
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.13) 12%,
+      rgba(0, 0, 0, 0.13) 88%,
+      rgba(0, 0, 0, 0) 100%) !important;
   opacity: 1 !important;
   margin: 18px 0 !important;
 }
 
-/* Telif satırının üstündeki ayraç da aynı dilde */
+/* Telif satırının kendi border-top'ı KALDIRILDI: hemen üstündeki <hr> ile
+   üst üste iki çizgi oluyordu (ölçüm: 919px ve 942px'te iki ayrı çizgi). */
 .dh-footer-brand .footer-copyright {
-  border-top: 1px solid rgba(0, 0, 0, 0.22);
-  padding-top: 14px;
-  margin-top: 4px !important;
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0 !important;
 }
 
 .dh-footer-brand .footer-copyright p {
   font-size: 12.5px !important;
   margin: 0 !important;
+  opacity: 0.82;
+}
+
+/* --- Telif/tanıtım açıklaması: minimal --- */
+.dh-footer-brand .footer-top-logo-desc p {
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  max-width: 780px !important;
+  opacity: 0.86;
+}
+
+.dh-footer-brand .footer-top-logo-desc {
+  gap: 16px !important;
 }
 
 @media (max-width: 575.98px) {
