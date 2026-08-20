@@ -3414,6 +3414,15 @@ body {
   color: var(--dh-menu-ink);
 }
 
+/* Dikey kartta da alt satır dibe yapışır: yazar solda %30, meta sağda */
+.dh-card__foot {
+  margin-top: auto;
+}
+
+.dh-cards:not(.dh-cards--list) .dh-card__title {
+  min-height: calc(2 * 1.3em);
+}
+
 /* Meta en altta sabitlensin — farklı başlık uzunluklarında hizalı kalır */
 .dh-card__meta {
   display: flex;
@@ -5472,4 +5481,28 @@ html.uc-dark .dh-mark {
     flex-basis: auto;
     max-width: 55%;
   }
+}
+
+/* ===========================================================
+   R3-14 — KURUMSAL KÖŞE İMZASI
+   Logo rozeti (assets/images/logos/logo-left.png) piksel ölçümü:
+     sol-üst  ~20px yuvarlak
+     sağ-üst  ~22px yuvarlak
+     sağ-alt  ~20px yuvarlak
+     sol-alt  0px  -> KESKİN
+   Aynı geometri tüm haber görsellerine taşınıyor: üç köşe yuvarlak,
+   sol alt keskin. Marka imzası, süs değil.
+   =========================================================== */
+.dh-card__fig,
+.dh-short,
+.dh-art-lead img,
+.dh-card--wide .dh-card__fig,
+.dh-card--row .dh-card__fig {
+  border-bottom-left-radius: 0 !important;
+}
+
+/* Görsel içindeki rozetler de aynı köşeyi izler */
+.dh-card__cat,
+.dh-short__cat {
+  border-bottom-left-radius: 0;
 }
