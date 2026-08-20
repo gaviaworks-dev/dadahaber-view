@@ -5073,3 +5073,174 @@ html.uc-dark .dh-card--wide .dh-card__link {
     font-size: 17px;
   }
 }
+
+/* ===========================================================
+   R3-11 — DADADIET HESAPLAYICI ÖNİZLEMESİ (.dh-calcs)
+   dadadiet.com "Sağlık Araçları" bölümündeki hesaplayıcı
+   kısayolları ölçüldü (ad + alt açıklama + ikon + hedef URL).
+   Kart dili DadaGastro tarif kartıyla aynı: beyaz yüzey, 1px kenar,
+   radius, hover'da kalkma. Vurgu DadaDiet yeşili (--dh-partner).
+   =========================================================== */
+.dh-calcs {
+  display: grid;
+  gap: 10px;
+  align-content: center;
+}
+
+.dh-calcs__head {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 4px;
+  font-family: var(--font-family-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.dh-calc {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.22s ease;
+}
+
+.dh-calc:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.26);
+}
+
+.dh-calc:focus-visible {
+  outline: 3px solid var(--dh-partner);
+  outline-offset: 3px;
+}
+
+.dh-calc__ic {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  background: color-mix(in srgb, var(--dh-partner) 16%, transparent);
+  color: var(--dh-partner-deep);
+}
+
+.dh-calc__txt {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dh-calc__txt b {
+  font-family: var(--font-family-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+
+.dh-calc__txt span {
+  font-size: 12px;
+  color: var(--color-gray-400);
+}
+
+.dh-calc__go {
+  flex: none;
+  font-size: 12px;
+  color: var(--dh-partner-deep);
+  transition: transform 0.22s ease;
+}
+
+.dh-calc:hover .dh-calc__go {
+  transform: translateX(3px);
+}
+
+@media (max-width: 991.98px) {
+  .dh-calcs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dh-calcs__head {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .dh-calcs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-calc,
+  .dh-calc__go {
+    transition: none;
+  }
+
+  .dh-calc:hover {
+    transform: none;
+  }
+}
+
+/* ===========================================================
+   R3-11 — DİKEY "DADA" FİLİGRANI (.dh-mark)
+   Referans: webrazzi.com ana sayfasında sayfa arkasında duran dev
+   soluk "W" wordmark'ı. Burada dikey yazılmış "DADA".
+   İçeriğin ALTINDA (z-index:0), sayfa boyunca sabit, sol kenarda.
+   Kontrasta dokunmaz: %3,5 opaklık + pointer-events:none.
+   =========================================================== */
+.dh-mark {
+  position: fixed;
+  top: 50%;
+  left: 18px;
+  z-index: 0;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: var(--font-family-secondary);
+  font-size: clamp(6rem, 4rem + 9vw, 13rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--color-gray-900);
+  opacity: 0.035;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Bölümler filigranın üstünde kalsın */
+#wrapper > .section,
+#wrapper > div:not(.dh-mark) {
+  position: relative;
+  z-index: 1;
+}
+
+:where(.uc-dark) .dh-mark,
+html.uc-dark .dh-mark {
+  color: #fff;
+  opacity: 0.045;
+}
+
+/* Dar ekranda içeriğe girmesin */
+@media (max-width: 1439.98px) {
+  .dh-mark {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-mark {
+    display: none;
+  }
+}
