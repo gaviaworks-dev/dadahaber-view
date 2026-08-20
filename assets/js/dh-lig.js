@@ -169,6 +169,17 @@
     return ev;
   }
 
+  /* Bir sayacı iki yarıya böler; her iki yarının kapasitesine de uyar,
+     toplam asla değişmez (dep = toplam - ev). */
+  function ikiBol(toplam, evKap, depKap, oran) {
+    var e = Math.round(toplam * oran);
+    if (e > evKap) e = evKap;
+    if (toplam - e > depKap) e = toplam - depKap;
+    if (e < 0) e = 0;
+    if (e > toplam) e = toplam;
+    return e;
+  }
+
   function yarim(br, t, ev) {
     var o = turet(br, t);
     var yariO = Math.ceil(o.o / 2);
@@ -185,12 +196,21 @@
     if (br === 'futbol') { y.a = pay(o.a, 0.58); y.y = pay(o.y, 0.42); }
     if (br === 'basketbol') { y.sa = pay(o.sa, 0.52); y.sy = pay(o.sy, 0.48); }
     if (br === 'voleybol') {
-      y.w2 = pay(t.w2 || 0, 0.45); y.l2 = pay(t.l2 || 0, 0.55);
-      y.w1 = pay(t.w1 || 0, 0.5); y.l1 = pay(t.l1 || 0, 0.5);
-      if (y.w2 > y.g) y.w2 = y.g;
-      if (y.w1 > y.g - y.w2) y.w1 = y.g - y.w2;
-      if (y.l2 > y.m) y.l2 = y.m;
-      if (y.l1 > y.m - y.l2) y.l1 = y.m - y.l2;
+      /* Tie-break maçları iki yarıya da ait olabilir ama toplamları
+         bozulmamalı: sg/sy/p bunlardan TÜRETİLDİĞİ için tek taraflı
+         kırpma iki yarının toplamını genelden ayırıyordu (14 satırda
+         1 setlik sapma ölçüldü). Bu yüzden her sayaç İKİ TARAFIN
+         kapasitesine birden bakılarak bölünür. */
+      var evG = evKat[0], depG = kat[0] - evKat[0];
+      var evM = br === 'futbol' ? 0 : evKat[1], depM = kat[1] - evKat[1];
+      var eW2 = ikiBol(t.w2 || 0, evG, depG, 0.45);
+      var eW1 = ikiBol(t.w1 || 0, evG - eW2, depG - ((t.w2 || 0) - eW2), 0.5);
+      var eL2 = ikiBol(t.l2 || 0, evM, depM, 0.55);
+      var eL1 = ikiBol(t.l1 || 0, evM - eL2, depM - ((t.l2 || 0) - eL2), 0.5);
+      y.w2 = ev ? eW2 : (t.w2 || 0) - eW2;
+      y.w1 = ev ? eW1 : (t.w1 || 0) - eW1;
+      y.l2 = ev ? eL2 : (t.l2 || 0) - eL2;
+      y.l1 = ev ? eL1 : (t.l1 || 0) - eL1;
     }
     return y;
   }

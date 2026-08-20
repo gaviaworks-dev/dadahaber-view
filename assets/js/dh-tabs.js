@@ -141,6 +141,16 @@
     }
 
     function ligSec(chip, cizme) {
+      /* Ülke kutusu ile şerit ayrışmasın: seçilen lig başka bir ülkeye
+         aitse (derin bağlantı, program ile seçim) kutu da o ülkeye
+         çekilir ve görünen çip kümesi yenilenir. */
+      var kod = chip.getAttribute('data-scope');
+      if (ulkeSel && ulkeSel.value !== kod) {
+        ulkeSel.value = kod;
+        for (var k = 0; k < ligler.length; k++) {
+          ligler[k].hidden = ligler[k].getAttribute('data-scope') !== kod;
+        }
+      }
       for (var i = 0; i < ligler.length; i++) {
         var acik = ligler[i] === chip;
         ligler[i].setAttribute('aria-checked', acik ? 'true' : 'false');
