@@ -5542,3 +5542,2346 @@ figure.featured-image.rounded,
   border-radius: 16px !important;
   border-bottom-left-radius: 0 !important;
 }
+
+
+/* ===========================================================
+   R4-1 — HERO: KATEGORİ ETİKETİ · SLAYT NOKTALARI · DİKEY AKAN SÜTUN
+   Ölçüm (Playwright, 1440px, değişiklik öncesi):
+     .col-lg-9  948x527 · .swiper-main 932x527
+     .md:col-3  316x527 · yan kartlar 284x160 (3 adet, sabit duruyordu)
+     .swiper-pagination: 120x8, position:absolute; bottom:0; right:0;
+       margin:48px  ->  kartın dibinden 48px yukarıda, yani TAM meta
+       satırının (tarih · süre · görüntülenme) üstüne düşüyordu.
+   Kararlar:
+     - Noktalar meta satırının ALTINA, yatayda ortaya alındı (dip 13px).
+       Meta içeriğin dibi post-header dolgusu ile 40px'e çekildi ->
+       noktalarla arada 19px net boşluk kalıyor, çakışma bitti.
+     - Aktif nokta 26px'lik amber hap; pasifler 8px, beyaz %45.
+     - Yan sütun artık 6 slaytlık DİKEY swiper (items:3), 5sn otomatik.
+   =========================================================== */
+
+/* ---------- Kategori etiketi (büyük kartlar) ---------- */
+.dh-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  /* Amber zeminde koyu mürekkep: 10,58:1 (AA + AAA) */
+  color: var(--color-gray-900);
+  background: var(--dh-brand);
+  /* Kurumsal köşe imzası: sol-alt keskin */
+  border-radius: 8px 8px 8px 0 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.dh-tag--lg {
+  top: 14px;
+  left: 14px;
+  padding: 7px 13px;
+  font-size: 12px;
+  border-radius: 10px 10px 10px 0 !important;
+}
+
+@media (min-width: 1200px) {
+  .dh-tag--lg {
+    top: 20px;
+    left: 20px;
+  }
+}
+
+/* ---------- Ana slider: kendi nokta navigasyonu ---------- */
+.dh-hero .swiper-main {
+  position: relative;
+}
+
+/* swiper-bundle.min.css'te
+   `.swiper-pagination-bullets.swiper-pagination-horizontal{bottom:...}`
+   kuralı 0,2,0 özgüllükte; tek sınıfla ezilemiyordu -> noktalar kartın
+   ALT KENARINA oturup yarısı dışarı taşıyordu (ölçüldü: dots.bottom 797,
+   kart dibi 797). Özgüllük yükseltildi + !important. */
+.dh-hero .swiper-main .dh-hero__dots {
+  position: absolute;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 14px !important;
+  top: auto !important;
+  z-index: 6;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.dh-hero .swiper-main .dh-hero__dots .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin: 0 !important;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.45);
+  opacity: 1;
+  transition: width 0.28s cubic-bezier(0.22, 0.61, 0.36, 1), background 0.28s ease;
+}
+
+.dh-hero .swiper-main .dh-hero__dots .swiper-pagination-bullet-active {
+  width: 26px;
+  background: var(--dh-brand);
+}
+
+/* Meta satırı noktalara değmesin — 390px'te de çakışıyordu (ölçüldü:
+   meta dibi 373,4 / nokta tepesi 367,4), kural tüm genişliklere açıldı. */
+.dh-hero .swiper-main .post-header {
+  padding-bottom: 38px !important;
+}
+
+@media (min-width: 576px) {
+  .dh-hero .swiper-main .post-header {
+    padding-bottom: 44px !important;
+  }
+}
+
+/* ---------- Yan sütun: dikey akan slider ---------- */
+/* .md:col-3 üzerinde d-lg-block var; col-match'in display:flex'ini eziyor,
+   dolayısıyla flex:1 çalışmıyor. Sütunun kendisi satırın flex item'ı olarak
+   524px'e geriliyor (ölçüldü) — yüksekliği oradan alıyoruz. */
+.dh-hero-side {
+  position: relative;
+  height: 100%;
+}
+
+/* .col-match > * > * { flex:1 } sayesinde .dh-hero-side sütun yüksekliğini
+   alıyor. Swiper AKIŞTAN ÇIKARILDI (position:absolute): aksi halde 6 slayt
+   üst üste binip sütunu büyütüyor, sütun da h-100 ile geri besleyip
+   yüksekliği 33.554.414px'e patlatıyordu (ölçüldü). */
+.dh-hero-side__swiper {
+  position: absolute;
+  /* Sağda 20px'lik oluk: nokta rayı kartların DIŞINDA, bölümün sağ
+     kenarında duruyor (kart genişliği 300 -> 280px). */
+  inset: 0 20px 0 0;
+}
+
+.dh-hero-side .swiper-slide {
+  overflow: hidden;
+}
+
+.dh-hero-side .swiper-slide > article {
+  height: 100%;
+}
+
+.dh-hero-side .swiper-slide .featured-image {
+  height: 100%;
+}
+
+/* Dikey nokta rayı — sütunun sağ kenarında, kartların dışında */
+/* Ray kartların ÜSTÜNDE değil, sağdaki 20px'lik olukta duruyor. */
+.dh-hero-side .dh-hero-side__dots {
+  position: absolute;
+  right: 3px !important;
+  left: auto !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%);
+  z-index: 6;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.dh-hero-side .dh-hero-side__dots .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  margin: 0 !important;
+  border-radius: 99px;
+  /* Artık açık zemin üstünde — koyu gri pasif, amber aktif */
+  background: rgba(0, 0, 0, 0.22);
+  opacity: 1;
+  transition: height 0.28s cubic-bezier(0.22, 0.61, 0.36, 1), background 0.28s ease;
+}
+
+.dh-hero-side .dh-hero-side__dots .swiper-pagination-bullet-active {
+  height: 20px;
+  background: var(--dh-brand);
+}
+
+html.uc-dark .dh-hero-side .dh-hero-side__dots .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+html.uc-dark .dh-hero-side .dh-hero-side__dots .swiper-pagination-bullet-active {
+  background: var(--dh-brand);
+}
+
+
+/* ===========================================================
+   R4-2 — POPÜLER HABERLER (eski "Popular now" kenar bileşeni)
+   İstek: başlık "DİĞER HABERLER" gibi kartın DIŞINDA dursun;
+   satırlarda yorum sayısı yerine tarih · okuma süresi · görüntülenme
+   üçlüsü olsun (sitenin geri kalanındaki meta kalıbı).
+   =========================================================== */
+.dh-pop-widget {
+  padding: 14px 14px 16px !important;
+}
+
+.dh-pop__rank {
+  /* Sıra numarası başlığın ilk satırıyla optik hizalansın */
+  margin-top: -2px !important;
+  min-width: 26px;
+}
+
+.dh-pop__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  font-size: 11px !important;
+  letter-spacing: 0.01em;
+}
+
+.dh-pop__meta .sep {
+  opacity: 0.45;
+}
+
+.dh-pop .post-title {
+  line-height: 1.28;
+}
+
+
+/* ===========================================================
+   R4-3 — FOOTER: yalnız yasal sayfa linkleri koyu, hover'da çizgi yok,
+   linkler arası nefes, sosyal satır alt ayraca yaklaştırıldı
+   Ölçüm (1440px, önce): sosyal satır dibi 796px · alt <hr> tepesi 838px
+     -> 42px boşluk (.mb-3 = 24px + hr margin-top 18px).
+   Sonra: .mb-3 sıfırlandı -> 18px (%57 azalma).
+   Mürekkep: KAPSAM yalnız .footer-nav linkleri. Amber üstünde
+   gray-900 = 10,58:1 (AA + AAA); footer'ın geri kalanı beyaz kaldı.
+   Linkler arası oluk 22px -> 34px (yatayda), satır arası 10px -> 12px.
+   =========================================================== */
+
+/* Yalnızca yasal sayfa / kurumsal sayfa linkleri koyu mürekkep */
+.dh-footer-brand .footer-nav a,
+.dh-footer-brand .footer-nav a:hover,
+.dh-footer-brand .footer-nav a:focus {
+  color: var(--color-gray-900) !important;
+  opacity: 1;
+  text-decoration: none !important;
+}
+
+/* Hover'da alt çizgi istenmedi — R3-3'teki kural geri alınıyor */
+.dh-footer-brand .footer-nav a:hover {
+  opacity: 0.72;
+}
+
+.dh-footer-brand a,
+.dh-footer-brand a:hover {
+  text-decoration: none !important;
+}
+
+/* Butonlar birbirine yapışıktı — yatay oluk açıldı */
+.dh-footer-brand .footer-nav ul {
+  gap: 12px 34px !important;
+}
+
+@media (max-width: 991.98px) {
+  .dh-footer-brand .footer-nav ul {
+    gap: 10px 22px !important;
+  }
+}
+
+/* Sosyal + mağaza satırı alt ayraca yaklaşsın */
+.dh-footer-brand .footer-social.mb-3 {
+  margin-bottom: 0 !important;
+}
+
+.dh-footer-brand .footer-social.mb-3 > .footer-social {
+  margin-top: 12px !important;
+}
+
+
+/* ===========================================================
+   R4-4 — YUKARI ÇIK BUTONU
+   Amber zemin + beyaz ikon = 1,77:1 -> düğme sarı zeminli sayfada
+   kayboluyordu. Koyu mürekkep (10,58:1) + gölge + çerçeve eklendi.
+   =========================================================== */
+.backtotop-wrap [data-uc-backtotop] {
+  background: var(--dh-brand) !important;
+  color: var(--color-gray-900) !important;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  border-bottom-left-radius: 0 !important;
+}
+
+.backtotop-wrap [data-uc-backtotop]:hover {
+  background: var(--color-gray-900) !important;
+  color: var(--dh-brand) !important;
+}
+
+.backtotop-wrap .darkmode-trigger {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+}
+
+/* ===========================================================
+   R5-0 — BÖLÜM BAŞLIK ÇUBUĞU (.dh-secbar) + KAYAN RAY (.dh-track)
+   Playwright ile dadagastro.com/video-mutfagi ".vseries-sec" ÖLÇÜLDÜ:
+     .vray-head    flex · align center · gap 15px · margin-bottom 16px
+     .vray-tools   margin-left auto · flex · align center · gap 12px
+     .see-all      13,5px/700 · pad 11px 18px · radius 12px · 1px #ececec
+     .row-nav      flex · gap 8px
+     .row-nav btn  42x42 · radius 12px · beyaz zemin · 1px #ececec · 13px
+     .row-track    flex · gap 26px · overflow-x auto · snap x mandatory
+                   padding 6px 2px 10px · scrollbar gizli
+     .row-track>*  flex 0 0 auto · width 276px · snap-align start
+   NEDEN FARKLI SEÇTİK:
+   - "Daha Fazla" linki pill'e çevrilmedi: komşu bölümler (SAVUNMA, SAĞLIK,
+     OYUN) düz metin link kullanıyor, sayfa ritmi bozulmasın diye aynı kaldı.
+     Referanstan alınan yalnız KONUM: oklar artık linkle aynı satırda.
+   - gap 26 -> 24: sayfanın 8'lik boşluk ritmine oturuyor.
+   - padding-top 6 -> 22px: Foto Fokus kartının istif yaprakları kartın
+     üstünden 14px taşıyor, ray onları kırpmasın diye.
+   RENK alınmadı — vurgu Dadahaber amberi (--dh-brand).
+   =========================================================== */
+.dh-secbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  /* TUR 5 ÖLÇÜM (1440px): 18px'ti. Foto Fokus'ta istif yaprağı görselin
+     18px üstüne çıktığı için başlık satırıyla GÖRÜNEN kart arası 0px'e
+     iniyordu — kullanıcı "çok dar oldu" dedi. 26px'e çıkarıldı;
+     istifli rayda .dh-track--stack farkı kapatıyor, üç bölümde de
+     ölçülen görünen boşluk 26px. */
+  margin-bottom: 26px;
+}
+
+.dh-secbar__tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+.dh-secbar__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.dh-secbar__nav {
+  display: flex;
+  gap: 8px;
+}
+
+.dh-secbar__nav button {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--color-gray-100);
+  color: var(--color-gray-900);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.dh-secbar__nav button:hover:not(:disabled) {
+  background: var(--dh-brand);
+  border-color: var(--dh-brand);
+  color: var(--dh-on-brand);
+}
+
+.dh-secbar__nav button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.dh-secbar__nav button:focus-visible,
+.dh-secbar__all:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+}
+
+:where(.uc-dark) .dh-secbar__nav button,
+html.uc-dark .dh-secbar__nav button {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .dh-secbar__nav button {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+}
+
+/* --- Ortak kayan ray. .dh-shorts ile akraba, ölçüleri kart ailesine göre --- */
+.dh-track {
+  display: flex;
+  /* TUR 4: kullanıcı kart aralarını dar istedi.
+     24px -> 16px. 1440px'te kazanılan alan: Foto Fokus 7x8=56px,
+     Podcast 5x8=40px, İnfografik 7x8=56px -> her rayda ~yarım kart daha
+     görünür oluyor, satır daha yoğun bir "akış" gibi okunuyor.
+     Referans (dadagastro .row-track) 26px'ti; oradan bilerek ayrıldık. */
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* Üst padding 22 -> 28px: Foto Fokus istifinin en arka yaprağı -18px,
+     hover'da -22px'e çıkıyor; ray onu kırpmasın. */
+  padding: 28px 2px 14px;
+  margin: -28px -2px -14px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dh-track::-webkit-scrollbar {
+  display: none;
+}
+
+.dh-track > * {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+/* Foto Fokus rayı: kartın görünen üst kenarı, istif yaprağı yüzünden kart
+   kutusunun 18px üstünde. Ray 18px aşağı kaydırılıyor ki başlık satırıyla
+   arasındaki GÖRÜNEN boşluk diğer iki bölümle aynı 26px olsun.
+   (-28px + 18px = -10px) */
+.dh-track--stack {
+  margin-top: -10px;
+}
+
+@media (max-width: 767px) {
+  .dh-track {
+    gap: 10px;
+  }
+}
+
+/* ===========================================================
+   R5-1 — FOTO FOKUS KARTI (.dh-foto)
+   Sorun: bölüm jenerik .post type-post kartıydı; 16:9 görsel + sağ üstte
+   küçük fotoğraf makinesi ikonu. "Bu bir galeri" bilgisi hiç yoktu.
+   KARAR ve GEREKÇE:
+   - Oran 16:9 -> 4:3. Foto muhabirliğinin doğal karesi; video kartından
+     (9:16 .dh-short) ve infografikten (3:4) ayrışsın diye.
+   - Genişlik 300px. 1176px kapsayıcıda 24 gap ile 3 tam kart + 228px
+     dördüncünün payı -> ray olduğu kendini belli ediyor.
+   - İMZA: İSTİF. Görselin arkasında iki yaprak (yukarı -7px / -14px,
+     yanlardan 11px / 22px içeri) -> deste hissi. Hover'da yelpaze gibi
+     açılıyor (-9 / -18). "Tek kare değil" bilgisini ikon değil geometri veriyor.
+   - Adet AMBER etikette yazıyor ("24 FOTOĞRAF"): kullanıcı "kaç fotoğraf
+     var belli olsun" dedi, sayı tahmine bırakılmadı.
+     Kontrast: #121212 / #fcb623 = 10,58:1 (AA + AAA).
+   - Hover'da ikinci kareye çapraz geçiş: galeride başka fotoğraf olduğunu
+     iddia etmek yerine gösteriyor.
+   - Başlık 16px/700 lh 1,12 ls -0,02em (referans .vid-card h4 ölçümü:
+     16px/700 lh 17,92 ls -0,32px). Meta 12,5px (referans .vmeta ölçümü).
+   Köşe imzası: tüm görsel ve yapraklarda sol-alt 0.
+   =========================================================== */
+.dh-foto {
+  position: relative;
+  display: block;
+  width: 300px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dh-foto__frame {
+  position: relative;
+  display: block;
+}
+
+/* İstif yaprakları — görselin arkasından yukarı doğru taşan iki kare.
+   TUR 2: gri yapraklar gri-10 zeminde kayboluyordu (ölçüm: zemin #f7f7f7,
+   yaprak #efefef = 1,05:1) -> beyaz kağıt + 1px kenar + ince gölge.
+   TUR 4: kullanıcı arkadaki yaprakların da FOTOĞRAF göstermesini istedi.
+   Görsel neden pseudo-element background'ı DEĞİL de gerçek <img>:
+   custom property içindeki url() tarayıcıda, değişkenin KULLANILDIĞI
+   stylesheet'e göre çözülüyor. custom.min.css assets/css/theme/ altında
+   olduğu için ./assets/images/... yolları
+   /assets/css/theme/assets/images/... olarak isteniyordu — 14 adet 404
+   (Playwright ağ denetimi yakaladı). Gerçek <img> ile yol sayfaya göre
+   çözülüyor, lazy-load da bedava geliyor.
+   Görünen şerit 9px ve 18px; görsel "renk bandı" gibi okunuyor ve asıl işi
+   o yapıyor: arkada başka kareler var. */
+.dh-foto__leaf {
+  position: absolute;
+  z-index: 0;
+  height: 30px;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(20, 18, 12, 0.16);
+  border-bottom: 0;
+  box-shadow: 0 -2px 5px rgba(20, 18, 12, 0.05);
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-foto__leaf img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Kare kırpılırken üst kenarı gösteriliyor; 30px'lik şeritte ezilmiş bir
+     dilim yerine fotoğrafın gerçek üst şeridi görünüyor. */
+  height: 200px;
+  object-fit: cover;
+  /* TUR 5: 'center top' çoğu karede gökyüzü/tavan şeridine denk geliyor,
+     yaprak siyah bant gibi okunuyordu. %22 daha aşağıdan alınca fotoğrafın
+     gerçek renk bilgisi görünüyor. */
+  object-position: center 22%;
+  display: block;
+}
+
+/* Karartma — arkaya gittikçe koyulaşıyor (atmosferik derinlik) */
+.dh-foto__leaf::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* En arkadaki yaprak: en dar, en yukarıda, en koyu */
+.dh-foto__leaf--3 {
+  left: 22px;
+  right: 22px;
+  top: -18px;
+}
+
+.dh-foto__leaf--3::after {
+  background: rgba(16, 15, 11, 0.4);
+}
+
+.dh-foto__leaf--2 {
+  left: 11px;
+  right: 11px;
+  top: -9px;
+}
+
+.dh-foto__leaf--2::after {
+  background: rgba(16, 15, 11, 0.2);
+}
+
+.dh-foto:hover .dh-foto__leaf--3,
+.dh-foto:focus-visible .dh-foto__leaf--3 {
+  transform: translateY(-4px);
+}
+
+.dh-foto:hover .dh-foto__leaf--2,
+.dh-foto:focus-visible .dh-foto__leaf--2 {
+  transform: translateY(-2px);
+}
+
+.dh-foto__fig {
+  position: relative;
+  z-index: 1;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  border-bottom-left-radius: 0;
+  overflow: hidden;
+  background: var(--color-gray-100);
+  box-shadow: 0 10px 30px rgba(20, 18, 12, 0.1);
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-foto:hover .dh-foto__fig,
+.dh-foto:focus-visible .dh-foto__fig {
+  transform: translateY(-3px);
+}
+
+.dh-foto__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-foto__img--b {
+  opacity: 0;
+}
+
+.dh-foto:hover .dh-foto__img--b,
+.dh-foto:focus-visible .dh-foto__img--b {
+  opacity: 1;
+}
+
+.dh-foto:hover .dh-foto__img,
+.dh-foto:focus-visible .dh-foto__img {
+  transform: scale(1.05);
+}
+
+/* Alt karartma — referans ölçümü rgba(33,30,22,0) %50 -> rgba(20,18,12,.72) */
+.dh-foto__fig::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(20, 18, 12, 0) 48%, rgba(20, 18, 12, 0.74) 100%);
+  pointer-events: none;
+}
+
+.dh-foto__count {
+  position: absolute;
+  z-index: 2;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  /* TUR 3: kullanıcı etiketlerin yuvarlak olmasını istedi. Hap formu +
+     kurumsal köşe imzası (sol-alt keskin) birlikte duruyor. */
+  border-radius: 999px;
+  border-bottom-left-radius: 0;
+  background: var(--dh-brand);
+  color: var(--dh-on-brand);
+  font-family: var(--font-family-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.dh-foto__open {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--dh-accent-ink);
+  font-size: 12px;
+  opacity: 0;
+  transform: scale(0.82);
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-foto:hover .dh-foto__open,
+.dh-foto:focus-visible .dh-foto__open {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dh-foto__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 14px 0 0;
+  /* TUR 2: başlık 1 ve 2 satır arasında değiştiği için meta satırları
+     rayda basamak basamak kayıyordu. İki satırlık yer rezerve edildi:
+     16px * 1,12 * 2 = 35,84px. */
+  min-height: 2.24em;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-900);
+  transition: color 0.15s ease;
+}
+
+.dh-foto:hover .dh-foto__title {
+  color: var(--dh-accent-ink);
+}
+
+.dh-foto__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px solid var(--color-gray-100);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--color-gray-500);
+}
+
+.dh-foto__meta i {
+  margin-right: 5px;
+}
+
+.dh-foto:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+:where(.uc-dark) .dh-foto__title,
+html.uc-dark .dh-foto__title {
+  color: #fff;
+}
+
+:where(.uc-dark) .dh-foto:hover .dh-foto__title,
+html.uc-dark .dh-foto:hover .dh-foto__title {
+  color: var(--dh-brand);
+}
+
+:where(.uc-dark) .dh-foto__meta,
+html.uc-dark .dh-foto__meta {
+  border-top-color: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.62);
+}
+
+:where(.uc-dark) .dh-foto__leaf,
+html.uc-dark .dh-foto__leaf {
+  background-color: var(--color-gray-700);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 767px) {
+  .dh-foto {
+    /* TUR 3 ölçüm: 390px'te 78vw = 304px -> kapak 300px, sonraki kartın payı
+       yalnız 28px kalıyordu ve kenar yumuşatması onu tamamen yutuyordu.
+       72vw = 281px -> 47px pay, "devamı var" ipucu görünür. */
+    width: 72vw;
+    max-width: 300px;
+  }
+}
+
+/* ===========================================================
+   R5-2 — PODCAST KARTI (.dh-pod)
+   Sorun: kart video kartının aynısıydı; 16:9 görsel, sağ ÜST köşede
+   üst üste binmiş iki ikon (fa-camera + fa-podcast) ve hiçbir ses bilgisi.
+   KARAR ve GEREKÇE:
+   - Kapak 16:9 -> 1:1. Podcast'in evrensel formatı kapak görselidir;
+     kare oran kartı foto (4:3) ve infografikten (3:4) anında ayırıyor.
+   - Genişlik 264px: 1176px kapsayıcıda 24 gap ile 4 tam kart + 48px pay.
+   - İkon rozet sağ üstten MERKEZE alındı (kullanıcı isteği). 62px disk,
+     rgba(255,255,255,.94) zemin, mürekkep #7a5f01 (--dh-accent-ink,
+     beyaz üzerinde 6,06:1 = AA). Hover'da amber dolgu + koyu ikon,
+     scale 1,1 (referans .vid-card:hover .play ölçümü: scale 1,12 + dolgu).
+   - İMZA: DALGA FORMU. Kapağın alt kenarında 20 çubuklu amber dalga
+     (tek SVG maskesi, ek istek yok). Play diski "oynatılır"ı, dalga
+     "SES"i söylüyor — kart bir bakışta podcast.
+     İlerleme yüzdesi UYDURULMADI, tüm çubuklar aynı tonda.
+   - Podcast'e özgü meta: bölüm no sol üstte, süre sağ üstte,
+     konuşmacı alt satırda 28px avatarla (referans .vmeta .av = 28px),
+     dinlenme sayısı sağda.
+   Köşe imzası: kapakta ve iki etikette sol-alt 0.
+   =========================================================== */
+.dh-pod {
+  position: relative;
+  display: block;
+  width: 264px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dh-pod__fig {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  border-bottom-left-radius: 0;
+  overflow: hidden;
+  background: var(--color-gray-100);
+  box-shadow: 0 10px 30px rgba(20, 18, 12, 0.12);
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-pod:hover .dh-pod__fig,
+.dh-pod:focus-visible .dh-pod__fig {
+  transform: translateY(-3px);
+}
+
+.dh-pod__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-pod:hover .dh-pod__img {
+  transform: scale(1.05);
+}
+
+.dh-pod__fig::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(20, 18, 12, 0.34) 0%, rgba(20, 18, 12, 0) 34%, rgba(20, 18, 12, 0) 52%, rgba(20, 18, 12, 0.82) 100%);
+  pointer-events: none;
+}
+
+.dh-pod__ep,
+.dh-pod__dur {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  /* TUR 3: yuvarlak etiket + sol-alt keskin köşe imzası */
+  border-radius: 999px;
+  border-bottom-left-radius: 0;
+  font-family: var(--font-family-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.dh-pod__ep {
+  left: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--color-gray-900);
+}
+
+.dh-pod__dur {
+  right: 12px;
+  background: rgba(20, 18, 12, 0.72);
+  color: #fff;
+}
+
+/* Merkezdeki oynat diski — kullanıcının istediği "logoyu merkeze al" */
+.dh-pod__play {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  margin: auto;
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--dh-accent-ink);
+  /* TUR 3: play üçgeni KALDIRILDI — video çağrışımı yapıyordu.
+     Yerine fa-microphone-lines: podcast "dinlenen" içerik.
+     Üçgenin optik merkezlemesi için konan padding-left:3px de kalktı,
+     mikrofon simetrik. */
+  font-size: 19px;
+  box-shadow: 0 6px 18px rgba(20, 18, 12, 0.28);
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), background 0.2s ease, color 0.2s ease;
+}
+
+.dh-pod:hover .dh-pod__play,
+.dh-pod:focus-visible .dh-pod__play {
+  transform: scale(1.1);
+  background: var(--dh-brand);
+  color: var(--dh-on-brand);
+}
+
+/* Dalga formu — 20 çubuklu tek SVG maskesi, rengi currentColor'dan alır */
+.dh-pod__wave {
+  position: absolute;
+  z-index: 2;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  height: 20px;
+  color: var(--dh-brand);
+  background: currentColor;
+  opacity: 0.9;
+  /* TUR 3: döşenen (repeat-x) 20 çubuklu maske kartın ortasında görünür bir
+     dikiş bırakıyordu — alçak çubuklar tam ekleme denk gelince "boşluk" gibi
+     okunuyordu. Artık TEK PARÇA 32 çubuklu dalga, no-repeat, %100 genişliğe
+     esnetiliyor (preserveAspectRatio="none"). Dikiş yok, her kartta aynı
+     tam dalga; kart daraldıkça çubuklar orantılı inceliyor.
+     En alçak çubuk 9/24 -> hiçbir çubuk kaybolmuyor. */
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 24%22 preserveAspectRatio=%22none%22 fill=%22%23000%22%3E%3Crect x=%221.425%22 y=%226.5%22 width=%223.4%22 height=%2211%22 rx=%221.7%22/%3E%3Crect x=%227.675%22 y=%223.5%22 width=%223.4%22 height=%2217%22 rx=%221.7%22/%3E%3Crect x=%2213.925%22 y=%220%22 width=%223.4%22 height=%2224%22 rx=%221.7%22/%3E%3Crect x=%2220.175%22 y=%225.5%22 width=%223.4%22 height=%2213%22 rx=%221.7%22/%3E%3Crect x=%2226.425%22 y=%222%22 width=%223.4%22 height=%2220%22 rx=%221.7%22/%3E%3Crect x=%2232.675%22 y=%224.5%22 width=%223.4%22 height=%2215%22 rx=%221.7%22/%3E%3Crect x=%2238.925%22 y=%221%22 width=%223.4%22 height=%2222%22 rx=%221.7%22/%3E%3Crect x=%2245.175%22 y=%227%22 width=%223.4%22 height=%2210%22 rx=%221.7%22/%3E%3Crect x=%2251.425%22 y=%223%22 width=%223.4%22 height=%2218%22 rx=%221.7%22/%3E%3Crect x=%2257.675%22 y=%220%22 width=%223.4%22 height=%2224%22 rx=%221.7%22/%3E%3Crect x=%2263.925%22 y=%226%22 width=%223.4%22 height=%2212%22 rx=%221.7%22/%3E%3Crect x=%2270.175%22 y=%222.5%22 width=%223.4%22 height=%2219%22 rx=%221.7%22/%3E%3Crect x=%2276.425%22 y=%225%22 width=%223.4%22 height=%2214%22 rx=%221.7%22/%3E%3Crect x=%2282.675%22 y=%220.5%22 width=%223.4%22 height=%2223%22 rx=%221.7%22/%3E%3Crect x=%2288.925%22 y=%224%22 width=%223.4%22 height=%2216%22 rx=%221.7%22/%3E%3Crect x=%2295.175%22 y=%221.5%22 width=%223.4%22 height=%2221%22 rx=%221.7%22/%3E%3Crect x=%22101.425%22 y=%226.5%22 width=%223.4%22 height=%2211%22 rx=%221.7%22/%3E%3Crect x=%22107.675%22 y=%223.5%22 width=%223.4%22 height=%2217%22 rx=%221.7%22/%3E%3Crect x=%22113.925%22 y=%220%22 width=%223.4%22 height=%2224%22 rx=%221.7%22/%3E%3Crect x=%22120.175%22 y=%225.5%22 width=%223.4%22 height=%2213%22 rx=%221.7%22/%3E%3Crect x=%22126.425%22 y=%222%22 width=%223.4%22 height=%2220%22 rx=%221.7%22/%3E%3Crect x=%22132.675%22 y=%224.5%22 width=%223.4%22 height=%2215%22 rx=%221.7%22/%3E%3Crect x=%22138.925%22 y=%221%22 width=%223.4%22 height=%2222%22 rx=%221.7%22/%3E%3Crect x=%22145.175%22 y=%226%22 width=%223.4%22 height=%2212%22 rx=%221.7%22/%3E%3Crect x=%22151.425%22 y=%223%22 width=%223.4%22 height=%2218%22 rx=%221.7%22/%3E%3Crect x=%22157.675%22 y=%220.5%22 width=%223.4%22 height=%2223%22 rx=%221.7%22/%3E%3Crect x=%22163.925%22 y=%227%22 width=%223.4%22 height=%2210%22 rx=%221.7%22/%3E%3Crect x=%22170.175%22 y=%222.5%22 width=%223.4%22 height=%2219%22 rx=%221.7%22/%3E%3Crect x=%22176.425%22 y=%225%22 width=%223.4%22 height=%2214%22 rx=%221.7%22/%3E%3Crect x=%22182.675%22 y=%221.5%22 width=%223.4%22 height=%2221%22 rx=%221.7%22/%3E%3Crect x=%22188.925%22 y=%224%22 width=%223.4%22 height=%2216%22 rx=%221.7%22/%3E%3Crect x=%22195.175%22 y=%226%22 width=%223.4%22 height=%2212%22 rx=%221.7%22/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 24%22 preserveAspectRatio=%22none%22 fill=%22%23000%22%3E%3Crect x=%221.425%22 y=%226.5%22 width=%223.4%22 height=%2211%22 rx=%221.7%22/%3E%3Crect x=%227.675%22 y=%223.5%22 width=%223.4%22 height=%2217%22 rx=%221.7%22/%3E%3Crect x=%2213.925%22 y=%220%22 width=%223.4%22 height=%2224%22 rx=%221.7%22/%3E%3Crect x=%2220.175%22 y=%225.5%22 width=%223.4%22 height=%2213%22 rx=%221.7%22/%3E%3Crect x=%2226.425%22 y=%222%22 width=%223.4%22 height=%2220%22 rx=%221.7%22/%3E%3Crect x=%2232.675%22 y=%224.5%22 width=%223.4%22 height=%2215%22 rx=%221.7%22/%3E%3Crect x=%2238.925%22 y=%221%22 width=%223.4%22 height=%2222%22 rx=%221.7%22/%3E%3Crect x=%2245.175%22 y=%227%22 width=%223.4%22 height=%2210%22 rx=%221.7%22/%3E%3Crect x=%2251.425%22 y=%223%22 width=%223.4%22 height=%2218%22 rx=%221.7%22/%3E%3Crect x=%2257.675%22 y=%220%22 width=%223.4%22 height=%2224%22 rx=%221.7%22/%3E%3Crect x=%2263.925%22 y=%226%22 width=%223.4%22 height=%2212%22 rx=%221.7%22/%3E%3Crect x=%2270.175%22 y=%222.5%22 width=%223.4%22 height=%2219%22 rx=%221.7%22/%3E%3Crect x=%2276.425%22 y=%225%22 width=%223.4%22 height=%2214%22 rx=%221.7%22/%3E%3Crect x=%2282.675%22 y=%220.5%22 width=%223.4%22 height=%2223%22 rx=%221.7%22/%3E%3Crect x=%2288.925%22 y=%224%22 width=%223.4%22 height=%2216%22 rx=%221.7%22/%3E%3Crect x=%2295.175%22 y=%221.5%22 width=%223.4%22 height=%2221%22 rx=%221.7%22/%3E%3Crect x=%22101.425%22 y=%226.5%22 width=%223.4%22 height=%2211%22 rx=%221.7%22/%3E%3Crect x=%22107.675%22 y=%223.5%22 width=%223.4%22 height=%2217%22 rx=%221.7%22/%3E%3Crect x=%22113.925%22 y=%220%22 width=%223.4%22 height=%2224%22 rx=%221.7%22/%3E%3Crect x=%22120.175%22 y=%225.5%22 width=%223.4%22 height=%2213%22 rx=%221.7%22/%3E%3Crect x=%22126.425%22 y=%222%22 width=%223.4%22 height=%2220%22 rx=%221.7%22/%3E%3Crect x=%22132.675%22 y=%224.5%22 width=%223.4%22 height=%2215%22 rx=%221.7%22/%3E%3Crect x=%22138.925%22 y=%221%22 width=%223.4%22 height=%2222%22 rx=%221.7%22/%3E%3Crect x=%22145.175%22 y=%226%22 width=%223.4%22 height=%2212%22 rx=%221.7%22/%3E%3Crect x=%22151.425%22 y=%223%22 width=%223.4%22 height=%2218%22 rx=%221.7%22/%3E%3Crect x=%22157.675%22 y=%220.5%22 width=%223.4%22 height=%2223%22 rx=%221.7%22/%3E%3Crect x=%22163.925%22 y=%227%22 width=%223.4%22 height=%2210%22 rx=%221.7%22/%3E%3Crect x=%22170.175%22 y=%222.5%22 width=%223.4%22 height=%2219%22 rx=%221.7%22/%3E%3Crect x=%22176.425%22 y=%225%22 width=%223.4%22 height=%2214%22 rx=%221.7%22/%3E%3Crect x=%22182.675%22 y=%221.5%22 width=%223.4%22 height=%2221%22 rx=%221.7%22/%3E%3Crect x=%22188.925%22 y=%224%22 width=%223.4%22 height=%2216%22 rx=%221.7%22/%3E%3Crect x=%22195.175%22 y=%226%22 width=%223.4%22 height=%2212%22 rx=%221.7%22/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  pointer-events: none;
+}
+
+.dh-pod__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 14px 0 0;
+  min-height: 2.24em;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-900);
+  transition: color 0.15s ease;
+}
+
+.dh-pod:hover .dh-pod__title {
+  color: var(--dh-accent-ink);
+}
+
+.dh-pod__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px solid var(--color-gray-100);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--color-gray-500);
+}
+
+.dh-pod__av {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.dh-pod__guest {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--color-gray-700);
+}
+
+.dh-pod__plays {
+  margin-left: auto;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.dh-pod__plays i {
+  margin-right: 5px;
+}
+
+.dh-pod:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+:where(.uc-dark) .dh-pod__title,
+html.uc-dark .dh-pod__title {
+  color: #fff;
+}
+
+:where(.uc-dark) .dh-pod:hover .dh-pod__title,
+html.uc-dark .dh-pod:hover .dh-pod__title {
+  color: var(--dh-brand);
+}
+
+:where(.uc-dark) .dh-pod__meta,
+html.uc-dark .dh-pod__meta {
+  border-top-color: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.62);
+}
+
+:where(.uc-dark) .dh-pod__guest,
+html.uc-dark .dh-pod__guest {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+@media (max-width: 767px) {
+  .dh-pod {
+    /* 390px'te 64vw = 250px -> 54px pay */
+    width: 64vw;
+    max-width: 264px;
+  }
+}
+
+/* ===========================================================
+   R5-3 — İNFOGRAFİK KARTI (.dh-info) + oklar başlık satırına
+   Sorun: sol/sağ oklar swiper'ın ALTINDA duruyordu (hstack gap-1 mt-4);
+   kart ortalanmış lorem metinli, çerçevesiz düz 3x4 görseldi.
+   KARAR ve GEREKÇE:
+   - Oklar "Daha Fazla" linkinin yanına alındı (.dh-secbar__tools).
+     Referans ölçümü: .vray-tools = see-all + row-nav, gap 12px, aynı satır.
+   - Oran 3:4 korundu (kullanıcı isteği; dikey infografik posteri).
+   - Genişlik 210px: 1176px kapsayıcıda 24 gap ile 5 tam kart + 30px pay.
+   - Poster hissi için görsele 1px iç hairline (inset box-shadow) eklendi;
+     düz kırpılmış fotoğraf gibi değil, çerçeveli bir baskı gibi duruyor.
+   - İMZA: VERİ KÜNYESİ. Alt kenarda amber tire + "KAYNAK: TÜİK · 2025".
+     İnfografikte kaynak süs değil, içeriğin doğruluk beyanıdır —
+     kategori etiketi yerine gerçek bilgi taşıyor (R3-16 kararıyla uyumlu).
+   - Merkez disk KULLANILMADI: podcast kartında merkez disk zaten var,
+     üç bölüm birbirinin kopyası olmasın diye. Onun yerine hover'da
+     alttan yukarı kayan "Büyüt" hapı — infografik zaten büyütülerek
+     okunan içerik, mevcut lightbox'ı işaret ediyor.
+   - Başlık ortalanmış -> sola yaslı: 5 kartlık rayda ortalı başlıklar
+     tarama çizgisini kırıyordu.
+   Köşe imzası: görselde ve "Büyüt" hapında sol-alt 0.
+   =========================================================== */
+.dh-info {
+  position: relative;
+  display: block;
+  width: 210px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dh-info__fig {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  border-bottom-left-radius: 0;
+  overflow: hidden;
+  background: var(--color-gray-100);
+  box-shadow: inset 0 0 0 1px rgba(20, 18, 12, 0.08), 0 10px 26px rgba(20, 18, 12, 0.1);
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-info:hover .dh-info__fig,
+.dh-info:focus-visible .dh-info__fig {
+  transform: translateY(-3px);
+}
+
+.dh-info__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-info:hover .dh-info__img {
+  transform: scale(1.04);
+}
+
+.dh-info__fig::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* TUR 2: degrade karartma kaldırıldı. İnfografik bir BELGE; alttaki düz
+     künye bandı grafiklerin kaynak satırıyla aynı işi görüyor. Karartma
+     yalnızca hover'da "Büyüt" hapının arkasına giriyor. */
+  background: rgba(20, 18, 12, 0.34);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.dh-info:hover .dh-info__fig::after,
+.dh-info:focus-visible .dh-info__fig::after {
+  opacity: 1;
+}
+
+.dh-info__src {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  background: rgba(18, 17, 14, 0.88);
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.dh-info__src::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--dh-brand);
+}
+
+.dh-info__zoom {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  /* TUR 3: yuvarlak etiket + sol-alt keskin köşe imzası */
+  border-radius: 999px;
+  border-bottom-left-radius: 0;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--color-gray-900);
+  font-family: var(--font-family-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-info:hover .dh-info__zoom,
+.dh-info:focus-visible .dh-info__zoom {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dh-info__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 12px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  color: var(--color-gray-900);
+  transition: color 0.15s ease;
+}
+
+.dh-info:hover .dh-info__title {
+  color: var(--dh-accent-ink);
+}
+
+.dh-info:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+:where(.uc-dark) .dh-info__title,
+html.uc-dark .dh-info__title {
+  color: #fff;
+}
+
+:where(.uc-dark) .dh-info:hover .dh-info__title,
+html.uc-dark .dh-info:hover .dh-info__title {
+  color: var(--dh-brand);
+}
+
+:where(.uc-dark) .dh-info__fig,
+html.uc-dark .dh-info__fig {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 10px 26px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 767px) {
+  .dh-info {
+    width: 46vw;
+    max-width: 210px;
+  }
+}
+
+/* --- Hareket azaltma tercihi: üç bölüm için de --- */
+@media (prefers-reduced-motion: reduce) {
+
+  .dh-foto__fig,
+  .dh-foto__img,
+  .dh-foto__leaf,
+  .dh-foto__open,
+  .dh-pod__fig,
+  .dh-pod__img,
+  .dh-pod__play,
+  .dh-info__fig,
+  .dh-info__img,
+  .dh-info__zoom {
+    transition: none !important;
+  }
+
+  .dh-foto:hover .dh-foto__fig,
+  .dh-foto:hover .dh-foto__img,
+  .dh-pod:hover .dh-pod__fig,
+  .dh-pod:hover .dh-pod__img,
+  .dh-pod:hover .dh-pod__play,
+  .dh-info:hover .dh-info__fig,
+  .dh-info:hover .dh-info__img {
+    transform: none;
+  }
+
+  .dh-track {
+    scroll-behavior: auto;
+  }
+}
+
+/* ===========================================================
+   R5-4 — İPTAL. Ray kenarlarına mask-image ile yumuşatma (.dh-edge-fade)
+   denendi; kullanıcı "böyle soft istemedim, en sağdaki yumuşaklığı sil"
+   dedi. Blok, .dh-edge-fade sınıfı ve dh-track.js'teki durum kodu
+   tamamen kaldırıldı. Sağ kenar bilerek NET bitiyor; "devamı var" bilgisini
+   yarım görünen kart ve başlık satırındaki oklar veriyor.
+   Numara boş bırakıldı ki commit geçmişiyle uyuşsun.
+   ===========================================================
+   R5-5 — RAY SONU ERİŞİLEBİLİRLİK DÜZELTMESİ
+   Playwright etkileşim testi 390px'te yakaladı:
+     dhFotoTrack sona kaydırılınca son kart hâlâ 12,4px taşıyordu,
+     is-end hiç gelmiyordu, ileri oku pasifleşmiyordu.
+   Sebep: scroll-snap-type: x mandatory + her karta scroll-snap-align: start.
+   Son kartın "start" hizası maksimum scrollLeft'in ötesinde kalıyor;
+   erişilemeyen snap noktası yüzünden tarayıcı bir önceki noktaya geri
+   yapışıyor ve son kart hiçbir zaman tam görünmüyor.
+   Çözüm: son karta scroll-snap-align: end. Böylece ray sonu geçerli bir
+   snap noktası oluyor. mandatory korunuyor (kart hizası bozulmasın).
+   =========================================================== */
+.dh-track > :last-child,
+.dh-shorts > :last-child {
+  scroll-snap-align: end;
+}
+
+
+/* ===========================================================
+   R4-5 — DİĞER HABERLER: özet metni + KÖŞE YAZILARI sütunu
+   Sorun (kullanıcı): tek satırlık kartlar 9 kolon genişliğinde
+   uzayınca içi boş görünüyordu (ölçüm 1440px: kart gövdesi 748px,
+   içinde yalnız başlık + tek satır meta).
+   Çözüm: ana kolon 9 -> 6, araya üçüncü bir modül (KÖŞE YAZILARI)
+   girdi ve kartlara 1-2 cümlelik özet eklendi. POPÜLER HABERLER
+   sütununa dokunulmadı (kullanıcı "sıkıntı yok" dedi).
+   =========================================================== */
+.dh-card__excerpt {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--color-gray-500);
+  /* 2 satırda kes — kart yükseklikleri listede eşit kalsın */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+html.uc-dark .dh-card__excerpt {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* Özet girince başlık ile alt bilgi arası nefes almalı */
+.dh-card--wide .dh-card__foot {
+  margin-top: 10px;
+}
+
+@media (max-width: 575.98px) {
+  .dh-card__excerpt {
+    -webkit-line-clamp: 3;
+  }
+}
+
+
+/* ---------- KÖŞE YAZILARI modülü ---------- */
+.dh-authors {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 8px 10px;
+  background: #fff;
+  border-radius: 16px;
+  border-bottom-left-radius: 0;
+}
+
+html.uc-dark .dh-authors {
+  background: var(--color-gray-900);
+}
+
+.dh-author + .dh-author {
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+html.uc-dark .dh-author + .dh-author {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.dh-author__link {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 8px;
+  text-decoration: none;
+  border-radius: 12px;
+  border-bottom-left-radius: 0;
+  transition: background 0.18s ease;
+}
+
+.dh-author__link:hover {
+  background: rgba(0, 0, 0, 0.035);
+}
+
+html.uc-dark .dh-author__link:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dh-author__avatar {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 12px;
+  border-bottom-left-radius: 0;
+}
+
+.dh-author__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.dh-author__name {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-author__name {
+  color: #fff;
+}
+
+.dh-author__beat {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dh-menu-ink, var(--color-primary-700));
+}
+
+.dh-author__title {
+  margin-top: 3px;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-gray-600);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+html.uc-dark .dh-author__title {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dh-author__link:hover .dh-author__title {
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-author__link:hover .dh-author__title {
+  color: #fff;
+}
+
+.dh-authors__all {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--dh-menu-ink, var(--color-primary-700));
+  white-space: nowrap;
+}
+
+.dh-authors__all i {
+  font-size: 10px;
+}
+
+
+/* ---------- POPÜLER HABERLER: başlık ile alt bilgi arası ----------
+   Kullanıcı "başlık ve alt bilgiler arasındaki boşluğu arttır" dedi.
+   Ölçülen aralık 4px'ti (vstack gap-1); 12px'e çıkarıldı. */
+.dh-pop .post-header {
+  gap: 0 !important;
+}
+
+.dh-pop__meta {
+  margin-top: 12px !important;
+}
+
+
+/* ===========================================================
+   R4-6 — BÖLÜM ÖNE ÇIKAN KARTI: SLIDER + META SAĞA YASLI
+   Kullanıcı: "bu sectionlardaki büyük kartlı haberlerde slider'lı
+   olacak ve o tarih vs kısmı en sağa yaslı olacak."
+   Kapsam: SPOR · FİNANS · SAVUNMA · KADIN · SAĞLIK · TEKNOLOJİ · OYUN
+   (7 bölüm, her biri 3 slayt, 6sn otomatik, fare üstündeyken durur.)
+
+   Meta hizası: R3-13'teki kural yalnız `.meta > .d-flex` seçicisini
+   hedefliyordu; bu kartlarda sarmalayıcı `.hstack` olduğu için kural
+   tutmuyor, tarih grubu yazarın hemen yanında sola yapışık kalıyordu
+   (ölçüldü). Aynı kurallar `.hstack` için de yazıldı.
+   =========================================================== */
+.dh-feat,
+.dh-feat__swiper {
+  height: 100%;
+}
+
+.dh-feat .swiper-slide > article {
+  height: 100%;
+}
+
+/* Nokta navigasyonu kartın içinde, sağ altta — meta satırının ÜSTÜNDE
+   değil, onunla aynı hizada sağda duracak yer yok; bu yüzden sol alta,
+   yazar satırının üstüne alındı. */
+.dh-feat .dh-feat__dots {
+  position: absolute;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 12px !important;
+  top: auto !important;
+  z-index: 6;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.dh-feat .dh-feat__dots .swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  margin: 0 !important;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.45);
+  opacity: 1;
+  transition: width 0.28s cubic-bezier(0.22, 0.61, 0.36, 1), background 0.28s ease;
+}
+
+.dh-feat .dh-feat__dots .swiper-pagination-bullet-active {
+  width: 22px;
+  background: var(--dh-brand);
+}
+
+.dh-feat .post-header {
+  padding-bottom: 34px !important;
+}
+
+/* ---------- Meta: yazar solda, tarih grubu sağa yaslı ---------- */
+.post-header .post-meta > .meta > .hstack {
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px !important;
+  min-width: 0;
+  width: 100%;
+}
+
+.post-header .post-meta > .meta > .hstack > div:first-child {
+  flex: 0 0 30%;
+  max-width: 30%;
+  min-width: 0;
+}
+
+.post-header .post-meta > .meta > .hstack > .sep {
+  display: none !important;
+}
+
+.post-header .post-meta > .meta > .hstack > div:not(:first-child) {
+  margin-left: auto;
+}
+
+@media (max-width: 767.98px) {
+  .post-header .post-meta > .meta > .hstack > div:first-child {
+    flex-basis: auto;
+    max-width: 55%;
+  }
+}
+
+/* ===========================================================
+   R5-6 — İNFOGRAFİK KÜNYESİ TEK SATIRA KİLİTLENDİ
+   390px ölçümünde yakalandı: "Kaynak: TÜİK · 2015-2025" iki satıra
+   sarıyor, künye bandı komşu kartınkinden 17px daha kalın duruyordu.
+   Künye bir kimlik satırı; sarmak yerine kısaltılmalı.
+   =========================================================== */
+.dh-info__src b {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: inherit;
+}
+
+
+/* ===========================================================
+   R4-L1 — HABER LİSTE SAYFASI
+   Kullanıcı istekleri:
+     · Son haberler (kırmızı) şeridi kaldırıldı
+     · Üst siyah bant / sağ sarı ray / DADA filigranı / sarı footer
+       ana sayfadan alındı (kabuk eşitlendi)
+     · Sayfa başlığı bölüm başlığından ALINIP banner'ın üstüne,
+       sayfanın merkezine taşındı; altında uçlara doğru sönen
+       yumuşak bir ayraç var
+     · Sol üstteki oklar en sağa yaslandı
+     · Banner'a %30 koyu perde + kategori rengi tonlaması eklendi
+     · Breadcrumb eklendi, o da kendi ayracını taşıyor
+     · Kategori şeridi çip/sekme olarak yeniden tasarlandı
+     · "Filtrele" açılır kutusu sekme grubuna çevrildi
+     · Kart başlıkları sola yaslandı
+   =========================================================== */
+
+/* ---------- Kategori rengi anahtarı ----------
+   Kategori sayfalarındaki :root override'larından ölçüldü:
+     kadin #4300ff · teknoloji #1c3df9 · spor #19750a
+     finans #2aa1a9 · savunma #e20000 · saglik #00c5e5 · oyun #0c1d49
+   data-cat boşsa kurumsal amber kullanılır. */
+.dh-lb {
+  --dh-cat: var(--dh-brand);
+}
+
+.dh-lb[data-cat="kadin"]     { --dh-cat: #4300ff; }
+.dh-lb[data-cat="teknoloji"] { --dh-cat: #1c3df9; }
+.dh-lb[data-cat="spor"]      { --dh-cat: #19750a; }
+.dh-lb[data-cat="finans"]    { --dh-cat: #2aa1a9; }
+.dh-lb[data-cat="savunma"]   { --dh-cat: #e20000; }
+.dh-lb[data-cat="saglik"]    { --dh-cat: #00c5e5; }
+.dh-lb[data-cat="oyun"]      { --dh-cat: #0c1d49; }
+
+/* ---------- Perde: %30 koyu + sol alttan kategori tonu ---------- */
+.dh-lb__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.30);
+}
+
+.dh-lb__veil::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top right, var(--dh-cat) 0%, transparent 58%);
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+/* ---------- Banner üst şeridi ---------- */
+.dh-lb__top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  padding: 26px 0 0;
+}
+
+.dh-lb__topinner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dh-lb__crumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.dh-lb__crumb a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.dh-lb__crumb a:hover {
+  color: #fff;
+}
+
+.dh-lb__crumb [aria-current] {
+  color: #fff;
+}
+
+.dh-lb__csep {
+  opacity: 0.45;
+}
+
+/* Uçlara doğru sönen yumuşak ayraç — "yazı bitti mi onun da
+   opaklığı bitecek" isteği: gradyan tam olarak bunu yapıyor. */
+.dh-lb__rule {
+  display: block;
+  width: min(560px, 82%);
+  height: 1px;
+  margin: 14px 0 0;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.42) 22%,
+      rgba(255, 255, 255, 0.42) 78%,
+      rgba(255, 255, 255, 0) 100%);
+}
+
+.dh-lb__rule--crumb {
+  width: min(320px, 62%);
+  margin-top: 10px;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.26) 24%,
+      rgba(255, 255, 255, 0.26) 76%,
+      rgba(255, 255, 255, 0) 100%);
+}
+
+.dh-lb__title {
+  margin: 14px 0 0;
+  font-size: clamp(26px, 3.4vw, 44px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Oklar: sol üstten en sağa */
+.dh-lb__nav {
+  position: absolute;
+  top: 0;
+  right: var(--bs-gutter-x, 16px);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dh-lb__nav .swiper-nav {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border-bottom-left-radius: 0;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.18s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-lb__nav .swiper-nav:hover {
+  background: var(--dh-cat);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* Banner içeriği perdenin üstünde kalsın */
+.dh-lb .panel.max-w-xl.mx-auto.px-2.z-3 {
+  z-index: 3;
+}
+
+@media (max-width: 991.98px) {
+  .dh-lb__top {
+    padding-top: 18px;
+  }
+
+  .dh-lb__nav {
+    position: static;
+    margin-top: 14px;
+    justify-content: center;
+  }
+
+  .dh-lb__nav .swiper-nav {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
+/* ===========================================================
+   R4-L2 — KATEGORİ ŞERİDİ (çip/sekme)
+   Öncesi: düz metin bağlantılar, aralarına `border-end` ile
+   dikey çizgi; aktif kategori belli değildi, oklar şeridin
+   üstüne biniyordu.
+   =========================================================== */
+.dh-catbar {
+  background: var(--color-gray-10, #f7f7f8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  padding: 10px 0;
+  margin-bottom: 0 !important;
+}
+
+html.uc-dark .dh-catbar {
+  background: var(--color-gray-800);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.dh-catbar__inner {
+  position: relative;
+  /* Oklara yer aç: şerit okların altına girmesin */
+  padding: 0 44px;
+}
+
+.dh-catbar__swiper {
+  overflow: hidden;
+}
+
+.dh-catbar .swiper-slide {
+  width: auto !important;
+}
+
+.dh-catbar__chip {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--color-gray-700);
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: 0.16s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-catbar__chip:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-gray-900);
+}
+
+.dh-catbar__chip.is-on {
+  background: var(--dh-brand);
+  border-color: transparent;
+  /* Amber üstünde koyu mürekkep: 10,58:1 (AA + AAA) */
+  color: var(--color-gray-900);
+  font-weight: 700;
+}
+
+html.uc-dark .dh-catbar__chip {
+  color: rgba(255, 255, 255, 0.78);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+html.uc-dark .dh-catbar__chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+html.uc-dark .dh-catbar__chip.is-on {
+  color: var(--color-gray-900);
+}
+
+.dh-catbar__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--color-gray-900);
+  cursor: pointer;
+  z-index: 2;
+  transition: 0.16s ease;
+}
+
+.dh-catbar__nav:hover {
+  background: var(--dh-brand);
+  border-color: transparent;
+}
+
+.dh-catbar__nav--prev { left: 0; }
+.dh-catbar__nav--next { right: 0; }
+
+.dh-catbar__nav.is-off {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+html.uc-dark .dh-catbar__nav {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+
+/* ===========================================================
+   R4-L3 — SIRALAMA SEKMELERİ (eski "Filtrele" açılır kutusu)
+   =========================================================== */
+.dh-sort {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+html.uc-dark .dh-sort {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.dh-sort__tab {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-gray-600);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.16s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-sort__tab:hover {
+  color: var(--color-gray-900);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dh-sort__tab.is-on {
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+  font-weight: 700;
+}
+
+html.uc-dark .dh-sort__tab {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+html.uc-dark .dh-sort__tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 575.98px) {
+  .dh-sort {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+
+  .dh-sort::-webkit-scrollbar { display: none; }
+}
+
+
+/* ===========================================================
+   R4-L4 — LİSTE KARTLARI: BAŞLIK SOLA
+   Kart gövdesi `text-center` ile ortalıydı; başlık, meta ve
+   kategori rozeti sola alındı.
+   =========================================================== */
+.dh-listgrid,
+.dh-listgrid .post-header,
+.dh-listgrid .post-title,
+.dh-listgrid .post-meta,
+.dh-listgrid .content {
+  text-align: left !important;
+}
+
+.dh-listgrid .content.vstack.items-center {
+  align-items: flex-start !important;
+}
+
+
+/* ===========================================================
+   R4-L5 — LİSTE BANNER DÜZELTMESİ
+   Kullanıcı: "sol köşeye al başlığı ve breadcrumb'ı; breadcrumb'ı
+   haber detaydan örnek al; liste sayfalarındaki breadcrumb'ın
+   altında divider olmasına gerek yok, ama detayda olabilir."
+   -> Üst şerit merkezden SOLA alındı, breadcrumb `.dh-art-crumb`
+      bileşenine bağlandı (detay sayfasıyla birebir aynı görünüm),
+      breadcrumb ayracı kaldırıldı, başlık altındaki yumuşak ayraç
+      korundu ama sola hizalandı (uçlara doğru sönüyor).
+   =========================================================== */
+.dh-lb__topinner {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.dh-lb__crumb {
+  justify-content: flex-start;
+  margin-bottom: 0 !important;
+}
+
+.dh-lb__title {
+  margin-top: 12px;
+}
+
+.dh-lb .dh-lb__rule {
+  width: min(420px, 100%);
+  margin-top: 12px;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.42) 0%,
+      rgba(255, 255, 255, 0.42) 62%,
+      rgba(255, 255, 255, 0) 100%);
+}
+
+
+/* ===========================================================
+   R4-L6 — ÇİP YARIÇAPI: TAM HAP DEĞİL, PROJEYLE TUTARLI
+   Kullanıcı: "chiplerin radiusunu sertleştir, proje ile tutarlı olsun."
+   Ayrım: KART ETİKETLERİ (kategori rozetleri) hap kalır — o ayrı istek;
+   FİLTRE / SIRALAMA / KATEGORİ çipleri 10px'e sertleştirildi.
+   =========================================================== */
+.dh-catbar__chip,
+.dh-sort,
+.dh-sort__tab,
+.dh-rev__chip {
+  border-radius: 10px !important;
+}
+
+.dh-sort {
+  border-radius: 12px !important;
+}
+
+.dh-catbar__nav {
+  border-radius: 10px !important;
+}
+
+
+/* ===========================================================
+   R4-L7 — BANNER OKUNABİLİRLİĞİ + META HİZASI + ÇİP TASARIMI
+   Ölçüm (Playwright, 1440px, düzeltme öncesi):
+     · Başlık mürekkebi zaten #fff, hesaplanan kontrast 6,44:1
+       (AA geçiyor) — ama amber çarpım katmanı görseli sepyaya
+       çevirdiği için ALGILANAN kontrast düşüktü. Metnin altına
+       ayrı bir koyu perde konuldu, kurumsal renk patlaması
+       metin bölgesinden uzağa (sol kenar + sağ alt köşe) alındı.
+     · Yazar bloğu x=198, başlık x=96 -> 102px içeride başlıyordu.
+       Sebep: R3-13'teki `.post-date{justify-content:flex-end}`
+       kuralı bu bannerda yazarı da sağa itiyordu. Banner kapsamında
+       sola çevrildi; artık ikisi de x=96'da başlıyor.
+     · Çipler 10px'ti; kullanıcı "çok yuvarlak, sert radius" dedi ->
+       kurumsal köşe imzasına geçildi (8px / sol-alt 0).
+   =========================================================== */
+
+/* ---------- Kurumsal renk patlaması: sol kenar + sağ alt köşe ---------- */
+.dh-lb__veil {
+  background: rgba(0, 0, 0, 0.30);
+}
+
+.dh-lb__veil::before {
+  background:
+    radial-gradient(120% 90% at 0% 50%, var(--dh-cat) 0%, transparent 62%),
+    radial-gradient(90% 80% at 100% 100%, var(--dh-cat) 0%, transparent 60%);
+  opacity: 0.42;
+  mix-blend-mode: normal;
+}
+
+/* Metnin altına ayrı koyu perde — kurumsal ton metni yıkamasın */
+.dh-lb__veil::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.42) 34%,
+      rgba(0, 0, 0, 0) 62%);
+}
+
+/* ---------- Başlık ve meta: net beyaz, aynı sol kenar ---------- */
+.dh-lb .post-title,
+.dh-lb .post-title a {
+  color: #fff !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.dh-lb .post-header .post-meta .post-date {
+  justify-content: flex-start !important;
+}
+
+.dh-lb .post-header .post-meta > .meta > .d-flex > div:not(:first-child),
+.dh-lb .post-header .post-meta > .meta > .hstack > div:not(:first-child) {
+  margin-left: 0 !important;
+}
+
+.dh-lb .post-header .post-meta > .meta > .d-flex > div:first-child,
+.dh-lb .post-header .post-meta > .meta > .hstack > div:first-child {
+  flex: 0 0 auto;
+  max-width: none;
+}
+
+.dh-lb .post-header .post-meta,
+.dh-lb .post-header .post-meta > .meta {
+  justify-content: flex-start !important;
+}
+
+.dh-lb .post-header .post-meta .post-author > a:last-child,
+.dh-lb .post-header .post-meta .post-date span {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+
+/* ---------- Kategori çipleri: kurumsal köşe imzalı dikdörtgen ----------
+   Hap form bırakıldı; üç köşe 8px, sol alt keskin — logo rozetiyle
+   aynı geometri. Aktif çip amber dolgu + koyu mürekkep (10,58:1). */
+.dh-catbar__chip,
+.dh-sort__tab,
+.dh-catbar__nav {
+  border-radius: 8px 8px 8px 0 !important;
+}
+
+.dh-sort {
+  border-radius: 10px 10px 10px 0 !important;
+}
+
+.dh-catbar__chip {
+  height: 36px;
+  padding: 0 15px;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  border-color: rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
+
+.dh-catbar__chip.is-on {
+  box-shadow: 0 2px 10px rgba(252, 182, 35, 0.35);
+}
+
+html.uc-dark .dh-catbar__chip {
+  background: var(--color-gray-900);
+}
+
+/* Yazar hâlâ 102px içerideydi: sebep R3-13'teki
+   `.post-header .post-meta > *:not(.meta){margin-left:auto}` kuralı —
+   bu bannerdaki sarmalayıcının sınıfı `.meta` değil `.d-block` olduğu
+   için otomatik boşluk yiyordu (ölçüm: margin-left 102,42px).
+   Banner kapsamında sıfırlandı; yazar artık başlıkla aynı x'te. */
+.dh-lb .post-header .post-meta > *:not(.meta) {
+  margin-left: 0 !important;
+}
+
+.dh-lb .post-header .post-meta > .d-block {
+  margin-left: 0 !important;
+}
+
+
+/* ===========================================================
+   R4-L8 — BANNER PERDESİ: SLAYTIN İÇİNE ALINDI
+   HATA: `.dh-lb__veil` `.swiper-main`'in KARDEŞİ olarak z-index:2
+   ile duruyordu. Swiper `.swiper-wrapper`'a `transform` uyguluyor,
+   bu da tüm slider'ı tek bir yığın bağlamına kapatıyor — dolayısıyla
+   slaytın içindeki `.z-3` metin kutusu, kardeş perdenin ÜSTÜNE
+   çıkamıyordu. Sonuç: başlık ve meta perdenin altında kalıp
+   soluk gri görünüyordu (kullanıcı "seçili haberin yazısı
+   okunmuyor" dedi).
+   ÇÖZÜM: perde, her slaytın İÇİNDE zaten var olan `.position-cover`
+   gradyan katmanına taşındı (z-1). Metin kutusu z-3 olduğu için
+   artık kesin olarak perdenin üstünde.
+   Ölçüm (düzeltme sonrası): başlık kutusunda beyaz metin kontrastı
+   ortalama 15,09:1 · en açık pikselde 8,20:1 -> AA + AAA.
+   =========================================================== */
+.dh-lb__veil {
+  display: none !important;
+}
+
+.dh-lb .swiper-slide .position-cover.bg-gradient-to-r {
+  opacity: 1 !important;
+  background:
+    /* metin bölgesi için dip perdesi */
+    linear-gradient(to top,
+      rgba(0, 0, 0, 0.74) 0%,
+      rgba(0, 0, 0, 0.44) 34%,
+      rgba(0, 0, 0, 0) 64%),
+    /* soldan okunabilirlik perdesi */
+    linear-gradient(to right,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0) 62%),
+    /* istenen düz %30 koyu perde */
+    linear-gradient(0deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)) !important;
+}
+
+/* Kurumsal renk: soldan ve sağ alt köşeden patlıyor */
+.dh-lb .swiper-slide .position-cover.bg-gradient-to-r::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 0% 50%, var(--dh-cat) 0%, transparent 62%),
+    radial-gradient(90% 80% at 100% 100%, var(--dh-cat) 0%, transparent 58%);
+  opacity: 0.34;
+}
+
+/* Üst şerit (breadcrumb + başlık + oklar) slider'ın üstünde kalsın */
+.dh-lb__top {
+  z-index: 6;
+}
+
+/* Sağdaki küçük haber listesi (swiper-thumbs): pasif satırlar tema
+   tarafından çok soluk bırakılmıştı, kurumsal ton eklenince büsbütün
+   okunmaz oldu. Mürekkep açıldı, aktif satır amber ile işaretlendi. */
+.dh-lb .swiper-thumbs .swiper-slide h3 {
+  color: rgba(255, 255, 255, 0.80) !important;
+  transition: color 0.18s ease;
+}
+
+.dh-lb .swiper-thumbs .swiper-slide .post-meta,
+.dh-lb .swiper-thumbs .swiper-slide .post-date span {
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+.dh-lb .swiper-thumbs .swiper-slide-thumb-active h3,
+.dh-lb .swiper-thumbs .swiper-slide:hover h3 {
+  color: #fff !important;
+}
+
+.dh-lb .swiper-thumbs .swiper-slide-thumb-active {
+  border-left: 2px solid var(--dh-brand);
+  padding-left: 12px;
+}
+
+/* 390px'te .dh-sort 592px genişleyip sayfayı 101px taşırıyordu (ölçüldü):
+   `width:100%` esnek kapsayıcıda içerik genişliğini kısıtlamıyor.
+   max-width + min-width:0 ile kutu daraltıldı, içerik yatay kayıyor. */
+@media (max-width: 767.98px) {
+  .dh-sort {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+
+  .dh-sort::-webkit-scrollbar { display: none; }
+
+  .dh-sort__tab { flex: 0 0 auto; }
+
+  .page-header .vstack.sm\:hstack > div,
+  .page-header .vstack.sm\:hstack {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+
+/* ===========================================================
+   R4-D1 (YENİDEN) — HABER DETAY
+   NOT: Bu blok bir kez yazılmış, paralel çalışan bir ajan
+   custom.min.css'i komple yeniden yazınca silinmişti. Markup
+   (haber-detay.html) yerinde kaldığı için CSS'i yeniden kuruldu.
+   Kapsam:
+     · Başlık 2 satıra yayıldı (sağa doğru genişletildi)
+     · "Bağlantıyı kopyala" sağa yaslandı, kaynak logosu kalktı
+     · Yorum/değerlendirme başlığı sola alındı
+     · Yorum aksiyonları: Beğen · Beğenme · Yanıtla · Bildir
+       — ÇERÇEVESİZ (kullanıcı isteği)
+     · İç içe yanıt satırı
+     · Süzgeç çipleri projeyle tutarlı sert köşe (8/8/8/0)
+   =========================================================== */
+
+/* ---------- Başlık: 2 satır ----------
+   Öncesi: max-width 22ch (498px) -> 1440px'te 3 satır.
+   Tarama: 34ch uzun başlıkta 3'e düşüyor, 38ch hepsinde <=2 satır.
+   min(...,100%) dar ekranda taşmayı engelliyor. */
+.dh-art-title {
+  max-width: min(38ch, 100%);
+  text-wrap: balance;
+}
+
+.dh-art-hero__main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+/* ---------- Paylaş: kopyala sağa yaslı, kaynak logosuz ---------- */
+.dh-share {
+  position: relative;
+}
+
+.dh-share__source img {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .dh-share__row {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+}
+
+/* Toast akıştan çıkarıldı: flex kardeşi olarak yer kaplayınca
+   kopyala düğmesi kolon kenarına 38px kala kalıyordu (ölçüldü). */
+.dh-share__toast {
+  position: absolute;
+  right: 0;
+  top: calc(100% - 2px);
+  flex: none;
+  z-index: 3;
+}
+
+/* ---------- Değerlendirmeler başlığı sola ---------- */
+.dh-rev__eyebrow,
+.dh-rev__title {
+  text-align: left;
+  align-self: flex-start;
+}
+
+.dh-rev__head--main,
+.dh-rev__inner > .dh-rev__eyebrow,
+.dh-rev__inner > .dh-rev__title {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* ---------- Süzgeç çipleri: projeyle tutarlı sert köşe ----------
+   Kullanıcı: "Tümü / 5 yıldız çiplerinin radiusunu sertleştir."
+   Kurumsal köşe imzası: üç köşe 8px, sol alt keskin.
+   YORUM AKSİYON DÜĞMELERİNE DOKUNULMUYOR — ayrı bileşen. */
+.dh-rev__chip {
+  border-radius: 8px 8px 8px 0 !important;
+}
+
+/* ---------- Yorum aksiyonları: ÇERÇEVESİZ ---------- */
+.dh-rev__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.dh-rev__act {
+  appearance: none;
+  border: 0 !important;
+  background: transparent;
+  border-radius: 8px 8px 8px 0;
+  padding: 7px 10px;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-gray-500);
+  cursor: pointer;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.dh-rev__act i {
+  font-size: 13px;
+}
+
+.dh-rev__act span {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+
+.dh-rev__act:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-gray-900);
+}
+
+/* Oy verilmiş durum: amber zemin + koyu mürekkep (10,58:1),
+   ikon da outline'dan doluya geçiyor (HANDOFF açık #4). */
+.dh-rev__act.is-on {
+  background: rgba(252, 182, 35, 0.20);
+  color: var(--dh-menu-ink);
+}
+
+.dh-rev__act--report {
+  margin-left: auto;
+  color: var(--color-gray-400);
+}
+
+.dh-rev__act--report:hover {
+  color: #b42318;
+  background: rgba(180, 35, 24, 0.07);
+}
+
+html.uc-dark .dh-rev__act {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+html.uc-dark .dh-rev__act:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* ---------- İç içe yanıt ---------- */
+.dh-rev__replies {
+  margin-top: 14px;
+  padding-left: 18px;
+  border-left: 2px solid var(--color-gray-100);
+}
+
+html.uc-dark .dh-rev__replies {
+  border-left-color: rgba(255, 255, 255, 0.12);
+}
+
+.dh-rev__item--reply {
+  border-top: 0 !important;
+  padding: 10px 0 !important;
+  gap: 11px;
+}
+
+.dh-rev__item--reply .dh-rev__avatar {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+}
+
+.dh-rev__item--reply .dh-rev__text {
+  font-size: 14px;
+}
+
+@media (max-width: 575.98px) {
+  .dh-rev__act {
+    min-height: 40px;
+    padding: 9px 10px;
+  }
+
+  .dh-rev__act--report {
+    margin-left: 0;
+  }
+}
+
+/* 1000px'te liste kartlarının meta satırı (tarih · süre · görüntülenme)
+   183px'e kilitlenip kartı 65px taşırıyordu (ölçüldü). Satır artık
+   sarabiliyor ve kutu daralabiliyor. */
+.dh-listgrid .post-header,
+.dh-listgrid .post-meta,
+.dh-listgrid .post-meta > *,
+.dh-listgrid .post-date {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.dh-listgrid .post-meta,
+.dh-listgrid .post-date {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}

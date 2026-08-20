@@ -667,7 +667,6 @@
           <div class="dh-share" data-dh-share>
             <span class="dh-share__source">
               <span class="dh-share__source-label">Kaynak</span>
-              <img src="./assets/images/anadolu-ajansi.svg" width="44" alt="Anadolu Ajansı">
               <span>Anadolu Ajansı</span>
             </span>
             <div class="dh-share__row">
@@ -911,9 +910,48 @@
                   <span class="dh-rev__when">5 ay önce</span>
                 </div>
                 <p class="dh-rev__text">Haberin kaynağını da eklemişsiniz, teşekkürler. Bu konuda uzun süredir doğru bilgi arıyordum; özellikle son paragraftaki veriler işime yaradı.</p>
-                <button type="button" class="dh-rev__like">
-                  <i class="fas fa-thumbs-up" aria-hidden="true"></i> Beğen <span>3</span>
-                </button>
+                <!-- Yorum aksiyonları: beğen / beğenme / yanıtla / bildir.
+                     Oy verilmemiş durum OUTLINE (far), oy verilmiş durum DOLU (fas) ikon. -->
+                <div class="dh-rev__actions">
+                  <button type="button" class="dh-rev__act is-on" aria-pressed="true">
+                    <i class="fas fa-thumbs-up" aria-hidden="true"></i> Beğen <span>3</span>
+                  </button>
+                  <button type="button" class="dh-rev__act" aria-pressed="false">
+                    <i class="far fa-thumbs-down" aria-hidden="true"></i> Beğenme <span>0</span>
+                  </button>
+                  <button type="button" class="dh-rev__act dh-rev__act--reply">
+                    <i class="far fa-comment" aria-hidden="true"></i> Yanıtla
+                  </button>
+                  <button type="button" class="dh-rev__act dh-rev__act--report" title="Bu yorumu bildir">
+                    <i class="far fa-flag" aria-hidden="true"></i> Bildir
+                  </button>
+                </div>
+                <div class="dh-rev__replies">
+                  <article class="dh-rev__item dh-rev__item--reply">
+                    <span class="dh-rev__avatar" aria-hidden="true">D</span>
+                    <div class="dh-rev__body">
+                      <div class="dh-rev__head">
+                        <b class="dh-rev__name">Dada Haber</b><span class="dh-rev__badge">Editör</span>
+                        <span class="dh-rev__when">5 ay önce</span>
+                      </div>
+                      <p class="dh-rev__text">Teşekkür ederiz. Kaynak bilgisini haberin sonunda güncel tutmaya devam edeceğiz.</p>
+                      <div class="dh-rev__actions">
+                        <button type="button" class="dh-rev__act" aria-pressed="false">
+                          <i class="far fa-thumbs-up" aria-hidden="true"></i> Beğen <span>1</span>
+                        </button>
+                        <button type="button" class="dh-rev__act" aria-pressed="false">
+                          <i class="far fa-thumbs-down" aria-hidden="true"></i> Beğenme <span>0</span>
+                        </button>
+                        <button type="button" class="dh-rev__act dh-rev__act--reply">
+                          <i class="far fa-comment" aria-hidden="true"></i> Yanıtla
+                        </button>
+                        <button type="button" class="dh-rev__act dh-rev__act--report" title="Bu yorumu bildir">
+                          <i class="far fa-flag" aria-hidden="true"></i> Bildir
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
               </div>
             </article>
             <article class="dh-rev__item">
@@ -925,9 +963,20 @@
                   <span class="dh-rev__when">3 ay önce</span>
                 </div>
                 <p class="dh-rev__text">Konuyu dengeli anlatmışsınız. Yalnız grafikteki rakamların kaynağı da belirtilse daha iyi olurdu.</p>
-                <button type="button" class="dh-rev__like">
-                  <i class="fas fa-thumbs-up" aria-hidden="true"></i> Beğen <span>1</span>
-                </button>
+                <div class="dh-rev__actions">
+                  <button type="button" class="dh-rev__act" aria-pressed="false">
+                    <i class="far fa-thumbs-up" aria-hidden="true"></i> Beğen <span>1</span>
+                  </button>
+                  <button type="button" class="dh-rev__act" aria-pressed="false">
+                    <i class="far fa-thumbs-down" aria-hidden="true"></i> Beğenme <span>0</span>
+                  </button>
+                  <button type="button" class="dh-rev__act dh-rev__act--reply">
+                    <i class="far fa-comment" aria-hidden="true"></i> Yanıtla
+                  </button>
+                  <button type="button" class="dh-rev__act dh-rev__act--report" title="Bu yorumu bildir">
+                    <i class="far fa-flag" aria-hidden="true"></i> Bildir
+                  </button>
+                </div>
               </div>
             </article>
             <article class="dh-rev__item">
@@ -939,9 +988,20 @@
                   <span class="dh-rev__when">1 ay önce</span>
                 </div>
                 <p class="dh-rev__text">Kısa ve net. Tam da aradığım özet buydu.</p>
-                <button type="button" class="dh-rev__like">
-                  <i class="fas fa-thumbs-up" aria-hidden="true"></i> Beğen <span>0</span>
-                </button>
+                <div class="dh-rev__actions">
+                  <button type="button" class="dh-rev__act" aria-pressed="false">
+                    <i class="far fa-thumbs-up" aria-hidden="true"></i> Beğen <span>0</span>
+                  </button>
+                  <button type="button" class="dh-rev__act" aria-pressed="false">
+                    <i class="far fa-thumbs-down" aria-hidden="true"></i> Beğenme <span>0</span>
+                  </button>
+                  <button type="button" class="dh-rev__act dh-rev__act--reply">
+                    <i class="far fa-comment" aria-hidden="true"></i> Yanıtla
+                  </button>
+                  <button type="button" class="dh-rev__act dh-rev__act--report" title="Bu yorumu bildir">
+                    <i class="far fa-flag" aria-hidden="true"></i> Bildir
+                  </button>
+                </div>
               </div>
             </article>
               </div>
