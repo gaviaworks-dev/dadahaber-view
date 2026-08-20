@@ -2258,7 +2258,38 @@ html.uc-dark .dh-footer-brand {
    renk sadece buton, çip ve etiket gibi büyük/kalın öğelerde kullanıldı.
    =========================================================== */
 .dh-band--gastro {
+  /* dadagastro.com tokens.css --tomato */
   --dh-partner: #e14827;
+}
+
+.dh-band--diet {
+  /* dadadiet.com tokens --green (ölçüldü: #3BB77E, koyu ton #2c9963) */
+  --dh-partner: #3bb77e;
+  --dh-partner-deep: #2c9963;
+}
+
+.dh-band--diet .dh-band__tag {
+  border-color: color-mix(in srgb, var(--dh-partner) 60%, transparent);
+  background: color-mix(in srgb, var(--dh-partner) 22%, transparent);
+  color: #fff;
+}
+
+.dh-band--diet .dh-band__mark {
+  background: var(--dh-partner);
+  color: #fff;
+}
+
+/* Buton metni: beyaz/#3BB77E = 2,54:1 ile AA'yı geçmiyor; koyu tonda
+   (#2c9963) 3,59:1 ile büyük-kalın metin eşiğini geçiyor. CTA bu yüzden
+   koyu tonla kuruldu, hover'da açık ton. */
+.dh-band--diet .dh-band__cta {
+  background: var(--dh-partner-deep);
+  color: #fff;
+}
+
+.dh-band--diet .dh-band__cta:hover {
+  background: var(--dh-partner);
+  color: #fff;
 }
 
 .dh-band__grid {
