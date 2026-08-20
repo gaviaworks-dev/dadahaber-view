@@ -16717,9 +16717,22 @@ html.uc-dark .dh-mbox__filter {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding-top: 24px;
-  margin-top: 28px;
+  /* Çizgiye nefes payı (kullanıcı isteği): içerik ile çizgi arası 48px,
+     çizgi ile numaralar arası 36px, numaraların altında 40px. */
+  margin-top: 48px;
+  padding-top: 36px;
+  padding-bottom: 8px;
+  /* tema `nav`/`.panel` sıfırlaması alt boşluğu yiyordu (ölçüm: 0px) */
+  margin-bottom: 40px !important;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 767.98px) {
+  .dh-pager {
+    margin-top: 32px;
+    padding-top: 24px;
+    margin-bottom: 28px !important;
+  }
 }
 
 html.uc-dark .dh-pager {
