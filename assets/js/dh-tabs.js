@@ -1,14 +1,16 @@
-/* dh-tabs.js — Lig merkezi: sekmeler + iki kademeli lig seçici (R7-S)
+/* dh-tabs.js — Lig merkezi: sekmeler + üç kademeli lig seçici (R7-S)
    Yeni kütüphane yok, saf vanilla JS. ES5 sözdizimi.
 
-   İKİ AYRI DESEN, İKİ AYRI ARIA ROLÜ — bilerek:
-   · SEKMELER (.dh-sort[role=tablist]) hangi BÖLÜMÜN görüneceğini seçer:
+   ÜÇ AYRI DESEN, ÜÇ AYRI ARIA ROLÜ — bilerek:
+   · SEKMELER (.dh-sort--tabs[role=tablist]) hangi BÖLÜMÜN görüneceğini seçer:
      Puan Durumu · Fikstür · Sonuçlar · Kral/İstatistik. Klasik tab deseni:
      role=tab + aria-selected + aria-controls, ok tuşlarında otomatik etkinleşme.
-   · LİG SEÇİCİ (.dh-lgpick) bir sekme değil SÜZGEÇTİR: görünen bölümü
-     değiştirmez, o bölümün VERİSİNİ değiştirir. Doğru rol radiogroup/radio +
-     aria-checked. İki tablist aynı paneli yönetirse ekran okuyucuda
-     "hangi sekmedeyim" bilgisi bozulur; bu yüzden ayrıldı.
+   · SEÇİCİLER (.dh-lgpick lig çipleri, .dh-sort--split Genel/İç Saha/Deplasman)
+     sekme DEĞİL SÜZGEÇTİR: görünen bölümü değiştirmez, o bölümün VERİSİNİ
+     değiştirir. Doğru rol radiogroup/radio + aria-checked. İki tablist aynı
+     paneli yönetirse ekran okuyucuda "hangi sekmedeyim" bilgisi bozulur.
+   · ÜLKE ve SEZON native <select>: seçenek sayısı büyük ve gezinilecek değil
+     seçilecek listeler (referans sitede ülke listesi 77 seçenek).
 
    Klavye (her iki desende de dolaşan tabindex / roving tabindex):
      ← ↑  önceki · → ↓  sonraki · Home ilk · End son — hepsi anında seçer.
@@ -100,7 +102,9 @@
     return { tablar: tablar, sec: sec };
   }
 
-  /* ---------------- Lig seçici ---------------- */
+  /* ---------------- Üç kademeli lig seçici ----------------
+     ÜLKE (açılır kutu) -> LİG (çip) -> SEZON (açılır kutu)
+     Kumanda tipi kararı ve ölçümü: custom.min.css R7-S/6. */
   function ligKur(root) {
     var pick = root.querySelector('[data-dh-lgpick]');
     var dal = root.getAttribute('data-dh-veri');
@@ -109,21 +113,31 @@
     var LIGLER = window.DHLigVeri[dal];
     if (!LIGLER) return;
 
-    var kapsamlar = dizi(pick.querySelectorAll('[data-scope][role="radio"]:not([data-lig])'));
+    var ulkeSel = pick.querySelector('[data-dh-ulke]');
+    var sezonSel = pick.querySelector('[data-dh-sezon]');
     var ligler = dizi(pick.querySelectorAll('[data-lig]'));
     var kicker = root.querySelector('[data-dh-lig-kicker]');
     var bolumler = dizi(root.querySelectorAll('[data-dh-lg]'));
+    var splitler = dizi(root.querySelectorAll('[data-dh-split] [role="radio"]'));
     var aktifLig = (pick.querySelector('[data-lig][aria-checked="true"]') || ligler[0]);
+    var gorunumAd = 'genel';
 
-    function ciz(id) {
-      var lig = LIGLER[id];
+    function veriyi() {
+      var lig = LIGLER[aktifLig ? aktifLig.getAttribute('data-lig') : ''];
+      if (!lig) return null;
+      return sezonSel ? window.DHLig.sezonla(lig, sezonSel.value) : lig;
+    }
+
+    function ciz() {
+      var lig = veriyi();
       if (!lig) return;
       for (var i = 0; i < bolumler.length; i++) {
         var ad = bolumler[i].getAttribute('data-dh-lg');
-        bolumler[i].innerHTML = window.DHLig.bolum(ad, lig);
+        bolumler[i].innerHTML = window.DHLig.bolum(ad, lig, ad === 'tablo' ? gorunumAd : null);
       }
       if (kicker) kicker.textContent = lig.kicker;
-      root.setAttribute('data-lig', id);
+      root.setAttribute('data-lig', aktifLig.getAttribute('data-lig'));
+      root.setAttribute('data-sezon', lig.sezon || '');
     }
 
     function ligSec(chip, cizme) {
@@ -134,53 +148,85 @@
       }
       aktifLig = chip;
       odakSirasi(ligler.filter(gorunur), chip);
-      if (cizme !== false) ciz(chip.getAttribute('data-lig'));
+      if (cizme !== false) ciz();
     }
 
-    function kapsamSec(chip, cizme) {
-      var s = chip.getAttribute('data-scope');
-      for (var i = 0; i < kapsamlar.length; i++) {
-        var acik = kapsamlar[i] === chip;
-        kapsamlar[i].setAttribute('aria-checked', acik ? 'true' : 'false');
-        kapsamlar[i].classList.toggle('is-on', acik);
-      }
-      odakSirasi(kapsamlar, chip);
-
+    function ulkeSec(kod, cizme) {
       var ilk = null;
       for (var j = 0; j < ligler.length; j++) {
-        var uyar = ligler[j].getAttribute('data-scope') === s;
+        var uyar = ligler[j].getAttribute('data-scope') === kod;
         ligler[j].hidden = !uyar;
         if (uyar && !ilk) ilk = ligler[j];
       }
-      /* Seçili lig bu kapsamda değilse kapsamın ilk ligine geçilir. */
-      if (ilk && (!aktifLig || aktifLig.getAttribute('data-scope') !== s)) {
+      if (ilk && (!aktifLig || aktifLig.getAttribute('data-scope') !== kod)) {
         ligSec(ilk, cizme);
       } else if (aktifLig) {
         odakSirasi(ligler.filter(gorunur), aktifLig);
+        if (cizme !== false) ciz();
       }
       var sarici = pick.querySelector('[data-dh-leagues]');
       if (sarici) sarici.scrollLeft = 0;
     }
 
-    for (var i = 0; i < kapsamlar.length; i++) {
-      (function (c) { c.addEventListener('click', function () { kapsamSec(c); }); }(kapsamlar[i]));
+    function gorunumSec(btn) {
+      for (var i = 0; i < splitler.length; i++) {
+        var acik = splitler[i] === btn;
+        splitler[i].setAttribute('aria-checked', acik ? 'true' : 'false');
+        splitler[i].classList.toggle('is-on', acik);
+      }
+      odakSirasi(splitler, btn);
+      gorunumAd = btn.getAttribute('data-gorunum') || 'genel';
+      var lig = veriyi();
+      var hedef = root.querySelector('[data-dh-lg="tablo"]');
+      if (lig && hedef) hedef.innerHTML = window.DHLig.bolum('tablo', lig, gorunumAd);
     }
+
     for (var j = 0; j < ligler.length; j++) {
       (function (c) { c.addEventListener('click', function () { ligSec(c); }); }(ligler[j]));
     }
+    for (var k = 0; k < splitler.length; k++) {
+      (function (c) { c.addEventListener('click', function () { gorunumSec(c); }); }(splitler[k]));
+    }
+    if (ulkeSel) ulkeSel.addEventListener('change', function () { ulkeSec(ulkeSel.value); });
+    if (sezonSel) sezonSel.addEventListener('change', function () { ciz(); });
 
-    var kapsamKutu = pick.querySelector('[data-dh-scopes]');
     var ligKutu = pick.querySelector('[data-dh-leagues]');
-    if (kapsamKutu) kapsamKutu.addEventListener('keydown', klavye(function () { return kapsamlar; }, function (c) { kapsamSec(c); }));
+    var splitKutu = root.querySelector('[data-dh-split]');
     if (ligKutu) ligKutu.addEventListener('keydown', klavye(function () { return ligler; }, function (c) { ligSec(c); }));
+    if (splitKutu) splitKutu.addEventListener('keydown', klavye(function () { return splitler; }, function (c) { gorunumSec(c); }));
 
-    /* İlk kurulum: sayfada zaten varsayılan ligin statik HTML'i var,
+    /* İlk kurulum: varsayılan ligin statik HTML'i sayfada zaten var,
        yeniden çizme — yalnız görünürlük ve odak sırası kurulur. */
-    var acikKapsam = pick.querySelector('[data-scope][aria-checked="true"]:not([data-lig])') || kapsamlar[0];
-    if (acikKapsam) kapsamSec(acikKapsam, false);
+    if (ulkeSel) ulkeSec(ulkeSel.value, false);
+  }
+
+  /* ---------------- Basit süzgeç grupları ----------------
+     Sıralama / hafta / dönem şeritleri. Eskiden role="tab" idi ama
+     yönettikleri bir panel yoktu: ekran okuyucuya sekme diye tanıtılan
+     ama hiçbir şey açmayan denetimlerdi. Artık role="group" +
+     aria-pressed, ve tıklandığında gerçekten seçim değiştiriyorlar.
+     Veriyi backend bağlanınca sunucu değiştirecek. */
+  function pickKur() {
+    var gruplar = dizi(document.querySelectorAll('[data-dh-pick]'));
+    for (var i = 0; i < gruplar.length; i++) {
+      (function (g) {
+        var btns = dizi(g.querySelectorAll('button'));
+        function sec(b) {
+          for (var j = 0; j < btns.length; j++) {
+            var acik = btns[j] === b;
+            btns[j].setAttribute('aria-pressed', acik ? 'true' : 'false');
+            btns[j].classList.toggle('is-on', acik);
+          }
+        }
+        for (var k = 0; k < btns.length; k++) {
+          (function (b) { b.addEventListener('click', function () { sec(b); }); }(btns[k]));
+        }
+      }(gruplar[i]));
+    }
   }
 
   function kur() {
+    pickKur();
     var kokler = dizi(document.querySelectorAll('[data-dh-lig]'));
     for (var i = 0; i < kokler.length; i++) {
       sekmeKur(kokler[i]);

@@ -20262,3 +20262,826 @@ html.uc-dark .dh-fld--err .dh-input {
 html.uc-dark .dh-fld--err .dh-input:focus {
   box-shadow: 0 0 0 3px rgba(255, 139, 128, 0.35);
 }
+
+
+/* -----------------------------------------------------------
+   R7-B TUR 3 — EKRAN GÖRÜNTÜSÜNE BAKARAK YAKALANAN ÜÇ HATA
+   (hamilelik.html 1440 / 390 / dark)
+
+   1) RADYO DÜĞMESİ TEAL KARE ÇIKIYORDU.
+      Ölçüm: getComputedStyle(.dh-radio input) ->
+      appearance:none · border-radius:20% · background:rgb(42,161,169)
+      Vendor demo-six'te genel bir input kuralı radyoyu ezip
+      accent-color'ı işlevsiz bırakıyor (bayat teal — text-bg-primary
+      yeşiliyle aynı aile). Yerel görünüm geri getirildi.
+
+   2) NOT SATIRLARINDA METİN SÜTUNLARA BÖLÜNÜYORDU.
+      .dh-res__note / .dh-brk__note display:flex idi; içindeki
+      <b> ve çıplak metin parçaları AYRI ANONİM FLEX ÖĞESİ olup
+      "…dayanır ve | tahminidir | . Doğum tarihi…" diye üç sütuna
+      dağıldı. Akış metni flex kabında yaşamaz: blok + konumlanmış
+      ikon düzenine geçildi.
+
+   3) Sayı ile birim arasındaki kaynak boşluğu ("20 . hafta")
+      görünür kalıyordu — işaretlemede kapatıldı, burada da
+      birim sola yapıştırıldı.
+   ----------------------------------------------------------- */
+.dh-radio input[type="radio"] {
+  appearance: auto !important;
+  -webkit-appearance: radio !important;
+  width: 17px;
+  height: 17px;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: none !important;
+  accent-color: var(--dh-menu-ink);
+}
+
+html.uc-dark .dh-radio input[type="radio"] {
+  accent-color: var(--dh-brand);
+}
+
+.dh-res__note,
+.dh-brk__note {
+  position: relative;
+  display: block;
+  padding-left: 19px;
+}
+
+.dh-res__note i,
+.dh-brk__note i {
+  position: absolute;
+  left: 0;
+  top: 3px;
+  margin-top: 0;
+}
+
+.dh-brk__note { padding-top: 12px; }
+.dh-res__note { padding-top: 10px; }
+
+.dh-panel--gebe .dh-wk__unit { margin-left: -2px; }
+
+
+/* ===========================================================
+   R7-S/5 — FİKSTÜRDE "NEREDE" MOBİLDE KAYBOLUYORDU
+   R6-S 992px altında `.dh-fx__meta`yı gizliyordu (satır dar diye).
+   Ama kullanıcının fikstürden istediği dört bilgiden biri tam da bu:
+   kiminle · ne zaman · NEREDE · ev mi deplasman mı. Gizlemek yerine
+   satır ikinci bir hatta taşındı: üst hat saat + eşleşme,
+   alt hat stat + yayın. Ölçüm (390px): satır 76px -> 92px,
+   dokuz maçlık hafta 684px -> 828px. Bilgi kaybı yerine 144px.
+   Çakışma yok: stat ve yayın ayrı ızgara sütunlarında, stat
+   `min-width:0` + ellipsis ile kısalır.
+   =========================================================== */
+
+@media (max-width: 991.98px) {
+  .dh-fx__row {
+    grid-template-columns: 52px minmax(0, 1fr) auto;
+    row-gap: 5px;
+  }
+
+  .dh-fx__meta {
+    display: block;
+    grid-column: 2 / -1;
+    grid-row: 2;
+    min-width: 0;
+  }
+
+  .dh-fx__state { grid-column: 3; grid-row: 1; }
+
+  .dh-fx__cols {
+    grid-template-columns: 52px minmax(0, 1fr) auto;
+  }
+
+  .dh-fx__cols > span:nth-child(3) { display: none; }
+  .dh-fx__cols > span:last-child { display: block; text-align: right; }
+}
+
+@media (max-width: 575.98px) {
+  .dh-fx__row {
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+    row-gap: 4px;
+  }
+
+  .dh-fx__what { grid-column: 2 / -1; grid-row: 1; }
+  .dh-fx__meta { grid-column: 2; grid-row: 2; }
+  .dh-fx__state { grid-column: 3; grid-row: 2; justify-self: end; text-align: right; }
+
+  .dh-fx__cols { grid-template-columns: 46px minmax(0, 1fr) auto; }
+  .dh-fx__cols > span:last-child { display: block; }
+}
+
+
+/* -----------------------------------------------------------
+   R7-B / DETAY — MAKALE İÇİ MODÜL KUTUSU (.dh-artbox)
+   hamilelik-detay.html içinde okuru hafta eksenine geri
+   bağlayan tek kutu. Kaynakta (hthayat) bu iş sağ rayda üç
+   ayrı hesaplayıcı kartıyla yapılıyordu; bizde makale akışının
+   içinde tek ve bağlamlı bir çağrı olarak duruyor.
+   Geometri: .dh-medinfo ile aynı sol şerit + köşe imzası.
+   ----------------------------------------------------------- */
+.dh-artbox {
+  margin: 26px 0 8px;
+  padding: 18px 20px;
+  background: var(--color-gray-25, #fafafa);
+  border: 1px solid rgba(18, 18, 18, 0.1);
+  border-left: 3px solid var(--dh-brand);
+  border-radius: 12px 12px 12px 0;
+}
+
+.dh-artbox__k {
+  display: block;
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dh-menu-ink);
+}
+
+.dh-artbox__t {
+  margin: 7px 0 12px;
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-gray-900);
+}
+
+.dh-artbox__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 16px;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.dh-artbox__go i { font-size: 11px; transition: transform 0.16s ease; }
+.dh-artbox__go:hover { filter: brightness(0.94); color: var(--color-gray-900); }
+.dh-artbox__go:hover i { transform: translateX(3px); }
+.dh-artbox__go:focus-visible { outline: 3px solid var(--dh-menu-ink); outline-offset: 2px; }
+
+html.uc-dark .dh-artbox {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.14);
+  border-left-color: var(--dh-brand);
+}
+html.uc-dark .dh-artbox__k { color: var(--dh-brand); }
+html.uc-dark .dh-artbox__t { color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-artbox__go i { transition: none !important; }
+}
+
+/* Detay sayfasındaki bilgilendirme notu makale sütununda tam genişlik alsın */
+.post-content .dh-medinfo { margin: 0 0 8px; }
+
+
+/* -----------------------------------------------------------
+   R7-C11 — KÜNYE DÜZENİ: İKİ TABLO YAN YANA (.dh-mastgrid)
+   Kullanıcı: "Sayfalandırmayı ya ortalı yapalım ya da sayfa
+   tasarımını düzenleyecek şekilde düzenle."
+
+   ÖLÇÜLEN (önce, 1440x900)
+     kapsayıcı içi 96..1344 (1248px)
+     .dh-mast #1  96..876 (780px) -> sağında 468px ölü blok
+     .dh-mast #2  96..876 (780px) -> sağında 468px ölü blok
+     1200'de 388px · 1000'de 188px
+   ORTALAMA SEÇENEĞİ ELENDİ: blok ortalanınca sol kenarı
+   x=330'a kayıyor; sayfa başlığı, breadcrumb, kişi ızgarası ve
+   footer hepsi x=96'da — dört farklı hizada dört blok çıkıyordu.
+   SEÇİLEN: iki tablo yan yana. İkisi de kayıt bilgisi, ayrı
+   sayfa yüksekliğinde durmalarının bir sebebi yok.
+   ÖLÇÜLEN (sonra, 1440): kolonlar 600px + 48px + 600px = 1248,
+   ölü blok 0. Okuma sırası korunuyor: önce yayıncı/sorumluluk,
+   sonra şirket kaydı, sonra yayın kurulu.
+   ----------------------------------------------------------- */
+.dh-mastgrid {
+  display: grid;
+  gap: 34px;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .dh-mastgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dh-mastgrid { gap: 48px; }
+}
+
+/* Kolon içindeyken 780px tavanı devreden çıkıyor (R6-C14/2 tek
+   kolonlu düzen içindi); tablo kolonun tamamını dolduruyor. */
+.dh-mastgrid .dh-mast {
+  max-width: none;
+}
+
+/* Makale sütununda .post-content p (özgüllük 0,0,1,1) benim
+   .dh-medinfo__txt kuralımı (0,0,1,0) eziyordu: ölçümde not
+   metni 13,5px yerine 17px çıktı. Özgüllük eşitlendi. */
+.post-content .dh-medinfo__txt {
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Ölçüm: yukarıdaki eşitleme yetmedi — R4-D1'deki
+   `.dh-art .post-content > div > p { font-size:17px !important }`
+   kuralı bilgilendirme notunu da yakalıyor (not <div>'in doğrudan
+   çocuğu). Not bir gövde paragrafı değil, uyarı bileşeni:
+   yalnız bu bileşen için !important ile geri alındı. */
+.dh-art .post-content .dh-medinfo > .dh-medinfo__txt {
+  font-size: 13.5px !important;
+  line-height: 1.55;
+}
+
+
+/* -----------------------------------------------------------
+   R7-C12 — PİKSEL KONTRAST ÖLÇÜMÜ SONRASI İKİ DÜZELTME
+
+   (1) FOTOĞRAF ÜSTÜNDE BREADCRUMB. Ölçüm (metin gizlenip zemin
+       taranarak, mürekkebin alfası zeminle harmanlanarak):
+         hakkimizda 3,45:1 · yazar-liste 3,75:1 · reklam 4,01:1
+         resmi-ilanlar 3,97:1 · iletisim 3,85:1 · kunye 4,79:1
+       Sebep: breadcrumb bandın SOL ÜST köşesinde, perdenin
+       soldan sönen kısmı orayı yeterince karartmıyor; gazete
+       destesi gibi çok açık karelerde beyaz %76 eriyor.
+       Düzeltme: perdeye sol üst köşe katmanı eklendi (aynı
+       dilde, düz gradyan) + breadcrumb mürekkebi %86'ya çıktı.
+
+   (2) BELGE BANDINDA META SATIRI. Ölçüm: 4,00:1 — gray-400'ün
+       gray-10 üstündeki bilinen açığı (R6-X2'de .dh-cell__label
+       için aynı sebeple gray-500'e çekilmişti). Aynı düzeltme.
+   ----------------------------------------------------------- */
+.dh-vmedia::after {
+  background:
+    linear-gradient(to right,
+      rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.80) 34%,
+      rgba(0, 0, 0, 0.46) 66%, rgba(0, 0, 0, 0.24) 100%),
+    radial-gradient(78% 96% at 0% 0%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 72%),
+    radial-gradient(76% 60% at 100% 100%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 74%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30));
+}
+
+@media (max-width: 767.98px) {
+  .dh-vmedia::after {
+    background:
+      linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.74) 100%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34));
+  }
+}
+
+.dh-ph--photo .dh-art-crumb--ink,
+html.uc-dark .dh-ph--photo .dh-art-crumb--ink,
+.dh-ph--photo .dh-art-crumb--ink [aria-current],
+html.uc-dark .dh-ph--photo .dh-art-crumb--ink [aria-current] {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.dh-ph--doc .dh-ph__meta {
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-ph--doc .dh-ph__meta {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+
+/* -----------------------------------------------------------
+   R7-C13 — YAZAR PROFİLİ BAŞLIĞI (.dh-ph--prof)
+   Kullanıcı: "yazar-detay üst kısımda görsel kullanalım."
+
+   NEDEN ARKAYA STOK FOTOĞRAF KOYULMADI
+   Bu sayfanın kahramanı yazarın YÜZÜ. Arkaya ikinci bir
+   fotoğraf koyunca iki fotoğraf aynı 300px'lik bandın içinde
+   yarışıyor; portre küçük kaldığı için her seferinde kaybeden
+   o oluyor (denendi, ölçüldü: 104px avatar 1440x312 fotoğrafın
+   üstünde bandın %2,4'ünü kaplıyor). Bunun yerine:
+     · zemin KOYU ve grafik — yasal sayfalardaki belge
+       ızgarasının koyu akrabası, üstüne kurumsal amber soldan
+       ve sağ alt köşeden patlıyor (.dh-vmedia ile aynı iki
+       radial gradyan, aynı açı, aynı sıra),
+     · portre 104px -> 148px'e büyüyor ve amber halka alıyor,
+     · sağda yazarın ALANI damga olarak duruyor (.dh-ph__stamp
+       ile aynı bileşen) — süs değil, "bu yazar hangi masada"
+       bilgisini tekrar ediyor.
+   Böylece bant görsel oluyor ama sayfanın görseli yine yazar.
+
+   AİLE TUTARLILIĞI: ad/alan tipografisi .dh-wcard__name /
+   .dh-wcard__beat ve .dh-author ile aynı ölçekte; avatarda
+   kurumsal köşe imzası (sol alt 0) üçünde de aynı.
+   ----------------------------------------------------------- */
+.dh-ph--prof,
+html.uc-dark .dh-ph--prof {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: var(--dh-php-h, 312px);
+  padding: 30px 0 34px;
+  overflow: hidden;
+  background: #0b0c0f;
+  border-bottom: 0;
+}
+
+.dh-ph--prof > .container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+/* Zemin: belge ızgarası (koyu) + kurumsal renk patlaması */
+.dh-ph--prof::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.045) 0 1px, rgba(0, 0, 0, 0) 1px 30px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, rgba(0, 0, 0, 0) 1px 30px),
+    radial-gradient(120% 90% at 0% 50%, rgba(252, 182, 35, 0.30) 0%, transparent 62%),
+    radial-gradient(90% 80% at 100% 100%, rgba(252, 182, 35, 0.26) 0%, transparent 58%);
+}
+
+.dh-ph--prof::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    var(--dh-brand-corp) 0%, var(--dh-brand-corp) 34%, rgba(0, 0, 0, 0) 92%);
+}
+
+.dh-ph--prof .dh-ph__stamp,
+html.uc-dark .dh-ph--prof .dh-ph__stamp {
+  color: rgba(255, 255, 255, 0.035);
+  -webkit-text-stroke: 2px rgba(252, 182, 35, 0.26);
+}
+
+/* Breadcrumb koyu zemine çevriliyor (fotoğraflı bantla aynı) */
+.dh-ph--prof .dh-art-crumb--ink,
+html.uc-dark .dh-ph--prof .dh-art-crumb--ink,
+.dh-ph--prof .dh-art-crumb--ink [aria-current],
+html.uc-dark .dh-ph--prof .dh-art-crumb--ink [aria-current] {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.dh-ph--prof .dh-art-crumb--ink a,
+html.uc-dark .dh-ph--prof .dh-art-crumb--ink a {
+  color: #fff;
+}
+
+.dh-ph--prof .dh-art-crumb--ink a:hover,
+html.uc-dark .dh-ph--prof .dh-art-crumb--ink a:hover {
+  color: var(--dh-brand-corp);
+}
+
+/* Portre: 104 -> 148px, amber halka, aynı köşe imzası */
+.dh-ph--prof .dh-prof {
+  grid-template-columns: 148px minmax(0, 1fr);
+  gap: 22px 28px;
+}
+
+.dh-ph--prof .dh-prof__av {
+  width: 148px;
+  height: 148px;
+  border-radius: 34px;
+  border-bottom-left-radius: 0;
+  box-shadow: 0 0 0 3px var(--dh-brand-corp), 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.dh-ph--prof .dh-prof__beat,
+html.uc-dark .dh-ph--prof .dh-prof__beat {
+  color: var(--dh-brand-corp);
+}
+
+.dh-ph--prof .dh-prof__name,
+html.uc-dark .dh-ph--prof .dh-prof__name {
+  color: #fff;
+}
+
+.dh-ph--prof .dh-prof__bio,
+html.uc-dark .dh-ph--prof .dh-prof__bio {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.dh-ph--prof .dh-prof__stats,
+html.uc-dark .dh-ph--prof .dh-prof__stats {
+  border-top-color: rgba(255, 255, 255, 0.18);
+}
+
+.dh-ph--prof .dh-prof__stat,
+html.uc-dark .dh-ph--prof .dh-prof__stat {
+  border-right-color: rgba(255, 255, 255, 0.18);
+}
+
+.dh-ph--prof .dh-prof__n,
+html.uc-dark .dh-ph--prof .dh-prof__n {
+  color: #fff;
+}
+
+.dh-ph--prof .dh-prof__k,
+html.uc-dark .dh-ph--prof .dh-prof__k {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* Düğmeler ve sosyal ikonlar koyu zemine çevriliyor */
+.dh-ph--prof .dh-follow,
+html.uc-dark .dh-ph--prof .dh-follow {
+  border-color: rgba(255, 255, 255, 0.34);
+  color: #fff;
+}
+
+.dh-ph--prof .dh-follow:hover,
+html.uc-dark .dh-ph--prof .dh-follow:hover {
+  background: var(--dh-brand-corp);
+  border-color: var(--dh-brand-corp);
+  color: var(--color-gray-900);
+}
+
+.dh-ph--prof .dh-btn--ghost,
+html.uc-dark .dh-ph--prof .dh-btn--ghost {
+  border-color: rgba(255, 255, 255, 0.34);
+  color: #fff;
+}
+
+.dh-ph--prof .dh-btn--ghost:hover,
+html.uc-dark .dh-ph--prof .dh-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.dh-ph--prof .dh-soc a,
+html.uc-dark .dh-ph--prof .dh-soc a {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.dh-ph--prof .dh-soc a:hover,
+html.uc-dark .dh-ph--prof .dh-soc a:hover {
+  background: var(--dh-brand-corp);
+  color: var(--color-gray-900);
+}
+
+@media (max-width: 991.98px) {
+  .dh-ph--prof,
+  html.uc-dark .dh-ph--prof {
+    --dh-php-h: 280px;
+    padding: 26px 0 30px;
+  }
+
+  .dh-ph--prof .dh-prof {
+    grid-template-columns: 124px minmax(0, 1fr);
+  }
+
+  .dh-ph--prof .dh-prof__av {
+    width: 124px;
+    height: 124px;
+    border-radius: 28px;
+    border-bottom-left-radius: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .dh-ph--prof { --dh-php-h: 0px; }
+
+  .dh-ph--prof .dh-prof {
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .dh-ph--prof .dh-prof__av {
+    width: 92px;
+    height: 92px;
+    border-radius: 22px;
+    border-bottom-left-radius: 0;
+  }
+}
+
+/* R7-B TUR 4 — koyu temada hafta şeridinin arkasında gri bant.
+   Ölçüm (dark, 1440): .dh-catbar--wk arka planı rgb(36,36,36).
+   SEBEP: `html.uc-dark .dh-catbar` (0,2,1) benim `.dh-catbar--wk`
+   (0,1,0) kuralımı yeniyor — R6'da astroloji şeridinde de aynı
+   hata çıkmıştı (bu dosyada 15191. satır). Aynı çözüm. */
+html.uc-dark .dh-catbar--wk {
+  background: transparent;
+  border-bottom: 0;
+}
+
+
+/* -----------------------------------------------------------
+   R7-C14 — SOL ÜST KÖŞE PERDESİ (2. tur ölçüm)
+   İlk düzeltme breadcrumb'ı 3,45 -> 3,93'e taşıdı, hedef 4,5.
+   Köşe katmanı 0,55 -> 0,72 alfaya ve daha geniş yarıçapa
+   çıkarıldı. Ölçülen sonuç aşağıda (R7-C15 yorumunda).
+   ----------------------------------------------------------- */
+.dh-vmedia::after {
+  background:
+    linear-gradient(to right,
+      rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.80) 34%,
+      rgba(0, 0, 0, 0.46) 66%, rgba(0, 0, 0, 0.24) 100%),
+    radial-gradient(92% 118% at 0% 0%, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0) 76%),
+    radial-gradient(76% 60% at 100% 100%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 74%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30));
+}
+
+@media (max-width: 767.98px) {
+  .dh-vmedia::after {
+    background:
+      linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.74) 100%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34));
+  }
+}
+
+
+/* ===========================================================
+   R7-X — SİTE GENELİ: RADYO DÜĞMESİ + YER TUTUCU MÜREKKEBİ
+   Yorum ajanının raporundan çıkan iki paylaşılan alan kusuru.
+
+   1) `custom.min.css:659`'daki evrensel sıfırlama radyo düğmesini
+      `border-radius: 20%` ile KARE yapıyor ve seçili durumu
+      `#2aa1a9` (teal) boyuyordu — teal kurumsal palete ait değil,
+      finans kategorisinin tonuydu ve oradan sızmış. Radyo yuvarlak
+      olmalı (onay kutusundan ayrışsın), seçili durum amber olmalı.
+      Evrensel kural silinmiyor (paylaşılan alan, başka yerleri
+      bozabilir); üstüne yazılıyor.
+
+   2) `.dh-rev__input` yer tutucusu `gray-300` = beyaz üstünde
+      **2,85:1** — WCAG'ın yer tutucu için de beklediği 4,5:1'in
+      altında. gray-500'e çekildi (6,79:1).
+   =========================================================== */
+input[type="radio"] {
+  border-radius: 50% !important;
+  border-color: rgba(0, 0, 0, 0.34) !important;
+}
+
+input[type="radio"]:checked {
+  background-color: var(--dh-brand) !important;
+  border-color: var(--dh-brand) !important;
+  /* içeride koyu nokta: amber üstünde 10,58:1 */
+  box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 9px var(--color-gray-900);
+}
+
+input[type="radio"]:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+}
+
+html.uc-dark input[type="radio"] {
+  background-color: transparent !important;
+  border-color: rgba(255, 255, 255, 0.34) !important;
+}
+
+html.uc-dark input[type="radio"]:checked {
+  box-shadow: inset 0 0 0 3px var(--color-gray-900), inset 0 0 0 9px var(--color-gray-900);
+}
+
+.dh-rev__input::placeholder,
+.dh-rev__textarea::placeholder {
+  color: var(--color-gray-500) !important;
+  opacity: 1;
+}
+
+html.uc-dark .dh-rev__input::placeholder,
+html.uc-dark .dh-rev__textarea::placeholder {
+  color: rgba(255, 255, 255, 0.58) !important;
+}
+
+
+/* -----------------------------------------------------------
+   R7-C15 — ÖLÇÜM HATASI DÜZELTİLDİ, PERDE GERİ ALINDI
+
+   R7-C12/C14'te breadcrumb "3,45:1" ölçülmüştü. YANLIŞ ÖLÇÜM:
+   ölçülen eleman `<nav class="dh-art-crumb dh-art-crumb--ink">`
+   ve nav BLOK seviyesinde — kutusu x=96'dan x=1344'e, yani
+   bandın SAĞ yarısındaki aydınlık fotoğrafı da kapsıyordu.
+   En açık piksel metnin altında değil, 900px ötesindeydi.
+   Gerçek ölçüm (yalnız metin taşıyan çocuklar):
+     breadcrumb aktif sayfa 14,40 - 14,95:1
+     breadcrumb bağlantısı  19,69 - 20,87:1
+   Yani sorun hiç yoktu. Ders: blok seviyesindeki sarmalayıcı
+   değil, METNİ TAŞIYAN eleman ölçülür.
+
+   Köşe perdesi tamamen geri alınmıyor — 0,55 alfalı hâli metin
+   bloğunu fotoğrafın üstüne oturtan görsel bir çıpa, kalıyor.
+   0,72'lik hâli (yalnız hatalı ölçüm için eklenmişti) fotoğrafı
+   gereksiz karartıyordu, geri alındı.
+   ----------------------------------------------------------- */
+.dh-vmedia::after {
+  background:
+    linear-gradient(to right,
+      rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.80) 34%,
+      rgba(0, 0, 0, 0.46) 66%, rgba(0, 0, 0, 0.24) 100%),
+    radial-gradient(80% 100% at 0% 0%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 74%),
+    radial-gradient(76% 60% at 100% 100%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 74%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30));
+}
+
+@media (max-width: 767.98px) {
+  .dh-vmedia::after {
+    background:
+      linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.74) 100%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34));
+  }
+}
+
+
+/* ===========================================================
+   R7-S/6 — ÜÇ KADEMELİ SEÇİM: ÜLKE · LİG · SEZON
+   ------------------------------------------------------------
+   KUMANDA TİPİ KARARI — ÖLÇÜMLE.
+   Referans (fanatik.com.tr, Playwright ile canlı ölçüm):
+     ülke  <select>  305,8 x 44px  ·  77 SEÇENEK
+     lig   <select>  305,8 x 44px  ·  12 seçenek
+     sezon <select>  626,7 x 44px  ·  tam genişlik, alt satır
+   Bizim çip ölçümümüz (.dh-catbar__chip, 36px, 13px):
+     ortalama çip ~95px + 8px aralık
+     77 ülke çip olarak  = ~7.900px şerit  -> 1440px'te %85'i gizli
+     3 sezon çip olarak  = ~260px          -> sığar ama sezon
+                                              gezinilecek değil seçilecek
+     bir ülkenin ligleri = 4 çip / 261px   -> 390px'te bile SIĞAR
+
+   KARAR: kademe başına farklı kumanda — hepsine aynı kalıbı
+   dayatmak yerine ölçüye uyan kalıp.
+     ÜLKE  -> native <select>. 77 seçeneğe ölçeklenir, mobilde
+              işletim sisteminin kendi seçicisini açar, ekran
+              okuyucuda "liste kutusu" olarak doğru tanıtılır.
+     SEZON -> native <select>. Sıralı, tek boyutlu, nadiren
+              değiştirilir; görünürlüğe ihtiyacı yok.
+     LİG   -> .dh-catbar__chip şeridi. Gezinmenin ANA EKSENİ:
+              kullanıcı "bu ülkede hangi ligler var" sorusunu
+              tıklamadan görmeli. Seçili ülkede en fazla 12 öğe.
+   Yani proje çip dili terk edilmedi; hak ettiği kademede kaldı.
+
+   Açılır kutular çip geometrisini taşır (8px 8px 8px 0), Fanatik'in
+   10px yarıçapı ve rengi ALINMADI — yalnız bilgi mimarisi alındı.
+
+   GENEL / İÇ SAHA / DEPLASMAN: referansta tablonun üstünde üç sekme
+   (ölçüm: 36,4 / 43,8 / 70px, yükseklik 30px). Bizde .dh-sort kalıbı,
+   ama rolü radiogroup: paneli değil VERİYİ değiştiriyor.
+   İç saha + deplasman toplamı her zaman genel tabloyu verir —
+   ayrım dh-lig.js'te türetilir (ölçüm: 17+17=34 maç, 306+306=612).
+
+   PAYLAŞILAN SIRA: referansta 1,2,3,4,4,6,6,8,8,10,10,10,10,14...
+   Sıralama ölçütlerinin tamamında eşit takımlar aynı sırayı paylaşır,
+   sonraki takım atlanan sıraları atlar. .dh-rank.is-tie ikinci ve
+   sonraki eşleri soluklaştırır: sayı tekrarı yazım hatası değil,
+   kuralın kendisi olduğu görünsün.
+   =========================================================== */
+
+.dh-lgpick__line--sel {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dh-pick {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.dh-pick__lbl {
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gray-500, #5b5b5b);
+  white-space: nowrap;
+}
+
+.dh-pick__sel {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 36px;
+  min-width: 168px;
+  max-width: 100%;
+  padding: 0 34px 0 13px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  /* kurumsal köşe imzası — çiple aynı geometri */
+  border-radius: 8px 8px 8px 0;
+  background-color: #fff;
+  /* ok işareti: dış varlık yok, inline SVG data URI */
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%235b5b5b' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 11px 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-gray-900);
+  cursor: pointer;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.dh-pick__sel--sezon { min-width: 122px; }
+
+.dh-pick__sel:hover { border-color: rgba(0, 0, 0, 0.24); }
+
+.dh-pick__sel:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+html.uc-dark .dh-pick__lbl { color: rgba(255, 255, 255, 0.45); }
+
+html.uc-dark .dh-pick__sel {
+  background-color: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23bdbdbd' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+html.uc-dark .dh-pick__sel:hover { border-color: rgba(255, 255, 255, 0.32); }
+html.uc-dark .dh-pick__sel option { background: var(--color-gray-900); color: #fff; }
+
+@media (max-width: 575.98px) {
+  .dh-lgpick__line--sel { gap: 8px; }
+  .dh-pick { gap: 7px; flex: 1 1 auto; }
+  .dh-pick__lbl { font-size: 9.5px; letter-spacing: 0.1em; }
+  .dh-pick__sel { height: 32px; min-width: 0; width: 100%; font-size: 12.5px; padding: 0 30px 0 10px; }
+  .dh-pick__sel--sezon { min-width: 0; }
+}
+
+/* ---------- Genel / İç Saha / Deplasman ---------- */
+.dh-sort--split {
+  margin: 14px 18px 0;
+  width: max-content;
+  max-width: calc(100% - 36px);
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dh-sort--split::-webkit-scrollbar { display: none; }
+.dh-sort--split .dh-sort__tab { flex: 0 0 auto; padding: 6px 12px; font-size: 12.5px; }
+
+@media (max-width: 575.98px) {
+  .dh-sort--split { margin: 12px 14px 0; max-width: calc(100% - 28px); }
+  .dh-sort--split .dh-sort__tab { padding: 6px 10px; font-size: 12px; }
+}
+
+/* Sekme içeriği artık [data-dh-lg] sarmalayıcının içinde */
+.dh-tabpane > [data-dh-lg] > .dh-stand__wrap,
+.dh-tabpane > [data-dh-lg] > .dh-fx { margin-top: 14px; }
+
+/* ---------- Eşit sıra ---------- */
+.dh-rank.is-tie {
+  background: none;
+  border: 1px dashed rgba(18, 18, 18, 0.2);
+  color: var(--color-gray-500, #5b5b5b);
+}
+
+html.uc-dark .dh-rank.is-tie {
+  background: none;
+  border-color: rgba(255, 255, 255, 0.24);
+  color: rgba(255, 255, 255, 0.62);
+}
+
+
+/* -----------------------------------------------------------
+   R7-C16 — ÇAKIŞMA TESTİ SONUCU
+   Ölçülen: yazar profilinde "EKONOMİ" damgası 1200px altında
+   biyografi satırlarının üstüne biniyor (1000px'te 21px,
+   768px'te 168px kesişme). Biyografi 56ch, damga ise vw'ye
+   bağlı — dar ekranda ikisi aynı bandı paylaşıyor.
+   Belge sayfalarında sorun yok (başlık 22ch, alt metin 58ch).
+   Profil bandında damga 1200px altında kaldırıldı.
+   ----------------------------------------------------------- */
+@media (max-width: 1199.98px) {
+  .dh-ph--prof .dh-ph__stamp { display: none; }
+}
+
+/* ---------- Sahte sekmeler gerçek süzgeç oldu ----------
+   Denetim: spor sayfalarında 9 adet `role="tablist"` vardı ki hiçbirinin
+   `aria-controls`u ve yönettiği paneli yoktu — ekran okuyucuya "sekme"
+   diye tanıtılan ama tıklanınca hiçbir şey olmayan denetimler
+   (sıralama şeritleri, hafta şeritleri, dönem şeritleri).
+   Üstelik futbol.html ve basketbol.html'de artık GERÇEK bir tablist
+   de var; aynı sayfada iki tablist, biri sahte, en kötü hâli.
+   role="group" + aria-pressed'e çevrildi ve dh-tabs.js ile gerçekten
+   seçim değiştiriyorlar. Görünüm değişmedi, .dh-sort kalıbı aynı. */
+.dh-sort[data-dh-pick] .dh-sort__tab[aria-pressed="true"] {
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+  font-weight: 700;
+}
+
+html.uc-dark .dh-sort[data-dh-pick] .dh-sort__tab[aria-pressed="true"] {
+  color: var(--color-gray-900);
+}

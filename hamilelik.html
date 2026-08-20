@@ -828,13 +828,15 @@
               </p>
             </div>
 
-            <!-- Seçili haftanın özeti — .dh-panel + .dh-cell ailesi -->
-            <section class="dh-panel dh-panel--gebe" id="dh-wk-panel" aria-live="polite" aria-label="Seçili haftanın özeti">
+            <!-- Seçili haftanın gösterimi. tablist/tab sözleşmesini tamamlayan
+                 tabpanel: panel + özet + kırılım hep birlikte değişiyor. -->
+            <div id="dh-wk-panel" role="tabpanel" aria-live="polite" aria-label="Seçili haftanın özeti" tabindex="-1">
+
+            <section class="dh-panel dh-panel--gebe">
               <div class="dh-panel__rail">
                 <span class="dh-panel__kicker" data-dh-gebe="kicker">SEÇİLİ HAFTA</span>
                 <span class="dh-panel__place">
-                  <span class="dh-wk__big" data-dh-gebe="hafta">20</span>
-                  <span class="dh-wk__unit">. hafta</span>
+                  <span class="dh-wk__big" data-dh-gebe="hafta">20</span><span class="dh-wk__unit">. hafta</span>
                 </span>
                 <span class="dh-panel__countdown" data-dh-gebe="tri">2. Trimester · 14 – 27. hafta</span>
               </div>
@@ -891,6 +893,8 @@
                   Genel bilgilendirmedir; kişisel takip planınızı hekiminiz belirler.</p>
               </article>
             </div>
+
+            </div><!-- /#dh-wk-panel -->
           </div>
         </section>
 
@@ -2103,3 +2107,4 @@
             setDarkMode(0);
         }
     </script>
+</body>
