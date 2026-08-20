@@ -21100,3 +21100,103 @@ html.uc-dark .dh-sort[data-dh-pick] .dh-sort__tab[aria-pressed="true"] {
     aspect-ratio: 1 / 1;
   }
 }
+
+/* NOT — R7-S başlığındaki "iki kademe" kararı R7-S/6 ile GENİŞLETİLDİ.
+   Oradaki ölçüm (11 lig / 1184px) hâlâ geçerli ve lig kademesinin neden
+   çip kaldığını açıklıyor; üstüne referans sitede ölçülen 77 ülkelik
+   liste eklenince kapsam kademesi ülke açılır kutusuna, sezon kademesi
+   de ikinci bir açılır kutuya dönüştü. `.dh-lgpick__scope` kuralları
+   artık kullanılmıyor; dosya yalnız sona eklendiği için silinmedi,
+   bir sonraki temizlik turunda kaldırılabilir. */
+
+
+/* ===========================================================
+   R7-S7 — LİG SEÇİCİ TEK SATIRA ALINDI
+   Kullanıcı: "ülke, lig ve puan içeriklerini alt alta koyma,
+   daha hizalı ve tasarımsal olarak düzgün yap; diğer sayfalarda
+   da aynı tasarımları güncelle."
+   Önce: `.dh-lgpick` dikey akıyordu — 1. satır ÜLKE + SEZON,
+   2. satır LİG çipleri, 3. satır sekmeler. Panelin üstünde üç
+   yatay bant üst üste diziliyor, seçim alanı sekmelerden daha
+   iri duruyordu.
+   Sonra (>=992px): ÜLKE + SEZON solda sabit, dikey ayraçtan
+   sonra LİG şeridi kalan alanı alıp kayıyor — tek hizalı satır.
+   Etiketler alt alta hizalanmaya artık gerek duymadığı için
+   `.dh-lgpick__lead` sabit 34px genişliğinden çıkarıldı.
+   <992px'te eski dikey diziliş korunuyor (çipler dar ekranda
+   ülke/sezon ile aynı satıra sığmıyor — ölçüldü).
+   =========================================================== */
+@media (min-width: 992px) {
+  .dh-lgpick {
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .dh-lgpick__line--sel {
+    flex: 0 0 auto;
+    gap: 14px;
+  }
+
+  /* Lig şeridi kalan alanı alır, taşarsa kendi içinde kayar */
+  .dh-lgpick__line:not(.dh-lgpick__line--sel) {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-left: 18px;
+    border-left: 1px solid rgba(18, 18, 18, 0.10);
+  }
+
+  html.uc-dark .dh-lgpick__line:not(.dh-lgpick__line--sel) {
+    border-left-color: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Tek satırda artık dikey hizalama derdi yok: etiketler
+     içeriklerine göre daralsın, boş yer yemesin. */
+  .dh-lgpick__lead {
+    flex: 0 0 auto;
+  }
+}
+
+/* Seçim satırı ile sekme çubuğu arasındaki ritim, panel
+   başlığı ile seçim satırı arasındakiyle eşitlendi. */
+.dh-sport__body > .dh-sort--tabs {
+  margin-top: 14px;
+}
+
+
+/* ===========================================================
+   R7-N — ZEMİNLİ BÖLÜM BANTLARINDA NEFES PAYI
+   Kullanıcı: "Burçlar ve Tarih Aralıkları arka plan çizgisi
+   başlıklara çok yakın, bunu düzenle; alt tarafta Gökyüzü Gündemi
+   kısmında da arka plana genişlik versin; bu tarz başka yerlerde
+   de varsa sayfaların genelinde düzenleme yap."
+   Denetim (Playwright, 9 sayfa): zeminli bandın üst kenarı ile
+   içindeki ilk başlık arası ölçüldü. Üç bant sıfır çıktı —
+   başlık doğrudan rengin kenarına yapışıyordu:
+     .dh-zodwrap  (astroloji · "12 BURÇ")        0px
+     .dh-guide    (hamilelik · "HAMİLELİK REHBERİ") 0px
+     .dh-listwrap (hamilelik · "Tüm Yazılar")     8px
+   Diğer zeminli bantlarda iç kutunun kendi dolgusu 64-75px
+   veriyordu, onlara dokunulmadı.
+   Yeni değer: 56px üst / 60px alt (mobil 36/40). Ölçek, dokunulmayan
+   bantların 64px'ine yakın seçildi ki sayfa boyunca ritim tutsun.
+   =========================================================== */
+.dh-zodwrap,
+.dh-guide,
+.dh-listwrap,
+.dh-skywrap {
+  padding-top: 56px !important;
+  padding-bottom: 60px !important;
+}
+
+@media (max-width: 767.98px) {
+  .dh-zodwrap,
+  .dh-guide,
+  .dh-listwrap,
+  .dh-skywrap {
+    padding-top: 36px !important;
+    padding-bottom: 40px !important;
+  }
+}
