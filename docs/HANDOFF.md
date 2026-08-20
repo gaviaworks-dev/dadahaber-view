@@ -10,7 +10,8 @@ Dadahaber haber sitesinin yeni görünümü. Hazır bir haber teması (`demo-six
 üzerine bölüm bölüm revizyon uygulanıyor. Site tamamen **Türkçe**, deploy **GitHub Pages**.
 
 - Çalışma dizini: `~/Developer/Backend Projects/dadahaber-view`
-- 55 HTML sayfa. Ağırlıklı çalışılan: `index.html` (5.049 satır), `haber-detay.html` (1.340 satır)
+- **59 HTML sayfa** (R6'da 4 yeni: `basketbol` `formula1` `bisiklet` `astroloji`).
+  Referans üçlü: `index.html` · `haber-liste.html` · `haber-detay.html`
 - Yerel sunucu: `python3 -m http.server 8765` → http://localhost:8765/
 
 ---
@@ -123,10 +124,11 @@ sayfasından taze imzayla alınmalı.
 2. **Gilroy lisans kapsamı teyit edilmedi** (alan adı başına lisans sorusu).
 3. **Sarı zeminde beyaz metin AA geçmiyor** (1,77:1). Kullanıcı bilerek seçti.
    Koyu mürekkebe dönmek tek satır: `--dh-on-brand: var(--color-gray-900)` (10,58:1).
-4. **Beğen/beğenme ikonlarında outline "oy vermedin" durumunu kodluyordu** — hepsi
-   dolduruldu, o ayrım kayboldu.
-5. **Siyah üst bant + yeni bileşenler yalnız `index.html` ve `haber-detay.html`'de.**
-   Diğer 53 sayfa hâlâ tema markup'ında.
+4. ~~Beğen/beğenme ikonlarında outline ayrımı kayboldu.~~ **KAPANDI (R4).**
+   Oy verilmemiş durum `far` (outline), verilmiş durum `fas` (dolu).
+5. ~~Siyah üst bant yalnız iki sayfada.~~ **KAPANDI (R6 yayılımı).** Ortak kabuk
+   59 sayfanın tamamında: siyah `dh-shortcuts`, sağ sarı ray, DADA filigranı,
+   sarı footer, yukarı çık. Kırmızı SON HABERLER şeridi hiçbir sayfada yok.
 6. **Detay sayfası metni 1008px'te ~115 karakter/satır** — klasik 65-75 bandının üstünde.
    Yanlara reklam rayı girince daralacağı varsayımıyla yapıldı.
 7. **Video posterleri yatay 16:9 çekimden 9:16'ya kırpıldı** — gerçek dikey içerik gelince
@@ -154,3 +156,79 @@ docs/HANDOFF.md                  bu dosya
 
 `custom.min.css` bölüm başlıklarıyla ayrılmış (`R1 —`, `R2-2 —`, `R3-14 —` gibi);
 her bölümün başında **ölçülen değerler ve neden o değer seçildiği** yorum olarak yazılı.
+
+
+---
+
+## R4–R6 (yayılım fazı) — bu oturumda ne değişti
+
+Ayrıntılı brifing ve kurallar: **`docs/YAYILIM.md`** (kabuk reçetesi, bileşen
+ailesi, geometri kararları, doğrulama protokolü). Yeni sayfa yazarken önce onu oku.
+
+### Kesinleşen tasarım kararları
+- **Çip / sekme / düğme yarıçapı `8px 8px 8px 0`.** Tam hap (999px) kullanılmaz.
+  Tek istisna: görsel üstündeki kategori ETİKETLERİ hap olabilir.
+- **Kenar yumuşatma (mask-image ile solma) YASAK.** Denendi, kullanıcı istemedi.
+  Kayan rayın sağ kenarı net biter; "devamı var" bilgisini oklar verir.
+- **Bölüm başlığı bağlantısı "Tümünü Gör"**, yanında chevron yok. Sol/sağ oklar kalır.
+- Bölüm başlığı ile kart rayı arası ~26px. Kart araları masaüstü 16px, mobil 10px.
+- Sticky kenar sütunlarında `offset: 136` (header 120px + 16 nefes).
+- **Kategori rengi sayfa geneline uygulanmaz.** Sayfa `<head>`'lerindeki
+  `:root{--color-primary: <renk> !important}` blokları KALDIRILDI. Kimlik yalnız
+  `.dh-lb[data-cat]` banner perdesinden gelir:
+  `kadin #4300ff · teknoloji #1c3df9 · spor #19750a · finans #2aa1a9 ·
+  savunma #e20000 · saglik #00c5e5 · oyun #0c1d49` · boş = kurumsal amber.
+  `--dh-brand-corp` bir SAVUNMA ŞİMİ olarak duruyor (bilerek literal).
+
+### Yeni bileşenler (hepsi `custom.min.css`, `.dh-` önekli)
+| Önek | Ne |
+|---|---|
+| `.dh-lb*` | Liste sayfası bannerı (breadcrumb + başlık + ayraç + oklar + perde) |
+| `.dh-catbar*` · `.dh-sort*` | Kategori çipleri · sıralama sekmeleri |
+| `.dh-feat*` | Bölümün büyük öne çıkan kartı (slider + noktalar) |
+| `.dh-authors` / `.dh-author` · `.dh-wcard` / `.dh-prof` / `.dh-op` | Köşe yazıları modülü · yazar sayfaları |
+| `.dh-pop-widget` / `.dh-pop` | Popüler haberler (numaralı) |
+| `.dh-secbar` · `.dh-track` · `.dh-foto` · `.dh-pod` · `.dh-info` | Bölüm başlık çubuğu + ray + üç kart ailesi |
+| `.dh-fin*` | Finans veri gösterimi (ticker, tablo, vitrin, çevirici, künye) |
+| `.dh-sport` · `.dh-stand[data-branch]` · `.dh-mc` · `.dh-podium` · `.dh-stage` · `.dh-rank` | Spor: branş kimliği yapıyla verilir |
+| `.dh-serie` · `.dh-gal` · `.dh-eps` · `.dh-player` · `.dh-vstage` · `.dh-arch` | Medya: seri rayı, galeri görüntüleyici, bölüm listesi, oynatıcı, arşiv |
+| `.dh-panel--astro` · `.dh-zod` · `.dh-live` | Astroloji modülü · burç ızgarası · dakika dakika akış |
+| `.dh-ph` · `.dh-mast` · `.dh-ilan` · `.dh-rate` · `.dh-minifoot` | Belge başlığı · künye · resmî ilan · reklam tablosu · sade footer |
+
+### Yeni JS (hepsi vanilla, kütüphane yok)
+`dh-track.js` (kayan ray) · `dh-gal.js` (galeri görüntüleyici) ·
+`dh-astro.js` (burç değiştirici) · `dh-toc.js` (yapışkan içindekiler)
+
+### Bu fazda ölçerek yakalanan gerçek hatalar
+1. Hero nokta navigasyonu meta satırının üstüne düşüyordu (48px).
+2. Yan sütun dikey slider'ında `h-100` döngüsü yüksekliği **33.554.414px**'e patlatıyordu.
+3. `.dh-lb` perdesi tema slaytındaki bir div'e bağlıydı; o div olmayan sayfalarda
+   banner başlığı **1,28:1** kontrastla okunmuyordu. Perde artık `article::after`.
+4. R3-13 meta hizalama kuralı `.hstack` sarmalayıcısını kaçırıyordu → tarih sola yapışıktı.
+5. Yukarı çık düğmesi amber üstü beyazdı (1,77:1).
+6. `cnnturk`'ün artış/azalış renkleri AA'yı geçmiyordu (2,67 / 3,88) → yeniden seçildi.
+7. Koyu temada header logosu `logo.png`'yi gösteriyordu (siyah wordmark, görünmez)
+   → `logo-white.png` çifti 59 sayfada kuruldu.
+8. `.dh-cell__label` / `.dh-panel__kicker` 4,17:1 → gray-500 (5,74:1).
+9. Footer yasal listesinde kapanmayan `<li>` + "AYDINALTMA" yazım hatası (57 sayfa).
+
+### ⚠ Paralel ajan tuzağı — iki kez yaşandı
+`custom.min.css`'e **yalnız `cat >>` ile SONA ekle.** Write/Edit ile tüm dosyayı
+yeniden yazan bir ajan, başka ajanların bloklarını siler. R4-D1 ve bir R4-* bloğu
+bu yüzden kayboldu, yeniden yazıldı. Blok bütünlüğünü `grep -c` ile doğrula.
+
+### Doğrulama protokolü (zorunlu)
+Playwright ile **ölçümlü** denetim: yatay taşma (`scrollWidth - clientWidth > 2`),
+`console` + `pageerror` = 0, 4xx = 0, kapsayıcı taşması, kardeş çakışması,
+koyu görsel üstü metin için **piksel bazlı kontrast** (metni `visibility:hidden`
+yapıp zemini ölç). **1440 / 1000 / 390 + dark** — dördü de temiz olmadan bitirme.
+
+Son tam tarama: **59 sayfa × 4 konfigürasyon = 236 koşu, hepsi temiz.**
+
+### Açık kalan kararlar
+- `assets/images/logos/` altındaki **kategori logoları** (`spor-logo.png`,
+  `kadin-logo.png`, `finans-logo.png` …) kullanılmıyor; kabuk her sayfada aynı
+  ortak logoyu taşıyor. Bölüm logosu istenirse marka kararı olarak alınmalı.
+- Yasal metinler mevzuata uygun iskelet; **hukuk onayından geçmedi**.
+- Yapışkan içindekiler yalnız sayfanın en dibinde (1000px yükseklikte) header'ın
+  arkasına giriyor; 1440px'te olmuyor. Standart sticky davranışı.

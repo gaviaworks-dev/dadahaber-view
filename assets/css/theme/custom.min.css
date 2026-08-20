@@ -13805,29 +13805,9 @@ html.uc-dark .dh-cta__s {
   }
 }
 
-.dh-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 0;
-}
 
-.dh-field__l {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-gray-500);
-}
 
-html.uc-dark .dh-field__l {
-  color: rgba(255, 255, 255, 0.6);
-}
 
-.dh-field__l .req {
-  color: #b42318;
-  margin-left: 2px;
-}
 
 .dh-input {
   width: 100%;
@@ -13887,27 +13867,9 @@ html.uc-dark .dh-input::placeholder {
 }
 
 /* Hata durumu — renk TEK gösterge değil: ikon + metin de var */
-.dh-field--err .dh-input {
-  border-color: #b42318;
-  background: rgba(180, 35, 24, 0.04);
-}
 
-.dh-field--err .dh-input:focus {
-  box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.28);
-}
 
-.dh-field__err {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #b42318;
-}
 
-html.uc-dark .dh-field__err {
-  color: #ff8b80;
-}
 
 .dh-check {
   display: flex;
@@ -16220,4 +16182,41 @@ html.uc-dark .dh-fld__err {
   grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
   gap: 12px;
   align-items: end;
+}
+
+/* (10) YAN SÜTUNDAKİ KÜNYE TABLOSUNDA DEĞER KIRPILIYORDU
+   Ölçülen (resmi-ilan-detay, 1440px): .dh-doc__aside 268px genişlik,
+   .dh-mast__row etiket sütunu minmax(150px,210px) -> değere yer
+   kalmıyor, "Ankara Büyükşehir Belediyesi" kartın dışına taşıp
+   overflow:hidden ile kesiliyordu. Dar kolonda satır alt alta. */
+.dh-doc__aside .dh-mast__row {
+  grid-template-columns: minmax(0, 1fr);
+  padding-left: 20px;
+}
+
+.dh-doc__aside .dh-mast__v {
+  overflow-wrap: anywhere;
+}
+
+
+/* ===========================================================
+   R6-X2 — PAYLAŞILAN BİLEŞENLERDE KALAN KONTRAST AÇIKLARI
+   Kategori ajanının raporundan: `.dh-cell__label` ve
+   `.dh-panel__kicker` beyaz zeminde `gray-400` = **4,17:1**,
+   AA eşiği 4,5:1'in altında. Ajan bunu yalnız `.dh-panel--astro`
+   içinde düzeltmişti; kural site geneline alındı — ana sayfadaki
+   hava durumu ve namaz vakti panelleri de kapsamda.
+   gray-500 (#6b6b6b) beyaz üstünde 5,74:1 (AA).
+   =========================================================== */
+.dh-cell__label,
+.dh-panel__kicker,
+.dh-panel__place {
+  color: var(--color-gray-500) !important;
+}
+
+html.uc-dark .dh-cell__label,
+html.uc-dark .dh-panel__kicker,
+html.uc-dark .dh-panel__place {
+  /* koyu zeminde %72 beyaz = 8,9:1 */
+  color: rgba(255, 255, 255, 0.72) !important;
 }
