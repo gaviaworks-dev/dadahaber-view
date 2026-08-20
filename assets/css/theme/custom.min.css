@@ -3543,8 +3543,24 @@ html.uc-dark .dh-card__link:hover .dh-card__title {
      · paylaş: dağınık ikon dizisi yerine tek bileşen
    RENK alınmadı: gourmet #211E16 yerine kendi gray-900'ümüz.
    =========================================================== */
+/* Banner: stok görsel + perde.
+   Perde açıldı (%94/90/82 -> %72/62/52): görsel artık okunuyor.
+   Ölçüm — görselin en açık bölgesinde (215,222,228) %72 perde altında
+   beyaz metin 9,34:1, kurumsal sarı 5,27:1 (ikisi de AA).
+   Metnin oturduğu sol taraf en koyu, sağa doğru görsel açılıyor. */
 .dh-art-hero {
-  background: var(--color-gray-900);
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-gray-900);
+  background-image:
+    linear-gradient(90deg,
+      rgba(12, 12, 12, 0.72) 0%,
+      rgba(12, 12, 12, 0.62) 48%,
+      rgba(12, 12, 12, 0.52) 100%),
+    url(../../images/common/haber-banner.jpg);
+  background-size: cover, cover;
+  background-position: center, center 38%;
+  background-repeat: no-repeat;
   color: rgba(255, 255, 255, 0.88);
   padding: 26px 0 30px;
 }
@@ -3596,6 +3612,7 @@ html.uc-dark .dh-card__link:hover .dh-card__title {
    Satır uzunluğu 22ch'e sınırlı — başlık 2-3 satırı geçmesin. */
 .dh-art-title {
   color: #fff !important;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   font-size: clamp(1.65rem, 1.1rem + 1.9vw, 2.25rem);
   font-weight: 700;
   line-height: 1.12;
@@ -4317,4 +4334,43 @@ html.uc-dark .dh-teams .swiper-slide > a {
   .dh-teams .swiper-slide > a:hover {
     transform: none;
   }
+}
+
+
+/* ===========================================================
+   R3-8 — DETAY SAYFALARI: gövde metni iki yana yaslı
+   .post-content 13 detay sayfasında ortak gövde kapsayıcısı.
+   Türkçe uzun sözcüklerde iri boşluk oluşmasın diye tireleme açık;
+   sayfaların lang="tr" olması gerekiyor (aşağıda ayrıca düzeltildi).
+   =========================================================== */
+.post-content p,
+.post-content li,
+.post-content blockquote p,
+.dh-art .post-content > p,
+.dh-art .post-content > div > p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* Kısa satırlarda yaslama boşluğu çirkinleşir — başlık, meta, altyazı,
+   buton ve tablo hücreleri yaslamanın DIŞINDA kalır. */
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6,
+.post-content figcaption,
+.post-content .btn,
+.post-content td,
+.post-content th,
+.post-content .post-meta,
+.post-content .news-time-box,
+.dh-share,
+.dh-art-lead figcaption {
+  text-align: initial;
+  hyphens: manual;
+  -webkit-hyphens: manual;
 }
