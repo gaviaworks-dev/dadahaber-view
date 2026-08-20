@@ -44,7 +44,7 @@
         '  </div>' +
         '  <div class="dh-reel__actions">' +
         '    <button class="dh-reel__act" type="button" aria-label="Beğen"><span class="ic"><i class="fas fa-heart" aria-hidden="true"></i></span></button>' +
-        '    <button class="dh-reel__act" type="button" aria-label="Kaydet"><span class="ic"><i class="far fa-bookmark" aria-hidden="true"></i></span></button>' +
+        '    <button class="dh-reel__act" type="button" aria-label="Kaydet"><span class="ic"><i class="fas fa-bookmark" aria-hidden="true"></i></span></button>' +
         '    <button class="dh-reel__act" type="button" aria-label="Paylaş"><span class="ic"><i class="fas fa-share-alt" aria-hidden="true"></i></span></button>' +
         '  </div>' +
         '</section>';

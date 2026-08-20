@@ -3680,10 +3680,14 @@ html.uc-dark .dh-card__link:hover .dh-card__title {
 }
 
 /* ---------- Okuma ritmi ---------- */
+/* Metin sola/sağa yayılıyor: aynı kolondaki paylaş ve önceki/sonraki
+   blokları 1008px genişlikte, metin 726px'te kalıp sıkışık duruyordu.
+   Ölçüm: metin 357-1083px, çizgiler 216-1224px arası. Artık aynı hizada.
+   Not: 1008px'te satır ~115 karakter — klasik 65-75 bandının üstünde;
+   yanlara reklam rayı girdiğinde kolon daralacağı varsayımıyla yapıldı. */
 .dh-art .post-content {
-  /* satır uzunluğu 65-75 karakter bandında kalsın */
-  max-width: 72ch;
-  margin-inline: auto;
+  max-width: none;
+  margin-inline: 0;
 }
 
 /* tema .post-content'e .fs-6/.fs-5 ile !important font-size sürüyor;
@@ -3691,8 +3695,8 @@ html.uc-dark .dh-card__link:hover .dh-card__title {
 .dh-art .post-content > p,
 .dh-art .post-content > div > p {
   font-size: 17px !important;
-  line-height: 1.85 !important;
-  margin-bottom: 24px;
+  line-height: 1.9 !important;
+  margin-bottom: 26px;
 }
 
 .dh-art .post-content h2 {
