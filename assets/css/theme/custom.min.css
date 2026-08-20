@@ -21085,3 +21085,18 @@ html.uc-dark .dh-rank.is-tie {
 html.uc-dark .dh-sort[data-dh-pick] .dh-sort__tab[aria-pressed="true"] {
   color: var(--color-gray-900);
 }
+
+
+/* -----------------------------------------------------------
+   R7-C17 — MANİFESTO GÖRSELİ 992-1199 ARASINDA
+   Ölçülen (1000px): metin kolonu 567px sabit olduğu için
+   görsel kolonu 345px'e iniyor; 16:10'da yüksekliği 216px
+   kalıyor, metin ise 372px -> görselin altında 156px boşluk.
+   O bantta oran 1:1'e çekildi (aile içinde zaten var,
+   .dh-fig--sq): 345x345 -> fark 27px.
+   ----------------------------------------------------------- */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .dh-about .dh-fig--wide {
+    aspect-ratio: 1 / 1;
+  }
+}

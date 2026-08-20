@@ -125,55 +125,68 @@
   }
 
   /* ---- İç saha / deplasman ayrımı ----
-     Kısıt: evO + depO = O ve her iki yarıda da G+B+M = o yarının O'su.
-     Ev sahibi avantajı yer tutucu veride de gerçekçi olsun diye
-     galibiyetlerin ~%60'ı, yenen gollerin ~%42'si iç sahaya düşer.
-     Veriden okunmuyor, burada TÜRETİLİYOR: toplamla çelişmesi imkânsız. */
-  function bol(toplam, yariO, oran) {
-    var v = Math.round(toplam * oran);
-    if (v > yariO) v = yariO;
-    if (v > toplam) v = toplam;
-    if (v < 0) v = 0;
-    return v;
+     Kısıt zinciri (hepsi aynı anda tutmalı):
+       evO + depO = O · her yarıda G+B+M = o yarının O'su ·
+       evG + depG = G · evB + depB = B · evM + depM = M ·
+       hiçbiri negatif olamaz.
+     ÖNCEKİ SÜRÜMDE HATA: pay "G'nin %60'ı" diye sabit oranla alınıp
+     yarım sezona kırpılıyordu; G çok yüksek olduğunda ev tablosu
+     17 maçta 17 galibiyet (B=0, M=0) gibi imkânsız satır üretiyordu.
+     ŞİMDİ: her kategori kendi payı oranında bölünür (galibiyete
+     %15 ev sahibi avantajı), sonra toplam yarım sezona OTURTULUR;
+     her kategorinin alt sınırı `toplam - diğer yarı` olduğu için
+     karşı yarı asla negatife düşmez. */
+  function payBol(sayilar, yariO, digerO, biasIdx) {
+    var top = 0, i;
+    for (i = 0; i < sayilar.length; i++) top += sayilar[i];
+    if (!top) return sayilar.map(function () { return 0; });
+    var ev = [], alt = [], ust = [];
+    for (i = 0; i < sayilar.length; i++) {
+      var bias = i === biasIdx ? 1.15 : 1;
+      ev.push(Math.round(sayilar[i] * (yariO / top) * bias));
+      alt.push(Math.max(0, sayilar[i] - digerO));
+      ust.push(Math.min(sayilar[i], yariO));
+    }
+    for (i = 0; i < ev.length; i++) {
+      if (ev[i] < alt[i]) ev[i] = alt[i];
+      if (ev[i] > ust[i]) ev[i] = ust[i];
+    }
+    /* toplamı tam yariO'ya oturt — sınırları aşmadan */
+    var guvenlik = 0;
+    for (;;) {
+      var t = 0;
+      for (i = 0; i < ev.length; i++) t += ev[i];
+      var fark = yariO - t;
+      if (fark === 0 || guvenlik++ > 200) break;
+      var oldu = false;
+      for (i = 0; i < ev.length; i++) {
+        if (fark > 0 && ev[i] < ust[i]) { ev[i]++; fark--; oldu = true; }
+        else if (fark < 0 && ev[i] > alt[i]) { ev[i]--; fark++; oldu = true; }
+        if (fark === 0) break;
+      }
+      if (!oldu) break;
+    }
+    return ev;
   }
+
   function yarim(br, t, ev) {
     var o = turet(br, t);
     var yariO = Math.ceil(o.o / 2);
     var digerO = o.o - yariO;
-    var g = bol(o.g, yariO, 0.6);
-    var b = br === 'futbol' ? bol(o.b, yariO - g, 0.55) : 0;
-    var m = yariO - g - b;
-    if (m < 0) { m = 0; }
-    /* deplasman tarafı toplamın kalanı */
-    var dg = o.g - g, db = (o.b || 0) - b, dm = (o.m) - m;
-    /* kalan negatifse iç sahadan geri ver */
-    while (dm < 0 && g > 0) { g--; dg++; m++; dm--; m--; dm++; break; }
+    var kat = br === 'futbol' ? [o.g, o.b, o.m] : [o.g, o.m];
+    var evKat = payBol(kat, yariO, digerO, 0);
     var y = { ad: t.ad, z: t.z, fav: t.fav };
-    if (ev) {
-      y.g = g; y.m = m; if (br === 'futbol') y.b = b;
-      if (br === 'futbol') { y.a = bol(o.a, o.a, 0.58); y.y = bol(o.y, o.y, 0.42); }
-      if (br === 'basketbol') { y.sa = Math.round(o.sa * 0.52); y.sy = Math.round(o.sy * 0.48); }
-      if (br === 'voleybol') {
-        y.w2 = bol(t.w2 || 0, g, 0.45); y.w1 = bol(t.w1 || 0, g - y.w2, 0.5);
-        y.l2 = bol(t.l2 || 0, m, 0.4); y.l1 = bol(t.l1 || 0, m - y.l2, 0.5);
-      }
-    } else {
-      y.g = dg < 0 ? 0 : dg; y.m = dm < 0 ? 0 : dm; if (br === 'futbol') y.b = db < 0 ? 0 : db;
-      if (br === 'futbol') { y.a = o.a - bol(o.a, o.a, 0.58); y.y = o.y - bol(o.y, o.y, 0.42); }
-      if (br === 'basketbol') { y.sa = o.sa - Math.round(o.sa * 0.52); y.sy = o.sy - Math.round(o.sy * 0.48); }
-      if (br === 'voleybol') {
-        y.w2 = Math.max(0, (t.w2 || 0) - bol(t.w2 || 0, o.g, 0.45));
-        y.w1 = Math.max(0, (t.w1 || 0) - bol(t.w1 || 0, o.g, 0.5));
-        y.l2 = Math.max(0, (t.l2 || 0) - bol(t.l2 || 0, o.m, 0.4));
-        y.l1 = Math.max(0, (t.l1 || 0) - bol(t.l1 || 0, o.m, 0.5));
-      }
-    }
-    /* yarıların toplamı tam O etsin */
-    var top = y.g + y.m + (y.b || 0);
-    var hedef = ev ? yariO : digerO;
-    if (top !== hedef) y.m += hedef - top;
-    if (y.m < 0) { y.g += y.m; y.m = 0; }
+    var al = function (i) { return ev ? evKat[i] : kat[i] - evKat[i]; };
+    y.g = al(0);
+    if (br === 'futbol') { y.b = al(1); y.m = al(2); } else { y.m = al(1); }
+    /* Gol / sayı / set: maç sayısına bağlı değil, oranla bölünür.
+       Ev sahibi daha çok atar (0,58), daha az yer (0,42). */
+    var pay = function (v, oran) { var e = Math.round(v * oran); return ev ? e : v - e; };
+    if (br === 'futbol') { y.a = pay(o.a, 0.58); y.y = pay(o.y, 0.42); }
+    if (br === 'basketbol') { y.sa = pay(o.sa, 0.52); y.sy = pay(o.sy, 0.48); }
     if (br === 'voleybol') {
+      y.w2 = pay(t.w2 || 0, 0.45); y.l2 = pay(t.l2 || 0, 0.55);
+      y.w1 = pay(t.w1 || 0, 0.5); y.l1 = pay(t.l1 || 0, 0.5);
       if (y.w2 > y.g) y.w2 = y.g;
       if (y.w1 > y.g - y.w2) y.w1 = y.g - y.w2;
       if (y.l2 > y.m) y.l2 = y.m;
