@@ -5493,11 +5493,28 @@ html.uc-dark .dh-mark {
    Aynı geometri tüm haber görsellerine taşınıyor: üç köşe yuvarlak,
    sol alt keskin. Marka imzası, süs değil.
    =========================================================== */
+/* Kendi bileşenlerimiz */
 .dh-card__fig,
 .dh-short,
 .dh-art-lead img,
 .dh-card--wide .dh-card__fig,
-.dh-card--row .dh-card__fig {
+.dh-card--row .dh-card__fig,
+.dh-rcard,
+.dh-rcard__link,
+.dh-reel__stage,
+/* Tema kartları — hero slider, öne çıkanlar, foto fokus, video, yazar,
+   ilgili haberler: hepsi .rounded / .featured-image / .post-media kullanıyor */
+.post .featured-image,
+.post .featured-video,
+.post .post-media,
+.post .post-image,
+.post-media .featured-image,
+article.post.rounded,
+article.post.overflow-hidden.rounded,
+.uc-transition-toggle.rounded,
+.swiper-slide .post.rounded,
+.author-card,
+figure.featured-image.rounded {
   border-bottom-left-radius: 0 !important;
 }
 
