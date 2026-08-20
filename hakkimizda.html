@@ -455,8 +455,12 @@
     <span class="dh-rail" aria-hidden="true"></span>
     <div id="wrapper" class="wrap overflow-hidden-x">
         <span class="dh-mark" aria-hidden="true">DADA</span>
-    <!-- BELGE BAŞLIĞI — görsel banner yok, gerekçe R6-C blok yorumunda -->
-    <header class="dh-ph">
+    <!-- BAŞLIK BANDI — fotoğraflı (R7-C2). Gerekçe R7-C blok yorumunda. -->
+    <header class="dh-ph dh-ph--photo">
+      <span class="dh-vmedia" style="--dh-vpos: 50% 46%" aria-hidden="true">
+        <img src="./assets/images/common/haber-banner.jpg" alt="" loading="eager" fetchpriority="high" decoding="async">
+      </span>
+
       <div class="container max-w-xl">
         <nav class="dh-art-crumb dh-art-crumb--ink" aria-label="Sayfa yolu">
           <a href="index.html" aria-label="Anasayfa"><i class="fas fa-home-lg-alt" aria-hidden="true"></i></a>
@@ -482,13 +486,20 @@
       <div class="container max-w-xl">
         <div class="dh-stack">
 
-          <!-- Manifesto: satır uzunluğu yasal sayfalarla aynı bantta -->
-          <section>
+          <!-- Manifesto + görsel kolonu (R7-C4).
+               Metin kolonu 53ch'te kilitli; görseller kalan alanda. -->
+          <section class="dh-about">
             <div class="dh-doc__body">
               <p class="dh-op__lead">Bir haberin değeri, ne kadar hızlı çıktığıyla değil, bir hafta sonra hâlâ ayakta durup durmadığıyla ölçülür.</p>
               <p>Dadahaber 2019'da, gündemi izlemekle yetinmeyip kaydını tutan bir yayın kurmak için kuruldu. Bugün gündem, spor, finans, savunma, sağlık, teknoloji ve kadın masalarında çalışan bir haber merkezimiz; ayrıca foto fokus, video, infografik ve podcast üreten bir görsel yayın ekibimiz var.</p>
               <p>Haberi iki bağımsız kaynakla doğrulamadan yayımlamayız. Hata yaptığımızda düzeltiriz ve düzelttiğimizi görünür kılarız — sessizce silmeyiz. Reklamı haberden ayırırız; sponsorlu içerik her zaman etiketlidir.</p>
               <p>Bu sayfada ne yaptığımızı anlatıyoruz. Nasıl çalıştığımızın kuralları <a href="yayin-ilkeleri.html">Yayın İlkeleri</a> sayfasında, kim olduğumuz ise <a href="kunye.html">Künye</a> sayfasında yazılı.</p>
+            </div>
+
+            <div class="dh-about__figs">
+              <figure class="dh-fig dh-fig--wide">
+                <img src="./assets/images/demo-two/posts/post-full.jpg" alt="Bir açıklamayı kaydetmek için uzatılmış mikrofonlar" loading="lazy" decoding="async">
+              </figure>
             </div>
           </section>
 
@@ -534,6 +545,20 @@
             </div>
           </section>
 
+          <!-- Ekip ve haber merkezi: ikili görsel satırı (R7-C4).
+               Panel ile bilgi kartları arasındaki metin duvarını kesiyor. -->
+          <section>
+            <div class="dh-about__pair">
+              <figure class="dh-fig dh-fig--wide">
+                <img src="./assets/images/demo-three/posts/img-01.jpg" alt="Haber merkezinde pencere kenarındaki çalışma masası" loading="lazy" decoding="async">
+              </figure>
+              <figure class="dh-fig dh-fig--wide">
+                <img src="./assets/images/demo-seven/posts/img-16.jpg" alt="Masasında haber akışını izleyen bir editör" loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <p class="dh-about__cap mt-2"><i class="fas fa-circle-info" aria-hidden="true"></i> Haber merkezi ve saha ekibinden kareler. Görseller şimdilik temsilîdir; yayına geçişte kurum arşiviyle değiştirilir.</p>
+          </section>
+
           <!-- Ne yapıyoruz -->
           <section>
             <div class="dh-hd">
@@ -563,11 +588,15 @@
             </div>
           </section>
 
-          <!-- Kilometre taşları: eksende gerçek yıl var -->
+          <!-- Kilometre taşları: eksende gerçek yıl var.
+               Sağ kolon fotoğraf paneli (R7-C5) — hem ekseni görselle
+               destekliyor hem de kapsayıcının sağındaki ölü bloğu kapatıyor. -->
           <section>
             <div class="dh-hd">
               <h2 class="dh-hd__t">Kilometre taşları</h2>
+              <span class="dh-hd__s">2019'dan bugüne</span>
             </div>
+            <div class="dh-tlgrid">
             <ol class="dh-mile">
               <li>
                 <span class="dh-mile__y">2019</span>
@@ -594,6 +623,18 @@
                 <span class="dh-mile__t">Yeni tasarım ve resmî ilan arşivi devreye alındı.</span>
               </li>
             </ol>
+
+            <div class="dh-strip">
+              <span class="dh-vmedia" style="--dh-vpos: 50% 44%" aria-hidden="true">
+                <img src="./assets/images/demo-two/posts/img-13.jpg" alt="" loading="lazy" decoding="async">
+              </span>
+              <div class="dh-strip__in">
+                <span class="dh-strip__k">Haber Merkezi</span>
+                <p class="dh-strip__t">Altı kişilik bir masadan 18 ilde muhabir ağına</p>
+                <p class="dh-strip__s">2019'da Ankara'da kurulduk; bugün yedi masada ve 18 ilde çalışıyoruz.</p>
+              </div>
+            </div>
+            </div>
           </section>
 
           <section>

@@ -18422,3 +18422,1843 @@ html.uc-dark .dh-mc__crest {
     opacity: 1 !important;
   }
 }
+
+
+/* ===========================================================
+   R7-B — HAMİLELİK / GEBELİK BÖLÜMÜ
+   (hamilelik.html · hamilelik-detay.html)
+
+   KAYNAK ÖLÇÜMÜ (hthayat.haberturk.com/cocuklu-hayat, 1440px,
+   getComputedStyle ile):
+     · "Hafta Hafta Hamilelik" = 10 sütunlu düz ızgara, hücre
+       50,6 x 70px, gap 16px, radius 0, zemin #f3f3f3. 40 hücre
+       de AYRI BİR MAKALEYE giden ölü link; hiçbir durum yok,
+       trimester sınırı görünmüyor.
+     · Hesaplayıcılar sağ rayda 270x219px kart, kap 310px /
+       padding 20px / gap 20px. Üçü de ayrı sayfaya gidiyor.
+     · Hesaplayıcı sayfası: 2'li radyo (SAT / gebe kalma) ->
+       koşullu alanlar -> tek "HESAPLA".
+     · Başlık ölçeği: H1 40/48 w600 (uppercase), H2 36/40 w600,
+       kart H3 16/24 w600.
+
+   ALINAN: bilgi mimarisi (40 hafta ekseni + trimester + iki
+   hesaplayıcı + rehber listesi), iki modlu hesaplayıcı akışı,
+   hafta detayının üç başlıklı kırılımı (bebekte / annede /
+   dikkat), sağ raydaki hesaplayıcı-içerik komşuluğu.
+   ALINMAYAN: renk, marka, tipografi, metin. Palet kurumsal
+   amber; kimlik yalnız .dh-lb[data-cat="kadin"] perdesinden.
+
+   BİZDEKİ FARK (bilinçli): 40 hafta 40 sayfa DEĞİL — tek
+   eksende, seçilebilir durum taşıyan bir şerit. Trimester
+   sınırı şeridin İÇİNDE, tam olduğu yerde işaretli; sınır
+   bilgisi sıranın kendisinden geliyor, süs değil.
+
+   BİLEŞEN TÜRETİMİ (yeni aile uydurulmadı):
+     .dh-catbar__chip--wk  <- .dh-catbar__chip  (astro varyantıyla kardeş)
+     .dh-panel--gebe       <- .dh-panel + .dh-cell
+     trimester sekmeleri   <- .dh-sort
+     .dh-medinfo           <- .dh-findisc (yatırım uyarısı) sağlık karşılığı
+     hesaplayıcı alanları  <- .dh-fld + .dh-input + .dh-btn (R6-C15)
+
+   GEOMETRİ: çip/sekme/düğme 8px 8px 8px 0 · kart 16px, sol alt
+   0 (kurumsal köşe imzası) · mask ile kenar solması YOK.
+   =========================================================== */
+
+/* ---------- Sağlık bilgilendirme notu (.dh-medinfo) ---------- */
+.dh-medinfo-wrap {
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+
+.dh-medinfo {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, 0.1);
+  border-left: 3px solid var(--dh-brand);
+  border-radius: 12px 12px 12px 0;
+}
+
+.dh-medinfo__ic {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px 8px 8px 0;
+  background: rgba(252, 182, 35, 0.18);
+  color: var(--dh-menu-ink);
+  font-size: 14px;
+}
+
+.dh-medinfo__txt {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  /* 5,74:1 — .dh-cell__label ile aynı mürekkep (R6 ölçümü) */
+  color: var(--color-gray-600);
+  max-width: 92ch;
+}
+
+.dh-medinfo__txt b {
+  color: var(--color-gray-900);
+  font-weight: 700;
+}
+
+/* Tam metin varyantı — .dh-findisc panel gövdesiyle aynı ritim */
+.dh-medinfo--full {
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 24px;
+  border-radius: 16px 16px 16px 0;
+}
+
+.dh-medinfo__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dh-medinfo__ttl {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+}
+
+.dh-medinfo__body p {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  line-height: 1.62;
+  color: var(--color-gray-600);
+  max-width: 92ch;
+}
+
+.dh-medinfo__body p:last-child { margin-bottom: 0; }
+.dh-medinfo__body b { color: var(--color-gray-900); font-weight: 700; }
+
+html.uc-dark .dh-medinfo {
+  background: var(--color-gray-800);
+  border-color: rgba(255, 255, 255, 0.12);
+  border-left-color: var(--dh-brand);
+}
+html.uc-dark .dh-medinfo__ttl,
+html.uc-dark .dh-medinfo__txt b,
+html.uc-dark .dh-medinfo__body b { color: #fff; }
+html.uc-dark .dh-medinfo__txt,
+html.uc-dark .dh-medinfo__body p { color: rgba(255, 255, 255, 0.72); }
+html.uc-dark .dh-medinfo__ic { background: rgba(252, 182, 35, 0.2); color: var(--dh-brand); }
+
+/* ---------- Gebelik haftası ekseni (.dh-wk) ---------- */
+.dh-wk {
+  padding-top: 28px;
+  padding-bottom: 34px;
+}
+
+.dh-wk__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.dh-wk__eyebrow {
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dh-accent-ink);
+}
+
+.dh-wk__today {
+  min-height: 42px;
+  padding: 9px 14px;
+  font-size: 13px;
+}
+
+.dh-wk__periods {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0 16px;
+}
+
+.dh-wk__stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-gray-500);
+}
+
+.dh-wk__stamp i { font-size: 11px; color: var(--dh-accent-ink); }
+
+/* Şerit — modül içi, tam bant değil (astro şeridiyle aynı karar) */
+.dh-catbar--wk {
+  background: transparent;
+  border-bottom: 0;
+  padding: 0;
+  margin-bottom: 0 !important;
+}
+
+.dh-wk__strip {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px 2px 10px;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+.dh-wk__strip::-webkit-scrollbar { display: none; }
+
+/* Hafta çipi — .dh-catbar__chip kalıbının iki satırlı sayı varyantı.
+   Genişlik ÖLÇÜMLE sabitlendi: 40 çip + 3 ayraç 1440px'te kaydırılabilir
+   kalsın, 390px'te tek elle sürüklenebilsin diye 54px. */
+.dh-catbar__chip--wk {
+  position: relative;
+  flex: 0 0 auto;
+  width: 54px;
+  height: auto;
+  min-height: 58px;
+  padding: 8px 4px 9px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  scroll-snap-align: start;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dh-wk__no {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+
+.dh-wk__lbl {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.dh-catbar__chip--wk.is-on .dh-wk__lbl { opacity: 0.75; }
+
+/* Trimester sınırı — şeridin İÇİNDE, tam sınırın olduğu yerde.
+   Ayrı bir başlık rayı değil: sıra bilgisi sıranın kendisinde. */
+.dh-wk__sep {
+  flex: 0 0 auto;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: 0 12px 0 2px;
+  margin-right: 2px;
+  border-left: 3px solid var(--dh-brand);
+  padding-left: 10px;
+}
+
+.dh-wk__sep b {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-gray-900);
+  white-space: nowrap;
+}
+
+.dh-wk__sep small {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+}
+
+.dh-wk__hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--color-gray-600);
+}
+
+.dh-wk__hint i { font-size: 14px; color: var(--dh-accent-ink); }
+
+html.uc-dark .dh-wk__sep b { color: #fff; }
+html.uc-dark .dh-wk__sep small,
+html.uc-dark .dh-wk__hint,
+html.uc-dark .dh-wk__stamp { color: rgba(255, 255, 255, 0.7); }
+
+/* ---------- Panel varyantı (.dh-panel--gebe) ---------- */
+.dh-panel--gebe {
+  grid-template-columns: minmax(190px, 240px) minmax(0, 1fr);
+  margin-top: 20px;
+}
+
+.dh-panel--gebe .dh-panel__place {
+  align-items: baseline;
+  gap: 4px;
+}
+
+.dh-wk__big {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-gray-900);
+}
+
+.dh-wk__unit {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-gray-500);
+}
+
+.dh-panel--gebe .dh-cell { min-width: 108px; }
+
+.dh-panel--gebe .dh-cell__value {
+  font-size: 15px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+html.uc-dark .dh-wk__big { color: #fff; }
+html.uc-dark .dh-wk__unit { color: rgba(255, 255, 255, 0.6); }
+
+.dh-wk__ozet {
+  margin: 18px 0 0;
+  font-size: 17.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-gray-900);
+  max-width: 68ch;
+}
+
+html.uc-dark .dh-wk__ozet { color: #fff; }
+
+/* ---------- Haftanın kırılımı (.dh-brk) ----------
+   Üç sabit başlık: bebekte olan · annede olan · bu hafta dikkat.
+   Numaralandırma YOK — üçü paralel bakış açısı, sıra taşımıyor. */
+.dh-brk {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.dh-brk__card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  border-radius: 16px;
+  border-bottom-left-radius: 0;
+  box-shadow: 0 1px 2px rgba(18, 18, 18, 0.04);
+}
+
+.dh-brk__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dh-brk__ic {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px 8px 8px 0;
+  background: rgba(252, 182, 35, 0.18);
+  color: var(--dh-menu-ink);
+  font-size: 14px;
+}
+
+.dh-brk__title {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+}
+
+.dh-brk__body p {
+  margin: 0 0 10px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--color-gray-800);
+}
+
+.dh-brk__body p:last-child { margin-bottom: 0; }
+
+/* "Bu hafta dikkat" kartı — sağlık uyarısı taşıdığı için
+   .dh-medinfo ile aynı sol şerit imzasını alır. */
+.dh-brk__card--care {
+  border-left: 3px solid var(--dh-brand);
+  border-top-left-radius: 12px;
+}
+
+.dh-brk__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: auto 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(18, 18, 18, 0.14);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-gray-600);
+}
+
+.dh-brk__note i { margin-top: 2px; color: var(--dh-accent-ink); }
+
+html.uc-dark .dh-brk__card {
+  background: var(--color-gray-800);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+html.uc-dark .dh-brk__card--care { border-left-color: var(--dh-brand); }
+html.uc-dark .dh-brk__title { color: #fff; }
+html.uc-dark .dh-brk__body p { color: rgba(255, 255, 255, 0.82); }
+html.uc-dark .dh-brk__note {
+  color: rgba(255, 255, 255, 0.65);
+  border-top-color: rgba(255, 255, 255, 0.16);
+}
+html.uc-dark .dh-brk__ic { background: rgba(252, 182, 35, 0.2); color: var(--dh-brand); }
+
+/* ---------- Trimester kartları (.dh-tri) ----------
+   Numara BURADA meşru: 1./2./3. trimester gerçek bir sıra;
+   dönemin adı zaten sayı. */
+.dh-tri-wrap { padding-top: 34px; padding-bottom: 34px; }
+
+.dh-tri {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dh-tri__card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  border-radius: 16px;
+  border-bottom-left-radius: 0;
+}
+
+.dh-tri__top { display: flex; align-items: center; gap: 12px; }
+
+.dh-tri__no {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.dh-tri__ttl h3 {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+}
+
+.dh-tri__range {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--dh-menu-ink);
+}
+
+.dh-tri__lead {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--color-gray-800);
+}
+
+.dh-tri__list {
+  margin: 0;
+  padding: 0 0 0 18px;
+  list-style: none;
+}
+
+.dh-tri__list li {
+  position: relative;
+  margin-bottom: 7px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--color-gray-600);
+}
+
+.dh-tri__list li::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px 2px 2px 0;
+  background: var(--dh-brand);
+}
+
+.dh-tri__list li:last-child { margin-bottom: 0; }
+
+.dh-tri__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--dh-menu-ink);
+  text-decoration: none;
+}
+
+.dh-tri__go i { font-size: 11px; transition: transform 0.16s ease; }
+.dh-tri__go:hover { color: var(--color-gray-900); }
+.dh-tri__go:hover i { transform: translateX(3px); }
+.dh-tri__go:focus-visible { outline: 3px solid var(--dh-brand); outline-offset: 3px; }
+
+html.uc-dark .dh-tri__card {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+html.uc-dark .dh-tri__ttl h3 { color: #fff; }
+html.uc-dark .dh-tri__lead { color: rgba(255, 255, 255, 0.82); }
+html.uc-dark .dh-tri__list li { color: rgba(255, 255, 255, 0.66); }
+html.uc-dark .dh-tri__range,
+html.uc-dark .dh-tri__go { color: var(--dh-brand); }
+html.uc-dark .dh-tri__go:hover { color: #fff; }
+
+/* ---------- Hesaplayıcılar (.dh-hesap) ---------- */
+.dh-hesap { padding-top: 34px; padding-bottom: 34px; }
+
+.dh-hesap__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: 8px 8px 8px 0;
+  background: rgba(252, 182, 35, 0.18);
+  color: var(--dh-menu-ink);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dh-hesap__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.dh-hesap__card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  border-radius: 16px;
+  border-bottom-left-radius: 0;
+  box-shadow: 0 1px 2px rgba(18, 18, 18, 0.04), 0 8px 24px rgba(18, 18, 18, 0.05);
+}
+
+.dh-hesap__head { display: flex; align-items: flex-start; gap: 13px; }
+
+.dh-hesap__ic {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+  font-size: 17px;
+}
+
+.dh-hesap__ttl {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+}
+
+.dh-hesap__sub {
+  margin: 5px 0 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--color-gray-600);
+}
+
+.dh-hesap__modes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(18, 18, 18, 0.1);
+  border-radius: 12px 12px 12px 0;
+}
+
+.dh-hesap__modes legend {
+  padding: 0 6px;
+  margin-left: -6px;
+}
+
+.dh-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  cursor: pointer;
+}
+
+.dh-radio input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--dh-menu-ink);
+  cursor: pointer;
+}
+
+.dh-radio input:focus-visible {
+  outline: 3px solid var(--dh-menu-ink);
+  outline-offset: 2px;
+}
+
+.dh-hesap__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.dh-hesap__fields[hidden] { display: none; }
+
+.dh-fld__help {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--color-gray-500);
+}
+
+.dh-fld__help b { color: var(--color-gray-800); font-weight: 700; }
+
+.dh-fld__err[hidden] { display: none; }
+
+.dh-hesap__acts { display: flex; flex-wrap: wrap; gap: 10px; }
+
+html.uc-dark .dh-hesap__card {
+  background: var(--color-gray-800);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+html.uc-dark .dh-hesap__ttl { color: #fff; }
+html.uc-dark .dh-hesap__sub,
+html.uc-dark .dh-fld__help { color: rgba(255, 255, 255, 0.66); }
+html.uc-dark .dh-fld__help b { color: rgba(255, 255, 255, 0.9); }
+html.uc-dark .dh-radio { color: #fff; }
+html.uc-dark .dh-radio input { accent-color: var(--dh-brand); }
+html.uc-dark .dh-hesap__modes { border-color: rgba(255, 255, 255, 0.16); }
+html.uc-dark .dh-hesap__tag { background: rgba(252, 182, 35, 0.2); color: var(--dh-brand); }
+
+/* ---------- Sonuç kutusu (.dh-res) ----------
+   "TAHMİNİ SONUÇ" etiketi kutunun kimliği; kaldırılamaz. */
+.dh-res {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  background: var(--color-gray-25, #fafafa);
+  border: 1px solid rgba(18, 18, 18, 0.1);
+  border-left: 3px solid var(--dh-brand);
+  border-radius: 12px 12px 12px 0;
+}
+
+.dh-res[hidden] { display: none; }
+
+.dh-res__tag {
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dh-menu-ink);
+}
+
+.dh-res__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+
+.dh-res__item { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+
+.dh-res__k {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+
+.dh-res__v {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--color-gray-900);
+  font-variant-numeric: tabular-nums;
+}
+
+.dh-res__goto {
+  align-self: flex-start;
+  min-height: 40px;
+  padding: 9px 15px;
+  border: 1px solid rgba(18, 18, 18, 0.16);
+  border-radius: 8px 8px 8px 0;
+  background: #fff;
+  color: var(--color-gray-900);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.dh-res__goto[hidden] { display: none; }
+
+.dh-res__goto:hover {
+  background: var(--dh-brand);
+  border-color: var(--dh-brand);
+}
+
+.dh-res__goto:focus-visible { outline: 3px solid var(--dh-menu-ink); outline-offset: 2px; }
+
+.dh-res__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(18, 18, 18, 0.14);
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--color-gray-600);
+}
+
+.dh-res__note i { margin-top: 2px; color: var(--dh-accent-ink); }
+.dh-res__note b { color: var(--color-gray-900); font-weight: 700; }
+
+html.uc-dark .dh-res {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.14);
+  border-left-color: var(--dh-brand);
+}
+html.uc-dark .dh-res__tag { color: var(--dh-brand); }
+html.uc-dark .dh-res__k { color: rgba(255, 255, 255, 0.6); }
+html.uc-dark .dh-res__v { color: #fff; }
+html.uc-dark .dh-res__note { color: rgba(255, 255, 255, 0.66); border-top-color: rgba(255, 255, 255, 0.16); }
+html.uc-dark .dh-res__note b { color: #fff; }
+html.uc-dark .dh-res__goto {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+html.uc-dark .dh-res__goto:hover { background: var(--dh-brand); color: var(--color-gray-900); }
+
+/* ---------- Ara kırılımlar ---------- */
+@media (max-width: 1199.98px) {
+  .dh-panel--gebe { grid-template-columns: minmax(170px, 210px) minmax(0, 1fr); }
+  .dh-wk__big { font-size: 30px; }
+}
+
+@media (max-width: 991.98px) {
+  .dh-brk,
+  .dh-tri { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .dh-hesap__grid { grid-template-columns: minmax(0, 1fr); }
+  .dh-panel--gebe { grid-template-columns: minmax(0, 1fr); }
+  .dh-panel--gebe .dh-panel__rail {
+    border-right: 0;
+    border-bottom: 1px solid var(--panel-line);
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .dh-panel--gebe .dh-panel__countdown { margin-top: 0; }
+}
+
+@media (max-width: 575.98px) {
+  .dh-medinfo-wrap { padding-top: 16px; padding-bottom: 16px; }
+  .dh-medinfo { padding: 12px 14px; gap: 11px; }
+  .dh-medinfo--full { padding: 18px; }
+  .dh-wk { padding-top: 20px; padding-bottom: 26px; }
+  .dh-wk__today { min-height: 38px; padding: 8px 11px; font-size: 12px; }
+  .dh-catbar__chip--wk { width: 48px; min-height: 52px; }
+  .dh-wk__no { font-size: 15px; }
+  .dh-wk__sep { padding-left: 8px; padding-right: 9px; }
+  .dh-wk__sep b { font-size: 10.5px; }
+  .dh-wk__ozet { font-size: 15.5px; }
+  .dh-brk__card,
+  .dh-tri__card,
+  .dh-hesap__card { padding: 16px; }
+  .dh-hesap__fields { grid-template-columns: minmax(0, 1fr); }
+  .dh-res__grid { grid-template-columns: minmax(0, 1fr); }
+  .dh-res { padding: 14px; }
+  .dh-res__v { font-size: 16px; }
+  .dh-tri-wrap,
+  .dh-hesap { padding-top: 24px; padding-bottom: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-tri__go i,
+  .dh-res__goto,
+  .dh-wk__strip { transition: none !important; scroll-behavior: auto !important; }
+}
+
+
+/* ===========================================================
+   R7-C — KURUMSAL SAYFALARDA ÜST GÖRSEL (2. TUR)
+   Kullanıcı: "Tüm sayfalarda üst kısımlarda görsel oluştur."
+
+   R6-C'DEKİ GEREKÇE ÇÖPE ATILMADI, İKİYE BÖLÜNDÜ
+   -----------------------------------------------------------
+   R6-C bu 13 sayfaya bilerek banner koymamıştı: "yasal metnin
+   fotoğrafı yoktur; banner görseli ilgisiz bir stok kare olurdu."
+   O gerekçe FOTOĞRAF için doğru, GÖRSEL için değil. Bu turda
+   kural şuna daraltıldı:
+
+     ZEMİN, YALNIZ SAYFANIN KENDİ KONUSU YOKSA FOTOĞRAF TAŞIR.
+
+   · Kurumun kendisini anlatan sayfalarda (hakkımızda, künye,
+     iletişim, reklam, resmî ilanlar, yazarlar) konu KURUMDUR;
+     fotoğraf o konuyu gösterebilir -> `.dh-ph--photo`.
+   · Belge sayfalarında (5 yasal metin + resmî ilan detayı) ve
+     yazar profilinde konu SAYFANIN İÇİNDE zaten var (metnin
+     kendisi, ilanın kendisi, yazarın kendi portresi). Oraya
+     ikinci bir fotoğraf koymak konuyla yarışır -> `.dh-ph--doc`:
+     grafik/desen zemin, fotoğraf yok.
+
+   İKİ AİLE TEK DİL KONUŞUYOR
+   -----------------------------------------------------------
+   Değişen tek şey ZEMİN. Aynı kalanlar:
+     · breadcrumb bileşeni  .dh-art-crumb (+ --ink)
+     · başlık ölçeği        clamp(26px, 3.4vw, 44px)
+     · amber imza çubuğu    .dh-ph__bar (44x3)
+     · eyebrow / alt metin / meta satırı  (aynı sınıflar)
+   Böylece liste (.dh-lb) - detay (.dh-art-*) - kurumsal (.dh-ph)
+   üçlüsü tek ölçekte kalıyor.
+
+   GASTRO'DAN ÖLÇÜLEN DEĞERLER (Playwright, 1440x900)
+   -----------------------------------------------------------
+   dadagastro.com/hakkimizda   üst bant 515px
+   dadagastro.com/yasal/cerez  üst bant 309px
+   dadagastro.com/kunye        üst bant 309px
+   dadagastro.com/iletisim     üst bant 394px
+   perde: linear-gradient(90deg, rgba(28,25,18,.93), rgba(33,30,22,.72))
+          (soldan sağa sönen TEK perde — bizim .dh-lb ile aynı mantık)
+   .about-grid  702px + 54px + 420px   (metin | görsel kolonu)
+   görsel mozaiği: 420x263 (16:10) + 2 x 203x203 (1:1), ara 14px,
+   yarıçap 16px, background-size: cover
+   .con-layout  806px + 30px + 340px = 1176 -> ÖLÜ OLUK YOK
+   bölüm nefesi .sec padding 74px/74px, zeminler beyaz / #f9f9f9
+   ALINMADI: Gastro kırmızısı #E14827 ve marka tipografisi.
+   Yalnız iskelet, oran ve ritim alındı; renk kurumsal amber.
+
+   BANT YÜKSEKLİĞİ NEDEN 312px
+   -----------------------------------------------------------
+   Liste bannerı (.dh-lb) 420px. Bu sayfalar okunmak için var,
+   manşet satmak için değil; bant DAHA ALÇAK olmalı.
+   Ölçülen (1440x900): bant y=120'de başlıyor.
+     420px -> dibi y=540, ilk ekranda altta 360px
+     312px -> dibi y=432, ilk ekranda altta 468px  <-- seçilen
+     272px (eski, görselsiz) -> 508px
+   312px'te fotoğraf "bant" olarak okunuyor (en/boy 4,0:1),
+   360px'te "hero" olmaya başlıyor; 280px'te üç satırlık meta
+   + alt metin sığmıyor, min-height devreye girmiyor.
+   =========================================================== */
+
+
+/* -----------------------------------------------------------
+   R7-C1 — GÖRSEL + PERDE KATMANI (.dh-vmedia)
+   Tek bileşen; hem başlık bandı hem de sayfa içi fotoğraf
+   şeridi kullanıyor. Perde .dh-lb (R7-H) ile AYNI dilde:
+   soldan sönen okunabilirlik alanı + sağ alt köşe + dip +
+   düz %30 koyu; kurumsal renk soldan ve sağ alt köşeden patlar.
+   Boyama sırası .dh-lb ile birebir aynı: önce renk (::before),
+   üstüne perde (::after) — ikisi de z-index:2.
+   ----------------------------------------------------------- */
+.dh-vmedia {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  background: #0b0c0f;
+}
+
+.dh-vmedia img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--dh-vpos, 50% 42%);
+}
+
+.dh-vmedia::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(120% 90% at 0% 50%, var(--dh-brand-corp) 0%, transparent 62%),
+    radial-gradient(90% 80% at 100% 100%, var(--dh-brand-corp) 0%, transparent 58%);
+  opacity: 0.26;
+}
+
+.dh-vmedia::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(to right,
+      rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.80) 34%,
+      rgba(0, 0, 0, 0.46) 66%, rgba(0, 0, 0, 0.24) 100%),
+    radial-gradient(76% 60% at 100% 100%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 74%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30));
+}
+
+/* Dar ekranda metin bandın sağ yarısına da taşıyor; soldan
+   sönen perde orada yetmiyor, perde düzleştiriliyor. */
+@media (max-width: 767.98px) {
+  .dh-vmedia::after {
+    background:
+      linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.74) 100%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32));
+  }
+}
+
+
+/* -----------------------------------------------------------
+   R7-C2 — FOTOĞRAFLI BAŞLIK BANDI (.dh-ph--photo)
+   hakkimizda · kunye · iletisim · reklam · resmi-ilanlar ·
+   yazar-liste
+   ----------------------------------------------------------- */
+.dh-ph--photo,
+html.uc-dark .dh-ph--photo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: var(--dh-ph-h, 312px);
+  padding: 30px 0 34px;
+  overflow: hidden;
+  background: #0b0c0f;
+  border-bottom: 0;
+}
+
+.dh-ph--photo > .container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+/* Bandı alttaki içeriğe bağlayan mühür — .dh-lb::after ile aynı */
+.dh-ph--photo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    var(--dh-brand-corp) 0%, var(--dh-brand-corp) 34%, rgba(0, 0, 0, 0) 92%);
+}
+
+/* Koyu zemin mürekkebi — açık ve koyu temada AYNI (zemin fotoğraf) */
+.dh-ph--photo .dh-art-crumb--ink,
+html.uc-dark .dh-ph--photo .dh-art-crumb--ink,
+.dh-ph--photo .dh-art-crumb--ink [aria-current],
+html.uc-dark .dh-ph--photo .dh-art-crumb--ink [aria-current] {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.dh-ph--photo .dh-art-crumb--ink a,
+html.uc-dark .dh-ph--photo .dh-art-crumb--ink a {
+  color: #fff;
+}
+
+.dh-ph--photo .dh-art-crumb--ink a:hover,
+html.uc-dark .dh-ph--photo .dh-art-crumb--ink a:hover {
+  color: var(--dh-brand-corp);
+}
+
+.dh-ph--photo .dh-ph__eyebrow,
+html.uc-dark .dh-ph--photo .dh-ph__eyebrow {
+  color: var(--dh-brand-corp);
+}
+
+.dh-ph--photo .dh-ph__title,
+html.uc-dark .dh-ph--photo .dh-ph__title {
+  color: #fff;
+  text-shadow: 0 1px 24px rgba(0, 0, 0, 0.35);
+}
+
+.dh-ph--photo .dh-ph__sub,
+html.uc-dark .dh-ph--photo .dh-ph__sub {
+  color: rgba(255, 255, 255, 0.90);
+}
+
+.dh-ph--photo .dh-ph__meta,
+html.uc-dark .dh-ph--photo .dh-ph__meta {
+  color: rgba(255, 255, 255, 0.80);
+}
+
+.dh-ph--photo .dh-ph__meta b,
+html.uc-dark .dh-ph--photo .dh-ph__meta b {
+  color: #fff;
+}
+
+@media (max-width: 1199.98px) {
+  .dh-ph--photo { --dh-ph-h: 296px; }
+}
+
+@media (max-width: 991.98px) {
+  .dh-ph--photo,
+  html.uc-dark .dh-ph--photo {
+    --dh-ph-h: 268px;
+    padding: 26px 0 30px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .dh-ph--photo { --dh-ph-h: 240px; }
+}
+
+
+/* -----------------------------------------------------------
+   R7-C3 — BELGE DAMGASI BANDI (.dh-ph--doc)
+   yayin-ilkeleri · cerezler · kvkk · kullanim-sartlari ·
+   aydinlatma-metni · resmi-ilan-detay · yazar-detay
+
+   Fotoğraf yok. Üç katman:
+   (1) kurumsal amber ışığı sol üst köşeden geliyor — sıcak,
+   (2) 30px'lik belge çizgi ızgarası — resmî evrak dokusu,
+       ciddi (mask/solma DEĞİL, düz repeating-linear-gradient),
+   (3) .dh-mark filigran diliyle akraba büyük tipografi:
+       belgenin KISA KODU (ÇEREZ / KVKK / ŞARTLAR / İLKELER /
+       AYDINLATMA / İHALE). Süs değil, hangi belgede olunduğunu
+       tekrar eden bir bilgi. Filigranla akrabalığı: aynı font
+       (Gilroy 800), aynı -0.04em tracking, aynı çok düşük
+       kontrast. Farkı: .dh-mark dikey ve dolu, damga yatay ve
+       konturlu — ikisi aynı ekranda karışmıyor.
+   ----------------------------------------------------------- */
+.dh-ph--doc {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: var(--dh-phd-h, 288px);
+  padding: 28px 0 32px;
+  overflow: hidden;
+}
+
+.dh-ph--doc > .container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.dh-ph--doc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(18, 18, 18, 0.05) 0 1px, rgba(0, 0, 0, 0) 1px 30px),
+    repeating-linear-gradient(90deg, rgba(18, 18, 18, 0.035) 0 1px, rgba(0, 0, 0, 0) 1px 30px),
+    radial-gradient(120% 130% at 0% 0%,
+      rgba(252, 182, 35, 0.28) 0%, rgba(252, 182, 35, 0.08) 44%, rgba(252, 182, 35, 0) 76%);
+}
+
+html.uc-dark .dh-ph--doc::before {
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, rgba(0, 0, 0, 0) 1px 30px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.032) 0 1px, rgba(0, 0, 0, 0) 1px 30px),
+    radial-gradient(120% 130% at 0% 0%,
+      rgba(252, 182, 35, 0.22) 0%, rgba(252, 182, 35, 0.06) 46%, rgba(252, 182, 35, 0) 78%);
+}
+
+/* Bandı alttaki metne bağlayan amber mühür (fotoğraflı bantla aynı) */
+.dh-ph--doc::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    var(--dh-brand-corp) 0%, var(--dh-brand-corp) 26%, rgba(0, 0, 0, 0) 84%);
+}
+
+.dh-ph__stamp {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  font-family: var(--font-family-secondary);
+  /* Ölçüldü: 6,4vw'de en uzun kod ("AYDINLATMA") 1440'ta 576px
+     genişlik veriyor; sol kenarı x=768'de başlıyor, başlığın
+     sağ kenarı en fazla x=706 -> çakışma yok. */
+  font-size: clamp(48px, 6.4vw, 96px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  color: rgba(18, 18, 18, 0.035);
+  -webkit-text-stroke: 2px rgba(18, 18, 18, 0.13);
+}
+
+html.uc-dark .dh-ph__stamp {
+  color: rgba(255, 255, 255, 0.04);
+  -webkit-text-stroke-color: rgba(252, 182, 35, 0.24);
+}
+
+/* 768px altında damga metnin altına giriyor; kaldırılıyor.
+   (Zemin ışığı ve çizgi ızgarası kalıyor — bant boş görünmüyor.) */
+@media (max-width: 767.98px) {
+  .dh-ph__stamp { display: none; }
+}
+
+@media (max-width: 991.98px) {
+  .dh-ph--doc { --dh-phd-h: 260px; }
+}
+
+@media (max-width: 575.98px) {
+  .dh-ph--doc {
+    --dh-phd-h: 0px;
+    padding: 22px 0 26px;
+  }
+}
+
+/* Belge ikonu — eyebrow satırının başındaki amber plaka.
+   Amber zeminde mürekkep koyu (10,58:1), beyaz DEĞİL. */
+.dh-ph__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dh-ph__docic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px 6px 6px 0;
+  background: var(--dh-brand-corp);
+  color: var(--color-gray-900);
+  font-size: 11px;
+  flex: 0 0 auto;
+}
+
+
+/* -----------------------------------------------------------
+   R7-C4 — SAYFA İÇİ GÖRSEL RİTMİ (hakkimizda)
+   Kullanıcı: "DadaGastro'daki sayfalandırmaya bakarak
+   hakkımızdada sayfa içerisinde ek görsel koyabilirsin."
+
+   Gastro'nun .about-grid'i: metin 702px | 54px | görsel 420px.
+   Bizde metin kolonu 53ch'te KİLİTLİ (R6-C3, ~70 karakter) —
+   o bant bozulmuyor. Görsel kolonu kalan alanı alıyor:
+   1440'ta 1248 - 567 (53ch) - 56 = 625px. Böylece hem satır
+   uzunluğu korunuyor hem de kapsayıcının sağında ölü blok
+   kalmıyor (R6-C6'da yasal sayfalar için verilen kararın
+   görselli karşılığı).
+
+   Mozaik Gastro'nun kompozisyonu: üstte 16:10 büyük kare,
+   altında iki 1:1 kare, ara 14px, yarıçap 16px — artı bizim
+   kurumsal köşe imzamız (sol alt 0). Altında Gastro'daki gibi
+   küçük bir atıf/açıklama satırı.
+   ----------------------------------------------------------- */
+.dh-about {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .dh-about {
+    display: grid;
+    grid-template-columns: minmax(0, 53ch) minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+  }
+
+  .dh-about__figs {
+    position: sticky;
+    top: 136px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .dh-about { gap: 64px; }
+}
+
+.dh-about__figs {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+@media (max-width: 991.98px) {
+  .dh-about__figs { margin-top: 26px; }
+}
+
+.dh-fig {
+  position: relative;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  border-bottom-left-radius: 0;   /* kurumsal köşe imzası */
+  background: var(--color-gray-10);
+}
+
+html.uc-dark .dh-fig {
+  background: #1a1a1a;
+}
+
+.dh-fig img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dh-fig--wide { aspect-ratio: 16 / 10; }
+.dh-fig--sq   { aspect-ratio: 1 / 1; }
+
+.dh-about__pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+/* Atıf satırı: görseller yer tutucu, bunu SAKLAMIYORUZ. */
+.dh-about__cap {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  border-radius: 12px 12px 12px 0;
+  background: var(--color-gray-10);
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-about__cap {
+  background: #161616;
+  border-color: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.dh-about__cap i {
+  margin-top: 2px;
+  color: var(--dh-menu-ink);
+}
+
+html.uc-dark .dh-about__cap i {
+  color: var(--dh-brand);
+}
+
+
+/* -----------------------------------------------------------
+   R7-C5 — SAYFA İÇİ FOTOĞRAF ŞERİDİ (.dh-strip)
+   Gastro'nun bölüm arası fotoğraf bandının (.statband, 315px,
+   viewport genişliği) akrabası. Bizde KAPSAYICI genişliğinde,
+   viewport genişliğinde DEĞİL:
+     · 100vw hilesi kaydırma çubuğunu sayıp yatay taşma üretiyor
+       (denetimin ilk maddesi: scrollWidth - clientWidth <= 2),
+     · sayfada sağ sarı ray (.dh-rail) ve DADA filigranı var;
+       tam genişlik bant o iki mobilyayı kesiyor.
+   Yükseklik 236px: başlık bandından (312px) belirgin şekilde
+   alçak, yani sayfanın ikinci fotoğrafı birincisiyle yarışmıyor.
+   ----------------------------------------------------------- */
+.dh-strip {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 236px;
+  padding: 24px 26px 26px;
+  overflow: hidden;
+  border-radius: 16px;
+  border-bottom-left-radius: 0;   /* kurumsal köşe imzası */
+  background: #0b0c0f;
+}
+
+.dh-strip__in {
+  position: relative;
+  z-index: 3;
+  max-width: 40ch;
+}
+
+.dh-strip__k {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dh-brand-corp);
+}
+
+.dh-strip__t {
+  margin: 0;
+  font-size: clamp(19px, 2vw, 26px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+
+.dh-strip__s {
+  margin: 10px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (max-width: 575.98px) {
+  .dh-strip {
+    min-height: 208px;
+    padding: 20px 18px 22px;
+  }
+}
+
+
+/* -----------------------------------------------------------
+   R7-C6 — İLETİŞİM: FORM İLE BİLGİ KARTI ARASINDAKİ ÖLÜ OLUK
+   Kullanıcı: "Aradaki gereksiz boşluğu kaldır."
+
+   ÖLÇÜLEN (önce)
+     1440: kapsayıcı içi 96..1344 (1248px)
+           form  96..816  (720px, R6-C14/5'teki max-width)
+           kart  1076..1344 (268px)
+           aradaki boşluk = 1076 - 816 = 260px   <-- ölü oluk
+     1200: 180px
+     1000: 40px (grid aralığının kendisi — sorun yok)
+
+   KARAR: kolon oranı değişiyor, form genişliyor. Gerekçe:
+   form düzyazı değil (53ch kuralı burada geçmiyor, R6-C14/5)
+   ve iki kolonlu; 720px'te alanlar 352px'e düşüyordu.
+   Oran Gastro'nun iletişim sayfasından ölçüldü:
+     .con-layout = 806px + 30px + 340px = 1176 (ölü oluk 0).
+   Aynı oran bizim 1248px'e uygulandı -> 848 + 40 + 360.
+   ----------------------------------------------------------- */
+@media (min-width: 1200px) {
+  .dh-doc--wide {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 40px;
+  }
+
+  .dh-doc--wide .dh-doc__aside {
+    width: 360px;
+  }
+
+  .dh-doc--wide .dh-doc__body--form {
+    max-width: none;
+  }
+}
+
+
+/* ===========================================================
+   R7-S/2 — ÖLÇÜM SONRASI DÜZELTMELER
+   1. FİKSTÜR SÜTUN ETİKETLERİ SATIRLA HİZASIZDI.
+      Ölçüm (1440px): etiket satırı izleri 58 · 896 · 150 · 76,
+      veri satırı izleri 58 · 480 · 555 · 84 -> "NEREDE" etiketi
+      stat adından 620px sağdaydı. Sebep: R6-S/4 `.dh-fx__row`
+      ızgarasını `58px minmax(220px,480px) minmax(0,1fr) 84px` diye
+      yeniden tanımlıyor; yeni etiket satırı eski R6-S ızgarasını
+      kopyalamıştı. Etiket satırı artık dört kırılımda da satırla
+      birebir aynı iz kümesini kullanıyor (3px saydam sol kenar dahil).
+   2. SEKME ÇUBUĞU tüm genişliğe yayılıyordu: iz 1210px, içerik 395px
+      -> 815px boş gri. Çubuk içeriğine göre daralır.
+   3. 390px'te sekme çubuğu 403px içeriği 328px'e sığdıramıyordu
+      (4. sekme tamamen dışarıda). Çip iç boşluğu 14->10px, yazı
+      13->12,5px: içerik 356px, dışarıda kalan 28px -> son sekmenin
+      yaklaşık %75'i görünür, "devamı var" bilgisini kendisi verir.
+      Kenar yumuşatma kullanılmadı (HANDOFF yasağı).
+   =========================================================== */
+
+.dh-fx__cols {
+  grid-template-columns: 58px minmax(220px, 480px) minmax(0, 1fr) 84px;
+  border-left: 3px solid transparent;
+}
+
+.dh-fx__cols > span:nth-child(3) { text-align: left; }
+
+@media (max-width: 1199.98px) {
+  .dh-fx__cols { grid-template-columns: 58px minmax(0, 1fr) minmax(0, 150px) 80px; }
+}
+
+@media (max-width: 991.98px) {
+  .dh-fx__cols { grid-template-columns: 52px minmax(0, 1fr) 74px; padding: 8px 14px; }
+  .dh-fx__cols > span:nth-child(3) { display: none; }
+  .dh-fx__cols > span:last-child { display: block; text-align: right; }
+}
+
+@media (max-width: 575.98px) {
+  .dh-fx__cols { grid-template-columns: 46px minmax(0, 1fr); }
+  .dh-fx__cols > span:last-child { display: none; }
+}
+
+.dh-sort--tabs {
+  width: max-content;
+  max-width: calc(100% - 36px);
+}
+
+@media (max-width: 575.98px) {
+  .dh-sort--tabs { max-width: calc(100% - 28px); }
+  .dh-sort--tabs .dh-sort__tab { padding: 7px 10px; font-size: 12.5px; }
+}
+
+/* ---------- R7-Y düzeltme 1: radyo düğmesinin görünümü ----------
+   ÖLÇÜLDÜ: custom.min.css:659'daki eski evrensel sıfırlama
+   `input[type="radio"]{appearance:none; border-radius:20%}` +
+   `:checked{background:#2aa1a9}` radyoları KARE ve TURKUAZ
+   gösteriyordu — kurumsal palete ait olmayan bir renk ve yanlış
+   form semantiği (radyo yerine onay kutusu gibi görünüyor).
+   Evrensel kural paylaşılan alan olduğu için DEĞİŞTİRİLMEDİ;
+   yalnız bu bileşenin içinde daha yüksek özgüllükle geri alınıyor.
+   Seçili durum renge tek başına güvenmez: halka + dolu çekirdek
+   biçim farkı da taşır. */
+.dh-bil__opt input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 2px solid var(--color-gray-200);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: none;
+  transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.dh-bil__opt:hover input[type="radio"] {
+  border-color: var(--color-gray-400);
+}
+
+.dh-bil__opt input[type="radio"]:checked {
+  border-color: var(--dh-menu-ink);
+  background: var(--dh-brand);
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+html.uc-dark .dh-bil__opt input[type="radio"] {
+  border-color: var(--color-gray-500);
+  background: var(--color-gray-800);
+}
+
+html.uc-dark .dh-bil__opt:hover input[type="radio"] {
+  border-color: var(--color-gray-300);
+}
+
+html.uc-dark .dh-bil__opt input[type="radio"]:checked {
+  border-color: var(--color-primary-100);
+  background: var(--dh-brand);
+  box-shadow: inset 0 0 0 3px var(--color-gray-900);
+}
+
+/* ---------- R7-Y düzeltme 2: koyu temada kutu ayrımı ----------
+   ÖLÇÜLDÜ: perde rgba(10,10,10,.62) koyu sayfa üstünde #121212
+   kutuyla neredeyse aynı parlaklığa düşüyordu; kutunun kenarı
+   yalnız gölgeden okunuyordu. 1px kenar ayrımı net yapıyor. */
+html.uc-dark .dh-bil__box {
+  border: 1px solid var(--color-gray-700);
+}
+
+
+/* -----------------------------------------------------------
+   R7-C7 — DAMGA HİZASI (ölçüm sonrası düzeltme)
+   Ölçülen: .dh-ph__stamp `right:0` ile bandın (viewport) sağ
+   kenarına yaslanıyordu; sağ sarı ray (.dh-rail, 1440'ta
+   x=1424..1440) damganın son harfinin üstüne biniyordu.
+   Damga artık kapsayıcının İÇERİK kenarına yaslı (x=1344) —
+   sayfadaki her şeyle aynı hizada. 1280px altında kapsayıcı
+   %100 + 16px iç boşluk olduğu için taban 16px.
+   ----------------------------------------------------------- */
+.dh-ph__stamp {
+  right: max(16px, calc(50% - 624px));
+}
+
+/* ===========================================================
+   R7-F6 — SAYI ÖLÇEĞİ SİTE TİPOGRAFİSİNE OTURTULDU
+   ÖLÇÜM (1440px, getComputedStyle) — sitenin merdiveni:
+     sayfa başlığı .dh-lb__title / .dh-finhead__title  44 / 40px
+     bölüm başlığı .page-header h2 · feat .post-title  30,4px
+     bölüm çubuğu .dh-secbar h2 · ızgara kart başlığı  17,6px
+     gövde · liste kartı başlığı                       16px
+     tablo hücresi                                     13px
+     meta satırı                                       11,5px
+     etiket / th                                       10,5px
+   VERİNİN ESKİ ÖLÇÜSÜ bu merdivenin dışındaydı:
+     .dh-fintick__val 19px   -> ızgara kart başlığından (17,6) iri
+     .dh-finsum__val  23px   -> bölüm çubuğu başlığından iri
+     .dh-finspot__num 34px   -> bölüm başlığına (30,4) bitişik
+     detay vitrini    52px   -> sayfa H1'inden (40) BÜYÜK
+   KURAL: sayfanın en büyük tipografisi haber/sayfa başlığıdır,
+   veri değil. Finans bir haber sayfası, terminal değil.
+   YENİ VERİ MERDİVENİ (site merdivenine kilitli):
+     tablo hücresi 13 (değişmedi) · ticker 15 (= .dh-finpanel__title)
+     özet kartı 16 (= gövde) · piyasa özeti 19 · vitrin 24
+     detay vitrini clamp(24,3vw,30) -> H1 40'ın altında kalır
+   Renkler değişmedi; ölçülen kontrastlar korunuyor
+   (artış 5,51:1 · azalış 5,94:1 · etiket 6,79:1).
+   tabular-nums ve geometrik yön işaretleri korundu,
+   işaret kenarlıkları yeni ölçekle orantılandı.
+   =========================================================== */
+.dh-fintick__val {
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+
+.dh-fintick .dh-chg { font-size: 11.5px; }
+
+@media (max-width: 991.98px) {
+  .dh-fintick__val { font-size: 14px; }
+}
+
+.dh-finsum__val {
+  font-size: 19px;
+  letter-spacing: -0.015em;
+}
+
+@media (max-width: 1199.98px) {
+  .dh-finsum__val { font-size: 18px; }
+}
+
+.dh-fincard__val { font-size: 16px; }
+
+@media (max-width: 991.98px) {
+  .dh-fincard__val { font-size: 14.5px; }
+}
+
+.dh-finspot__num {
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.dh-finspot__unit { font-size: 13px; }
+
+/* Yön işareti yeni ölçekle orantılı (eski 7/10 -> 5/7) */
+.dh-finspot__value .dh-dir {
+  border-left-width: 5px;
+  border-right-width: 5px;
+}
+
+[data-dir="up"] .dh-finspot__value .dh-dir   { border-bottom-width: 7px; }
+[data-dir="down"] .dh-finspot__value .dh-dir { border-top-width: 7px; }
+
+[data-dir="flat"] .dh-finspot__value .dh-dir {
+  width: 10px;
+  height: 3px;
+}
+
+/* Enstrüman detayı banner'ındaki büyük kotasyon */
+.dh-finhead__quote .dh-finspot__num { font-size: clamp(24px, 3vw, 30px); }
+
+/* ---------- R7-Y düzeltme 3: mobil alt sayfada eylem çubuğu ----------
+   ÖLÇÜLDÜ (390x900): sayfa alt sayfaya (bottom sheet) dönüşünce
+   form 92vh'yi aşıyor, "Bildirimi gönder" ekranın dibinde YARIM
+   kalıyordu — yanlış dokunma riski. Eylemler artık kaydırma
+   alanına yapışık duruyor, iki düğme de her an tam görünür.
+   Alt alta dizmek yerine yan yana: 390px'te ikisi de 44px yüksek
+   ve ~165px genişlikte, dokunma hedefi rahat. */
+@media (max-width: 575.98px) {
+  .dh-bil__form {
+    padding-bottom: 0;
+  }
+
+  .dh-bil__foot {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    flex-direction: row;
+    margin: 0 -18px;
+    padding: 12px 18px 16px;
+    background: #fff;
+    border-top: 1px solid var(--color-gray-100);
+  }
+
+  html.uc-dark .dh-bil__foot {
+    background: var(--color-gray-900);
+    border-top-color: var(--color-gray-700);
+  }
+}
+
+
+/* ===========================================================
+   R7-Z2 — SAYFALAMA ALTINDA ÇİFT KATMAN
+   Kullanıcı: "hiçbir sayfalandırmada çift katman oluşturma."
+   Ölçüm (foto-fokus, 1440px): son beyaz zebra bandı y=415'te bitiyor,
+   footer y=479'da başlıyor -> arada **64px gri şerit** kalıyor.
+   Kaynağı `.section-outer`ın `lg:py-8` alt dolgusu: bant beyaz,
+   dolgu şeffaf, sayfa zemini gri. Göz "beyaz katman + gri katman +
+   sarı footer" okuyor.
+   Çözüm: son bant beyazsa bölümün alt dolgusu sıfırlanıp aynı boşluk
+   BANDIN İÇİNE alınıyor — tek yüzey, tek katman.
+   =========================================================== */
+.section-outer:has(.dh-zeb--w:last-child) {
+  padding-bottom: 0 !important;
+}
+
+.dh-zeb--w:last-child {
+  padding-bottom: 64px;
+}
+
+@media (max-width: 767.98px) {
+  .dh-zeb--w:last-child {
+    padding-bottom: 32px;
+  }
+}
+
+
+/* -----------------------------------------------------------
+   R7-C8 — .dh-about ÖLÇÜM DÜZELTMELERİ (1. tur)
+
+   (1) KOLON GENİŞLİĞİ. `53ch` ızgaranın KENDİ font boyutunda
+       (16px) hesaplanıyordu -> 534px, ~66 karakter. Metnin
+       kendi ölçeği 17px; R6-C3'te seçilen bant 53ch@17px =
+       567px (~70 karakter). Kolon o değere sabitlendi.
+   (2) YÜKSEKLİK DENGESİ. Ölçülen (1440): metin kolonu 430px,
+       görsel kolonu (16:10 + iki kare + atıf) 815px -> metnin
+       altında 385px boş blok. Kare ikili manifestodan alınıp
+       "Sayılarla" panelinden sonra kendi satırına taşındı;
+       geride kalan 16:10 kare 406px -> fark 24px.
+   (3) `position: sticky` kaldırıldı: iki kolon artık aynı boyda,
+       yapışkanlığın verecek bir şeyi yok.
+   ----------------------------------------------------------- */
+@media (min-width: 992px) {
+  .dh-about {
+    grid-template-columns: minmax(0, 567px) minmax(0, 1fr);
+  }
+
+  .dh-about__figs {
+    position: static;
+    top: auto;
+  }
+}
+
+
+/* -----------------------------------------------------------
+   R7-C9 — İKİLİ GÖRSEL SATIRI MOBİLDE
+   Ölçülen (390px): iki 16:10 kare yan yana 172x108px'e
+   düşüyordu — içerik okunmuyor. 576px altında alt alta.
+   ----------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .dh-about__pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+}
+
+/* ---------- R7-Y düzeltme 4: AA'yı geçmeyen ikincil metinler ----------
+   ÖLÇÜLDÜ (beyaz zemin, WCAG 1.4.3): --color-gray-400 (#7c7c7c)
+   4,17:1 — küçük metin için AA (4,5) ALTINDA. HANDOFF'ta aynı hata
+   .dh-cell__label için zaten bir kez yakalanmıştı; bu bileşende
+   dört yerde tekrar ediyordu:
+     alıntı zamanı · "isteğe bağlı" · karakter sayacı · kapat ikonu
+   --color-gray-500 (#5b5b5b) = 6,79:1. Koyu temada sayacın karşılığı
+   yoktu (4,49:1), --color-gray-300 (#9d9d9d) = 6,91:1 eklendi.
+
+   Yer tutucu metin: --color-gray-300 beyaz üstünde 2,85:1. Her alanın
+   GÖRÜNÜR <label>'ı var, yani bilgi yer tutucuya bağlı değil; yine de
+   metin metindir — gray-500'e çekildi (6,79:1). Yan etki: yer tutucu
+   .dh-rev__input'unkinden koyu duruyor; eski bileşen paylaşılan alan
+   olduğu için burada değiştirilmedi, devir notuna yazıldı. */
+.dh-yn__count,
+.dh-bil__count,
+.dh-bil__qwho,
+.dh-bil__opt-tag,
+.dh-bil__x,
+.dh-bil__kvkk i {
+  color: var(--color-gray-500);
+}
+
+.dh-yn__area::placeholder,
+.dh-bil__in::placeholder {
+  color: var(--color-gray-500);
+  opacity: 1;
+}
+
+html.uc-dark .dh-yn__count,
+html.uc-dark .dh-bil__count,
+html.uc-dark .dh-bil__qwho,
+html.uc-dark .dh-bil__opt-tag,
+html.uc-dark .dh-bil__kvkk i {
+  color: var(--color-gray-300);
+}
+
+html.uc-dark .dh-yn__area::placeholder,
+html.uc-dark .dh-bil__in::placeholder {
+  color: var(--color-gray-300);
+}
+
+
+/* -----------------------------------------------------------
+   R7-C10 — KİLOMETRE TAŞLARI: EKSEN + FOTOĞRAF PANELİ
+   Ölçülen (1440): .dh-mile ekseni 1248px'lik kapsayıcıda
+   duruyor ama metni 52ch (508px) ile sınırlı -> sağında ~700px
+   ölü blok kalıyordu (iletişimdeki oluğun aynısı).
+   Fotoğraf şeridi (.dh-strip) o bloğa taşındı: eksen solda,
+   fotoğraf panel olarak sağda, ikisi aynı dip çizgisinde.
+   Kapsayıcının iki kenarı da dolu.
+   ----------------------------------------------------------- */
+.dh-tlgrid {
+  display: grid;
+  gap: 26px;
+}
+
+@media (min-width: 992px) {
+  .dh-tlgrid {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 48px;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dh-tlgrid {
+    grid-template-columns: minmax(0, 1fr) 420px;
+    gap: 56px;
+  }
+}
+
+.dh-tlgrid .dh-strip {
+  height: 100%;
+}
+
+
+/* ===========================================================
+   R7-S/4 — PİKSEL BAZLI KONTRAST ÖLÇÜMÜNÜN ÇIKARDIKLARI
+   Yöntem: metni `color:transparent` yapıp kutunun zeminini piksel
+   piksel okumak (öğeyi `visibility:hidden` yapmak kendi dolgusunu da
+   siliyor, çip gibi dolgulu öğelerde yanlış sonuç veriyor).
+   Bulunanlar ve düzeltmeleri:
+     .dh-lgpick__lead   açık tema 4,03:1 (10,5px metin, AA değil)
+     .dh-fx__cols       aynı gray-400 kaynağı, aynı değer
+       -> gray-500 (#737373): 5,74:1  [HANDOFF R6 düzeltme 8 ile aynı karar]
+     .dh-fx__meta       KARANLIK temada 4,37:1 — R6-S'te karanlık karşılığı
+                        hiç verilmemiş, gray-400 karanlıkta da kullanılıyordu
+     .dh-fx__daylbl     karanlık temada 4,21:1 — aynı sebep
+       -> karanlıkta rgba(255,255,255,0.6): 9,4:1
+   Ölçüm artefaktı olduğu doğrulananlar (düzeltme gerekmedi):
+     .dh-lgpick__scope.is-on "1,00:1" -> kutunun İÇİNDEKİ 3px amber alt
+       çubuğu zemin sanılıyor; gerçek değer analitik olarak 7,86:1
+     .dh-legend__it "1,77:1" -> kendi amber anahtar karesi; gerçek 9,4:1
+   =========================================================== */
+
+.dh-lgpick__lead,
+.dh-fx__cols {
+  color: var(--color-gray-500, #737373);
+}
+
+html.uc-dark .dh-fx__meta,
+html.uc-dark .dh-fx__daylbl {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+html.uc-dark .dh-fx__meta i { color: rgba(255, 255, 255, 0.45); }
+
+/* Açık temada da aynı iki etiket AA'nın altındaydı:
+   .dh-fx__meta 4,17:1 · .dh-fx__daylbl 3,96:1 (gray-400).
+   Fikstür sekmesi bu iki etiketi ana bilgi hâline getirdiği için
+   ("nerede" ve "hangi hafta") gray-500'e çekildi. */
+.dh-fx__meta,
+.dh-fx__daylbl {
+  color: var(--color-gray-500, #5b5b5b);
+}
+
+
+/* -----------------------------------------------------------
+   R7-B TUR 2 — ÖLÇÜM SONRASI DÜZELTME (koyu tema)
+   HATA (piksel bazlı ölçüm, hamilelik.html 1440px dark):
+   .dh-wk__eyebrow #7a5f01 (--dh-accent-ink) mürekkebiyle
+   #121212 zemin üzerinde **3,09:1** — AA'yı geçmiyor.
+   Aynı hata astroloji modülünde R6'da yakalanmış ve orada
+   --color-primary-200'e çevrilmişti; ev kuralı bu.
+   ÇÖZÜM: koyu temada accent mürekkebi taşıyan tüm parçalar
+   --color-primary-200'e alındı. Yeni ölçüm aşağıda.
+   ----------------------------------------------------------- */
+html.uc-dark .dh-wk__eyebrow,
+html.uc-dark .dh-wk__stamp i,
+html.uc-dark .dh-wk__hint i,
+html.uc-dark .dh-brk__note i,
+html.uc-dark .dh-res__note i {
+  color: var(--color-primary-200);
+}
+
+/* Koyu temada hata kutusunun kenarlığı kayboluyordu: html.uc-dark .dh-input
+   (13859. satır) .dh-fld--err .dh-input kuralını özgüllükte geçiyor.
+   Ölçüm (dark, #dh-sat hata durumu): kenarlık rgba(255,255,255,.16) —
+   yani hiç hata kenarlığı yok. Renk zaten TEK gösterge değil (ikon +
+   metin + aria-invalid var) ama kenarlık da geri getirildi. */
+html.uc-dark .dh-fld--err .dh-input {
+  border-color: #ff8b80;
+  background: rgba(180, 35, 24, 0.16);
+}
+
+html.uc-dark .dh-fld--err .dh-input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 139, 128, 0.35);
+}

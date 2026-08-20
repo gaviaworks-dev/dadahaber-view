@@ -1858,6 +1858,103 @@
 "39":{"t":3,"boy":"50,7 cm","agirlik":"3,3 kg","kiyas":"Küçük karpuz","ozet":"Tam term dönem.","bebek":["Akciğerler olgunlaşmasını tamamlar.","Cilt altındaki yağ dokusu vücut ısısını düzenlemeye hazırdır."],"anne":["Hareketler azalmaz, yalnızca karakter değiştirir.","Doğum öncesi son kontroller sıklaşır."],"dikkat":["Hareketlerde belirgin azalma fark ederseniz aynı gün sağlık kuruluşuna başvurun."]},
 "40":{"t":3,"boy":"51,2 cm","agirlik":"3,5 kg","kiyas":"Bal kabağı","ozet":"Tahmini doğum haftası.","bebek":["Bebek doğuma hazırdır; kafatası kemikleri hâlâ esnektir.","Doğumların bir bölümü bu haftadan sonra gerçekleşir."],"anne":["Bekleme süreci uzayabilir; bu tek başına bir sorun anlamına gelmez.","Kontroller yakın aralıklarla sürer."],"dikkat":["Tahmini tarih geçtiyse takip planınızı hekiminizle netleştirin; bekleme süresi kişiye göre değişir."]}}}</script>
 
+        <!-- Newsletter -->
+    </div>
+
+    <!-- Wrapper end -->
+
+    <a class="btn btn-primary btn-sm border-0 dark:text-white position-right-turn" href="#gorus_bildir_modal"
+        data-uc-toggle>
+        <i class="fa-solid fa-message "></i>
+        <span class="sm-hide-text">GÖRÜŞ BİLDİR</span>
+    </a>
+    <!--  Newsletter modal -->
+    <div id="gorus_bildir_modal" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <button
+                class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                type="button">
+                <i class="unicon-close"></i>
+            </button>
+            <div class="p-3 mt-5 d-flex w-100 flex-column gap-2">
+                <a class="btn btn-primary btn-sm w-100" href="#basit_bir_sorum_var" data-uc-toggle>
+                    BASİT BİR SORUM VAR
+                </a>
+                <a class="btn btn-primary btn-sm w-100" href="#teknik_sorun_var" data-uc-toggle>
+                    İHLAL DURUMU SÖZ KONUSU
+                </a>
+                <a class="btn btn-primary btn-sm w-100" href="#teknik_sorun_var" data-uc-toggle>
+                    TEKNİK BİR SORUN VAR
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="basit_bir_sorum_var" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <div class="modal-header">
+                <a class="back-modal" href="#gorus_bildir_modal" data-uc-toggle>
+                    Geri Dön
+                </a>
+                <button
+                    class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                    type="button">
+                    <i class="unicon-close"></i>
+                </button>
+            </div>
+            <div class="p-3 mt-2 d-flex w-100 flex-column">
+                <p>Sorununuza ilişkin çözüm aşağıda olabilir!</p>
+                <hr class="w-100">
+                <span class="fw-semibold">Neden ?</span>
+                <p>Yeni eklediğim içerik Ana Sayfa'da görünmüyor ne yapmalıyım?</p>
+                <span class="fw-semibold pt-2">Çözüm</span>
+                <p>Ana sayfa içerik seçimlerimizde, site içi işleyişin ve içerik akışının bozulmaması adına
+                    editörlerimizin
+                    öncelik ve
+                    tercihleri etkili olmaktadır. Bu sebeple, sürekliliğin sağlanması ve olabildiğince tüm kullanıcı
+                    içeriklerine yer
+                    verilmesi adına kategori sayfaları sürekli olarak güncellenmektedir.
+                </p>
+                <hr>
+                <p><i class="fa-solid fa-circle-info"></i> Eğer sorununuz halen daha çözülmediyse bizimle <a
+                        href="iletisim.html">iletişime geçebilirsiniz.</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="teknik_sorun_var" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <div class="modal-header">
+                <a class="back-modal" href="#gorus_bildir_modal" data-uc-toggle>
+                    Geri Dön
+                </a>
+                <button
+                    class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                    type="button">
+                    <i class="unicon-close"></i>
+                </button>
+            </div>
+            <div class="p-3 mt-2 d-flex w-100 flex-column">
+                <input class="form-control mb-1" type="text" placeholder="Adınız ve Soyadınız (Opsiyonel)" name=""
+                    id="">
+                <input class="form-control mb-1" type="email" required placeholder="Mail Adresiniz *" name="" id="">
+                <input class="form-control mb-1" id="page-url" readonly disabled type="text">
+                <textarea class="form-control" rows="6" name="" id="" placeholder="Mesajınızı Buraya Yazabilirsiniz *"
+                    required></textarea>
+                <div class="form-check text-start my-2">
+                    <input
+                        class="form-check-input p-0 rounded-0 dark:bg-gray-800 dark:bg-gray-800 dark:border-white dark:border-opacity-15 dark:border-opacity-15"
+                        type="checkbox" id="kvkkOnay">
+                    <label class=" form-check-label fs-7 sm:fs-6" for="kvkkOnay"><a href="kvkk.html">KVKK</a> metnini
+                        okudum, onaylıyorum.</label>
+                </div>
+                <button class="w-100 btn btn-primary btn-sm">GÖNDER</button>
+            </div>
+        </div>
+    </div>
     <!-- Footer start -->
   <footer id="uc-footer" class="uc-footer panel uc-light">
     <div
