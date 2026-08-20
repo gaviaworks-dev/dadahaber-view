@@ -2292,26 +2292,27 @@ html.uc-dark .dh-footer-brand {
   color: #fff;
 }
 
+/* z-index gerekli: .dh-band__veil (z:0) yoksa kartların ÜSTÜNE binip
+   onları soluk gri gösteriyordu. Sol metin .dh-band__inner ile zaten z:1'di. */
 .dh-band__grid {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 535px);
   align-items: center;
   gap: 40px;
 }
 
-/* Logo beyaz çip üzerinde — marka varlığı hiç değiştirilmedi */
-.dh-band__logo {
-  display: inline-flex;
-  align-items: center;
-  padding: 9px 14px;
-  border-radius: 12px;
-  background: #fff;
-}
-
-.dh-band__logo img {
-  display: block;
-  width: 158px;
-  height: auto;
+/* DadaGastro marka kilidi — dadagastro.com'dan ÖLÇÜLDÜ:
+   ikon çipi 40x40 · radius 11px · zemin #E14827 · ikon 18px beyaz
+   .bd GilroyXB 800 · .sf GilroyLt 300 (aynı Gilroy ailesi bizde de var) */
+.dh-band--gastro .dh-band__mark {
+  background: var(--dh-partner);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  font-size: 18px;
 }
 
 .dh-band--gastro .dh-band__tag {
@@ -2329,82 +2330,133 @@ html.uc-dark .dh-footer-brand {
   color: #fff;
 }
 
-/* --- Tarif kartları (dadagastro.com .r-card kompozisyonu) --- */
+/* ---------- TARİF KARTI — dadagastro .r-card yatay kalıbı ----------
+   Ölçülen: kart 534,9x160 · flex row · bg #fff · 1px #ECECEC · radius 16px
+     gölge 0 1px 2px rgba(33,30,22,.04), 0 2px 6px rgba(33,30,22,.05)
+     geçiş .3s cubic-bezier(.22,.61,.36,1)
+   .r-media-wrap flex 0 0 auto · 213x158 (≈%40) · overflow hidden
+     .r-media cover · geçiş .5s
+   .r-chip absolute 13/13 · 11,5px/700 · rgba(#fff,.94) · pad 6px 12px · radius 8px
+   .r-body pad 16px 20px · column · gap 7px · justify center · flex 1
+   h4 18px/700 · lh 20,16 (1,12) · ls -0,01em · clamp 2 · margin 0
+   .r-facts + .r-stats ikon + metin satırları */
 .dh-band__recipes {
   display: grid;
   gap: 14px;
 }
 
-.dh-recipe {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 10px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  text-decoration: none;
-  backdrop-filter: blur(6px);
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.dh-recipe:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.dh-recipe__media {
-  position: relative;
-  flex: none;
-  width: 108px;
-  height: 81px;
-  border-radius: 10px;
+.dh-rcard {
+  border-radius: 16px;
   overflow: hidden;
 }
 
-.dh-recipe__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.dh-rcard__link {
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(18, 18, 18, 0.04), 0 2px 6px rgba(18, 18, 18, 0.05);
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.3s ease;
 }
 
-.dh-recipe__chip {
+.dh-rcard__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.dh-rcard__link:focus-visible {
+  outline: 3px solid var(--dh-partner);
+  outline-offset: 3px;
+}
+
+.dh-rcard__media {
+  position: relative;
+  flex: 0 0 40%;
+  overflow: hidden;
+}
+
+.dh-rcard__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 132px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-rcard__link:hover .dh-rcard__media img {
+  transform: scale(1.05);
+}
+
+.dh-rcard__chip {
   position: absolute;
-  left: 6px;
-  bottom: 6px;
-  padding: 3px 7px;
-  border-radius: 999px;
-  background: var(--dh-partner);
-  color: #fff;
+  top: 13px;
+  left: 13px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--color-gray-900);
   font-family: var(--font-family-secondary);
-  font-size: 9.5px;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 0.02em;
   line-height: 1.2;
 }
 
-.dh-recipe__title {
-  color: #fff;
-  font-family: var(--font-family-secondary);
-  font-size: 0.9375rem;
+.dh-rcard__body {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  padding: 16px 20px;
+}
+
+.dh-rcard__title {
+  margin: 0;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+.dh-rcard__facts,
+.dh-rcard__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-gray-400);
+}
+
+.dh-rcard__facts span,
+.dh-rcard__stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dh-rcard__stats {
+  color: var(--dh-partner);
+}
+
 @media (max-width: 1199.98px) {
   .dh-band__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
     gap: 28px;
   }
 
-  .dh-recipe__media {
-    width: 92px;
-    height: 69px;
+  .dh-rcard__title {
+    font-size: 15px;
   }
 }
 
@@ -2416,6 +2468,10 @@ html.uc-dark .dh-footer-brand {
 
   .dh-band__recipes {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .dh-rcard__media {
+    flex-basis: 38%;
   }
 }
 
