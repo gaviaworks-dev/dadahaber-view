@@ -1491,78 +1491,54 @@
     <div class="bg-white dark:bg-gray-900 py-5">
       <div class="container">
         <div class="d-flex items-center justify-center">
-          <div class="weather-widget ">
-
-            <div class="weather-current">
-              <div class="weather-icon-large">
-                <img src="./assets/images/weather.svg" width="60" alt="">
+          <section class="dh-panel dh-panel--weather" aria-label="Hava durumu">
+            <div class="dh-panel__rail">
+              <span class="dh-panel__kicker">Hava Durumu</span>
+              <span class="dh-panel__place"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> İstanbul</span>
+            </div>
+            <div class="dh-panel__cells" role="list">
+              <div class="dh-cell is-now" role="listitem">
+                <span class="dh-cell__label">Bugün</span>
+                <span class="dh-cell__icon"><img src="./assets/images/weather.svg" alt="Parçalı bulutlu" width="30"></span>
+                <span class="dh-cell__value">12°</span>
               </div>
-              <div class="weather-info">
-                <span class="weather-title">Hava Durumu</span>
-                <h3 class="weather-location">İstanbul, 12°C</h3>
+              <div class="dh-cell" role="listitem">
+                <span class="dh-cell__label">Yarın</span>
+                <span class="dh-cell__icon"><img src="./assets/images/weather-cloud.svg" alt="Yağmurlu" width="30"></span>
+                <span class="dh-cell__value">11°</span>
+              </div>
+              <div class="dh-cell" role="listitem">
+                <span class="dh-cell__label">Pts</span>
+                <span class="dh-cell__icon"><img src="./assets/images/weather-moon-clear.svg" alt="Açık" width="30"></span>
+                <span class="dh-cell__value">13°</span>
+              </div>
+              <div class="dh-cell" role="listitem">
+                <span class="dh-cell__label">Sal</span>
+                <span class="dh-cell__icon"><img src="./assets/images/weather.svg" alt="Parçalı bulutlu" width="30"></span>
+                <span class="dh-cell__value">17°</span>
+              </div>
+              <div class="dh-cell" role="listitem">
+                <span class="dh-cell__label">Çrş</span>
+                <span class="dh-cell__icon"><img src="./assets/images/weather-cloud.svg" alt="Yağmurlu" width="30"></span>
+                <span class="dh-cell__value">11°</span>
+              </div>
+              <div class="dh-cell" role="listitem">
+                <span class="dh-cell__label">Perş</span>
+                <span class="dh-cell__icon"><img src="./assets/images/weather-moon-clear.svg" alt="Açık" width="30"></span>
+                <span class="dh-cell__value">13°</span>
+              </div>
+              <div class="dh-cell" role="listitem">
+                <span class="dh-cell__label">Cum</span>
+                <span class="dh-cell__icon"><img src="./assets/images/weather.svg" alt="Parçalı bulutlu" width="30"></span>
+                <span class="dh-cell__value">17°</span>
+              </div>
+              <div class="dh-cell" role="listitem">
+                <span class="dh-cell__label">Cmt</span>
+                <span class="dh-cell__icon"><img src="./assets/images/weather.svg" alt="Parçalı bulutlu" width="30"></span>
+                <span class="dh-cell__value">17°</span>
               </div>
             </div>
-
-            <div class="weather-forecast">
-              <div class="forecast-item">
-                <span class="forecast-day-name">Yarın</span>
-                <div class="weather-icon-small">
-                  <img src="./assets/images/weather-cloud.svg" width="32" alt="">
-                </div>
-                <span class="forecast-temp">11°</span>
-              </div>
-              <div class="forecast-item">
-                <span class="forecast-day-name">Pts</span>
-                <div class="weather-icon-small">
-                  <img src="./assets/images/weather-moon-clear.svg" width="32" alt="">
-                </div>
-                <span class="forecast-temp">13°</span>
-              </div>
-              <div class="forecast-item">
-                <span class="forecast-day-name">Sal</span>
-                <div class="weather-icon-small">
-                  <img src="./assets/images/weather.svg" width="32" alt="">
-                </div>
-                <span class="forecast-temp">17°</span>
-              </div>
-              <div class="forecast-item">
-                <span class="forecast-day-name">Çrş</span>
-                <div class="weather-icon-small">
-                  <img src="./assets/images/weather-cloud.svg" width="32" alt="">
-                </div>
-                <span class="forecast-temp">11°</span>
-              </div>
-              <div class="forecast-item">
-                <span class="forecast-day-name">Perş</span>
-                <div class="weather-icon-small">
-                  <img src="./assets/images/weather-moon-clear.svg" width="32" alt="">
-                </div>
-                <span class="forecast-temp">13°</span>
-              </div>
-              <div class="forecast-item">
-                <span class="forecast-day-name">Cum</span>
-                <div class="weather-icon-small">
-                  <img src="./assets/images/weather.svg" width="32" alt="">
-                </div>
-                <span class="forecast-temp">17°</span>
-              </div>
-              <div class="forecast-item">
-                <span class="forecast-day-name">Cmt</span>
-                <div class="weather-icon-small">
-                  <img src="./assets/images/weather.svg" width="32" alt="">
-                </div>
-                <span class="forecast-temp">17°</span>
-              </div>
-              <div class="forecast-item">
-                <span class="forecast-day-name">Paz</span>
-                <div class="weather-icon-small">
-                  <img src="./assets/images/weather.svg" width="32" alt="">
-                </div>
-                <span class="forecast-temp">17°</span>
-              </div>
-            </div>
-
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -1700,55 +1676,44 @@
     <div class="bg-white dark:bg-gray-900 py-5">
       <div class="container">
         <div class="d-flex items-center justify-center">
-          <div class="prayer-widget">
-
-            <div class="prayer-current">
-              <div class="prayer-info">
-                <span class="prayer-title">NAMAZ VAKİTLERİ</span>
-                <h3 class="prayer-location">
-
-                  <button class="city-change-btn" data-bs-toggle="modal" data-bs-target="#citySelectModal">
-                    <i class="fas fa-map-marker-alt"></i> İstanbul
-                  </button>
-                </h3>
-              </div>
-
+          <section class="dh-panel dh-panel--prayer" aria-label="Namaz vakitleri">
+            <div class="dh-panel__rail">
+              <span class="dh-panel__kicker">Namaz Vakitleri</span>
+              <button type="button" class="dh-panel__place dh-panel__place--btn"
+                data-bs-toggle="modal" data-bs-target="#citySelectModal">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i> İstanbul
+                <i class="fas fa-chevron-down dh-panel__caret" aria-hidden="true"></i>
+              </button>
+              <span class="dh-panel__countdown" data-dh-prayer-countdown aria-live="polite"></span>
             </div>
-
-            <div class="prayer-times">
-
-              <div class="time-item">
-                <div class="time-icon"><i class="far fa-sun"></i></div>
-                <span class="time-name">Güneş</span>
-                <span class="time-value" id="pt-gunes">06:48</span>
+            <div class="dh-panel__cells" role="list">
+              <div class="dh-cell" role="listitem" data-dh-prayer="06:48">
+                <span class="dh-cell__label">Güneş</span>
+                <span class="dh-cell__icon"><i class="far fa-sun" aria-hidden="true"></i></span>
+                <span class="dh-cell__value" id="pt-gunes">06:48</span>
               </div>
-
-              <div class="time-item">
-                <div class="time-icon"><i class="fas fa-sun"></i></div>
-                <span class="time-name">Öğle</span>
-                <span class="time-value" id="pt-ogle">13:14</span>
+              <div class="dh-cell" role="listitem" data-dh-prayer="13:14">
+                <span class="dh-cell__label">Öğle</span>
+                <span class="dh-cell__icon"><i class="fas fa-sun" aria-hidden="true"></i></span>
+                <span class="dh-cell__value" id="pt-ogle">13:14</span>
               </div>
-
-              <div class="time-item">
-                <div class="time-icon"><i class="far fa-clock"></i></div>
-                <span class="time-name">İkindi</span>
-                <span class="time-value" id="pt-ikindi">16:45</span>
+              <div class="dh-cell" role="listitem" data-dh-prayer="16:45">
+                <span class="dh-cell__label">İkindi</span>
+                <span class="dh-cell__icon"><i class="far fa-clock" aria-hidden="true"></i></span>
+                <span class="dh-cell__value" id="pt-ikindi">16:45</span>
               </div>
-
-              <div class="time-item">
-                <div class="time-icon"><i class="fas fa-cloud-sun"></i></div>
-                <span class="time-name">Akşam</span>
-                <span class="time-value" id="pt-aksam">19:31</span>
+              <div class="dh-cell" role="listitem" data-dh-prayer="19:31">
+                <span class="dh-cell__label">Akşam</span>
+                <span class="dh-cell__icon"><i class="fas fa-cloud-sun" aria-hidden="true"></i></span>
+                <span class="dh-cell__value" id="pt-aksam">19:31</span>
               </div>
-
-              <div class="time-item active">
-                <div class="time-icon"><i class="fas fa-moon"></i></div>
-                <span class="time-name">Yatsı</span>
-                <span class="time-value" id="pt-yatsi">20:52</span>
+              <div class="dh-cell" role="listitem" data-dh-prayer="20:52">
+                <span class="dh-cell__label">Yatsı</span>
+                <span class="dh-cell__icon"><i class="fas fa-moon" aria-hidden="true"></i></span>
+                <span class="dh-cell__value" id="pt-yatsi">20:52</span>
               </div>
-
             </div>
-          </div>
+          </section>
 
 
         </div>
@@ -1938,15 +1903,12 @@
     <!-- SPOR Section end -->
 
     <!-- TAKİM SLIDER Section start -->
-    <div class="section panel overflow-hidden swiper-parent bg-gray-10 dark:bg-gray-800">
+    <div class="section panel overflow-hidden swiper-parent dh-teams bg-gray-10 dark:bg-gray-800">
       <div class="section-outer panel py-4 lg:py-8 pb-0">
         <div class="container max-w-xl">
-          <div class="block-header panel">
-            <h2 class="h5 xl:h4 m-0 text-black dark:text-white">
-              <div class="hstack justify-between   ">
-                <span>TAKIMLAR (Slogan gelecek)</span>
-              </div>
-            </h2>
+          <div class="block-header panel dh-teams__head">
+            <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Takımlar</h2>
+            <p class="dh-teams__lead">Takımını seç, o takımın haberleri akışında öne çıksın.</p>
           </div>
           <div class="section-inner panel vstack gap-2 lg:gap-4">
             <div class="section-content panel">
@@ -1957,7 +1919,7 @@
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
                     <a href="takim.html"
-                      class="text-underline-none panel p-2 lh-sm text-center rounded bg-white dark:bg-gray-900 dark:text-white uc-visible-toggle"
+                      class="text-underline-none panel p-2 lh-sm text-center rounded bg-white dark:bg-gray-900 dark:text-white uc-visible-toggle is-now"
                       tabindex="0">
                       <div class="hstack gap-1 h-team-c">
                         <div class="vstack gap-narrow ">
@@ -7206,6 +7168,9 @@
 
   <!-- footer perdesi (İŞ 3) -->
   <script defer src="./assets/js/footer-reveal.js"></script>
+
+  <!-- günlük panel (R3-6) -->
+  <script defer src="./assets/js/dh-panel.js"></script>
 
   <!-- Dada Akış reels (R2-2) -->
   <script defer src="./assets/js/dh-reels.js"></script>

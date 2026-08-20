@@ -3974,3 +3974,343 @@ html.uc-dark .dh-share__btn--copy {
     text-align: center;
   }
 }
+
+
+/* ===========================================================
+   R3-6 — GÜNLÜK PANEL AİLESİ (.dh-panel)
+   Hava durumu · namaz vakitleri tek bir bileşenden türüyor.
+   Fikir: her ikisi de "şimdi, burada ne var" sorusunu cevaplıyor.
+   Yapı: solda dikey sarı kimlik rayı, sağda ortak taban çizgisine
+   oturan veri hücreleri. Rakamlar tabular (sütunlar kaymasın).
+   İMZA: .is-now işareti — hücrenin altında 3px kurumsal çizgi.
+   Gerçek durumu kodlar (hava: bugün · namaz: sıradaki vakit ·
+   takım: takip edilen), süs değil.
+   =========================================================== */
+.dh-panel {
+  --panel-line: rgba(18, 18, 18, 0.08);
+  display: grid;
+  grid-template-columns: minmax(150px, 200px) minmax(0, 1fr);
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid var(--panel-line);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(18, 18, 18, 0.04), 0 8px 24px rgba(18, 18, 18, 0.06);
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Kimlik rayı — soldaki 3px kurumsal şerit bileşenin imzası */
+.dh-panel__rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 18px 20px 18px 23px;
+  border-right: 1px solid var(--panel-line);
+}
+
+.dh-panel__rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--dh-brand);
+}
+
+.dh-panel__kicker {
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+}
+
+.dh-panel__place {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-family-secondary);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+}
+
+.dh-panel__place i {
+  font-size: 12px;
+  color: var(--dh-menu-ink);
+}
+
+.dh-panel__place--btn {
+  cursor: pointer;
+}
+
+.dh-panel__caret {
+  font-size: 9px !important;
+  opacity: 0.5;
+  transition: transform 0.18s ease;
+}
+
+.dh-panel__place--btn:hover .dh-panel__caret {
+  transform: translateY(1px);
+  opacity: 0.9;
+}
+
+.dh-panel__place--btn:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Canlı geri sayım — panelin tek "yaşayan" parçası */
+.dh-panel__countdown {
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--dh-menu-ink);
+  font-variant-numeric: tabular-nums;
+  min-height: 18px;
+}
+
+/* --- Veri hücreleri --- */
+.dh-panel__cells {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dh-panel__cells::-webkit-scrollbar {
+  display: none;
+}
+
+.dh-cell {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 86px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 16px 10px 18px;
+  border-right: 1px solid var(--panel-line);
+}
+
+.dh-cell:last-child {
+  border-right: 0;
+}
+
+.dh-cell__label {
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+}
+
+.dh-cell__icon {
+  display: grid;
+  place-items: center;
+  height: 30px;
+  font-size: 17px;
+  color: var(--color-gray-400);
+}
+
+.dh-cell__icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.dh-cell__value {
+  font-family: var(--font-family-secondary);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* --- İMZA: "şimdi" işareti --- */
+.dh-cell.is-now {
+  background: linear-gradient(180deg, rgba(252, 182, 35, 0.1), rgba(252, 182, 35, 0.02));
+}
+
+.dh-cell.is-now::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--dh-brand);
+}
+
+.dh-cell.is-now .dh-cell__label,
+.dh-cell.is-now .dh-cell__icon {
+  color: var(--dh-menu-ink);
+}
+
+/* --- Dark mode --- */
+:where(.uc-dark) .dh-panel,
+html.uc-dark .dh-panel {
+  --panel-line: rgba(255, 255, 255, 0.1);
+  background: var(--color-gray-900);
+  box-shadow: none;
+}
+
+:where(.uc-dark) .dh-panel__place,
+:where(.uc-dark) .dh-cell__value,
+html.uc-dark .dh-panel__place,
+html.uc-dark .dh-cell__value {
+  color: #fff;
+}
+
+:where(.uc-dark) .dh-cell.is-now .dh-cell__label,
+:where(.uc-dark) .dh-cell.is-now .dh-cell__icon,
+:where(.uc-dark) .dh-panel__countdown,
+html.uc-dark .dh-cell.is-now .dh-cell__label,
+html.uc-dark .dh-cell.is-now .dh-cell__icon,
+html.uc-dark .dh-panel__countdown {
+  color: var(--color-primary-200);
+}
+
+/* --- Duyarlı: rayı üste al, hücreler yatay kaysın --- */
+@media (max-width: 767.98px) {
+  .dh-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-panel__rail {
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    padding: 14px 16px 12px 19px;
+    border-right: 0;
+    border-bottom: 1px solid var(--panel-line);
+  }
+
+  .dh-panel__rail::before {
+    top: 14px;
+    bottom: 12px;
+  }
+
+  .dh-panel__cells {
+    scroll-snap-type: x proximity;
+  }
+
+  .dh-cell {
+    flex: 0 0 84px;
+    scroll-snap-align: start;
+  }
+}
+
+/* ===========================================================
+   R3-6 — TAKIMLAR ŞERİDİ
+   Aynı aileden: emblem büyük, ad küçük ve harf aralıklı,
+   takip edilen takım aynı "şimdi" işaretini taşır.
+   =========================================================== */
+.dh-teams__head {
+  margin-bottom: 4px;
+}
+
+.dh-teams__lead {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  color: var(--color-gray-400);
+}
+
+.dh-teams .swiper-slide > a {
+  position: relative;
+  display: block;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  border-radius: 14px !important;
+  padding: 16px 10px 14px !important;
+  transition: transform 0.2s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.dh-teams .swiper-slide > a:hover,
+.dh-teams .swiper-slide > a:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(18, 18, 18, 0.14);
+  box-shadow: 0 10px 24px rgba(18, 18, 18, 0.1);
+}
+
+.dh-teams .swiper-slide > a:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+}
+
+.dh-teams .h-team-c {
+  min-height: 0;
+}
+
+.dh-teams .swiper-slide img {
+  height: 40px !important;
+  width: auto;
+  margin-inline: auto;
+  transition: transform 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dh-teams .swiper-slide > a:hover img {
+  transform: scale(1.06);
+}
+
+.dh-teams .swiper-slide p {
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em;
+  color: var(--color-gray-400) !important;
+  margin-top: 10px !important;
+}
+
+/* Takip edilen takım — panel ailesiyle aynı "şimdi" işareti */
+.dh-teams .swiper-slide > a.is-now {
+  border-color: rgba(252, 182, 35, 0.55);
+  background: linear-gradient(180deg, rgba(252, 182, 35, 0.1), rgba(252, 182, 35, 0.02)) !important;
+}
+
+.dh-teams .swiper-slide > a.is-now::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--dh-brand);
+}
+
+.dh-teams .swiper-slide > a.is-now p {
+  color: var(--dh-menu-ink) !important;
+}
+
+:where(.uc-dark) .dh-teams .swiper-slide > a,
+html.uc-dark .dh-teams .swiper-slide > a {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-teams .swiper-slide > a,
+  .dh-teams .swiper-slide img,
+  .dh-panel__caret {
+    transition: none;
+  }
+
+  .dh-teams .swiper-slide > a:hover {
+    transform: none;
+  }
+}
