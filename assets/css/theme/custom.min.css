@@ -1628,8 +1628,14 @@ p.h1, p.h2, p.h3, p.h4, p.h5, p.h6 {
 }
 
 /* ---------- SON DAKİKA ŞERİDİ ---------- */
+/* Alt çizgi tam genişlikte olduğu için soldaki DADA filigranını kesiyordu.
+   Çizgi artık şeridin kendi genişliğinde — kapsayıcının dışına taşmıyor. */
 .dh-breaking {
   background: var(--color-gray-50);
+  border-bottom: 0;
+}
+
+.dh-breaking__row {
   border-bottom: 1px solid var(--color-gray-100);
 }
 
@@ -1723,6 +1729,9 @@ p.h1, p.h2, p.h3, p.h4, p.h5, p.h6 {
 /* Dark mode — ölçüm: gray-100/gray-800 = 11.54:1, primary-200/gray-800 = 11.12:1 */
 :where(.uc-dark) .dh-breaking {
   background: var(--color-gray-800);
+}
+
+:where(.uc-dark) .dh-breaking__row {
   border-bottom-color: var(--color-gray-700);
 }
 
@@ -1949,7 +1958,7 @@ html.uc-dark .uc-center-navbar .uc-search-trigger {
   --dh-z-wrapper: 2;
   /* yüzen öğeler: footer'ın ÜSTÜNDE, modalların ALTINDA
      (uc-menu-panel 1000, uc-modal 1010, bootstrap modal 1055) */
-  --dh-z-float: 900;
+  --dh-z-float: 1001;
 }
 
 /* Yüzen öğeler perde katmanlarıyla çakışmasın.
@@ -3299,10 +3308,21 @@ body {
   gap: 26px;
 }
 
+/* Izgara öğesi markup'ta <div> sarmalayıcı; .dh-card onun İÇİNDE.
+   height:100% olmadan kart içeriğe göre küçülüyor, kartlar farklı
+   yükseklikte kalıyor ve meta'daki margin-top:auto boşluk bulamayıp
+   0'a düşüyordu (ölçüm: 352px / 329px). */
+.dh-cards > * {
+  display: flex;
+  flex-direction: column;
+}
+
 .dh-card {
   position: relative;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  flex: 1 1 auto;
   /* tema sarmalayıcısı .text-center miras bırakıyor; kart hep sola hizalı */
   text-align: left;
 }
@@ -3461,8 +3481,31 @@ body {
 
 .dh-card--row .dh-card__meta {
   gap: 12px;
-  padding-top: 10px;
+  padding-top: 8px;
   font-size: 11.5px;
+}
+
+/* Divider altındaki satır daha kısa: avatar ve dolgu küçültüldü */
+.dh-card--row .dh-card__foot {
+  margin-top: 8px;
+  padding-top: 8px;
+  gap: 10px;
+}
+
+.dh-card--row .dh-card__author img {
+  width: 22px;
+  height: 22px;
+}
+
+.dh-card--row .dh-card__author span {
+  font-size: 12px;
+}
+
+/* Başlık her zaman iki satır yüksekliğinde: tek satırlık başlıkta da
+   kartlar aynı boyda kalır, meta satırı hizalı durur. */
+.dh-card--row .dh-card__title {
+  line-height: 1.25;
+  min-height: calc(2 * 1.25em);
 }
 
 /* --- Alt satır: solda yazar (satırın ~%30'u), sağda meta --- */
@@ -4515,8 +4558,9 @@ html.uc-dark .dh-teams .swiper-slide > a {
 }
 
 .dh-rev__inner {
-  max-width: 760px;
-  margin-inline: auto;
+  /* Haber gövdesiyle aynı hizada: kolonun tamamını kullanır */
+  max-width: none;
+  margin-inline: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4885,28 +4929,45 @@ html.uc-dark .dh-teams .swiper-slide > a {
   outline-offset: 2px;
 }
 
-/* --- Videoyu izle butonu (ses oynatıcının yanında) --- */
+/* --- Haber videosu butonu — ana görselin SAĞ ALTINA gömülü
+   (referans: haberler.com haber detayındaki 'Haber Videosunu İzle') --- */
+.dh-art-lead {
+  position: relative;
+}
+
 .dh-watch {
+  position: absolute;
+  right: 0;
+  bottom: 0;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  min-height: 40px;
-  margin-left: 14px;
-  padding: 0 16px;
-  border-radius: 12px;
-  border: 1px solid var(--color-gray-100);
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 18px 0 10px;
+  border: 0;
+  border-radius: 14px 0 18px 0;
   background: var(--color-gray-900);
   color: #fff !important;
   font-family: var(--font-family-secondary);
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
-  transition: transform 0.18s ease, background 0.18s ease;
+  transition: background 0.18s ease;
+}
+
+.dh-watch__ic {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
 }
 
 .dh-watch:hover {
-  transform: translateY(-1px);
   background: var(--dh-menu-ink);
   color: #fff !important;
 }
@@ -4974,8 +5035,9 @@ html.uc-dark .dh-rev {
   }
 
   .dh-watch {
-    margin-left: 0;
-    margin-top: 10px;
+    font-size: 12px;
+    min-height: 42px;
+    padding-right: 14px;
   }
 }
 
@@ -4997,17 +5059,18 @@ html.uc-dark .dh-rev {
   gap: 16px;
 }
 
+/* Kartlar çok iriydi; görsel 268 -> 172px, dolgu ve başlık küçüldü. */
 .dh-card--wide .dh-card__link {
-  gap: 20px;
-  padding: 14px;
-  border-radius: 16px;
+  gap: 16px;
+  padding: 10px;
+  border-radius: 14px;
   border: 1px solid var(--color-gray-100);
 }
 
 .dh-card--wide .dh-card__fig {
-  flex: 0 0 268px;
-  width: 268px;
-  border-radius: 12px;
+  flex: 0 0 172px;
+  width: 172px;
+  border-radius: 10px;
 }
 
 .dh-card--wide .dh-card__img {
@@ -5015,9 +5078,9 @@ html.uc-dark .dh-rev {
 }
 
 .dh-card--wide .dh-card__title {
-  font-size: 19px;
-  line-height: 1.28;
-  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.3;
+  margin-bottom: 8px;
 }
 
 /* Gövde dikey ortalı — dadagastro .r-body deseni. Aksi halde foot
@@ -5028,12 +5091,24 @@ html.uc-dark .dh-rev {
 }
 
 .dh-card--wide .dh-card__foot {
-  margin-top: 14px;
-  padding-top: 14px;
+  margin-top: 10px;
+  padding-top: 10px;
 }
 
 .dh-card--wide .dh-card__meta {
-  font-size: 12px;
+  font-size: 11.5px;
+  gap: 12px;
+}
+
+.dh-card--wide .dh-card__cat {
+  top: 8px;
+  left: 8px;
+  padding: 4px 8px;
+  font-size: 9px;
+}
+
+.dh-cards--feed {
+  gap: 12px;
 }
 
 /* Kategori rozeti — görselin sol üstünde */
@@ -5202,18 +5277,21 @@ html.uc-dark .dh-card--wide .dh-card__link {
 .dh-mark {
   position: fixed;
   top: 50%;
-  left: 18px;
+  left: -0.1em;
   z-index: 0;
   transform: translateY(-50%);
   writing-mode: vertical-rl;
   text-orientation: mixed;
   font-family: var(--font-family-secondary);
-  font-size: clamp(6rem, 4rem + 9vw, 13rem);
+  /* "Patlamış" ölçek: harfler viewport'u dikeyde taşırıyor.
+     4 harf x ~0.72em ilerleme = ~2.9em; 44vh ile toplam ~128vh eder,
+     yani üstten ve alttan taşar — kasıtlı. */
+  font-size: clamp(10rem, 44vh, 40rem);
   font-weight: 800;
-  letter-spacing: 0.06em;
-  line-height: 1;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
   color: var(--color-gray-900);
-  opacity: 0.035;
+  opacity: 0.05;
   user-select: none;
   pointer-events: none;
   white-space: nowrap;
@@ -5229,7 +5307,7 @@ html.uc-dark .dh-card--wide .dh-card__link {
 :where(.uc-dark) .dh-mark,
 html.uc-dark .dh-mark {
   color: #fff;
-  opacity: 0.045;
+  opacity: 0.07;
 }
 
 /* Dar ekranda içeriğe girmesin */
@@ -5280,12 +5358,14 @@ html.uc-dark .dh-mark {
    sağ kenarda tam ekran yüksekliğinde kurumsal şerit.
    Sekme (z-index 900) bunun üstünde durur.
    =========================================================== */
+/* Header z-999; şerit menünün de üstünden geçsin diye 999'un üstünde,
+   'Görüş Bildir' sekmesi (1001) ise şeridin üstünde kalır. */
 .dh-rail {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 890;
+  z-index: 1000;
   width: 8px;
   background: var(--dh-brand);
   pointer-events: none;
@@ -5305,5 +5385,91 @@ html.uc-dark .dh-mark {
 @media (max-width: 767.98px) {
   .dh-rail {
     width: 5px;
+  }
+}
+
+/* ===========================================================
+   R3-13 — HERO / ÖNE ÇIKAN KART META SATIRI
+   Görsel üzerine binen koyu kartlarda (hero slider, bölüm feature)
+   yazar solda satırın %30'unu alır, kalan bilgi sağa yaslanır.
+   %30 sabit kolon: yazar adı üç kelime bile olsa satır kaymaz;
+   taşarsa üç noktayla kırpılır.
+   =========================================================== */
+/* .post-header vstack + items-start olduğu için meta içeriğe göre
+   daralıyordu (ölçüm: 437px). Kart genişliğini alsın ki sağ grup
+   gerçekten sağ kenara yaslansın. */
+.post-header > div:has(> .post-meta),
+.post-header .post-meta {
+  width: 100%;
+  align-self: stretch;
+}
+
+/* Tarih grubu da .meta İÇİNDE; bu yüzden %30 kolon .meta'ya değil,
+   içindeki yazar bloğuna verilir, tarih grubu sağa itilir. */
+.post-header .post-meta > .meta {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+}
+
+.post-header .post-meta > .meta > .d-flex {
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px !important;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Sol: yazar — satırın %30'u */
+.post-header .post-meta > .meta > .d-flex > div:first-child {
+  flex: 0 0 30%;
+  max-width: 30%;
+  min-width: 0;
+}
+
+/* Yazar bloğu: avatar sabit, ad taşarsa kırpılır */
+.post-header .post-meta .post-author {
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.post-header .post-meta .post-author > a:last-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff !important;
+}
+
+.post-header .post-meta .post-author img {
+  flex: none;
+}
+
+/* Yazardan sonraki ayraç ve tarih bloğu sağa iter */
+.post-header .post-meta > .meta > .d-flex > .sep {
+  display: none !important;
+}
+
+.post-header .post-meta > .meta > .d-flex > div:not(:first-child) {
+  margin-left: auto;
+}
+
+/* Sağdaki bilgi grubu */
+.post-header .post-meta > *:not(.meta) {
+  margin-left: auto;
+  flex: 0 1 auto;
+}
+
+.post-header .post-meta .post-date {
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+  .post-header .post-meta > .meta {
+    flex-basis: auto;
+    max-width: 55%;
   }
 }
