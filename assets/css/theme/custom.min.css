@@ -5244,3 +5244,66 @@ html.uc-dark .dh-mark {
     display: none;
   }
 }
+
+/* ===========================================================
+   R3-12 — HERO: tam ekran, şeffaf zemin
+   Zemin kaldırıldı ki soldaki DADA filigranı okunsun.
+   Bölüm viewport'u doldurur; hava durumu paneli katlamanın altında
+   kalır, böylece filigran baştan sona görünür.
+   Son dakika şeridiyle kartlar arasına nefes payı bırakıldı.
+   =========================================================== */
+.dh-hero {
+  background: none;
+}
+
+.dh-hero > .section-outer {
+  /* header (40 siyah bant + 80 menü + 50 son dakika = 170px) düşülüyor */
+  min-height: calc(100vh - 170px);
+  display: flex;
+  align-items: center;
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+@media (max-width: 991.98px) {
+  .dh-hero > .section-outer {
+    min-height: 0;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+/* ===========================================================
+   R3-12 — SAĞ KENAR ŞERİDİ (.dh-rail)
+   "Görüş Bildir" sekmesinin arkasındaki sarı çizgi bir render
+   artığıydı; istek üzerine kasıtlı bir öğeye dönüştürüldü:
+   sağ kenarda tam ekran yüksekliğinde kurumsal şerit.
+   Sekme (z-index 900) bunun üstünde durur.
+   =========================================================== */
+.dh-rail {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 890;
+  width: 8px;
+  background: var(--dh-brand);
+  pointer-events: none;
+}
+
+.dh-rail::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0) 22%,
+      rgba(255, 255, 255, 0) 78%,
+      rgba(0, 0, 0, 0.18) 100%);
+}
+
+@media (max-width: 767.98px) {
+  .dh-rail {
+    width: 5px;
+  }
+}
