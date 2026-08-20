@@ -5518,8 +5518,27 @@ figure.featured-image.rounded {
   border-bottom-left-radius: 0 !important;
 }
 
-/* Görsel içindeki rozetler de aynı köşeyi izler */
-.dh-card__cat,
-.dh-short__cat {
-  border-bottom-left-radius: 0;
+/* Kartın DIŞ ÇERÇEVESİ de aynı imzayı taşır — sadece görsel değil.
+   Tema kartlarının .rounded'ı 8px; imza görünür olsun diye 16px'e çıkarıldı. */
+.dh-card__link,
+.dh-card--row .dh-card__link,
+.dh-card--wide .dh-card__link,
+.dh-rcard,
+.dh-rcard__link,
+.dh-teams .swiper-slide > a,
+.dh-calc {
+  border-bottom-left-radius: 0 !important;
+}
+
+/* Tema .rounded kuralı var(--radius)=8px'i !important ile sürüyor;
+   haber kartlarında imza görünür olsun diye 16px'e çıkarılıyor. */
+.post.type-post.rounded,
+.dh-hero article.post.rounded,
+.post .featured-image.rounded,
+.post .featured-video.rounded,
+figure.featured-image.rounded,
+.post-media .featured-image.rounded,
+.swiper-slide article.post.rounded {
+  border-radius: 16px !important;
+  border-bottom-left-radius: 0 !important;
 }
