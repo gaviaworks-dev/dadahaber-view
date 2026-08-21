@@ -6,6 +6,18 @@ d = os.path.dirname(os.path.abspath(__file__))
 HDR = open(os.path.join(d, "header.html"), encoding="utf-8").read()
 OFF = open(os.path.join(d, "offcanvas.html"), encoding="utf-8").read()
 FTR = open(os.path.join(d, "footer.html"), encoding="utf-8").read()
+BNV = open(os.path.join(d, "bnav.html"), encoding="utf-8").read()
+
+YUZEN = """  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
+  <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
+    <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop aria-label="Yukarı çık">
+      <i class="icon-2 unicon-chevron-up"></i>
+    </a>
+    <div class="darkmode-trigger dh-v2-tema cstack w-40px h-40px rounded" data-darkmode-switch>
+      <label class="switch"><span class="sr-only">Karanlık mod</span><input type="checkbox"><span class="slider fs-5"></span></label>
+    </div>
+  </div>
+"""
 
 CSS_LINK = '  <link rel="stylesheet" href="./assets/css/theme/v2.css">\n'
 
@@ -29,6 +41,10 @@ def isle(yol):
     s = open(yol, encoding="utf-8").read()
     orj = s
     rapor = []
+
+    # Yönlendirme/uyumluluk sayfalarında kabuk yok — atlanır.
+    if 'http-equiv="refresh"' in s:
+        return ["atlandi"], None
 
     # 1) offcanvas
     i = s.find('<div id="uc-menu-panel"')
@@ -90,25 +106,72 @@ def isle(yol):
             s = s[:m.end()] + '    <script defer src="./assets/js/v2/dh-v2-nav.js"></script>\n' + s[m.end():]
             rapor.append("navjs")
 
+    # 4c) perdeleme menü + kullanıcı menüsü betiği
+    if "js/v2/dh-v2-menu.js" not in s:
+        m = re.search(r'[ \t]*<script defer src="\./assets/js/v2/dh-v2-nav\.js"></script>[ \t]*\n', s)
+        if m:
+            s = s[:m.end()] + '    <script defer src="./assets/js/v2/dh-v2-menu.js"></script>\n' + s[m.end():]
+            rapor.append("menujs")
+
     # 5) yapışkan kenar sütunu ofseti: 136 → 120 (yeni kabuk yapışkanda 104px)
     if "offset: 136" in s:
         s = s.replace("offset: 136", "offset: 120")
         rapor.append("offset")
 
+    # 6) sağ alt yüzen yığın: YUKARI ÇIK üstte, KARANLIK MOD onun altında.
+    #    Tek kaynaktan kurulur ki 87 sayfada sıra aynı olsun.
+    i = s.find('<div class="backtotop-wrap')
+    if i != -1:
+        b = satir_basi(s, i)
+        e = kapat_div(s, i)
+        if e == -1:
+            return None, "backtotop-wrap kapanmıyor"
+        while e < len(s) and s[e] in " \t":
+            e += 1
+        if e < len(s) and s[e] == "\n":
+            e += 1
+        if s[b:e] != YUZEN:
+            s = s[:b] + YUZEN + s[e:]
+            rapor.append("yuzen")
+
+    # 7) mobil alt gezinme çubuğu — tek kaynaktan yayılır
+    m = re.search(r'[ \t]*<!--[^\n]*[Mm]obil alt gezinme[^\n]*-->\n', s)
+    i = s.find('<nav class="dh-bnav"')
+    if i != -1:
+        b = m.start() if (m and m.end() <= i) else satir_basi(s, i)
+        k = s.find("</nav>", i)
+        if k == -1:
+            return None, "dh-bnav kapanmıyor"
+        e = k + len("</nav>")
+        while e < len(s) and s[e] in " \t":
+            e += 1
+        if e < len(s) and s[e] == "\n":
+            e += 1
+        s = s[:b] + BNV + s[e:]
+        rapor.append("bnav")
+
     if s != orj:
         open(yol, "w", encoding="utf-8").write(s)
     return rapor, None
 
-ok, atla = 0, []
-for yol in sorted(glob.glob("*.html")):
-    r, hata = isle(yol)
-    if hata:
-        atla.append((yol, hata))
-    else:
-        ok += 1
-        eksik = [x for x in ("menu", "header", "footer") if x not in r]
-        if eksik:
-            atla.append((yol, "eksik: " + ",".join(eksik)))
-print("işlenen: %d" % ok)
-for y, h in atla:
-    print("  ! %s — %s" % (y, h))
+def tumu():
+    ok, atla = 0, []
+    for yol in sorted(glob.glob("*.html")):
+        r, hata = isle(yol)
+        if hata:
+            atla.append((yol, hata))
+        else:
+            ok += 1
+            eksik = [] if "atlandi" in r else [x for x in ("menu", "header", "footer") if x not in r]
+            if eksik:
+                atla.append((yol, "eksik: " + ",".join(eksik)))
+    print("işlenen: %d" % ok)
+    for y, h in atla:
+        print("  ! %s — %s" % (y, h))
+
+
+# Betik doğrudan çalıştırıldığında tüm sayfalara yayar. İçe aktarıldığında
+# yalnız isle() kullanılabilir olsun diye ayrıldı: anlik-uret.py yeni ürettiği
+# sayfalara kabuğu tek tek koyuyor, site geneline dokunmuyor.
+if __name__ == "__main__":
+    tumu()

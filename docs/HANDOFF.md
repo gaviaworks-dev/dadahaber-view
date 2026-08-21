@@ -4,7 +4,74 @@ Bu dosya oturum devri içindir. Yeni bir oturuma başlarken önce bunu oku.
 
 ---
 
-## Proje
+# ► GÜNCEL DURUM (v2 yayında)
+
+**Son güncelleme: 21 Ağustos 2026.** Aşağıdaki "Proje" bölümü ve R1–R8
+anlatımı **v1 dönemine aittir, tarihsel kayıttır.** Bugünkü gerçek durum budur:
+
+| | |
+|---|---|
+| Çalışma dizini | `~/Developer/Backend Projects/dadahaber-view` |
+| **Çalışma dalı** | **`v2`** — yeni oturumda `git checkout v2` |
+| Sayfa sayısı | **82** (v1'de 67 idi) |
+| Yerel sunucu | `python3 -m http.server 8765` → http://localhost:8765/ |
+
+## Yayın
+
+| Adres | Ne |
+|---|---|
+| **`/v2/`** | https://gaviaworks-dev.github.io/dadahaber-view/v2/ — **güncel sürüm** |
+| `/v1/` | https://gaviaworks-dev.github.io/dadahaber-view/v1/ — donmuş arşiv |
+| `/` | Köke girilince `/v2/`'ye yönlendirir |
+
+## Dal yapısı
+
+| Ref | Commit | Rol |
+|---|---|---|
+| `v2` | çalışma dalı | **Yeni iş buraya.** |
+| `main` | üretilmiş yayın ağacı | **Elle düzenlenmez.** Her yayında `v2`'den yeniden kurulur. |
+| `v1` | `39c2a60` | R8 sonu. **SİLİNMEZ, ÜZERİNE COMMIT ATILMAZ.** |
+| `v1-donmus` (etiket) | `39c2a60` | v1'in kalıcı işareti, push'lanmış. |
+
+## v2'nin taşıyıcı kısıtı — bunu bozarsan v1 arşivi bozulur
+
+`/v1/` kopyası varlıkları `../assets/` üzerinden **paylaşıyor** (ağaç 189 MB,
+ikinci kopya anlamsızdı). Bu ancak v2 varlıklara yalnız **EKLERSE** güvenli:
+
+| Dosya | Kural |
+|---|---|
+| `assets/css/theme/custom.min.css` | **DEĞİŞTİRİLMEZ.** Tüm v2 CSS'i `assets/css/theme/v2/` altına. |
+| `assets/js/dh-*.js` (16 dosya) | **DEĞİŞTİRİLMEZ.** Yeni davranış `assets/js/v2/`. |
+| `assets/images/**` | Yalnız eklenir; mevcut dosya değiştirilmez/silinmez. |
+| `assets/css/theme/demo-six.min.css` | Vendor, dokunulmaz (v1'den beri). |
+
+`docs/parts/denetim.py` bunu **kapı olarak** kontrol ediyor — yayın hattında
+ilk çalışan şey o.
+
+## Tek komutla yayın
+
+```bash
+bash docs/parts/yayinla.sh          # v2 yayınlar
+bash docs/parts/yayinla.sh v3       # ileride: kök /v3/'e yönlenir, /v2/ donar
+```
+
+Sırayla: statik denetim → `v2.css` düzleştirme → `main` ağacını `v2`'den
+yeniden kurma → kök sayfaları `/v2/` altına taşıma + köke yönlendirme →
+`/v1/` arşivini `v1` dalından üretme → ağaç doğrulama → push.
+
+## Son doğrulama durumu
+
+- `python3 docs/parts/denetim.py` → **82 sayfa, 7 kontrolün hepsi TEMİZ**
+- Playwright (1440/1000/390 + koyu tema) → tüm sayfalar temiz, canlı `/v2/` dâhil
+- İkon taraması → 230 ikon, boş glif 0
+- Kırık iç bağlantı 0 · kırık çapa 0 · yinelenen id 0
+
+---
+
+## Proje (v1 dönemi — tarihsel)
+
+> Aşağıdaki sayılar ve yayın yapısı **v1 dönemine aittir.** Güncel durum
+> yukarıdaki "GÜNCEL DURUM" bölümündedir.
 
 Dadahaber haber sitesinin yeni görünümü. Hazır bir haber teması (`demo-six`) devralındı,
 üzerine bölüm bölüm revizyon uygulanıyor. Site tamamen **Türkçe**, deploy **GitHub Pages**.
@@ -668,3 +735,147 @@ tanımlı olduğu hâlde fontta glif taşımıyor — boş kutu çiziliyor ve ku
 boyutta olduğu için ekran görüntüsünde fark edilmiyor. Betik her ikonu canvas'a
 çizip mürekkep sayıyor. v2'de bu yolla 12 ikon yakalandı ve FA5 karşılıklarıyla
 değiştirildi.
+
+### Yayın ağacı sürümlü yapıya geçti (kullanıcı isteği)
+
+Paylaşılan linkte "v2" ibaresi görünsün diye kök artık `/v2/`'ye yönlendiriyor.
+
+```
+/           yönlendirme -> /v2/     (index.html, üç katmanlı)
+/v2/        sitenin kendisi          (TEK gerçek kopya)
+/v1/        donmuş arşiv             (v1 dalından üretilir)
+/assets/    ortak varlık ağacı       (iki sürüm de ../assets/ ile paylaşır)
+/404.html   kökte kalır              (Pages proje sitelerinde YALNIZ kök 404'ü kullanır)
+```
+
+**`main` artık çalışma dalı değil, üretilmiş yayın ağacı.** `git merge v2`
+kullanılamaz: main'de kök HTML'ler `/v2/` altına taşındığı için her yayında
+modify/delete çakışması üretirdi. `yayinla.sh` bunun yerine
+`git checkout v2 -- .` ile içeriği alıp ağacı yeniden kuruyor ve sonunda
+doğruluyor (kök yönlendirme · kök 404 · sürüm klasörlerinin sayfa sayısı ·
+kökte beklenmeyen sayfa yok).
+
+Yönlendirme üç katmanlı ve ölçülerek doğrulandı:
+`location.replace` (history'ye kayıt bırakmaz — **geri tuşu döngüye girmiyor**,
+ölçüldü) · `meta refresh` (JS kapalıysa) · görünür bağlantı. Query ve hash
+korunuyor: `/?dark=1#test` → `/v2/?dark=1#test`, koyu tema uygulanıyor.
+`/v1/` bandındaki "Güncel sürüme git" (`../index.html`) yönlendirme üzerinden
+`/v2/`'ye ulaşıyor.
+
+Yeni sürüm: `bash docs/parts/yayinla.sh v3` — kök `/v3/`'e yönlenir,
+`/v2/` olduğu yerde donar. Betik sürüm adını parametre alıyor.
+
+---
+
+# v2 oturumu — kapanış özeti (21 Ağustos 2026)
+
+Bu oturumda `Dada_Haber_Nihai_Menu_Haritasi (1).docx` (Sürüm 1.0, 19.08.2026)
+dokümanı v1'in üstüne uygulandı. Sözleşme: **`docs/V2-IA.md`** — menü metni,
+sıra ve gruplama oradan sapmaz.
+
+## Yapılan iş
+
+**15 yeni sayfa** (67 → 82):
+
+| Grup | Sayfalar |
+|---|---|
+| Ana kategori merkezleri | `simdi` `gundem` `dunya` `ekonomi` `gelecek` `kultur-yasam` `video` `kesfet` |
+| Dada formatları | `dada-ozet` `dada-dogrula` `dada-baglam` `farkli-bakislar` `veri-harita` `sakin-akis` |
+| Kullanıcı alanı | `hesabim` |
+
+Mevcut sayfalar silinmedi, yeni ebeveynlerine bağlandı:
+`savunma` `oyun` → Teknoloji · `kadin` `hamilelik` → Sağlık ·
+`astroloji` → Kültür & Yaşam · `doviz` `altin` `borsa` `kripto` `finans` → Ekonomi
+
+**Dokümanın diğer bölümleri:**
+- Haber detayına 15 güven modülü (bölüm 8) — Haber Karnesi dâhil
+- Aramaya 9 sonuç sekmesi + 7 süzgeç (bölüm 7)
+- Görüş / Analiz / Yorum etiket standardı (bölüm 5)
+- Kullanıcı menüsünün 20 kalemi + bildirim tercihleri + Sessiz Saatler (bölüm 6)
+- 30 eksik çapa hedefi gerçek bölüm olarak eklendi (iletişim kanalları,
+  yayın ilkeleri alt bölümleri, piyasalar ekranı, yazar bölümleri…)
+
+**Dört paralel ajan + bir tamamlayıcı ajan** çalıştı; her biri kendi CSS
+parçasına yazdı (`a-gundem` `b-bolum` `c-kesfet` `d-arac` `e-detay`), böylece
+R4/R7'de iki kez yaşanan "ajan başkasının bloğunu siliyor" sorunu tekrarlamadı.
+
+## v2'de eklenen tasarım dili
+
+- **Veri ve doğrulama sesi:** sayısal/zaman/künye/doğrulama bilgisi
+  `var(--dh-mono)` (sistem monospace), 10–11px, `letter-spacing: .08em`, versal.
+  **Yeni font indirilmedi.** Bu ses "bu bir kayıt/ölçüm" demek.
+- **11 kategori kimlik rengi** `v2/kabuk.css` `:root`'unda (`--dh-c-simdi` …
+  `--dh-c-kesfet`). Kimlik yalnız banner perdesi ve şeritlerde; sayfa geneline
+  `--color-primary` override'ı **EKLENMEZ** (v1'den beri geçerli).
+- **Karar/tür etiketleri renkle ayrışmaz, metinle ayrışır.** Renk körlüğü ve
+  gri baskı için etiket kararın adını taşır. Dada Doğrula'da ayrım üç kanaldan:
+  renk + ayrı ikon + ikon kutusu geometrisi.
+
+## Ölçerek yakalanan gerçek hatalar (v2)
+
+1. **Vendor `uc-drop` mega paneli 250px'e kilitliyordu.** `stretch: x` inline
+   `width: 1248px` yazıyor ama kullanılan genişlik 250px kalıyordu. Panel saf
+   CSS'e taşındı (`.dh-v2-nav__bar{position:relative}` + `.dh-mega{position:
+   absolute; inset-inline:0}` + `:hover`/`:focus-within`). Ölçülen: 1248px.
+2. **Karanlık mod sınıfı `uc-dark`, `dark` DEĞİL.** İlk yazılan 18 `html.dark`
+   seçicisi hiç uygulanmıyordu. URL ile tetikleme: `?dark=1`.
+   `localStorage.setItem('darkMode','true')` **çalışmaz.**
+3. **Footer perdesi 671px'lik yeni footer'la kırılıyordu.** `footer-reveal.js`
+   freni `yükseklik+80 > innerHeight`'a bakıyor; 800px viewport'ta 751<800
+   olduğu için perde açık kalıyor, üst sütunlar ekranın tepesine düşüyordu.
+   Script 67 sayfadan kaldırıldı — 6 sütunlu footer bir bilgi yüzeyi, perde değil.
+4. **Sayfa şablonunda `#page-url` eksikti.** `app.js` her sayfada onu arıyor;
+   GÖRÜŞ BİLDİR bloğu olmayan sayfa `pageerror` veriyordu.
+5. **SVG'de `fill="var(--x)"` SUNUM NİTELİĞİ ÇALIŞMIYOR.** uni-core'un
+   `svg :not([fill=none]){fill:currentColor}` kuralı onu yeniyor; bütün grafik
+   serileri siyah çiziliyordu. `style="fill:var(--x)"` kullan. Aynı sebeple
+   `fill="url(#desen)"` de eziliyor.
+6. **Çubuk grafik tabanı sıfır değil `lo` idi:** −0,4 negatif değer kısa
+   **pozitif** çubuk gibi çiziliyordu.
+7. **Afet risk formülü `(p*5+2)%5` sabit sonuç veriyordu** — 81 ilin hepsi S3.
+8. **12 FontAwesome 6 ikon adı FA5'te glif taşımıyor**, boş kutu çiziyordu
+   (`fa-timeline` `fa-chart-column` `fa-shield-halved` `fa-magnifying-glass-chart`
+   `fa-clapperboard` `fa-laptop-house` `fa-oil-well` `fa-pump-soap`
+   `fa-sun-plant-wilt` `fa-wheat-awn` `fa-bolt-lightning` `fa-chart-simple`).
+   Kutu doğru boyutta olduğu için ekran görüntüsünde fark edilmiyor —
+   `scratchpad/pw/ikon2.js` canvas'a çizip mürekkep sayarak yakalıyor.
+9. **Koyu temada `.is-on` seçili durumu görünmüyordu:** (0,2,0) kuralı
+   `html.uc-dark` (0,2,1) altında kalıyordu, ~1,2:1.
+10. **Çapalar yapışkan başlığın altında kalıyordu** → `scroll-margin-top: 124px`.
+11. **Tema kalıntısı kırık bağlantılar** (`blog-category` `blog-details`
+    `page-author` `infografik-detay` `href="to_top"`) 82 sayfada düzeltildi.
+12. **38 çapa hedefi yoktu** — bağlantı sayfanın tepesine düşüyordu. Hepsi
+    gerçek bölüm oldu.
+
+## Yanlış alarm olarak kayda geçenler
+
+- `.dh-lb .post-title` ölçümü opacity 0 olan slayta düşüyordu (aktif slayt
+  sabitlenince temiz).
+- `ikon2.js`'in `fas` önekiyle denediği `fa-brands` adları yanlış pozitif verir.
+
+## Açık kalanlar
+
+- **Alt kategorilerin çoğunun kendi sayfası yok**, `haber-liste.html`'e
+  bağlanıyor. Kategori yönlendirmesi backend işi.
+- **İçerik tamamen yer tutucu.** Dada Doğrula iddiaları, Farklı Bakışlar'daki
+  yayın adları ve "Kim Kimdir?" kartları **bilerek kurgusal** — gerçek kişi
+  veya yayın organına iddia/görüş atfedilmedi. Gerçek içerik gelince editoryal
+  onay şart.
+- **Hesabım prototiptir**, gerçek kişisel veri toplamaz; tercihler yalnız
+  `localStorage`'da. KVKK kapsamı ayrıca ele alınmalı.
+- **Şematik haritalar**: gerçek coğrafi SVG yok, 81 il plaka sırasıyla ızgarada.
+  Sayfada "ŞEMATİK" rozeti var.
+- **Ana sayfada 224 bağlantı hâlâ `haber-liste.html`'e gidiyor** — kategori
+  sayfaları gerçek içerikle ayrıştığında yeniden bağlanmalı.
+- v1'den devreden açıklar **aynen duruyor**: Gilroy lisans kapsamı, sarı zeminde
+  beyaz metin AA'yı geçmiyor (bilinçli seçim), hukuk metinleri onaydan geçmedi,
+  kulüp armaları/oyuncu adları kurgusal, hamilelik değerleri tıbbi onaydan
+  geçmedi, haber görsellerinde `srcset` yok.
+
+## Sonraki oturum için öneri sırası
+
+1. `git checkout v2` · `python3 -m http.server 8765` · `python3 docs/parts/denetim.py`
+2. `docs/V2-IA.md` oku — sapma olup olmadığını oradan kontrol et.
+3. İş varsa: yeni sayfa `docs/parts/sayfa-sablon.html`'den; kabuk değişecekse
+   `docs/parts/uret.py` + `yay.py`; CSS ilgili `v2/*.css` parçasına `cat >>` ile.
+4. Bitince `bash docs/parts/yayinla.sh`.

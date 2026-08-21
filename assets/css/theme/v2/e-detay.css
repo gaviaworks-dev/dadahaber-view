@@ -714,3 +714,181 @@ html.uc-dark .dh-ayrim__l li + li { border-color: var(--color-gray-700); }
 @media (max-width: 767px) { .dh-kesf__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .dh-kesf__t { font-size: 23px; } }
 @media (max-width: 479px) { .dh-kesf__grid { grid-template-columns: 1fr; } }
+
+/* ============================================================================
+   8. HABER DETAY — V1/V2 birleştirme revizyonu (21 Ağustos 2026)
+   Ölçüm (önce): içerik kabı max-w-lg = 580px, 59 karakter/satır. Talimat
+   "mevcut dar yapıdan daha geniş, ama tam ekran değil" diyor. Kap max-w-xl'e
+   (1280px) çıktı ve üç alana bölündü: 160 sol ray · orta içerik · 300 sağ ray.
+   ========================================================================== */
+
+.dh-artgrid {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr) 300px;
+  gap: 40px;
+  align-items: start;
+}
+.dh-artcol { min-width: 0; max-width: 740px; margin-inline: auto; }   /* satır uzunluğu 65-78 karakter bandında kalsın */
+
+/* reklam rayları — yapışkan ama kendi sütununda kalır, footer'a taşmaz */
+.dh-adrail {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+  display: grid;
+  gap: 20px;
+}
+.dh-ad {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+}
+/* placeholder olduğu açıkça yazar — boş kutu "bozuk" gibi görünmesin */
+.dh-ad__k {
+  font-family: var(--dh-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+}
+.dh-ad__box {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: var(--dh-ad-h, 250px);
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  color: var(--color-gray-400);
+  background: var(--color-gray-100);
+  border: 1px dashed var(--color-gray-300);
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-ad__box {
+  background: rgba(255, 255, 255, .04);
+  border-color: var(--color-gray-700);
+  color: var(--color-gray-500);
+}
+/* içerik içi alan: yalnız raylar gizlendiğinde görünür */
+.dh-ad--icerik { display: none; margin: 26px 0; }
+.dh-ad--icerik .dh-ad__box { max-width: 336px; }
+
+@media (max-width: 1399px) {
+  .dh-artgrid { grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; }
+  .dh-adrail--sol { display: none; }
+}
+@media (max-width: 1199px) {
+  .dh-artgrid { grid-template-columns: minmax(0, 1fr); }
+  .dh-adrail { display: none; }
+  .dh-ad--icerik { display: grid; }
+}
+
+/* --- 8.3 · Haber Özeti kompakt ---------------------------------------------
+   Ölçüm (önce): 260px. Modül tek başına ve belirgin kalır ama daha az yer
+   kaplar: başlık satırı ve madde aralıkları daraltıldı. */
+.dh-ozet15--kompakt .dh-m__hd { padding: 9px 16px; }
+.dh-ozet15--kompakt .dh-m__bd { padding: 10px 16px 12px; }
+.dh-ozet15--kompakt li { padding: 5px 0; font-size: 14.5px; line-height: 1.45; }
+.dh-ozet15--kompakt .dh-m__title { font-size: 15px; }
+
+/* --- 8.4 · Değerlendirme kartları açılır-kapanır ---------------------------
+   Varsayılan: başlık görünür (kısa özet). Uzun metin istekle açılır.
+   Native <details> — yeni JS yok. */
+.dh-yon--acilir { gap: 10px; }
+.dh-yon--acilir .dh-yon__c { padding: 0; }
+.dh-yon__sum {
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  align-items: start;
+  gap: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+  list-style: none;
+}
+.dh-yon__sum::-webkit-details-marker { display: none; }
+.dh-yon__sum .dh-yon__k { grid-column: 1; }
+.dh-yon__sum .dh-yon__t { grid-column: 1; margin: 4px 0 0; }
+.dh-yon__ic {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  color: var(--color-gray-500);
+  transition: transform .16s ease;
+}
+.dh-yon--acilir details[open] .dh-yon__ic { transform: rotate(180deg); }
+@media (prefers-reduced-motion: reduce) { .dh-yon__ic { transition: none; } }
+.dh-yon--acilir .dh-yon__c > p { margin: 0; padding: 0 14px 14px; }
+.dh-yon__sum:focus-visible { outline: 3px solid var(--color-primary); outline-offset: -3px; }
+
+/* --- 8.5 · Sekmeli bilgi alanı ---------------------------------------------
+   Ölçüm (önce): dört modül alt alta 1277px. Sekmeye alınınca en yüksek
+   panel kadar yer kaplar. Davranış assets/js/dh-tabs.js (mevcut, değişmedi). */
+.dh-tabs {
+  margin: 26px 0;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+  background: #fff;
+}
+html.uc-dark .dh-tabs { background: rgba(255, 255, 255, .03); border-color: var(--color-gray-700); }
+.dh-tabs__bar {
+  display: flex;
+  gap: 2px;
+  padding: 6px 6px 0;
+  border-bottom: 1px solid var(--color-gray-200);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+}
+.dh-tabs__bar::-webkit-scrollbar { display: none; }
+html.uc-dark .dh-tabs__bar { border-color: var(--color-gray-700); }
+.dh-tabs__t {
+  flex: 0 0 auto;
+  position: relative;
+  padding: 11px 14px;
+  border: 0;
+  background: none;
+  font-size: 13.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--color-gray-600);
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  transition: color .14s, background .14s;
+}
+html.uc-dark .dh-tabs__t { color: rgba(255, 255, 255, .66); }
+.dh-tabs__t:hover { color: var(--color-gray-900); background: var(--color-gray-50); }
+html.uc-dark .dh-tabs__t:hover { color: #fff; background: rgba(255, 255, 255, .06); }
+.dh-tabs__t[aria-selected="true"] { color: var(--color-gray-900); }
+html.uc-dark .dh-tabs__t[aria-selected="true"] { color: #fff; }
+.dh-tabs__t[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  inset-inline: 8px;
+  bottom: -1px;
+  height: 3px;
+  background: var(--color-primary);
+}
+.dh-tabs__t:focus-visible { outline: 3px solid var(--color-primary); outline-offset: -3px; }
+.dh-tabs__p[hidden] { display: none; }
+/* sekme içindeki modül kendi çerçevesini bırakır — kap zaten çerçeveli */
+.dh-tabs .dh-m {
+  margin: 0;
+  border: 0;
+  background: none;
+  border-radius: 0;
+}
+.dh-tabs .dh-m__hd { border-bottom: 0; padding: 14px 16px 0; }
+/* sekme etiketi zaten adı söylüyor, üst etiket tekrar olurdu */
+.dh-tabs .dh-m__eyebrow { display: none; }
+.dh-tabs .dh-m__bd { padding: 10px 16px 18px; }
+.dh-tabs .dh-ozet15 { border-inline-start: 0; }
+
+@media (max-width: 575px) {
+  .dh-tabs__t { padding: 10px 11px; font-size: 12.5px; }
+}

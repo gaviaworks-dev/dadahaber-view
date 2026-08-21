@@ -3,110 +3,81 @@
     data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">
     <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">
 
-      <!-- 1. Üst bilgi bandı -->
-      <div class="dh-v2-band panel z-3">
+      <!-- 1. Format bandı — yayın formatları kanal şeridi -->
+      <div class="dh-v2-fmt panel z-3">
         <div class="container max-w-xl">
-          <div class="dh-v2-band__row">
-            <span class="dh-v2-band__now">
-              <i class="fas fa-calendar-day" aria-hidden="true"></i>
-              <span class="datetime">12 Kasım 2025</span>
-              <img src="./assets/images/cloudy.png" alt="" aria-hidden="true">
-              <span>24,4 °C Ankara</span>
-            </span>
-            <nav class="dh-v2-band__links" aria-label="Hızlı erişim">
-              <a class="is-live" href="son-dakika.html">Son Dakika</a>
-              <a class="" href="finans.html">Piyasalar</a>
-              <a class="" href="veri-harita.html#hava">Hava Durumu</a>
-              <a class="" href="hesabim.html#sehirlerim">Şehrim</a>
-              <a class="" href="hesabim.html#bultenler">Bültenler</a>
-              <a class="" href="podcast.html">Podcast</a>
-              <a class="" href="hesabim.html#uygulama">Mobil Uygulama</a>
+          <div class="dh-v2-fmt__row">
+            <nav class="dh-v2-fmt__track" aria-label="Yayın formatları">
+              <a href="haber-dinle.html"><i class="fas fa-headphones" aria-hidden="true"></i><span>Haber Dinle</span></a>
+              <a href="foto-fokus.html"><i class="fas fa-camera" aria-hidden="true"></i><span>Foto Fokus</span></a>
+              <a href="video.html"><i class="fas fa-play" aria-hidden="true"></i><span>Video Haber</span></a>
+              <a href="infografik.html"><i class="fas fa-chart-bar" aria-hidden="true"></i><span>İnfografik</span></a>
+              <a href="podcast.html"><i class="fas fa-podcast" aria-hidden="true"></i><span>Podcast</span></a>
             </nav>
-            <div class="dh-v2-band__end">
-              <ul class="dh-v2-band__soc">
-                <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-                <li><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
-                <li><a href="#" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-                <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
-                <li><a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
-              </ul>
-              <span class="dh-v2-sep" aria-hidden="true"></span>
-              <div class="darkmode-trigger" data-darkmode-switch>
-                <label class="switch"><span class="sr-only">Karanlık mod</span><input type="checkbox"><span class="slider fs-5"></span></label>
+            <div class="dh-v2-brand__acts">
+              <a class="dh-v2-act dh-v2-act--ara uc-search-trigger" href="#uc-search-modal" data-uc-toggle aria-label="Ara">
+                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></a>
+              <a class="dh-v2-act" href="hesabim.html#bildirimler" aria-label="Bildirim merkezi">
+                <i class="fas fa-bell fs-4" aria-hidden="true"></i>
+                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>
+              <a class="dh-v2-act" href="hesabim.html#kaydedilenler" aria-label="Kaydedilenler">
+                <i class="fas fa-bookmark fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Kaydedilenler</span></a>
+              <div class="dh-v2-user" data-dh-user>
+                <button class="dh-v2-act" type="button" aria-expanded="false" aria-controls="dh-user-menu" aria-label="Hesap">
+                  <i class="fas fa-user-circle fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Hesap</span>
+                </button>
+                <div class="dh-v2-user__menu" id="dh-user-menu" hidden>
+                  <a href="giris.html"><i class="fas fa-right-to-bracket" aria-hidden="true"></i>Giriş Yap</a>
+                  <a href="uye-ol.html"><i class="fas fa-user-plus" aria-hidden="true"></i>Üye Ol</a>
+                  <a href="hesabim.html"><i class="fas fa-user-circle" aria-hidden="true"></i>Hesabım</a>
+                </div>
               </div>
-              <a class="dh-v2-login" href="hesabim.html">
-                <i class="fas fa-user" aria-hidden="true"></i> Giriş Yap
-              </a>
+              <span class="dh-v2-brand__sep" aria-hidden="true"></span>
+              <a class="dh-v2-signin" href="giris.html">Giriş Yap</a>
+              <a class="dh-v2-signup" href="uye-ol.html">Üye Ol</a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 2. Ana header -->
+      <!-- 2. Marka satırı — logo · ana menü (sola yaslı) · ikonlar · giriş -->
       <div class="dh-v2-brand panel z-2">
         <div class="container max-w-xl">
-          <div class="dh-v2-brand__row">
+          <div class="dh-v2-brand__row dh-v2-nav__bar">
             <a class="uc-menu-trigger dh-v2-menu-trigger" href="#uc-menu-panel" data-uc-toggle aria-label="Menüyü aç"></a>
             <div class="dh-v2-brand__logo">
               <a href="index.html" aria-label="Dada Haber ana sayfa">
-                <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="220px">
-                <img class="d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="220px">
+                <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="180px">
+                <img class="d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="180px">
               </a>
-              <span class="dh-v2-slogan">Gündemin net hâli.</span>
             </div>
-            <div class="dh-v2-brand__search">
-              <form action="arama.html" method="get" role="search">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <input type="search" name="q" placeholder="Haber, yazar, konu veya şehir ara" aria-label="Sitede ara">
-              </form>
-            </div>
-            <div class="dh-v2-brand__acts">
-              <a class="dh-v2-act uc-search-trigger d-lg-none" href="#uc-search-modal" data-uc-toggle>
-                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></a>
-              <a class="dh-v2-act" href="hesabim.html#bildirimler">
-                <i class="fas fa-bell fs-4" aria-hidden="true"></i>
-                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>
-              <a class="dh-v2-act" href="hesabim.html#kaydedilenler">
-                <i class="fas fa-bookmark fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Kaydedilenler</span></a>
-              <a class="dh-v2-act" href="hesabim.html">
-                <i class="fas fa-user-circle fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Hesabım</span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Ana menü — 11 başlık -->
-      <div class="dh-v2-nav panel z-2">
-        <div class="container max-w-xl">
-          <div class="dh-v2-nav__bar">
-            <nav aria-label="Ana menü">
+            <nav class="dh-v2-nav" aria-label="Ana menü">
               <ul class="dh-v2-nav__list">
-                <li>
-                  <a href="simdi.html" data-cat="simdi">Şimdi <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-                  <div class="dh-mega" data-cat="simdi">
+                <li data-dh-menu>
+                  <a href="anlik.html" data-cat="anlik" aria-expanded="false">Anlık <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                  <div class="dh-mega" data-cat="anlik">
                     <div class="dh-mega__inner">
                       <div class="dh-mega__head">
-                        <span class="dh-mega__title">Şimdi</span>
+                        <span class="dh-mega__title">Anlık</span>
                         <p class="dh-mega__job">Günün anlık gelişmelerinin toplandığı canlı merkez.</p>
-                        <a class="dh-mega__all" href="simdi.html">Tümünü Gör</a>
+                        <a class="dh-mega__all" href="anlik.html">Tümünü Gör</a>
                       </div>
                       <div class="dh-mega__cols">
                         <div>
                           <ul>
                             <li><a href="son-dakika.html">Son Dakika</a></li>
-                            <li><a href="simdi.html#canli">Canlı Gündem</a></li>
+                            <li><a href="canli-gundem.html">Canlı Gündem</a></li>
                             <li><a href="video.html#canli">Canlı Yayın</a></li>
-                            <li><a href="simdi.html#dakika">Dakika Dakika</a></li>
-                            <li><a href="simdi.html#bugun">Bugün Ne Oldu?</a></li>
+                            <li><a href="dakika-dakika.html">Dakika Dakika</a></li>
+                            <li><a href="bugun-ne-oldu.html">Bugün Ne Oldu?</a></li>
                           </ul>
                         </div>
                         <div>
                           <ul>
-                            <li><a href="simdi.html#takvim">Gündem Takvimi</a></li>
-                            <li><a href="simdi.html#guncellenen">Güncellenen Haberler</a></li>
-                            <li><a href="simdi.html#afet">Afet ve Acil Durum</a></li>
-                            <li><a href="simdi.html#trafik">Trafik ve Ulaşım</a></li>
+                            <li><a href="gundem-takvimi.html">Gündem Takvimi</a></li>
+                            <li><a href="guncellenen-haberler.html">Güncellenen Haberler</a></li>
+                            <li><a href="afet-acil-durum.html">Afet ve Acil Durum</a></li>
+                            <li><a href="trafik-ulasim.html">Trafik ve Ulaşım</a></li>
                             <li><a href="veri-harita.html#hava">Hava Durumu</a></li>
                           </ul>
                         </div>
@@ -114,8 +85,8 @@
                     </div>
                   </div>
                 </li>
-                <li>
-                  <a href="gundem.html" data-cat="gundem">Gündem <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                <li data-dh-menu>
+                  <a href="gundem.html" data-cat="gundem" aria-expanded="false">Gündem <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                   <div class="dh-mega" data-cat="gundem">
                     <div class="dh-mega__inner">
                       <div class="dh-mega__head">
@@ -159,8 +130,8 @@
                     </div>
                   </div>
                 </li>
-                <li>
-                  <a href="dunya.html" data-cat="dunya">Dünya <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                <li data-dh-menu>
+                  <a href="dunya.html" data-cat="dunya" aria-expanded="false">Dünya <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                   <div class="dh-mega" data-cat="dunya">
                     <div class="dh-mega__inner">
                       <div class="dh-mega__head">
@@ -197,28 +168,38 @@
                     </div>
                   </div>
                 </li>
-                <li>
-                  <a href="ekonomi.html" data-cat="ekonomi">Ekonomi <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                <li data-dh-menu>
+                  <a href="ekonomi.html" data-cat="ekonomi" aria-expanded="false">Finans <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                   <div class="dh-mega" data-cat="ekonomi">
                     <div class="dh-mega__inner">
                       <div class="dh-mega__head">
-                        <span class="dh-mega__title">Ekonomi</span>
-                        <p class="dh-mega__job">Piyasalar, kişisel finans ve iş dünyası.</p>
+                        <span class="dh-mega__title">Finans</span>
+                        <p class="dh-mega__job">Piyasalar, kişisel finans, sektörler ve iş dünyası.</p>
                         <a class="dh-mega__all" href="ekonomi.html">Tümünü Gör</a>
                       </div>
                       <div class="dh-mega__cols">
                         <div>
-                          <span class="dh-mega__grp">Ekonomi ve finans</span>
+                          <span class="dh-mega__grp">Piyasalar</span>
                           <ul>
-                            <li><a href="haber-liste.html">Türkiye Ekonomisi</a></li>
-                            <li><a href="haber-liste.html">Dünya Ekonomisi</a></li>
-                            <li><a href="finans.html">Piyasalar</a></li>
+                            <li><a href="finans.html">Piyasa Ekranı</a></li>
                             <li><a href="doviz.html">Döviz</a></li>
                             <li><a href="altin.html">Altın</a></li>
                             <li><a href="borsa.html">Borsa</a></li>
                             <li><a href="kripto.html">Kripto Para</a></li>
+                            <li><a href="finans.html#akaryakit">Akaryakıt Fiyatları</a></li>
+                            <li><a href="finans.html#faiz">Faiz Oranları</a></li>
+                            <li><a href="finans.html#takvim">Ekonomik Takvim</a></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <span class="dh-mega__grp">Ekonomi</span>
+                          <ul>
+                            <li><a href="haber-liste.html">Türkiye Ekonomisi</a></li>
+                            <li><a href="haber-liste.html">Dünya Ekonomisi</a></li>
                             <li><a href="haber-liste.html">Bankacılık</a></li>
                             <li><a href="haber-liste.html">Kişisel Finans</a></li>
+                            <li><a href="haber-liste.html">Enflasyon</a></li>
+                            <li><a href="haber-liste.html">Ekonomi Analizi</a></li>
                           </ul>
                         </div>
                         <div>
@@ -235,118 +216,64 @@
                             <li><a href="haber-liste.html">Otomotiv</a></li>
                           </ul>
                         </div>
-                        <div>
-                          <span class="dh-mega__grp">Piyasalar ekranı</span>
-                          <ul>
-                            <li><a href="finans.html#akaryakit">Akaryakıt Fiyatları</a></li>
-                            <li><a href="finans.html#faiz">Faiz Oranları</a></li>
-                            <li><a href="finans.html#takvim">Ekonomik Takvim</a></li>
-                            <li><a href="finans.html#grafik">Günlük Değişim Grafikleri</a></li>
-                            <li><a href="haber-liste.html">Ekonomi Analizi</a></li>
-                          </ul>
-                        </div>
                       </div>
                     </div>
                   </div>
                 </li>
-                <li>
-                  <a href="teknoloji.html" data-cat="teknoloji">Teknoloji <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-                  <div class="dh-mega" data-cat="teknoloji">
+                <li data-dh-menu>
+                  <a href="savunma.html" data-cat="savunma" aria-expanded="false">Savunma <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                  <div class="dh-mega" data-cat="savunma">
                     <div class="dh-mega__inner">
                       <div class="dh-mega__head">
-                        <span class="dh-mega__title">Teknoloji</span>
-                        <p class="dh-mega__job">Yapay zekâ, bilim ve dijital kültür.</p>
-                        <a class="dh-mega__all" href="teknoloji.html">Tümünü Gör</a>
+                        <span class="dh-mega__title">Savunma</span>
+                        <p class="dh-mega__job">Savunma sanayii, millî projeler ve güvenlik gündemi.</p>
+                        <a class="dh-mega__all" href="savunma.html">Tümünü Gör</a>
                       </div>
                       <div class="dh-mega__cols">
                         <div>
+                          <span class="dh-mega__grp">Savunma sanayii</span>
                           <ul>
-                            <li><a href="haber-liste.html">Yapay Zekâ</a></li>
-                            <li><a href="haber-liste.html">Bilim</a></li>
-                            <li><a href="haber-liste.html">Tüketici Teknolojileri</a></li>
-                            <li><a href="haber-liste.html">Mobil</a></li>
-                            <li><a href="haber-liste.html">İnternet</a></li>
-                            <li><a href="haber-liste.html">Sosyal Medya</a></li>
+                            <li><a href="savunma.html">Savunma Sanayii</a></li>
+                            <li><a href="savunma.html">Millî Projeler</a></li>
+                            <li><a href="haber-liste.html">İHA ve SİHA</a></li>
+                            <li><a href="haber-liste.html">Hava Platformları</a></li>
+                            <li><a href="haber-liste.html">Deniz Platformları</a></li>
+                            <li><a href="haber-liste.html">Kara Sistemleri</a></li>
+                            <li><a href="haber-liste.html">Füze ve Roket Sistemleri</a></li>
                           </ul>
                         </div>
                         <div>
+                          <span class="dh-mega__grp">Güvenlik</span>
                           <ul>
-                            <li><a href="haber-liste.html">Siber Güvenlik</a></li>
-                            <li><a href="haber-liste.html">Yazılım</a></li>
-                            <li><a href="haber-liste.html">Girişimler</a></li>
-                            <li><a href="haber-liste.html">Uzay</a></li>
-                            <li><a href="savunma.html">Savunma Teknolojileri</a></li>
-                            <li><a href="oyun.html">Oyun</a></li>
+                            <li><a href="haber-liste.html">Millî Güvenlik</a></li>
+                            <li><a href="haber-liste.html">Askerî Operasyonlar</a></li>
+                            <li><a href="haber-liste.html">Sınır Güvenliği</a></li>
+                            <li><a href="haber-liste.html">Terörle Mücadele</a></li>
+                            <li><a href="haber-liste.html">Uluslararası Güvenlik</a></li>
+                            <li><a href="haber-liste.html">NATO</a></li>
                           </ul>
                         </div>
                         <div>
+                          <span class="dh-mega__grp">İçerikler</span>
                           <ul>
-                            <li><a href="haber-liste.html">E-Spor</a></li>
-                            <li><a href="haber-liste.html">Dijital Kültür</a></li>
-                            <li><a href="haber-liste.html">Teknoloji Rehberleri</a></li>
-                            <li><a href="haber-liste.html">Ürün İncelemeleri</a></li>
+                            <li><a href="teknoloji.html">Savunma Teknolojileri</a></li>
+                            <li><a href="haber-liste.html">İhracat ve Anlaşmalar</a></li>
+                            <li><a href="haber-liste.html">Savunma Analizi</a></li>
+                            <li><a href="haber-liste.html">Uzman Görüşleri</a></li>
+                            <li><a href="video.html">Savunma Videoları</a></li>
                           </ul>
                         </div>
                       </div>
                     </div>
                   </div>
                 </li>
-                <li>
-                  <a href="gelecek.html" data-cat="gelecek">Gelecek <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-                  <div class="dh-mega" data-cat="gelecek">
-                    <div class="dh-mega__inner">
-                      <div class="dh-mega__head">
-                        <span class="dh-mega__title">Gelecek</span>
-                        <p class="dh-mega__job">Eğitim, kariyer, iklim ve gençlerin gündemi.</p>
-                        <a class="dh-mega__all" href="gelecek.html">Tümünü Gör</a>
-                      </div>
-                      <div class="dh-mega__cols">
-                        <div>
-                          <span class="dh-mega__grp">Eğitim ve kariyer</span>
-                          <ul>
-                            <li><a href="haber-liste.html">Eğitim ve Sınavlar</a></li>
-                            <li><a href="haber-liste.html">Üniversiteler</a></li>
-                            <li><a href="haber-liste.html">Burslar</a></li>
-                            <li><a href="haber-liste.html">Staj İlanları</a></li>
-                            <li><a href="haber-liste.html">Kariyer</a></li>
-                            <li><a href="haber-liste.html">Meslekler</a></li>
-                            <li><a href="haber-liste.html">İş Fırsatları</a></li>
-                            <li><a href="haber-liste.html">Girişimcilik</a></li>
-                            <li><a href="haber-liste.html">Geleceğin Meslekleri</a></li>
-                            <li><a href="haber-liste.html">Yapay Zekâ ve Çalışma Hayatı</a></li>
-                          </ul>
-                        </div>
-                        <div>
-                          <span class="dh-mega__grp">Toplum ve gelecek</span>
-                          <ul>
-                            <li><a href="haber-liste.html">İklim</a></li>
-                            <li><a href="haber-liste.html">Sürdürülebilirlik</a></li>
-                            <li><a href="haber-liste.html">Dijital Haklar</a></li>
-                            <li><a href="haber-liste.html">Gençlerin Gündemi</a></li>
-                            <li><a href="haber-liste.html">Barınma</a></li>
-                            <li><a href="haber-liste.html">Yurt ve Öğrenci Yaşamı</a></li>
-                          </ul>
-                        </div>
-                        <div>
-                          <span class="dh-mega__grp">Fırsatlar</span>
-                          <ul>
-                            <li><a href="haber-liste.html">Değişim Programları</a></li>
-                            <li><a href="haber-liste.html">Proje ve Yarışmalar</a></li>
-                            <li><a href="haber-liste.html">Gönüllülük</a></li>
-                            <li><a href="gelecek.html#firsatlar">Fırsatlar ve Başvurular</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a href="spor.html" data-cat="spor">Spor <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                <li data-dh-menu>
+                  <a href="spor.html" data-cat="spor" aria-expanded="false">Spor <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                   <div class="dh-mega" data-cat="spor">
                     <div class="dh-mega__inner">
                       <div class="dh-mega__head">
                         <span class="dh-mega__title">Spor</span>
-                        <p class="dh-mega__job">Branşlar, skorlar, fikstür ve analiz.</p>
+                        <p class="dh-mega__job">Branşlar, canlı skorlar, puan durumu ve fikstür.</p>
                         <a class="dh-mega__all" href="spor.html">Tümünü Gör</a>
                       </div>
                       <div class="dh-mega__cols">
@@ -354,10 +281,6 @@
                           <span class="dh-mega__grp">Branşlar</span>
                           <ul>
                             <li><a href="futbol.html">Futbol</a></li>
-                            <li><a href="puan-durumu.html">Süper Lig</a></li>
-                            <li><a href="haber-liste.html">Millî Takım</a></li>
-                            <li><a href="puan-durumu.html">Avrupa Ligleri</a></li>
-                            <li><a href="puan-durumu.html">Şampiyonlar Ligi</a></li>
                             <li><a href="basketbol.html">Basketbol</a></li>
                             <li><a href="voleybol.html">Voleybol</a></li>
                             <li><a href="formula1.html">Motor Sporları</a></li>
@@ -372,16 +295,23 @@
                         <div>
                           <span class="dh-mega__grp">Servisler</span>
                           <ul>
-                            <li><a href="haber-liste.html">Transfer</a></li>
+                            <li><a href="spor.html#canli">Canlı Skor</a></li>
                             <li><a href="puan-durumu.html">Puan Durumu</a></li>
                             <li><a href="fikstur.html">Fikstür</a></li>
-                            <li><a href="fikstur.html#canli">Canlı Skor</a></li>
                             <li><a href="takim.html">Takımlar</a></li>
+                            <li><a href="haber-liste.html">Transfer</a></li>
+                            <li><a href="haber-liste.html">Millî Takım</a></li>
                           </ul>
                         </div>
                         <div>
-                          <span class="dh-mega__grp">İçerikler</span>
+                          <span class="dh-mega__grp">Takımlar</span>
                           <ul>
+                            <li><a href="takim-galatasaray.html">Galatasaray</a></li>
+                            <li><a href="takim-fenerbahce.html">Fenerbahçe</a></li>
+                            <li><a href="takim-besiktas.html">Beşiktaş</a></li>
+                            <li><a href="takim-trabzonspor.html">Trabzonspor</a></li>
+                            <li><a href="puan-durumu.html">Süper Lig</a></li>
+                            <li><a href="puan-durumu.html">Avrupa Ligleri</a></li>
                             <li><a href="haber-liste.html">Spor Analizi</a></li>
                             <li><a href="video.html#spor">Spor Video</a></li>
                           </ul>
@@ -390,62 +320,92 @@
                     </div>
                   </div>
                 </li>
-                <li>
-                  <a href="saglik.html" data-cat="saglik">Sağlık <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-                  <div class="dh-mega" data-cat="saglik">
+                <li data-dh-menu>
+                  <a href="kadin.html" data-cat="kadin" aria-expanded="false">Kadın <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                  <div class="dh-mega" data-cat="kadin">
                     <div class="dh-mega__inner">
                       <div class="dh-mega__head">
-                        <span class="dh-mega__title">Sağlık</span>
-                        <p class="dh-mega__job">Halk sağlığı, yaşam ve uzman içerikleri.</p>
-                        <a class="dh-mega__all" href="saglik.html">Tümünü Gör</a>
+                        <span class="dh-mega__title">Kadın</span>
+                        <p class="dh-mega__job">Kadın gündemi, sağlık, hak ve yaşam içerikleri.</p>
+                        <a class="dh-mega__all" href="kadin.html">Tümünü Gör</a>
                       </div>
                       <div class="dh-mega__cols">
                         <div>
+                          <span class="dh-mega__grp">Gündem</span>
                           <ul>
-                            <li><a href="saglik.html">Sağlık Haberleri</a></li>
-                            <li><a href="haber-liste.html">Halk Sağlığı</a></li>
-                            <li><a href="haber-liste.html">Ruh Sağlığı</a></li>
-                            <li><a href="haber-liste.html">Beslenme</a></li>
-                            <li><a href="haber-liste.html">Sağlıklı Yaşam</a></li>
-                            <li><a href="haber-liste.html">Hastalıklar</a></li>
+                            <li><a href="kadin.html">Kadın Gündemi</a></li>
+                            <li><a href="haber-liste.html">Kadın Hakları</a></li>
+                            <li><a href="haber-liste.html">Toplumsal Cinsiyet</a></li>
+                            <li><a href="haber-liste.html">Kadın ve Hukuk</a></li>
+                            <li><a href="haber-liste.html">Kadın ve Çalışma Hayatı</a></li>
+                            <li><a href="haber-liste.html">Başarı Hikâyeleri</a></li>
                           </ul>
                         </div>
                         <div>
+                          <span class="dh-mega__grp">Sağlık</span>
                           <ul>
+                            <li><a href="kadin.html#saglik">Kadın Sağlığı</a></li>
+                            <li><a href="hamilelik.html">Hamilelik</a></li>
                             <li><a href="hamilelik.html">Anne ve Çocuk</a></li>
-                            <li><a href="kadin.html">Kadın Sağlığı</a></li>
-                            <li><a href="haber-liste.html">Erkek Sağlığı</a></li>
-                            <li><a href="haber-liste.html">Spor Sağlığı</a></li>
-                            <li><a href="haber-liste.html">Tıp Teknolojileri</a></li>
-                            <li><a href="haber-liste.html">İlaç ve Tedaviler</a></li>
+                            <li><a href="haber-liste.html">Beslenme</a></li>
+                            <li><a href="haber-liste.html">Ruh Sağlığı</a></li>
                           </ul>
                         </div>
                         <div>
+                          <span class="dh-mega__grp">Yaşam</span>
                           <ul>
-                            <li><a href="haber-liste.html">Sağlık Politikaları</a></li>
-                            <li><a href="haber-liste.html">Uzman Görüşleri</a></li>
-                            <li><a href="haber-liste.html">Sağlık Rehberleri</a></li>
-                            <li><a href="dada-dogrula.html#saglik">Doğru Bilinen Yanlışlar</a></li>
+                            <li><a href="haber-liste.html">Moda</a></li>
+                            <li><a href="haber-liste.html">Güzellik</a></li>
+                            <li><a href="haber-liste.html">Ev ve Yaşam</a></li>
+                            <li><a href="astroloji.html">Astroloji</a></li>
+                            <li><a href="yazar-liste.html">Kadın Yazarlar</a></li>
                           </ul>
                         </div>
                       </div>
                     </div>
                   </div>
                 </li>
-                <li>
-                  <a href="kultur-yasam.html" data-cat="kultur">Kültür &amp; Yaşam <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-                  <div class="dh-mega" data-cat="kultur">
+                <li data-dh-menu>
+                  <a href="diger.html" data-cat="diger" aria-expanded="false">Diğer <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                  <div class="dh-mega dh-mega--genis" data-cat="diger">
                     <div class="dh-mega__inner">
                       <div class="dh-mega__head">
-                        <span class="dh-mega__title">Kültür &amp; Yaşam</span>
-                        <p class="dh-mega__job">Kültür sanat, şehir, seyahat ve popüler kültür.</p>
-                        <a class="dh-mega__all" href="kultur-yasam.html">Tümünü Gör</a>
+                        <span class="dh-mega__title">Diğer</span>
+                        <p class="dh-mega__job">Ana menüde yer almayan tüm kategoriler ve formatlar.</p>
+                        <a class="dh-mega__all" href="diger.html">Tümünü Gör</a>
                       </div>
                       <div class="dh-mega__cols">
                         <div>
-                          <span class="dh-mega__grp">Kültür sanat</span>
+                          <span class="dh-mega__grp">Teknoloji ve bilim</span>
                           <ul>
-                            <li><a href="kultur-yasam.html">Kültür Sanat</a></li>
+                            <li><a href="teknoloji.html">Teknoloji</a></li>
+                            <li><a href="haber-liste.html">Yapay Zekâ</a></li>
+                            <li><a href="haber-liste.html">Bilim</a></li>
+                            <li><a href="haber-liste.html">Uzay</a></li>
+                            <li><a href="haber-liste.html">Siber Güvenlik</a></li>
+                            <li><a href="haber-liste.html">Yazılım</a></li>
+                            <li><a href="oyun.html">Oyun</a></li>
+                            <li><a href="haber-liste.html">E-Spor</a></li>
+                            <li><a href="haber-liste.html">Ürün İncelemeleri</a></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <span class="dh-mega__grp">Sağlık ve yaşam</span>
+                          <ul>
+                            <li><a href="saglik.html">Sağlık</a></li>
+                            <li><a href="haber-liste.html">Halk Sağlığı</a></li>
+                            <li><a href="haber-liste.html">Beslenme</a></li>
+                            <li><a href="haber-liste.html">Ruh Sağlığı</a></li>
+                            <li><a href="hamilelik.html">Hamilelik</a></li>
+                            <li><a href="haber-liste.html">Otomobil</a></li>
+                            <li><a href="haber-liste.html">Seyahat</a></li>
+                            <li><a href="https://dadamutfak.com/" target="_blank" rel="noopener">Gastronomi</a></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <span class="dh-mega__grp">Kültür ve sanat</span>
+                          <ul>
+                            <li><a href="kultur-yasam.html">Kültür &amp; Yaşam</a></li>
                             <li><a href="haber-liste.html">Sinema</a></li>
                             <li><a href="haber-liste.html">Dizi</a></li>
                             <li><a href="haber-liste.html">Müzik</a></li>
@@ -453,121 +413,47 @@
                             <li><a href="haber-liste.html">Edebiyat</a></li>
                             <li><a href="haber-liste.html">Tiyatro</a></li>
                             <li><a href="haber-liste.html">Sergi</a></li>
-                            <li><a href="haber-liste.html">Etkinlik</a></li>
-                          </ul>
-                        </div>
-                        <div>
-                          <span class="dh-mega__grp">Yaşam</span>
-                          <ul>
-                            <li><a href="haber-liste.html">Şehir Yaşamı</a></li>
-                            <li><a href="haber-liste.html">Seyahat</a></li>
-                            <li><a href="https://dadamutfak.com/" target="_blank" rel="noopener">Gastronomi</a></li>
-                            <li><a href="haber-liste.html">Moda</a></li>
-                            <li><a href="haber-liste.html">Tasarım</a></li>
-                            <li><a href="haber-liste.html">Mimari</a></li>
-                            <li><a href="haber-liste.html">İnsan Hikâyeleri</a></li>
-                          </ul>
-                        </div>
-                        <div>
-                          <span class="dh-mega__grp">Popüler kültür</span>
-                          <ul>
-                            <li><a href="haber-liste.html">Popüler Kültür</a></li>
-                            <li><a href="haber-liste.html">Sosyal Medya Gündemi</a></li>
-                            <li><a href="haber-liste.html">Hafta Sonu</a></li>
-                            <li><a href="kultur-yasam.html#takvim">Kültür Takvimi</a></li>
                             <li><a href="astroloji.html">Astroloji</a></li>
                           </ul>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a href="video.html" data-cat="video">Video <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-                  <div class="dh-mega" data-cat="video">
-                    <div class="dh-mega__inner">
-                      <div class="dh-mega__head">
-                        <span class="dh-mega__title">Video</span>
-                        <p class="dh-mega__job">Dikey video, program, canlı yayın ve belgesel.</p>
-                        <a class="dh-mega__all" href="video.html">Tümünü Gör</a>
-                      </div>
-                      <div class="dh-mega__cols">
                         <div>
-                          <span class="dh-mega__grp">Formatlar</span>
+                          <span class="dh-mega__grp">Gelecek ve eğitim</span>
                           <ul>
-                            <li><a href="video.html#dada60">Dada 60</a></li>
-                            <li><a href="video.html#sondakika">Son Dakika Videoları</a></li>
-                            <li><a href="video.html#aciklayici">Açıklayıcı Videolar</a></li>
-                            <li><a href="video.html#canli">Canlı Yayın</a></li>
-                            <li><a href="video.html#roportaj">Röportajlar</a></li>
-                            <li><a href="video.html#sokaktan">Sokaktan</a></li>
+                            <li><a href="gelecek.html">Gelecek</a></li>
+                            <li><a href="haber-liste.html">Eğitim ve Sınavlar</a></li>
+                            <li><a href="haber-liste.html">Üniversiteler</a></li>
+                            <li><a href="haber-liste.html">Burslar</a></li>
+                            <li><a href="haber-liste.html">Kariyer</a></li>
+                            <li><a href="haber-liste.html">İklim</a></li>
+                            <li><a href="haber-liste.html">Çevre</a></li>
+                            <li><a href="haber-liste.html">Sürdürülebilirlik</a></li>
+                            <li><a href="haber-liste.html">Gençlerin Gündemi</a></li>
                           </ul>
                         </div>
                         <div>
-                          <span class="dh-mega__grp">Programlar</span>
+                          <span class="dh-mega__grp">Keşfet formatları</span>
                           <ul>
-                            <li><a href="video.html#dosya">Haber Dosyaları</a></li>
-                            <li><a href="video.html#belgesel">Belgeseller</a></li>
-                            <li><a href="video.html#studyo">Stüdyo Programları</a></li>
-                            <li><a href="video.html#ekonomi">Ekonomi Programları</a></li>
-                            <li><a href="video.html#teknoloji">Teknoloji Programları</a></li>
-                            <li><a href="video.html#spor">Spor Programları</a></li>
-                            <li><a href="video.html#kultur">Kültür Programları</a></li>
-                          </ul>
-                        </div>
-                        <div>
-                          <span class="dh-mega__grp">Arşiv</span>
-                          <ul>
-                            <li><a href="video-kategori-detay.html">Video Serileri</a></li>
-                            <li><a href="video-galeri.html">Program Arşivi</a></li>
-                            <li><a href="foto-fokus.html">Foto Fokus</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a href="kesfet.html" data-cat="kesfet">Keşfet <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-                  <div class="dh-mega" data-cat="kesfet">
-                    <div class="dh-mega__inner">
-                      <div class="dh-mega__head">
-                        <span class="dh-mega__title">Keşfet</span>
-                        <p class="dh-mega__job">Dada Haber’e özgü açıklayıcı ve güven odaklı formatlar.</p>
-                        <a class="dh-mega__all" href="kesfet.html">Tümünü Gör</a>
-                      </div>
-                      <div class="dh-mega__cols">
-                        <div>
-                          <span class="dh-mega__grp">Dada formatları</span>
-                          <ul>
+                            <li><a href="kesfet.html">Keşfet</a></li>
                             <li><a href="dada-ozet.html">Dada Özet</a></li>
                             <li><a href="kesfet.html#gunun5">Günün 5’i</a></li>
                             <li><a href="dada-baglam.html">Dada Bağlam</a></li>
                             <li><a href="dada-dogrula.html">Dada Doğrula</a></li>
                             <li><a href="farkli-bakislar.html">Farklı Bakışlar</a></li>
-                            <li><a href="kesfet.html#bana-etkisi">Bana Etkisi</a></li>
+                            <li><a href="veri-harita.html">Veri &amp; Harita</a></li>
+                            <li><a href="sakin-akis.html">Sakin Akış</a></li>
                           </ul>
                         </div>
                         <div>
-                          <span class="dh-mega__grp">Veri ve anlatım</span>
+                          <span class="dh-mega__grp">Medya ve arşiv</span>
                           <ul>
-                            <li><a href="veri-harita.html">Veri &amp; Harita</a></li>
-                            <li><a href="infografik.html">Grafik Haberler</a></li>
-                            <li><a href="kesfet.html#dadaya-sor">Dada’ya Sor</a></li>
-                            <li><a href="sakin-akis.html">Sakin Akış</a></li>
+                            <li><a href="video.html">Video</a></li>
+                            <li><a href="video-galeri.html">Video Galeri</a></li>
+                            <li><a href="foto-fokus.html">Foto Fokus</a></li>
+                            <li><a href="infografik.html">İnfografik</a></li>
                             <li><a href="podcast.html">Podcast</a></li>
                             <li><a href="haber-dinle.html">Haber Dinle</a></li>
-                          </ul>
-                        </div>
-                        <div>
-                          <span class="dh-mega__grp">Dosya ve arşiv</span>
-                          <ul>
-                            <li><a href="kesfet.html#dosyalar">Haber Dosyaları</a></li>
-                            <li><a href="kesfet.html#roportaj">Röportajlar</a></li>
                             <li><a href="yazar-liste.html">Yazarlar</a></li>
-                            <li><a href="yazar-liste.html#gorus">Görüş</a></li>
-                            <li><a href="kesfet.html#editor">Editörün Seçimi</a></li>
-                            <li><a href="foto-fokus.html">Foto Galeri</a></li>
+                            <li><a href="resmi-ilanlar.html">Resmî İlanlar</a></li>
                             <li><a href="arsiv.html">Arşiv</a></li>
                           </ul>
                         </div>

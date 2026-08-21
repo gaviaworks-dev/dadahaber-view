@@ -1,0 +1,214 @@
+/* Anlık alt sayfaları — bu dosya doldurulacak */
+
+/* ============================================================================
+   v2 / H-1 — ANLIK ALT SAYFALARI
+   Anlık önce tek sayfa (çapa) modelindeydi; yedi alt başlık kendi sayfasına
+   çıktı (docs/parts/anlik-uret.py üretir). Sayfaların gövdesi mevcut
+   .dh-nwlist / .dh-nwstat / .dh-nwtopic ailesini olduğu gibi kullanıyor —
+   burada yalnız bu ayrışmayla doğan İKİ yeni bileşen var:
+
+     .dh-nwsum  merkez sayfada (anlik.html) bölümün yerine kalan özet kartı
+     .dh-nwgo   alt sayfaların dibindeki kardeş bölüm ızgarası
+
+   KURAL: kategori rengi sayfa geneline uygulanmaz; --color-primary override'ı
+   YOK. Kimlik banner perdesi, şerit ve bu iki bileşenin okuduğu --dh-a-cat
+   üzerinden gelir (a-gundem.css'teki sözleşmenin aynısı).
+   ========================================================================== */
+
+/* --- Anlık kimlik rengi ---------------------------------------------------
+   kabuk.css'te --dh-c-anlik: #c8102e tanımlı ve mega menüde kullanılıyordu;
+   banner/şerit/sayfa kapsamı için karşılığı yoktu, ikisi de yedeğe (amber)
+   düşüyordu. Ölçülen kontrast: #c8102e beyaz üstünde 5,90:1 (AA),
+   #ff7a86 siyah üstünde 8,3:1 — a-gundem.css'teki "simdi" çiftinin aynısı. */
+.dh-lb[data-cat="anlik"]     { --dh-cat: var(--dh-c-anlik); }
+.dh-catbar[data-cat="anlik"] { --dh-cat: var(--dh-c-anlik); }
+html.uc-dark .dh-catbar[data-cat="anlik"] { --dh-cat: #ff7a86; }
+
+body[data-dh-cat="anlik"] { --dh-a-cat: #c8102e; --dh-a-soft: rgba(200, 16, 46, .10); }
+html.uc-dark body[data-dh-cat="anlik"] { --dh-a-cat: #ff7a86; --dh-a-soft: rgba(255, 122, 134, .16); }
+
+
+/* --------------------------------------------------------------- .dh-nwsum
+   Merkez sayfada taşınan bölümün yerine geçen kart. Tamamı tek bağlantı:
+   kartın her yeri tıklanabilir olsun diye <a> içinde yalnız satır içi
+   öğeler var (blok yerleşim display ile veriliyor).                        */
+.dh-nwsum {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 16px 16px 16px 0;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .18s, box-shadow .18s;
+}
+
+.dh-nwsum:hover {
+  border-color: var(--dh-a-cat);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .06);
+}
+
+.dh-nwsum__ic {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px 14px 14px 0;
+  background: var(--dh-a-soft);
+  color: var(--dh-a-cat);
+  font-size: 20px;
+}
+
+.dh-nwsum__body { display: block; min-width: 0; }
+
+/* Başlık kartta tekrarlanmıyor — bölüm çubuğundaki h2 taşıyor. Kartın ilk
+   satırı bu yüzden açıklama, gövde metninden bir tık iri ve koyu. */
+.dh-nwsum__d {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-gray-800);
+}
+
+/* Önizleme: üç satır, aralarında nokta değil kendi satırı — mobilde de
+   kırpılmadan okunsun diye liste gibi dizildi. */
+.dh-nwsum__peek { display: block; margin-top: 10px; }
+
+.dh-nwsum__peek > span {
+  display: block;
+  position: relative;
+  padding-left: 14px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--color-gray-700);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dh-nwsum__peek > span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--dh-a-cat);
+  opacity: .55;
+}
+
+.dh-nwsum__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 8px 8px 8px 0;
+  border: 1px solid var(--color-gray-100);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--color-gray-900);
+  transition: .18s cubic-bezier(.22, .61, .36, 1);
+}
+
+.dh-nwsum__go i { font-size: 11px; color: var(--dh-a-cat); transition: transform .18s; }
+.dh-nwsum:hover .dh-nwsum__go { border-color: var(--dh-a-cat); color: var(--dh-a-cat); }
+.dh-nwsum:hover .dh-nwsum__go i { transform: translateX(3px); }
+
+html.uc-dark .dh-nwsum {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .10);
+}
+html.uc-dark .dh-nwsum__d  { color: rgba(255, 255, 255, .80); }
+html.uc-dark .dh-nwsum__peek > span { color: rgba(255, 255, 255, .78); }
+html.uc-dark .dh-nwsum__go { border-color: rgba(255, 255, 255, .12); color: #fff; }
+
+/* 900px altında düğme alta iner; 560px altında ikon da satır başına geçer. */
+@media (max-width: 899.98px) {
+  .dh-nwsum { grid-template-columns: 56px minmax(0, 1fr); }
+  .dh-nwsum__go { grid-column: 1 / -1; justify-content: center; }
+}
+
+@media (max-width: 559.98px) {
+  .dh-nwsum { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 16px; }
+  .dh-nwsum__ic { width: 44px; height: 44px; font-size: 17px; }
+}
+
+
+/* ---------------------------------------------------------------- .dh-nwgo
+   Alt sayfanın dibinde kardeş bölümler. Yukarıdaki şerit yatay ve kayan;
+   burada dokuz başlık tek bakışta, açıklamalarıyla görünür.                */
+.dh-nwgo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.dh-nwgo__it {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 14px;
+  gap: 14px;
+  align-items: center;
+  min-height: 76px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 14px 14px 14px 0;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .18s, background .18s;
+}
+
+.dh-nwgo__it:hover { border-color: var(--dh-a-cat); background: var(--dh-a-soft); }
+
+.dh-nwgo__ic {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px 11px 11px 0;
+  background: var(--color-gray-50);
+  color: var(--dh-a-cat);
+  font-size: 15px;
+}
+
+.dh-nwgo__body { display: block; min-width: 0; }
+
+.dh-nwgo__t {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-gray-900);
+}
+
+.dh-nwgo__d {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--color-gray-600);
+}
+
+.dh-nwgo__go { font-size: 11px; color: var(--dh-a-cat); transition: transform .18s; }
+.dh-nwgo__it:hover .dh-nwgo__go { transform: translateX(3px); }
+
+html.uc-dark .dh-nwgo__it {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .10);
+}
+html.uc-dark .dh-nwgo__it:hover { background: rgba(255, 255, 255, .04); }
+html.uc-dark .dh-nwgo__ic { background: rgba(255, 255, 255, .06); }
+html.uc-dark .dh-nwgo__t  { color: #fff; }
+html.uc-dark .dh-nwgo__d  { color: rgba(255, 255, 255, .60); }
+
+/* 390px'te 280px taban + 16px kap boşluğu sığmıyor; tek sütuna düşürülür. */
+@media (max-width: 419.98px) {
+  .dh-nwgo { grid-template-columns: minmax(0, 1fr); }
+}
