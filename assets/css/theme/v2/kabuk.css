@@ -848,14 +848,17 @@ html.uc-offcanvas-page .dh-bnav { display: none; }
 /* --- sağ alt yüzen tema anahtarı ------------------------------------------
    Yukarı çık düğmesinin ALTINDA sabit. Mobilde alt gezinme çubuğunun
    üstünde kalır, çubuğun altına gizlenmez. */
+/* Sarmalayıcı ŞEFFAF: zemin ve çerçeve yalnız etikette. İkisinde birden
+   olunca dıştaki kutunun kenarı etiketin arkasından çizgi gibi taşıyordu
+   (ekran görüntüsüyle yakalandı). */
 .dh-v2-tema {
-  background: var(--color-gray-100);
-  border: 1px solid var(--color-gray-200);
-}
-html.uc-dark .dh-v2-tema {
-  background: var(--color-gray-800);
-  border-color: var(--color-gray-700);
-  color: #fff;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  width: auto;
+  height: auto;
+  line-height: 0;
 }
 @media (max-width: 991.98px) {
   .backtotop-wrap { bottom: var(--dh-bnav-h, 62px); }
@@ -1027,13 +1030,16 @@ html.uc-dark .dh-pager__durum { color: var(--color-gray-400); }
    Header artık pencere genişliğini kullanıyor, sayfa gövdesi ve footer
    ortalanmış kapta kalıyor — okuma satırları uzamasın diye.
    ========================================================================== */
+/* Kabuk kabı SAYFA İÇERİĞİYLE HİZALI (kullanıcı: "menüyü daralt, son dakika
+   kısmından başlasın"). Ölçüm: tam genişlikte header 32..1408, içerik kabı
+   80..1360 idi — her iki yanda 48px kayma vardı. Artık logo, menü, son dakika
+   şeridi ve tüm sayfa içeriği aynı sol/sağ kenarı paylaşıyor.
+   Bantların ZEMİNİ tam genişlikte kalır, yalnız içerik hizalanır. */
 .dh-v2-fmt > .container,
 .dh-v2-brand > .container {
-  /* .max-w-xl vendor'da !important taşıyor (ölçüldü: 1440px'te kap hâlâ
-     1280px'te kalıyordu), o yüzden burada da gerekiyor. */
-  max-width: none !important;
+  max-width: 1280px !important;
   width: 100%;
-  padding-inline: 32px;
+  padding-inline: 16px;
 }
 /* Perdeleme paneli de kabukla birlikte tam genişliğe çıkar; içerik
    1600px'te ortalanır ki sütunlar 1920px'te aşırı yayılmasın. */
@@ -1041,14 +1047,7 @@ html.uc-dark .dh-pager__durum { color: var(--color-gray-400); }
   max-width: 1600px;
   margin-inline: auto;
 }
-@media (max-width: 1279.98px) {
-  .dh-v2-fmt > .container,
-  .dh-v2-brand > .container { padding-inline: 24px; }
-}
-@media (max-width: 767.98px) {
-  .dh-v2-fmt > .container,
-  .dh-v2-brand > .container { padding-inline: 16px; }
-}
+
 
 /* --- 8.1 · footer alt bloğu ortalanır ------------------------------------
    Kurumsal şerit, yasal şerit, telif metni ve künye satırı ortalandı;
@@ -1206,7 +1205,6 @@ html.uc-dark .dh-m__note[href] { color: var(--color-primary) !important; }
    ETİKETİN ::after'ına konuldu (vendor oraya dokunmuyor).
    Kutu, yukarı çık düğmesiyle aynı 40px ve aynı köşe imzası.
    Açıkken ay, karanlık moddayken güneş. */
-.dh-v2-tema { width: 40px; height: 40px; }
 .dh-v2-tema__btn {
   position: relative;
   display: grid !important;
@@ -1251,4 +1249,75 @@ html.uc-dark .dh-v2-tema__btn::after {
 .dh-v2-tema__btn:focus-within {
   outline: 3px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+/* ============================================================================
+   9. ANA MENÜ V1 DÜZENİNE DÖNDÜ (kullanıcı görseline göre)
+   Logo solda, menü başlıkları SAĞA yaslı, büyük harf, kurumsal mürekkep.
+   Mürekkep --dh-menu-ink (#7a5f01): beyaz zeminde 6,06:1 — AA geçiyor.
+   Marka amberi (#fcb623) metin olarak 1,88:1 kalırdı, o yüzden koyu ton.
+   ========================================================================== */
+.dh-v2-brand__row .dh-v2-nav {
+  margin-inline-start: auto;
+  flex: 0 1 auto;
+  justify-content: flex-end;
+}
+.dh-v2-nav__list { justify-content: flex-end; }
+/* sağa yaslanınca ilk başlığın sol dolgusu geri gelir, son başlığınki gider */
+.dh-v2-nav__list > li:first-child > a { padding-inline-start: 14px; }
+.dh-v2-nav__list > li:first-child > a::after { inset-inline-start: 10px; }
+.dh-v2-nav__list > li:last-child > a { padding-inline-end: 0; }
+.dh-v2-nav__list > li:last-child > a::after { inset-inline-end: 0; }
+
+.dh-v2-nav__list > li > a {
+  padding: 0 14px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--dh-menu-ink, #7a5f01);
+}
+html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
+.dh-v2-nav__list > li > a i { font-size: 10px; opacity: .6; }
+/* aktif ve açık başlık kategori kimliğine döner */
+.dh-v2-nav__list > li.is-open > a,
+.dh-v2-nav__list > li > a[aria-current="page"] { color: var(--dh-cat, var(--color-primary-700)); }
+
+@media (max-width: 1439px) {
+  .dh-v2-nav__list > li > a { padding: 0 11px; font-size: 14px; }
+  .dh-v2-nav__list > li:first-child > a { padding-inline-start: 11px; }
+}
+@media (max-width: 1339px) {
+  .dh-v2-nav__list > li > a { padding: 0 9px; font-size: 13px; letter-spacing: 0; }
+  .dh-v2-nav__list > li:first-child > a { padding-inline-start: 9px; }
+}
+
+/* ============================================================================
+   10. BELGE SAYFALARI — metin sayfaya yayılıyor
+   Kullanıcı: "yasal sayfalar tasarıma uygun şekilde sayfaya yayılsın".
+   Ölçüm (1440px): .dh-doc ızgarası 924px + 268px, ama .dh-doc__body
+   max-width: 567,63px ile kilitliydi — ilk sütunun 356px'i boş kalıyordu.
+   Metin 65 karakter/satırdı; klasik okuma bandının alt ucu.
+   Yeni: gövde 74ch'e kadar açılıyor (~700px, ~75 karakter), yan sütun
+   sağ kenara yaslanıyor, arta kalan boşluk aradaki oluğa gidiyor.
+   Kapsam: kullanim-sartlari · kvkk · cerezler · aydinlatma-metni ·
+   yayin-ilkeleri ve aynı kalıbı kullanan tüm belge sayfaları.
+   ========================================================================== */
+.dh-doc {
+  grid-template-columns: minmax(0, 74ch) 268px !important;
+  justify-content: space-between;
+  column-gap: 48px;
+}
+.dh-doc__body { max-width: none !important; }
+/* sayfa girişindeki özet cümle de aynı bandı kullanır (ölçüm: 566px'ti) */
+.dh-ph__sub { max-width: 74ch; }
+.dh-doc__sec > p,
+.dh-doc__body > p,
+.dh-doc__list > li { max-width: none; }
+
+@media (max-width: 1199.98px) {
+  .dh-doc { grid-template-columns: minmax(0, 1fr) 240px !important; column-gap: 32px; }
+}
+@media (max-width: 991.98px) {
+  .dh-doc { grid-template-columns: minmax(0, 1fr) !important; }
 }
