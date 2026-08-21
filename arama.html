@@ -1108,25 +1108,23 @@
           </div>
         </header>
 
-        <nav class="section panel dh-catbar" data-cat="" aria-label="İçerik türleri">
+        <!-- v2 · Sonuç sekmeleri (doküman bölüm 7) -->
+        <nav class="section panel dh-catbar" data-cat="" aria-label="Sonuç türleri">
           <div class="container max-w-xl">
             <div class="dh-catbar__row">
-              <span class="dh-catbar__root"><span class="dh-catbar__root-ad" aria-current="page">ARAMA</span><span class="dh-catbar__root-fn">içerik türleri</span></span>
+              <span class="dh-catbar__root"><span class="dh-catbar__root-ad" aria-current="page">ARAMA</span><span class="dh-catbar__root-fn">sonuç türleri</span></span>
               <div class="dh-catbar__inner swiper-parent">
-                <div class="swiper dh-catbar__swiper"
-                  data-uc-swiper="items: auto; gap: 8; free: true; grab-cursor: true; next: .dh-catbar__nav--next; prev: .dh-catbar__nav--prev; disable-class: is-off; watchOverflow: true;">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a class="dh-catbar__chip is-on" href="arama.html" aria-current="page">Tümü</a></div>
-                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Haber</a></div>
-                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Son Dakika</a></div>
-                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Video</a></div>
-                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Foto Fokus</a></div>
-                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Podcast</a></div>
-                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">İnfografik</a></div>
-                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Köşe Yazısı</a></div>
-                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Yazar</a></div>
-                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Resmî İlan</a></div>
-                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Arşiv</a></div>
+                <div class="swiper dh-catbar__swiper" data-uc-swiper="items: auto; gap: 8; free: true; grab-cursor: true; next: .dh-catbar__nav--next; prev: .dh-catbar__nav--prev; disable-class: is-off; watchOverflow: true;">
+                  <div class="swiper-wrapper" role="tablist" aria-label="Sonuç türleri">
+                    <div class="swiper-slide"><button type="button" class="dh-catbar__chip is-on" role="tab" aria-selected="true" data-dh-ara-sekme="tumu">Tümü <span class="dh-ara__n">128</span></button></div>
+                    <div class="swiper-slide"><button type="button" class="dh-catbar__chip" role="tab" aria-selected="false" data-dh-ara-sekme="haberler">Haberler <span class="dh-ara__n">64</span></button></div>
+                    <div class="swiper-slide"><button type="button" class="dh-catbar__chip" role="tab" aria-selected="false" data-dh-ara-sekme="videolar">Videolar <span class="dh-ara__n">18</span></button></div>
+                    <div class="swiper-slide"><button type="button" class="dh-catbar__chip" role="tab" aria-selected="false" data-dh-ara-sekme="podcastler">Podcastler <span class="dh-ara__n">9</span></button></div>
+                    <div class="swiper-slide"><button type="button" class="dh-catbar__chip" role="tab" aria-selected="false" data-dh-ara-sekme="yazarlar">Yazarlar <span class="dh-ara__n">7</span></button></div>
+                    <div class="swiper-slide"><button type="button" class="dh-catbar__chip" role="tab" aria-selected="false" data-dh-ara-sekme="konular">Konular <span class="dh-ara__n">12</span></button></div>
+                    <div class="swiper-slide"><button type="button" class="dh-catbar__chip" role="tab" aria-selected="false" data-dh-ara-sekme="sehirler">Şehirler <span class="dh-ara__n">5</span></button></div>
+                    <div class="swiper-slide"><button type="button" class="dh-catbar__chip" role="tab" aria-selected="false" data-dh-ara-sekme="dogrulamalar">Doğrulamalar <span class="dh-ara__n">8</span></button></div>
+                    <div class="swiper-slide"><button type="button" class="dh-catbar__chip" role="tab" aria-selected="false" data-dh-ara-sekme="veri">Veri ve Haritalar <span class="dh-ara__n">5</span></button></div>
                   </div>
                 </div>
                 <div class="dh-catbar__nav dh-catbar__nav--prev" role="button" aria-label="Önceki türler"><i class="unicon-chevron-left"></i></div>
@@ -1135,6 +1133,102 @@
             </div>
           </div>
         </nav>
+
+        <!-- v2 · Arama süzgeçleri (doküman bölüm 7) -->
+        <section class="section panel dh-filt" aria-labelledby="dh-filt-b">
+          <div class="container max-w-xl">
+            <div class="dh-filt__bar">
+              <h2 class="dh-filt__t" id="dh-filt-b"><i class="fas fa-sliders" aria-hidden="true"></i> Süzgeçler</h2>
+              <div class="dh-filt__grid">
+                <label class="dh-filt__f">
+                  <span class="dh-filt__lab" id="dhFilt0-l">Tarih</span>
+                  <select class="dh-filt__sel" id="dhFilt0" aria-labelledby="dhFilt0-l">
+                    <option>Tüm zamanlar</option>
+                    <option>Son 24 saat</option>
+                    <option>Son 7 gün</option>
+                    <option>Son 30 gün</option>
+                    <option>Son 1 yıl</option>
+                  </select>
+                </label>
+                <label class="dh-filt__f">
+                  <span class="dh-filt__lab" id="dhFilt1-l">Kategori</span>
+                  <select class="dh-filt__sel" id="dhFilt1" aria-labelledby="dhFilt1-l">
+                    <option>Tüm kategoriler</option>
+                    <option>Şimdi</option>
+                    <option>Gündem</option>
+                    <option>Dünya</option>
+                    <option>Ekonomi</option>
+                    <option>Teknoloji</option>
+                    <option>Gelecek</option>
+                    <option>Spor</option>
+                    <option>Sağlık</option>
+                    <option>Kültür & Yaşam</option>
+                    <option>Video</option>
+                    <option>Keşfet</option>
+                  </select>
+                </label>
+                <label class="dh-filt__f">
+                  <span class="dh-filt__lab" id="dhFilt2-l">İçerik türü</span>
+                  <select class="dh-filt__sel" id="dhFilt2" aria-labelledby="dhFilt2-l">
+                    <option>Tüm türler</option>
+                    <option>Haber</option>
+                    <option>Analiz</option>
+                    <option>Görüş</option>
+                    <option>Röportaj</option>
+                    <option>Video</option>
+                    <option>Podcast</option>
+                    <option>İnfografik</option>
+                    <option>Doğrulama</option>
+                  </select>
+                </label>
+                <label class="dh-filt__f">
+                  <span class="dh-filt__lab" id="dhFilt3-l">Yazar</span>
+                  <select class="dh-filt__sel" id="dhFilt3" aria-labelledby="dhFilt3-l">
+                    <option>Tüm yazarlar</option>
+                    <option>Selin Aydın</option>
+                    <option>Murat Erkan</option>
+                    <option>Deniz Kara</option>
+                    <option>Elif Şahin</option>
+                    <option>Konuk yazarlar</option>
+                  </select>
+                </label>
+                <label class="dh-filt__f">
+                  <span class="dh-filt__lab" id="dhFilt4-l">Şehir</span>
+                  <select class="dh-filt__sel" id="dhFilt4" aria-labelledby="dhFilt4-l">
+                    <option>Tüm şehirler</option>
+                    <option>İstanbul</option>
+                    <option>Ankara</option>
+                    <option>İzmir</option>
+                    <option>Bursa</option>
+                    <option>Antalya</option>
+                    <option>Diğer iller</option>
+                  </select>
+                </label>
+                <label class="dh-filt__f">
+                  <span class="dh-filt__lab" id="dhFilt5-l">Haber durumu</span>
+                  <select class="dh-filt__sel" id="dhFilt5" aria-labelledby="dhFilt5-l">
+                    <option>Tüm haberler</option>
+                    <option>Güncellenenler</option>
+                    <option>Düzeltme notu olanlar</option>
+                    <option>Doğrulanmış</option>
+                    <option>Canlı</option>
+                  </select>
+                </label>
+                <label class="dh-filt__f">
+                  <span class="dh-filt__lab" id="dhFilt6-l">Okuma süresi</span>
+                  <select class="dh-filt__sel" id="dhFilt6" aria-labelledby="dhFilt6-l">
+                    <option>Fark etmez</option>
+                    <option>1 dakikadan kısa</option>
+                    <option>1–3 dakika</option>
+                    <option>3–7 dakika</option>
+                    <option>7 dakikadan uzun</option>
+                  </select>
+                </label>
+              </div>
+              <button type="button" class="dh-filt__clr" data-dh-filt-temizle>Süzgeçleri temizle</button>
+            </div>
+          </div>
+        </section>
 
         <div class="section py-4 lg:py-8">
             <div class="container max-w-xl">
@@ -1157,8 +1251,97 @@
                         </div>
                     </header>
                     <div class="row g-4 xl:g-8">
+                    <div class="dh-aragrup">
+                    <section class="dh-arag" data-dh-ara-grup="videolar" aria-labelledby="videolar-b">
+                      <header class="dh-arag__h">
+                        <h2 class="dh-arag__t" id="videolar-b">Videolar</h2>
+                        <a class="dh-arag__all" href="video.html">Bu türdeki tüm sonuçlar</a>
+                      </header>
+                      <ul class="dh-arag__l dh-arag__l--vid">
+                        <li><a href="video-detay.html"><b>Depremde ilk 72 saat: sahadan aktarım</b><span class="dh-arag__m">VİDEO · 12:48 · 12.12.2025</span></a></li>
+                        <li><a href="video-detay.html"><b>Deprem yönetmeliği neyi zorunlu kılıyor?</b><span class="dh-arag__m">AÇIKLAYICI · 03:18 · 11.12.2025</span></a></li>
+                        <li><a href="video-detay.html"><b>Toplanma alanları nerede? Şematik harita</b><span class="dh-arag__m">VERİ · 05:24 · 10.12.2025</span></a></li>
+                        <li><a href="video-detay.html"><b>Bir arama kurtarma ekibinin günü</b><span class="dh-arag__m">BELGESEL · 44:05 · 09.12.2025</span></a></li>
+                      </ul>
+                    </section>
+
+                    <section class="dh-arag" data-dh-ara-grup="podcastler" aria-labelledby="podcastler-b">
+                      <header class="dh-arag__h">
+                        <h2 class="dh-arag__t" id="podcastler-b">Podcastler</h2>
+                        <a class="dh-arag__all" href="podcast.html">Bu türdeki tüm sonuçlar</a>
+                      </header>
+                      <ul class="dh-arag__l dh-arag__l--pod">
+                        <li><a href="podcast-detay.html"><b>Günlük Gündem — deprem hazırlığı özel bölümü</b><span class="dh-arag__m">GÜNLÜK GÜNDEM · 28:14 · 12.12.2025</span></a></li>
+                        <li><a href="podcast-detay.html"><b>Haftanın Özeti — afet yönetimi</b><span class="dh-arag__m">HAFTANIN ÖZETİ · 41:02 · 11.12.2025</span></a></li>
+                        <li><a href="podcast-detay.html"><b>Röportaj: bir jeoloji mühendisiyle</b><span class="dh-arag__m">RÖPORTAJ · 52:30 · 08.12.2025</span></a></li>
+                      </ul>
+                    </section>
+
+                    <section class="dh-arag" data-dh-ara-grup="yazarlar" aria-labelledby="yazarlar-b">
+                      <header class="dh-arag__h">
+                        <h2 class="dh-arag__t" id="yazarlar-b">Yazarlar</h2>
+                        <a class="dh-arag__all" href="yazar-liste.html">Bu türdeki tüm sonuçlar</a>
+                      </header>
+                      <ul class="dh-arag__l dh-arag__l--yaz">
+                        <li><a href="yazar-detay.html"><b>Selin Aydın</b><span class="dh-arag__m">EKONOMİ · 142 yazı · 3 yazı bu konuda</span></a></li>
+                        <li><a href="yazar-detay.html"><b>Murat Erkan</b><span class="dh-arag__m">DIŞ POLİTİKA · 98 yazı · 2 yazı bu konuda</span></a></li>
+                        <li><a href="yazar-detay.html"><b>Deniz Kara</b><span class="dh-arag__m">KENT VE YAŞAM · 76 yazı · 4 yazı bu konuda</span></a></li>
+                      </ul>
+                    </section>
+
+                    <section class="dh-arag" data-dh-ara-grup="konular" aria-labelledby="konular-b">
+                      <header class="dh-arag__h">
+                        <h2 class="dh-arag__t" id="konular-b">Konular</h2>
+                        <a class="dh-arag__all" href="kesfet.html#dosyalar">Bu türdeki tüm sonuçlar</a>
+                      </header>
+                      <ul class="dh-arag__l dh-arag__l--kon">
+                        <li><a href="dada-baglam.html"><b>Deprem hazırlığı</b><span class="dh-arag__m">KONU DOSYASI · 42 içerik · sürekli güncelleniyor</span></a></li>
+                        <li><a href="dada-baglam.html"><b>Yapı denetimi</b><span class="dh-arag__m">KONU DOSYASI · 18 içerik</span></a></li>
+                        <li><a href="dada-baglam.html"><b>Afet yönetimi</b><span class="dh-arag__m">KONU DOSYASI · 27 içerik</span></a></li>
+                        <li><a href="dada-baglam.html"><b>Kentsel dönüşüm</b><span class="dh-arag__m">KONU DOSYASI · 31 içerik</span></a></li>
+                      </ul>
+                    </section>
+
+                    <section class="dh-arag" data-dh-ara-grup="sehirler" aria-labelledby="sehirler-b">
+                      <header class="dh-arag__h">
+                        <h2 class="dh-arag__t" id="sehirler-b">Şehirler</h2>
+                        <a class="dh-arag__all" href="gundem.html#yerel">Bu türdeki tüm sonuçlar</a>
+                      </header>
+                      <ul class="dh-arag__l dh-arag__l--seh">
+                        <li><a href="gundem.html#yerel"><b>İstanbul</b><span class="dh-arag__m">YEREL · 214 içerik · 6 içerik bu konuda</span></a></li>
+                        <li><a href="gundem.html#yerel"><b>Ankara</b><span class="dh-arag__m">YEREL · 168 içerik · 3 içerik bu konuda</span></a></li>
+                        <li><a href="gundem.html#yerel"><b>İzmir</b><span class="dh-arag__m">YEREL · 141 içerik · 5 içerik bu konuda</span></a></li>
+                      </ul>
+                    </section>
+
+                    <section class="dh-arag" data-dh-ara-grup="dogrulamalar" aria-labelledby="dogrulamalar-b">
+                      <header class="dh-arag__h">
+                        <h2 class="dh-arag__t" id="dogrulamalar-b">Doğrulamalar</h2>
+                        <a class="dh-arag__all" href="dada-dogrula.html">Bu türdeki tüm sonuçlar</a>
+                      </header>
+                      <ul class="dh-arag__l dh-arag__l--dog">
+                        <li><a href="dada-dogrula.html"><b>“Bu görüntü dünkü depremden” iddiası</b><span class="dh-arag__m">DADA DOĞRULA · 12.12.2025</span><span class="dh-arag__v dh-arag__v--yanlis">Yanlış</span></a></li>
+                        <li><a href="dada-dogrula.html"><b>“Toplanma alanları kaldırıldı” iddiası</b><span class="dh-arag__m">DADA DOĞRULA · 11.12.2025</span><span class="dh-arag__v dh-arag__v--kismen">Kısmen Doğru</span></a></li>
+                        <li><a href="dada-dogrula.html"><b>Zincir mesajdaki uyarı metni</b><span class="dh-arag__m">DADA DOĞRULA · 10.12.2025</span><span class="dh-arag__v dh-arag__v--baglam">Bağlamdan Koparılmış</span></a></li>
+                        <li><a href="dada-dogrula.html"><b>Yapay zekâ ile üretilmiş enkaz görseli</b><span class="dh-arag__m">DADA DOĞRULA · 09.12.2025</span><span class="dh-arag__v dh-arag__v--yz">Yapay Zekâ İçeriği</span></a></li>
+                      </ul>
+                    </section>
+
+                    <section class="dh-arag" data-dh-ara-grup="veri" aria-labelledby="veri-b">
+                      <header class="dh-arag__h">
+                        <h2 class="dh-arag__t" id="veri-b">Veri ve Haritalar</h2>
+                        <a class="dh-arag__all" href="veri-harita.html">Bu türdeki tüm sonuçlar</a>
+                      </header>
+                      <ul class="dh-arag__l dh-arag__l--ver">
+                        <li><a href="veri-harita.html#afet"><b>Afet haritası — şematik il görünümü</b><span class="dh-arag__m">VERİ & HARİTA · 81 il · güncel</span></a></li>
+                        <li><a href="veri-harita.html"><b>Yapı stoku yaş dağılımı</b><span class="dh-arag__m">EKONOMİ GRAFİĞİ · 2015–2025</span></a></li>
+                        <li><a href="veri-harita.html"><b>Toplanma alanı yoğunluğu</b><span class="dh-arag__m">ŞEHİR VERİSİ · ilçe bazlı</span></a></li>
+                      </ul>
+                    </section>
+
+                    </div>
                         <div class="col">
-                            <div class="panel dh-listgrid">
+                            <div class="panel dh-listgrid dh-arag" data-dh-ara-grup="haberler">
                                 <div
                                     class="row child-cols-12 sm:child-cols-6 lg:child-cols-4 col-match gy-4 xl:gy-6 gx-2 sm:gx-4">
                                     <div>
@@ -1910,6 +2093,7 @@
     <!-- include app script -->
     <script defer src="./assets/js/app.js"></script>
     <script defer src="./assets/js/v2/dh-v2-nav.js"></script>
+    <script defer src="./assets/js/v2/dh-arama.js"></script>
 
     <!-- footer perdesi -->
 

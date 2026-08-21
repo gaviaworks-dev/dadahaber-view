@@ -400,3 +400,224 @@ html.uc-dark .dh-varch a:hover { background: rgba(255, 255, 255, .05); }
 @media (max-width: 767px) {
   .dh-varch a { grid-template-columns: 1fr; gap: 3px; padding: 12px 4px; }
 }
+
+/* ============================================================================
+   v2 / GLOBAL ARAMA (arama.html) — Nihai Menü Haritası bölüm 7
+   Dokuz sonuç sekmesi + yedi süzgeç. Sekme şeridi mevcut .dh-catbar
+   bileşenini kullanır; burada yalnız sayaç rozeti, süzgeç çubuğu ve
+   tür grubu listeleri tanımlı.
+   ========================================================================== */
+
+.dh-ara__n {
+  display: inline-block;
+  margin-inline-start: 5px;
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  opacity: .6;
+  vertical-align: 1px;
+}
+.dh-catbar__chip.is-on .dh-ara__n { opacity: .85; }
+
+/* --- süzgeç çubuğu --------------------------------------------------------- */
+.dh-filt { padding: 0; }
+.dh-filt__bar {
+  padding: 16px 18px 18px;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+  background: #fff;
+}
+html.uc-dark .dh-filt__bar { background: rgba(255, 255, 255, .03); border-color: var(--color-gray-700); }
+.dh-filt__t {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+.dh-filt__t i { color: var(--color-primary-700); font-size: 12px; }
+html.uc-dark .dh-filt__t i { color: var(--color-primary); }
+.dh-filt__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px 14px;
+}
+.dh-filt__f { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.dh-filt__lab {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: -.005em;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-filt__lab { color: rgba(255, 255, 255, .7); }
+.dh-filt__sel {
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 8px 8px 8px 0;
+  background: #fff;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--color-gray-900);
+  max-width: 100%;
+}
+html.uc-dark .dh-filt__sel { background: var(--color-gray-900); border-color: var(--color-gray-700); color: #fff; }
+.dh-filt__sel:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+.dh-filt__clr {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 8px 8px 8px 0;
+  background: none;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-gray-700);
+  cursor: pointer;
+}
+html.uc-dark .dh-filt__clr { border-color: var(--color-gray-700); color: rgba(255, 255, 255, .78); }
+.dh-filt__clr:hover { border-color: var(--color-primary); color: var(--color-primary-700); }
+html.uc-dark .dh-filt__clr:hover { color: var(--color-primary); }
+
+/* --- tür grubu listeleri --------------------------------------------------- */
+.dh-aragrup { display: grid; gap: 26px; }
+.dh-arag[hidden] { display: none !important; }
+.dh-arag__h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+  border-bottom: 2px solid var(--color-gray-200);
+}
+html.uc-dark .dh-arag__h { border-color: var(--color-gray-700); }
+.dh-arag__t { margin: 0; font-size: 17px; font-weight: 800; letter-spacing: -.02em; }
+.dh-arag__all { font-size: 12px; font-weight: 700; color: var(--color-primary-700); text-decoration: none; white-space: nowrap; }
+html.uc-dark .dh-arag__all { color: var(--color-primary); }
+.dh-arag__l { list-style: none; margin: 0; padding: 0; }
+.dh-arag__l li + li { border-top: 1px solid var(--color-gray-200); }
+html.uc-dark .dh-arag__l li + li { border-color: var(--color-gray-700); }
+.dh-arag__l a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 12px 4px;
+  text-decoration: none;
+  color: inherit;
+  transition: background .12s;
+}
+.dh-arag__l a:hover { background: var(--color-gray-50); color: inherit; }
+html.uc-dark .dh-arag__l a:hover { background: rgba(255, 255, 255, .05); }
+.dh-arag__l b { font-size: 15px; font-weight: 700; letter-spacing: -.015em; flex: 1 1 260px; }
+.dh-arag__m {
+  font-family: var(--dh-mono);
+  font-size: 10.5px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+  flex: 0 0 auto;
+}
+/* doğrulama kararı — renk TEK ayırt edici değil, metin de karar adını taşır */
+.dh-arag__v {
+  flex: 0 0 auto;
+  padding: 3px 9px;
+  border-radius: 6px 6px 6px 0;
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.dh-arag__v--dogru { background: #146c2e; }
+.dh-arag__v--yanlis { background: #a4131f; }
+.dh-arag__v--kismen { background: #7a5100; }
+.dh-arag__v--baglam { background: #1f4e79; }
+.dh-arag__v--manip { background: #6a2472; }
+.dh-arag__v--yz { background: #3f4650; }
+
+/* ============================================================================
+   v2 / HABER–GÖRÜŞ AYRIMI — Nihai Menü Haritası bölüm 5
+   "Her görüş içeriğinde görünür biçimde Görüş, Analiz veya Yorum etiketi
+   kullanılmalıdır." Etiket yalnız renkle değil, metinle de ayrışır.
+   ========================================================================== */
+
+.dh-etiket {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 6px 6px 6px 0;
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+  vertical-align: 2px;
+}
+.dh-etiket--gorus  { background: #6a2472; }
+.dh-etiket--analiz { background: #1f4e79; }
+.dh-etiket--yorum  { background: #7a5100; }
+
+.dh-wcard__last .dh-etiket { margin-inline-end: 7px; }
+
+.dh-ayrim {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 28px;
+  padding: 22px 24px 24px;
+  border: 1px solid var(--color-gray-200);
+  border-inline-start: 3px solid var(--color-primary);
+  border-radius: 0 8px 8px 0;
+  background: #fff;
+}
+html.uc-dark .dh-ayrim { background: rgba(255, 255, 255, .03); border-color: var(--color-gray-700); border-inline-start-color: var(--color-primary); }
+.dh-ayrim__k {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+.dh-ayrim__h { margin: 0 0 6px; font-size: 19px; font-weight: 800; letter-spacing: -.02em; }
+.dh-ayrim__p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--color-gray-600); }
+html.uc-dark .dh-ayrim__p { color: rgba(255, 255, 255, .72); }
+.dh-ayrim__l { list-style: none; margin: 0; padding: 0; align-self: center; }
+.dh-ayrim__l li {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  padding: 8px 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--color-gray-700);
+}
+html.uc-dark .dh-ayrim__l li { color: rgba(255, 255, 255, .78); }
+.dh-ayrim__l li + li { border-top: 1px solid var(--color-gray-200); }
+html.uc-dark .dh-ayrim__l li + li { border-color: var(--color-gray-700); }
+@media (max-width: 767px) {
+  .dh-ayrim { grid-template-columns: 1fr; gap: 18px; padding: 18px; }
+  .dh-ayrim__l li { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* köşe yazısı başlığında tür etiketi + kısa uyarı */
+.dh-oplab {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 10px;
+}
+.dh-oplab__n { font-size: 12.5px; line-height: 1.4; color: var(--color-gray-500); }
+.uc-dark .dh-oplab__n, .dh-lb .dh-oplab__n, .dh-op .dh-oplab__n { color: rgba(255, 255, 255, .72); }
