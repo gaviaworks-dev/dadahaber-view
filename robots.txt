@@ -1,0 +1,5 @@
+# Dadahaber — arayüz prototipi.
+# İçerik yer tutucudur, haber değildir; hukuki metinler onaydan geçmemiştir.
+# Bu önizleme arama motorlarına kapalıdır.
+User-agent: *
+Disallow: /

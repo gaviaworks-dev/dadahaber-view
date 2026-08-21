@@ -340,3 +340,88 @@ taşıyan çocuk ölçülünce 14,40–20,87. **Yanlış alarm silinmedi, not ed
   tutmuyor; yalnız `.dh-hub__main` kapsamında düzeltildi.
 - `.dh-lgpick__scope` ve `R7-C7`'deki eski `.dh-field*` kalıntıları ölü kod.
 - Kadın'da modülsüz 6 kategoride haber listesi süzülmüyor (gerçek süzme backend işi).
+
+---
+
+## R8 — Sayfalandırma, responsive denetim, mobil alt menü
+
+Doğrulama: Playwright/Chromium, **67 sayfa × 10 genişlik** (320·360·390·414·768·
+820·1024·1280·1440·1920). Her bulgu ölçülerek bulundu ve ölçülerek doğrulandı.
+
+### Yeni sayfa
+- **`arama.html`** — arama sonuçları. Sitede her sayfada arama kutusu vardı ama
+  `action="?"` ile hiçbir yere gitmiyordu. `haber-liste.html` şablon alındı,
+  manşet slider'ının yerine `.dh-ph--photo` fotoğraflı başlık bandı kondu.
+  67 sayfadaki form buraya bağlandı.
+
+### Sayfalandırma (`.dh-pager`) — 38 sayfa, tek markup imzası
+R7-P'deki bileşen tamamlandı: **ilk/son uçları**, **devre dışı durum**
+(`<span aria-disabled>`, `<a>` değil), 44×44 hedef, ≤400px'te daralma.
+Sitede üç ayrı kalıp vardı (`.dh-pager` 26 · `.dh-chip` nav 3 · yok 7) — hepsi
+tek bileşene çekildi. `son-dakika`'da "daha eski yükle" düğmesinin yerine geçti.
+
+**Ölçülen kusurlar:** sarmalayıcı + bileşen iki ayrı yatay çizgi çiziyordu
+(1280px'te 73px arayla) · uç düğmesinde iki chevron `inline-grid` yüzünden alt
+alta düşüyordu · tema `.nav-pagination a` (0,1,1) daralma kuralını yiyordu.
+
+### Kritik responsive bulgular
+1. **`overflow-hidden-x` hiçbir CSS'te tanımlı değildi.** 67 sayfanın hepsinde
+   `#wrapper`'da duruyor, `.dh-zeb` tam genişlik bandı buna güveniyordu.
+   1279–1296px arasında 19 sayfada 16px gerçek yatay kaydırma. `overflow-x: clip`
+   verildi (`hidden` değil — sticky yan sütunu bozardı).
+2. **Tablette `.dh-card--row` ikiye bölünüyordu** (768–991,98, 13 sayfa, kart
+   154–185px, başlıklar kırpık). Sebep kaskad sırası: `.dh-cards--list{1fr}`
+   3448. satırda, `.dh-cards{repeat(2,…)}` medya sorgusunda daha sonra, ikisi de
+   (0,1,0). İki sınıflı seçiciyle geri alındı.
+3. **11 form alanı 16px altındaydı** (iOS zorla yakınlaştırma) → ≤991,98px'te 16px.
+
+### Orta
+- **Dokunma hedefleri**: header arama 24×24, hamburger 32×40, tema anahtarı
+  24×24, çerez kapat 14×14, sıralama sekmesi 45×24, kategori çipi 49×36, şerit
+  okları 32×32 … Görsel boyut korunarak görünmez `::before` ile büyütüldü;
+  **kaydırılan şeritlerde bu çalışmıyor** (kap taşmayı kırpıyor), orada gerçek
+  yükseklik verildi. Ölçüm yöntemi: `elementFromPoint` ile 44×44 kutunun dört köşesi.
+- **Mobilde 12px tabanı**: 58 bileşen etiketi 9,5–11px'teydi. Yalnız taban,
+  11,5px üstüne dokunulmadı.
+- **Logo CLS**: `.w-48px` ve `.logo-w-lg` oransızdı → `aspect-ratio` (134 → 0).
+- **`100vh` → `dvh`** (yorum bildir modalı).
+- **Media query eşikleri** Bootstrap `.98` kuralına çekildi (26 blok).
+
+### Haber detay okuma genişliği
+Range ile gerçek karakter sayımı: **1280px'te 141 karakter** (WCAG sınırı 80).
+R3'te max-width kaldırılmıştı; gerekçesi "paylaş/önceki-sonraki blokları 1008px
+olunca metin sıkışık duruyordu" idi — o hizalama şikâyeti haklı olduğu için
+metin tek başına değil **okuma kolonunun tamamı** 612px'e çekildi (metin 580px).
+Kapak görseli kabın dışında, tam genişlikte. Kolon daralınca float'lı görsellerin
+yanındaki metin ~40 karaktere düşüp yaslamada boşluk açtığı için bu kapsamda
+float kapatıldı. **Sonuç: 141 → ortalama 70 karakter.**
+
+### Mobil alt gezinme (`.dh-bnav`) — kullanıcı isteği
+Anasayfa · Son Dakika · Menü · Dinle · Ara. ≤991,98px'te görünür.
+"Menü" mevcut offcanvas panelini açar. **z-index 999** — offcanvas 1000, rail
+1000, "Görüş Bildir" 1000 ölçüldüğü için; menü açılınca panel çubuğun üstünde
+kalır. Rail, tema anahtarı ve FAB çubuğun üstüne çekildi. `env(safe-area-inset-bottom)`.
+
+### Diğer
+- `haber-detay.html`'deki İngilizce yer tutucu metin Türkçeleştirildi. Yan fayda:
+  tema `hyphens:auto` açıktı ama `lang="tr"` + İngilizce metin yüzünden hiç
+  tireleme yapamıyordu; artık yaslı gövde düzgün tireleniyor.
+- **Logo `srcset`**: 140px'lik yere 1198×244 / 95 KB PNG iniyordu. `sips` ile
+  300w/600w/96w türevleri üretildi → 390px @1x'te logo yükü **161 KB → 44 KB**.
+  Haber görsellerine dokunulmadı (hepsi yer tutucu, türev üretmek build işi).
+- 352 yazar avatarına `loading="lazy"`.
+- Slider noktaları: merkezler arası 15px ölçüldü, alan **15×40** yapıldı
+  (komşuya binmeden WCAG 2.5.8'in 24×24 eşiğinin üstü).
+
+### Kasten düzeltilmeyenler
+- **Paragraf içi / kart başlığı bağlantıları** — WCAG 2.5.5 "inline" istisnası.
+- **Kart görseli üstündeki kategori etiketi (44×19)** — büyütmek kapak
+  bağlantısının alanını çalar, habere gitmek isteyeni kategoriye götürürdü.
+- **Haber görsellerinde `srcset`** — türev boyut yok, buildless kalacak.
+
+### Yayın (R8 sonu)
+GitHub Pages reposu bu turda kuruldu: `gaviaworks-dev/dadahaber-view`, public,
+Pages `main` kökünden. `v1` donmuş kopya, `v2` çalışma dalı.
+Temanın kullanılmayan demo CSS varyantları (demo-two…demo-ten, main.css — 97 MB)
+`.gitignore`'a alındı; site yalnız `demo-six.min.css` yükler. Tüm sayfalara
+`noindex` + `robots.txt` eklendi.

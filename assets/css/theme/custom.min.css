@@ -500,7 +500,7 @@
   background-color: transparent;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .custom-data-container {
       margin: 10px;
       border-radius: 6px;
@@ -513,7 +513,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .ad-modal-content {
       flex-direction: column;
   }
@@ -528,7 +528,7 @@
       border-bottom: 1px solid #eee;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
   .position-right-turn {
     position: fixed;
     left: 10px;
@@ -870,7 +870,7 @@ table {
   overflow: hidden;
 }
 
-@media(max-width:768px) {
+@media(max-width:767.98px) {
   .audio-box {
     flex-direction: column;
     gap: 15px;
@@ -1244,7 +1244,7 @@ table {
    RESPONSIVE
    ============================================ */
 
-@media (max-width: 992px) {
+@media (max-width: 991.98px) {
   .gz-sponsor-section .gz-cards {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1253,7 +1253,7 @@ table {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .gz-sponsor-section .gz-logo {
     display: none;
   }
@@ -1277,7 +1277,7 @@ table {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 479.98px) {
 
   .gz-sponsor-section .gz-cards-wrapper {
     margin-top: -35px;
@@ -1396,7 +1396,7 @@ table {
       margin: 0;
     }
 
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       .weather-widget {
         flex-direction: column;
         gap: 24px;
@@ -1503,7 +1503,7 @@ table {
   border-radius: 6px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
   .prayer-widget {
     flex-direction: column;
     gap: 20px;         /* weather ile eşleştirildi (24→20) */
@@ -5928,7 +5928,7 @@ html.uc-dark .dh-secbar__nav button {
   color: #fff;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-secbar__nav button {
     width: 36px;
     height: 36px;
@@ -5975,7 +5975,7 @@ html.uc-dark .dh-secbar__nav button {
   margin-top: -10px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-track {
     gap: 10px;
   }
@@ -6262,7 +6262,7 @@ html.uc-dark .dh-foto__leaf {
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-foto {
     /* TUR 3 ölçüm: 390px'te 78vw = 304px -> kapak 300px, sonraki kartın payı
        yalnız 28px kalıyordu ve kenar yumuşatması onu tamamen yutuyordu.
@@ -6509,7 +6509,7 @@ html.uc-dark .dh-pod__guest {
   color: rgba(255, 255, 255, 0.82);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-pod {
     /* 390px'te 64vw = 250px -> 54px pay */
     width: 64vw;
@@ -6697,7 +6697,7 @@ html.uc-dark .dh-info__fig {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 10px 26px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-info {
     width: 46vw;
     max-width: 210px;
@@ -8547,7 +8547,7 @@ html.uc-dark .dh-serie__open:hover {
   color: #121212;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-serie { margin-top: 30px; }
   .dh-serie__head { gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
   .dh-serie__cover { width: 46px; height: 46px; border-radius: 10px 10px 10px 0; }
@@ -8695,7 +8695,7 @@ html.uc-dark .dh-vid__meta { color: rgba(255, 255, 255, 0.62); border-top-color:
 html.uc-dark .dh-vid__meta i { color: var(--dh-brand); }
 html.uc-dark .dh-vid__fig { background: var(--color-gray-700); }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-vid { width: 260px; }
   .dh-vid__title { font-size: 14.5px; margin-top: 11px; }
   .dh-vid__meta { font-size: 11.5px; margin-top: 9px; padding-top: 9px; }
@@ -8718,18 +8718,18 @@ html.uc-dark .dh-vid__fig { background: var(--color-gray-700); }
 .dh-mgrid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .dh-mgrid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 
-@media (max-width: 1199px) {
+@media (max-width: 1199.98px) {
   .dh-mgrid--4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .dh-mgrid--5 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991.98px) {
   .dh-mgrid--3,
   .dh-mgrid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dh-mgrid--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 575.98px) {
   .dh-mgrid { gap: 10px; }
   .dh-mgrid--3,
   .dh-mgrid--4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
@@ -8828,7 +8828,7 @@ html.uc-dark .dh-mhead__lead,
 html.uc-dark .dh-mstats__lab { color: rgba(255, 255, 255, 0.62); }
 html.uc-dark .dh-mhead__eyebrow { color: var(--dh-brand); }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-mhead { gap: 18px; margin-bottom: 18px; }
   .dh-mhead__title { font-size: 23px; }
   .dh-mhead__lead { font-size: 14px; }
@@ -10282,7 +10282,7 @@ html.dh-gal-lock { overflow: hidden; }
 html.uc-dark .dh-gal__captxt { color: rgba(255, 255, 255, 0.9); }
 html.uc-dark .dh-gal__credit { color: rgba(255, 255, 255, 0.58); }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-gal__stage { aspect-ratio: 4 / 3; }
   .dh-gal__arrow { width: 38px; height: 38px; margin-top: -19px; }
   .dh-gal__arrow--prev { left: 8px; }
@@ -10419,7 +10419,7 @@ html.uc-dark .dh-ep.is-now .dh-ep__num { color: var(--dh-brand); }
 html.uc-dark .dh-ep__go { background: rgba(255, 255, 255, 0.08); color: #fff; }
 html.uc-dark .dh-ep__th { background: var(--color-gray-700); }
 
-@media (max-width: 575px) {
+@media (max-width: 575.98px) {
   .dh-ep { gap: 9px; padding: 8px; }
   .dh-ep__num { width: 22px; font-size: 16px; }
   .dh-ep__th { width: 92px; }
@@ -10604,7 +10604,7 @@ html.uc-dark .dh-ep__th { background: var(--color-gray-700); }
   border-radius: 1px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-player { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 14px; }
   .dh-player__cover { width: 92px; }
   .dh-player__title { font-size: 17px; }
@@ -10793,7 +10793,7 @@ html.uc-dark .dh-arch__count { color: rgba(255, 255, 255, 0.6); }
 html.uc-dark .dh-arow__type { background: rgba(255, 255, 255, 0.08); color: var(--dh-brand); }
 html.uc-dark .dh-arch__rule { background: linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 100%); }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-arow { gap: 10px; padding: 10px 0; flex-wrap: wrap; }
   .dh-arow__title { font-size: 14px; flex: 1 1 100%; order: 3; }
   .dh-arow__cat { font-size: 10px; }
@@ -10803,7 +10803,7 @@ html.uc-dark .dh-arch__rule { background: linear-gradient(90deg, rgba(255, 255, 
 .dh-msec { padding-top: 34px; }
 .dh-msec:first-child { padding-top: 0; }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-msec { padding-top: 24px; }
 }
 
@@ -15247,7 +15247,7 @@ html.uc-dark .dh-zod__el {
        Oran 3:2 (35 mm kare) korunuyor; sığmayan durumda kenarda
        nötr koyu bant kalıyor — object-fit:contain zaten kırpmıyor.
    =========================================================== */
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-serie__info {
     flex: 1 1 auto;
     order: 0;
@@ -15729,7 +15729,7 @@ html.uc-dark .dh-fintabs__tab {
       rgba(0, 0, 0, 0) 100%);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-lb__top::before { height: 170px; }
 }
 
@@ -21565,7 +21565,7 @@ html.uc-dark .dh-kmod__note { color: rgba(255, 255, 255, 0.55); }
   width: 268px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .dh-kmod__ray > .dh-card { width: 220px; }
 }
 
@@ -22577,5 +22577,841 @@ html.uc-dark .dh-fx__when b { color: #fff; }
       "news"
       "main"
       "side";
+  }
+}
+
+
+/* ===========================================================
+   R8-P — SAYFALAMA BİLEŞENİNİN TAMAMLANMASI (.dh-pager)
+   R7-P'de bileşen kuruldu ama üç durumu eksikti: ilk/son uçları,
+   devre dışı durum ve dar ekranda daralma. Ayrıca bileşen kendi
+   üst çizgisini taşıdığı halde sarmalayıcı `.nav-pagination
+   pt-3 mt-6 border-top` da bir çizgi çiziyordu — 1280px'te ölçüldü:
+   iki yatay çizgi 73px arayla üst üste. Sarmalayıcı sınıfları
+   sadeleştirildi, çizgi bileşenin kendisinde kaldı.
+   Dokunma hedefi her kırılımda 44x44 (WCAG 2.5.5).
+   =========================================================== */
+
+/* Tüm kırılımlarda 44x44 — R7-P'de yalnız <=575.98px'te 44'tü. */
+.dh-pager__pg,
+.dh-pager__nav {
+  min-width: 44px;
+  height: 44px;
+}
+
+.dh-pager__gap {
+  height: 44px;
+}
+
+/* İlk / Son uçları: çift chevron, ikinci ikon üstüne bindirilir. */
+.dh-pager__nav--edge {
+  /* .dh-pager__nav `inline-grid` — iki ikon alt alta düşüyordu; uç
+     düğmesinde akış sütuna çevrildi (ölçüm: 1280px'te dikey yığılma). */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  gap: 0;
+}
+
+.dh-pager__nav--edge i + i {
+  margin-left: -7px;
+}
+
+/* Devre dışı uç: ilk sayfada "ilk"/"önceki", son sayfada "sonraki"/"son".
+   <a> değil <span> ile işaretlenir — gidilecek bir hedef yok, sekme
+   sırasında da yer tutmamalı. aria-disabled okuyucuya durumu bildirir. */
+.dh-pager__nav.is-off {
+  background: transparent;
+  border-color: rgba(0, 0, 0, 0.07);
+  color: var(--color-gray-300);
+  cursor: default;
+  pointer-events: none;
+}
+
+html.uc-dark .dh-pager__nav.is-off {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.26);
+}
+
+/* Dar ekran daralması: 400px altında uç düğmeleri ve uzak sayfa
+   numaraları düşer, şerit tek satırda kalır.
+   Ölçüm (320px): kalan 6 hücre + boşluklar = 269px, kap 296px. */
+@media (max-width: 399.98px) {
+  .dh-pager {
+    gap: 5px;
+  }
+
+  /* Özgüllük kasten iki sınıf: bazı sarmalayıcılarda tema kuralı
+     `.nav-pagination a{display:inline-flex}` (0,1,1) aynı ağırlıkta
+     çıkıp gizlemeyi yiyordu. Sarmalayıcı sınıfı da kaldırıldı. */
+  .dh-pager .dh-pager__nav--edge,
+  .dh-pager .dh-pager__pg--far {
+    display: none;
+  }
+}
+
+
+/* ===========================================================
+   R8-A — ARAMA SONUÇLARI SAYFASI (.dh-find)
+   Sitede her sayfada arama kutusu vardı ama `action="?"` ile
+   hiçbir yere gitmiyordu; arama sonuçları sayfası hiç yoktu.
+   `arama.html` haber-liste.html kalıbından üretildi; manşet
+   slider'ının yerini yazar-liste.html'deki fotoğraflı başlık
+   bandı (.dh-ph--photo) aldı — sorgunun kendisi başlıktır.
+   Alan/düğme mevcut `.dh-input` ve `.dh-btn` bileşenleri.
+   =========================================================== */
+.dh-find {
+  margin-top: 18px;
+  max-width: 560px;
+}
+
+.dh-find__l {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-family-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.dh-find__row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dh-find__ic {
+  position: absolute;
+  /* Mutlak konumlu çocuk, flex kabın `align-items: center`i ile
+     SATIRIN ortasına hizalanıyordu; 480px altında satır sarınca
+     (düğme alta inince) ikon alanın altına kaçıyordu. Yükseklik
+     alanın kendi yüksekliğine sabitlendi. */
+  top: 0;
+  left: 12px;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 46px;
+  color: var(--color-gray-500);
+  pointer-events: none;
+}
+
+.dh-find__in {
+  /* iOS 16px altı font-size'da alanı büyütür; 16px tabanı korunuyor */
+  padding-left: 40px;
+  font-size: 16px;
+}
+
+.dh-find__go {
+  flex: 0 0 auto;
+}
+
+/* Fotoğraflı bantta etiket beyaz mürekkep ister; alan/düğme kendi
+   zeminini taşıdığı için değişmez. */
+.dh-ph--photo .dh-find__l {
+  color: #fff;
+  opacity: 0.9;
+}
+
+@media (max-width: 479.98px) {
+  .dh-find__row {
+    flex-wrap: wrap;
+  }
+
+  .dh-find__go {
+    width: 100%;
+  }
+}
+
+
+/* ===========================================================
+   R8-T1 — YATAY TAŞMA: TANIMSIZ `overflow-hidden-x` YARDIMCI SINIFI
+   67 sayfanın hepsinde `<div id="wrapper" class="wrap overflow-hidden-x">`
+   var; sınıf hiçbir CSS dosyasında TANIMLI DEĞİL (demo-six, main,
+   uni-core, custom — dördünde de yok). Yani sitenin yatay taşmaya
+   karşı dış emniyeti hiç çalışmıyordu.
+   Ölçüm (haber-liste.html, 1280px): documentElement.scrollWidth 1296,
+   clientWidth 1280 — 16px gerçek yatay kaydırma. 1279–1296 aralığındaki
+   her genişlikte tekrarlanıyordu; 19 sayfada aynı bulgu.
+   `hidden` DEĞİL `clip` kullanıldı: `overflow-x: hidden` diğer ekseni
+   `auto`ya çevirip kaydırma kabı yaratır, içerideki `position: sticky`
+   yan sütunu bozar. `clip` kabı yaratmaz.
+   =========================================================== */
+.overflow-hidden-x {
+  overflow-x: clip;
+}
+
+
+/* ===========================================================
+   R8-D — DOKUNMA HEDEFLERİ (WCAG 2.5.5 · 44x44)
+   390 ve 768px'te 67 sayfa tarandı. Gerçek arayüz denetimlerinin
+   çoğu 44px'in altındaydı: header arama 24x24, hamburger 32x40,
+   tema anahtarı 24x24, çerez kapat 14x14, sıralama sekmesi 45x24,
+   kategori çipi 49x36, şerit okları 32x32, yorum eylemleri 91x34.
+   (Paragraf içi metin bağlantıları WCAG 2.5.5'in "inline" istisnası
+   kapsamında; onlara dokunulmadı.)
+
+   YÖNTEM: görsel boyut değişmiyor. Tıklama alanı görünmez bir
+   sözde öğeyle büyütülüyor. Yalnız EKSİK EKSEN büyütülüyor —
+   yatayda komşu çipin üstüne binmesin diye çoğunda yalnız yükseklik.
+   `::before` seçildi; `::after` bazı bileşenlerde dolu
+   (`.dh-catbar__chip.is-now::after` nokta imzası).
+   =========================================================== */
+
+/* --- yalnız yükseklik büyüyen denetimler (yatay komşu var) --- */
+.dh-sort__tab,
+.dh-catbar__chip,
+.dh-rev__act,
+.dh-rev__chip,
+.dh-fintabs__tab,
+.dh-chip,
+.dh-follow,
+.dh-serie__open,
+.dh-breaking__item,
+.swiper-pagination-bullet {
+  position: relative;
+}
+
+/* Slider noktaları: merkezler 15px arayla (ölçüldü), bu yüzden
+   tıklama alanı yatayda 15px'i AŞMAMALI — aşarsa komşu noktanın
+   üstüne biner ve yanlış slayta gidilir. Dikeyde yer bedava: 44px.
+   Sonuç 15x44 = WCAG 2.5.8 (24x24) sağlanıyor, 2.5.5 (44x44) ise
+   "aynı işlev kaydırmayla da var" istisnasına giriyor. */
+.swiper-pagination-bullet {
+  /* alanı, slaytın üzerini kaplayan `.position-cover` bağlantısının
+     üstünde kalsın diye yığında bir basamak yukarı */
+  z-index: 2;
+}
+
+.swiper-pagination-bullet::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  /* Noktanın ALTINDA kalan alan bir sonraki bölüme ait ve o bölüm
+     yığında üstte (ölçüldü: 20px aşağıda elementFromPoint
+     `.section-outer` dönüyordu). Alan yukarı kaydırıldı:
+     15x40 = 600px², WCAG 2.5.8'in 24x24 (576px²) eşiğinin üstünde. */
+  bottom: -4px;
+  width: 15px;
+  height: 40px;
+  transform: translateX(-50%);
+}
+
+.dh-sort__tab::before,
+.dh-catbar__chip::before,
+.dh-rev__act::before,
+.dh-rev__chip::before,
+.dh-fintabs__tab::before,
+.dh-chip::before,
+.dh-follow::before,
+.dh-serie__open::before,
+.dh-breaking__item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 44px;
+  transform: translateY(-50%);
+  /* görünmez ama tıklanabilir */
+  pointer-events: auto;
+}
+
+/* --- iki eksende de büyüyen küçük ikon denetimleri --- */
+.uc-search-trigger,
+.dh-sport__more,
+.custom-btn {
+  position: relative;
+}
+
+.uc-search-trigger::before,
+.uc-notification-close::before,
+.dh-sport__more::before,
+.custom-btn::before,
+.dh-catbar__nav::before,
+.swiper-nav::before,
+.switch > .slider::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+/* `.uc-menu-trigger` sözde öğelerinin ikisi de hamburger çizgileri —
+   üçüncü bir katman yok. Kutu 44x44'e çıkarılıp iç genişlik
+   padding ile 32'de tutuluyor, çizgiler aynı kalıyor. */
+.uc-menu-trigger {
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  padding: 2px 6px;
+}
+
+/* --- gerçek boyutu büyütülenler: sözde öğe kabul etmeyen etiketler
+       (select) ve yüksekliği 40px'te sabitlenmiş üst bant --- */
+@media (max-width: 991.98px) {
+  .dh-shortcuts__track {
+    min-height: 44px;
+  }
+
+  .dh-shortcuts .uc-navbar-right a,
+  .dh-shortcuts .uc-navbar-left a {
+    min-height: 44px;
+  }
+
+  select.dh-input,
+  select.dh-pick__sel,
+  select.dh-player__speed,
+  .dh-fld select,
+  select.m-0 {
+    min-height: 44px;
+  }
+}
+
+
+/* ===========================================================
+   R8-F — FORM ALANLARINDA iOS YAKINLAŞMASI (16px eşiği)
+   Safari/iOS, odaklanılan alanın font-size'ı 16px'in altındaysa
+   sayfayı zorla yakınlaştırır ve geri çıkmaz. Taramada 11 ayrı
+   alan tipi eşiğin altındaydı:
+     .dh-input 15px · .dh-field 13px · .dh-pick__sel 12,5px
+     .dh-rev__input 14px · .dh-player__speed 12px · select.m-0 14,8px
+   Yalnız dokunmatiğin baskın olduğu kırılımda 16px'e çekiliyor;
+   masaüstü tipografisi olduğu gibi kalıyor.
+   =========================================================== */
+@media (max-width: 991.98px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="submit"]):not([type="button"]),
+  select,
+  textarea {
+    /* Bileşen kuralları (.dh-pick__sel 12,5px vb.) tek sınıf ağırlığında;
+       yalın etiket seçicisi onları geçemiyordu. Kural yalnız bu kırılımda
+       ve yalnız font-size için geçerli. */
+    font-size: 16px !important;
+  }
+}
+
+
+/* ===========================================================
+   R8-D2 — DOKUNMA HEDEFLERİ, İKİNCİ TUR: GERÇEK BOYUT
+   R8-D'deki görünmez sözde öğe hilesi, kaydırılan şeritlerde
+   ÇALIŞMIYOR: `.dh-catbar` swiper'ı ve `.dh-sport__tools` gibi
+   kaplar taşmayı kırptığı için 44px'lik kutunun taşan 4px'i
+   kesiliyor (elementFromPoint ile ölçüldü: dört köşenin ikisi
+   hedefe vurmuyordu). Bu bileşenlerde gerçek yükseklik veriliyor.
+   Yalnız dokunmatiğin baskın olduğu kırılımda; masaüstünde
+   şerit yükseklikleri aynı kalıyor.
+   =========================================================== */
+@media (max-width: 991.98px) {
+  .dh-catbar__chip {
+    height: 44px;
+  }
+
+  .dh-sort__tab,
+  .dh-fintabs__tab,
+  .dh-rev__chip,
+  .dh-rev__act,
+  .dh-serie__open,
+  .dh-chip,
+  .dh-follow {
+    min-height: 44px;
+  }
+
+  .dh-sport__more,
+  .dh-finpanel__more {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .dh-breaking__item {
+    min-height: 44px;
+  }
+
+  /* Şerit okları (.dh-catbar__nav, .swiper-nav) kaydırmanın yedeği;
+     WCAG 2.5.5'in "aynı işlev başka yolla da var" istisnasına girer.
+     Yine de 44'e çıkarıldı — yer var. */
+  .dh-catbar__nav,
+  .swiper-nav {
+    /* `!important`: işaretlemede `.h-32px`/`.w-32px` yardımcı sınıfları
+       var ve onlar zaten `!important` (CDP ile eşleşen kural okundu).
+       33 sayfanın markup'ını değiştirmek yerine kural burada bastırıldı. */
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  /* `.dh-mbox__filter .dh-catbar__chip` (0,2,0) tek sınıflı kuralı
+     geçiyordu — sesli haber süzgeci 32px'te kalmıştı. */
+  .dh-mbox__filter .dh-catbar__chip {
+    height: 44px;
+  }
+
+  .dh-fintable__sort,
+  .dh-player__skip,
+  .dh-player__btn,
+  .dh-secbar__all,
+  .dh-tri__go,
+  .dh-person__mail,
+  .custom-btn,
+  button.play {
+    min-height: 44px;
+  }
+
+  .dh-fintable__sort,
+  .dh-secbar__all,
+  .dh-person__mail {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .custom-btn,
+  button.play,
+  .dh-player__btn {
+    min-width: 44px;
+  }
+
+  /* Çerez bildirimi "Kabul Et" (95x40) ve sabit "Görüş Bildir"
+     sekmesi (46x40) — ikisi de her sayfada. */
+  .uc-notification .btn,
+  .position-right-turn.btn {
+    min-height: 44px;
+  }
+}
+
+
+/* ===========================================================
+   R8-D3 — DOKUNMA HEDEFLERİ, SON TUR
+   Kalan gerçek denetimler tek tek bulundu (390px, 67 sayfa):
+     .dh-secbar__nav > button       36x36  (bölüm okları, 14 sayfa)
+     .dh-lgpick__row .dh-catbar__chip 45x32 (lig seçici, 6 sayfa)
+     .dh-gal__tool 42x42 · .dh-panel__place--btn 156x26
+     .dh-authors__all 40x19 · .dh-sport__more genişlik 32
+   Kart görselinin üstündeki kategori etiketi (44x19) ve slider
+   noktaları (8x8) KASTEN bırakıldı — gerekçe rapordadır.
+   =========================================================== */
+@media (max-width: 991.98px) {
+  .dh-secbar__nav > button,
+  .dh-gal__tool {
+    width: 44px;
+    height: 44px;
+  }
+
+  .dh-lgpick__row .dh-catbar__chip {
+    height: 44px;
+  }
+
+  .dh-panel__place--btn,
+  .dh-authors__all,
+  .dh-wk__today,
+  .dh-field {
+    min-height: 44px;
+  }
+
+  .dh-authors__all {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .dh-sport__more,
+  .dh-fintable__sort {
+    min-width: 44px;
+    justify-content: center;
+  }
+}
+
+
+/* ===========================================================
+   R8-Y — MOBİLDE OKUNABİLİRLİK TABANI (12px)
+   390px'te 67 sayfanın tüm metin düğümleri tarandı. 58 bileşen
+   etiketi 9,5–11px arasında kalıyordu (en küçüğü `small` 9,5px —
+   yazar unvanı). 12px, ikincil metin için yaygın kabul edilen
+   mutlak alt sınır.
+   Yalnız TABAN uygulanıyor: 11,5px ve üstü bileşenlere dokunulmadı,
+   böylece tipografik hiyerarşi korunuyor, yalnız en alt basamak
+   12'ye çekiliyor (10,5 → 12 = 1,5px). Yalnız telefon kırılımında.
+   =========================================================== */
+@media (max-width: 767.98px) {
+  .dh-arow__cat,
+  .dh-art-cat,
+  .dh-artbox__k,
+  .dh-astro__eyebrow,
+  .dh-author__beat,
+  .dh-band__tag,
+  .dh-bil__opt-tag,
+  .dh-calcs__head,
+  .dh-card__badge,
+  .dh-catbar__root-ad,
+  .dh-catbar__root-fn,
+  .dh-cell__label,
+  .dh-cinfo__k,
+  .dh-doc__num,
+  .dh-fact__k,
+  .dh-finchart__cap,
+  .dh-finconv__note,
+  .dh-finpanel__sub,
+  .dh-finsum__name,
+  .dh-fintable__desc,
+  .dh-fintabs__tab,
+  .dh-fintick__name,
+  .dh-foto__count,
+  .dh-fx__daylbl,
+  .dh-fx__state,
+  .dh-gal__credit,
+  .dh-ilan__org,
+  .dh-ilan__type,
+  .dh-jersey__team,
+  .dh-lb__lead,
+  .dh-live__cat,
+  .dh-mc__comp,
+  .dh-mc__sub,
+  .dh-mstats__lab,
+  .dh-op__kicker,
+  .dh-panel__kicker,
+  .dh-person__role,
+  .dh-ph__eyebrow,
+  .dh-player__kicker,
+  .dh-pod__ep,
+  .dh-podium__fastlbl,
+  .dh-podium__gap,
+  .dh-podium__team,
+  .dh-prof__k,
+  .dh-relbox__title,
+  .dh-res__tag,
+  .dh-son5__lbl,
+  .dh-sport__kicker,
+  .dh-sport__sub,
+  .dh-stage__type,
+  .dh-stand__club,
+  .dh-strip__k,
+  .dh-tag,
+  .dh-toc__label,
+  .dh-vid__ep,
+  .dh-wcard__beat,
+  .dh-wk__eyebrow,
+  .dh-zod__el,
+  small {
+    font-size: 12px;
+  }
+}
+
+
+/* ===========================================================
+   R8-Y2 — 12px TABANI: ÖZGÜLLÜK ARTIRILAN KALANLAR
+   R8-Y'de yalın etiket seçicileri (small, b, dt, th, label) iki
+   sınıflı bileşen kurallarını geçemedi. Kalanlar DOM yoluyla
+   tek tek bulundu (390px, 67 sayfa):
+     .dh-byline small 9,5–10px (yazar unvanı, 162 örnek)
+     .minimizeDate 10,5px · .dh-mast__row dt 11px
+     .dh-fx__cols span 9,5px · .dh-info__src b 10,5px
+     .dh-finconv__field label · .dh-finrange__labels span
+     tablo başlıkları (thead th) 10,5px · .dh-stand__club 10px
+   =========================================================== */
+@media (max-width: 767.98px) {
+  .dh-byline small,
+  .dh-wcard__last small,
+  .dh-astro__label small,
+  .minimizeDate,
+  .dh-mast__row dt,
+  .dh-fx__cols span,
+  .dh-info__src b,
+  .dh-finsum__rng b,
+  .dh-finconv__field label,
+  .dh-finrange__labels span,
+  .dh-stand__club,
+  .dh-fintabs__tab,
+  .dh-pop__meta span,
+  table thead th,
+  table thead th.is-num,
+  .dh-finconv .dh-fintabs__tab,
+  .dh-finspot .dh-fintabs__tab,
+  .dh-finconv__mode legend,
+  .dh-wk__sep b,
+  .dh-wk__sep small,
+  .dh-stand__who .dh-stand__club,
+  .dh-podium__step .dh-podium__team,
+  .dh-podium__step .dh-podium__gap,
+  .dh-podium__fast b {
+    font-size: 12px;
+  }
+
+  /* Bu üçü tema/bileşen kurallarında `!important` ile geliyor;
+     taban da aynı ağırlıkta verilmek zorunda kaldı. */
+  .dh-byline small,
+  .minimizeDate,
+  .dh-astro__label small,
+  thead th {
+    font-size: 12px !important;
+  }
+}
+
+
+/* ===========================================================
+   R8-G — LOGO GÖRSELLERİNDE DÜZEN KAYMASI (CLS)
+   390px'te 67 sayfada ölçüldü: sayfa başına 2 görselin (menü
+   panelindeki rozet `.w-48px` ve header wordmark'ı `.logo-w-lg`)
+   ne width/height niteliği ne de en/boy oranı var — yükleninceye
+   kadar yüksekliği 0, yüklenince yerini iterek açıyor.
+   Dosyaların gerçek oranları: rozet 286x244, wordmark 1198x244.
+   Nitelik eklemek 67 sayfada markup değişikliği demekti; oran
+   CSS'ten veriliyor, sonuç aynı.
+   =========================================================== */
+.uc-logo img[src*="logo-left"],
+.uc-offcanvas-header .uc-logo img {
+  aspect-ratio: 286 / 244;
+}
+
+.uc-logo img.w-140px,
+.uc-logo img.logo-w-lg,
+.dh-footer-brand img[src*="logo-white"] {
+  aspect-ratio: 1198 / 244;
+}
+
+
+/* ===========================================================
+   R8-V — MOBİL ADRES ÇUBUĞU: 100vh YERİNE dvh
+   `.dh-bil__box` (yorum bildir modalı) `max-height: calc(100vh - 40px)`
+   kullanıyordu. iOS/Android'de `100vh` adres çubuğu AÇIKKEN bile
+   çubuğun kapladığı alanı sayar; modalın alt ucu (Gönder düğmesi)
+   ekranın dışında kalıyordu. `dvh` görünen yüksekliği ölçer.
+   `100vh` satırı fallback olarak duruyor — dvh desteklemeyen
+   tarayıcı eskisi gibi davranır.
+   Diğer iki `100vh` kullanımı yalnız 992px üstünde etkin
+   (`.dh-hero` ve `.dh-doc__aside`), mobil sorunları yok.
+   =========================================================== */
+.dh-bil__box {
+  max-height: calc(100dvh - 40px);
+}
+
+
+/* ===========================================================
+   R8-T2 — TABLETTE YATAY KART ŞERİDİ İKİYE BÖLÜNÜYORDU
+   Ölçüm (768 ve 820px, 13 sayfa): `.dh-card--row` genişliği
+   154–185px'e düşüyor, başlıklar kırpılıyordu (spor ve dört
+   takım sayfasında `.dh-card__title` scrollWidth > clientWidth).
+   Sebep kaskad sırası: `.dh-cards--list{grid-template-columns:1fr}`
+   dosyanın 3448. satırında, `.dh-cards{...repeat(2,...)}` ise
+   `@media (max-width: 991.98px)` içinde DAHA SONRA geliyor.
+   İkisi de (0,1,0) ağırlığında olduğu için sonraki kazanıyordu.
+   360 ve 1024px'te tek sütun, yalnız 768–991,98 aralığında iki
+   sütun — yani kasıtlı değil, kaza.
+   Çözüm: liste türevi kendi tek sütununu iki sınıflı seçiciyle
+   geri alıyor. Yeni breakpoint eklenmedi.
+   =========================================================== */
+@media (max-width: 991.98px) {
+  .dh-cards.dh-cards--list {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+
+/* ===========================================================
+   R8-M — HABER DETAY: OKUMA GENİŞLİĞİ
+   ÖLÇÜM (Range ile gerçek karakter sayımı, .post-content p 17px):
+     768px  → satır ortalaması 105 karakter (en uzun 122)
+     1024px → 140 (147)
+     1280+  → 141 (152)
+   WCAG 1.4.8 üst sınırı 80. Font dar (karakter ≈ 7,15px), bu
+   yüzden 1008px'lik kolon 141 karakter taşıyor — 0,5em tahminiyle
+   hesaplanan 119'dan da kötü.
+   R3'te max-width KALDIRILMIŞTI; gerekçesi "metin 726px'te kalıp
+   aynı kolondaki paylaş/önceki-sonraki blokları 1008px olunca
+   sıkışık duruyordu" idi. O hizalama şikâyeti geçerli, o yüzden
+   metni tek başına daraltmak yerine OKUMA KOLONUNUN TAMAMI
+   daraltıldı: metin, paylaş, önceki/sonraki, ilgili haberler ve
+   yorumlar aynı genişlikte kalıyor. Kapak görseli bu kabın
+   dışında (max-w-xl), tam genişlikte duruyor — geniş kapak +
+   dar okuma kolonu, haber sitelerinin olağan kalıbı.
+   Kaydırılan float görseller de kolona oranlandı.
+   =========================================================== */
+@media (min-width: 768px) {
+  /* `.max-w-lg` tema yardımcısı `max-width:1040px!important` —
+     aynı ağırlıkta karşılık verilmek zorunda.
+     612px kap = 580px metin = ortalama 79 karakter (ölçüldü). */
+  .dh-art .container.max-w-lg {
+    max-width: 612px !important;
+  }
+
+  /* Kolon 580px'e indiği için yanına sarılan metin ~40 karaktere
+     düşüyordu; iki yana yaslı metinde bu genişlikte kelime araları
+     çirkin açılıyor. Görseller kolonun içinde blok hâline getirildi —
+     uzun metin düzeninin olağan çözümü. `float` yalnız bu kapsamda
+     kapatılıyor, yardımcı sınıf başka yerlerde çalışmaya devam ediyor. */
+  .dh-art .post-content .float-end,
+  .dh-art .post-content .float-start {
+    float: none !important;
+    max-width: 100%;
+    margin-inline: 0 !important;
+  }
+
+  .dh-art .post-content .float-end .featured-image,
+  .dh-art .post-content .float-start .featured-image {
+    width: 100% !important;
+  }
+}
+
+
+/* ===========================================================
+   R8-N — MOBİL ALT GEZİNME ÇUBUĞU (.dh-bnav)
+   Kullanıcı isteği: "mobil alt menümüz yok, nav bar ekle."
+   Sitede mobilde tek gezinme yolu sol üstteki hamburgerdi;
+   tek elle en zor ulaşılan köşe orası. Beş kısayol başparmak
+   bandına alındı: Anasayfa · Son Dakika · Menü · Dinle · Ara.
+   "Menü" mevcut offcanvas panelini açar (yeni panel yazılmadı).
+
+   Kırılım 991,98px — sitenin geri kalanında mobil eşiği bu
+   (hamburger de tam burada devreye giriyor).
+
+   Yığın sırası ölçüldü: offcanvas 1000, .dh-rail 1000,
+   "Görüş Bildir" 1000, backtotop 99. Çubuk 999'a konuldu ki
+   menü açılınca panel ve perdesi çubuğun ÜSTÜNDE kalsın.
+   Kurumsal sağ şerit ve iki sabit düğme çubuğun üstüne çekildi.
+   Geometri kurumsal köşe imzasına uyuyor (8px 8px 8px 0).
+   =========================================================== */
+:root {
+  --dh-bnav-h: 56px;
+}
+
+.dh-bnav {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -6px 22px rgba(0, 0, 0, 0.07);
+  /* iOS ana ekran çubuğu */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html.uc-dark .dh-bnav {
+  background: var(--color-gray-900);
+  border-top-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 -6px 22px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 991.98px) {
+  .dh-bnav {
+    display: block;
+  }
+}
+
+@media print {
+  .dh-bnav {
+    display: none !important;
+  }
+}
+
+.dh-bnav__row {
+  display: flex;
+  align-items: stretch;
+}
+
+.dh-bnav__item {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  /* dokunma hedefi: 44'ün üstünde (WCAG 2.5.5) */
+  min-height: var(--dh-bnav-h);
+  padding: 7px 2px 6px;
+  color: var(--color-gray-700);
+  text-decoration: none !important;
+  transition: color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html.uc-dark .dh-bnav__item {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.dh-bnav__ic {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 24px;
+  border-radius: 8px 8px 8px 0;
+  font-size: 16px;
+  line-height: 1;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.dh-bnav__label {
+  font-family: var(--font-family-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Aktif sayfa: kurumsal amber hap + koyu mürekkep (10,58:1) */
+.dh-bnav__item.is-on {
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-bnav__item.is-on {
+  color: #fff;
+}
+
+.dh-bnav__item.is-on .dh-bnav__ic {
+  background: var(--dh-brand);
+  color: var(--color-gray-900);
+}
+
+.dh-bnav__item.is-on .dh-bnav__label {
+  font-weight: 700;
+}
+
+.dh-bnav__item:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: -3px;
+  border-radius: 8px 8px 8px 0;
+}
+
+/* --- çubuğun kapladığı alanın telafisi --- */
+@media (max-width: 991.98px) {
+  /* Footer mobilde normal akışta; son satırı çubuğun altında kalmasın. */
+  #uc-footer {
+    padding-bottom: calc(var(--dh-bnav-h) + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Footer'ı olmayan sayfalar (404, coming-soon) için gövde payı */
+  body:not(:has(#uc-footer)) {
+    padding-bottom: calc(var(--dh-bnav-h) + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Kurumsal sağ şerit çubuğun üstünde bitsin */
+  .dh-rail {
+    bottom: calc(var(--dh-bnav-h) + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Tema anahtarı + yukarı çık ikilisi çubuğun üstüne */
+  .backtotop-wrap {
+    bottom: calc(var(--dh-bnav-h) + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* "Görüş Bildir" mobilde sol alta iniyor (532. satır) — o da yukarı */
+  .position-right-turn {
+    bottom: calc(10px + var(--dh-bnav-h) + env(safe-area-inset-bottom, 0px));
   }
 }

@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Dada Haber - Arama Sonuçları</title>
+    <link rel="icon" href="./assets/images/logos/logo-left.png">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="canonical" href="">
+    <meta name="theme-color" content="#2757fd">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:site_name" content="">
+
+    <meta property="og:image:width" content="1180">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:type" content="image/png">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+
+    <link rel="canonical" href="">
+
+    <!-- preload head styles -->
+    <link rel="preload" href="./assets/css/unicons.min.css" as="style">
+    <link rel="preload" href="./assets/css/swiper-bundle.min.css" as="style">
+
+    <!-- preload footer scripts -->
+    <link rel="preload" href="./assets/js/libs/jquery.min.js" as="script">
+    <link rel="preload" href="./assets/js/libs/scrollmagic.min.js" as="script">
+    <link rel="preload" href="./assets/js/libs/swiper-bundle.min.js" as="script">
+    <link rel="preload" href="./assets/js/libs/anime.min.js" as="script">
+    <link rel="preload" href="./assets/js/helpers/data-attr-helper.js" as="script">
+    <link rel="preload" href="./assets/js/helpers/swiper-helper.js" as="script">
+    <link rel="preload" href="./assets/js/helpers/anime-helper.js" as="script">
+    <link rel="preload" href="./assets/js/helpers/anime-helper-defined-timelines.js" as="script">
+    <link rel="preload" href="./assets/js/uikit-components-bs.js" as="script">
+    <link rel="preload" href="./assets/js/app.js" as="script">
+
+    <!-- app head for bootstrap core -->
+    <script src="./assets/js/app-head-bs.js"></script>
+
+    <!-- include uni-core  components -->
+    <link rel="stylesheet" href="./assets/js/uni-core/css/uni-core.min.css">
+
+    <!-- include font awesome 5 fonts -->
+    <link rel="stylesheet" href="./assets/css/fontawesome-5.css">
+
+    <!-- include styles -->
+    <link rel="stylesheet" href="./assets/css/unicons.min.css">
+    <link rel="stylesheet" href="./assets/css/prettify.min.css">
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
+
+    <!-- include main style -->
+    <link rel="stylesheet" href="./assets/css/theme/demo-six.min.css">
+    <link rel="stylesheet" href="./assets/css/theme/custom.min.css">
+
+    <!-- include scripts -->
+    <script src="./assets/js/uni-core/js/uni-core-bundle.min.js"></script>
+
+    <style>
+        #audioTabs .nav-item button.active {
+            background-color: #fcb623 !important;
+            color: #fff !important;
+        }
+
+        #audioTabs .nav-item button:not(.active) {
+            background-color: #e5e5e5 !important;
+            color: #333 !important;
+        }
+
+        #audioTabs .nav-item button:not(.active):hover {
+            background-color: #d4d4d4 !important;
+        }
+    </style>
+</head>
+
+<body class="uni-body panel bg-gray-50 dark:bg-black text-gray-900  dark:text-white overflow-x-hidden">
+
+    <!--  Search modal -->
+    <div id="uc-search-modal" class="uc-modal-full uc-modal" data-uc-modal="overlay: true">
+        <div class="uc-modal-dialog d-flex justify-center bg-white text-dark dark:bg-gray-900 dark:text-white"
+            data-uc-height-viewport="">
+            <button
+                class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                type="button">
+                <i class="unicon-close"></i>
+            </button>
+            <div class="panel w-100 sm:w-500px px-2 py-5">
+                <h3 class="h2 text-center">Ara</h3>
+                <form class="hstack gap-1 mt-4 border-bottom p-narrow dark:border-gray-700" action="arama.html" method="get" role="search">
+                    <span
+                        class="d-inline-flex justify-center items-center w-24px sm:w-40 h-24px sm:h-40px opacity-50"><i
+                            class="unicon-search icon-3"></i></span>
+                    <input type="search" name="q"
+                        class="form-control-plaintext ms-1 fs-6 sm:fs-5 w-full dark:text-white"
+                        placeholder="Anahtar kelime yaz.." aria-label="Ara" autofocus>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--  Menu panel -->
+    <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">
+        <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
+            <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
+                <div class="uc-logo">
+                    <a href="index.html" class="h5 text-none text-gray-900 dark:text-white">
+                        <img class="w-48px" src="./assets/images/logos/logo-left.png" alt="Dada Haber" data-uc-svg srcset="./assets/images/logos/logo-left-96w.png 96w, ./assets/images/logos/logo-left.png 286w" sizes="48px">
+                    </a>
+                </div>
+                <button
+                    class="uc-offcanvas-close p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary  duration-150 transition-all"
+                    type="button">
+                    <i class="unicon-close"></i>
+                </button>
+            </header>
+
+            <div class="panel">
+                <ul class="nav-y gap-narrow fw-bold fs-5" data-uc-nav>
+                    <li>
+                        <a href="haber-liste.html">GÜNDEM</a>
+                    </li>
+                    <li>
+                        <a href="spor.html">SPOR</a>
+                    </li>
+                    <li>
+                        <a href="finans.html">FİNANS</a>
+                    </li>
+                    <li>
+                        <a href="savunma.html">SAVUNMA</a>
+                    </li>
+                    <li>
+                        <a href="haber-liste.html">DÜNYA</a>
+                    </li>
+                    <li>
+                        <a href="kadin.html">KADIN</a>
+                    </li>
+                    <li class="uc-parent">
+                        <a href="#">DİĞER</a>
+                        <ul class="uc-nav-sub" data-uc-nav="">
+                            <li>
+                                <a href="haber-liste.html">KÜLTÜR-SANAT</a>
+                            </li>
+                            <li>
+                                <a href="haber-liste.html">YAŞAM</a>
+                            </li>
+                            <li>
+                                <a href="haber-liste.html">ÇEVRE</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://dadamutfak.com/">MUTFAK</a>
+                            </li>
+                            <li>
+                                <a href="saglik.html">SAĞLIK</a>
+                            </li>
+                            <li>
+                                <a href="hamilelik.html">HAMİLELİK</a>
+                            </li>
+                            <li>
+                                <a href="teknoloji.html">TEKNOLOJİ</a>
+                            </li>
+                            <li>
+                                <a href="haber-liste.html">EĞİTİM</a>
+                            </li>
+                            <li>
+                                <a href="oyun.html">OYUN</a>
+                            </li>
+                            <li>
+                                <a href="haber-liste.html">TÜM MANŞETLER</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <ul class="vstack items-start gap-0">
+                        <li>
+                            <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
+                                style="font-size: 12px;" href="haber-dinle.html" data-uc-toggle>
+                                <i class="fa-solid fa-ear-muffs text-primary fs-6"></i>
+                                HABER DİNLE
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
+                                style="font-size: 12px;" href="foto-fokus.html" data-uc-toggle>
+                                <i class="fas text-primary fa-camera fs-6"></i>
+                                FOTO FOKUS
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
+                                style="font-size: 12px;" href="video-galeri.html" data-uc-toggle>
+                                <i class="fas text-primary fa-play fs-6"></i>
+                                VİDEO GALERİ
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
+                                style="font-size: 12px;" href="infografik.html" data-uc-toggle>
+                                <i class="fas text-primary fa-info-circle fs-6"></i>
+                                İNFOGRAFİK
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uc-cart-trigger text-start btn d-flex align-items-start justify-content-start gap-1  border-0 p-0 duration-0 dark:text-white "
+                                style="font-size: 12px;" href="podcast.html" data-uc-toggle>
+                                <i class="fas text-primary fa-podcast fs-6"></i>
+                                PODCAST
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                </ul>
+                <div class="py-2 hstack gap-2 bg-white dark:bg-gray-900">
+                    <div class="hstack gap-1">
+                        <span class="fs-7 opacity-60">Tema Rengi:</span>
+                        <div class="darkmode-trigger" data-darkmode-switch="">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider fs-5"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Newsletter modal -->
+    <div id="uc-newsletter-modal" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog w-800px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <button
+                class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                type="button">
+                <i class="unicon-close"></i>
+            </button>
+            <div class="row md:child-cols-6 col-match g-0">
+                <div class="d-none md:d-flex">
+                    <div class="position-relative w-100 ratio-1x1">
+                        <img class="media-cover" src="./assets/images/demo-six/common/newsletter.jpg"
+                            alt="Newsletter image">
+                    </div>
+                </div>
+                <div>
+                    <div class="panel vstack self-center p-4 md:py-8 text-center">
+                        <h3 class="h3 md:h2">Bültenimize abone olun</h3>
+                        <p class="ft-tertiary">Gündemi kaçırmayın: günün öne çıkan haberleri, analizler ve özel dosyalar her sabah e-postanıza gelsin.</p>
+                        <div class="panel mt-2 lg:mt-4">
+                            <form class="vstack gap-1">
+                                <input type="email"
+                                    class="form-control form-control-sm w-full fs-6 bg-white dark:border-white dark:border-gray-700 dark:text-dark"
+                                    placeholder="E Posta Adresiniz" required>
+                                <button type="submit" class="btn btn-sm btn-primary">Kayıt Ol</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  GDPR modal -->
+    <div id="uc-gdpr-notification"
+        class="uc-gdpr-notification uc-notification uc-notification-bottom-left lg:m-2 border rounded">
+        <div class="uc-notification-message">
+            <a id="uc-close-gdpr-notification" class="uc-notification-close" data-uc-close></a>
+            <h2 class="h5 ft-primary fw-bold -ls-1 m-0">Çerezler</h2>
+            <p class="fs-7 mt-1 mb-2 text-gray-800 dark:text-white">Daha iyi bir kullanıcı deneyimi için <a
+                    class=" text-underline text-primary" href="cerezler.html">Çerezleri</a> kullanıyoruz.</p>
+            <button class="btn btn-sm btn-primary" id="uc-accept-gdpr">Kabul Et</button>
+        </div>
+    </div>
+
+    <!--  Bottom Actions Sticky -->
+    <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
+        <div class="darkmode-trigger cstack w-40px h-40px rounded text-none bg-gray-100 dark:bg-gray-700 dark:text-white"
+            data-darkmode-toggle="">
+            <label class="switch">
+                <span class="sr-only">Tema Rengi</span>
+                <input type="checkbox">
+                <span class="slider fs-5"></span>
+            </label>
+        </div>
+        <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="to_top" data-uc-backtotop>
+            <i class="icon-2 unicon-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Header start -->
+    <header class="uc-header header-six uc-navbar-sticky-wrap z-999"
+        data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">
+        <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">
+
+            <div class="uc-top-navbar dh-shortcuts panel z-3 min-h-40px d-block"
+        style="--uc-nav-height: 40px" data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
+        <div class="container max-w-xl">
+          <div class="hstack dh-shortcuts__track panel z-1">
+            <div class="uc-navbar-left gap-2 lg:gap-3">
+              <div class="uc-navbar-item">
+                <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
+                  <i class="fas fa-calendar-day text-primary"></i>
+                  12 Kasım
+                  2025</span>
+                <span class="dh-sc-div" aria-hidden="true"></span>
+
+                <span class="fw-bold datetime fs-5 text-gray-900 dark:text-white text-opacity-80">
+                  <img src="./assets/images/cloudy.png" class="w-20px h-20px ratio-1x1 " alt="">
+                  24.4 °C Ankara </span>
+
+              </div>
+
+            </div>
+            <div class="uc-navbar-right gap-1 fs-6">
+              <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
+                href="haber-dinle.html" data-uc-toggle>
+                <i class="fa-solid fa-ear-muffs text-primary"></i>
+                HABER DİNLE
+              </a>
+              <span class="dh-sc-div" aria-hidden="true"></span>
+              <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
+                href="foto-fokus.html" data-uc-toggle>
+                <i class="fas fa-camera text-primary"></i>
+                FOTO FOKUS
+              </a>
+              <span class="dh-sc-div" aria-hidden="true"></span>
+              <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
+                href="video-galeri.html" data-uc-toggle>
+                <i class="fas fa-play text-primary"></i>
+                VİDEO GALERİ
+              </a>
+              <span class="dh-sc-div" aria-hidden="true"></span>
+              <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
+                href="infografik.html" data-uc-toggle>
+                <i class="fas fa-info-circle text-primary"></i>
+                İNFOGRAFİK
+              </a>
+              <span class="dh-sc-div" aria-hidden="true"></span>
+              <a class="uc-cart-trigger btn d-flex align-items-center justify-content-start gap-1 btn-sm border-0 p-0 duration-0 dark:text-white"
+                href="podcast.html" data-uc-toggle>
+                <i class="fas fa-podcast text-primary"></i>
+                PODCAST
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+            <div class="uc-center-navbar panel z-2">
+                <div class="container max-w-xl">
+                    <div class="uc-navbar min-h-72px lg:min-h-80px text-gray-900 dark:text-white"
+                        data-uc-navbar=" animation: uc-animation-slide-top-small; duration: 150;">
+                        <div class="uc-navbar-left">
+                            <div class="d-block lg:d-none">
+                                <a class="uc-menu-trigger" href="#uc-menu-panel" data-uc-toggle></a>
+                            </div>
+                            <div class="uc-logo d-block md:d-none">
+                                <a href="index.html">
+                                    <img class="w-140px d-none dark:d-block" src="./assets/images/logos/logo-white.png"
+                                        alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="140px">
+                                    <img class="w-140px d-block dark:d-none" src="./assets/images/logos/logo.png"
+                                        alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="140px">
+                                </a>
+                            </div>
+                            <div class="uc-logo d-none md:d-block">
+                                <a href="index.html">
+                                    <img class="logo-w-lg d-none dark:d-block" src="./assets/images/logos/logo-white.png"
+                                        alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="230px">
+                                    <img class="logo-w-lg d-block dark:d-none" src="./assets/images/logos/logo.png"
+                                        alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="230px">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="uc-navbar-right gap-2 lg:gap-3">
+                            <ul class="uc-navbar-nav gap-4 fs-4 text-uppercase fw-bold me-2 d-none lg:d-flex"
+                                style="--uc-nav-height: 80px">
+                                <li>
+                                    <a href="haber-liste.html">GÜNDEM</a>
+                                </li>
+                                <li>
+                                    <a href="spor.html">SPOR</a>
+                                </li>
+                                <li>
+                                    <a href="finans.html">FİNANS</a>
+                                </li>
+                                <li>
+                                    <a href="savunma.html">SAVUNMA</a>
+                                </li>
+                                <li>
+                                    <a href="haber-liste.html">DÜNYA</a>
+                                </li>
+                                <li>
+                                    <a href="kadin.html">KADIN</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">DİĞER <span data-uc-navbar-parent-icon></span></a>
+                                    <div style="z-index: 100 !important;"
+                                        class="uc-navbar-dropdown ft-primary text-unset p-3 pb-4 rounded-0 hide-scrollbar"
+                                        data-uc-drop=" offset: 0; boundary: !.uc-navbar; stretch: x; animation: uc-animation-slide-top-small; duration: 150;">
+                                        <div class="row child-cols g-4">
+                                            <div>
+                                                <div class="row child-cols g-4">
+                                                    <div>
+                                                        <ul class="uc-nav uc-navbar-dropdown-nav">
+                                                            <li>
+                                                                <a href="haber-liste.html">KÜLTÜR-SANAT</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">YAŞAM</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">ÇEVRE</a>
+                                                            </li>
+                                                            <li>
+                                                                <a target="_blank"
+                                                                    href="https://dadamutfak.com/">MUTFAK</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="saglik.html">SAĞLIK</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="teknoloji.html">TEKNOLOJİ</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">EĞİTİM</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="oyun.html">OYUN</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="haber-liste.html">TÜM MANŞETLER</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+
+                            <div class="uc-navbar-item">
+                                <a class="uc-search-trigger icon-2 cstack text-none text-dark dark:text-white"
+                                    href="#uc-search-modal" data-uc-toggle>
+                                    <i class="fas fa-search fs-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+
+    </header>
+        <!-- Header end -->
+    <!-- Wrapper start -->
+    <span class="dh-rail" aria-hidden="true"></span>
+    <div id="wrapper" class="wrap overflow-hidden-x">
+        <span class="dh-mark" aria-hidden="true">DADA</span>
+        <!-- Section start -->
+        <!-- BAŞLIK BANDI — fotoğraflı (yazar-liste.html ile aynı bileşen).
+             Arama sayfasında manşet slider'ı yok: sorgunun kendisi başlıktır. -->
+        <header class="dh-ph dh-ph--photo">
+          <span class="dh-vmedia" style="--dh-vpos: 50% 46%" aria-hidden="true">
+            <img src="./assets/images/common/haber-banner.jpg" alt="" loading="eager" fetchpriority="high" decoding="async">
+          </span>
+
+          <div class="container max-w-xl">
+            <nav class="dh-art-crumb dh-art-crumb--ink" aria-label="Sayfa yolu">
+              <a href="index.html" aria-label="Anasayfa"><i class="fas fa-home-lg-alt" aria-hidden="true"></i></a>
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+              <span aria-current="page">Arama</span>
+            </nav>
+
+            <span class="dh-ph__bar" aria-hidden="true"></span>
+            <span class="dh-ph__eyebrow">Arama</span>
+            <h1 class="dh-ph__title">&ldquo;deprem&rdquo; için sonuçlar</h1>
+            <p class="dh-ph__sub">Sonuçlar yayın tarihine göre sıralanır. Sorguyu daraltmak için aşağıdaki içerik türü şeridini kullanın.</p>
+
+            <form class="dh-find" action="arama.html" method="get" role="search">
+              <label class="dh-find__l" for="ara-q">Sitede ara</label>
+              <div class="dh-find__row">
+                <span class="dh-find__ic" aria-hidden="true"><i class="unicon-search"></i></span>
+                <input class="dh-input dh-find__in" id="ara-q" name="q" type="search" value="deprem"
+                  placeholder="Anahtar kelime yaz..." autocomplete="off">
+                <button class="dh-btn dh-find__go" type="submit">Ara</button>
+              </div>
+            </form>
+
+            <div class="dh-ph__meta">
+              <span>Sonuç: <b>128</b></span>
+              <span class="dh-ph__sep" aria-hidden="true"></span>
+              <span>Süre: <b>0,18 sn</b></span>
+            </div>
+          </div>
+        </header>
+
+        <nav class="section panel dh-catbar" data-cat="" aria-label="İçerik türleri">
+          <div class="container max-w-xl">
+            <div class="dh-catbar__row">
+              <span class="dh-catbar__root"><span class="dh-catbar__root-ad" aria-current="page">ARAMA</span><span class="dh-catbar__root-fn">içerik türleri</span></span>
+              <div class="dh-catbar__inner swiper-parent">
+                <div class="swiper dh-catbar__swiper"
+                  data-uc-swiper="items: auto; gap: 8; free: true; grab-cursor: true; next: .dh-catbar__nav--next; prev: .dh-catbar__nav--prev; disable-class: is-off; watchOverflow: true;">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide"><a class="dh-catbar__chip is-on" href="arama.html" aria-current="page">Tümü</a></div>
+                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Haber</a></div>
+                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Son Dakika</a></div>
+                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Video</a></div>
+                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Foto Fokus</a></div>
+                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Podcast</a></div>
+                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">İnfografik</a></div>
+                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Köşe Yazısı</a></div>
+                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Yazar</a></div>
+                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Resmî İlan</a></div>
+                    <div class="swiper-slide"><a class="dh-catbar__chip" href="arama.html">Arşiv</a></div>
+                  </div>
+                </div>
+                <div class="dh-catbar__nav dh-catbar__nav--prev" role="button" aria-label="Önceki türler"><i class="unicon-chevron-left"></i></div>
+                <div class="dh-catbar__nav dh-catbar__nav--next" role="button" aria-label="Sonraki türler"><i class="unicon-chevron-right"></i></div>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div class="section py-4 lg:py-8">
+            <div class="container max-w-xl">
+                <div class="panel vstack gap-3 sm:gap-6 lg:gap-5">
+                    <header class="page-header panel vstack">
+                        <div class="vstack sm:hstack justify-between items-center gap-2 sm:gap-4">
+                            <div class="panel text-center sm:text-start">
+                                <span class="fs-6 m-0 opacity-80">128 sonuçtan 16 gösteriliyor</span>
+                            </div>
+                            <div>
+                                <div class="dh-sort" role="tablist" aria-label="Sıralama">
+                                      <button type="button" class="dh-sort__tab is-on" role="tab" aria-selected="true">İlgili</button>
+                                      <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">En Yeni</button>
+                                      <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">En Eski</button>
+                                      <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">En Çok Okunan</button>
+                                      <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">En Çok Yorum Alan</button>
+                                      <button type="button" class="dh-sort__tab" role="tab" aria-selected="false">En Çok Görüntülenen</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="row g-4 xl:g-8">
+                        <div class="col">
+                            <div class="panel dh-listgrid">
+                                <div
+                                    class="row child-cols-12 sm:child-cols-6 lg:child-cols-4 col-match gy-4 xl:gy-6 gx-2 sm:gx-4">
+                                    <div>
+                                        <article class="post type-post panel vstack gap-2">
+                                            <div class="post-image panel overflow-hidden">
+                                                <figure
+                                                    class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                        src="./assets/images/410x410.png"
+                                                        data-src="./assets/images/410x410.png"
+                                                        alt="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"
+                                                        data-uc-img="loading: lazy">
+                                                    <a href="haber-detay.html" class="position-cover"
+                                                        data-caption="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"></a>
+                                                </figure>
+                                                <div
+                                                    class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                                                    <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
+                                                        href="haber-detay.html">Tennis</a>
+                                                </div>
+
+                                                <div
+                                                    class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
+                                                </div>
+                                                <span
+                                                    class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
+                                                    <i class=" fas fa-play"></i>
+                                                    <i class=" fas fa-camera"></i>
+                                                    <i class=" fas fa-volume-up"></i>
+                                                </span>
+                                            </div>
+                                            <div class="post-header panel vstack gap-1 lg:gap-2">
+                                                <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
+                                                    <a class="text-none" href="haber-detay.html">Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme</a>
+                                                </h3>
+                                                <div>
+                                                    <div
+                                                        class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div class="post-author hstack gap-1">
+                                                                <a href="yazar-detay.html"
+                                                                    data-uc-tooltip="Sarah Eddrissi"><img
+                                                                        src="./assets/images/avatars/03.png"
+                                                                        alt="Sarah Eddrissi"
+                                                                        class="w-24px h-24px rounded" loading="lazy" decoding="async"></a>
+                                                                <span class="dh-byline"><a href="yazar-detay.html"
+                                                                    class="text-black dark:text-white text-none fw-bold">Sarah Eddrissi</a><small>Editör</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sep lg:d-block d-none">·</div>
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div
+                                                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
+                                                                <span class="text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-calendar-day"></i>
+                                                                    <span class="minimizeDate">12.12.2025</span>
+                                                                </span>
+                                                                <div class="sep">
+                                                                    ·
+                                                                </div>
+                                                                <span class=" text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-clock"></i>
+                                                                    123
+                                                                </span>
+                                                                <div class="sep d-block ">
+                                                                    ·
+                                                                </div>
+                                                                <span class="text-gray-400 d-block  dark:text-gray-100">
+                                                                    <i class="fas fa-eye"></i>
+                                                                    <span class="minimizeNumber">12345</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div>
+                                        <article class="post type-post panel vstack gap-2">
+                                            <div class="post-image panel overflow-hidden">
+                                                <figure
+                                                    class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                        src="./assets/images/410x410.png"
+                                                        data-src="./assets/images/410x410.png"
+                                                        alt="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"
+                                                        data-uc-img="loading: lazy">
+                                                    <a href="haber-detay.html" class="position-cover"
+                                                        data-caption="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"></a>
+                                                </figure>
+                                                <div
+                                                    class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                                                    <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
+                                                        href="haber-detay.html">Tennis</a>
+                                                </div>
+
+                                                <div
+                                                    class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
+                                                </div>
+                                                <span
+                                                    class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
+                                                    <i class=" fas fa-play"></i>
+                                                    <i class=" fas fa-camera"></i>
+                                                    <i class=" fas fa-volume-up"></i>
+                                                </span>
+                                            </div>
+                                            <div class="post-header panel vstack gap-1 lg:gap-2">
+                                                <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
+                                                    <a class="text-none" href="haber-detay.html">Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme</a>
+                                                </h3>
+                                                <div>
+                                                    <div
+                                                        class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div class="post-author hstack gap-1">
+                                                                <a href="yazar-detay.html"
+                                                                    data-uc-tooltip="Sarah Eddrissi"><img
+                                                                        src="./assets/images/avatars/03.png"
+                                                                        alt="Sarah Eddrissi"
+                                                                        class="w-24px h-24px rounded" loading="lazy" decoding="async"></a>
+                                                                <span class="dh-byline"><a href="yazar-detay.html"
+                                                                    class="text-black dark:text-white text-none fw-bold">Sarah Eddrissi</a><small>Editör</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sep lg:d-block d-none">·</div>
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div
+                                                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
+                                                                <span class="text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-calendar-day"></i>
+                                                                    <span class="minimizeDate">12.12.2025</span>
+                                                                </span>
+                                                                <div class="sep">
+                                                                    ·
+                                                                </div>
+                                                                <span class=" text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-clock"></i>
+                                                                    123
+                                                                </span>
+                                                                <div class="sep d-block ">
+                                                                    ·
+                                                                </div>
+                                                                <span class="text-gray-400 d-block  dark:text-gray-100">
+                                                                    <i class="fas fa-eye"></i>
+                                                                    <span class="minimizeNumber">12345</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div>
+                                        <article class="post type-post panel vstack gap-2">
+                                            <div class="post-image panel overflow-hidden">
+                                                <figure
+                                                    class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                        src="./assets/images/410x410.png"
+                                                        data-src="./assets/images/410x410.png"
+                                                        alt="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"
+                                                        data-uc-img="loading: lazy">
+                                                    <a href="haber-detay.html" class="position-cover"
+                                                        data-caption="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"></a>
+                                                </figure>
+                                                <div
+                                                    class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                                                    <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
+                                                        href="haber-detay.html">Tennis</a>
+                                                </div>
+
+                                                <div
+                                                    class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
+                                                </div>
+                                                <span
+                                                    class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
+                                                    <i class=" fas fa-play"></i>
+                                                    <i class=" fas fa-camera"></i>
+                                                    <i class=" fas fa-volume-up"></i>
+                                                </span>
+                                            </div>
+                                            <div class="post-header panel vstack gap-1 lg:gap-2">
+                                                <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
+                                                    <a class="text-none" href="haber-detay.html">Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme</a>
+                                                </h3>
+                                                <div>
+                                                    <div
+                                                        class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div class="post-author hstack gap-1">
+                                                                <a href="yazar-detay.html"
+                                                                    data-uc-tooltip="Sarah Eddrissi"><img
+                                                                        src="./assets/images/avatars/03.png"
+                                                                        alt="Sarah Eddrissi"
+                                                                        class="w-24px h-24px rounded" loading="lazy" decoding="async"></a>
+                                                                <span class="dh-byline"><a href="yazar-detay.html"
+                                                                    class="text-black dark:text-white text-none fw-bold">Sarah Eddrissi</a><small>Editör</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sep lg:d-block d-none">·</div>
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div
+                                                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
+                                                                <span class="text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-calendar-day"></i>
+                                                                    <span class="minimizeDate">12.12.2025</span>
+                                                                </span>
+                                                                <div class="sep">
+                                                                    ·
+                                                                </div>
+                                                                <span class=" text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-clock"></i>
+                                                                    123
+                                                                </span>
+                                                                <div class="sep d-block ">
+                                                                    ·
+                                                                </div>
+                                                                <span class="text-gray-400 d-block  dark:text-gray-100">
+                                                                    <i class="fas fa-eye"></i>
+                                                                    <span class="minimizeNumber">12345</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div>
+                                        <article class="post type-post panel vstack gap-2">
+                                            <div class="post-image panel overflow-hidden">
+                                                <figure
+                                                    class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                        src="./assets/images/410x410.png"
+                                                        data-src="./assets/images/410x410.png"
+                                                        alt="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"
+                                                        data-uc-img="loading: lazy">
+                                                    <a href="haber-detay.html" class="position-cover"
+                                                        data-caption="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"></a>
+                                                </figure>
+                                                <div
+                                                    class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                                                    <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
+                                                        href="haber-detay.html">Tennis</a>
+                                                </div>
+
+                                                <div
+                                                    class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
+                                                </div>
+                                                <span
+                                                    class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
+                                                    <i class=" fas fa-play"></i>
+                                                    <i class=" fas fa-camera"></i>
+                                                    <i class=" fas fa-volume-up"></i>
+                                                </span>
+                                            </div>
+                                            <div class="post-header panel vstack gap-1 lg:gap-2">
+                                                <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
+                                                    <a class="text-none" href="haber-detay.html">Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme</a>
+                                                </h3>
+                                                <div>
+                                                    <div
+                                                        class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div class="post-author hstack gap-1">
+                                                                <a href="yazar-detay.html"
+                                                                    data-uc-tooltip="Sarah Eddrissi"><img
+                                                                        src="./assets/images/avatars/03.png"
+                                                                        alt="Sarah Eddrissi"
+                                                                        class="w-24px h-24px rounded" loading="lazy" decoding="async"></a>
+                                                                <span class="dh-byline"><a href="yazar-detay.html"
+                                                                    class="text-black dark:text-white text-none fw-bold">Sarah Eddrissi</a><small>Editör</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sep lg:d-block d-none">·</div>
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div
+                                                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
+                                                                <span class="text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-calendar-day"></i>
+                                                                    <span class="minimizeDate">12.12.2025</span>
+                                                                </span>
+                                                                <div class="sep">
+                                                                    ·
+                                                                </div>
+                                                                <span class=" text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-clock"></i>
+                                                                    123
+                                                                </span>
+                                                                <div class="sep d-block ">
+                                                                    ·
+                                                                </div>
+                                                                <span class="text-gray-400 d-block  dark:text-gray-100">
+                                                                    <i class="fas fa-eye"></i>
+                                                                    <span class="minimizeNumber">12345</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div>
+                                        <article class="post type-post panel vstack gap-2">
+                                            <div class="post-image panel overflow-hidden">
+                                                <figure
+                                                    class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                        src="./assets/images/410x410.png"
+                                                        data-src="./assets/images/410x410.png"
+                                                        alt="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"
+                                                        data-uc-img="loading: lazy">
+                                                    <a href="haber-detay.html" class="position-cover"
+                                                        data-caption="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"></a>
+                                                </figure>
+                                                <div
+                                                    class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                                                    <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
+                                                        href="haber-detay.html">Tennis</a>
+                                                </div>
+
+                                                <div
+                                                    class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
+                                                </div>
+                                                <span
+                                                    class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
+                                                    <i class=" fas fa-play"></i>
+                                                    <i class=" fas fa-camera"></i>
+                                                    <i class=" fas fa-volume-up"></i>
+                                                </span>
+                                            </div>
+                                            <div class="post-header panel vstack gap-1 lg:gap-2">
+                                                <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
+                                                    <a class="text-none" href="haber-detay.html">Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme</a>
+                                                </h3>
+                                                <div>
+                                                    <div
+                                                        class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div class="post-author hstack gap-1">
+                                                                <a href="yazar-detay.html"
+                                                                    data-uc-tooltip="Sarah Eddrissi"><img
+                                                                        src="./assets/images/avatars/03.png"
+                                                                        alt="Sarah Eddrissi"
+                                                                        class="w-24px h-24px rounded" loading="lazy" decoding="async"></a>
+                                                                <span class="dh-byline"><a href="yazar-detay.html"
+                                                                    class="text-black dark:text-white text-none fw-bold">Sarah Eddrissi</a><small>Editör</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sep lg:d-block d-none">·</div>
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div
+                                                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
+                                                                <span class="text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-calendar-day"></i>
+                                                                    <span class="minimizeDate">12.12.2025</span>
+                                                                </span>
+                                                                <div class="sep">
+                                                                    ·
+                                                                </div>
+                                                                <span class=" text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-clock"></i>
+                                                                    123
+                                                                </span>
+                                                                <div class="sep d-block ">
+                                                                    ·
+                                                                </div>
+                                                                <span class="text-gray-400 d-block  dark:text-gray-100">
+                                                                    <i class="fas fa-eye"></i>
+                                                                    <span class="minimizeNumber">12345</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div>
+                                        <article class="post type-post panel vstack gap-2">
+                                            <div class="post-image panel overflow-hidden">
+                                                <figure
+                                                    class="featured-image m-0 ratio ratio-16x9 rounded uc-transition-toggle overflow-hidden bg-gray-25 dark:bg-gray-800">
+                                                    <img class="media-cover image uc-transition-scale-up uc-transition-opaque"
+                                                        src="./assets/images/410x410.png"
+                                                        data-src="./assets/images/410x410.png"
+                                                        alt="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"
+                                                        data-uc-img="loading: lazy">
+                                                    <a href="haber-detay.html" class="position-cover"
+                                                        data-caption="Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme"></a>
+                                                </figure>
+                                                <div
+                                                    class="post-category hstack gap- position-absolute top-0 start-0 m-1 fs-7 fw-bold h-24px gap-1">
+                                                    <a class="text-none bg-primary text-white px-1 rounded-1 shadow-xs"
+                                                        href="haber-detay.html">Tennis</a>
+                                                </div>
+
+                                                <div
+                                                    class="position-absolute top-0 end-0 w-150px h-150px rounded-top-end bg-gradient-45 from-transparent via-transparent to-black opacity-50">
+                                                </div>
+                                                <span
+                                                    class="cstack position-absolute top-0 end-5 fs-6 w-40px h-40px text-white d-flex gap-1">
+                                                    <i class=" fas fa-play"></i>
+                                                    <i class=" fas fa-camera"></i>
+                                                    <i class=" fas fa-volume-up"></i>
+                                                </span>
+                                            </div>
+                                            <div class="post-header panel vstack gap-1 lg:gap-2">
+                                                <h3 class="post-title h6 sm:h5 xl:h4 m-0 text-truncate-2 m-0">
+                                                    <a class="text-none" href="haber-detay.html">Perakendeyi yeniden kuran teknolojiler: yapay zekâ destekli ödeme</a>
+                                                </h3>
+                                                <div>
+                                                    <div
+                                                        class="post-meta panel justify-content-start align-items-start gap-1 fs-7 ft-tertiary fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 d-flex lg:flex-row flex-column z-1">
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div class="post-author hstack gap-1">
+                                                                <a href="yazar-detay.html"
+                                                                    data-uc-tooltip="Sarah Eddrissi"><img
+                                                                        src="./assets/images/avatars/03.png"
+                                                                        alt="Sarah Eddrissi"
+                                                                        class="w-24px h-24px rounded" loading="lazy" decoding="async"></a>
+                                                                <span class="dh-byline"><a href="yazar-detay.html"
+                                                                    class="text-black dark:text-white text-none fw-bold">Sarah Eddrissi</a><small>Editör</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sep lg:d-block d-none">·</div>
+                                                        <div class="d-flex items-center justify-center">
+                                                            <div
+                                                                class="post-date hstack gap-narrow fs-7 fw-medium text-uppercase text-gray-900 dark:text-white text-opacity-60 md:d-flex  gap-1">
+                                                                <span class="text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-calendar-day"></i>
+                                                                    <span class="minimizeDate">12.12.2025</span>
+                                                                </span>
+                                                                <div class="sep">
+                                                                    ·
+                                                                </div>
+                                                                <span class=" text-gray-400 dark:text-gray-100">
+                                                                    <i class="fas fa-clock"></i>
+                                                                    123
+                                                                </span>
+                                                                <div class="sep d-block ">
+                                                                    ·
+                                                                </div>
+                                                                <span class="text-gray-400 d-block  dark:text-gray-100">
+                                                                    <i class="fas fa-eye"></i>
+                                                                    <span class="minimizeNumber">12345</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+
+                                </div>
+                                <div class="panel">
+                                    <nav class="dh-pager" aria-label="Sayfalar">
+                                      <span class="dh-pager__nav dh-pager__nav--edge is-off" aria-disabled="true" aria-label="İlk sayfa"><i class="unicon-chevron-left" aria-hidden="true"></i><i class="unicon-chevron-left" aria-hidden="true"></i></span>
+                                      <span class="dh-pager__nav is-off" aria-disabled="true" aria-label="Önceki sayfa"><i class="unicon-chevron-left" aria-hidden="true"></i></span>
+                                      <a class="dh-pager__pg is-on" href="#" aria-current="page" aria-label="Sayfa 1">1</a>
+                                      <a class="dh-pager__pg" href="#" aria-label="Sayfa 2">2</a>
+                                      <a class="dh-pager__pg dh-pager__pg--far" href="#" aria-label="Sayfa 3">3</a>
+                                      <span class="dh-pager__gap" aria-hidden="true">…</span>
+                                      <a class="dh-pager__pg" href="#" aria-label="Sayfa 9">9</a>
+                                      <a class="dh-pager__nav" href="#" aria-label="Sonraki sayfa"><i class="unicon-chevron-right" aria-hidden="true"></i></a>
+                                      <a class="dh-pager__nav dh-pager__nav--edge" href="#" aria-label="Son sayfa"><i class="unicon-chevron-right" aria-hidden="true"></i><i class="unicon-chevron-right" aria-hidden="true"></i></a>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+    </div>
+
+    <!-- Wrapper end -->
+
+    <a class="btn btn-primary btn-sm border-0 dark:text-white position-right-turn" href="#gorus_bildir_modal"
+        data-uc-toggle>
+        <i class="fa-solid fa-message "></i>
+        <span class="sm-hide-text">GÖRÜŞ BİLDİR</span>
+    </a>
+    <!--  Newsletter modal -->
+    <div id="gorus_bildir_modal" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <button
+                class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                type="button">
+                <i class="unicon-close"></i>
+            </button>
+            <div class="p-3 mt-5 d-flex w-100 flex-column gap-2">
+                <a class="btn btn-primary btn-sm w-100" href="#basit_bir_sorum_var" data-uc-toggle>
+                    BASİT BİR SORUM VAR
+                </a>
+                <a class="btn btn-primary btn-sm w-100" href="#teknik_sorun_var" data-uc-toggle>
+                    İHLAL DURUMU SÖZ KONUSU
+                </a>
+                <a class="btn btn-primary btn-sm w-100" href="#teknik_sorun_var" data-uc-toggle>
+                    TEKNİK BİR SORUN VAR
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="basit_bir_sorum_var" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <div class="modal-header">
+                <a class="back-modal" href="#gorus_bildir_modal" data-uc-toggle>
+                    Geri Dön
+                </a>
+                <button
+                    class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                    type="button">
+                    <i class="unicon-close"></i>
+                </button>
+            </div>
+            <div class="p-3 mt-2 d-flex w-100 flex-column">
+                <p>Sorununuza ilişkin çözüm aşağıda olabilir!</p>
+                <hr class="w-100">
+                <span class="fw-semibold">Neden ?</span>
+                <p>Yeni eklediğim içerik Ana Sayfa'da görünmüyor ne yapmalıyım?</p>
+                <span class="fw-semibold pt-2">Çözüm</span>
+                <p>Ana sayfa içerik seçimlerimizde, site içi işleyişin ve içerik akışının bozulmaması adına
+                    editörlerimizin
+                    öncelik ve
+                    tercihleri etkili olmaktadır. Bu sebeple, sürekliliğin sağlanması ve olabildiğince tüm kullanıcı
+                    içeriklerine yer
+                    verilmesi adına kategori sayfaları sürekli olarak güncellenmektedir.
+                </p>
+                <hr>
+                <p><i class="fa-solid fa-circle-info"></i> Eğer sorununuz halen daha çözülmediyse bizimle <a
+                        href="iletisim.html">iletişime geçebilirsiniz.</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="teknik_sorun_var" data-uc-modal="overlay: true">
+        <div
+            class="uc-modal-dialog uc-modal-dialog-center lg:max-w-500px bg-white text-dark dark:bg-gray-900 dark:text-white rounded overflow-hidden">
+            <div class="modal-header">
+                <a class="back-modal" href="#gorus_bildir_modal" data-uc-toggle>
+                    Geri Dön
+                </a>
+                <button
+                    class="uc-modal-close-default p-0 icon-3 btn border-0 dark:text-white dark:text-opacity-50 hover:text-primary hover:rotate-90 duration-150 transition-all"
+                    type="button">
+                    <i class="unicon-close"></i>
+                </button>
+            </div>
+            <div class="p-3 mt-2 d-flex w-100 flex-column">
+                <input class="form-control mb-1" type="text" placeholder="Adınız ve Soyadınız (Opsiyonel)" name=""
+                    id="">
+                <input class="form-control mb-1" type="email" required placeholder="Mail Adresiniz *" name="" id="">
+                <input class="form-control mb-1" id="page-url" readonly disabled type="text">
+                <textarea class="form-control" rows="6" name="" id="" placeholder="Mesajınızı Buraya Yazabilirsiniz *"
+                    required></textarea>
+                <div class="form-check text-start my-2">
+                    <input
+                        class="form-check-input p-0 rounded-0 dark:bg-gray-800 dark:bg-gray-800 dark:border-white dark:border-opacity-15 dark:border-opacity-15"
+                        type="checkbox" id="kvkkOnay">
+                    <label class=" form-check-label fs-7 sm:fs-6" for="kvkkOnay"><a href="kvkk.html">KVKK</a> metnini
+                        okudum, onaylıyorum.</label>
+                </div>
+                <button class="w-100 btn btn-primary btn-sm">GÖNDER</button>
+            </div>
+        </div>
+    </div>
+    <!-- Footer start -->
+  <footer id="uc-footer" class="uc-footer panel uc-light">
+    <div
+      class="footer-outer dh-footer-brand pt-4 pb-2 lg:py-6 lg:pb-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-opacity-50">
+      <div class="container max-w-xl">
+        <div class="footer-inner vstack ">
+          <div class="footer-top-logo-desc">
+            <img src="./assets/images/logos/logo-white.png" width="300" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="300px">
+            <p><span class="text-gray-200 fw-bold">dadahaber.com</span> internet sitesinde yayınlanan yazı,
+              haber, video ve
+              fotoğrafların her türlü
+              hakkı Dada İst Ajans Hiz. Tic.
+              Ltd. Şti.’ye aittir. İzin alınmadan, kaynak gösterilerek dahi iktibas edilemez.</p>
+          </div>
+          <hr class="my-3">
+          <div class="uc-footer-bottom panel  vstack  lg:fs-5">
+            <div class="footer-nav mb-3">
+              <ul class="nav-x gap-2 lg:gap-2 justify-center text-center text-uppercase fw-medium">
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="hakkimizda.html">HAKKIMIZDA</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="kunye.html">KÜNYE</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="reklam.html">REKLAM</a></li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="arsiv.html">ARŞİV</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="iletisim.html">İLETİŞİM</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="yazar-liste.html">YAZARLAR</a></li>
+
+              </ul>
+            </div>
+            <div class="footer-nav">
+              <ul class="nav-x gap-2 lg:gap-2 justify-center text-center text-uppercase fw-medium">
+
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="cerezler.html">ÇEREZ
+                    POLİTİKASI</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="kullanim-sartlari.html">KULLANIM KOŞULLARI</a></li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="aydinlatma-metni.html">AYDINLATMA METNİ</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150" href="kvkk.html">GİZLİLİK VE
+                    KVKK POLİTİKASI</a>
+                </li>
+                <li><a class="hover:text-gray-900 w-100 dark:hover:text-white duration-150"
+                    href="yayin-ilkeleri.html">YAYIN
+                    İLKELERİ</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mb-3 footer-social lg:hstack md:hstack vstack  justify-center mt-4 gap-2 lg:gap-0 items-center">
+              <div class="footer-social lg:hstack items-center md:hstack vstack justify-center mt-3 gap-2 lg:gap-3">
+                <p>Günlük gelişmeleri sosyal medya <br> hesaplarından takip edebilirsiniz.</p>
+                <ul class="nav-x gap-1 flex-wrap dh-foot-soc">
+                  <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                  <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+              <div class="footer-social lg:hstack items-center md:hstack vstack justify-center mt-3 gap-2 lg:gap-3">
+                <p>Günlük gelişmeleri takip edebilmek için <br> dadahaber uygulamasını indirin</p>
+                <ul class="nav-x gap-2 dh-store-badges">
+                  <li>
+                    <a class="dh-store-badge" href="#ln">
+                      <i class="fa-brands fa-apple" aria-hidden="true"></i>
+                      <span><small>İndir</small><b>App Store</b></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dh-store-badge" href="#ln">
+                      <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+                      <span><small>İndir</small><b>Google Play</b></span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr>
+            <div class="footer-copyright vstack sm:hstack justify-center items-center mt-1">
+              <p>Dada Haber &copy; 2025, Tüm Hakları Saklıdır.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer end -->
+
+    <!-- include jquery & bootstrap js -->
+    <script defer src="./assets/js/libs/jquery.min.js"></script>
+    <script defer src="./assets/js/libs/bootstrap.min.js"></script>
+
+    <!-- include scripts -->
+    <script defer src="./assets/js/libs/anime.min.js"></script>
+    <script defer src="./assets/js/libs/swiper-bundle.min.js"></script>
+    <script defer src="./assets/js/libs/scrollmagic.min.js"></script>
+    <script defer src="./assets/js/helpers/data-attr-helper.js"></script>
+    <script defer src="./assets/js/helpers/swiper-helper.js"></script>
+    <script defer src="./assets/js/helpers/anime-helper.js"></script>
+    <script defer src="./assets/js/helpers/anime-helper-defined-timelines.js"></script>
+    <script defer src="./assets/js/uikit-components-bs.js"></script>
+
+    <!-- Sıralama sekmeleri (R4-L3) — açılır kutunun yerini aldı -->
+    <script>
+      document.addEventListener('click', function (e) {
+        var t = e.target.closest('.dh-sort__tab');
+        if (!t) return;
+        t.parentElement.querySelectorAll('.dh-sort__tab').forEach(function (b) {
+          b.classList.remove('is-on');
+          b.setAttribute('aria-selected', 'false');
+        });
+        t.classList.add('is-on');
+        t.setAttribute('aria-selected', 'true');
+      });
+    </script>
+
+  <!-- Mobil alt gezinme (R8-N) — 991,98px altında görünür -->
+  <nav class="dh-bnav" aria-label="Alt gezinme">
+    <div class="dh-bnav__row">
+      <a class="dh-bnav__item" href="index.html">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-home-lg-alt"></i></span>
+        <span class="dh-bnav__label">Anasayfa</span>
+      </a>
+      <a class="dh-bnav__item" href="son-dakika.html">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-bolt"></i></span>
+        <span class="dh-bnav__label">Son Dakika</span>
+      </a>
+      <a class="dh-bnav__item" href="#uc-menu-panel" data-uc-toggle aria-haspopup="dialog">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-bars"></i></span>
+        <span class="dh-bnav__label">Menü</span>
+      </a>
+      <a class="dh-bnav__item" href="haber-dinle.html">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fa-solid fa-ear-muffs"></i></span>
+        <span class="dh-bnav__label">Dinle</span>
+      </a>
+      <a class="dh-bnav__item is-on" href="arama.html" aria-current="page">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-magnifying-glass"></i></span>
+        <span class="dh-bnav__label">Ara</span>
+      </a>
+    </div>
+  </nav>
+
+    <!-- include app script -->
+    <script defer src="./assets/js/app.js"></script>
+
+    <!-- footer perdesi -->
+    <script defer src="./assets/js/footer-reveal.js"></script>
+
+    <!-- günlük panel -->
+    <script defer src="./assets/js/dh-panel.js"></script>
+
+    <script>
+        // Schema toggle via URL
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const getSchema = urlParams.get("schema");
+        if (getSchema === "dark") {
+            setDarkMode(1);
+        } else if (getSchema === "light") {
+            setDarkMode(0);
+        }
+    </script>
+</body>
+
+</html>

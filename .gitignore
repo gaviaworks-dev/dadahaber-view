@@ -5,3 +5,16 @@ outputs/*.jpg
 .DS_Store
 .env
 .env.*
+
+# Temanın kullanılmayan demo varyantları (site yalnız demo-six.min.css yükler).
+# Yerel diskte duruyorlar, repoya girmiyorlar — 97 MB.
+assets/css/theme/demo-two*.css
+assets/css/theme/demo-three*.css
+assets/css/theme/demo-four*.css
+assets/css/theme/demo-five*.css
+assets/css/theme/demo-seven*.css
+assets/css/theme/demo-eight*.css
+assets/css/theme/demo-nine*.css
+assets/css/theme/demo-ten*.css
+assets/css/theme/main.css
+assets/css/theme/main.min.css

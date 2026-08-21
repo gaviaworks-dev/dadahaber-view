@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
   <title>Dada Haber - Kış aylarında bağışıklık: uzmanların üzerinde uzlaştığı üç başlık</title>
   <link rel="icon" href="./assets/images/logos/logo-left.png">
   <meta name="description" content="Mevsim geçişlerinde artan üst solunum yolu enfeksiyonlarına karşı uzmanlar üç başlıkta birleşiyor: uyku düzeni, dengeli beslenme ve aşı takvimine uyum">
@@ -85,7 +86,7 @@
       </button>
       <div class="panel w-100 sm:w-500px px-2 py-5">
         <h3 class="h2 text-center">Ara</h3>
-        <form class="hstack gap-1 mt-4 border-bottom p-narrow dark:border-gray-700" action="?">
+        <form class="hstack gap-1 mt-4 border-bottom p-narrow dark:border-gray-700" action="arama.html" method="get" role="search">
           <span class="d-inline-flex justify-center items-center w-24px sm:w-40 h-24px sm:h-40px opacity-50"><i
               class="unicon-search icon-3"></i></span>
           <input type="search" name="q" class="form-control-plaintext ms-1 fs-6 sm:fs-5 w-full dark:text-white"
@@ -101,7 +102,7 @@
       <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
         <div class="uc-logo">
           <a href="index.html" class="h5 text-none text-gray-900 dark:text-white">
-            <img class="w-48px" src="./assets/images/logos/logo-left.png" alt="Dada Haber" data-uc-svg>
+            <img class="w-48px" src="./assets/images/logos/logo-left.png" alt="Dada Haber" data-uc-svg srcset="./assets/images/logos/logo-left-96w.png 96w, ./assets/images/logos/logo-left.png 286w" sizes="48px">
           </a>
         </div>
         <button
@@ -350,14 +351,14 @@
               </div>
               <div class="uc-logo d-block md:d-none">
                 <a href="index.html">
-                  <img class="w-140px d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber">
-                  <img class="w-140px d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber">
+                  <img class="w-140px d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="140px">
+                  <img class="w-140px d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="140px">
                 </a>
               </div>
               <div class="uc-logo d-none md:d-block">
                 <a href="index.html">
-                  <img class="logo-w-lg d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber">
-                  <img class="logo-w-lg d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber">
+                  <img class="logo-w-lg d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="230px">
+                  <img class="logo-w-lg d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="230px">
                 </a>
               </div>
             </div>
@@ -471,7 +472,7 @@
           <h1 class="dh-art-title">Kış aylarında bağışıklık: uzmanların üzerinde uzlaştığı üç başlık</h1>
           <div class="dh-art-hmeta">
             <span class="dh-art-hauthor">
-              <img src="./assets/images/avatars/03.png" alt="" width="34" height="34">
+              <img src="./assets/images/avatars/03.png" alt="" width="34" height="34" loading="lazy" decoding="async">
               <span><b>Deniz Aksoy</b><small>Sağlık Servisi</small></span>
             </span>
             <span class="dh-art-hsep" aria-hidden="true"></span>
@@ -1004,7 +1005,7 @@
       <div class="container max-w-xl">
         <div class="footer-inner vstack ">
           <div class="footer-top-logo-desc">
-            <img src="./assets/images/logos/logo-white.png" width="300" alt="Dada Haber">
+            <img src="./assets/images/logos/logo-white.png" width="300" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="300px">
             <p><span class="text-gray-200 fw-bold">dadahaber.com</span> internet sitesinde yayınlanan yazı,
               haber, video ve
               fotoğrafların her türlü
@@ -1106,6 +1107,32 @@
   <script defer src="./assets/js/helpers/anime-helper.js"></script>
   <script defer src="./assets/js/helpers/anime-helper-defined-timelines.js"></script>
   <script defer src="./assets/js/uikit-components-bs.js"></script>
+
+  <!-- Mobil alt gezinme (R8-N) — 991,98px altında görünür -->
+  <nav class="dh-bnav" aria-label="Alt gezinme">
+    <div class="dh-bnav__row">
+      <a class="dh-bnav__item" href="index.html">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-home-lg-alt"></i></span>
+        <span class="dh-bnav__label">Anasayfa</span>
+      </a>
+      <a class="dh-bnav__item" href="son-dakika.html">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-bolt"></i></span>
+        <span class="dh-bnav__label">Son Dakika</span>
+      </a>
+      <a class="dh-bnav__item" href="#uc-menu-panel" data-uc-toggle aria-haspopup="dialog">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-bars"></i></span>
+        <span class="dh-bnav__label">Menü</span>
+      </a>
+      <a class="dh-bnav__item" href="haber-dinle.html">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fa-solid fa-ear-muffs"></i></span>
+        <span class="dh-bnav__label">Dinle</span>
+      </a>
+      <a class="dh-bnav__item" href="arama.html">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-magnifying-glass"></i></span>
+        <span class="dh-bnav__label">Ara</span>
+      </a>
+    </div>
+  </nav>
 
   <!-- include app script -->
   <script defer src="./assets/js/audio.js"></script>
