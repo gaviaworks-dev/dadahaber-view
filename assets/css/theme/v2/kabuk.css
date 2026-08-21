@@ -135,8 +135,8 @@
 
 /* ============================ 2. MARKA SATIRI ============================= */
 .dh-v2-brand { background: #fff; }
-.dark .dh-v2-brand,
-html.dark .dh-v2-brand { background: var(--color-gray-900); }
+.uc-dark .dh-v2-brand,
+html.uc-dark .dh-v2-brand { background: var(--color-gray-900); }
 .dh-v2-brand__row {
   display: flex;
   align-items: center;
@@ -166,7 +166,7 @@ html.dark .dh-v2-brand { background: var(--color-gray-900); }
   border: 1px solid var(--color-gray-200);
   border-radius: 8px 8px 8px 0;
 }
-html.dark .dh-v2-brand__search form {
+html.uc-dark .dh-v2-brand__search form {
   background: rgba(255, 255, 255, .05);
   border-color: var(--color-gray-700);
 }
@@ -189,9 +189,9 @@ html.dark .dh-v2-brand__search form {
   text-decoration: none;
   transition: color .15s;
 }
-html.dark .dh-v2-act { color: #fff; }
+html.uc-dark .dh-v2-act { color: #fff; }
 .dh-v2-act:hover { color: var(--color-primary-700); }
-html.dark .dh-v2-act:hover { color: var(--color-primary); }
+html.uc-dark .dh-v2-act:hover { color: var(--color-primary); }
 .dh-v2-act__badge {
   position: absolute;
   top: 6px; inset-inline-end: 6px;
@@ -219,7 +219,7 @@ html.dark .dh-v2-act:hover { color: var(--color-primary); }
   border-top: 1px solid var(--color-gray-200);
   border-bottom: 1px solid var(--color-gray-200);
 }
-html.dark .dh-v2-nav {
+html.uc-dark .dh-v2-nav {
   background: var(--color-gray-900);
   border-color: var(--color-gray-700);
 }
@@ -247,7 +247,7 @@ html.dark .dh-v2-nav {
   white-space: nowrap;
   transition: color .15s;
 }
-html.dark .dh-v2-nav__list > li > a { color: #fff; }
+html.uc-dark .dh-v2-nav__list > li > a { color: #fff; }
 .dh-v2-nav__list > li > a::after {
   content: "";
   position: absolute;
@@ -263,7 +263,7 @@ html.dark .dh-v2-nav__list > li > a { color: #fff; }
 .dh-v2-nav__list > li > a:focus-visible::after,
 .dh-v2-nav__list > li > a[aria-current="page"]::after { transform: scaleX(1); }
 .dh-v2-nav__list > li > a[aria-current="page"] { color: var(--dh-cat, var(--color-primary-700)); }
-html.dark .dh-v2-nav__list > li > a[aria-current="page"] { color: #fff; }
+html.uc-dark .dh-v2-nav__list > li > a[aria-current="page"] { color: #fff; }
 .dh-v2-nav__list > li > a i { font-size: 9px; opacity: .55; }
 
 /* kimlik rengi başlık bazında */
@@ -295,7 +295,7 @@ html.dark .dh-v2-nav__list > li > a[aria-current="page"] { color: #fff; }
   transform: translateY(-6px);
   transition: opacity .16s ease, transform .16s ease, visibility .16s;
 }
-html.dark .dh-mega {
+html.uc-dark .dh-mega {
   background: var(--color-gray-900);
   box-shadow: 0 18px 40px rgba(0, 0, 0, .55);
 }
@@ -322,7 +322,7 @@ html.dark .dh-mega {
   padding: 26px 28px 30px;
 }
 .dh-mega__head { border-inline-end: 1px solid var(--color-gray-200); padding-inline-end: 28px; }
-html.dark .dh-mega__head { border-color: var(--color-gray-700); }
+html.uc-dark .dh-mega__head { border-color: var(--color-gray-700); }
 .dh-mega__title {
   display: block;
   font-size: 22px;
@@ -331,7 +331,7 @@ html.dark .dh-mega__head { border-color: var(--color-gray-700); }
   line-height: 1.12;
   color: var(--dh-cat, var(--color-gray-900));
 }
-html.dark .dh-mega__title { color: #fff; }
+html.uc-dark .dh-mega__title { color: #fff; }
 .dh-mega__job {
   margin: 8px 0 16px;
   font-size: 13px;
@@ -370,7 +370,7 @@ html.dark .dh-mega__title { color: #fff; }
   text-transform: uppercase;
   color: var(--color-gray-500);
 }
-html.dark .dh-mega__grp { border-color: var(--color-gray-700); }
+html.uc-dark .dh-mega__grp { border-color: var(--color-gray-700); }
 .dh-mega__cols ul { list-style: none; margin: 0; padding: 0; }
 .dh-mega__cols li + li { margin-top: 2px; }
 .dh-mega__cols a {
@@ -383,13 +383,13 @@ html.dark .dh-mega__grp { border-color: var(--color-gray-700); }
   text-decoration: none;
   transition: color .12s, padding-inline-start .12s;
 }
-html.dark .dh-mega__cols a { color: rgba(255, 255, 255, .78); }
+html.uc-dark .dh-mega__cols a { color: rgba(255, 255, 255, .78); }
 .dh-mega__cols a:hover,
 .dh-mega__cols a:focus-visible {
   color: var(--dh-cat, var(--color-primary-700));
   padding-inline-start: 6px;
 }
-html.dark .dh-mega__cols a:hover { color: #fff; }
+html.uc-dark .dh-mega__cols a:hover { color: #fff; }
 
 /* --- yapışkan durumda kabuk kısalır --------------------------------------- */
 .uc-navbar-container.uc-navbar-sticky .dh-v2-band { display: none; }
@@ -439,7 +439,7 @@ html.dark .dh-mega__cols a:hover { color: #fff; }
 }
 .dh-v2-off__list { list-style: none; margin: 0; padding: 0; }
 .dh-v2-off__list > li { border-bottom: 1px solid var(--color-gray-200); }
-html.dark .dh-v2-off__list > li { border-color: var(--color-gray-700); }
+html.uc-dark .dh-v2-off__list > li { border-color: var(--color-gray-700); }
 .dh-v2-off__list > li > a {
   display: flex;
   align-items: center;
@@ -450,7 +450,7 @@ html.dark .dh-v2-off__list > li { border-color: var(--color-gray-700); }
   color: var(--color-gray-900);
   text-decoration: none;
 }
-html.dark .dh-v2-off__list > li > a { color: #fff; }
+html.uc-dark .dh-v2-off__list > li > a { color: #fff; }
 .dh-v2-off__list > li > a::before {
   content: "";
   width: 3px;
@@ -478,7 +478,7 @@ html.dark .dh-v2-off__list > li > a { color: #fff; }
   color: var(--color-gray-600);
   text-decoration: none;
 }
-html.dark .dh-v2-off__list .uc-nav-sub a { color: rgba(255, 255, 255, .72); }
+html.uc-dark .dh-v2-off__list .uc-nav-sub a { color: rgba(255, 255, 255, .72); }
 .dh-v2-off__grp {
   display: block;
   margin: 10px 0 4px;
@@ -507,7 +507,7 @@ html.dark .dh-v2-off__list .uc-nav-sub a { color: rgba(255, 255, 255, .72); }
   background: var(--color-gray-50);
   border-radius: 8px 8px 8px 0;
 }
-html.dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #fff; }
+html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #fff; }
 .dh-v2-off__svc i { color: var(--color-primary); }
 
 /* ============================== 5. FOOTER ================================= */
