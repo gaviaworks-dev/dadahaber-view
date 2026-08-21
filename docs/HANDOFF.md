@@ -640,3 +640,31 @@ Yapışkan kenar sütunu ofseti bu yüzden `136` → `120` yapıldı.
   yalnız `localStorage`'da. KVKK kapsamı ayrıca ele alınmalı.
 - v1'den devreden açıklar (Gilroy lisansı, sarı zeminde beyaz metin AA,
   hukuk onayı, kulüp armaları, hamilelik tıbbi onayı) **aynen duruyor.**
+
+## v2 yayın hattı
+
+```bash
+bash docs/parts/yayinla.sh
+```
+
+Sırayla: statik denetim → `v2.css` düzleştirme → `v2` → `main` birleştirme →
+`/v1/` arşiv kopyası üretimi → push.
+
+| Betik | Ne yapar |
+|---|---|
+| `docs/parts/denetim.py` | Tarayıcısız kapı kontrolü (7 kontrol, saniyeler). Kırık bağlantı/çapa, yinelenen id, noindex, `lang="tr"`, v2 kabuğu, **v1 ile paylaşılan dosyalar değişmiş mi**. |
+| `docs/parts/duzlestir.py` | `v2.css`'in 6 `@import` parçasını tek dosyaya düzleştirir. Kaynak `docs/parts/v2.css.src`. |
+| `docs/parts/v1-kopya.py` | `v1` dalından `/v1/` klasörünü üretir (yalnız HTML, varlıklar `../assets/` üzerinden paylaşılır). |
+| `docs/parts/uret.py` + `yay.py` | Kabuğu üretir ve tüm sayfalara yayar. |
+| `docs/parts/sayfa-sablon.html` | Yeni sayfa iskeleti. |
+
+Playwright denetimi bunların yerine geçmez:
+`node audit.js http://localhost:8765/ <sayfa...>` — 1440/1000/390 + koyu tema,
+konsol hatası / 4xx / yatay taşma. Betikler `scratchpad/pw/` altında
+(`shot.js` `el.js` `foot.js` `ikon2.js` de orada).
+
+**`ikon2.js` neden var:** site FontAwesome yüklüyor ama bazı ikon adları CSS'te
+tanımlı olduğu hâlde fontta glif taşımıyor — boş kutu çiziliyor ve kutu doğru
+boyutta olduğu için ekran görüntüsünde fark edilmiyor. Betik her ikonu canvas'a
+çizip mürekkep sayıyor. v2'de bu yolla 12 ikon yakalandı ve FA5 karşılıklarıyla
+değiştirildi.

@@ -1861,3 +1861,96 @@ html.uc-dark .dh-basv__hint { color: rgba(255, 255, 255, .58); }
 
 /* Kabuk yapışkanda 104–106px; 124px = 106 + 18px nefes (A-6 ile aynı ölçü). */
 .dh-basv { scroll-margin-top: 124px; }
+
+/* ============================================================================
+   v2 / A-9 — AÇIK RIZA YÖNETİMİ (`cerezler.html#riza`)
+   Anahtarın kendisi `.dh-sw` (d-arac.css) — yeniden yazılmadı, yalnız
+   kilitli satırın ve kutunun kabuğu burada. Zorunlu çerez `disabled`:
+   tarayıcının varsayılan soluklaştırması "arıza" gibi okunuyordu, bu
+   yüzden kilit imzası ayrıca metinle ve kilit ikonuyla veriliyor.
+   ========================================================================== */
+.dh-riza {
+  margin-top: 6px;
+  border: 1px solid var(--dh-line2);
+  border-radius: 16px 16px 16px 0;
+  background: #fff;
+  overflow: hidden;
+}
+html.uc-dark .dh-riza { background: var(--color-gray-900); border-color: rgba(255, 255, 255, .14); }
+
+.dh-riza__list { padding: 4px 18px; }
+@media (min-width: 768px) { .dh-riza__list { padding: 6px 22px; } }
+
+.dh-riza__row { align-items: flex-start; padding: 16px 0; }
+.dh-riza__row .dh-sw__txt { padding-right: 4px; }
+
+/* Süre / adet bilgisi veri sesiyle: "bu bir kayıt" demek. */
+.dh-riza__k {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 8px;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-soft);
+  color: var(--color-gray-500);
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+html.uc-dark .dh-riza__k { background: rgba(255, 255, 255, .06); color: rgba(255, 255, 255, .62); }
+
+/* Kilitli satır: soluk değil, İŞARETLİ. Sol kenarda kurumsal imza + kilit. */
+.dh-riza__row.is-kilit { position: relative; padding-left: 14px; }
+.dh-riza__row.is-kilit::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 3px;
+  background: var(--dh-brand);
+}
+.dh-riza__row.is-kilit .dh-sw__txt b::after {
+  content: "\f023";               /* fas fa-lock — FA5 klasik ad karşılığı */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 11px;
+  margin-left: 8px;
+  vertical-align: 1px;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-riza__row.is-kilit .dh-sw__txt b::after { color: rgba(255, 255, 255, .6); }
+.dh-riza__row.is-kilit .dh-sw__box input:disabled { cursor: not-allowed; }
+.dh-riza__row.is-kilit .dh-sw__ui { opacity: .72; }
+
+.dh-riza__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 16px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--dh-line);
+  background: var(--dh-soft);
+}
+@media (min-width: 768px) { .dh-riza__foot { padding: 14px 22px; } }
+.dh-riza__state {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-riza__state { color: #fff; }
+.dh-riza__stamp { color: var(--color-gray-500); }
+html.uc-dark .dh-riza__stamp { color: rgba(255, 255, 255, .58); }
+
+.dh-riza__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 18px 18px;
+  border-top: 1px solid var(--dh-line);
+}
+@media (min-width: 768px) { .dh-riza__acts { padding: 16px 22px 20px; } }
+
+.dh-doc__sec .dh-riza + .dh-doc__note { margin-top: 16px; }

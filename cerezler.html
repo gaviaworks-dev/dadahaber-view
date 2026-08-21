@@ -1097,6 +1097,7 @@
             <li><a class="dh-toc__link" href="#yonetim">Çerez tercihlerinizi nasıl yönetirsiniz?</a></li>
             <li><a class="dh-toc__link" href="#degisiklik">Politikadaki değişiklikler</a></li>
             <li><a class="dh-toc__link" href="#iletisim">Sorularınız için</a></li>
+            <li><a class="dh-toc__link" href="#riza">Açık rıza yönetimi</a></li>
             </ol>
           </nav>
           </aside>
@@ -1162,6 +1163,83 @@
               <span class="dh-doc__num">Bölüm 07</span>
               <h2 class="dh-doc__h">Sorularınız için</h2>
               <p>Çerez uygulamalarımıza ilişkin sorularınızı <a href="mailto:kvkk@dadahaber.com">kvkk@dadahaber.com</a> adresine iletebilir veya <a href="iletisim.html">iletişim sayfamızdaki</a> formu kullanabilirsiniz.</p>
+            </section>
+            <!-- v2 · AÇIK RIZA YÖNETİMİ — kabuğun "Yasal" sütunu ve çerez
+                 bildiriminin "Çerezleri" bağlantısı buraya iniyor.
+                 Tercih yalnız localStorage'a yazılır: assets/js/v2/dh-riza.js
+                 Veri sözleşmesi o dosyanın başındaki blokta. -->
+            <section class="dh-doc__sec" id="riza">
+              <span class="dh-doc__num">Bölüm 08</span>
+              <h2 class="dh-doc__h">Açık rıza yönetimi</h2>
+              <p>Zorunlu çerezler dışındaki her çerez, siz açmadıkça çalışmaz. Tercihinizi burada dilediğiniz zaman değiştirebilir ya da tümüyle silebilirsiniz. Seçiminiz yalnız bu tarayıcı için geçerlidir; başka bir cihazda yeniden sorulur.</p>
+
+              <div class="dh-riza" data-dh-riza>
+                <div class="dh-riza__list">
+
+                  <div class="dh-sw dh-sw--static dh-riza__row is-kilit">
+                    <span class="dh-sw__txt">
+                      <b>Zorunlu çerezler</b>
+                      <small>Oturum açma, güvenlik, tema tercihi ve sayfa dilinin çalışması için gerekli. Kapatılamaz: kapatıldığında site bir işlev kaybetmez, hiç çalışmaz. Yasal dayanak açık rıza değil, meşru menfaattir.</small>
+                      <span class="dh-riza__k dh-num">OTURUM SÜRESİ · 8 ÇEREZ</span>
+                    </span>
+                    <span class="dh-sw__box">
+                      <input type="checkbox" checked disabled aria-label="Zorunlu çerezler — her zaman açık, kapatılamaz">
+                      <span class="dh-sw__ui" aria-hidden="true"><span class="dh-sw__knob"></span></span>
+                    </span>
+                  </div>
+
+                  <label class="dh-sw dh-riza__row" for="rz-islevsel">
+                    <span class="dh-sw__txt">
+                      <b>İşlevsel çerezler</b>
+                      <small>Seçtiğiniz şehri, takip ettiğiniz takımı, yazı boyutunu ve haber dinleme hızını hatırlar. Kapalıyken bu tercihler her ziyarette sıfırlanır.</small>
+                      <span class="dh-riza__k dh-num">12 AY · 5 ÇEREZ</span>
+                    </span>
+                    <span class="dh-sw__box">
+                      <input type="checkbox" id="rz-islevsel" data-dh-riza-alan="islevsel">
+                      <span class="dh-sw__ui" aria-hidden="true"><span class="dh-sw__knob"></span></span>
+                    </span>
+                  </label>
+
+                  <label class="dh-sw dh-riza__row" for="rz-analitik">
+                    <span class="dh-sw__txt">
+                      <b>Analitik çerezler</b>
+                      <small>Hangi haberin okunduğunu, sayfanın nerede terk edildiğini ve hataların nerede oluştuğunu topluca ölçer. Veriler kimliğinizle eşleştirilmez, IP adresi kısaltılarak işlenir.</small>
+                      <span class="dh-riza__k dh-num">24 AY · 4 ÇEREZ</span>
+                    </span>
+                    <span class="dh-sw__box">
+                      <input type="checkbox" id="rz-analitik" data-dh-riza-alan="analitik">
+                      <span class="dh-sw__ui" aria-hidden="true"><span class="dh-sw__knob"></span></span>
+                    </span>
+                  </label>
+
+                  <label class="dh-sw dh-riza__row" for="rz-pazarlama">
+                    <span class="dh-sw__txt">
+                      <b>Pazarlama çerezleri</b>
+                      <small>Reklamların ilgi alanınıza göre seçilmesini ve aynı reklamı tekrar tekrar görmemenizi sağlar. Kapalıyken reklam görmeye devam edersiniz; reklamlar kişiselleştirilmez.</small>
+                      <span class="dh-riza__k dh-num">6 AY · 9 ÇEREZ · ÜÇÜNCÜ TARAF</span>
+                    </span>
+                    <span class="dh-sw__box">
+                      <input type="checkbox" id="rz-pazarlama" data-dh-riza-alan="pazarlama">
+                      <span class="dh-sw__ui" aria-hidden="true"><span class="dh-sw__knob"></span></span>
+                    </span>
+                  </label>
+
+                </div>
+
+                <div class="dh-riza__foot">
+                  <p class="dh-riza__state" data-dh-riza-durum role="status">Henüz bir tercih kaydetmediniz. Zorunlu çerezler dışında hiçbir çerez çalışmıyor.</p>
+                  <span class="dh-riza__stamp dh-num" data-dh-riza-damga>Kayıt yok</span>
+                </div>
+
+                <div class="dh-riza__acts">
+                  <button type="button" class="dh-btn" data-dh-riza-eylem="tumu"><i class="fas fa-check" aria-hidden="true"></i> Tümünü kabul et</button>
+                  <button type="button" class="dh-btn dh-btn--ghost" data-dh-riza-eylem="zorunlu">Yalnız zorunlu</button>
+                  <button type="button" class="dh-btn dh-btn--ghost" data-dh-riza-eylem="kaydet">Seçimimi kaydet</button>
+                  <button type="button" class="dh-btn dh-btn--ghost" data-dh-riza-eylem="sil"><i class="fas fa-trash-alt" aria-hidden="true"></i> Tercihi sil</button>
+                </div>
+              </div>
+
+              <div class="dh-doc__note">Tercihiniz bu tarayıcının yerel depolamasında <span class="dh-num">dh-riza</span> anahtarıyla saklanır; sunucuya gönderilmez. Tarayıcı verilerini temizlerseniz kayıt silinir ve seçim yeniden sorulur. Bu sayfa prototiptir: anahtarlar tercihi saklar, gerçek çerez yazmaz.</div>
             </section>
             <footer class="dh-doc__foot">Bu metin Dada İst Ajans Hizmetleri Ticaret Limited Şirketi tarafından yayımlanmıştır. Sürüm 2.1 — 27 Ocak 2026.</footer>
           </div>
@@ -1424,6 +1502,7 @@
     <!-- include app script -->
     <script defer src="./assets/js/app.js"></script>
     <script defer src="./assets/js/v2/dh-v2-nav.js"></script>
+    <script defer src="./assets/js/v2/dh-riza.js"></script>
 
     <!-- footer perdesi -->
 
