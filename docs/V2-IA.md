@@ -86,11 +86,11 @@ Her mega menü paneli şu iskeleti taşır:
 `gruplanmış bağlantı sütunları`.
 
 ### 4.1 Şimdi — "Günün anlık gelişmelerinin toplandığı canlı merkezdir."
-Son Dakika `son-dakika.html` · Canlı Gündem `simdi.html#canli` ·
-Canlı Yayın `video.html#canli` · Dakika Dakika `simdi.html#dakika` ·
-Bugün Ne Oldu? `simdi.html#bugun` · Gündem Takvimi `simdi.html#takvim` ·
-Güncellenen Haberler `simdi.html#guncellenen` · Afet ve Acil Durum `simdi.html#afet` ·
-Trafik ve Ulaşım `simdi.html#trafik` · Hava Durumu `veri-harita.html#hava`
+Son Dakika `son-dakika.html` · Canlı Gündem `anlik.html#canli` ·
+Canlı Yayın `video.html#canli` · Dakika Dakika `anlik.html#dakika` ·
+Bugün Ne Oldu? `anlik.html#bugun` · Gündem Takvimi `anlik.html#takvim` ·
+Güncellenen Haberler `anlik.html#guncellenen` · Afet ve Acil Durum `anlik.html#afet` ·
+Trafik ve Ulaşım `anlik.html#trafik` · Hava Durumu `veri-harita.html#hava`
 
 ### 4.2 Gündem
 **Temel kategoriler:** Siyaset · Türkiye · Toplum · Hukuk · Güvenlik · Eğitim · Çevre · Afet

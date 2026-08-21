@@ -30,6 +30,10 @@ def isle(yol):
     orj = s
     rapor = []
 
+    # Yönlendirme/uyumluluk sayfalarında kabuk yok — atlanır.
+    if 'http-equiv="refresh"' in s:
+        return ["atlandi"], None
+
     # 1) offcanvas
     i = s.find('<div id="uc-menu-panel"')
     if i != -1:
@@ -90,10 +94,35 @@ def isle(yol):
             s = s[:m.end()] + '    <script defer src="./assets/js/v2/dh-v2-nav.js"></script>\n' + s[m.end():]
             rapor.append("navjs")
 
+    # 4c) perdeleme menü + kullanıcı menüsü betiği
+    if "js/v2/dh-v2-menu.js" not in s:
+        m = re.search(r'[ \t]*<script defer src="\./assets/js/v2/dh-v2-nav\.js"></script>[ \t]*\n', s)
+        if m:
+            s = s[:m.end()] + '    <script defer src="./assets/js/v2/dh-v2-menu.js"></script>\n' + s[m.end():]
+            rapor.append("menujs")
+
     # 5) yapışkan kenar sütunu ofseti: 136 → 120 (yeni kabuk yapışkanda 104px)
     if "offset: 136" in s:
         s = s.replace("offset: 136", "offset: 120")
         rapor.append("offset")
+
+    # 6) sağ alttaki tema (siyah-beyaz ekran) anahtarı kaldırılır.
+    #    Yukarı çık düğmesi kalır; yerinde boşluk veya görünmez tıklama alanı bırakılmaz.
+    while True:
+        i = s.find('<div class="darkmode-trigger')
+        if i == -1:
+            break
+        b = satir_basi(s, i)
+        e = kapat_div(s, i)
+        if e == -1:
+            return None, "darkmode-trigger kapanmıyor"
+        while e < len(s) and s[e] in " \t":
+            e += 1
+        if e < len(s) and s[e] == "\n":
+            e += 1
+        s = s[:b] + s[e:]
+        if "temasiz" not in rapor:
+            rapor.append("temasiz")
 
     if s != orj:
         open(yol, "w", encoding="utf-8").write(s)
@@ -106,7 +135,7 @@ for yol in sorted(glob.glob("*.html")):
         atla.append((yol, hata))
     else:
         ok += 1
-        eksik = [x for x in ("menu", "header", "footer") if x not in r]
+        eksik = [] if "atlandi" in r else [x for x in ("menu", "header", "footer") if x not in r]
         if eksik:
             atla.append((yol, "eksik: " + ",".join(eksik)))
 print("işlenen: %d" % ok)
