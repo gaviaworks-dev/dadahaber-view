@@ -1909,16 +1909,16 @@ html.uc-dark .dh-riza__k { background: rgba(255, 255, 255, .06); color: rgba(255
   width: 3px;
   background: var(--dh-brand);
 }
-.dh-riza__row.is-kilit .dh-sw__txt b::after {
-  content: "\f023";               /* fas fa-lock — FA5 klasik ad karşılığı */
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  font-size: 11px;
+/* Kilit ikonu MARKUP'ta (`<i class="fas fa-lock">`): bu kurulumda FA ailesi
+   "Font Awesome 6 Pro" adıyla geliyor, CSS ::after ile glif çağırmak kırılgan
+   (ölçüldü: "Font Awesome 5 Free" ile boş kutu çiziliyordu). */
+.dh-riza__row.is-kilit .dh-sw__txt b .fa-lock {
   margin-left: 8px;
+  font-size: 11px;
   vertical-align: 1px;
   color: var(--color-gray-500);
 }
-html.uc-dark .dh-riza__row.is-kilit .dh-sw__txt b::after { color: rgba(255, 255, 255, .6); }
+html.uc-dark .dh-riza__row.is-kilit .dh-sw__txt b .fa-lock { color: rgba(255, 255, 255, .6); }
 .dh-riza__row.is-kilit .dh-sw__box input:disabled { cursor: not-allowed; }
 .dh-riza__row.is-kilit .dh-sw__ui { opacity: .72; }
 
@@ -1954,3 +1954,470 @@ html.uc-dark .dh-riza__stamp { color: rgba(255, 255, 255, .58); }
 @media (min-width: 768px) { .dh-riza__acts { padding: 16px 22px 20px; } }
 
 .dh-doc__sec .dh-riza + .dh-doc__note { margin-top: 16px; }
+
+/* ============================================================================
+   v2 / A-10 — EKİBİMİZ (`kunye.html#ekip`)
+   Kişi kartı `.dh-person` (custom.min.css) — yeniden yazılmadı.
+   Buradaki tek iş: bölümün giriş cümlesi ve çapa yaslaması.
+   ========================================================================== */
+.dh-ekip { scroll-margin-top: 124px; }
+.dh-ekip__lead {
+  margin: -6px 0 18px;
+  max-width: 76ch;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-ekip__lead { color: rgba(255, 255, 255, .74); }
+.dh-ekip .dh-note { margin-top: 18px; }
+
+/* ============================================================================
+   v2 / A-11 — SPONSORLUK (`reklam.html#sponsorluk`)
+   Paket kartı: ikon + başlık + ne olduğu + üç satırlık KAYIT (süre/görünüm/
+   etiket). Kayıt satırları veri sesiyle (`.dh-num`) yazılıyor — "bu bir
+   sözleşme kalemi" demek. Kutu `.dh-box`, koyu tema karşılığı zaten var.
+   ========================================================================== */
+.dh-spon { scroll-margin-top: 124px; }
+.dh-spon__lead {
+  margin: -6px 0 20px;
+  max-width: 82ch;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-spon__lead { color: rgba(255, 255, 255, .74); }
+.dh-spon__lead a { color: var(--dh-menu-ink); text-decoration: underline; text-underline-offset: 2px; }
+html.uc-dark .dh-spon__lead a { color: var(--dh-brand); }
+
+.dh-sponlist {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .dh-sponlist { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .dh-sponlist { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.dh-sponcard { display: flex; flex-direction: column; padding: 20px; }
+.dh-sponcard__ic {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 12px;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-a-soft);
+  color: var(--color-gray-900);
+  font-size: 15px;
+}
+html.uc-dark .dh-sponcard__ic { background: rgba(252, 182, 35, .18); color: #fff; }
+.dh-sponcard__t {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -.015em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-sponcard__t { color: #fff; }
+.dh-sponcard__p {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-sponcard__p { color: rgba(255, 255, 255, .72); }
+
+.dh-sponcard__rows { margin: auto 0 0; padding-top: 12px; border-top: 1px solid var(--dh-line); }
+.dh-sponcard__rows > div {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 4px 10px;
+  padding: 5px 0;
+}
+.dh-sponcard__rows dt {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-sponcard__rows dt { color: rgba(255, 255, 255, .6); }
+.dh-sponcard__rows dd {
+  margin: 0;
+  min-width: 0;
+  color: var(--color-gray-900);
+  overflow-wrap: anywhere;
+}
+html.uc-dark .dh-sponcard__rows dd { color: rgba(255, 255, 255, .88); }
+
+.dh-spon .dh-doc__note { margin-top: 18px; }
+
+/* ============================================================================
+   v2 / A-12 — PİYASALAR EKRANI'nın eksik dört kalemi (`finans.html`)
+   Akaryakıt · Faiz · Ekonomik Takvim · Günlük Değişim Grafikleri.
+   Panel kabuğu `.dh-finpanel`, tablo `.dh-fintable`, grafik `.dh-finchart`
+   — üçü de mevcut, yeniden yazılmadı. Buradaki iş: ızgara, takvim satırı
+   ve grafik kartının başlığı.
+
+   ⚠ SVG NOTU: uni-core'un `svg :not([fill=none]) { fill: currentColor }`
+   kuralı `fill="var(--x)"` SUNUM NİTELİĞİNİ yeniyor. Bu yüzden grafikte
+   hiçbir sunum niteliği kullanılmadı; boyama tamamen `.dh-finchart__area/
+   __line/__base` sınıfları üzerinden (custom.min.css) yapılıyor.
+   ========================================================================== */
+.dh-ekran {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 992px) {
+  .dh-ekran { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .dh-ekran__wide { grid-column: 1 / -1; }
+}
+/* Çapa hedefleri yapışkan kabuğun altında kalsın (ölçüm: A-6 ile aynı). */
+.dh-ekran > .dh-finpanel { scroll-margin-top: 124px; }
+.dh-finsec--ekran { padding-top: 8px; }
+
+/* ---------------------------------------------------------- ekonomik takvim
+   Satır: NE ZAMAN (mono) · NE (ülke + ad + önceki/beklenti) · ETKİ.
+   Etki derecesi RENKLE değil metinle ayrışır; sol kenardaki kalınlık yalnız
+   ikincil bir imzadır (gri baskıda da görülür). */
+.dh-tkvm { margin: 0; padding: 0; list-style: none; }
+.dh-tkvm__it {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 4px 14px;
+  padding: 13px 0 13px 12px;
+  border-left: 3px solid var(--dh-line);
+}
+.dh-tkvm__it + .dh-tkvm__it { border-top: 1px solid var(--dh-line); }
+.dh-tkvm__it[data-onem="yuksek"] { border-left-color: var(--color-gray-900); }
+html.uc-dark .dh-tkvm__it[data-onem="yuksek"] { border-left-color: #fff; }
+.dh-tkvm__it[data-onem="orta"] { border-left-color: var(--color-gray-400); }
+
+.dh-tkvm__when {
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-tkvm__when { color: rgba(255, 255, 255, .6); }
+.dh-tkvm__when b {
+  font-family: var(--dh-mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-tkvm__when b { color: #fff; }
+
+.dh-tkvm__what { display: block; min-width: 0; }
+.dh-tkvm__ulke {
+  display: block;
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-tkvm__ulke { color: rgba(255, 255, 255, .6); }
+.dh-tkvm__ad {
+  display: block;
+  margin-top: 2px;
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-tkvm__ad { color: #fff; }
+.dh-tkvm__nums {
+  display: block;
+  margin-top: 5px;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-tkvm__nums { color: rgba(255, 255, 255, .58); }
+
+.dh-tkvm__onem {
+  grid-column: 2;
+  justify-self: start;
+  margin-top: 8px;
+  padding: 3px 9px;
+  border: 1px solid var(--dh-line2);
+  border-radius: 8px 8px 8px 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-tkvm__onem { color: rgba(255, 255, 255, .72); }
+.dh-tkvm__it[data-onem="yuksek"] .dh-tkvm__onem {
+  background: var(--color-gray-900);
+  border-color: transparent;
+  color: #fff;
+}
+html.uc-dark .dh-tkvm__it[data-onem="yuksek"] .dh-tkvm__onem {
+  background: #fff;
+  color: var(--color-gray-900);
+}
+/* "Bugün" satırı: kurumsal imza soldaki şeritte, metin değişmiyor. */
+.dh-tkvm__it.is-now { background: var(--dh-a-soft); }
+
+@media (max-width: 479.98px) {
+  .dh-tkvm__it { grid-template-columns: 1fr; }
+  .dh-tkvm__when { grid-row: auto; flex-direction: row; align-items: baseline; gap: 8px; }
+  .dh-tkvm__onem { grid-column: 1; }
+}
+
+/* -------------------------------------------------- günlük değişim grafiği */
+.dh-grafikler {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 560px) { .dh-grafikler { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .dh-grafikler { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.dh-grafik { margin: 0; min-width: 0; }
+.dh-grafik__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--dh-line);
+}
+.dh-grafik__name {
+  flex: 1 1 100%;
+  font-family: var(--dh-mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-grafik__name { color: rgba(255, 255, 255, .62); }
+.dh-grafik__val {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-grafik__val { color: #fff; }
+.dh-grafik .dh-finchart { margin-top: 10px; }
+.dh-grafik__rng { margin: 8px 0 0; color: var(--color-gray-500); }
+html.uc-dark .dh-grafik__rng { color: rgba(255, 255, 255, .58); }
+
+/* Izgarada iki panel eşit yükseklikte uzuyor ama `.dh-finpanel__body` esnemiyordu;
+   ölçümde kısa panelin dipnotu gövdenin hemen altında, kutunun ortasında kalıyordu
+   (faiz paneli: dipnot y=592, kutu dibi y=1020). Dipnot dibe yaslandı. */
+.dh-ekran > .dh-finpanel > .dh-finpanel__foot { margin-top: auto; }
+
+/* ============================================================================
+   v2 / A-13 — BRANŞ MERKEZLERİ (`spor.html#tenis|#atletizm|#motor`)
+   Panelin kendisi `.dh-sport` (custom.min.css) — yeniden yazılmadı.
+   Buradaki tek iş çapa yaslaması: 13 spor sayfasının dal şeridi ve Spor
+   mega menüsü bu üç çapaya iniyor, hedef yapışkan kabuğun altında kalmalı.
+   ========================================================================== */
+.dh-brans { scroll-margin-top: 124px; }
+
+/* `.dh-mcrail` yatay bir raydır (grid-auto-flow: column, 252px sütun). Branş
+   paneli 6 sütunluk ızgarada duruyor; ölçümde iki maç kartı 252px'e sıkışıp
+   oyuncu adları kırpılıyordu ("Jannik …" / "Daniil …"). Ray burada tek
+   sütuna indirildi: kart tam genişlik alıyor, ad kırpılmıyor. */
+.dh-brans .dh-mcrail {
+  grid-auto-flow: row;
+  grid-auto-columns: auto;
+  grid-template-columns: minmax(0, 1fr);
+  overflow-x: visible;
+}
+/* Medya sorgusu viewport'u ölçer, kolonu değil: 1440px'te panel yalnız 608px
+   ve iki sütun yine kırpıyordu (ölçüldü). Ray her genişlikte tek sütun. */
+
+/* Canlı Skor (`fikstur.html#canli`) — panel `.dh-sport--tape`, ray yatay
+   kalmalı; bu yüzden `.dh-brans` verilmedi (o sınıf rayı tek sütuna indiriyor).
+   Çapa yaslaması id ile, `#iller` kalıbındaki gibi. */
+#canli { scroll-margin-top: 124px; }
+
+/* ============================================================================
+   v2 / A-15 — YAZI KOLEKSİYONLARI (`yazar-liste.html`)
+   Dokuz çapa, dokuz ayrı yazı TÜRÜ. Ortak bileşen `.dh-ykol`:
+   başlık bloğu + satır listesi. Kişi listeleri (`--kisi`) mevcut
+   `.dh-wgrid/.dh-wcard`ı yeniden kullanıyor, yenisi yazılmadı.
+   Etiket (`.dh-etiket`, e-detay.css) her satırda görünür — dokümanın
+   "her görüş içeriğinde görünür Görüş/Analiz/Yorum etiketi" zorunluluğu.
+   ========================================================================== */
+.dh-ykol { scroll-margin-top: 124px; }
+.dh-ykol + .dh-ykol { margin-top: 34px; }
+
+.dh-ykol__hd {
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--dh-line2);
+}
+.dh-ykol__k {
+  display: block;
+  font-family: var(--dh-mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-ykol__k { color: rgba(255, 255, 255, .62); }
+.dh-ykol__t {
+  margin: 4px 0 0;
+  font-size: clamp(19px, 2.1vw, 25px);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -.02em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-ykol__t { color: #fff; }
+.dh-ykol__p {
+  margin: 8px 0 0;
+  max-width: 88ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-ykol__p { color: rgba(255, 255, 255, .74); }
+
+.dh-ykol__list { margin: 0; padding: 0; list-style: none; }
+.dh-ykol__it {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 4px 18px;
+  padding: 13px 0;
+}
+.dh-ykol__it + .dh-ykol__it { border-top: 1px solid var(--dh-line); }
+
+/* "Güncel Yazılar" satırı zaman sütunu taşır — kronoloji bilgidir. */
+.dh-ykol__gun {
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 66px;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-ykol__gun { color: rgba(255, 255, 255, .6); }
+.dh-ykol__gun b {
+  font-family: var(--dh-mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-ykol__gun b { color: #fff; }
+.dh-ykol__it:has(.dh-ykol__gun) { grid-template-columns: 66px minmax(0, 1fr); }
+
+.dh-ykol__link {
+  display: block;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+.dh-ykol__baslik {
+  display: inline;
+  margin-left: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -.01em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-ykol__baslik { color: #fff; }
+.dh-ykol__link:hover .dh-ykol__baslik,
+.dh-ykol__link:focus-visible .dh-ykol__baslik {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--dh-brand);
+}
+.dh-ykol__meta {
+  justify-self: end;
+  text-align: right;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+}
+html.uc-dark .dh-ykol__meta { color: rgba(255, 255, 255, .58); }
+.dh-ykol__it:has(.dh-ykol__gun) .dh-ykol__meta {
+  grid-column: 2;
+  justify-self: start;
+  text-align: left;
+  margin-top: 2px;
+}
+
+.dh-ykol__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--dh-line);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--dh-menu-ink);
+  text-decoration: none;
+}
+html.uc-dark .dh-ykol__all { color: var(--dh-brand); }
+.dh-ykol__all:hover { text-decoration: underline; text-underline-offset: 3px; }
+.dh-ykol__all i { font-size: 11px; }
+
+.dh-ykol__p .dh-etiket { margin: 0 2px; }
+
+/* Meta satırı 640px altında başlığın altına iner: tek satırda ikisi
+   birden sığmıyordu (ölçüldü, 390px'te künye kırpılıyordu). */
+@media (max-width: 639.98px) {
+  .dh-ykol__it,
+  .dh-ykol__it:has(.dh-ykol__gun) { grid-template-columns: minmax(0, 1fr); }
+  .dh-ykol__gun { grid-row: auto; flex-direction: row; align-items: baseline; gap: 8px; width: auto; }
+  .dh-ykol__meta,
+  .dh-ykol__it:has(.dh-ykol__gun) .dh-ykol__meta {
+    grid-column: 1;
+    justify-self: start;
+    text-align: left;
+    margin-top: 4px;
+    white-space: normal;
+  }
+}
+
+/* --------------------------------------------------------------- arşiv dizini */
+.dh-yarsiv { display: grid; gap: 20px; }
+.dh-yarsiv__lbl {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-yarsiv__lbl { color: rgba(255, 255, 255, .6); }
+.dh-yarsiv__row { display: flex; flex-wrap: wrap; gap: 8px; }
+.dh-yarsiv__row--harf .dh-chip { min-width: 38px; justify-content: center; }
+
+.dh-yarsiv__eski {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--dh-line);
+}
+.dh-yarsiv__list { margin: 0; padding: 0; list-style: none; }
+.dh-yarsiv__list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 10px 0;
+}
+.dh-yarsiv__list li + li { border-top: 1px solid var(--dh-line); }
+.dh-yarsiv__list a {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  text-decoration: none;
+}
+html.uc-dark .dh-yarsiv__list a { color: #fff; }
+.dh-yarsiv__list a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.dh-yarsiv__list span { color: var(--color-gray-500); }
+html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
+.dh-ykol--arsiv .dh-note { margin-top: 20px; }
+
+/* `hamilelik-detay.html` → `hamilelik.html#hafta-20`. `dh-gebelik.js` hash'i
+   zaten okuyup 20. haftayı seçiyordu (satır 175), ama sayfada o id'yi taşıyan
+   bir eleman YOKTU: bağlantı sayfanın tepesine düşüyordu. id, eksendeki 20.
+   hafta düğmesine verildi — tarayıcı hem dikey kaydırıyor hem yatay şeridi
+   o haftaya getiriyor. Şerit .dh-catbar içinde kendi kaydırma bağlamında. */
+#hafta-20 { scroll-margin-top: 190px; }

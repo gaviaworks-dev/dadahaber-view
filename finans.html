@@ -2333,6 +2333,324 @@
     </section>
 
     <!-- Yatırım danışmanlığı uyarısı — yasal metin, sayfa sonunda tam genişlikte. -->
+    <!-- v2/A-12 — PİYASALAR EKRANI'nın eksik dört kalemi (V2-IA 4.4).
+         Kabuğun Ekonomi mega menüsü ve footer'ı bu dört çapaya iniyordu;
+         karşılıkları yoktu. Bileşenler mevcut fin ailesinden: .dh-finpanel
+         kabuk, .dh-fintable tablo, .dh-finchart grafik. Yeni grafik
+         kütüphanesi EKLENMEDİ — satır içi SVG. -->
+    <section class="section dh-finsec dh-finsec--ekran">
+      <div class="container max-w-xl">
+
+        <div class="dh-sec">
+          <h2 class="dh-sec__t">Piyasalar Ekranı</h2>
+          <span class="dh-sec__n dh-num">20 AĞUSTOS 2026 · 18.54 · 15 DAKİKA GECİKMELİ</span>
+        </div>
+
+        <div class="dh-ekran">
+
+          <!-- AKARYAKIT -->
+          <section class="dh-finpanel dh-ekran__wide" id="akaryakit" data-cat="finans" aria-labelledby="fin-akar-b">
+            <div class="dh-finpanel__head">
+              <div>
+                <h3 class="dh-finpanel__title" id="fin-akar-b">Akaryakıt Fiyatları</h3>
+                <span class="dh-finpanel__sub">Pompa fiyatları · litre · 20 Ağustos 2026, 06.00 itibarıyla</span>
+              </div>
+              <div class="dh-finpanel__tools">
+                <a class="dh-finpanel__more" href="finans-detay.html">Tüm iller</a>
+              </div>
+            </div>
+            <div class="dh-finpanel__body">
+              <div class="dh-fintable__scroll">
+                <table class="dh-fintable">
+                  <caption class="sr-only">İllere göre benzin, motorin ve LPG pompa fiyatları</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">İl</th>
+                      <th scope="col" class="is-num">Benzin</th>
+                      <th scope="col" class="is-num">Motorin</th>
+                      <th scope="col" class="is-num">LPG</th>
+                      <th scope="col" class="is-num">Haftalık</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-dir="up">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">34</span><span class="dh-fintable__desc">İstanbul (Avrupa)</span></th>
+                      <td class="is-num">53,18</td>
+                      <td class="is-num">55,74</td>
+                      <td class="is-num">27,42</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%1,10<span class="sr-only"> arttı</span></span></td>
+                    </tr>
+                    <tr data-dir="up">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">34</span><span class="dh-fintable__desc">İstanbul (Anadolu)</span></th>
+                      <td class="is-num">53,04</td>
+                      <td class="is-num">55,60</td>
+                      <td class="is-num">27,35</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%1,08<span class="sr-only"> arttı</span></span></td>
+                    </tr>
+                    <tr data-dir="up">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">06</span><span class="dh-fintable__desc">Ankara</span></th>
+                      <td class="is-num">54,01</td>
+                      <td class="is-num">56,63</td>
+                      <td class="is-num">27,88</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%1,12<span class="sr-only"> arttı</span></span></td>
+                    </tr>
+                    <tr data-dir="up">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">35</span><span class="dh-fintable__desc">İzmir</span></th>
+                      <td class="is-num">54,26</td>
+                      <td class="is-num">56,90</td>
+                      <td class="is-num">28,04</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%1,15<span class="sr-only"> arttı</span></span></td>
+                    </tr>
+                    <tr data-dir="flat">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">01</span><span class="dh-fintable__desc">Adana</span></th>
+                      <td class="is-num">53,72</td>
+                      <td class="is-num">56,21</td>
+                      <td class="is-num">27,66</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,00<span class="sr-only"> değişmedi</span></span></td>
+                    </tr>
+                    <tr data-dir="up">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">27</span><span class="dh-fintable__desc">Gaziantep</span></th>
+                      <td class="is-num">53,65</td>
+                      <td class="is-num">56,14</td>
+                      <td class="is-num">27,59</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,94<span class="sr-only"> arttı</span></span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="dh-finpanel__foot">Pompa fiyatı ilden ile ve dağıtıcıya göre değişir. Fiyatın yaklaşık üçte ikisi ÖTV ve KDV'dir; vergi payı akaryakıt cinsine göre farklıdır.</div>
+          </section>
+
+          <!-- FAİZ -->
+          <section class="dh-finpanel" id="faiz" data-cat="finans" aria-labelledby="fin-faiz-b">
+            <div class="dh-finpanel__head">
+              <div>
+                <h3 class="dh-finpanel__title" id="fin-faiz-b">Faiz Oranları</h3>
+                <span class="dh-finpanel__sub">Yıllık · bankalar arası ortalama · 20 Ağustos 2026</span>
+              </div>
+              <div class="dh-finpanel__tools">
+                <a class="dh-finpanel__more" href="finans-detay.html">Ayrıntı</a>
+              </div>
+            </div>
+            <div class="dh-finpanel__body">
+              <div class="dh-fintable__scroll">
+                <table class="dh-fintable">
+                  <caption class="sr-only">Politika faizi, mevduat ve kredi faiz oranları</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Kalem</th>
+                      <th scope="col" class="is-num">Oran</th>
+                      <th scope="col" class="is-num">Önceki</th>
+                      <th scope="col" class="is-num">Değişim</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-dir="down">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">TCMB</span><span class="dh-fintable__desc">Politika faizi</span></th>
+                      <td class="is-num">%32,50</td>
+                      <td class="is-num">%35,00</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>2,50 puan<span class="sr-only"> düştü</span></span></td>
+                    </tr>
+                    <tr data-dir="down">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">MEV</span><span class="dh-fintable__desc">Mevduat (32 gün)</span></th>
+                      <td class="is-num">%38,20</td>
+                      <td class="is-num">%40,75</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>2,55 puan<span class="sr-only"> düştü</span></span></td>
+                    </tr>
+                    <tr data-dir="down">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">KON</span><span class="dh-fintable__desc">Konut kredisi</span></th>
+                      <td class="is-num">%2,89</td>
+                      <td class="is-num">%3,04</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>0,15 puan<span class="sr-only"> düştü</span></span></td>
+                    </tr>
+                    <tr data-dir="flat">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">TAŞ</span><span class="dh-fintable__desc">Taşıt kredisi</span></th>
+                      <td class="is-num">%3,42</td>
+                      <td class="is-num">%3,42</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>değişmedi</span></td>
+                    </tr>
+                    <tr data-dir="up">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">İHT</span><span class="dh-fintable__desc">İhtiyaç kredisi</span></th>
+                      <td class="is-num">%4,18</td>
+                      <td class="is-num">%4,05</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>0,13 puan<span class="sr-only"> arttı</span></span></td>
+                    </tr>
+                    <tr data-dir="flat">
+                      <th scope="row" class="dh-fintable__name"><span class="dh-fintable__code">KK</span><span class="dh-fintable__desc">Kredi kartı azami</span></th>
+                      <td class="is-num">%4,25</td>
+                      <td class="is-num">%4,25</td>
+                      <td class="is-num"><span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>değişmedi</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="dh-finpanel__foot">Politika faizi ve mevduat yıllık, kredi oranları aylık gösterilir. Banka ve müşteri profiline göre uygulanan oran değişebilir.</div>
+          </section>
+
+          <!-- EKONOMİK TAKVİM -->
+          <section class="dh-finpanel" id="takvim" data-cat="finans" aria-labelledby="fin-takvim-b">
+            <div class="dh-finpanel__head">
+              <div>
+                <h3 class="dh-finpanel__title" id="fin-takvim-b">Ekonomik Takvim</h3>
+                <span class="dh-finpanel__sub">Bu hafta açıklanacak veriler · saatler Türkiye saati</span>
+              </div>
+              <div class="dh-finpanel__tools">
+                <a class="dh-finpanel__more" href="finans-detay.html">Tüm takvim</a>
+              </div>
+            </div>
+            <div class="dh-finpanel__body">
+              <ol class="dh-tkvm">
+                <li class="dh-tkvm__it is-now" data-onem="yuksek">
+                  <span class="dh-tkvm__when dh-num"><b>BUGÜN</b>10.00</span>
+                  <span class="dh-tkvm__what">
+                    <span class="dh-tkvm__ulke">Türkiye</span>
+                    <span class="dh-tkvm__ad">Tüketici Güven Endeksi · Ağustos</span>
+                    <span class="dh-tkvm__nums dh-num">ÖNCEKİ 84,1 · BEKLENTİ 85,0</span>
+                  </span>
+                  <span class="dh-tkvm__onem">Yüksek etki</span>
+                </li>
+                <li class="dh-tkvm__it" data-onem="orta">
+                  <span class="dh-tkvm__when dh-num"><b>BUGÜN</b>15.30</span>
+                  <span class="dh-tkvm__what">
+                    <span class="dh-tkvm__ulke">ABD</span>
+                    <span class="dh-tkvm__ad">Haftalık İşsizlik Başvuruları</span>
+                    <span class="dh-tkvm__nums dh-num">ÖNCEKİ 221 BİN · BEKLENTİ 218 BİN</span>
+                  </span>
+                  <span class="dh-tkvm__onem">Orta etki</span>
+                </li>
+                <li class="dh-tkvm__it" data-onem="yuksek">
+                  <span class="dh-tkvm__when dh-num"><b>21 AĞU</b>14.00</span>
+                  <span class="dh-tkvm__what">
+                    <span class="dh-tkvm__ulke">Türkiye</span>
+                    <span class="dh-tkvm__ad">TCMB Para Politikası Kurulu · Faiz Kararı</span>
+                    <span class="dh-tkvm__nums dh-num">ÖNCEKİ %35,00 · BEKLENTİ %32,50</span>
+                  </span>
+                  <span class="dh-tkvm__onem">Yüksek etki</span>
+                </li>
+                <li class="dh-tkvm__it" data-onem="orta">
+                  <span class="dh-tkvm__when dh-num"><b>22 AĞU</b>11.00</span>
+                  <span class="dh-tkvm__what">
+                    <span class="dh-tkvm__ulke">Euro Bölgesi</span>
+                    <span class="dh-tkvm__ad">Öncü İmalat PMI · Ağustos</span>
+                    <span class="dh-tkvm__nums dh-num">ÖNCEKİ 49,8 · BEKLENTİ 50,1</span>
+                  </span>
+                  <span class="dh-tkvm__onem">Orta etki</span>
+                </li>
+                <li class="dh-tkvm__it" data-onem="dusuk">
+                  <span class="dh-tkvm__when dh-num"><b>23 AĞU</b>10.00</span>
+                  <span class="dh-tkvm__what">
+                    <span class="dh-tkvm__ulke">Türkiye</span>
+                    <span class="dh-tkvm__ad">Yurt Dışı Üretici Fiyat Endeksi · Temmuz</span>
+                    <span class="dh-tkvm__nums dh-num">ÖNCEKİ %1,4 · BEKLENTİ —</span>
+                  </span>
+                  <span class="dh-tkvm__onem">Düşük etki</span>
+                </li>
+                <li class="dh-tkvm__it" data-onem="yuksek">
+                  <span class="dh-tkvm__when dh-num"><b>24 AĞU</b>17.00</span>
+                  <span class="dh-tkvm__what">
+                    <span class="dh-tkvm__ulke">ABD</span>
+                    <span class="dh-tkvm__ad">Fed Başkanı Jackson Hole Konuşması</span>
+                    <span class="dh-tkvm__nums dh-num">ÖNCEKİ — · BEKLENTİ —</span>
+                  </span>
+                  <span class="dh-tkvm__onem">Yüksek etki</span>
+                </li>
+              </ol>
+            </div>
+            <div class="dh-finpanel__foot">Etki derecesi renkle değil metinle yazılır. Beklenti, veri sağlayıcıların medyan tahminidir; gerçekleşen değer açıklandığında satır güncellenir.</div>
+          </section>
+
+          <!-- GÜNLÜK DEĞİŞİM GRAFİKLERİ -->
+          <section class="dh-finpanel dh-ekran__wide" id="grafik" data-cat="finans" aria-labelledby="fin-grafik-b">
+            <div class="dh-finpanel__head">
+              <div>
+                <h3 class="dh-finpanel__title" id="fin-grafik-b">Günlük Değişim Grafikleri</h3>
+                <span class="dh-finpanel__sub">Gün içi seyir · 09.30 – 18.54 · kesikli çizgi önceki kapanış</span>
+              </div>
+              <div class="dh-finpanel__tools">
+                <a class="dh-finpanel__more" href="finans-detay.html">Geçmiş dönemler</a>
+              </div>
+            </div>
+            <div class="dh-finpanel__body">
+              <div class="dh-grafikler">
+
+                <figure class="dh-grafik" data-dir="up">
+                  <figcaption class="dh-grafik__head">
+                    <span class="dh-grafik__name">Dolar / TL</span>
+                    <span class="dh-grafik__val">47,9601</span>
+                    <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,08<span class="sr-only"> yükseldi</span></span>
+                  </figcaption>
+                  <div class="dh-finchart">
+                    <svg class="dh-finchart__plot" viewBox="0 0 300 80" preserveAspectRatio="none" role="img" aria-label="Dolar/TL gün içi seyri: 47,8102 ile 48,0140 arasında dalgalandı, günü 47,9601'de kapattı">
+                      <polygon class="dh-finchart__area" points="0,80 0.0,72.0 27.3,62.4 54.5,49.6 81.8,56.0 109.1,40.0 136.4,46.4 163.6,30.4 190.9,20.8 218.2,27.2 245.5,14.4 272.7,8.0 300.0,24.0 300,80"></polygon>
+                      <line class="dh-finchart__base" x1="0" y1="72" x2="300" y2="72"></line>
+                      <polyline class="dh-finchart__line" points="0.0,72.0 27.3,62.4 54.5,49.6 81.8,56.0 109.1,40.0 136.4,46.4 163.6,30.4 190.9,20.8 218.2,27.2 245.5,14.4 272.7,8.0 300.0,24.0" vector-effect="non-scaling-stroke"></polyline>
+                    </svg>
+                    <div class="dh-finchart__axis"><span>09:30</span><span>13:00</span><span>16:30</span><span>18:54</span></div>
+                  </div>
+                  <p class="dh-grafik__rng dh-num">GÜN İÇİ 47,8102 – 48,0140</p>
+                </figure>
+
+                <figure class="dh-grafik" data-dir="up">
+                  <figcaption class="dh-grafik__head">
+                    <span class="dh-grafik__name">Euro / TL</span>
+                    <span class="dh-grafik__val">56,1533</span>
+                    <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,26<span class="sr-only"> yükseldi</span></span>
+                  </figcaption>
+                  <div class="dh-finchart">
+                    <svg class="dh-finchart__plot" viewBox="0 0 300 80" preserveAspectRatio="none" role="img" aria-label="Euro/TL gün içi seyri: 55,8410 ile 56,2905 arasında dalgalandı, günü 56,1533'te kapattı">
+                      <polygon class="dh-finchart__area" points="0,80 0.0,72.0 27.3,62.0 54.5,52.1 81.8,56.4 109.1,43.6 136.4,32.2 163.6,36.4 190.9,23.6 218.2,15.1 245.5,8.0 272.7,19.4 300.0,27.9 300,80"></polygon>
+                      <line class="dh-finchart__base" x1="0" y1="72" x2="300" y2="72"></line>
+                      <polyline class="dh-finchart__line" points="0.0,72.0 27.3,62.0 54.5,52.1 81.8,56.4 109.1,43.6 136.4,32.2 163.6,36.4 190.9,23.6 218.2,15.1 245.5,8.0 272.7,19.4 300.0,27.9" vector-effect="non-scaling-stroke"></polyline>
+                    </svg>
+                    <div class="dh-finchart__axis"><span>09:30</span><span>13:00</span><span>16:30</span><span>18:54</span></div>
+                  </div>
+                  <p class="dh-grafik__rng dh-num">GÜN İÇİ 55,8410 – 56,2905</p>
+                </figure>
+
+                <figure class="dh-grafik" data-dir="down">
+                  <figcaption class="dh-grafik__head">
+                    <span class="dh-grafik__name">Gram Altın</span>
+                    <span class="dh-grafik__val">6.969,05</span>
+                    <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,02<span class="sr-only"> düştü</span></span>
+                  </figcaption>
+                  <div class="dh-finchart">
+                    <svg class="dh-finchart__plot" viewBox="0 0 300 80" preserveAspectRatio="none" role="img" aria-label="Gram altın gün içi seyri: 6.940,12 ile 6.999,80 arasında dalgalandı, günü 6.969,05'te kapattı">
+                      <polygon class="dh-finchart__area" points="0,80 0.0,8.0 27.3,16.4 54.5,27.7 81.8,22.6 109.1,39.4 136.4,48.4 163.6,42.1 190.9,55.6 218.2,62.6 245.5,72.0 272.7,58.6 300.0,40.9 300,80"></polygon>
+                      <line class="dh-finchart__base" x1="0" y1="8" x2="300" y2="8"></line>
+                      <polyline class="dh-finchart__line" points="0.0,8.0 27.3,16.4 54.5,27.7 81.8,22.6 109.1,39.4 136.4,48.4 163.6,42.1 190.9,55.6 218.2,62.6 245.5,72.0 272.7,58.6 300.0,40.9" vector-effect="non-scaling-stroke"></polyline>
+                    </svg>
+                    <div class="dh-finchart__axis"><span>09:30</span><span>13:00</span><span>16:30</span><span>18:54</span></div>
+                  </div>
+                  <p class="dh-grafik__rng dh-num">GÜN İÇİ 6.940,12 – 6.999,80</p>
+                </figure>
+
+                <figure class="dh-grafik" data-dir="down">
+                  <figcaption class="dh-grafik__head">
+                    <span class="dh-grafik__name">BİST 100</span>
+                    <span class="dh-grafik__val">14.396,54</span>
+                    <span class="dh-chg"><i class="dh-dir" aria-hidden="true"></i>%0,43<span class="sr-only"> düştü</span></span>
+                  </figcaption>
+                  <div class="dh-finchart">
+                    <svg class="dh-finchart__plot" viewBox="0 0 300 80" preserveAspectRatio="none" role="img" aria-label="BİST 100 gün içi seyri: 14.268,76 ile 14.562,51 arasında dalgalandı, günü 14.396,54'te kapattı">
+                      <polygon class="dh-finchart__area" points="0,80 0.0,8.0 27.3,17.2 54.5,25.8 81.8,21.4 109.1,31.4 136.4,40.6 163.6,43.8 190.9,49.6 218.2,54.1 245.5,72.0 272.7,58.6 300.0,44.2 300,80"></polygon>
+                      <line class="dh-finchart__base" x1="0" y1="8" x2="300" y2="8"></line>
+                      <polyline class="dh-finchart__line" points="0.0,8.0 27.3,17.2 54.5,25.8 81.8,21.4 109.1,31.4 136.4,40.6 163.6,43.8 190.9,49.6 218.2,54.1 245.5,72.0 272.7,58.6 300.0,44.2" vector-effect="non-scaling-stroke"></polyline>
+                    </svg>
+                    <div class="dh-finchart__axis"><span>09:30</span><span>13:00</span><span>16:30</span><span>18:54</span></div>
+                  </div>
+                  <p class="dh-grafik__rng dh-num">GÜN İÇİ 14.268,76 – 14.562,51</p>
+                </figure>
+
+              </div>
+            </div>
+            <div class="dh-finpanel__foot">Grafikler gün içi seyri gösterir, yatırım tavsiyesi değildir. Dikey eksen günün en düşük ve en yüksek değerine göre ölçeklenir; bu yüzden farklı kalemlerin eğrileri birbiriyle karşılaştırılamaz.</div>
+          </section>
+
+        </div>
+      </div>
+    </section>
     <section class="section dh-finsec dh-finsec--disc">
       <div class="container max-w-xl">
         <div class="dh-finpanel dh-findisc dh-findisc--wide">
