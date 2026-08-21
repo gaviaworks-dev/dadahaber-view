@@ -10,8 +10,12 @@
    ========================================================================== */
 
 :root {
-  /* veri ve doğrulama sesi — yeni yazı tipi indirilmez, sistem mono kullanılır */
-  --dh-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  /* TİPOGRAFİ TEK AİLE — kurumsal Gilroy.
+     v2'de "veri ve doğrulama sesi" için sistem monospace kullanılıyordu;
+     sayfada ikinci bir yazı tipi olarak okunuyordu. Aynı ses artık harf
+     aralığı, büyük harf ve ağırlıkla veriliyor — aile değişmiyor.
+     Token adı korundu: 200'den fazla yerde var(--dh-mono) çağrılıyor. */
+  --dh-mono: var(--font-family-primary, "Gilroy", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
 
   /* ana menü kimlik renkleri */
   --dh-c-anlik: #c8102e;
@@ -33,8 +37,7 @@
   --dh-c-kesfet: #b07d05;
 
   --dh-fmt-h: 36px;
-  --dh-brand-h: 84px;
-  --dh-nav-h: 48px;
+  --dh-brand-h: 68px;
 }
 
 /* --- ortak: kurumsal köşe imzası (sol-alt keskin) ------------------------- */
@@ -52,7 +55,6 @@
 .dh-v2-fmt__row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
   min-height: var(--dh-fmt-h);
 }
@@ -117,101 +119,67 @@
 }
 .dh-v2-signup:hover, .dh-v2-signup:focus-visible { color: #000; filter: brightness(1.08); }
 
-/* ============================ 2. MARKA SATIRI ============================= */
+/* ================= 2. MARKA SATIRI = LOGO + ANA MENÜ + GİRİŞ ==============
+   Tek satır: logo · ana menü (logo hizasında, sola yaslı) · ikon seti ·
+   ayraç · Giriş Yap / Üye Ol. Ayrı gezinti satırı ve arama alanı kaldırıldı;
+   arama ikonu arama kipini açıyor.
+   Ölçü: format bandı 36 + marka satırı 68 = 104px (yapışkanda 60).
+   ========================================================================== */
 .dh-v2-brand { background: #fff; }
 html.uc-dark .dh-v2-brand { background: var(--color-gray-900); }
 .dh-v2-brand__row {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 20px;
   min-height: var(--dh-brand-h);
+  position: relative;          /* perdeleme paneli buna yaslanır */
 }
-.dh-v2-brand__logo { display: flex; align-items: center; gap: 14px; flex: 0 0 auto; }
-.dh-v2-brand__logo img { width: 220px; height: auto; transition: width .18s ease; }
-.dh-v2-slogan {
-  padding-inline-start: 14px;
-  border-inline-start: 2px solid var(--color-primary);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--color-gray-600);
-  white-space: nowrap;
-}
-html.uc-dark .dh-v2-slogan { color: rgba(255, 255, 255, .68); }
-
-
-/* --- arama: ana menü satırının sonunda -------------------------------------
-   Marka satırından alındı; logoyla rekabet etmiyor, header yüksekliğini
-   artırmıyor. Üstteki ikon buraya odaklanır, menü satırının olmadığı
-   mobilde arama kipini açar. */
-.dh-v2-nav__bar {
+.dh-v2-brand__logo {
   display: flex;
-  align-items: stretch;
-  gap: 16px;
-}
-.dh-v2-nav__bar > nav { min-width: 0; flex: 1 1 auto; }
-.dh-v2-nav__search {
+  align-items: center;
   flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  width: 240px;
-  transition: width .18s ease;
 }
-.dh-v2-nav__search:focus-within { width: 320px; }
-.dh-v2-nav__search form {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  height: 34px;
-  padding: 0 12px;
-  background: var(--color-gray-50);
-  border: 1px solid var(--color-gray-200);
-  border-radius: 8px 8px 8px 0;
-  transition: border-color .14s, background .14s;
-}
-.dh-v2-nav__search:focus-within form { background: #fff; border-color: var(--color-primary); }
-html.uc-dark .dh-v2-nav__search form {
-  background: rgba(255, 255, 255, .06);
-  border-color: var(--color-gray-700);
-}
-html.uc-dark .dh-v2-nav__search:focus-within form { background: rgba(255, 255, 255, .1); }
-.dh-v2-nav__search input {
-  flex: 1 1 auto;
-  min-width: 0;
-  height: 100%;
-  border: 0;
-  background: none;
-  outline: none;
-  font-size: 13px;
-  color: var(--color-gray-900);
-}
-html.uc-dark .dh-v2-nav__search input { color: #fff; }
-.dh-v2-nav__search input::placeholder { color: var(--color-gray-500); }
-.dh-v2-nav__search i { color: var(--color-gray-500); font-size: 13px; }
-.dh-v2-nav__search.is-vurgu form { border-color: var(--color-primary); }
+.dh-v2-brand__logo img { width: 180px; height: auto; transition: width .18s ease; }
 
-.dh-v2-brand__acts { display: flex; align-items: center; gap: 2px; flex: 0 0 auto; margin-inline-start: auto; }
+.dh-v2-brand__acts {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+}
+/* ikon setini giriş düğmelerinden ayıran düz çizgi */
+.dh-v2-brand__sep {
+  width: 1px;
+  height: 22px;
+  margin: 0 12px;
+  background: var(--color-gray-300);
+  flex: 0 0 auto;
+}
+html.uc-dark .dh-v2-brand__sep { background: var(--color-gray-700); }
+
 .dh-v2-act {
   display: grid;
   place-items: center;
   position: relative;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   border: 0;
   background: none;
   color: var(--color-gray-800);
   text-decoration: none;
   cursor: pointer;
-  transition: color .14s;
+  border-radius: 8px 8px 8px 0;
+  transition: color .14s, background .14s;
 }
 html.uc-dark .dh-v2-act { color: rgba(255, 255, 255, .82); }
-.dh-v2-act:hover { color: var(--color-primary-700); }
-html.uc-dark .dh-v2-act:hover { color: var(--color-primary); }
+.dh-v2-act:hover { color: var(--color-gray-900); background: var(--color-gray-50); }
+html.uc-dark .dh-v2-act:hover { color: #fff; background: rgba(255, 255, 255, .07); }
+.dh-v2-act:focus-visible { outline: 3px solid var(--color-primary); outline-offset: -3px; }
 .dh-v2-act__badge {
   position: absolute;
-  top: 6px;
-  inset-inline-end: 6px;
+  top: 4px;
+  inset-inline-end: 4px;
   min-width: 15px;
   height: 15px;
   padding: 0 3px;
@@ -234,14 +202,43 @@ html.uc-dark .dh-v2-act:hover { color: var(--color-primary); }
   border: 0;
 }
 
-/* kullanıcı menüsü — mobilde Giriş Yap / Üye Ol buradan */
-.dh-v2-user { position: relative; }
+/* giriş / üye ol — kabuğun tek dolu düğmesi, hiyerarşi net kalsın */
+.dh-v2-signin {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--color-gray-800);
+  text-decoration: none;
+  border-radius: 8px 8px 8px 0;
+  transition: color .14s, background .14s;
+}
+html.uc-dark .dh-v2-signin { color: rgba(255, 255, 255, .84); }
+.dh-v2-signin:hover { color: var(--color-gray-900); background: var(--color-gray-50); }
+html.uc-dark .dh-v2-signin:hover { color: #fff; background: rgba(255, 255, 255, .07); }
+.dh-v2-signup {
+  margin-inline-start: 6px;
+  padding: 8px 15px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #000;
+  background: var(--color-primary);
+  text-decoration: none;
+  transition: filter .14s;
+}
+.dh-v2-signup:hover, .dh-v2-signup:focus-visible { color: #000; filter: brightness(1.08); }
+.dh-v2-signin:focus-visible,
+.dh-v2-signup:focus-visible { outline: 3px solid var(--color-gray-900); outline-offset: 2px; }
+
+/* kullanıcı menüsü */
+.dh-v2-user { position: relative; display: flex; align-items: center; }
 .dh-v2-user__menu {
   position: absolute;
   top: calc(100% + 6px);
   inset-inline-end: 0;
   z-index: 120;
-  min-width: 180px;
+  min-width: 190px;
   padding: 6px;
   background: #fff;
   border: 1px solid var(--color-gray-200);
@@ -269,16 +266,8 @@ html.uc-dark .dh-v2-user__menu a { color: rgba(255, 255, 255, .82); }
 html.uc-dark .dh-v2-user__menu a:hover { background: rgba(255, 255, 255, .07); color: var(--color-primary); }
 .dh-v2-user__menu i { width: 16px; color: var(--color-primary); }
 
-/* ============================ 3. ANA GEZİNTİ ============================== */
-.dh-v2-nav {
-  background: #fff;
-  border-top: 1px solid var(--color-gray-200);
-  border-bottom: 1px solid var(--color-gray-200);
-}
-html.uc-dark .dh-v2-nav {
-  background: var(--color-gray-900);
-  border-color: var(--color-gray-700);
-}
+/* ======================= 3. ANA MENÜ (marka satırında) ==================== */
+.dh-v2-nav { display: flex; align-items: stretch; min-width: 0; flex: 1 1 auto; }
 .dh-v2-nav__list {
   display: flex;
   align-items: stretch;
@@ -286,16 +275,15 @@ html.uc-dark .dh-v2-nav {
   margin: 0;
   padding: 0;
   list-style: none;
-  min-height: var(--dh-nav-h);
 }
 .dh-v2-nav__list > li { display: flex; position: static; }
 .dh-v2-nav__list > li > a {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   position: relative;
-  padding: 0 16px;
-  font-size: 15px;
+  padding: 0 13px;
+  font-size: 14.5px;
   font-weight: 700;
   letter-spacing: -.01em;
   color: var(--color-gray-800);
@@ -307,7 +295,7 @@ html.uc-dark .dh-v2-nav__list > li > a { color: rgba(255, 255, 255, .84); }
 .dh-v2-nav__list > li > a::after {
   content: "";
   position: absolute;
-  inset-inline: 12px;
+  inset-inline: 10px;
   bottom: 0;
   height: 3px;
   background: var(--dh-cat, var(--color-primary));
@@ -322,10 +310,9 @@ html.uc-dark .dh-v2-nav__list > li > a { color: rgba(255, 255, 255, .84); }
 .dh-v2-nav__list > li > a[aria-current="page"] { color: var(--dh-cat, var(--color-primary-700)); }
 html.uc-dark .dh-v2-nav__list > li.is-open > a,
 html.uc-dark .dh-v2-nav__list > li > a[aria-current="page"] { color: #fff; }
-.dh-v2-nav__list > li > a i { font-size: 9px; opacity: .55; transition: transform .16s; }
+.dh-v2-nav__list > li > a i { font-size: 9px; opacity: .5; transition: transform .16s; }
 .dh-v2-nav__list > li.is-open > a i { transform: rotate(180deg); }
 
-/* kimlik rengi başlık bazında */
 .dh-v2-nav__list > li > a[data-cat="anlik"],    .dh-mega[data-cat="anlik"]    { --dh-cat: var(--dh-c-anlik); }
 .dh-v2-nav__list > li > a[data-cat="gundem"],   .dh-mega[data-cat="gundem"]   { --dh-cat: var(--dh-c-gundem); }
 .dh-v2-nav__list > li > a[data-cat="dunya"],    .dh-mega[data-cat="dunya"]    { --dh-cat: var(--dh-c-dunya); }
@@ -335,10 +322,7 @@ html.uc-dark .dh-v2-nav__list > li > a[aria-current="page"] { color: #fff; }
 .dh-v2-nav__list > li > a[data-cat="kadin"],    .dh-mega[data-cat="kadin"]    { --dh-cat: var(--dh-c-kadin); }
 .dh-v2-nav__list > li > a[data-cat="diger"],    .dh-mega[data-cat="diger"]    { --dh-cat: var(--dh-c-diger); }
 
-/* --- perdeleme paneli — saf CSS panel, JS yalnız aç/kapa niyetini yönetir ---
-   Vendor uc-drop paneli 250px min-width'e kilitliyordu; panel container
-   genişliğindeki .dh-v2-nav__bar'a yaslanır. */
-.dh-v2-nav__bar { position: relative; }
+/* --- perdeleme paneli — marka satırına yaslanır --------------------------- */
 .dh-mega {
   position: absolute;
   top: 100%;
@@ -355,22 +339,14 @@ html.uc-dark .dh-mega {
   background: var(--color-gray-900);
   box-shadow: 0 18px 40px rgba(0, 0, 0, .55);
 }
-.dh-v2-nav__list > li.is-open > .dh-mega {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-}
-/* JS yoksa klavye ve fare yine çalışsın */
+.dh-v2-nav__list > li.is-open > .dh-mega,
 .dh-v2-nav__list > li:focus-within > .dh-mega {
   opacity: 1;
   visibility: visible;
   transform: none;
 }
-@media (prefers-reduced-motion: reduce) {
-  .dh-mega { transition: none; }
-}
+@media (prefers-reduced-motion: reduce) { .dh-mega { transition: none; } }
 
-/* sayfanın geri kalanını hafifçe perdeler — panelin sınırını gösterir */
 .dh-v2-scrim {
   position: fixed;
   inset: 0;
@@ -384,7 +360,6 @@ html.uc-dark .dh-mega {
 .dh-v2-scrim.is-on { opacity: 1; visibility: visible; }
 @media (prefers-reduced-motion: reduce) { .dh-v2-scrim { transition: none; } }
 
-/* kimlik şeridi — panelin işi, süs değil: hangi bölümdesin onu söyler */
 .dh-mega::before {
   content: "";
   display: block;
@@ -397,7 +372,6 @@ html.uc-dark .dh-mega {
   gap: 32px;
   padding: 26px 28px 30px;
 }
-/* "Diğer" altı grup taşıyor — baş sütun üste alınır, altı sütun yan yana sığar */
 .dh-mega--genis .dh-mega__inner { grid-template-columns: 1fr; gap: 20px; }
 .dh-mega--genis .dh-mega__head {
   display: flex;
@@ -451,9 +425,8 @@ html.uc-dark .dh-mega__title { color: #fff; }
   margin-bottom: 10px;
   padding-bottom: 6px;
   border-bottom: 1px solid var(--color-gray-200);
-  font-family: var(--dh-mono);
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 10.5px;
+  font-weight: 800;
   letter-spacing: .09em;
   text-transform: uppercase;
   color: var(--color-gray-500);
@@ -481,28 +454,21 @@ html.uc-dark .dh-mega__cols a:hover { color: #fff; }
 
 /* --- yapışkan durumda kabuk kısalır --------------------------------------- */
 .uc-navbar-container.uc-navbar-sticky .dh-v2-fmt { display: none; }
-.uc-navbar-container.uc-navbar-sticky .dh-v2-brand__row { min-height: 56px; }
+.uc-navbar-container.uc-navbar-sticky .dh-v2-brand__row { min-height: 60px; }
 .uc-navbar-container.uc-navbar-sticky .dh-v2-brand__logo img { width: 150px; }
-.uc-navbar-container.uc-navbar-sticky .dh-v2-slogan { display: none; }
 
-/* --- daralma basamakları --------------------------------------------------- */
+/* --- daralma basamakları --------------------------------------------------
+   Tek satırda logo + 8 başlık + 4 ikon + iki düğme var; 1279px altında
+   sıkışmadan hamburger'e geçilir. */
 @media (max-width: 1439px) {
-  .dh-v2-nav__list > li > a { padding: 0 13px; font-size: 14.5px; }
-  .dh-v2-brand__logo img { width: 190px; }
+  .dh-v2-brand__row { gap: 14px; }
+  .dh-v2-nav__list > li > a { padding: 0 10px; font-size: 14px; }
+  .dh-v2-brand__logo img { width: 165px; }
+  .dh-v2-brand__sep { margin: 0 8px; }
   .dh-mega--genis .dh-mega__cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 1279px) {
-  .dh-v2-nav__list > li > a { padding: 0 10px; font-size: 13.5px; }
-  .dh-v2-nav__list > li > a::after { inset-inline: 7px; }
-  .dh-v2-nav__search { width: 180px; }
-  .dh-v2-nav__search:focus-within { width: 240px; }
-  .dh-v2-slogan { display: none; }
-}
-@media (max-width: 991px) {
-  .dh-v2-nav, .dh-v2-scrim { display: none; }
-  .dh-v2-fmt__user { display: none; }
-  .dh-v2-brand__row { min-height: 64px; gap: 10px; }
-  .dh-v2-brand__logo img { width: 150px; }
+  .dh-v2-nav { display: none; }
   .dh-v2-menu-trigger {
     display: grid;
     place-items: center;
@@ -513,15 +479,17 @@ html.uc-dark .dh-mega__cols a:hover { color: #fff; }
     font-size: 20px;
   }
 }
-@media (min-width: 992px) {
-  .dh-v2-menu-trigger { display: none; }
-  /* masaüstünde Giriş/Üye Ol bantta açık duruyor — ikon menüsü hesaba gider */
-  .dh-v2-user__menu { min-width: 190px; }
+@media (min-width: 1280px) { .dh-v2-menu-trigger { display: none; } }
+@media (max-width: 991px) {
+  .dh-v2-scrim { display: none; }
+  .dh-v2-brand__row { min-height: 60px; gap: 8px; }
+  .dh-v2-brand__logo img { width: 150px; }
+  .dh-v2-brand__sep, .dh-v2-signin, .dh-v2-signup { display: none; }
 }
 @media (max-width: 575px) {
   .dh-v2-fmt__track a { padding: 7px 10px; font-size: 11.5px; }
-  .dh-v2-brand__logo img { width: 132px; }
-  .dh-v2-act { width: 38px; height: 38px; }
+  .dh-v2-brand__logo img { width: 128px; }
+  .dh-v2-act { width: 36px; height: 36px; }
 }
 
 /* ==================== 4. MOBİL AÇILIR MENÜ (offcanvas) ==================== */
@@ -838,3 +806,41 @@ html.uc-offcanvas-page .dh-bnav { display: none; }
 /* son kategoriden sonra çift çizgi oluşuyordu: li'nin alt çizgisi +
    bölüm başlığının üst çizgisi. Alttaki kaldırıldı. */
 .dh-v2-off__list > li:last-child { border-bottom: 0; }
+
+/* --- sağ alt yüzen tema anahtarı ------------------------------------------
+   Yukarı çık düğmesinin ALTINDA sabit. Mobilde alt gezinme çubuğunun
+   üstünde kalır, çubuğun altına gizlenmez. */
+.dh-v2-tema {
+  background: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
+}
+html.uc-dark .dh-v2-tema {
+  background: var(--color-gray-800);
+  border-color: var(--color-gray-700);
+  color: #fff;
+}
+@media (max-width: 991.98px) {
+  .backtotop-wrap { bottom: var(--dh-bnav-h, 62px); }
+}
+html.uc-offcanvas-page .backtotop-wrap { display: none; }
+
+/* --- tek aile tipografisinin bedeli: rakam hizası ---------------------------
+   Monospace kalktı; Gilroy'un rakamları orantılı genişlikte. Tablolarda ve
+   skor/veri alanlarında sütunların kayması için sekmeli rakam açılır.
+   Aile değişmez, yalnız rakam genişliği sabitlenir. */
+.dh-stand,
+.dh-stand td,
+.dh-stand th,
+.dh-mc__score,
+.dh-mc__val,
+.dh-mc__sets,
+.dh-num,
+.dh-rank,
+.dh-fin table,
+.dh-karne__grid,
+.dh-tabs__p table,
+time,
+.datetime {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}

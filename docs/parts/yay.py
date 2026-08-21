@@ -8,6 +8,17 @@ OFF = open(os.path.join(d, "offcanvas.html"), encoding="utf-8").read()
 FTR = open(os.path.join(d, "footer.html"), encoding="utf-8").read()
 BNV = open(os.path.join(d, "bnav.html"), encoding="utf-8").read()
 
+YUZEN = """  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
+  <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
+    <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop aria-label="Yukarı çık">
+      <i class="icon-2 unicon-chevron-up"></i>
+    </a>
+    <div class="darkmode-trigger dh-v2-tema cstack w-40px h-40px rounded" data-darkmode-switch>
+      <label class="switch"><span class="sr-only">Karanlık mod</span><input type="checkbox"><span class="slider fs-5"></span></label>
+    </div>
+  </div>
+"""
+
 CSS_LINK = '  <link rel="stylesheet" href="./assets/css/theme/v2.css">\n'
 
 def kapat_div(s, i):
@@ -107,27 +118,21 @@ def isle(yol):
         s = s.replace("offset: 136", "offset: 120")
         rapor.append("offset")
 
-    # 6) sağ alttaki YÜZEN tema (siyah-beyaz ekran) anahtarı kaldırılır.
-    #    Yalnız data-darkmode-toggle taşıyan yüzen widget silinir; menü içindeki
-    #    görünüm ayarı (data-darkmode-switch) ve hesap ayarları yerinde kalır.
-    while True:
-        j = s.find('data-darkmode-toggle')
-        if j == -1:
-            break
-        i = s.rfind('<div class="darkmode-trigger', 0, j)
-        if i == -1:
-            return None, "darkmode-toggle sarmalayıcısı bulunamadı"
+    # 6) sağ alt yüzen yığın: YUKARI ÇIK üstte, KARANLIK MOD onun altında.
+    #    Tek kaynaktan kurulur ki 87 sayfada sıra aynı olsun.
+    i = s.find('<div class="backtotop-wrap')
+    if i != -1:
         b = satir_basi(s, i)
         e = kapat_div(s, i)
         if e == -1:
-            return None, "darkmode-trigger kapanmıyor"
+            return None, "backtotop-wrap kapanmıyor"
         while e < len(s) and s[e] in " \t":
             e += 1
         if e < len(s) and s[e] == "\n":
             e += 1
-        s = s[:b] + s[e:]
-        if "temasiz" not in rapor:
-            rapor.append("temasiz")
+        if s[b:e] != YUZEN:
+            s = s[:b] + YUZEN + s[e:]
+            rapor.append("yuzen")
 
     # 7) mobil alt gezinme çubuğu — tek kaynaktan yayılır
     m = re.search(r'[ \t]*<!--[^\n]*[Mm]obil alt gezinme[^\n]*-->\n', s)

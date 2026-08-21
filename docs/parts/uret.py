@@ -177,68 +177,41 @@ def ext(h): return ' target="_blank" rel="noopener"' if h.startswith("http") els
 
 # ----------------------------------------------------------------- header
 def header():
+    """İki satırlı kabuk:
+      1) format bandı (siyah)  — yayın formatları kanal şeridi
+      2) marka satırı          — logo · ANA MENÜ (sola yaslı) · ikonlar · giriş
+    Ana menü ayrı satırda değil, logo hizasında. Arama alanı kaldırıldı;
+    arama ikonu arama kipini açar. Perdeleme paneli marka satırına yaslanır."""
     o = io.StringIO(); w = o.write
     w('  <!-- Header start -->\n')
     w('  <header class="uc-header header-six uc-navbar-sticky-wrap z-999"\n')
     w('    data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">\n')
     w('    <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">\n')
 
-    # 1. format bandı — yayın formatları kanal şeridi + kullanıcı işlemleri
-    w('\n      <!-- 1. Format bandı — yayın formatları + kullanıcı işlemleri -->\n')
+    # 1. format bandı
+    w('\n      <!-- 1. Format bandı — yayın formatları kanal şeridi -->\n')
     w('      <div class="dh-v2-fmt panel z-3">\n        <div class="container max-w-xl">\n')
     w('          <div class="dh-v2-fmt__row">\n')
     w('            <nav class="dh-v2-fmt__track" aria-label="Yayın formatları">\n')
     for ad, h, ik in FORMAT:
         w('              <a href="%s"><i class="fas %s" aria-hidden="true"></i><span>%s</span></a>\n' % (h, ik, ad))
     w('            </nav>\n')
-    w('            <div class="dh-v2-fmt__user">\n')
-    w('              <a class="dh-v2-signin" href="giris.html">Giriş Yap</a>\n')
-    w('              <a class="dh-v2-signup" href="uye-ol.html">Üye Ol</a>\n')
-    w('            </div>\n')
     w('          </div>\n        </div>\n      </div>\n')
 
-    # 2. marka satırı
-    w('\n      <!-- 2. Ana header — logo · kompakt arama · kullanıcı -->\n')
+    # 2. marka satırı: logo + ana menü + ikonlar + giriş
+    w('\n      <!-- 2. Marka satırı — logo · ana menü (sola yaslı) · ikonlar · giriş -->\n')
     w('      <div class="dh-v2-brand panel z-2">\n        <div class="container max-w-xl">\n')
-    w('          <div class="dh-v2-brand__row">\n')
+    w('          <div class="dh-v2-brand__row dh-v2-nav__bar">\n')
     w('            <a class="uc-menu-trigger dh-v2-menu-trigger" href="#uc-menu-panel" data-uc-toggle aria-label="Menüyü aç"></a>\n')
     w('            <div class="dh-v2-brand__logo">\n')
     w('              <a href="index.html" aria-label="Dada Haber ana sayfa">\n')
-    w('                <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="220px">\n')
-    w('                <img class="d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="220px">\n')
+    w('                <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="180px">\n')
+    w('                <img class="d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="180px">\n')
     w('              </a>\n')
-    w('              <span class="dh-v2-slogan">Gündemin net hâli.</span>\n')
     w('            </div>\n')
-    w('            <div class="dh-v2-brand__acts">\n')
-    # arama alanı ana menü satırında; buradaki ikon oraya odaklanır,
-    # menü satırının olmadığı mobilde arama kipini açar
-    w('              <button class="dh-v2-act dh-v2-act--ara" type="button" data-dh-ara-ac\n')
-    w('                aria-label="Ara" aria-controls="dh-nav-ara">\n')
-    w('                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></button>\n')
-    w('              <a class="dh-v2-act" href="hesabim.html#bildirimler">\n')
-    w('                <i class="fas fa-bell fs-4" aria-hidden="true"></i>\n')
-    w('                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>\n')
-    w('              <a class="dh-v2-act" href="hesabim.html#kaydedilenler">\n')
-    w('                <i class="fas fa-bookmark fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Kaydedilenler</span></a>\n')
-    # mobil kullanıcı menüsü — Giriş Yap / Üye Ol küçük ekranda buradan
-    w('              <div class="dh-v2-user" data-dh-user>\n')
-    w('                <button class="dh-v2-act" type="button" aria-expanded="false" aria-controls="dh-user-menu">\n')
-    w('                  <i class="fas fa-user-circle fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Hesap</span>\n')
-    w('                </button>\n')
-    w('                <div class="dh-v2-user__menu" id="dh-user-menu" hidden>\n')
-    w('                  <a href="giris.html"><i class="fas fa-right-to-bracket" aria-hidden="true"></i>Giriş Yap</a>\n')
-    w('                  <a href="uye-ol.html"><i class="fas fa-user-plus" aria-hidden="true"></i>Üye Ol</a>\n')
-    w('                  <a href="hesabim.html"><i class="fas fa-user-circle" aria-hidden="true"></i>Hesabım</a>\n')
-    w('                </div>\n')
-    w('              </div>\n')
-    w('            </div>\n')
-    w('          </div>\n        </div>\n      </div>\n')
 
-    # 3. ana gezinti — 8 başlık, perdeleme menü
-    w('\n      <!-- 3. Ana menü — 8 başlık, perdeleme menü -->\n')
-    w('      <div class="dh-v2-nav panel z-2">\n        <div class="container max-w-xl">\n')
-    w('          <div class="dh-v2-nav__bar">\n')
-    w('            <nav aria-label="Ana menü">\n')
+    # ana menü — logo hizasında, sola yaslı
+    w('            <nav class="dh-v2-nav" aria-label="Ana menü">\n')
     w('              <ul class="dh-v2-nav__list">\n')
     for slug, ad, hub, is_, gruplar in MENU:
         genis = ' dh-mega--genis' if slug == "diger" else ''
@@ -267,12 +240,29 @@ def header():
         w('                </li>\n')
     w('              </ul>\n')
     w('            </nav>\n')
-    # arama: ana menü satırının sonunda, logoyla rekabet etmez
-    w('            <div class="dh-v2-nav__search">\n')
-    w('              <form action="arama.html" method="get" role="search">\n')
-    w('                <i class="fas fa-search" aria-hidden="true"></i>\n')
-    w('                <input id="dh-nav-ara" type="search" name="q" placeholder="Haber, yazar veya konu ara" aria-label="Sitede ara">\n')
-    w('              </form>\n')
+
+    # ikon seti + ayraç + giriş/üye ol
+    w('            <div class="dh-v2-brand__acts">\n')
+    w('              <a class="dh-v2-act dh-v2-act--ara uc-search-trigger" href="#uc-search-modal" data-uc-toggle aria-label="Ara">\n')
+    w('                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></a>\n')
+    w('              <a class="dh-v2-act" href="hesabim.html#bildirimler" aria-label="Bildirim merkezi">\n')
+    w('                <i class="fas fa-bell fs-4" aria-hidden="true"></i>\n')
+    w('                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>\n')
+    w('              <a class="dh-v2-act" href="hesabim.html#kaydedilenler" aria-label="Kaydedilenler">\n')
+    w('                <i class="fas fa-bookmark fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Kaydedilenler</span></a>\n')
+    w('              <div class="dh-v2-user" data-dh-user>\n')
+    w('                <button class="dh-v2-act" type="button" aria-expanded="false" aria-controls="dh-user-menu" aria-label="Hesap">\n')
+    w('                  <i class="fas fa-user-circle fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Hesap</span>\n')
+    w('                </button>\n')
+    w('                <div class="dh-v2-user__menu" id="dh-user-menu" hidden>\n')
+    w('                  <a href="giris.html"><i class="fas fa-right-to-bracket" aria-hidden="true"></i>Giriş Yap</a>\n')
+    w('                  <a href="uye-ol.html"><i class="fas fa-user-plus" aria-hidden="true"></i>Üye Ol</a>\n')
+    w('                  <a href="hesabim.html"><i class="fas fa-user-circle" aria-hidden="true"></i>Hesabım</a>\n')
+    w('                </div>\n')
+    w('              </div>\n')
+    w('              <span class="dh-v2-brand__sep" aria-hidden="true"></span>\n')
+    w('              <a class="dh-v2-signin" href="giris.html">Giriş Yap</a>\n')
+    w('              <a class="dh-v2-signup" href="uye-ol.html">Üye Ol</a>\n')
     w('            </div>\n')
     w('          </div>\n        </div>\n      </div>\n')
     w('\n    </nav>\n  </header>\n')

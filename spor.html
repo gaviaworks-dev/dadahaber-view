@@ -122,6 +122,7 @@
   <!--  Menu panel -->
   <!--  Menu panel -->
   <!--  Menu panel -->
+  <!--  Menu panel -->
   <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">
     <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
       <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
@@ -445,18 +446,22 @@
     </div>
 
     <!--  Bottom Actions Sticky -->
-    <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
-        <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop>
-            <i class="icon-2 unicon-chevron-up"></i>
-        </a>
+  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
+  <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
+    <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop aria-label="Yukarı çık">
+      <i class="icon-2 unicon-chevron-up"></i>
+    </a>
+    <div class="darkmode-trigger dh-v2-tema cstack w-40px h-40px rounded" data-darkmode-switch>
+      <label class="switch"><span class="sr-only">Karanlık mod</span><input type="checkbox"><span class="slider fs-5"></span></label>
     </div>
+  </div>
 
   <!-- Header start -->
   <header class="uc-header header-six uc-navbar-sticky-wrap z-999"
     data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">
     <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">
 
-      <!-- 1. Format bandı — yayın formatları + kullanıcı işlemleri -->
+      <!-- 1. Format bandı — yayın formatları kanal şeridi -->
       <div class="dh-v2-fmt panel z-3">
         <div class="container max-w-xl">
           <div class="dh-v2-fmt__row">
@@ -467,55 +472,22 @@
               <a href="infografik.html"><i class="fas fa-chart-bar" aria-hidden="true"></i><span>İnfografik</span></a>
               <a href="podcast.html"><i class="fas fa-podcast" aria-hidden="true"></i><span>Podcast</span></a>
             </nav>
-            <div class="dh-v2-fmt__user">
-              <a class="dh-v2-signin" href="giris.html">Giriş Yap</a>
-              <a class="dh-v2-signup" href="uye-ol.html">Üye Ol</a>
-            </div>
           </div>
         </div>
       </div>
 
-      <!-- 2. Ana header — logo · kompakt arama · kullanıcı -->
+      <!-- 2. Marka satırı — logo · ana menü (sola yaslı) · ikonlar · giriş -->
       <div class="dh-v2-brand panel z-2">
         <div class="container max-w-xl">
-          <div class="dh-v2-brand__row">
+          <div class="dh-v2-brand__row dh-v2-nav__bar">
             <a class="uc-menu-trigger dh-v2-menu-trigger" href="#uc-menu-panel" data-uc-toggle aria-label="Menüyü aç"></a>
             <div class="dh-v2-brand__logo">
               <a href="index.html" aria-label="Dada Haber ana sayfa">
-                <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="220px">
-                <img class="d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="220px">
+                <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="180px">
+                <img class="d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="180px">
               </a>
-              <span class="dh-v2-slogan">Gündemin net hâli.</span>
             </div>
-            <div class="dh-v2-brand__acts">
-              <button class="dh-v2-act dh-v2-act--ara" type="button" data-dh-ara-ac
-                aria-label="Ara" aria-controls="dh-nav-ara">
-                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></button>
-              <a class="dh-v2-act" href="hesabim.html#bildirimler">
-                <i class="fas fa-bell fs-4" aria-hidden="true"></i>
-                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>
-              <a class="dh-v2-act" href="hesabim.html#kaydedilenler">
-                <i class="fas fa-bookmark fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Kaydedilenler</span></a>
-              <div class="dh-v2-user" data-dh-user>
-                <button class="dh-v2-act" type="button" aria-expanded="false" aria-controls="dh-user-menu">
-                  <i class="fas fa-user-circle fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Hesap</span>
-                </button>
-                <div class="dh-v2-user__menu" id="dh-user-menu" hidden>
-                  <a href="giris.html"><i class="fas fa-right-to-bracket" aria-hidden="true"></i>Giriş Yap</a>
-                  <a href="uye-ol.html"><i class="fas fa-user-plus" aria-hidden="true"></i>Üye Ol</a>
-                  <a href="hesabim.html"><i class="fas fa-user-circle" aria-hidden="true"></i>Hesabım</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Ana menü — 8 başlık, perdeleme menü -->
-      <div class="dh-v2-nav panel z-2">
-        <div class="container max-w-xl">
-          <div class="dh-v2-nav__bar">
-            <nav aria-label="Ana menü">
+            <nav class="dh-v2-nav" aria-label="Ana menü">
               <ul class="dh-v2-nav__list">
                 <li data-dh-menu>
                   <a href="anlik.html" data-cat="anlik" aria-expanded="false">Anlık <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
@@ -927,11 +899,27 @@
                 </li>
               </ul>
             </nav>
-            <div class="dh-v2-nav__search">
-              <form action="arama.html" method="get" role="search">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <input id="dh-nav-ara" type="search" name="q" placeholder="Haber, yazar veya konu ara" aria-label="Sitede ara">
-              </form>
+            <div class="dh-v2-brand__acts">
+              <a class="dh-v2-act dh-v2-act--ara uc-search-trigger" href="#uc-search-modal" data-uc-toggle aria-label="Ara">
+                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></a>
+              <a class="dh-v2-act" href="hesabim.html#bildirimler" aria-label="Bildirim merkezi">
+                <i class="fas fa-bell fs-4" aria-hidden="true"></i>
+                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>
+              <a class="dh-v2-act" href="hesabim.html#kaydedilenler" aria-label="Kaydedilenler">
+                <i class="fas fa-bookmark fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Kaydedilenler</span></a>
+              <div class="dh-v2-user" data-dh-user>
+                <button class="dh-v2-act" type="button" aria-expanded="false" aria-controls="dh-user-menu" aria-label="Hesap">
+                  <i class="fas fa-user-circle fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Hesap</span>
+                </button>
+                <div class="dh-v2-user__menu" id="dh-user-menu" hidden>
+                  <a href="giris.html"><i class="fas fa-right-to-bracket" aria-hidden="true"></i>Giriş Yap</a>
+                  <a href="uye-ol.html"><i class="fas fa-user-plus" aria-hidden="true"></i>Üye Ol</a>
+                  <a href="hesabim.html"><i class="fas fa-user-circle" aria-hidden="true"></i>Hesabım</a>
+                </div>
+              </div>
+              <span class="dh-v2-brand__sep" aria-hidden="true"></span>
+              <a class="dh-v2-signin" href="giris.html">Giriş Yap</a>
+              <a class="dh-v2-signup" href="uye-ol.html">Üye Ol</a>
             </div>
           </div>
         </div>
@@ -1075,6 +1063,47 @@
         </div>
       </div>
     </nav>
+
+    <!-- 9.1 · Canlı maçlar ve son skorlar — spor sayfasının EN ÜSTÜNDE,
+         kategori başlığı ve şeridin hemen altında. Mobilde yatay kayar. -->
+    <section class="section panel pt-3 pb-0">
+      <div class="container max-w-xl">
+      <section class="dh-sport dh-sport--rail dh-sport--tape dh-sport--canli" id="canli" data-branch="futbol">
+        <header class="dh-sport__head">
+          <span class="dh-sport__ico" aria-hidden="true"><i class="fas fa-bolt"></i></span>
+          <div class="dh-sport__id">
+            <span class="dh-sport__kicker">TÜM DALLAR</span>
+            <h2 class="dh-sport__title">Canlı Maçlar ve Son Skorlar</h2>
+          </div>
+          <div class="dh-sport__tools"><a class="dh-sport__more" href="fikstur.html">Tümünü Gör</a></div>
+        </header>
+        <div class="dh-sport__body">
+          <div class="dh-mcrail dh-mcrail--sik" data-dh-track>
+            <article class="dh-mc" data-branch="futbol">
+              <header class="dh-mc__top"><span class="dh-mc__comp">Süper Lig · 34. Hafta</span><span class="dh-mc__state is-live">67'</span></header>
+              <div class="dh-mc__body"><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-01.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">Galatasaray</span></div><div class="dh-mc__organ"><div class="dh-mc__score"><b>2</b><i aria-hidden="true">–</i><b>1</b></div><span class="dh-mc__sub">İY 1-0</span></div><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-02.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">Fenerbahçe</span></div></div>
+              <footer class="dh-mc__foot"><span class="dh-mc__venue"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> RAMS Park</span></footer>
+            </article>
+            <article class="dh-mc" data-branch="basketbol">
+              <header class="dh-mc__top"><span class="dh-mc__comp">Basketbol Süper Ligi</span><span class="dh-mc__state is-live">4. Çeyrek · 6:12</span></header>
+              <div class="dh-mc__body"><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-03.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">Anadolu Efes</span></div><div class="dh-mc__organ"><div class="dh-mc__score"><b>78</b><i aria-hidden="true">–</i><b>71</b></div></div><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-05.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">Türk Telekom</span></div></div>
+              <ul class="dh-mc__ledger"><li><span class="dh-mc__lbl">Ç1</span><b class="dh-mc__val">22-19</b></li><li><span class="dh-mc__lbl">Ç2</span><b class="dh-mc__val">18-24</b></li><li><span class="dh-mc__lbl">Ç3</span><b class="dh-mc__val">21-16</b></li><li class="is-now"><span class="dh-mc__lbl">Ç4</span><b class="dh-mc__val">17-12</b></li></ul>
+            </article>
+            <article class="dh-mc" data-branch="voleybol">
+              <header class="dh-mc__top"><span class="dh-mc__comp">Sultanlar Ligi · Final</span><span class="dh-mc__state is-live">3. Set</span></header>
+              <div class="dh-mc__body"><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-01.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">VakıfBank</span></div><div class="dh-mc__organ"><div class="dh-mc__score"><b>1</b><i aria-hidden="true">–</i><b>1</b></div></div><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-02.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">Fenerbahçe Opet</span></div></div>
+              <ul class="dh-mc__ledger"><li><span class="dh-mc__lbl">1. SET</span><b class="dh-mc__val">25-22</b></li><li><span class="dh-mc__lbl">2. SET</span><b class="dh-mc__val">23-25</b></li><li class="is-now"><span class="dh-mc__lbl">3. SET</span><b class="dh-mc__val">18-14</b></li></ul>
+            </article>
+            <article class="dh-mc" data-branch="tenis">
+              <header class="dh-mc__top"><span class="dh-mc__comp">Roland Garros · Çeyrek Final</span><span class="dh-mc__state">Bitti</span></header>
+              <div class="dh-mc__body"><div class="dh-mc__side"><span class="dh-mc__crest dh-mc__crest--txt" aria-hidden="true">JA</span><span class="dh-mc__name">Jannik Sinner</span></div><div class="dh-mc__organ"><ol class="dh-mc__sets"><li class="is-win"><b>6</b><i>4</i></li><li class="is-win"><b>7</b><i>6</i></li><li class="is-win"><b>6</b><i>3</i></li></ol></div><div class="dh-mc__side"><span class="dh-mc__crest dh-mc__crest--txt" aria-hidden="true">DA</span><span class="dh-mc__name">Daniil Medvedev</span></div></div>
+              <footer class="dh-mc__foot"><span class="dh-mc__venue"><i class="fas fa-stopwatch" aria-hidden="true"></i> 2 saat 41 dakika · Philippe-Chatrier</span></footer>
+            </article>
+          </div>
+        </div>
+      </section>
+      </div>
+    </section>
         <!-- R7-T1 — SPOR MERKEZİ: tek bant, üç sütun + canlı skor şeridi -->
         <div class="section pt-3 lg:pt-4 pb-0">
           <div class="container max-w-xl">
@@ -1147,7 +1176,7 @@
         <header class="dh-sport__head">
           <span class="dh-sport__ico" aria-hidden="true"><i class="fas fa-trophy"></i></span>
           <div class="dh-sport__id">
-            <span class="dh-sport__kicker">TÜRKİYE · İLK SEKİZ</span>
+            <span class="dh-sport__kicker">FUTBOL · BASKETBOL · VOLEYBOL</span>
             <h2 class="dh-sport__title">Puan Durumu</h2>
           </div>
           <div class="dh-sport__tools"><a class="dh-sport__more" href="puan-durumu.html">Tam tablo</a></div>
@@ -1156,6 +1185,7 @@
           <div class="dh-sort dh-sort--tabs" role="tablist" aria-label="Puan durumu dalı" data-dh-tabs>
             <button type="button" class="dh-sort__tab is-on" role="tab" id="sm-t-futbol" aria-controls="sm-p-futbol" aria-selected="true" tabindex="0"><i class="fas fa-futbol" aria-hidden="true"></i>Futbol · Süper Lig</button>
             <button type="button" class="dh-sort__tab" role="tab" id="sm-t-basket" aria-controls="sm-p-basket" aria-selected="false" tabindex="-1"><i class="fas fa-basketball-ball" aria-hidden="true"></i>Basketbol · BSL</button>
+            <button type="button" class="dh-sort__tab" role="tab" id="sm-t-voley" aria-controls="sm-p-voley" aria-selected="false" tabindex="-1"><i class="fas fa-volleyball-ball" aria-hidden="true"></i>Voleybol · Sultanlar Ligi</button>
           </div>
           <div class="dh-tabpane is-on" id="sm-p-futbol" role="tabpanel" aria-labelledby="sm-t-futbol" tabindex="0">
           <div class="dh-stand__wrap" tabindex="0" role="region" aria-label="Süper Lig puan durumu, ilk sekiz sıra">
@@ -1194,6 +1224,10 @@
             </table>
           </div>
       <p class="dh-note" data-branch="basketbol"><i class="fas fa-basketball-ball" aria-hidden="true"></i><span>Basketbolda beraberlik yok: “B” sütunu yerine galibiyet yüzdesi ve sayı averajı tutulur.</span></p>
+          </div>
+          <div class="dh-tabpane" id="sm-p-voley" role="tabpanel" aria-labelledby="sm-t-voley" tabindex="0" hidden>
+          <div class="dh-stand__wrap" tabindex="0" role="region" aria-label="Sultanlar Ligi puan durumu, ilk sekiz sıra"><table class="dh-stand" data-branch="voleybol"><caption class="dh-stand__cap">Sultanlar Ligi puan durumu, ilk sekiz sıra</caption><thead><tr><th scope="col" class="dh-stand__c-rank"><abbr title="Sıra">#</abbr></th><th scope="col" class="dh-stand__c-name">Takım</th><th scope="col" class=""><abbr title="Oynadığı maç">O</abbr></th><th scope="col" class=""><abbr title="Galibiyet">G</abbr></th><th scope="col" class=""><abbr title="Mağlubiyet">M</abbr></th><th scope="col" class="is-dim"><abbr title="Alınan set">SG</abbr></th><th scope="col" class="is-dim"><abbr title="Verilen set">SY</abbr></th><th scope="col" class=""><abbr title="Set oranı">S.OR</abbr></th><th scope="col" class="dh-stand__pts"><abbr title="Puan">P</abbr></th></tr></thead><tbody><tr class="dh-stand__row is-ucl now"><th scope="row" class="dh-stand__c-rank"><span class="dh-rank">1</span></th><td class="dh-stand__c-name"><span class="dh-stand__team"><img class="dh-stand__crest" src="./assets/images/demo-six/emblems/logo-01.svg" alt="" width="22" height="22" loading="lazy"><span class="dh-stand__nm">VakıfBank</span></span></td><td class="">22</td><td class="">19</td><td class="">3</td><td class="is-dim">60</td><td class="is-dim">26</td><td class="">2,31</td><td class="dh-stand__pts">52</td></tr><tr class="dh-stand__row is-ucl"><th scope="row" class="dh-stand__c-rank"><span class="dh-rank">2</span></th><td class="dh-stand__c-name"><span class="dh-stand__team"><img class="dh-stand__crest" src="./assets/images/demo-six/emblems/logo-02.svg" alt="" width="22" height="22" loading="lazy"><span class="dh-stand__nm">Fenerbahçe Opet</span></span></td><td class="">22</td><td class="">18</td><td class="">4</td><td class="is-dim">57</td><td class="is-dim">27</td><td class="">2,11</td><td class="dh-stand__pts">51</td></tr><tr class="dh-stand__row is-ucl"><th scope="row" class="dh-stand__c-rank"><span class="dh-rank">3</span></th><td class="dh-stand__c-name"><span class="dh-stand__team"><img class="dh-stand__crest" src="./assets/images/demo-six/emblems/logo-03.svg" alt="" width="22" height="22" loading="lazy"><span class="dh-stand__nm">Galatasaray Daikin</span></span></td><td class="">22</td><td class="">17</td><td class="">5</td><td class="is-dim">55</td><td class="is-dim">31</td><td class="">1,77</td><td class="dh-stand__pts">47</td></tr><tr class="dh-stand__row is-ucl"><th scope="row" class="dh-stand__c-rank"><span class="dh-rank">4</span></th><td class="dh-stand__c-name"><span class="dh-stand__team"><img class="dh-stand__crest" src="./assets/images/demo-six/emblems/logo-04.svg" alt="" width="22" height="22" loading="lazy"><span class="dh-stand__nm">Eczacıbaşı Dynavit</span></span></td><td class="">22</td><td class="">16</td><td class="">6</td><td class="is-dim">53</td><td class="is-dim">31</td><td class="">1,71</td><td class="dh-stand__pts">47</td></tr><tr class="dh-stand__row is-po"><th scope="row" class="dh-stand__c-rank"><span class="dh-rank">5</span></th><td class="dh-stand__c-name"><span class="dh-stand__team"><img class="dh-stand__crest" src="./assets/images/demo-six/emblems/logo-05.svg" alt="" width="22" height="22" loading="lazy"><span class="dh-stand__nm">Türk Hava Yolları</span></span></td><td class="">22</td><td class="">15</td><td class="">7</td><td class="is-dim">51</td><td class="is-dim">35</td><td class="">1,46</td><td class="dh-stand__pts">43</td></tr><tr class="dh-stand__row is-po"><th scope="row" class="dh-stand__c-rank"><span class="dh-rank">6</span></th><td class="dh-stand__c-name"><span class="dh-stand__team"><img class="dh-stand__crest" src="./assets/images/demo-six/emblems/logo-06.svg" alt="" width="22" height="22" loading="lazy"><span class="dh-stand__nm">Zeren Spor</span></span></td><td class="">22</td><td class="">13</td><td class="">9</td><td class="is-dim">46</td><td class="is-dim">36</td><td class="">1,28</td><td class="dh-stand__pts">38</td></tr><tr class="dh-stand__row is-po"><th scope="row" class="dh-stand__c-rank"><span class="dh-rank">7</span></th><td class="dh-stand__c-name"><span class="dh-stand__team"><img class="dh-stand__crest" src="./assets/images/demo-six/emblems/logo-07.svg" alt="" width="22" height="22" loading="lazy"><span class="dh-stand__nm">Aydın BBSK</span></span></td><td class="">22</td><td class="">12</td><td class="">10</td><td class="is-dim">46</td><td class="is-dim">40</td><td class="">1,15</td><td class="dh-stand__pts">36</td></tr><tr class="dh-stand__row is-po"><th scope="row" class="dh-stand__c-rank"><span class="dh-rank">8</span></th><td class="dh-stand__c-name"><span class="dh-stand__team"><img class="dh-stand__crest" src="./assets/images/demo-six/emblems/logo-08.svg" alt="" width="22" height="22" loading="lazy"><span class="dh-stand__nm">Nilüfer Belediyespor</span></span></td><td class="">22</td><td class="">10</td><td class="">12</td><td class="is-dim">39</td><td class="is-dim">45</td><td class="">0,87</td><td class="dh-stand__pts">29</td></tr></tbody></table></div>
+      <p class="dh-note" data-branch="voleybol"><i class="fas fa-volleyball-ball" aria-hidden="true"></i><span>Set oranı sıralamanın ikinci ölçütü: 3-0 ve 3-1 galibiyeti 3 puan, 3-2 galibiyeti 2 puan getirir.</span></p>
           </div>
         </div>
       </section>
@@ -1311,40 +1345,6 @@
               </aside>
 
               <div class="dh-hub__tape">
-      <section class="dh-sport dh-sport--rail dh-sport--tape" data-branch="futbol">
-        <header class="dh-sport__head">
-          <span class="dh-sport__ico" aria-hidden="true"><i class="fas fa-bolt"></i></span>
-          <div class="dh-sport__id">
-            <span class="dh-sport__kicker">TÜM DALLAR</span>
-            <h2 class="dh-sport__title">Canlı Skorlar</h2>
-          </div>
-          <div class="dh-sport__tools"><a class="dh-sport__more" href="fikstur.html">Tümünü Gör</a></div>
-        </header>
-        <div class="dh-sport__body">
-          <div class="dh-mcrail dh-mcrail--sik" data-dh-track>
-            <article class="dh-mc" data-branch="futbol">
-              <header class="dh-mc__top"><span class="dh-mc__comp">Süper Lig · 34. Hafta</span><span class="dh-mc__state is-live">67'</span></header>
-              <div class="dh-mc__body"><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-01.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">Galatasaray</span></div><div class="dh-mc__organ"><div class="dh-mc__score"><b>2</b><i aria-hidden="true">–</i><b>1</b></div><span class="dh-mc__sub">İY 1-0</span></div><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-02.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">Fenerbahçe</span></div></div>
-              <footer class="dh-mc__foot"><span class="dh-mc__venue"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> RAMS Park</span></footer>
-            </article>
-            <article class="dh-mc" data-branch="basketbol">
-              <header class="dh-mc__top"><span class="dh-mc__comp">Basketbol Süper Ligi</span><span class="dh-mc__state is-live">4. Çeyrek · 6:12</span></header>
-              <div class="dh-mc__body"><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-03.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">Anadolu Efes</span></div><div class="dh-mc__organ"><div class="dh-mc__score"><b>78</b><i aria-hidden="true">–</i><b>71</b></div></div><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-05.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">Türk Telekom</span></div></div>
-              <ul class="dh-mc__ledger"><li><span class="dh-mc__lbl">Ç1</span><b class="dh-mc__val">22-19</b></li><li><span class="dh-mc__lbl">Ç2</span><b class="dh-mc__val">18-24</b></li><li><span class="dh-mc__lbl">Ç3</span><b class="dh-mc__val">21-16</b></li><li class="is-now"><span class="dh-mc__lbl">Ç4</span><b class="dh-mc__val">17-12</b></li></ul>
-            </article>
-            <article class="dh-mc" data-branch="voleybol">
-              <header class="dh-mc__top"><span class="dh-mc__comp">Sultanlar Ligi · Final</span><span class="dh-mc__state is-live">3. Set</span></header>
-              <div class="dh-mc__body"><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-01.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">VakıfBank</span></div><div class="dh-mc__organ"><div class="dh-mc__score"><b>1</b><i aria-hidden="true">–</i><b>1</b></div></div><div class="dh-mc__side"><img class="dh-mc__crest" src="./assets/images/demo-six/emblems/logo-02.svg" alt="" width="40" height="40" loading="lazy"><span class="dh-mc__name">Fenerbahçe Opet</span></div></div>
-              <ul class="dh-mc__ledger"><li><span class="dh-mc__lbl">1. SET</span><b class="dh-mc__val">25-22</b></li><li><span class="dh-mc__lbl">2. SET</span><b class="dh-mc__val">23-25</b></li><li class="is-now"><span class="dh-mc__lbl">3. SET</span><b class="dh-mc__val">18-14</b></li></ul>
-            </article>
-            <article class="dh-mc" data-branch="tenis">
-              <header class="dh-mc__top"><span class="dh-mc__comp">Roland Garros · Çeyrek Final</span><span class="dh-mc__state">Bitti</span></header>
-              <div class="dh-mc__body"><div class="dh-mc__side"><span class="dh-mc__crest dh-mc__crest--txt" aria-hidden="true">JA</span><span class="dh-mc__name">Jannik Sinner</span></div><div class="dh-mc__organ"><ol class="dh-mc__sets"><li class="is-win"><b>6</b><i>4</i></li><li class="is-win"><b>7</b><i>6</i></li><li class="is-win"><b>6</b><i>3</i></li></ol></div><div class="dh-mc__side"><span class="dh-mc__crest dh-mc__crest--txt" aria-hidden="true">DA</span><span class="dh-mc__name">Daniil Medvedev</span></div></div>
-              <footer class="dh-mc__foot"><span class="dh-mc__venue"><i class="fas fa-stopwatch" aria-hidden="true"></i> 2 saat 41 dakika · Philippe-Chatrier</span></footer>
-            </article>
-          </div>
-        </div>
-      </section>
               </div>
 
             </div>

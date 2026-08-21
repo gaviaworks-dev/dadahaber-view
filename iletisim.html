@@ -109,6 +109,7 @@
   <!--  Menu panel -->
   <!--  Menu panel -->
   <!--  Menu panel -->
+  <!--  Menu panel -->
   <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">
     <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
       <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
@@ -431,18 +432,22 @@
     </div>
 
     <!--  Bottom Actions Sticky -->
-    <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
-        <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop>
-            <i class="icon-2 unicon-chevron-up"></i>
-        </a>
+  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
+  <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
+    <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop aria-label="Yukarı çık">
+      <i class="icon-2 unicon-chevron-up"></i>
+    </a>
+    <div class="darkmode-trigger dh-v2-tema cstack w-40px h-40px rounded" data-darkmode-switch>
+      <label class="switch"><span class="sr-only">Karanlık mod</span><input type="checkbox"><span class="slider fs-5"></span></label>
     </div>
+  </div>
 
   <!-- Header start -->
   <header class="uc-header header-six uc-navbar-sticky-wrap z-999"
     data-uc-sticky="sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;">
     <nav class="uc-navbar-container bg-white dark:bg-gray-900 fs-6 z-1">
 
-      <!-- 1. Format bandı — yayın formatları + kullanıcı işlemleri -->
+      <!-- 1. Format bandı — yayın formatları kanal şeridi -->
       <div class="dh-v2-fmt panel z-3">
         <div class="container max-w-xl">
           <div class="dh-v2-fmt__row">
@@ -453,55 +458,22 @@
               <a href="infografik.html"><i class="fas fa-chart-bar" aria-hidden="true"></i><span>İnfografik</span></a>
               <a href="podcast.html"><i class="fas fa-podcast" aria-hidden="true"></i><span>Podcast</span></a>
             </nav>
-            <div class="dh-v2-fmt__user">
-              <a class="dh-v2-signin" href="giris.html">Giriş Yap</a>
-              <a class="dh-v2-signup" href="uye-ol.html">Üye Ol</a>
-            </div>
           </div>
         </div>
       </div>
 
-      <!-- 2. Ana header — logo · kompakt arama · kullanıcı -->
+      <!-- 2. Marka satırı — logo · ana menü (sola yaslı) · ikonlar · giriş -->
       <div class="dh-v2-brand panel z-2">
         <div class="container max-w-xl">
-          <div class="dh-v2-brand__row">
+          <div class="dh-v2-brand__row dh-v2-nav__bar">
             <a class="uc-menu-trigger dh-v2-menu-trigger" href="#uc-menu-panel" data-uc-toggle aria-label="Menüyü aç"></a>
             <div class="dh-v2-brand__logo">
               <a href="index.html" aria-label="Dada Haber ana sayfa">
-                <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="220px">
-                <img class="d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="220px">
+                <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="180px">
+                <img class="d-none dark:d-block" src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="180px">
               </a>
-              <span class="dh-v2-slogan">Gündemin net hâli.</span>
             </div>
-            <div class="dh-v2-brand__acts">
-              <button class="dh-v2-act dh-v2-act--ara" type="button" data-dh-ara-ac
-                aria-label="Ara" aria-controls="dh-nav-ara">
-                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></button>
-              <a class="dh-v2-act" href="hesabim.html#bildirimler">
-                <i class="fas fa-bell fs-4" aria-hidden="true"></i>
-                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>
-              <a class="dh-v2-act" href="hesabim.html#kaydedilenler">
-                <i class="fas fa-bookmark fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Kaydedilenler</span></a>
-              <div class="dh-v2-user" data-dh-user>
-                <button class="dh-v2-act" type="button" aria-expanded="false" aria-controls="dh-user-menu">
-                  <i class="fas fa-user-circle fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Hesap</span>
-                </button>
-                <div class="dh-v2-user__menu" id="dh-user-menu" hidden>
-                  <a href="giris.html"><i class="fas fa-right-to-bracket" aria-hidden="true"></i>Giriş Yap</a>
-                  <a href="uye-ol.html"><i class="fas fa-user-plus" aria-hidden="true"></i>Üye Ol</a>
-                  <a href="hesabim.html"><i class="fas fa-user-circle" aria-hidden="true"></i>Hesabım</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Ana menü — 8 başlık, perdeleme menü -->
-      <div class="dh-v2-nav panel z-2">
-        <div class="container max-w-xl">
-          <div class="dh-v2-nav__bar">
-            <nav aria-label="Ana menü">
+            <nav class="dh-v2-nav" aria-label="Ana menü">
               <ul class="dh-v2-nav__list">
                 <li data-dh-menu>
                   <a href="anlik.html" data-cat="anlik" aria-expanded="false">Anlık <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
@@ -913,11 +885,27 @@
                 </li>
               </ul>
             </nav>
-            <div class="dh-v2-nav__search">
-              <form action="arama.html" method="get" role="search">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <input id="dh-nav-ara" type="search" name="q" placeholder="Haber, yazar veya konu ara" aria-label="Sitede ara">
-              </form>
+            <div class="dh-v2-brand__acts">
+              <a class="dh-v2-act dh-v2-act--ara uc-search-trigger" href="#uc-search-modal" data-uc-toggle aria-label="Ara">
+                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></a>
+              <a class="dh-v2-act" href="hesabim.html#bildirimler" aria-label="Bildirim merkezi">
+                <i class="fas fa-bell fs-4" aria-hidden="true"></i>
+                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>
+              <a class="dh-v2-act" href="hesabim.html#kaydedilenler" aria-label="Kaydedilenler">
+                <i class="fas fa-bookmark fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Kaydedilenler</span></a>
+              <div class="dh-v2-user" data-dh-user>
+                <button class="dh-v2-act" type="button" aria-expanded="false" aria-controls="dh-user-menu" aria-label="Hesap">
+                  <i class="fas fa-user-circle fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Hesap</span>
+                </button>
+                <div class="dh-v2-user__menu" id="dh-user-menu" hidden>
+                  <a href="giris.html"><i class="fas fa-right-to-bracket" aria-hidden="true"></i>Giriş Yap</a>
+                  <a href="uye-ol.html"><i class="fas fa-user-plus" aria-hidden="true"></i>Üye Ol</a>
+                  <a href="hesabim.html"><i class="fas fa-user-circle" aria-hidden="true"></i>Hesabım</a>
+                </div>
+              </div>
+              <span class="dh-v2-brand__sep" aria-hidden="true"></span>
+              <a class="dh-v2-signin" href="giris.html">Giriş Yap</a>
+              <a class="dh-v2-signup" href="uye-ol.html">Üye Ol</a>
             </div>
           </div>
         </div>
