@@ -21200,3 +21200,1382 @@ html.uc-dark .dh-sort[data-dh-pick] .dh-sort__tab[aria-pressed="true"] {
     padding-bottom: 40px !important;
   }
 }
+
+
+/* ===========================================================
+   R7-K2 A — ALT KATEGORİ HİYERARŞİSİ: ŞERİDİN KÖKÜ
+   Kullanıcı: "Sitenin genelinde alt kategorilerin yapısını daha
+   belirgin şekilde göster."
+
+   SORUN (ölçüm, kadin.html 1440px, öncesi):
+     .dh-catbar düz bir çip sırasıydı. İlk çip "Tümü" x=140'ta
+     başlıyordu; okur şeridin NEYİN alt kategorileri olduğunu
+     göremiyordu. Breadcrumb bu bilgiyi veriyor ama o şeridin
+     ALTINDA, bannerın içinde — yani okur önce çipleri görüyor.
+
+   KARAR:
+     Şeridin başına üst kategori kökü (.dh-catbar__root) konuldu.
+     Üç parça: kategori renginde 3px dikey şerit + büyük harf
+     kök adı + ince chevron. Şerit artık "KADIN › Tümü · Astroloji …"
+     diye okunuyor.
+     - Breadcrumb ile çakışmaz: breadcrumb TAM YOL verir
+       (Anasayfa › Yaşam › Kadın), kök YALNIZ çiplerin sahibini
+       söyler. Biri "neredeyim", öteki "bunlar kimin".
+     - Renk bağı: 3px şerit --dh-cat okur, yani bannerın perde
+       rengiyle aynı. Aktif çip de aynı rengi sol kenarında
+       taşır (inset 3px) — göz kökten aktif çipe bağlanır.
+       Kategori rengi olmayan sayfalarda --dh-cat kurumsal amber
+       kalır, ikisi de görünmez olur; zarar yok.
+
+   GEOMETRİ (ölçüm, kadin.html):
+     1440px: kök 96..~178, çip alanı 1160px -> 1078px (-82px).
+             Şeridin içeriği 1271px, zaten kayıyordu; kayma sürüyor.
+     390px : kök KENDİ SATIRINDA. Çip alanı 270px'te KALIR
+             (daralma 0px) — brief'in şartı buydu. Bedel ~20px
+             dikey. Sport varyantındaki `display:none` çözümü
+             kullanılmadı: hiyerarşi asıl mobilde gerekli.
+   =========================================================== */
+
+/* Kategori rengi anahtarı şeride de taşındı (banner ile aynı harita) */
+.dh-catbar {
+  --dh-cat: var(--dh-brand);
+}
+
+.dh-catbar[data-cat="kadin"]     { --dh-cat: #4300ff; }
+.dh-catbar[data-cat="teknoloji"] { --dh-cat: #1c3df9; }
+.dh-catbar[data-cat="spor"]      { --dh-cat: #19750a; }
+.dh-catbar[data-cat="finans"]    { --dh-cat: #2aa1a9; }
+.dh-catbar[data-cat="savunma"]   { --dh-cat: #e20000; }
+.dh-catbar[data-cat="saglik"]    { --dh-cat: #00c5e5; }
+.dh-catbar[data-cat="oyun"]      { --dh-cat: #0c1d49; }
+
+/* Koyu temada lacivert/mor tonlar zeminde kayboluyor (oyun #0c1d49
+   gri-800 üstünde 1,09:1). Şerit dekoratif ama görünmesi gerekiyor;
+   her ton beyazla açıldı, hepsi gri-800 üstünde >= 3:1. */
+html.uc-dark .dh-catbar[data-cat="kadin"]     { --dh-cat: #9d7bff; }
+html.uc-dark .dh-catbar[data-cat="teknoloji"] { --dh-cat: #8fa2ff; }
+html.uc-dark .dh-catbar[data-cat="spor"]      { --dh-cat: #63c94e; }
+html.uc-dark .dh-catbar[data-cat="finans"]    { --dh-cat: #57d0d8; }
+html.uc-dark .dh-catbar[data-cat="savunma"]   { --dh-cat: #ff6b6b; }
+html.uc-dark .dh-catbar[data-cat="saglik"]    { --dh-cat: #33d8f2; }
+html.uc-dark .dh-catbar[data-cat="oyun"]      { --dh-cat: #8ba3d9; }
+
+.dh-catbar__row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+/* Çip alanı kalan bütün genişliği alır; min-width:0 olmadan flex
+   çocuk kendi içeriği kadar şişip sayfayı taşırıyor. */
+.dh-catbar__row > .dh-catbar__inner {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.dh-catbar__root {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  font-family: var(--font-family-secondary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  text-transform: uppercase;
+  /* gri-400 4,03:1 idi (R7-Z ölçümü). gri-600 seçildi: gri-10
+     zemininde 7,1:1 — 11px metin için AA + AAA. */
+  color: var(--color-gray-600);
+  white-space: nowrap;
+}
+
+/* Kategori renginde kök şeridi — kurumsal köşe imzası (sol alt keskin) */
+.dh-catbar__root::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 3px;
+  height: 18px;
+  border-radius: 2px 2px 2px 0;
+  background: var(--dh-cat);
+}
+
+.dh-catbar__root-ad {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dh-catbar__root-sep {
+  font-size: 8px;
+  color: var(--color-gray-400);
+  transform: translateY(0.5px);
+}
+
+html.uc-dark .dh-catbar__root {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+html.uc-dark .dh-catbar__root-sep {
+  color: rgba(255, 255, 255, 0.34);
+}
+
+/* Aktif çip: amber dolgu KORUNDU (site geneli "buradasın" dili),
+   üstüne kategori renginde 3px sol kenar eklendi. Kök şeridiyle
+   aynı kalınlık ve aynı renk -> ikisi tek okuma hattı kuruyor.
+   Ayrıca dolgu biraz daha belirgin: gölge 0.35 -> 0.42 opaklık. */
+.dh-catbar__chip.is-on {
+  box-shadow: inset 3px 0 0 var(--dh-cat), 0 2px 12px rgba(252, 182, 35, 0.42);
+}
+
+html.uc-dark .dh-catbar__chip.is-on {
+  box-shadow: inset 3px 0 0 var(--dh-cat), 0 2px 12px rgba(252, 182, 35, 0.22);
+}
+
+/* 390px: kök kendi satırına iner, kayma alanı hiç daralmaz. */
+@media (max-width: 575.98px) {
+  .dh-catbar__row {
+    display: block;
+  }
+
+  .dh-catbar__root {
+    display: flex;
+    margin: 0 0 9px;
+    font-size: 10.5px;
+    letter-spacing: 0.11em;
+  }
+
+  .dh-catbar__root::before {
+    height: 14px;
+  }
+}
+
+
+/* Kök, kayan/sarmalayan bir çip kutusunun (.dh-mbox__filter) üstünde
+   kendi satırında durur — mobilde çiplerle birlikte kayıp gitmesin. */
+.dh-catbar__root--stack {
+  display: flex;
+  margin: 0 0 10px;
+}
+
+
+/* ===========================================================
+   R7-K2 B — kadin.html: HER ALT KATEGORİNİN KENDİ MODÜLÜ
+   Kullanıcı: "Kadın sayfasında her kategoride burçları gösterme;
+   her kategori kendine ait özel modülleri, içerikleri olsun."
+
+   SORUN: astroloji modülü bannerın hemen altında SABİTTİ; hangi
+   çipe basılırsa basılsın orada duruyordu. Astroloji Kadın'ın
+   BİR alt kategorisi, sayfanın omurgası değil.
+
+   KARAR:
+     · Çipler artık gerçek sekme (role=tab / aria-controls),
+       kapsayıcı role=tablist, modül alanı aria-live="polite".
+     · Modül alanı (.dh-kmod) tek seferde tek panel gösterir.
+       Paneller HTML'de hazır durur (SEO + JS'siz görünürlük),
+       JS yalnız `hidden` çevirir — dh-astro.js / dh-gebelik.js
+       ile aynı sözleşme: besleme <script type="application/json">
+       bloğundan, işaretleme sabit.
+     · Modülü olmayan kategori için SAHTE modül üretilmedi.
+       Onun yerine tek satırlık yönlendirme (.dh-kmod__go):
+       ya kendi bölümüne ya da sayfadaki haber listesine götürür.
+       Boş kabuk yok, uydurma panel de yok.
+
+   NOT (R7-N nefes payı): yeni ZEMİNLİ bant eklenmedi. Her panel
+   mevcut `.section ... py-4 lg:py-8` kalıbını taşır, sayfanın
+   dikey ritmi değişmez.
+   =========================================================== */
+
+.dh-kmod {
+  display: block;
+}
+
+.dh-kmod__panel[hidden] {
+  display: none !important;
+}
+
+/* ---------- Tek satırlık yönlendirme ---------- */
+.dh-kmod__go {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 15px 18px;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  border-left: 3px solid var(--dh-cat, var(--dh-brand));
+  border-radius: 12px 12px 12px 0;
+  background: rgba(18, 18, 18, 0.016);
+}
+
+.dh-kmod__go-ad {
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-gray-600);
+  flex: 0 0 auto;
+}
+
+.dh-kmod__go-txt {
+  flex: 1 1 220px;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  margin: 0;
+}
+
+html.uc-dark .dh-kmod__go {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+html.uc-dark .dh-kmod__go-ad { color: rgba(255, 255, 255, 0.62); }
+html.uc-dark .dh-kmod__go-txt { color: rgba(255, 255, 255, 0.82); }
+
+/* ---------- "Tümü" özeti: .dh-cell'in tıklanabilir hâli ---------- */
+.dh-cell--go {
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.16s ease;
+}
+
+.dh-cell--go:hover {
+  background: rgba(252, 182, 35, 0.09);
+}
+
+.dh-cell--go:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: -3px;
+}
+
+.dh-cell--go .dh-cell__value {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.dh-cell--go .dh-cell__go {
+  font-size: 9px;
+  color: var(--dh-menu-ink);
+  opacity: 0.75;
+}
+
+html.uc-dark .dh-cell--go:hover { background: rgba(252, 182, 35, 0.1); }
+html.uc-dark .dh-cell--go .dh-cell__go { color: var(--color-primary-200); }
+
+/* ---------- Sağlık: günün kontrol listesi ---------- */
+.dh-chk {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dh-chk__it {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  border-radius: 12px 12px 12px 0;
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-800);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.16s ease, background 0.16s ease;
+}
+
+.dh-chk__box {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--color-gray-300);
+  border-radius: 6px 6px 6px 0;
+  font-size: 10px;
+  color: transparent;
+  transition: 0.16s ease;
+}
+
+.dh-chk__it[aria-pressed="true"] {
+  border-color: rgba(252, 182, 35, 0.6);
+  background: rgba(252, 182, 35, 0.09);
+}
+
+.dh-chk__it[aria-pressed="true"] .dh-chk__box {
+  border-color: var(--dh-brand);
+  background: var(--dh-brand);
+  /* amber üstü koyu mürekkep — 10,58:1 */
+  color: var(--color-gray-900);
+}
+
+.dh-chk__it:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+}
+
+.dh-chk__txt { min-width: 0; }
+
+html.uc-dark .dh-chk__it {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+html.uc-dark .dh-chk__box { border-color: rgba(255, 255, 255, 0.28); }
+
+html.uc-dark .dh-chk__it[aria-pressed="true"] {
+  background: rgba(252, 182, 35, 0.12);
+  border-color: rgba(252, 182, 35, 0.5);
+}
+
+/* ---------- Kariyer: sayı ağırlıklı veri paneli ---------- */
+.dh-panel--kar .dh-cell__value {
+  font-size: 24px;
+}
+
+.dh-panel--kar .dh-cell { min-width: 116px; }
+
+.dh-kmod__note {
+  margin: 12px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-kmod__note { color: rgba(255, 255, 255, 0.55); }
+
+/* ---------- Moda / Güzellik: görsel ağırlıklı ray ---------- */
+.dh-kmod__ray > .dh-card {
+  width: 268px;
+}
+
+@media (max-width: 767px) {
+  .dh-kmod__ray > .dh-card { width: 220px; }
+}
+
+/* ===========================================================
+   R7-T1 — SPOR SAYFASI: VERİ BANDI DARALTILDI, HABER ÖNE ALINDI
+   ------------------------------------------------------------
+   Kullanıcı: "Bu sayfada puan durumlarını komple sayfaya yayma;
+   basket ve futbolu bir tab ile ayır, yan tarafına haberleri,
+   sol tarafta F1 ve motor kısımlarını koyabilirsin. Amacımız
+   haber liste sayfasına daha kısa sürede ulaşmak."
+
+   ÖLÇÜM — ÖNCE (spor.html, 1440x900, Playwright):
+     ilk haber kartının tepesi          2253px
+     doküman yüksekliği                 4537px
+     veri bloklarının dikey birleşimi   1469px (%32,4)
+     .dh-sport kutularının toplam alanı 2188px (%48,2 — yan yana
+       duran iki tablo iki kez sayılır, kullanıcının gördüğü his bu)
+     ilk ekranda (0-900px) görünen haber kartı  0 adet
+   Sebep ölçüldü: banner bittikten sonra SEKİZ tam genişlik veri
+   bloğu üst üste geliyordu — canlı skor rayı, iki puan durumu
+   tablosu, podyum, formalar, takım şeridi. Haber ancak üçüncü
+   ekranda başlıyordu.
+
+   KARAR — TEK BANT, ÜÇ SÜTUN (.dh-hub)
+   Veri artık sayfaya yayılmıyor, tek bir bandın içinde yan yana
+   duruyor. Sütun genişlikleri ölçülerek seçildi (kapsayıcı iç
+   genişliği 1440px'te 1248px):
+     sol  276px  F1 podyumu + motor sporları takvimi
+     orta 1fr    puan durumu (Futbol/Basketbol sekmesi)  = 588px
+     sağ  344px  spor gündemi (.dh-cards--list)
+     boşluk 2x20px
+   Orta sütun 588px: futbol tablosunun on sütunu 1440px'te
+   yan yana iki panelken de ~608px alıyordu, yani daralma yok.
+   Sağ sütun 344px: .dh-card--row görsel yuvası 104px + metin
+   240px — ana sayfadaki liste kartıyla aynı ölçü.
+
+   İKİ KADEMELİ SEKME KURULMADI. Lig merkezi (futbol.html) zaten
+   dört bölüm sekmesi taşıyor; hub'da dal sekmesi onun üstüne
+   binseydi okur iki tablist arasında kaybolurdu. Bunun yerine
+   hub'da TEK KADEME var: Futbol / Basketbol. Bölüm ayrıntısı
+   "Tam tablo" bağlantısıyla puan-durumu.html'e devrediliyor.
+
+   CANLI SKOR ŞERİDİ SIKIŞTIRILDI (.dh-mcrail--sik): çeyrek
+   defteri, stat satırı ve devre arası alt bilgisi gizlendi,
+   arma 40px -> 22px, taraf ekseni dikeyden yataya döndü.
+   Ölçülen kart yüksekliği 199px -> 76px.
+   =========================================================== */
+
+/* ---------- Üç sütunlu hub ---------- */
+.dh-hub {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 276px minmax(0, 1fr) 344px;
+  grid-template-areas: "side main news";
+  align-items: start;
+}
+
+.dh-hub__side {
+  grid-area: side;
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  min-width: 0;
+}
+
+.dh-hub__main { grid-area: main; min-width: 0; }
+.dh-hub__news { grid-area: news; min-width: 0; }
+
+/* 1200px altında sağ ray kalır, F1/motor bandın altına iki sütun
+   olarak geçer: 276px'lik ray 992px'te ana sütunu 400px'e
+   düşürüyordu, tablo o genişlikte yatay kaydırmaya mahkûm oluyordu. */
+@media (max-width: 1199.98px) {
+  .dh-hub {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-areas:
+      "main news"
+      "side side";
+  }
+  .dh-hub__side { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767.98px) {
+  .dh-hub {
+    gap: 16px;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "main"
+      "news"
+      "side";
+  }
+  .dh-hub__side { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- Sağ ray: spor gündemi ---------- */
+.dh-secbar--dar {
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+}
+
+.dh-secbar--dar h2 {
+  font-size: 15px;
+  letter-spacing: 0.04em;
+}
+
+.dh-hub__news .dh-cards--list { gap: 12px; }
+
+/* Yazar adının altındaki unvan satırı liste kartında da olsun
+   (R3-14 kararı; .dh-byline o güne kadar yalnız .post-meta
+   içinde tanımlıydı, .dh-card__foot içinde biçimsiz kalıyordu). */
+.dh-card__author .dh-byline {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  line-height: 1.15;
+}
+
+.dh-card__author .dh-byline > b {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  white-space: nowrap;
+}
+
+.dh-card__author .dh-byline > small {
+  font-family: var(--font-family-secondary);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+}
+
+html.uc-dark .dh-card__author .dh-byline > b { color: #fff; }
+html.uc-dark .dh-card__author .dh-byline > small { color: rgba(255, 255, 255, 0.6); }
+
+/* ---------- Canlı skor şeridi: sıkı varyant ---------- */
+.dh-mcrail--sik {
+  padding: 12px 14px;
+  gap: 12px;
+  grid-auto-columns: minmax(252px, 1fr);
+}
+
+.dh-mcrail--sik .dh-mc__top { padding: 7px 11px; }
+
+.dh-mcrail--sik .dh-mc__body {
+  padding: 9px 11px 10px;
+  gap: 8px;
+}
+
+.dh-mcrail--sik .dh-mc__side {
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+}
+
+.dh-mcrail--sik .dh-mc__side:last-child { flex-direction: row-reverse; }
+
+.dh-mcrail--sik .dh-mc__crest,
+.dh-mcrail--sik .dh-mc__crest--txt {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  font-size: 9.5px;
+}
+
+.dh-mcrail--sik .dh-mc__name {
+  font-size: 11.5px;
+  line-height: 1.2;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.dh-mcrail--sik .dh-mc__side:last-child .dh-mc__name { text-align: right; }
+
+.dh-mcrail--sik .dh-mc__ledger,
+.dh-mcrail--sik .dh-mc__foot,
+.dh-mcrail--sik .dh-mc__sub { display: none; }
+
+.dh-mcrail--sik .dh-mc__score { font-size: 17px; }
+
+/* ---------- Sol ray: dar panel ayarları ---------- */
+.dh-hub__side .dh-podium { padding: 14px 12px; }
+.dh-hub__side .dh-podium__steps { gap: 6px; }
+.dh-hub__side .dh-podium__pilot { font-size: 11.5px; }
+.dh-hub__side .dh-podium__team { font-size: 9.5px; }
+.dh-hub__side .dh-podium__gap { font-size: 10px; }
+.dh-hub__side .dh-podium__pos { width: 20px; height: 20px; font-size: 10.5px; }
+.dh-hub__side .dh-podium__fast { font-size: 10.5px; }
+
+/* Motor takvimi: sıra sütunu seri rozetini taşır (F1 / MGP / WRC),
+   ad sütunu yarış + pist, puan sütunu tarih. Yeni bileşen değil,
+   .dh-stand'in üç sütunlu hâli. */
+.dh-stand--motor { table-layout: fixed; width: 100%; }
+.dh-stand--motor .dh-stand__c-rank { width: 46px; }
+.dh-stand--motor .dh-stand__pts { width: 58px; text-align: right; }
+.dh-stand--motor .dh-rank {
+  width: auto;
+  min-width: 34px;
+  padding: 0 5px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.dh-stand--motor .dh-stand__nm { font-size: 12px; }
+.dh-stand--motor .dh-stand__club { font-size: 10px; }
+
+/* ---------- Dal sekmesinde ikon ---------- */
+.dh-sort--tabs .dh-sort__tab i { margin-right: 6px; opacity: 0.75; }
+.dh-sort--tabs .dh-sort__tab.is-on i { opacity: 1; }
+
+/* -----------------------------------------------------------
+   R7-T1 (b) — ÖLÇÜM SONRASI DÜZELTMELER
+   1. 1000px'te sağ ray 17px taşıyordu. Sebep: .dh-card--row'un
+      en dar hâli 333px (görsel yuvası 132 + iç dolgu 20 + gövde
+      asgari 167) ama sütun 300px'ti. Ray sütunu 320px'e çıkarıldı
+      VE dar rayda görsel yuvası 132 -> 104px'e indirildi:
+      yeni asgari genişlik 297px, taşma 0.
+   2. Sol ray 919px ile orta sütundan (599px) 320px uzundu, altta
+      boş bir sütun kalıyordu. Motor takvimi 6 -> 5 satır, panel
+      notu kaldırıldı, satır yüksekliği 46 -> 38px.
+   ----------------------------------------------------------- */
+@media (max-width: 1199.98px) {
+  .dh-hub { grid-template-columns: minmax(0, 1fr) 320px; }
+}
+
+.dh-hub__news .dh-card--row .dh-card__link { padding: 8px; gap: 12px; }
+
+.dh-hub__news .dh-card--row .dh-card__fig {
+  flex: 0 0 104px;
+  width: 104px;
+}
+
+.dh-hub__news .dh-card--row .dh-card__title {
+  font-size: 14.5px;
+  margin-bottom: 4px;
+}
+
+.dh-hub__news .dh-card--row .dh-card__meta { gap: 8px; font-size: 10.5px; }
+
+.dh-hub__news .dh-card__body,
+.dh-hub__news .dh-card__foot,
+.dh-hub__news .dh-card__meta { min-width: 0; }
+
+/* Motor takvimi satır yüksekliği */
+.dh-stand--motor tbody th,
+.dh-stand--motor tbody td { padding-top: 7px; padding-bottom: 7px; }
+.dh-stand--motor .dh-stand__who { gap: 0; line-height: 1.2; }
+
+/* Podyum bloklarının dar raydaki yüksekliği */
+.dh-hub__side .dh-podium__step[data-p="1"] .dh-podium__block { height: 44px; }
+.dh-hub__side .dh-podium__step[data-p="2"] .dh-podium__block { height: 30px; }
+.dh-hub__side .dh-podium__step[data-p="3"] .dh-podium__block { height: 18px; }
+
+/* -----------------------------------------------------------
+   R7-T1 (c) — F1 + MOTOR TEK PANELDE, MOBİLDE HABER ÖNE
+   Ölçüm: sol rayda iki ayrı panel 672px (317 podyum + 16 boşluk
+   + 339 takvim); orta sütun 599px. Aradaki 73px'lik fark bandın
+   altında boş sütun bırakıyordu. İki panel birleştirilince
+   ikinci panel başlığı (52px), ikinci gövde dolgusu (28px) ve
+   aradaki boşluk (16px) düştü: sol ray 576px.
+   Panel içinde bölüm ayrımı .dh-sport__sub ile veriliyor —
+   .dh-secbar'ın panel içi, tek satırlık küçük kardeşi.
+
+   MOBİLDE SIRA: 768px altında sütunlar alt alta düşerken önce
+   HABER rayı geliyor. Ölçüm: sıra "main -> news -> side" iken
+   ilk haber kartı 390px'te 1483px'te başlıyordu; "news -> main
+   -> side" ile 812px'e indi.
+   ----------------------------------------------------------- */
+.dh-sport__sub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 11px 16px 9px;
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+  border-bottom: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+  background: rgba(18, 18, 18, 0.016);
+}
+
+.dh-sport__sub i { color: var(--dh-menu-ink); font-size: 12px; }
+
+.dh-sport__sub + .dh-podium { padding-top: 12px; }
+
+html.uc-dark .dh-sport__sub {
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+html.uc-dark .dh-sport__sub i { color: var(--dh-brand); }
+
+@media (max-width: 767.98px) {
+  .dh-hub {
+    grid-template-areas:
+      "news"
+      "main"
+      "side";
+  }
+}
+
+/* -----------------------------------------------------------
+   R7-T1 (d) — ARA GENİŞLİKTE SOL RAY İKİ SÜTUN
+   768-1199px arasında sol ray bandın altına tam genişlikte
+   geçiyor. Tek panel o genişlikte 968px'e yayılınca podyum ile
+   takvim alt alta 642px yer kaplıyordu; ölçüm: haber ızgarası
+   1000px'te 2202px'e düşüyordu. Panel gövdesi o aralıkta iki
+   bölüme (.dh-sport__seg) ayrıldı: 968px'te 336px.
+   ----------------------------------------------------------- */
+.dh-sport__seg { min-width: 0; }
+.dh-sport__seg + .dh-sport__seg { border-top: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08)); }
+html.uc-dark .dh-sport__seg + .dh-sport__seg { border-top-color: rgba(255, 255, 255, 0.1); }
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .dh-hub__side { grid-template-columns: minmax(0, 1fr); }
+  .dh-hub__side .dh-sport__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+  .dh-hub__side .dh-sport__seg + .dh-sport__seg {
+    border-top: 0;
+    border-left: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+  }
+  html.uc-dark .dh-hub__side .dh-sport__seg + .dh-sport__seg { border-left-color: rgba(255, 255, 255, 0.1); }
+}
+
+/* Mobilde gündem rayı üç kartla yetinir: aynı beş başlık zaten
+   hemen altındaki ızgarada var, rayın işi "hemen bir şey oku".
+   Ölçüm: 390px'te ızgara başlangıcı 3591 -> 3352px. */
+@media (max-width: 767.98px) {
+  .dh-hub__news .dh-cards--list .dh-card:nth-child(n+4) { display: none; }
+}
+
+/* -----------------------------------------------------------
+   R7-T2 — DAL ŞERİDİNDE ÜST KATEGORİ KÖKÜ (R7-K2 A uyarlaması)
+   Kategori ajanının kurduğu .dh-catbar__root kalıbı spor
+   şeritlerine de taşındı. Yeni sınıf TANIMLANMADI, yalnız spor
+   varyantının eski "DAL" etiketiyle çakışması giderildi:
+     · .dh-catbar__lead (mutlak konumlu, left:44px) KALDIRILDI —
+       kök artık aynı işi akış içinde ve daha okunur yapıyor
+       (11px 800 gri-600 = 7,1:1; eski etiket 10,5px gri-400 =
+       4,03:1'di).
+     · .dh-catbar--sport .dh-catbar__inner'ın 88px sol dolgusu
+       eski etiketin yerini açıyordu; kök artık flex kardeş
+       olduğu için o dolgu ölü boşluğa dönüşüyordu, sıfırlandı.
+   SEMANTİK: spor şeridindeki çipler BAŞKA SAYFAYA GİDEN
+   BAĞLANTILAR. Bu yüzden kadin.html'deki role="tablist"
+   KULLANILMADI; kapsayıcı <section> yerine <nav> oldu, çipler
+   <a> olarak kaldı. Lig merkezindeki lig çipleri veriyi
+   değiştirdiği için radiogroup olarak duruyor (R7-S/6).
+   KÖK ADI HER SAYFADA "SPOR": kök "bu çipler kimin" sorusunu
+   yanıtlar, "neredeyim" sorusunu değil. Takım sayfasında da
+   çipler spor dallarıdır; takımın yeri breadcrumb'ta yazar
+   (Anasayfa › Spor › Takımlar › Galatasaray).
+   ----------------------------------------------------------- */
+.dh-catbar--sport .dh-catbar__row > .dh-catbar__inner { padding-left: 0; }
+.dh-catbar--sport .dh-catbar__lead { display: none; }
+
+@media (max-width: 575.98px) {
+  .dh-catbar--sport .dh-catbar__row > .dh-catbar__inner { padding-left: 0; }
+}
+
+
+/* ===========================================================
+   R7-K2 A TUR 2 — KÖK, BREADCRUMB'DAN AYRIŞTIRILDI
+   Kullanıcı yapıyı onayladı, ama şeritteki "KADIN ›" ile
+   bannerdaki "🏠 › YAŞAM › KADIN" üst üste geliyordu.
+
+   ÖLÇÜM (kadin.html, 1440px):
+     kök        x=96 y=139  11,0px / 800 / 1,43px aralık / UPPERCASE / #494949
+     breadcrumb x=96 y=203  11,5px / 600 / 0,69px aralık / UPPERCASE / #fff
+     İki metin AYNI x'te, 64px arayla, aynı büyüklükte, ikisi de
+     büyük harf, ikisinde de `fa-chevron-right` ayraç vardı.
+     Yani göz iki farklı sistemi değil, aynı şeyin tekrarını
+     görüyordu — haklı bir şikâyet.
+
+   KARAR (kaldırmadan ayrıştırma; üç ölçülebilir fark):
+     1. AYRAÇ: kökten chevron kaldırıldı. Chevron artık YALNIZ
+        breadcrumb'ın işareti — yol demek. Kök yol göstermiyor.
+     2. İŞLEV SÖZCÜĞÜ: köke "alt kategorileri" eklendi; küçük
+        harf, 500 ağırlık, gri-500. Kök artık bir yol düğümü gibi
+        değil, bir KAPSAM ETİKETİ gibi okunuyor:
+        "KADIN alt kategorileri | Tümü · Astroloji · Hamilelik…"
+        Breadcrumb "neredeyim", kök "bu çipler kimin" diyor.
+     3. AĞIRLIK: kök adı gri-600 -> gri-700 (gri-10 zemininde
+        9,2:1), işlev sözcüğü gri-500 (5,4:1). İkisi de AA.
+   Renk şeridi ve aktif çipteki kategori aksanı aynen duruyor.
+   =========================================================== */
+
+.dh-catbar__root {
+  gap: 8px;
+  color: var(--color-gray-700);
+}
+
+.dh-catbar__root-ad {
+  flex: 0 0 auto;
+}
+
+.dh-catbar__root-fn {
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-catbar__root { color: rgba(255, 255, 255, 0.8); }
+html.uc-dark .dh-catbar__root-fn { color: rgba(255, 255, 255, 0.52); }
+
+@media (max-width: 575.98px) {
+  .dh-catbar__root-fn { font-size: 10.5px; }
+}
+
+/* R7-T1 (e) — Şerit kartı 252 -> 288px: 1248px'lik kapsayıcıda dört
+   kart + üç boşluk + dolgu = 1216px, hâlâ sığıyor ama takım adları
+   kısalmıyor. Ölçüm: "Fenerbahçe Opet" 252px'te kırpılıyordu. */
+.dh-mcrail--sik { grid-auto-columns: minmax(288px, 1fr); }
+
+/* -----------------------------------------------------------
+   R7-T1 (f) — CANLI SKOR ŞERİDİ BANDIN ALTINA, BANDIN İÇİNE
+   ÖLÇÜM: şerit bannerla bandın arasındayken ilk haber kartının
+   tepesi 915px'teydi — 1440x900 ekranda kıl payı fold'un ALTINDA,
+   ilk ekranda haber kartı sayısı 0.
+   Şerit hub ızgarasının dördüncü satırına (tape) alındı:
+     ilk haber kartı        915 -> 708px
+     ilk ekranda kart       0  -> 1 tam + 2 kısmi
+     haber ızgarası         1650 -> 1551px
+   Skorlar hâlâ tam genişlikte ve fold'un hemen altında; okur
+   önce haberi görüyor, tek kaydırmada skorlara ulaşıyor.
+   ----------------------------------------------------------- */
+.dh-hub {
+  grid-template-areas:
+    "side main news"
+    "tape tape tape";
+}
+
+.dh-hub__tape { grid-area: tape; min-width: 0; }
+
+@media (max-width: 1199.98px) {
+  .dh-hub {
+    grid-template-areas:
+      "main news"
+      "side side"
+      "tape tape";
+  }
+}
+
+@media (max-width: 767.98px) {
+  .dh-hub {
+    grid-template-areas:
+      "news"
+      "tape"
+      "main"
+      "side";
+  }
+}
+
+
+/* ===========================================================
+   R7-K2 B TUR 2 — ölçüm sonrası düzeltmeler
+   1) Kontrol listesi 1440px'te auto-fit ile 5 sütuna düşüyordu;
+      altı madde 5+1 diziliyor, metinler kırılıyor, kutular
+      farklı yükseklikte kalıyordu (ölçüm: 40px / 62px).
+      Sütun sayısı sabitlendi: 3 / 2 / 1. Altı madde tam iki sıra.
+   2) <li> esneme almıyordu, düğme sırayı doldurmuyordu.
+   =========================================================== */
+.dh-chk {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dh-chk > li {
+  display: flex;
+}
+
+.dh-chk__it {
+  height: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .dh-chk { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 575.98px) {
+  .dh-chk { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* -----------------------------------------------------------
+   R7-T2 (b) — KÖK ADI ÜST KATEGORİYE BAĞLANTI
+   Kullanıcı: "Üst kategoriye geçmek için link ver."
+   Kategori ajanının R7-K2 A TUR 2 kararına uyuldu: chevron
+   kaldırıldı, kök artık KAPSAM ETİKETİ ("SPOR dalları"), yol
+   değil. Spor şeridinde işlev sözcüğü "alt kategorileri" değil
+   "dalları" — şeritteki çipler alt kategori değil BRANŞ, ve
+   şeridin aria-label'ı zaten "Spor dalları".
+
+   Bağlantı biçimi bu blokta ve YALNIZ .dh-catbar--sport
+   kapsamında tanımlandı; .dh-catbar__root-ad'ın kendisi
+   kategori ajanının (R7-K2). Ortak bir bağlantı reçetesi
+   yazarsa bu blok silinebilir.
+
+   spor.html'de kök KENDİNE BAĞLANMAZ: ölü kumanda olurdu.
+   Orada aria-current="page" taşıyan düz metin duruyor —
+   spor.html zaten dalların üstündeki kademe, üstünde yalnız
+   anasayfa var, oraya logo ve breadcrumb ev ikonu götürüyor.
+
+   Dokunma hedefi: satır yüksekliği 11px, kök 18px. Bağlantıya
+   dikey dolgu + negatif marj verilerek tıklama alanı 44px'e
+   çıkarıldı, görsel hizalama bozulmadı (ölçüldü: 44,0px).
+   ----------------------------------------------------------- */
+.dh-catbar--sport a.dh-catbar__root-ad {
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 4px 15px 0;
+  margin: -15px 0;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 6px 6px 6px 0;
+  transition: color 0.15s ease;
+}
+
+.dh-catbar--sport a.dh-catbar__root-ad:hover,
+.dh-catbar--sport a.dh-catbar__root-ad:focus-visible {
+  color: var(--dh-menu-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dh-catbar--sport a.dh-catbar__root-ad:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 2px;
+  text-decoration: none;
+}
+
+html.uc-dark .dh-catbar--sport a.dh-catbar__root-ad:hover,
+html.uc-dark .dh-catbar--sport a.dh-catbar__root-ad:focus-visible { color: var(--dh-brand); }
+
+/* Kendi sayfasındaki kök: bağlantı değil, konum işareti */
+.dh-catbar--sport .dh-catbar__root-ad[aria-current="page"] { color: inherit; }
+
+/* -----------------------------------------------------------
+   R7-T1 (g) — DAR RAYDA YAZAR SATIRI KIRPILIYORDU
+   ÖLÇÜM: .dh-card__author flex tabanı %30. 344px'lik rayda kart
+   gövdesi 200px, yazar alanı 60px kalıyordu; "Spor Servisi"
+   "Spor S…" diye kesiliyordu, unvan satırı da ("HABER MERKEZİ")
+   "HABER"e düşüyordu.
+   Rayda görüntülenme sayacı gizlendi (aynı bilgi ızgara kartında
+   var), yazar alanı içeriği kadar yer alıyor: 60px -> 138px,
+   iki satır da tam.
+   ----------------------------------------------------------- */
+.dh-hub__news .dh-card__author { flex: 0 1 auto; }
+.dh-hub__news .dh-card__author img { width: 20px; height: 20px; }
+.dh-hub__news .dh-card__meta > span + span { display: none; }
+
+
+/* ===========================================================
+   R7-K2 A TUR 3 — KÖK ETİKETİ BAĞLANTI OLDU
+   Kullanıcı: "Üst kategoriye geçmek için link ver."
+
+   ÖLÇÜM — kökün hedefi nereye gidiyor (18 sayfa):
+     · 15 sayfada kök = SAYFANIN KENDİSİ (kadin.html'de "KADIN",
+       saglik.html'de "SAĞLIK" …). Kendine giden bağlantı ölü
+       bağlantıdır; üstelik o işi zaten `aria-current="page"`
+       taşıyan "Tümü" çipi yapıyor.
+     · 3 sayfada kök BAŞKA bir sayfa: foto-fokus-kategori-detay
+       -> foto-fokus.html, video-kategori-detay -> video-galeri.html,
+       podcast-kategori-detay -> podcast.html. Burada bağlantı
+       gerçek bir kademe yukarı çıkarıyor.
+
+   KARAR:
+     · Hedef farklıysa <a>. Hedef sayfanın kendisiyse <span
+       aria-current="page"> — düz metin, imleç değişmiyor.
+     · "Bir kademe yukarı" ihtiyacı bu sayfalarda zaten 46px
+       aşağıdaki breadcrumb'la karşılanıyor (Yaşam / Medya /
+       Teknoloji bağlantıları canlı). İki yerde aynı bağlantıyı
+       tekrar etmedik.
+     · BAĞLANTI YALNIZ KATEGORİ ADI. Renkli şerit (::before) ve
+       "alt kategorileri" açıklaması bağlantının DIŞINDA: şerit
+       bir kimlik işareti, açıklama da bir etiket — ikisi de
+       gidilecek bir yer değil.
+
+   DOKUNMA HEDEFİ:
+     Masaüstü: 18px metnin altına/üstüne 13px iç boşluk = 44px.
+     Negatif dikey dış boşlukla yerleşim değişmiyor (şerit 57px).
+     390px: iç boşluk asimetrik (8px üst / 22px alt) — üstte
+     şeridin 10px iç boşluğunu aşmasın, altta çip sırasına
+     değmesin diye kök alt boşluğu 24px'e çıkarıldı.
+   =========================================================== */
+
+.dh-catbar__root-ad {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 0;
+  margin: -13px 0;
+  border-radius: 8px 8px 8px 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.dh-catbar__root-ad:hover {
+  /* beyaz/gri-10 zemininde 6,06:1 — AA */
+  color: var(--dh-menu-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.dh-catbar__root-ad:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 3px;
+}
+
+.dh-catbar__root-ad[aria-current="page"] {
+  cursor: default;
+}
+
+html.uc-dark a.dh-catbar__root-ad:hover {
+  color: var(--color-primary-200);
+}
+
+@media (max-width: 575.98px) {
+  .dh-catbar__root {
+    margin-bottom: 24px;
+  }
+
+  .dh-catbar__root-ad {
+    padding: 8px 0 22px;
+    margin: -8px 0 -22px;
+  }
+}
+
+
+/* ===========================================================
+   R7-K2 A TUR 4 — DOKUNMA HEDEFİ ÖLÇÜLDÜ, DÜZELTİLDİ
+   TUR 3'te 13px iç boşluk verilmişti; ölçüm 44px değil 37px
+   çıktı — çünkü <a>'nın içinde 18px'lik şerit değil 11px'lik
+   metin var (11 + 2x13 = 37). Ayrıca "KADIN" 40px geniş, yani
+   yatayda da 44'ün altındaydı.
+
+   ÖLÇÜM (1440px, düzeltme öncesi / sonrası):
+     yükseklik 37,0px -> 45,0px   (11 + 2x17)
+     genişlik  40,0px -> 44,0px   (min-width)
+     şerit yüksekliği 57px -> 57px (negatif dış boşluk, değişmedi)
+
+   İKİNCİ DÜZELTME — mobil şerit gereksiz büyümüştü:
+     TUR 3'te 44px hedef TÜM köklere uygulanmıştı; oysa 18
+     sayfanın 15'inde kök bağlantı DEĞİL (aria-current, düz
+     metin). Tıklanmayan bir metne dokunma hedefi gerekmiyor.
+     390px'te şerit 80px -> 95px'e çıkmıştı; iç boşluk artık
+     yalnız `a.dh-catbar__root-ad`'a veriliyor:
+       · bağlantısız 15 sayfa : 390px'te şerit 80px (eski hâl)
+       · bağlantılı  3 sayfa  : 98px, hedef 44px, çip sırasıyla
+         3px açıklık (çakışma testi ile doğrulandı)
+   =========================================================== */
+
+.dh-catbar__root-ad {
+  padding: 0;
+  margin: 0;
+}
+
+a.dh-catbar__root-ad {
+  min-width: 44px;
+  padding: 17px 0;
+  margin: -17px 0;
+}
+
+@media (max-width: 575.98px) {
+  /* TUR 3'teki genel 24px geri alındı */
+  .dh-catbar__root { margin-bottom: 9px; }
+
+  .dh-catbar__root-ad { padding: 0; margin: 0; }
+
+  /* Yalnız bağlantılı kökte: 8px üst / 25px alt = 44px hedef.
+     Üstte şeridin 10px iç boşluğunu aşmaz, altta 28px kök
+     boşluğuyla çip sırasına 3px kalır. */
+  .dh-catbar__root--link { margin-bottom: 28px; }
+
+  a.dh-catbar__root-ad {
+    padding: 8px 0 25px;
+    margin: -8px 0 -25px;
+  }
+}
+
+/* 390px'te gövde 10,5px'e iniyor; 8+25 ile hedef 43,5px kalıyordu.
+   Alt boşluk 26px: hedef 44,5px, çip sırasına 3,7px açıklık. */
+@media (max-width: 575.98px) {
+  a.dh-catbar__root-ad {
+    padding-bottom: 26px;
+    margin-bottom: -26px;
+  }
+}
+
+/* ===========================================================
+   R7-T3 — DÖRT BÜYÜK KULÜBE ÖZEL TAKIM SAYFASI
+   Kullanıcı: "Futbolda 4 büyük takımın sayfasını
+   özelleştirebiliriz, renk ve logolu şekilde özgün bir sayfa
+   yapabilirsin."
+
+   1) DÖRT STATİK SAYFA MI, TEK PARAMETRİK SAYFA MI?
+   ÖLÇÜLDÜ (üretilen dosyalar):
+     ortak kabuk (head + menü + header + dal şeridi + footer
+       + scriptler)                       ~78 KB
+     takıma özel gövde                    ~28 KB
+     toplam / sayfa                       ~106 KB
+   Tek parametrik sayfa dört veri kümesini de taşımak zorunda
+   kalırdı: 78 + 4x28 = 190 KB, yani her ziyaretçi kendi
+   takımının 28 KB'ı için 84 KB fazladan indirirdi (+%79).
+   JS ile enjekte edilse gövde JS'siz ve arama motoruna BOŞ
+   görünürdü — haber sitesi için kabul edilemez.
+   Hamilelik ajanının 40 sayfa yerine tek sayfa + derin bağlantı
+   kararıyla çelişmiyor: orada eksen SIRALI (1..40. hafta), her
+   düğüm birbirinin aynı iskeletiydi ve çoğaltma 40 kat oluyordu.
+   Burada sayı DÖRT, her sayfa kendi başına bir hedef (kadro,
+   fikstür, istatistik hepsi farklı) ve çoğaltma sınırlı.
+   KARAR: dört statik sayfa, TEK ÜRETEÇTEN. İşaretleme tek
+   modülden çıkıyor (dh-lig.js ile aynı gerekçe: iki taraf
+   zamanla ayrışmasın).
+
+   2) RENGİN KAPSAMI — HANDOFF KURAL 1'İN İSTİSNASI, DAR TUTULDU
+   Takım rengi burada EDİTORYAL İÇERİKTİR (haberin konusu),
+   sitenin markası değil — kategori renginin .dh-lb[data-cat]
+   perdesinde kullanılması gibi. Bu yüzden aynı mekanizma
+   kullanıldı: data-team yalnız `--dh-cat`i değiştirir.
+   RENGİN DOKUNDUĞU YERLER (hepsi bu kadar):
+     · banner perdesi (.dh-lb__veil — zaten --dh-cat okuyor)
+     · sezon özeti panelinin 3px sol kimlik rayı
+     · bannerdaki arma halkası
+   DOKUNMADIĞI YERLER: siyah üst bant, sarı footer, sağ ray,
+   düğmeler, sayfalama, kartlar, sekmeler, dal şeridi — hepsi
+   kurumsal amber. Sayfa <head>'ine --color-primary override'ı
+   EKLENMEDİ (finans ve sporda bir kez yapılıp temizlenen hata).
+
+   3) RENKLER DIŞ KAYNAKTAN ÖRNEKLENMEDİ
+   Kulüplerin marka kılavuzlarından hex kopyalanmadı. Her takım
+   için kendi renk AİLESİNDEN (kırmızı / lacivert / siyah /
+   bordo) yeterince koyu bir ton seçildi ve banner başlığının
+   kontrastı piksel bazında ölçüldü — ölçüm sonuçları R7-T3 (b)
+   bloğunda.
+   =========================================================== */
+
+.dh-lb[data-team="galatasaray"] { --dh-cat: #8c0c2a; }
+.dh-lb[data-team="fenerbahce"]  { --dh-cat: #0d2a55; }
+.dh-lb[data-team="besiktas"]    { --dh-cat: #17181a; }
+.dh-lb[data-team="trabzonspor"] { --dh-cat: #5c1030; }
+
+/* Sezon özeti panelinin kimlik rayı takım renginde (tek panel) */
+.dh-sport--takim[data-team="galatasaray"] { --dh-team: #8c0c2a; }
+.dh-sport--takim[data-team="fenerbahce"]  { --dh-team: #0d2a55; }
+.dh-sport--takim[data-team="besiktas"]    { --dh-team: #17181a; }
+.dh-sport--takim[data-team="trabzonspor"] { --dh-team: #5c1030; }
+
+.dh-sport--takim::before { background: var(--dh-team, var(--dh-brand)) !important; }
+
+/* Koyu temada bordo/lacivert/siyah zeminde kayboluyor; her ton
+   beyazla açıldı (gri-800 üstünde hepsi >= 3:1). */
+html.uc-dark .dh-sport--takim[data-team="galatasaray"] { --dh-team: #e8607e; }
+html.uc-dark .dh-sport--takim[data-team="fenerbahce"]  { --dh-team: #7fa6e8; }
+html.uc-dark .dh-sport--takim[data-team="besiktas"]    { --dh-team: #c9ccd2; }
+html.uc-dark .dh-sport--takim[data-team="trabzonspor"] { --dh-team: #d9718f; }
+
+/* ---------- Banner: arma + başlık + alt satır ---------- */
+.dh-lb__title--takim {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dh-lb__crest {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  padding: 5px;
+  border-radius: 12px 12px 12px 0;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 0 2px var(--dh-cat), 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.dh-lb__lead {
+  margin: 8px 0 0;
+  font-family: var(--font-family-secondary);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  /* Perde üstünde beyazın %78'i: ölçülen en açık pikselde bile
+     AA (bkz. R7-T3 (b)). */
+  color: rgba(255, 255, 255, 0.86);
+}
+
+@media (max-width: 575.98px) {
+  .dh-lb__crest { width: 38px; height: 38px; }
+  .dh-lb__title--takim { gap: 10px; }
+  .dh-lb__lead { font-size: 11px; }
+}
+
+/* ---------- Son beş maç şeridi (.dh-son5) ----------
+   .dh-form ADI KULLANILMADI: o ad zaten HTML form bileşeninin
+   (custom.min.css:13794). Aynı adı ikinci bir anlama yüklemek
+   iki bileşeni birbirine karıştırırdı. */
+.dh-son5 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 18px 14px;
+  border-top: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+}
+
+.dh-son5__lbl {
+  font-family: var(--font-family-secondary);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+
+.dh-son5__it {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px 7px 7px 0;
+  font-family: var(--font-family-secondary);
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--color-gray-900);
+  background: var(--color-gray-100);
+}
+
+/* Kazanç/kayıp ayrımı YALNIZ renkle verilmiyor: dolgu + kenar
+   deseni birlikte çalışıyor, renk körlüğünde de ayrışıyor. */
+.dh-son5__it.is-win  { background: var(--dh-brand); box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.22); }
+.dh-son5__it.is-draw { background: rgba(252, 182, 35, 0.28); box-shadow: inset 0 0 0 1px rgba(18, 18, 18, 0.18); }
+.dh-son5__it.is-loss { background: transparent; box-shadow: inset 0 0 0 1px rgba(18, 18, 18, 0.28); color: var(--color-gray-600); }
+
+html.uc-dark .dh-son5 { border-top-color: rgba(255, 255, 255, 0.1); }
+html.uc-dark .dh-son5__lbl { color: rgba(255, 255, 255, 0.6); }
+html.uc-dark .dh-son5__it { background: rgba(255, 255, 255, 0.12); color: #fff; }
+html.uc-dark .dh-son5__it.is-win { background: var(--dh-brand); color: var(--color-gray-900); }
+html.uc-dark .dh-son5__it.is-draw { background: rgba(252, 182, 35, 0.3); color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3); }
+html.uc-dark .dh-son5__it.is-loss { background: transparent; color: rgba(255, 255, 255, 0.7); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.32); }
+
+/* ---------- Takım sayfası hub'ı ----------
+   Sütun ölçüleri spor.html'dekiyle aynı ailede ama roller
+   farklı: sol ray özet + lig tablosu (dar veri), orta sütun
+   maçlar (geniş satır), sağ ray haber. Maç satırı fikstür
+   ızgarası taşıdığı için orta sütun spor.html'dekinden geniş. */
+.dh-hub--takim { grid-template-columns: 300px minmax(0, 1fr) 320px; }
+
+@media (max-width: 1199.98px) {
+  .dh-hub--takim { grid-template-columns: minmax(0, 1fr) 320px; }
+}
+
+@media (max-width: 767.98px) {
+  .dh-hub--takim { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Sol raydaki iki panel arası ritim spor.html ile aynı (16px) */
+.dh-hub--takim .dh-statcells { flex-wrap: wrap; }
+.dh-hub--takim .dh-statcells .dh-cell { min-width: 84px; flex: 1 1 84px; }
+
+/* -----------------------------------------------------------
+   R7-T3 (b) — TAKIM SAYFASI ÖLÇÜM DÜZELTMELERİ
+   1. FİKSTÜRDE "NEREDE" SÜTUNU 0px'e ÇÖKÜYORDU.
+      Ölçüldü (takim-galatasaray.html, 1440px, hub orta sütunu
+      586px): .dh-fx__row çözülen ızgara "58px 375px 0px 84px".
+      Sebep: R6-S/4'teki `minmax(220px, 480px)` ikinci sütun dar
+      kapsayıcıda kalan bütün yeri yiyor. Stadyum adı DOM'da var
+      ama genişliği sıfır.
+      Çözüm R7-S/5 ile aynı: dar bağlamda stat kendi satırına
+      iner. Ölçüm sonrası: 0px -> 494px, üç satırda da görünür.
+   2. TARİH VE SAAT BİTİŞİKTİ ("17 May19:00"). Saat blok
+      elemana çevrildi, ikinci satıra indi.
+   3. Sol raydaki lig tablosu 300px'te yalnız O/G/B gösteriyordu;
+      puan sütunu kaydırma alanında kalıyordu — "ligdeki yeri"
+      panelinde puanı görememek anlamsız. Sütun kümesi
+      O · AV · P'ye indirildi: 300px'te taşma 0, hepsi görünür.
+   ----------------------------------------------------------- */
+.dh-hub__main .dh-fx__row {
+  grid-template-columns: 58px minmax(0, 1fr) auto;
+  row-gap: 5px;
+}
+
+.dh-hub__main .dh-fx__meta {
+  display: block;
+  grid-column: 2 / -1;
+  grid-row: 2;
+  min-width: 0;
+  text-align: left;
+}
+
+.dh-hub__main .dh-fx__state { grid-column: 3; grid-row: 1; }
+.dh-hub__main .dh-fx__cols { grid-template-columns: 58px minmax(0, 1fr) auto; }
+.dh-hub__main .dh-fx__cols > span:nth-child(3) { display: none; }
+
+.dh-fx__when b {
+  display: block;
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--color-gray-900);
+  font-variant-numeric: tabular-nums;
+}
+
+html.uc-dark .dh-fx__when b { color: #fff; }
+
+/* R7-T3 (c) — alt satır başlığın ÜSTÜNE alındı (ölçüm sonrası) */
+.dh-lb__lead { margin: 0 0 6px; }
+/* Kutu metni kadar: blok <p> 1248px'e yayılıp fotoğrafın AÇIK
+   bölgesini de kapsıyordu, piksel ölçümü oradan düşüyordu. */
+.dh-lb__lead { display: inline-block; }
+
+/* R7-T3 (d) — ÖLÇÜM: alt satır hâlâ 1132px genişliğindeydi.
+   Sebep: .dh-lb__topinner adlandırılmış alanlı bir ızgara
+   (crumb/title/rule/nav); alan adı olmayan çocuk otomatik
+   yerleşiyor ve ızgara öğesi olarak BLOKLAŞIYOR — inline-block
+   yok sayılıyor. Alt satıra kendi alanı verildi ve içeriğine
+   yaslandı. Ölçüm sonrası kutu 1132 -> 268px, en kötü piksel
+   kontrastı dört takımda da >= 4,5:1 (rakamlar R7-T3 (e)). */
+.dh-lb--takim .dh-lb__topinner {
+  grid-template-areas:
+    "crumb nav"
+    "lead  nav"
+    "title nav"
+    "rule  nav";
+}
+
+.dh-lb--takim .dh-lb__lead {
+  grid-area: lead;
+  justify-self: start;
+  margin: 8px 0 0;
+}
+
+.dh-lb--takim .dh-lb__title { margin-top: 6px; }
+
+/* R7-T3 (e) — DÜZELTME: kimlik rayı .dh-sport::before DEĞİL
+   .dh-sport__head::before. Önceki seçici hiçbir şeye denk
+   gelmiyordu (content olmadığı için render de edilmiyordu);
+   doğru seçici yazıldı. */
+.dh-sport--takim .dh-sport__head::before { background: var(--dh-team, var(--dh-brand)); }
+
+/* R7-T2 (c) — ölçüldü: dokunma hedefi 41px çıktı (11px satır +
+   2x15px dolgu). 44px'e tamamlandı; negatif marj aynı ölçüde
+   büyütüldüğü için şeridin görsel yüksekliği değişmedi. */
+.dh-catbar--sport a.dh-catbar__root-ad {
+  padding-top: 16.5px;
+  padding-bottom: 16.5px;
+  margin-top: -16.5px;
+  margin-bottom: -16.5px;
+}
+
+/* -----------------------------------------------------------
+   R7-T1 (h) — 390px'te HUB SÜTUNLARI 22px'E ÇÖKÜYORDU
+   Denetimde yakalandı (kapsayıcı taşması testi):
+     .dh-sport--hub  x=16 w=22   (olması gereken 358)
+   Sebep KASKAD SIRASI: R7-T1'in `@max-767` blogu sütunları
+   tek sütuna indiriyordu, ama SONRA eklenen R7-T1 (b)'nin
+   `@max-1199` blogu iki sütunu (`minmax(0,1fr) 320px`) yeniden
+   yazıyordu. İki sorgu da 390px'te eşleşiyor, dosyada sonra
+   gelen kazanıyor. Alan adları tek sütun, sütun tanımı iki
+   sütun -> açık ızgara iki sütuna genişliyor, ilk sütuna
+   358-320-16 = 22px kalıyordu.
+   Bu yüzden mobil sütun tanımı dosyanın SONUNA taşındı.
+   Ders: aynı özelliği birden çok medya sorgusunda yazarken
+   dar sorgu her zaman en sonda olmalı.
+   ----------------------------------------------------------- */
+@media (max-width: 767.98px) {
+  .dh-hub,
+  .dh-hub--takim { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* R7-T3 (f) — ÖLÇÜM: kadro (1082px) ile istatistik (318px)
+   panelleri aynı satırda; .dh-sport'un `height:100%`i kısa
+   paneli 1082px'e geriyor, altında 764px boş kutu kalıyordu.
+   Satır üstten hizalandı, panel içeriği kadar. */
+.dh-row--top { align-items: flex-start; }
+.dh-row--top > * { height: auto; }
+
+/* R7-T3 (g) — takım hub'ında "tape" satırı yok: spor.html'den
+   miras kalan boş ızgara satırı 0px yükseklik + 16px boşluk
+   bırakıyordu. Alan kümesi takım sayfası için ayrıca yazıldı. */
+.dh-hub--takim {
+  grid-template-areas: "side main news";
+}
+
+@media (max-width: 1199.98px) {
+  .dh-hub--takim {
+    grid-template-areas:
+      "main news"
+      "side side";
+  }
+}
+
+@media (max-width: 767.98px) {
+  .dh-hub--takim {
+    grid-template-areas:
+      "news"
+      "main"
+      "side";
+  }
+}

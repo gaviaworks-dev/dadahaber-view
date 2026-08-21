@@ -473,32 +473,35 @@
         <span class="dh-mark" aria-hidden="true">DADA</span>
 
         <!-- Section start -->
-        <section class="section panel dh-catbar" aria-label="Kadın alt kategorileri">
+        <section class="section panel dh-catbar" data-cat="kadin" aria-label="Kadın alt kategorileri">
           <div class="container max-w-xl">
-            <div class="dh-catbar__inner swiper-parent">
+            <div class="dh-catbar__row">
+              <span class="dh-catbar__root"><span class="dh-catbar__root-ad" aria-current="page">KADIN</span><span class="dh-catbar__root-fn">alt kategorileri</span></span>
+              <div class="dh-catbar__inner swiper-parent">
               <div class="swiper dh-catbar__swiper"
                 data-uc-swiper="items: auto; gap: 8; free: true; grab-cursor: true; next: .dh-catbar__nav--next; prev: .dh-catbar__nav--prev; disable-class: is-off; watchOverflow: true;">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide"><a class="dh-catbar__chip is-on" href="kadin.html" aria-current="page">Tümü</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="astroloji.html">Astroloji</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="hamilelik.html">Hamilelik</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="kadin.html">Yaşam</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="saglik.html">Sağlık</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="kadin.html">Kariyer</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="kadin.html">Ebeveynlik</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="kadin.html">İlişkiler</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="kadin.html">Moda</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="kadin.html">Güzellik</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="kadin.html">Psikoloji</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="kadin.html">Girişimcilik</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="kadin.html">Hukuk</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="spor.html">Spor</a></div>
-                  <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-liste.html">Kültür</a></div>
+                <div class="swiper-wrapper" role="tablist" aria-label="Kadın alt kategorileri">
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip is-on" id="dh-kchip-tumu" role="tab" aria-selected="true" tabindex="0" aria-controls="dh-kmod" data-dh-kcat="tumu">Tümü</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-astroloji" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="astroloji">Astroloji</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-hamilelik" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="hamilelik">Hamilelik</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-yasam" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="yasam">Yaşam</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-saglik" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="saglik">Sağlık</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-kariyer" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="kariyer">Kariyer</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-ebeveynlik" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="ebeveynlik">Ebeveynlik</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-iliskiler" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="iliskiler">İlişkiler</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-moda" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="moda">Moda</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-guzellik" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="guzellik">Güzellik</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-psikoloji" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="psikoloji">Psikoloji</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-girisimcilik" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="girisimcilik">Girişimcilik</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-hukuk" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="hukuk">Hukuk</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-spor" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="spor">Spor</button></div>
+                  <div class="swiper-slide" role="presentation"><button type="button" class="dh-catbar__chip" id="dh-kchip-kultur" role="tab" aria-selected="false" tabindex="-1" aria-controls="dh-kmod" data-dh-kcat="kultur">Kültür</button></div>
                 </div>
               </div>
               <div class="dh-catbar__nav dh-catbar__nav--prev" role="button" aria-label="Önceki kategoriler"><i class="unicon-chevron-left"></i></div>
               <div class="dh-catbar__nav dh-catbar__nav--next" role="button" aria-label="Sonraki kategoriler"><i class="unicon-chevron-right"></i></div>
             </div>
+          </div>
           </div>
         </section>
         <!-- Section Start -->
@@ -729,7 +732,66 @@
                 </div>
             </div>
         </div>
-        <section class="section dh-astro bg-white dark:bg-gray-900" id="astroloji" aria-labelledby="dh-astro-title">
+                <!-- ===== R7-K2 B — Alt kategori modül alanı =====
+             Tek seferde tek panel. Çipler (üstteki .dh-catbar) sekme,
+             burası da onların paneli. Beslemesi: #dh-kadin-data. -->
+        <div id="dh-kmod" class="dh-kmod" aria-live="polite">
+
+        <!-- TÜMÜ — Kadın'ın bugünkü özeti; her hücre bir alt kategoriye geçer -->
+        <div class="section panel dh-kmod__panel" role="tabpanel" aria-labelledby="dh-kchip-tumu" data-dh-kpanel="tumu" tabindex="0">
+          <div class="section-outer panel py-4 lg:py-8">
+            <div class="container max-w-xl">
+              <header class="dh-secbar">
+                <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Bugün Kadın'da</h2>
+                <div class="dh-secbar__tools">
+                  <a class="dh-secbar__all fs-5 text-underline-none text-black dark:text-white" href="#kadin-liste">Tüm haberler</a>
+                </div>
+              </header>
+              <section class="dh-panel" aria-label="Kadın bölümünün bugünkü özeti">
+                <div class="dh-panel__rail">
+                  <span class="dh-panel__kicker">BUGÜN KADIN'DA</span>
+                  <span class="dh-panel__place">20 Ağustos 2026</span>
+                  <span class="dh-panel__countdown">Beş modül bu sabah güncellendi</span>
+                </div>
+                <div class="dh-panel__cells">
+                  <button type="button" class="dh-cell dh-cell--go" data-dh-kgo="astroloji">
+                    <span class="dh-cell__label">Astroloji</span>
+                    <span class="dh-cell__icon"><i class="fas fa-star" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">Aslan sezonu</span>
+                    <span class="dh-cell__go"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                  </button>
+                  <button type="button" class="dh-cell dh-cell--go" data-dh-kgo="hamilelik">
+                    <span class="dh-cell__label">Hamilelik</span>
+                    <span class="dh-cell__icon"><i class="fas fa-baby" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">20. hafta</span>
+                    <span class="dh-cell__go"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                  </button>
+                  <button type="button" class="dh-cell dh-cell--go" data-dh-kgo="saglik">
+                    <span class="dh-cell__label">Sağlık</span>
+                    <span class="dh-cell__icon"><i class="fas fa-heartbeat" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">Günün 6 kontrolü</span>
+                    <span class="dh-cell__go"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                  </button>
+                  <button type="button" class="dh-cell dh-cell--go" data-dh-kgo="kariyer">
+                    <span class="dh-cell__label">Kariyer</span>
+                    <span class="dh-cell__icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">İstihdam %31,8</span>
+                    <span class="dh-cell__go"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                  </button>
+                  <button type="button" class="dh-cell dh-cell--go" data-dh-kgo="moda">
+                    <span class="dh-cell__label">Moda</span>
+                    <span class="dh-cell__icon"><i class="fas fa-tshirt" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">Sonbahar rayı</span>
+                    <span class="dh-cell__go"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                  </button>
+                </div>
+              </section>
+              <p class="dh-kmod__note">Bir hücreye basın: üstteki şerit o alt kategoriye geçer ve modülü burada açılır.</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="section dh-astro bg-white dark:bg-gray-900 dh-kmod__panel" id="astroloji" role="tabpanel" aria-labelledby="dh-astro-title" data-dh-kpanel="astroloji" tabindex="0" hidden>
       <div class="container max-w-xl">
         <header class="dh-secbar dh-astro__bar">
           <div class="dh-astro__heading">
@@ -1271,6 +1333,218 @@
 "season": "aslan"
 }</script>
     </section>
+
+        <!-- HAMİLELİK — hamilelik.html'deki hafta ekseninin kompakt özeti -->
+        <div class="section panel dh-kmod__panel" role="tabpanel" aria-labelledby="dh-kchip-hamilelik" data-dh-kpanel="hamilelik" tabindex="0" hidden>
+          <div class="section-outer panel py-4 lg:py-8">
+            <div class="container max-w-xl">
+              <header class="dh-secbar">
+                <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Hafta Hafta Gebelik</h2>
+                <div class="dh-secbar__tools">
+                  <a class="dh-secbar__all fs-5 text-underline-none text-black dark:text-white" href="hamilelik.html">Bölüme git</a>
+                </div>
+              </header>
+              <section class="dh-panel dh-panel--gebe" aria-label="Gebelik haftası özeti">
+                <div class="dh-panel__rail">
+                  <span class="dh-panel__kicker">BU HAFTADASINIZ</span>
+                  <span class="dh-panel__place"><span class="dh-wk__big">20</span><span class="dh-wk__unit">. hafta</span></span>
+                  <span class="dh-panel__countdown">2. Trimester &middot; 14 – 27. hafta</span>
+                </div>
+                <div class="dh-panel__cells" role="list">
+                  <div class="dh-cell" role="listitem">
+                    <span class="dh-cell__label">Boy</span>
+                    <span class="dh-cell__icon"><i class="fas fa-ruler-vertical" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">25,6 cm</span>
+                  </div>
+                  <div class="dh-cell" role="listitem">
+                    <span class="dh-cell__label">Ağırlık</span>
+                    <span class="dh-cell__icon"><i class="fas fa-weight" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">300 g</span>
+                  </div>
+                  <div class="dh-cell" role="listitem">
+                    <span class="dh-cell__label">Boyu Kadar</span>
+                    <span class="dh-cell__icon"><i class="fas fa-seedling" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">Muz</span>
+                  </div>
+                  <div class="dh-cell is-now" role="listitem">
+                    <span class="dh-cell__label">Kalan</span>
+                    <span class="dh-cell__icon"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">20 hafta</span>
+                  </div>
+                  <div class="dh-cell" role="listitem">
+                    <span class="dh-cell__label">Tahmini Doğum</span>
+                    <span class="dh-cell__icon"><i class="fas fa-baby-carriage" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">07.01.2027</span>
+                  </div>
+                </div>
+              </section>
+              <p class="dh-kmod__note">Kırk haftanın tamamı, haftalık ölçüler, trimester rehberi ve hesaplayıcılar Hamilelik bölümünde.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAĞLIK — günün kontrol listesi -->
+        <div class="section panel dh-kmod__panel" role="tabpanel" aria-labelledby="dh-kchip-saglik" data-dh-kpanel="saglik" tabindex="0" hidden>
+          <div class="section-outer panel py-4 lg:py-8">
+            <div class="container max-w-xl">
+              <header class="dh-secbar">
+                <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Günün Kontrol Listesi</h2>
+                <div class="dh-secbar__tools">
+                  <a class="dh-secbar__all fs-5 text-underline-none text-black dark:text-white" href="saglik.html">Bölüme git</a>
+                </div>
+              </header>
+              <ul class="dh-chk">
+                <li><button type="button" class="dh-chk__it" aria-pressed="false"><span class="dh-chk__box" aria-hidden="true"><i class="fas fa-check"></i></span><span class="dh-chk__txt">İki litre su içtim</span></button></li>
+                <li><button type="button" class="dh-chk__it" aria-pressed="false"><span class="dh-chk__box" aria-hidden="true"><i class="fas fa-check"></i></span><span class="dh-chk__txt">Otuz dakika tempolu yürüdüm</span></button></li>
+                <li><button type="button" class="dh-chk__it" aria-pressed="false"><span class="dh-chk__box" aria-hidden="true"><i class="fas fa-check"></i></span><span class="dh-chk__txt">Uzun oturuşu saat başı böldüm</span></button></li>
+                <li><button type="button" class="dh-chk__it" aria-pressed="false"><span class="dh-chk__box" aria-hidden="true"><i class="fas fa-check"></i></span><span class="dh-chk__txt">Bir öğünde lifli sebze yedim</span></button></li>
+                <li><button type="button" class="dh-chk__it" aria-pressed="false"><span class="dh-chk__box" aria-hidden="true"><i class="fas fa-check"></i></span><span class="dh-chk__txt">Ekranı yatmadan bir saat önce bıraktım</span></button></li>
+                <li><button type="button" class="dh-chk__it" aria-pressed="false"><span class="dh-chk__box" aria-hidden="true"><i class="fas fa-check"></i></span><span class="dh-chk__txt">Yedi saat uyudum</span></button></li>
+              </ul>
+              <p class="dh-kmod__note">Liste yalnız bu sekmede tutulur, kaydedilmez. Kadın sağlığı haberlerinin tamamı Sağlık bölümünde.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- KARİYER — veri paneli -->
+        <div class="section panel dh-kmod__panel" role="tabpanel" aria-labelledby="dh-kchip-kariyer" data-dh-kpanel="kariyer" tabindex="0" hidden>
+          <div class="section-outer panel py-4 lg:py-8">
+            <div class="container max-w-xl">
+              <header class="dh-secbar">
+                <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Kadın İstihdamı Panosu</h2>
+                <div class="dh-secbar__tools">
+                  <a class="dh-secbar__all fs-5 text-underline-none text-black dark:text-white" href="#kadin-liste">Kariyer haberleri</a>
+                </div>
+              </header>
+              <section class="dh-panel dh-panel--kar" aria-label="Kadın istihdamı göstergeleri">
+                <div class="dh-panel__rail">
+                  <span class="dh-panel__kicker">KADIN İSTİHDAMI</span>
+                  <span class="dh-panel__place"><i class="fas fa-chart-line" aria-hidden="true"></i>2026 &middot; 2. çeyrek</span>
+                  <span class="dh-panel__countdown">Bir önceki çeyreğe göre</span>
+                </div>
+                <div class="dh-panel__cells" role="list">
+                  <div class="dh-cell" role="listitem">
+                    <span class="dh-cell__label">İşgücüne Katılım</span>
+                    <span class="dh-cell__icon"><i class="fas fa-female" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">%36,4</span>
+                  </div>
+                  <div class="dh-cell is-now" role="listitem">
+                    <span class="dh-cell__label">İstihdam Oranı</span>
+                    <span class="dh-cell__icon"><i class="fas fa-briefcase" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">%31,8</span>
+                  </div>
+                  <div class="dh-cell" role="listitem">
+                    <span class="dh-cell__label">Yönetici</span>
+                    <span class="dh-cell__icon"><i class="fas fa-user-tie" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">%20,7</span>
+                  </div>
+                  <div class="dh-cell" role="listitem">
+                    <span class="dh-cell__label">İşveren</span>
+                    <span class="dh-cell__icon"><i class="fas fa-store" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">%16,2</span>
+                  </div>
+                  <div class="dh-cell" role="listitem">
+                    <span class="dh-cell__label">Ücret Farkı</span>
+                    <span class="dh-cell__icon"><i class="fas fa-balance-scale" aria-hidden="true"></i></span>
+                    <span class="dh-cell__value">%15,6</span>
+                  </div>
+                </div>
+              </section>
+              <p class="dh-kmod__note">Sayılar yer tutucudur; yayına girerken kurumsal veri kaynağına bağlanacak.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODA — görsel ağırlıklı ray (.dh-track ailesi) -->
+        <div class="section panel dh-kmod__panel" role="tabpanel" aria-labelledby="dh-kchip-moda" data-dh-kpanel="moda" tabindex="0" hidden>
+          <div class="section-outer panel py-4 lg:py-8">
+            <div class="container max-w-xl">
+              <header class="dh-secbar">
+                <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Sonbahar Rayı</h2>
+                <div class="dh-secbar__tools">
+                  <a class="dh-secbar__all fs-5 text-underline-none text-black dark:text-white" href="#kadin-liste">Moda haberleri</a>
+                  <span class="dh-secbar__nav">
+                    <button type="button" data-dh-track-prev="dhModaRay" aria-label="Sonbahar rayı — önceki"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <button type="button" data-dh-track-next="dhModaRay" aria-label="Sonbahar rayı — sonraki"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                  </span>
+                </div>
+              </header>
+              <div class="dh-track dh-kmod__ray" id="dhModaRay">
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-05.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-tshirt" aria-hidden="true"></i> Trend</span></span><span class="dh-card__body"><h3 class="dh-card__title">Yün ceket geri döndü: bu sezon nasıl giyiliyor</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 19.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 4 dk</span></span></span></span></a></article>
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-06.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-tshirt" aria-hidden="true"></i> Sokak</span></span><span class="dh-card__body"><h3 class="dh-card__title">İstanbul sokaklarından on stil: eylül defteri</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 18.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 6 dk</span></span></span></span></a></article>
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-07.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-cut" aria-hidden="true"></i> Atölye</span></span><span class="dh-card__body"><h3 class="dh-card__title">Tasarımcı atölyesinde bir gün: kalıptan vitrine</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 17.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 8 dk</span></span></span></span></a></article>
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-08.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-leaf" aria-hidden="true"></i> Sürdürülebilir</span></span><span class="dh-card__body"><h3 class="dh-card__title">İkinci el giysi pazarı büyüyor: neyi nereden almalı</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 16.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 5 dk</span></span></span></span></a></article>
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-09.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-gem" aria-hidden="true"></i> Aksesuar</span></span><span class="dh-card__body"><h3 class="dh-card__title">Az ama doğru: beş parçayla kurulan sonbahar gardırobu</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 15.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 7 dk</span></span></span></span></a></article>
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-10.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-shoe-prints" aria-hidden="true"></i> Ayakkabı</span></span><span class="dh-card__body"><h3 class="dh-card__title">Gün boyu ayakta: rahat topuğun ölçüleri ne olmalı</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 14.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 4 dk</span></span></span></span></a></article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GÜZELLİK — görsel ağırlıklı ray (.dh-track ailesi) -->
+        <div class="section panel dh-kmod__panel" role="tabpanel" aria-labelledby="dh-kchip-guzellik" data-dh-kpanel="guzellik" tabindex="0" hidden>
+          <div class="section-outer panel py-4 lg:py-8">
+            <div class="container max-w-xl">
+              <header class="dh-secbar">
+                <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Bakım Rafı</h2>
+                <div class="dh-secbar__tools">
+                  <a class="dh-secbar__all fs-5 text-underline-none text-black dark:text-white" href="#kadin-liste">Güzellik haberleri</a>
+                  <span class="dh-secbar__nav">
+                    <button type="button" data-dh-track-prev="dhGuzRay" aria-label="Bakım rafı — önceki"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <button type="button" data-dh-track-next="dhGuzRay" aria-label="Bakım rafı — sonraki"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                  </span>
+                </div>
+              </header>
+              <div class="dh-track dh-kmod__ray" id="dhGuzRay">
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-11.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-spa" aria-hidden="true"></i> Cilt</span></span><span class="dh-card__body"><h3 class="dh-card__title">Yaz sonu cilt onarımı: üç adımlık sade rutin</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 19.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 5 dk</span></span></span></span></a></article>
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-12.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-sun" aria-hidden="true"></i> Koruma</span></span><span class="dh-card__body"><h3 class="dh-card__title">Güneş koruyucuyu eylülde bırakmak neden erken</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 18.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 4 dk</span></span></span></span></a></article>
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-13.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-cut" aria-hidden="true"></i> Saç</span></span><span class="dh-card__body"><h3 class="dh-card__title">Deniz ve havuz sonrası saç: kurtarma listesi</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 17.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 6 dk</span></span></span></span></a></article>
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-14.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-pump-soap" aria-hidden="true"></i> İçerik</span></span><span class="dh-card__body"><h3 class="dh-card__title">Etiketteki ilk beş madde ne anlatır</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 16.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 7 dk</span></span></span></span></a></article>
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-15.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-palette" aria-hidden="true"></i> Makyaj</span></span><span class="dh-card__body"><h3 class="dh-card__title">On dakikada iş günü makyajı: dört ürün yeter</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 15.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 3 dk</span></span></span></span></a></article>
+                <article class="dh-card"><a class="dh-card__link" href="kadin-detay.html"><span class="dh-card__fig"><img class="dh-card__img" src="./assets/images/demo-six/posts/img-16.jpg" alt="" loading="lazy" decoding="async"><span class="dh-card__badge"><i class="fas fa-air-freshener" aria-hidden="true"></i> Koku</span></span><span class="dh-card__body"><h3 class="dh-card__title">Serinleyen havada koku nasıl değişir</h3><span class="dh-card__foot"><span class="dh-card__meta"><span><i class="fas fa-calendar-day" aria-hidden="true"></i> 14.08.2026</span><span><i class="fas fa-clock" aria-hidden="true"></i> 5 dk</span></span></span></span></a></article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODÜLSÜZ KATEGORİLER — sahte panel yerine tek satır yönlendirme.
+             Metni ve bağlantısı #dh-kadin-data'dan gelir. -->
+        <div class="section panel dh-kmod__panel" role="tabpanel" data-dh-kpanel="go" tabindex="0" hidden>
+          <div class="section-outer panel py-4 lg:py-8">
+            <div class="container max-w-xl">
+              <div class="dh-kmod__go">
+                <span class="dh-kmod__go-ad" data-dh-kgo-ad>Yaşam</span>
+                <p class="dh-kmod__go-txt" data-dh-kgo-txt>Bu alt kategorinin haberleri aşağıdaki listede.</p>
+                <a class="dh-btn dh-btn--ghost" href="#kadin-liste" data-dh-kgo-link>Haberlere in <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <script type="application/json" id="dh-kadin-data">{
+"aktif": "tumu",
+"liste": "#kadin-liste",
+"kategoriler": {
+"tumu":         { "ad": "Tümü",         "panel": "tumu" },
+"astroloji":    { "ad": "Astroloji",    "panel": "astroloji" },
+"hamilelik":    { "ad": "Hamilelik",    "panel": "hamilelik" },
+"yasam":        { "ad": "Yaşam",        "panel": null, "not": "Bu alt kategoride ayrı bir modül yok; haberler sayfanın listesinde." },
+"saglik":       { "ad": "Sağlık",       "panel": "saglik" },
+"kariyer":      { "ad": "Kariyer",      "panel": "kariyer" },
+"ebeveynlik":   { "ad": "Ebeveynlik",   "panel": null, "not": "Bu alt kategoride ayrı bir modül yok; haberler sayfanın listesinde." },
+"iliskiler":    { "ad": "İlişkiler",    "panel": null, "not": "Bu alt kategoride ayrı bir modül yok; haberler sayfanın listesinde." },
+"moda":         { "ad": "Moda",         "panel": "moda" },
+"guzellik":     { "ad": "Güzellik",     "panel": "guzellik" },
+"psikoloji":    { "ad": "Psikoloji",    "panel": null, "not": "Bu alt kategoride ayrı bir modül yok; haberler sayfanın listesinde." },
+"girisimcilik": { "ad": "Girişimcilik", "panel": null, "not": "Bu alt kategoride ayrı bir modül yok; haberler sayfanın listesinde." },
+"hukuk":        { "ad": "Hukuk",        "panel": null, "not": "Bu alt kategoride ayrı bir modül yok; haberler sayfanın listesinde." },
+"spor":         { "ad": "Spor",         "panel": null, "not": "Kadın sporunun haberleri ayrı bir bölümde toplanıyor.", "git": "spor.html", "gitAd": "Spor bölümüne git" },
+"kultur":       { "ad": "Kültür",       "panel": null, "not": "Kültür ve sanat haberleri ayrı bir bölümde toplanıyor.", "git": "haber-liste.html", "gitAd": "Kültür ve Sanat'a git" }
+}
+}</script>
+
+        </div>
+        <!-- ===== R7-K2 B sonu ===== -->
         <div class="section panel overflow-hidden">
       <div class="section-outer panel py-4 lg:py-8">
         <div class="container max-w-xl">
@@ -2072,7 +2346,7 @@
         </div>
       </div>
     </div>
-        <div class="section py-4 lg:py-8">
+        <div class="section py-4 lg:py-8" id="kadin-liste">
             <div class="container max-w-xl">
                 <div class="panel vstack gap-3 sm:gap-6 lg:gap-5">
                     <header class="page-header panel vstack">
@@ -2800,6 +3074,8 @@
     <!-- günlük panel -->
     <script defer src="./assets/js/dh-panel.js"></script>
     <script defer src="./assets/js/dh-astro.js"></script>
+    <script defer src="./assets/js/dh-track.js"></script>
+    <script defer src="./assets/js/dh-kadin.js"></script>
 
     <script>
         // Schema toggle via URL

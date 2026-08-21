@@ -10,7 +10,8 @@ Dadahaber haber sitesinin yeni görünümü. Hazır bir haber teması (`demo-six
 üzerine bölüm bölüm revizyon uygulanıyor. Site tamamen **Türkçe**, deploy **GitHub Pages**.
 
 - Çalışma dizini: `~/Developer/Backend Projects/dadahaber-view`
-- **59 HTML sayfa** (R6'da 4 yeni: `basketbol` `formula1` `bisiklet` `astroloji`).
+- **66 HTML sayfa** (R6'da 4 yeni: `basketbol` `formula1` `bisiklet` `astroloji`;
+  R7'de 7 yeni: `voleybol` `hamilelik` `hamilelik-detay` ve dört büyük takım sayfası).
   Referans üçlü: `index.html` · `haber-liste.html` · `haber-detay.html`
 - Yerel sunucu: `python3 -m http.server 8765` → http://localhost:8765/
 
@@ -29,7 +30,10 @@ Dadahaber haber sitesinin yeni görünümü. Hazır bir haber teması (`demo-six
    `RGBA(16,191,71)` değerinde. `bg-primary` amber ama `text-bg-primary` yeşil çıkar.
 4. **Yeni kütüphane eklenmez.** Mevcutlarla çözülür (Swiper, native scroll-snap, vanilla JS).
 5. **Değiştirmeden önce ÖLÇ.** Tahminle düzenleme yapılmaz — Playwright ile canlı ölçüm.
-6. Commit atılır, **push atılmaz**. Her revizyon ayrı commit, ölçülen değerler commit mesajında.
+6. Her revizyon ayrı commit, ölçülen değerler commit mesajında.
+   ~~Push atılmaz.~~ **GÜNCELLENDİ (R7 sonu):** kullanıcı push istedi.
+   Ancak repoda **tanımlı `origin` yok** (`git remote -v` boş) — push için
+   önce uzak adres eklenmeli.
 
 ---
 
@@ -232,3 +236,107 @@ Son tam tarama: **59 sayfa × 4 konfigürasyon = 236 koşu, hepsi temiz.**
 - Yasal metinler mevzuata uygun iskelet; **hukuk onayından geçmedi**.
 - Yapışkan içindekiler yalnız sayfanın en dibinde (1000px yükseklikte) header'ın
   arkasına giriyor; 1440px'te olmuyor. Standart sticky davranışı.
+
+
+---
+
+## R7 — İkinci yayılım turu
+
+Bu tur, R6 yayılımının üstüne kullanıcı geri bildirimleriyle ilerledi. Altı ajan
+çalıştı (liste hero'su · yorum akışları · finans düzeni · kurumsal görsel kimlik ·
+hamilelik bölümü · spor mimarisi + kategori mimarisi), aralarına ana oturumun
+site geneli düzeltmeleri girdi.
+
+### Yeni sayfalar
+`voleybol.html` · `hamilelik.html` · `hamilelik-detay.html` ·
+`takim-galatasaray.html` · `takim-fenerbahce.html` · `takim-besiktas.html` ·
+`takim-trabzonspor.html`
+
+### Kesinleşen yeni kararlar (R6'nın üstüne)
+- **Liste bannerı `.dh-lb` 420px.** Tek sürekli perde, kimlik şeridi CSS grid'de,
+  hizalama sapması 0. Perde slaytın `article::after`'ında — kardeş katman
+  yaparsan Swiper'ın transform'u metnin üstünü örter (bu hata iki kez yaşandı).
+- **Tek sayfalama bileşeni `.dh-pager`.** Site iki ayrı kalıp taşıyordu, ikisi de
+  biçimlenmemişti. Çizgiye üstten 48px alttan 40px nefes.
+- **Sayfalamada çift katman yasak.** Son içerik yüzeyi ile footer arasında farklı
+  renkte şerit kalmayacak (`R7-Z2`).
+- **Zeminli bantta nefes payı**: üst 56px / alt 60px (mobil 36/40) — `R7-N`.
+- **Alt kategori şeridinin kökü** (`.dh-catbar__row` + `.dh-catbar__root`):
+  kategori renginde 3px şerit + üst kategori adı + "alt kategorileri" (spor'da
+  "dalları"). **Chevron kullanılmaz** — chevron breadcrumb'ın işareti, kök ise
+  kapsam etiketi; ikisi ayrışsın diye. Kök sayfanın kendisiyse
+  `<span aria-current="page">`, gerçekten bir üst kademe varsa `<a>` +
+  `.dh-catbar__root--link` (44px dokunma hedefi bunun için).
+- **Şeridin semantiği üç ayrı durum:** modül değiştiriyorsa `role="tablist"`
+  (kadin.html), başka sayfaya gezindiriyorsa `<nav>` + bağlantı, veri
+  değiştiriyorsa `role="radiogroup"` (lig çipleri). Karıştırma.
+- **Yazar adının altında unvan satırı** (`.dh-byline`). Beyaz mürekkep yalnız koyu
+  bağlamda (`.uc-dark` / `.dh-lb` / `.dh-feat` / `.dh-hero`); açık zeminde gray-900.
+- **Öne çıkan kart zikzak**: ardışık bölümlerde büyük kart sağ-sol-sağ (`R7-A`).
+- **Kategori/takım rengi sayfa geneline uygulanmaz.** `<head>`'e `--color-primary`
+  override'ı **eklenmez**. Kimlik yalnız `.dh-lb[data-cat]` / `[data-team]`
+  perdesinden gelir; ortak kabuk kurumsal amber kalır.
+
+### Yeni bileşenler (R6 tablosuna ek)
+| Önek | Ne |
+|---|---|
+| `.dh-pager` | Tek sayfalama bileşeni (20+ sayfa) |
+| `.dh-zeb` / `--w` | Medya sayfalarında zebra bant |
+| `.dh-catbar__row` / `__root` | Alt kategori şeridinin kökü |
+| `.dh-byline` | Yazar adı + unvan |
+| `.dh-yn` · `.dh-bil` | Yorum yanıt alanı · bildir modalı |
+| `.dh-finsum` · `.dh-finnews` | Finans piyasa özeti · haber omurgası |
+| `.dh-hub` · `.dh-son5` · `.dh-mcrail--sik` | Spor bandı · maç formu · sıkı skor şeridi |
+| `.dh-ph--photo` / `--doc` / `--prof` | Kurumsal · belge damgası · yazar profili başlığı |
+| `.dh-about` · `.dh-strip` · `.dh-mastgrid` · `.dh-tlgrid` | Hakkımızda ızgarası · fotoğraf paneli · künye · kilometre taşları |
+| `.dh-kmod` · `.dh-chk` · `.dh-cell--go` | Kadın modül alanı · kontrol listesi · tıklanabilir hücre |
+| `.dh-panel--gebe` · `.dh-tri` · `.dh-hesap` · `.dh-medinfo` | Gebelik haftası · trimester · hesaplayıcı · sağlık uyarısı |
+| `.dh-stand[data-branch]` · `.dh-lgpick` · `.dh-sort--tabs` | Lig tablosu · üç kademeli seçici · lig merkezi sekmeleri |
+
+### Yeni JS (hepsi vanilla, kütüphane yok)
+`dh-track.js` · `dh-gal.js` · `dh-astro.js` · `dh-toc.js` · `dh-listen.js` ·
+`dh-yorum.js` · `dh-gebelik.js` · `dh-hesap.js` · `dh-lig.js` · `dh-lig-veri.js` ·
+`dh-tabs.js` · `dh-kadin.js`
+
+**Ortak sözleşme:** veri sayfadaki `<script type="application/json">` bloğunda,
+işaretleme `data-dh-*` niteliklerinde. Backend gelince yalnız JSON bloğu değişir.
+`dh-astro.js` · `dh-gebelik.js` · `dh-kadin.js` bu deseni birebir paylaşıyor.
+
+### R7'de ölçerek yakalanan gerçek hatalar
+1. Yan sütun slider'ında `h-100` döngüsü yüksekliği **33.554.414px**'e patlatıyordu.
+2. `.dh-lb` perdesi tema markup'ına bağlıydı; o div'i olmayan sayfalarda banner
+   başlığı **1,28:1** kontrastla okunmuyordu.
+3. Hero kartı için yazılmış `color:#fff !important` bağlamdan bağımsızdı; açık
+   zeminli kartlarda yazar adı **1,1:1** çıkıyordu.
+4. Evrensel radyo sıfırlaması radyoyu kare yapıp **teal** boyuyordu (renk finans
+   kategorisinden sızmış).
+5. Ölü eski script 7 sayfada `alert()` kullanıyordu.
+6. `hamilelik.html`'de `#wrapper` hiç kapanmıyordu; footer wrapper içinde kalıyor,
+   `app.js` null hatası veriyordu.
+7. `404.html` / `coming-soon.html`'de **fontawesome hiç yüklenmiyordu**.
+8. Footer yasal listesinde kapanmayan `<li>` + "AYDINALTMA" yazım hatası (57 sayfa).
+9. Koyu temada header logosu siyah wordmark'ı gösteriyordu.
+10. Takım çipinde arma 9px alttan taşıp kırpılıyordu.
+11. 390px'te spor hub sütunları **22px**'e çöküyordu (kaskad sırası hatası).
+12. Takım sayfası banner alt satırı **2,77:1** — `<p>` bloklaşıp fotoğrafın açık
+    bölgesini kapsıyordu; kutusu 1132 → 268px'e indirilince düzeldi.
+
+### Bir ölçüm hatası da kayda geçti
+`R7-C15`: breadcrumb kontrastı "3,45:1" diye raporlanmıştı; `<nav>` blok
+seviyesinde olduğu için ölçüm kutusu bandın sağ yarısını da kapsıyordu. Metni
+taşıyan çocuk ölçülünce 14,40–20,87. **Yanlış alarm silinmedi, not edildi.**
+
+### R7 sonu açık kalanlar
+- **Gerçek kulüp armaları yok** ve indirilmedi — tescilli marka, kullanım hakkı
+  müşteri kararı. Takım renkleri de kulüp marka kılavuzundan alınmadı, kontrast
+  için renk ailesinden seçildi.
+- **Oyuncu adları kurgusal** (yanlış atıf / kişisel veri riski).
+- **Hamilelik içeriği tıbbi onaydan geçmedi.** 40 haftanın boy/ağırlık değerleri
+  yer tutucu ortalamalar; yayına çıkmadan hekim/sağlık editörü doğrulamalı.
+  Hesaplayıcı sonucu `localStorage`'a **yazılmıyor** — gebelik verisi hassas
+  kişisel veri, saklama kararı KVKK kapsamında ayrıca alınmalı.
+- **Yasal metinler hukuk onayından geçmedi.**
+- `.dh-fx__cols` / `.dh-fx__row` ızgara şablonları site genelinde birbirini
+  tutmuyor; yalnız `.dh-hub__main` kapsamında düzeltildi.
+- `.dh-lgpick__scope` ve `R7-C7`'deki eski `.dh-field*` kalıntıları ölü kod.
+- Kadın'da modülsüz 6 kategoride haber listesi süzülmüyor (gerçek süzme backend işi).
