@@ -34,15 +34,10 @@
               </a>
               <span class="dh-v2-slogan">Gündemin net hâli.</span>
             </div>
-            <div class="dh-v2-brand__search">
-              <form action="arama.html" method="get" role="search">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <input type="search" name="q" placeholder="Ara" aria-label="Sitede ara">
-              </form>
-            </div>
             <div class="dh-v2-brand__acts">
-              <a class="dh-v2-act uc-search-trigger d-lg-none" href="#uc-search-modal" data-uc-toggle>
-                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></a>
+              <button class="dh-v2-act dh-v2-act--ara" type="button" data-dh-ara-ac
+                aria-label="Ara" aria-controls="dh-nav-ara">
+                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></button>
               <a class="dh-v2-act" href="hesabim.html#bildirimler">
                 <i class="fas fa-bell fs-4" aria-hidden="true"></i>
                 <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>
@@ -479,6 +474,12 @@
                 </li>
               </ul>
             </nav>
+            <div class="dh-v2-nav__search">
+              <form action="arama.html" method="get" role="search">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input id="dh-nav-ara" type="search" name="q" placeholder="Haber, yazar veya konu ara" aria-label="Sitede ara">
+              </form>
+            </div>
           </div>
         </div>
       </div>

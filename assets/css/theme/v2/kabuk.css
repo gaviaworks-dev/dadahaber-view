@@ -139,35 +139,44 @@ html.uc-dark .dh-v2-brand { background: var(--color-gray-900); }
 }
 html.uc-dark .dh-v2-slogan { color: rgba(255, 255, 255, .68); }
 
-/* Arama: logoyla rekabet etmeyecek kadar küçük. Odakta nefes alır. */
-.dh-v2-brand__search {
-  flex: 0 1 auto;
+
+/* --- arama: ana menü satırının sonunda -------------------------------------
+   Marka satırından alındı; logoyla rekabet etmiyor, header yüksekliğini
+   artırmıyor. Üstteki ikon buraya odaklanır, menü satırının olmadığı
+   mobilde arama kipini açar. */
+.dh-v2-nav__bar {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+}
+.dh-v2-nav__bar > nav { min-width: 0; flex: 1 1 auto; }
+.dh-v2-nav__search {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
   width: 240px;
-  margin-inline-start: auto;
   transition: width .18s ease;
 }
-.dh-v2-brand__search:focus-within { width: 340px; }
-.dh-v2-brand__search form {
+.dh-v2-nav__search:focus-within { width: 320px; }
+.dh-v2-nav__search form {
   display: flex;
   align-items: center;
   gap: 8px;
-  height: 38px;
+  width: 100%;
+  height: 34px;
   padding: 0 12px;
   background: var(--color-gray-50);
   border: 1px solid var(--color-gray-200);
   border-radius: 8px 8px 8px 0;
   transition: border-color .14s, background .14s;
 }
-.dh-v2-brand__search:focus-within form {
-  background: #fff;
-  border-color: var(--color-primary);
-}
-html.uc-dark .dh-v2-brand__search form {
+.dh-v2-nav__search:focus-within form { background: #fff; border-color: var(--color-primary); }
+html.uc-dark .dh-v2-nav__search form {
   background: rgba(255, 255, 255, .06);
   border-color: var(--color-gray-700);
 }
-html.uc-dark .dh-v2-brand__search:focus-within form { background: rgba(255, 255, 255, .1); }
-.dh-v2-brand__search input {
+html.uc-dark .dh-v2-nav__search:focus-within form { background: rgba(255, 255, 255, .1); }
+.dh-v2-nav__search input {
   flex: 1 1 auto;
   min-width: 0;
   height: 100%;
@@ -177,11 +186,12 @@ html.uc-dark .dh-v2-brand__search:focus-within form { background: rgba(255, 255,
   font-size: 13px;
   color: var(--color-gray-900);
 }
-html.uc-dark .dh-v2-brand__search input { color: #fff; }
-.dh-v2-brand__search input::placeholder { color: var(--color-gray-500); }
-.dh-v2-brand__search i { color: var(--color-gray-500); font-size: 13px; }
+html.uc-dark .dh-v2-nav__search input { color: #fff; }
+.dh-v2-nav__search input::placeholder { color: var(--color-gray-500); }
+.dh-v2-nav__search i { color: var(--color-gray-500); font-size: 13px; }
+.dh-v2-nav__search.is-vurgu form { border-color: var(--color-primary); }
 
-.dh-v2-brand__acts { display: flex; align-items: center; gap: 2px; flex: 0 0 auto; }
+.dh-v2-brand__acts { display: flex; align-items: center; gap: 2px; flex: 0 0 auto; margin-inline-start: auto; }
 .dh-v2-act {
   display: grid;
   place-items: center;
@@ -484,8 +494,8 @@ html.uc-dark .dh-mega__cols a:hover { color: #fff; }
 @media (max-width: 1279px) {
   .dh-v2-nav__list > li > a { padding: 0 10px; font-size: 13.5px; }
   .dh-v2-nav__list > li > a::after { inset-inline: 7px; }
-  .dh-v2-brand__search { width: 190px; }
-  .dh-v2-brand__search:focus-within { width: 260px; }
+  .dh-v2-nav__search { width: 180px; }
+  .dh-v2-nav__search:focus-within { width: 240px; }
   .dh-v2-slogan { display: none; }
 }
 @media (max-width: 991px) {
@@ -493,7 +503,6 @@ html.uc-dark .dh-mega__cols a:hover { color: #fff; }
   .dh-v2-fmt__user { display: none; }
   .dh-v2-brand__row { min-height: 64px; gap: 10px; }
   .dh-v2-brand__logo img { width: 150px; }
-  .dh-v2-brand__search { display: none; }
   .dh-v2-menu-trigger {
     display: grid;
     place-items: center;
@@ -601,22 +610,21 @@ html.uc-dark .dh-v2-off__list .uc-nav-sub a { color: rgba(255, 255, 255, .72); }
 html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #fff; }
 .dh-v2-off__svc i { color: var(--color-primary); }
 
-/* ============================== 5. FOOTER ================================= */
+/* ============================== 5. FOOTER =================================
+   V1'in ortalanmış kompozisyonu + v2'nin grup içeriği:
+   logo/slogan ortada · grup sütunları ortalanmış · sosyal ve uygulama ortada
+   · yasal bağlantılar yatay şerit · en altta telif bilgilendirmesi.
+   ========================================================================== */
 .dh-v2-foot {
   background: var(--color-gray-900);
   color: rgba(255, 255, 255, .72);
   padding: 48px 0 0;
+  text-align: center;
 }
-.dh-v2-foot__top {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 40px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, .12);
-}
-.dh-v2-foot__brand img { width: 220px; height: auto; }
+.dh-v2-foot__brand { padding-bottom: 26px; }
+.dh-v2-foot__brand img { width: 260px; height: auto; }
 .dh-v2-foot__slogan {
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   font-size: 15px;
   font-weight: 700;
   color: var(--color-primary);
@@ -625,8 +633,13 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 .dh-v2-foot__cols {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
+  gap: 24px 32px;
+  justify-content: center;
+  padding: 28px 0;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
 }
+.dh-v2-foot__grp { text-align: center; }
 .dh-v2-foot h3 {
   margin: 0 0 12px;
   font-family: var(--dh-mono);
@@ -650,17 +663,24 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 .dh-v2-foot__cols a:hover,
 .dh-v2-foot__cols a:focus-visible { color: var(--color-primary); }
 
-/* mobil uygulamalar + sosyal medya — sosyal hesaplar YALNIZ burada */
+/* sosyal + uygulama — ortada yan yana. Sosyal hesaplar YALNIZ burada. */
 .dh-v2-foot__chan {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 28px 56px;
   padding: 26px 0;
   border-bottom: 1px solid rgba(255, 255, 255, .12);
-  align-items: start;
 }
-.dh-v2-foot__store > div { display: flex; gap: 8px; flex-wrap: wrap; }
-.dh-v2-foot__soc > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.dh-v2-foot__chan > div { min-width: 0; }
+.dh-v2-foot__soc > div,
+.dh-v2-foot__store > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
 .dh-v2-foot__soc a {
   display: inline-flex;
   align-items: center;
@@ -675,12 +695,14 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
   transition: background .15s, color .15s;
 }
 .dh-v2-foot__soc a:hover { background: var(--color-primary); color: #000; }
+.dh-v2-foot__store > div { gap: 8px; }
 
-/* yasal bağlantılar — yatay şerit, dikey sütun oluşturmaz */
+/* yasal bağlantılar — V1'deki gibi yatay şerit, dikey sütun oluşturmaz */
 .dh-v2-foot__legal {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 6px 0;
   padding: 18px 0 14px;
 }
@@ -693,7 +715,6 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
   text-decoration: none;
   transition: color .12s;
 }
-.dh-v2-foot__legal a:first-child { padding-inline-start: 0; }
 .dh-v2-foot__legal a:hover,
 .dh-v2-foot__legal a:focus-visible { color: var(--color-primary); }
 .dh-v2-foot__legal a + a::before {
@@ -712,13 +733,14 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 /* telif bilgilendirmesi — okunur ama footer'ın ana içeriğiyle rekabet etmez */
 .dh-v2-foot__rights {
   max-width: 92ch;
+  margin-inline: auto !important;
   font-size: 11.5px;
   line-height: 1.65;
   color: rgba(255, 255, 255, .46);
 }
 .dh-v2-foot__copy {
-  margin-top: 12px !important;
-  padding-top: 12px;
+  margin-top: 14px !important;
+  padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, .08);
   font-size: 12px;
   color: rgba(255, 255, 255, .58);
@@ -730,22 +752,22 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
   text-transform: uppercase;
   color: rgba(255, 255, 255, .38);
 }
-@media (max-width: 1199px) {
-  .dh-v2-foot__top, .dh-v2-foot__chan { grid-template-columns: 1fr; gap: 28px; }
+@media (max-width: 991px) {
+  .dh-v2-foot__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 }
 @media (max-width: 767px) {
   .dh-v2-foot { padding-top: 32px; }
-  .dh-v2-foot__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-  .dh-v2-foot__brand img { width: 180px; }
+  .dh-v2-foot__brand img { width: 190px; }
   .dh-v2-foot__legal { gap: 4px 0; }
   .dh-v2-foot__legal a { padding: 2px 10px; font-size: 12px; }
+  .dh-v2-foot__chan { gap: 22px 28px; }
 }
 @media (max-width: 479px) {
-  .dh-v2-foot__cols { grid-template-columns: 1fr; }
+  .dh-v2-foot__cols { grid-template-columns: 1fr; gap: 18px; }
 }
 
 /* --- footer perdesi v2'de kapalı -------------------------------------------
-   Çok sütunlu footer bir bilgi yüzeyi; perde olarak sabitlenince üst sütunlar
+   Çok gruplu footer bir bilgi yüzeyi; perde olarak sabitlenince üst sütunlar
    ekranın tepesine düşüyordu. Script bağlantısı da sayfalardan kaldırıldı. */
 body.dh-footer-reveal #uc-footer.dh-v2-foot {
   position: static !important;

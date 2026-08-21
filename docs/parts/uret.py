@@ -209,15 +209,12 @@ def header():
     w('              </a>\n')
     w('              <span class="dh-v2-slogan">Gündemin net hâli.</span>\n')
     w('            </div>\n')
-    w('            <div class="dh-v2-brand__search">\n')
-    w('              <form action="arama.html" method="get" role="search">\n')
-    w('                <i class="fas fa-search" aria-hidden="true"></i>\n')
-    w('                <input type="search" name="q" placeholder="Ara" aria-label="Sitede ara">\n')
-    w('              </form>\n')
-    w('            </div>\n')
     w('            <div class="dh-v2-brand__acts">\n')
-    w('              <a class="dh-v2-act uc-search-trigger d-lg-none" href="#uc-search-modal" data-uc-toggle>\n')
-    w('                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></a>\n')
+    # arama alanı ana menü satırında; buradaki ikon oraya odaklanır,
+    # menü satırının olmadığı mobilde arama kipini açar
+    w('              <button class="dh-v2-act dh-v2-act--ara" type="button" data-dh-ara-ac\n')
+    w('                aria-label="Ara" aria-controls="dh-nav-ara">\n')
+    w('                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></button>\n')
     w('              <a class="dh-v2-act" href="hesabim.html#bildirimler">\n')
     w('                <i class="fas fa-bell fs-4" aria-hidden="true"></i>\n')
     w('                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>\n')
@@ -269,7 +266,15 @@ def header():
         w('                  </div>\n')
         w('                </li>\n')
     w('              </ul>\n')
-    w('            </nav>\n          </div>\n        </div>\n      </div>\n')
+    w('            </nav>\n')
+    # arama: ana menü satırının sonunda, logoyla rekabet etmez
+    w('            <div class="dh-v2-nav__search">\n')
+    w('              <form action="arama.html" method="get" role="search">\n')
+    w('                <i class="fas fa-search" aria-hidden="true"></i>\n')
+    w('                <input id="dh-nav-ara" type="search" name="q" placeholder="Haber, yazar veya konu ara" aria-label="Sitede ara">\n')
+    w('              </form>\n')
+    w('            </div>\n')
+    w('          </div>\n        </div>\n      </div>\n')
     w('\n    </nav>\n  </header>\n')
     return o.getvalue()
 
@@ -324,32 +329,32 @@ def offcanvas():
 
 # ----------------------------------------------------------------- footer
 def footer():
+    """V1'in ortalanmış footer kompozisyonu + v2'nin grup içeriği.
+    V1: logo ve telif üstte ortada, bağlantılar yatay/ortalanmış, sosyal ve
+    uygulama rozetleri ortada, en altta telif. Gruplar korunur — hiçbir
+    bağlantı kaybolmasın."""
     o = io.StringIO(); w = o.write
-    w('  <footer id="uc-footer" class="uc-footer dh-v2-foot panel uc-light">\n')
+    w('  <footer id="uc-footer" class="uc-footer dh-v2-foot dh-v2-foot--v1 panel uc-light">\n')
     w('    <div class="container max-w-xl">\n')
-    w('      <div class="dh-v2-foot__top">\n')
-    w('        <div class="dh-v2-foot__brand">\n')
-    w('          <img src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="240px">\n')
-    w('          <p class="dh-v2-foot__slogan">Gündemin net hâli.</p>\n')
-    w('        </div>\n')
-    w('        <div class="dh-v2-foot__cols">\n')
-    for baslik, ogeler in FOOTER:
-        w('          <div class="dh-v2-foot__grp">\n')
-        w('            <h3>%s</h3>\n            <ul>\n' % baslik)
-        for t, h in ogeler:
-            w('              <li><a href="%s">%s</a></li>\n' % (h, t))
-        w('            </ul>\n          </div>\n')
-    w('        </div>\n      </div>\n')
 
-    # kanallar: mobil uygulamalar + sosyal medya (sosyal YALNIZ burada)
+    # 1. marka — ortada
+    w('      <div class="dh-v2-foot__brand">\n')
+    w('        <img src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="260px">\n')
+    w('        <p class="dh-v2-foot__slogan">Gündemin net hâli.</p>\n')
+    w('      </div>\n')
+
+    # 2. grup sütunları — ortalanmış
+    w('      <div class="dh-v2-foot__cols">\n')
+    for baslik, ogeler in FOOTER:
+        w('        <div class="dh-v2-foot__grp">\n')
+        w('          <h3>%s</h3>\n          <ul>\n' % baslik)
+        for t, h in ogeler:
+            w('            <li><a href="%s">%s</a></li>\n' % (h, t))
+        w('          </ul>\n        </div>\n')
+    w('      </div>\n')
+
+    # 3. kanallar — sosyal YALNIZ burada, uygulama rozetleriyle yan yana ortada
     w('      <div class="dh-v2-foot__chan">\n')
-    w('        <div class="dh-v2-foot__store">\n')
-    w('          <h3>Mobil Uygulamalar</h3>\n')
-    w('          <div>\n')
-    w('            <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-apple" aria-hidden="true"></i><span><small>İndir</small><b>App Store</b></span></a>\n')
-    w('            <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-google-play" aria-hidden="true"></i><span><small>İndir</small><b>Google Play</b></span></a>\n')
-    w('          </div>\n')
-    w('        </div>\n')
     w('        <div class="dh-v2-foot__soc">\n')
     w('          <h3>Sosyal Medya</h3>\n')
     w('          <div>\n')
@@ -359,20 +364,29 @@ def footer():
     w('            <a href="#" aria-label="RSS"><i class="fas fa-rss" aria-hidden="true"></i><span>RSS</span></a>\n')
     w('          </div>\n')
     w('        </div>\n')
+    w('        <div class="dh-v2-foot__store">\n')
+    w('          <h3>Mobil Uygulamalar</h3>\n')
+    w('          <div>\n')
+    w('            <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-apple" aria-hidden="true"></i><span><small>İndir</small><b>App Store</b></span></a>\n')
+    w('            <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-google-play" aria-hidden="true"></i><span><small>İndir</small><b>Google Play</b></span></a>\n')
+    w('          </div>\n')
+    w('        </div>\n')
     w('      </div>\n')
 
-    # yasal bağlantılar — yatay şerit
+    # 4. yasal — V1'deki gibi yatay ve ortalanmış
     w('      <nav class="dh-v2-foot__legal" aria-label="Yasal bağlantılar">\n')
     for t, h in YASAL:
         w('        <a href="%s">%s</a>\n' % (h, t))
     w('      </nav>\n')
 
+    # 5. telif bilgilendirmesi ve künye — en altta
     w('      <div class="dh-v2-foot__bottom">\n')
     w('        <p class="dh-v2-foot__rights">%s</p>\n' % TELIF)
     w('        <p class="dh-v2-foot__copy">Dada Haber &copy; 2026, Tüm Hakları Saklıdır. <span>Prototip · Bilgi mimarisi sürüm 2.1</span></p>\n')
     w('      </div>\n')
     w('    </div>\n  </footer>\n')
     return o.getvalue()
+
 
 # ------------------------------------------------------ mobil alt gezinme
 def bnav():

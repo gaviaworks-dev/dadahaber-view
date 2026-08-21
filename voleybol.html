@@ -120,6 +120,8 @@
   <!--  Menu panel -->
   <!--  Menu panel -->
   <!--  Menu panel -->
+  <!--  Menu panel -->
+  <!--  Menu panel -->
   <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">
     <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
       <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
@@ -485,15 +487,10 @@
               </a>
               <span class="dh-v2-slogan">Gündemin net hâli.</span>
             </div>
-            <div class="dh-v2-brand__search">
-              <form action="arama.html" method="get" role="search">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <input type="search" name="q" placeholder="Ara" aria-label="Sitede ara">
-              </form>
-            </div>
             <div class="dh-v2-brand__acts">
-              <a class="dh-v2-act uc-search-trigger d-lg-none" href="#uc-search-modal" data-uc-toggle>
-                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></a>
+              <button class="dh-v2-act dh-v2-act--ara" type="button" data-dh-ara-ac
+                aria-label="Ara" aria-controls="dh-nav-ara">
+                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></button>
               <a class="dh-v2-act" href="hesabim.html#bildirimler">
                 <i class="fas fa-bell fs-4" aria-hidden="true"></i>
                 <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>
@@ -930,6 +927,12 @@
                 </li>
               </ul>
             </nav>
+            <div class="dh-v2-nav__search">
+              <form action="arama.html" method="get" role="search">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input id="dh-nav-ara" type="search" name="q" placeholder="Haber, yazar veya konu ara" aria-label="Sitede ara">
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -941,30 +944,6 @@
     <span class="dh-rail" aria-hidden="true"></span>
     <div id="wrapper" class="wrap overflow-hidden-x">
         <span class="dh-mark" aria-hidden="true">DADA</span>
-    <nav class="section panel dh-catbar dh-catbar--sport" data-cat="spor" aria-label="Spor dalları">
-      <div class="container max-w-xl">
-        <div class="dh-catbar__row">
-          <span class="dh-catbar__root"><a class="dh-catbar__root-ad" href="spor.html">SPOR</a><span class="dh-catbar__root-fn">dalları</span></span>
-        <div class="dh-catbar__inner swiper-parent">
-          <div class="swiper dh-catbar__swiper"
-            data-uc-swiper="items: auto; gap: 8; free: true; grab-cursor: true; next: .dh-catbar__nav--next; prev: .dh-catbar__nav--prev; disable-class: is-off; watchOverflow: true;">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><a class="dh-catbar__chip" href="futbol.html"><i class="fas fa-futbol dh-catbar__ico" aria-hidden="true"></i>Futbol</a></div>
-              <div class="swiper-slide"><a class="dh-catbar__chip" href="basketbol.html"><i class="fas fa-basketball-ball dh-catbar__ico" aria-hidden="true"></i>Basketbol</a></div>
-              <div class="swiper-slide"><a class="dh-catbar__chip is-on" href="voleybol.html" aria-current="page"><i class="fas fa-volleyball-ball dh-catbar__ico" aria-hidden="true"></i>Voleybol</a></div>
-              <div class="swiper-slide"><a class="dh-catbar__chip" href="formula1.html"><i class="fas fa-flag-checkered dh-catbar__ico" aria-hidden="true"></i>Formula 1</a></div>
-              <div class="swiper-slide"><a class="dh-catbar__chip" href="bisiklet.html"><i class="fas fa-bicycle dh-catbar__ico" aria-hidden="true"></i>Bisiklet</a></div>
-              <div class="swiper-slide"><a class="dh-catbar__chip" href="spor.html#tenis"><i class="fas fa-table-tennis dh-catbar__ico" aria-hidden="true"></i>Tenis</a></div>
-              <div class="swiper-slide"><a class="dh-catbar__chip" href="spor.html#atletizm"><i class="fas fa-running dh-catbar__ico" aria-hidden="true"></i>Atletizm</a></div>
-              <div class="swiper-slide"><a class="dh-catbar__chip" href="spor.html#motor"><i class="fas fa-motorcycle dh-catbar__ico" aria-hidden="true"></i>Motor Sporları</a></div>
-            </div>
-          </div>
-          <div class="dh-catbar__nav dh-catbar__nav--prev" role="button" aria-label="Önceki dallar"><i class="unicon-chevron-left"></i></div>
-          <div class="dh-catbar__nav dh-catbar__nav--next" role="button" aria-label="Sonraki dallar"><i class="unicon-chevron-right"></i></div>
-        </div>
-        </div>
-      </div>
-    </nav>
     <div class="block-slider block-slider-miniposts panel swiper-parent uc-dark dh-lb" data-cat="spor">
         <div class="dh-lb__veil" aria-hidden="true"></div>
         <div class="swiper-main swiper"
@@ -1071,6 +1050,31 @@
             </div>
         </div>
     </div>
+
+    <nav class="section panel dh-catbar dh-catbar--sport" data-cat="spor" aria-label="Spor dalları">
+      <div class="container max-w-xl">
+        <div class="dh-catbar__row">
+          <span class="dh-catbar__root"><a class="dh-catbar__root-ad" href="spor.html">SPOR</a></span>
+        <div class="dh-catbar__inner swiper-parent">
+          <div class="swiper dh-catbar__swiper"
+            data-uc-swiper="items: auto; gap: 8; free: true; grab-cursor: true; next: .dh-catbar__nav--next; prev: .dh-catbar__nav--prev; disable-class: is-off; watchOverflow: true;">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="futbol.html"><i class="fas fa-futbol dh-catbar__ico" aria-hidden="true"></i>Futbol</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="basketbol.html"><i class="fas fa-basketball-ball dh-catbar__ico" aria-hidden="true"></i>Basketbol</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip is-on" href="voleybol.html" aria-current="page"><i class="fas fa-volleyball-ball dh-catbar__ico" aria-hidden="true"></i>Voleybol</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="formula1.html"><i class="fas fa-flag-checkered dh-catbar__ico" aria-hidden="true"></i>Formula 1</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="bisiklet.html"><i class="fas fa-bicycle dh-catbar__ico" aria-hidden="true"></i>Bisiklet</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="spor.html#tenis"><i class="fas fa-table-tennis dh-catbar__ico" aria-hidden="true"></i>Tenis</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="spor.html#atletizm"><i class="fas fa-running dh-catbar__ico" aria-hidden="true"></i>Atletizm</a></div>
+              <div class="swiper-slide"><a class="dh-catbar__chip" href="spor.html#motor"><i class="fas fa-motorcycle dh-catbar__ico" aria-hidden="true"></i>Motor Sporları</a></div>
+            </div>
+          </div>
+          <div class="dh-catbar__nav dh-catbar__nav--prev" role="button" aria-label="Önceki dallar"><i class="unicon-chevron-left"></i></div>
+          <div class="dh-catbar__nav dh-catbar__nav--next" role="button" aria-label="Sonraki dallar"><i class="unicon-chevron-right"></i></div>
+        </div>
+        </div>
+      </div>
+    </nav>
         <div class="section pt-4 lg:pt-6 pb-0">
           <div class="container max-w-xl">
       <section class="dh-sport dh-sport--rail" data-branch="voleybol">
@@ -1662,84 +1666,75 @@
         </div>
     </div>
     <!-- Footer start -->
-  <footer id="uc-footer" class="uc-footer dh-v2-foot panel uc-light">
+  <footer id="uc-footer" class="uc-footer dh-v2-foot dh-v2-foot--v1 panel uc-light">
     <div class="container max-w-xl">
-      <div class="dh-v2-foot__top">
-        <div class="dh-v2-foot__brand">
-          <img src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="240px">
-          <p class="dh-v2-foot__slogan">Gündemin net hâli.</p>
+      <div class="dh-v2-foot__brand">
+        <img src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="260px">
+        <p class="dh-v2-foot__slogan">Gündemin net hâli.</p>
+      </div>
+      <div class="dh-v2-foot__cols">
+        <div class="dh-v2-foot__grp">
+          <h3>Kategoriler</h3>
+          <ul>
+            <li><a href="anlik.html">Anlık</a></li>
+            <li><a href="gundem.html">Gündem</a></li>
+            <li><a href="dunya.html">Dünya</a></li>
+            <li><a href="ekonomi.html">Finans</a></li>
+            <li><a href="savunma.html">Savunma</a></li>
+            <li><a href="spor.html">Spor</a></li>
+            <li><a href="kadin.html">Kadın</a></li>
+            <li><a href="teknoloji.html">Teknoloji</a></li>
+            <li><a href="saglik.html">Sağlık</a></li>
+            <li><a href="kultur-yasam.html">Kültür &amp; Yaşam</a></li>
+            <li><a href="gelecek.html">Gelecek</a></li>
+            <li><a href="diger.html">Tüm Kategoriler</a></li>
+          </ul>
         </div>
-        <div class="dh-v2-foot__cols">
-          <div class="dh-v2-foot__grp">
-            <h3>Kategoriler</h3>
-            <ul>
-              <li><a href="anlik.html">Anlık</a></li>
-              <li><a href="gundem.html">Gündem</a></li>
-              <li><a href="dunya.html">Dünya</a></li>
-              <li><a href="ekonomi.html">Finans</a></li>
-              <li><a href="savunma.html">Savunma</a></li>
-              <li><a href="spor.html">Spor</a></li>
-              <li><a href="kadin.html">Kadın</a></li>
-              <li><a href="teknoloji.html">Teknoloji</a></li>
-              <li><a href="saglik.html">Sağlık</a></li>
-              <li><a href="kultur-yasam.html">Kültür &amp; Yaşam</a></li>
-              <li><a href="gelecek.html">Gelecek</a></li>
-              <li><a href="diger.html">Tüm Kategoriler</a></li>
-            </ul>
-          </div>
-          <div class="dh-v2-foot__grp">
-            <h3>Formatlar</h3>
-            <ul>
-              <li><a href="haber-dinle.html">Haber Dinle</a></li>
-              <li><a href="foto-fokus.html">Foto Fokus</a></li>
-              <li><a href="video.html">Video Haber</a></li>
-              <li><a href="infografik.html">İnfografik</a></li>
-              <li><a href="podcast.html">Podcast</a></li>
-              <li><a href="dada-ozet.html">Dada Özet</a></li>
-              <li><a href="dada-baglam.html">Dada Bağlam</a></li>
-              <li><a href="dada-dogrula.html">Dada Doğrula</a></li>
-              <li><a href="farkli-bakislar.html">Farklı Bakışlar</a></li>
-              <li><a href="veri-harita.html">Veri &amp; Harita</a></li>
-              <li><a href="sakin-akis.html">Sakin Akış</a></li>
-            </ul>
-          </div>
-          <div class="dh-v2-foot__grp">
-            <h3>Kurumsal</h3>
-            <ul>
-              <li><a href="hakkimizda.html">Hakkımızda</a></li>
-              <li><a href="kunye.html">Künye</a></li>
-              <li><a href="yayin-ilkeleri.html">Yayın İlkeleri</a></li>
-              <li><a href="yayin-ilkeleri.html#bagimsizlik">Editoryal Bağımsızlık</a></li>
-              <li><a href="yayin-ilkeleri.html#seffaflik">Şeffaflık Merkezi</a></li>
-              <li><a href="coming-soon.html">İnsan Kaynakları</a></li>
-              <li><a href="reklam.html">Reklam</a></li>
-              <li><a href="reklam.html#sponsorluk">İş Birlikleri</a></li>
-              <li><a href="resmi-ilanlar.html">Resmî İlanlar</a></li>
-            </ul>
-          </div>
-          <div class="dh-v2-foot__grp">
-            <h3>Destek ve İletişim</h3>
-            <ul>
-              <li><a href="iletisim.html">İletişim</a></li>
-              <li><a href="iletisim.html#form">Bize Ulaşın</a></li>
-              <li><a href="iletisim.html#ihbar">Haber İhbarı</a></li>
-              <li><a href="iletisim.html#oneri">Öneri ve Şikâyet</a></li>
-              <li><a href="iletisim.html#hata">Hata Bildir</a></li>
-              <li><a href="dada-dogrula.html#talep">Doğrulama Talebi</a></li>
-              <li><a href="iletisim.html#sss">Sıkça Sorulan Sorular</a></li>
-              <li><a href="iletisim.html#yardim">Yardım Merkezi</a></li>
-            </ul>
-          </div>
+        <div class="dh-v2-foot__grp">
+          <h3>Formatlar</h3>
+          <ul>
+            <li><a href="haber-dinle.html">Haber Dinle</a></li>
+            <li><a href="foto-fokus.html">Foto Fokus</a></li>
+            <li><a href="video.html">Video Haber</a></li>
+            <li><a href="infografik.html">İnfografik</a></li>
+            <li><a href="podcast.html">Podcast</a></li>
+            <li><a href="dada-ozet.html">Dada Özet</a></li>
+            <li><a href="dada-baglam.html">Dada Bağlam</a></li>
+            <li><a href="dada-dogrula.html">Dada Doğrula</a></li>
+            <li><a href="farkli-bakislar.html">Farklı Bakışlar</a></li>
+            <li><a href="veri-harita.html">Veri &amp; Harita</a></li>
+            <li><a href="sakin-akis.html">Sakin Akış</a></li>
+          </ul>
+        </div>
+        <div class="dh-v2-foot__grp">
+          <h3>Kurumsal</h3>
+          <ul>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="kunye.html">Künye</a></li>
+            <li><a href="yayin-ilkeleri.html">Yayın İlkeleri</a></li>
+            <li><a href="yayin-ilkeleri.html#bagimsizlik">Editoryal Bağımsızlık</a></li>
+            <li><a href="yayin-ilkeleri.html#seffaflik">Şeffaflık Merkezi</a></li>
+            <li><a href="coming-soon.html">İnsan Kaynakları</a></li>
+            <li><a href="reklam.html">Reklam</a></li>
+            <li><a href="reklam.html#sponsorluk">İş Birlikleri</a></li>
+            <li><a href="resmi-ilanlar.html">Resmî İlanlar</a></li>
+          </ul>
+        </div>
+        <div class="dh-v2-foot__grp">
+          <h3>Destek ve İletişim</h3>
+          <ul>
+            <li><a href="iletisim.html">İletişim</a></li>
+            <li><a href="iletisim.html#form">Bize Ulaşın</a></li>
+            <li><a href="iletisim.html#ihbar">Haber İhbarı</a></li>
+            <li><a href="iletisim.html#oneri">Öneri ve Şikâyet</a></li>
+            <li><a href="iletisim.html#hata">Hata Bildir</a></li>
+            <li><a href="dada-dogrula.html#talep">Doğrulama Talebi</a></li>
+            <li><a href="iletisim.html#sss">Sıkça Sorulan Sorular</a></li>
+            <li><a href="iletisim.html#yardim">Yardım Merkezi</a></li>
+          </ul>
         </div>
       </div>
       <div class="dh-v2-foot__chan">
-        <div class="dh-v2-foot__store">
-          <h3>Mobil Uygulamalar</h3>
-          <div>
-            <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-apple" aria-hidden="true"></i><span><small>İndir</small><b>App Store</b></span></a>
-            <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-google-play" aria-hidden="true"></i><span><small>İndir</small><b>Google Play</b></span></a>
-          </div>
-        </div>
         <div class="dh-v2-foot__soc">
           <h3>Sosyal Medya</h3>
           <div>
@@ -1751,6 +1746,13 @@
             <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i><span>TikTok</span></a>
             <a href="#" aria-label="WhatsApp Kanalı"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span></a>
             <a href="#" aria-label="RSS"><i class="fas fa-rss" aria-hidden="true"></i><span>RSS</span></a>
+          </div>
+        </div>
+        <div class="dh-v2-foot__store">
+          <h3>Mobil Uygulamalar</h3>
+          <div>
+            <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-apple" aria-hidden="true"></i><span><small>İndir</small><b>App Store</b></span></a>
+            <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-google-play" aria-hidden="true"></i><span><small>İndir</small><b>Google Play</b></span></a>
           </div>
         </div>
       </div>
