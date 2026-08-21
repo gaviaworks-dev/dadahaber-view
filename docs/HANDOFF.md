@@ -668,3 +668,32 @@ tanımlı olduğu hâlde fontta glif taşımıyor — boş kutu çiziliyor ve ku
 boyutta olduğu için ekran görüntüsünde fark edilmiyor. Betik her ikonu canvas'a
 çizip mürekkep sayıyor. v2'de bu yolla 12 ikon yakalandı ve FA5 karşılıklarıyla
 değiştirildi.
+
+### Yayın ağacı sürümlü yapıya geçti (kullanıcı isteği)
+
+Paylaşılan linkte "v2" ibaresi görünsün diye kök artık `/v2/`'ye yönlendiriyor.
+
+```
+/           yönlendirme -> /v2/     (index.html, üç katmanlı)
+/v2/        sitenin kendisi          (TEK gerçek kopya)
+/v1/        donmuş arşiv             (v1 dalından üretilir)
+/assets/    ortak varlık ağacı       (iki sürüm de ../assets/ ile paylaşır)
+/404.html   kökte kalır              (Pages proje sitelerinde YALNIZ kök 404'ü kullanır)
+```
+
+**`main` artık çalışma dalı değil, üretilmiş yayın ağacı.** `git merge v2`
+kullanılamaz: main'de kök HTML'ler `/v2/` altına taşındığı için her yayında
+modify/delete çakışması üretirdi. `yayinla.sh` bunun yerine
+`git checkout v2 -- .` ile içeriği alıp ağacı yeniden kuruyor ve sonunda
+doğruluyor (kök yönlendirme · kök 404 · sürüm klasörlerinin sayfa sayısı ·
+kökte beklenmeyen sayfa yok).
+
+Yönlendirme üç katmanlı ve ölçülerek doğrulandı:
+`location.replace` (history'ye kayıt bırakmaz — **geri tuşu döngüye girmiyor**,
+ölçüldü) · `meta refresh` (JS kapalıysa) · görünür bağlantı. Query ve hash
+korunuyor: `/?dark=1#test` → `/v2/?dark=1#test`, koyu tema uygulanıyor.
+`/v1/` bandındaki "Güncel sürüme git" (`../index.html`) yönlendirme üzerinden
+`/v2/`'ye ulaşıyor.
+
+Yeni sürüm: `bash docs/parts/yayinla.sh v3` — kök `/v3/`'e yönlenir,
+`/v2/` olduğu yerde donar. Betik sürüm adını parametre alıyor.

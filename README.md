@@ -12,10 +12,25 @@ paket yöneticisi yok, backend yok. Dosyaları bir statik sunucudan servis etmek
 
 GitHub Pages · `main` dalı · kök dizin
 
-| | |
+| Adres | Ne |
 |---|---|
-| **v2 (güncel)** | https://gaviaworks-dev.github.io/dadahaber-view/ |
-| **v1 (donmuş arşiv)** | https://gaviaworks-dev.github.io/dadahaber-view/v1/ |
+| **`/v2/`** | https://gaviaworks-dev.github.io/dadahaber-view/v2/ — **güncel sürüm** |
+| `/v1/` | https://gaviaworks-dev.github.io/dadahaber-view/v1/ — donmuş arşiv |
+| `/` | Köke girilince `/v2/` adresine yönlendirir |
+
+Yayın ağacı **üretilir, elle düzenlenmez.** `main` bir çalışma dalı değildir;
+her yayında `v2` dalının içeriğinden yeniden kurulur:
+
+```
+/           yönlendirme sayfası -> /v2/
+/v2/        sitenin kendisi (tek gerçek kopya)
+/v1/        donmuş arşiv, v1 dalından üretilir
+/assets/    ortak varlık ağacı, iki sürüm de ../assets/ ile paylaşır
+/404.html   Pages proje sitelerinde YALNIZ kök 404'ünü kullanır
+```
+
+Yeni bir sürüm (v3) geldiğinde: `bash docs/parts/yayinla.sh v3` — kök `/v3/`'e
+yönlenir, `/v2/` olduğu yerde donar.
 
 ## Sürümler
 
