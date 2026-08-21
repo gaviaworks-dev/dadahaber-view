@@ -2421,3 +2421,12 @@ html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
    hafta düğmesine verildi — tarayıcı hem dikey kaydırıyor hem yatay şeridi
    o haftaya getiriyor. Şerit .dh-catbar içinde kendi kaydırma bağlamında. */
 #hafta-20 { scroll-margin-top: 190px; }
+
+/* 390px'te ölçüldü: başlık satırında üç öğe yan yana sıkışıyor, üstbaşlık
+   ("HABERDEN GELDİNİZ") ve başlık iki satıra kırılıp sağdaki künye rozetiyle
+   iç içe geçmiş görünüyordu. 576px altında rozet kendi satırına iniyor. */
+@media (max-width: 575.98px) {
+  .dh-basv__hd { flex-wrap: wrap; }
+  .dh-basv__id { flex: 1 1 calc(100% - 56px); }
+  .dh-basv__n { flex: 1 1 100%; text-align: left; margin-top: 4px; }
+}
