@@ -626,8 +626,11 @@ Yapışkan kenar sütunu ofseti bu yüzden `136` → `120` yapıldı.
 
 ## v2 açık kalanlar
 
-- `v2.css` parçaları `@import` ile toplanıyor. Prototip için yeterli; gerçek
-  yayında tek dosyaya düzleştirilmeli (paralel indirmeyi engelliyor).
+- ~~`v2.css` parçaları `@import` ile toplanıyor.~~ **KAPANDI.**
+  `docs/parts/duzlestir.py` altı parçayı tek dosyaya düzleştiriyor ve
+  `docs/parts/yayinla.sh` bunu yayından önce otomatik çağırıyor.
+  Geliştirmede parçalar ayrı kalır (paralel ajan çakışmasını önler),
+  yayında düzleşir. Kaynak: `docs/parts/v2.css.src`.
 - Alt kategorilerin çoğu gerçek sayfa değil, `haber-liste.html`'e bağlanıyor.
   Backend gelince kategori yönlendirmesi kurulmalı.
 - Dada Doğrula iddiaları ve Farklı Bakışlar kaynak adları **kurgusaldır**;

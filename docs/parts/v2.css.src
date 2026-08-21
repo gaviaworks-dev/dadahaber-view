@@ -1,0 +1,12 @@
+/* ============================================================================
+   Dada Haber v2 — toplayıcı
+   Nihai Menü Haritası (Sürüm 1.0) bilgi mimarisi.
+   custom.min.css DEĞİŞTİRİLMEZ; /v1/ kopyası onu paylaşıyor. Tüm v2 CSS'i burada.
+   Parçalar çakışmasın diye ayrı dosyalarda; yayından önce düzleştirilir.
+   ========================================================================== */
+@import url("./v2/kabuk.css");    /* kabuk: header · mega menü · footer */
+@import url("./v2/a-gundem.css"); /* Şimdi · Gündem · Dünya */
+@import url("./v2/b-bolum.css");  /* Ekonomi · Gelecek · Kültür & Yaşam */
+@import url("./v2/c-kesfet.css"); /* Keşfet · Dada Özet · Doğrula · Bağlam */
+@import url("./v2/d-arac.css");   /* Farklı Bakışlar · Veri & Harita · Sakin Akış · Hesabım */
+@import url("./v2/e-detay.css");  /* Video · haber detay modülleri · arama */

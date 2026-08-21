@@ -7,6 +7,13 @@ cd "$(git rev-parse --show-toplevel)"
 
 [ -z "$(git status --porcelain)" ] || { echo "HATA: çalışma dizini kirli."; exit 1; }
 
+echo "== v2.css düzleştiriliyor (yayında @import zinciri istenmiyor)"
+python3 docs/parts/duzlestir.py
+if ! git diff --quiet assets/css/theme/v2.css; then
+  git add assets/css/theme/v2.css
+  git commit -q -m "v2.css düzleştirildi (yayın)"
+fi
+
 echo "== v2 -> main"
 git checkout main
 git merge v2 --no-edit
