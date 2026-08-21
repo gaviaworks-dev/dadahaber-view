@@ -6,6 +6,7 @@ d = os.path.dirname(os.path.abspath(__file__))
 HDR = open(os.path.join(d, "header.html"), encoding="utf-8").read()
 OFF = open(os.path.join(d, "offcanvas.html"), encoding="utf-8").read()
 FTR = open(os.path.join(d, "footer.html"), encoding="utf-8").read()
+BNV = open(os.path.join(d, "bnav.html"), encoding="utf-8").read()
 
 CSS_LINK = '  <link rel="stylesheet" href="./assets/css/theme/v2.css">\n'
 
@@ -106,12 +107,16 @@ def isle(yol):
         s = s.replace("offset: 136", "offset: 120")
         rapor.append("offset")
 
-    # 6) sağ alttaki tema (siyah-beyaz ekran) anahtarı kaldırılır.
-    #    Yukarı çık düğmesi kalır; yerinde boşluk veya görünmez tıklama alanı bırakılmaz.
+    # 6) sağ alttaki YÜZEN tema (siyah-beyaz ekran) anahtarı kaldırılır.
+    #    Yalnız data-darkmode-toggle taşıyan yüzen widget silinir; menü içindeki
+    #    görünüm ayarı (data-darkmode-switch) ve hesap ayarları yerinde kalır.
     while True:
-        i = s.find('<div class="darkmode-trigger')
-        if i == -1:
+        j = s.find('data-darkmode-toggle')
+        if j == -1:
             break
+        i = s.rfind('<div class="darkmode-trigger', 0, j)
+        if i == -1:
+            return None, "darkmode-toggle sarmalayıcısı bulunamadı"
         b = satir_basi(s, i)
         e = kapat_div(s, i)
         if e == -1:
@@ -123,6 +128,22 @@ def isle(yol):
         s = s[:b] + s[e:]
         if "temasiz" not in rapor:
             rapor.append("temasiz")
+
+    # 7) mobil alt gezinme çubuğu — tek kaynaktan yayılır
+    m = re.search(r'[ \t]*<!--[^\n]*[Mm]obil alt gezinme[^\n]*-->\n', s)
+    i = s.find('<nav class="dh-bnav"')
+    if i != -1:
+        b = m.start() if (m and m.end() <= i) else satir_basi(s, i)
+        k = s.find("</nav>", i)
+        if k == -1:
+            return None, "dh-bnav kapanmıyor"
+        e = k + len("</nav>")
+        while e < len(s) and s[e] in " \t":
+            e += 1
+        if e < len(s) and s[e] == "\n":
+            e += 1
+        s = s[:b] + BNV + s[e:]
+        rapor.append("bnav")
 
     if s != orj:
         open(yol, "w", encoding="utf-8").write(s)

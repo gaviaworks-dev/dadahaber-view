@@ -105,6 +105,7 @@
   <!--  Menu panel -->
   <!--  Menu panel -->
   <!--  Menu panel -->
+  <!--  Menu panel -->
   <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">
     <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
       <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
@@ -361,12 +362,20 @@
             </ul>
           </li>
         </ul>
+        <span class="dh-v2-off__grp dh-v2-off__grp--sec">Medya ve Formatlar</span>
         <div class="dh-v2-off__svc">
           <a href="haber-dinle.html"><i class="fas fa-headphones" aria-hidden="true"></i>Haber Dinle</a>
           <a href="foto-fokus.html"><i class="fas fa-camera" aria-hidden="true"></i>Foto Fokus</a>
           <a href="video.html"><i class="fas fa-play" aria-hidden="true"></i>Video Haber</a>
           <a href="infografik.html"><i class="fas fa-chart-bar" aria-hidden="true"></i>İnfografik</a>
           <a href="podcast.html"><i class="fas fa-podcast" aria-hidden="true"></i>Podcast</a>
+        </div>
+        <span class="dh-v2-off__grp dh-v2-off__grp--sec">Görünüm</span>
+        <div class="dh-v2-off__view">
+          <span><i class="fas fa-moon" aria-hidden="true"></i>Karanlık mod</span>
+          <div class="darkmode-trigger" data-darkmode-switch>
+            <label class="switch"><span class="sr-only">Karanlık mod</span><input type="checkbox"><span class="slider fs-5"></span></label>
+          </div>
         </div>
       </div>
     </div>
@@ -1403,7 +1412,7 @@
     <script defer src="./assets/js/helpers/anime-helper-defined-timelines.js"></script>
     <script defer src="./assets/js/uikit-components-bs.js"></script>
 
-  <!-- Mobil alt gezinme (R8-N) — 991,98px altında görünür -->
+  <!-- Mobil alt gezinme — 991,98px altında görünür -->
   <nav class="dh-bnav" aria-label="Alt gezinme">
     <div class="dh-bnav__row">
       <a class="dh-bnav__item" href="index.html">
@@ -1414,17 +1423,17 @@
         <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-bolt"></i></span>
         <span class="dh-bnav__label">Son Dakika</span>
       </a>
+      <a class="dh-bnav__item dh-bnav__item--kesfet" href="kesfet.html">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-compass"></i></span>
+        <span class="dh-bnav__label">Keşfet</span>
+      </a>
+      <a class="dh-bnav__item" href="video.html">
+        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-play"></i></span>
+        <span class="dh-bnav__label">Video</span>
+      </a>
       <a class="dh-bnav__item" href="#uc-menu-panel" data-uc-toggle aria-haspopup="dialog">
         <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-bars"></i></span>
         <span class="dh-bnav__label">Menü</span>
-      </a>
-      <a class="dh-bnav__item" href="haber-dinle.html">
-        <span class="dh-bnav__ic" aria-hidden="true"><i class="fa-solid fa-ear-muffs"></i></span>
-        <span class="dh-bnav__label">Dinle</span>
-      </a>
-      <a class="dh-bnav__item" href="arama.html">
-        <span class="dh-bnav__ic" aria-hidden="true"><i class="fas fa-magnifying-glass"></i></span>
-        <span class="dh-bnav__label">Ara</span>
       </a>
     </div>
   </nav>

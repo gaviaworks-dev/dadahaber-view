@@ -4,7 +4,7 @@
    Yeniden üret:    python3 docs/parts/duzlestir.py
    ========================================================================== */
 
-/* ==== v2/kabuk.css (753 satır) ==== */
+/* ==== v2/kabuk.css (818 satır) ==== */
 /* ============================================================================
    v2 / KABUK — format bandı · marka satırı · 8 başlıklı perdeleme menü · footer
    V1–V2 birleştirme (21 Ağustos 2026):
@@ -758,6 +758,71 @@ body.dh-footer-reveal #uc-footer.dh-v2-foot {
   position: static !important;
   inset: auto !important;
 }
+
+/* ================= 6. MOBİL ALT GEZİNME — Keşfet vurgusu ================== */
+/* Alt menü: Anasayfa · Son Dakika · KEŞFET · Video · Menü
+   Keşfet ortada ve KALICI vurgulu — sayfa aktif olmasa da amber hap taşır.
+   Gerekçe: Dada Haber'i klasik haber sitesinden ayıran ana ürün orası.
+   Dinle "Medya ve Formatlar"a, Ara ve Hesabım mobil header'a,
+   karanlık mod menü içindeki Görünüm ayarına taşındı. */
+.dh-bnav__item--kesfet .dh-bnav__ic {
+  width: 40px;
+  height: 32px;
+  margin-top: -8px;
+  font-size: 18px;
+  background: var(--color-primary);
+  color: var(--color-gray-900);
+  box-shadow: 0 4px 12px rgba(252, 182, 35, .38);
+}
+.dh-bnav__item--kesfet .dh-bnav__label {
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-bnav__item--kesfet .dh-bnav__label { color: #fff; }
+/* aktif sayfadayken hap zaten amber; ayrım halkayla verilir */
+.dh-bnav__item--kesfet.is-on .dh-bnav__ic {
+  box-shadow: 0 0 0 3px rgba(252, 182, 35, .32), 0 4px 12px rgba(252, 182, 35, .38);
+}
+
+/* --- offcanvas: bölüm başlığı ve görünüm ayarı ---------------------------- */
+.dh-v2-off__grp--sec {
+  margin: 22px 0 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-gray-200);
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-v2-off__grp--sec { border-color: var(--color-gray-700); }
+.dh-v2-off__view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--color-gray-50);
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-v2-off__view { background: rgba(255, 255, 255, .06); }
+.dh-v2-off__view > span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-v2-off__view > span { color: #fff; }
+.dh-v2-off__view i { color: var(--color-primary); }
+.dh-v2-off__view .darkmode-trigger { flex: 0 0 auto; }
+
+/* --- offcanvas açıkken yüzen öğeler çekilir --------------------------------
+   Ölçüm: "GÖRÜŞ BİLDİR" düğmesi z-index 1001, offcanvas 1000 — düğme panelin
+   üstüne biniyordu ve "Görünüm" başlığını kapatıyordu. */
+html.uc-offcanvas-page .position-right-turn,
+html.uc-offcanvas-page .dh-bnav { display: none; }
+
+/* son kategoriden sonra çift çizgi oluşuyordu: li'nin alt çizgisi +
+   bölüm başlığının üst çizgisi. Alttaki kaldırıldı. */
+.dh-v2-off__list > li:last-child { border-bottom: 0; }
 
 /* ==== v2/a-gundem.css (2432 satır) ==== */
 /* v2 — a-gundem (bu dosyaya yalnız ilgili ajan yazar; cat >> ile SONA eklenir) */

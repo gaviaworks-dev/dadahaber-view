@@ -122,6 +122,18 @@ MENU = [
                        ("Arşiv","arsiv.html")])]),
 ]
 
+# ------------------------------------------------------- mobil alt gezinme
+# Keşfet ORTADA ve kalıcı vurgulu: Dada Haber'i klasik haber sitesinden ayıran
+# ana ürün orası. Dinle/Ara/Hesabım alt menüden çıktı — Dinle "Medya ve
+# Formatlar"da, Ara ve Hesabım mobil header'da, karanlık mod menü içinde.
+BNAV = [
+    ("Anasayfa",   "index.html",       "fas fa-home-lg-alt",   ""),
+    ("Son Dakika", "son-dakika.html",  "fas fa-bolt",          ""),
+    ("Keşfet",     "kesfet.html",      "fas fa-compass",       "dh-bnav__item--kesfet"),
+    ("Video",      "video.html",       "fas fa-play",          ""),
+    ("Menü",       "#uc-menu-panel",   "fas fa-bars",          ""),
+]
+
 SOSYAL = [("Instagram","fa-instagram","#"),("YouTube","fa-youtube","#"),("X","fa-x-twitter","#"),
           ("Facebook","fa-facebook-f","#"),("LinkedIn","fa-linkedin-in","#"),("TikTok","fa-tiktok","#")]
 
@@ -293,9 +305,19 @@ def offcanvas():
                 w('              <li><a href="%s"%s>%s</a></li>\n' % (h, ext(h), t))
         w('            </ul>\n          </li>\n')
     w('        </ul>\n')
+    w('        <span class="dh-v2-off__grp dh-v2-off__grp--sec">Medya ve Formatlar</span>\n')
     w('        <div class="dh-v2-off__svc">\n')
     for ad, h, ik in FORMAT:
         w('          <a href="%s"><i class="fas %s" aria-hidden="true"></i>%s</a>\n' % (h, ik, ad))
+    w('        </div>\n')
+    # görünüm ayarları — karanlık mod alt menüden buraya taşındı
+    w('        <span class="dh-v2-off__grp dh-v2-off__grp--sec">Görünüm</span>\n')
+    w('        <div class="dh-v2-off__view">\n')
+    w('          <span><i class="fas fa-moon" aria-hidden="true"></i>Karanlık mod</span>\n')
+    w('          <div class="darkmode-trigger" data-darkmode-switch>\n')
+    w('            <label class="switch"><span class="sr-only">Karanlık mod</span>')
+    w('<input type="checkbox"><span class="slider fs-5"></span></label>\n')
+    w('          </div>\n')
     w('        </div>\n')
     w('      </div>\n    </div>\n  </div>\n')
     return o.getvalue()
@@ -352,8 +374,26 @@ def footer():
     w('    </div>\n  </footer>\n')
     return o.getvalue()
 
+# ------------------------------------------------------ mobil alt gezinme
+def bnav():
+    o = io.StringIO(); w = o.write
+    w('  <!-- Mobil alt gezinme — 991,98px altında görünür -->\n')
+    w('  <nav class="dh-bnav" aria-label="Alt gezinme">\n')
+    w('    <div class="dh-bnav__row">\n')
+    for ad, h, ik, cls in BNAV:
+        ek = ' data-uc-toggle aria-haspopup="dialog"' if h.startswith("#") else ''
+        k = ("dh-bnav__item " + cls).strip()
+        w('      <a class="%s" href="%s"%s>\n' % (k, h, ek))
+        w('        <span class="dh-bnav__ic" aria-hidden="true"><i class="%s"></i></span>\n' % ik)
+        w('        <span class="dh-bnav__label">%s</span>\n' % ad)
+        w('      </a>\n')
+    w('    </div>\n  </nav>\n')
+    return o.getvalue()
+
+
 if __name__ == "__main__":
     d = os.path.dirname(os.path.abspath(__file__))
-    for ad, fn in (("header.html", header), ("offcanvas.html", offcanvas), ("footer.html", footer)):
+    for ad, fn in (("header.html", header), ("offcanvas.html", offcanvas),
+                   ("footer.html", footer), ("bnav.html", bnav)):
         open(os.path.join(d, ad), "w", encoding="utf-8").write(fn())
         print(ad, "yazıldı")
