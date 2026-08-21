@@ -2430,3 +2430,157 @@ html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
   .dh-basv__id { flex: 1 1 calc(100% - 56px); }
   .dh-basv__n { flex: 1 1 100%; text-align: left; margin-top: 4px; }
 }
+
+/* --- şehir seçici: sol panel sağ sütunla hizalanır ------------------------
+   Ölçüm (1440px): sol panel 665px, sağ panel 878px — 213px fark, ızgara
+   align-items: start olduğu için sol kutu erken bitiyordu.
+   Kolonlar artık aynı yüksekliği paylaşıyor; kazanılan yer 81 illik kayan
+   listeye gidiyor, böylece daha az kaydırma gerekiyor. */
+.dh-sehir { align-items: stretch; }
+.dh-sehir__pick { display: flex; flex-direction: column; }
+.dh-sehir__grid {
+  max-height: none;
+  flex: 1 1 auto;
+  min-height: 340px;
+}
+@media (max-width: 991.98px) {
+  .dh-sehir { align-items: start; }
+  .dh-sehir__pick { display: block; }
+  .dh-sehir__grid { max-height: 340px; flex: none; }
+}
+
+/* ============================================================================
+   ÖZGÜN İÇERİKLER — yeniden tasarım
+   Bu üç yazıyı akıştaki diğer haberlerden ayıran şey ARKASINDAKİ İŞ:
+   kaç kayıt tarandı, kaç hane görüşüldü, kaç yıllık dönem. Kart artık onu
+   ölçüyle söylüyor. Site bu dili zaten "Haber Karnesi"nde konuşuyor;
+   bölüm süslemeye değil, aynı dile bağlandı.
+   Bölüm koyu zemine alındı: "Dada Haber imzalı" damgası sayfanın geri
+   kalanından ayrılsın diye. Format kimliği sol raydan geliyor.
+   ========================================================================== */
+#ozgun {
+  position: relative;
+  background: var(--color-gray-900);
+  padding-block: 40px 44px !important;
+}
+#ozgun .dh-secbar { border-bottom-color: rgba(255, 255, 255, .14); }
+#ozgun .dh-secbar h2 { color: #fff !important; }
+#ozgun .dh-nwstamp {
+  color: var(--color-primary);
+  border: 1px solid rgba(252, 182, 35, .35);
+  padding: 5px 10px;
+  border-radius: 8px 8px 8px 0;
+}
+
+.dh-gozgun {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.dh-gozgun__it {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 20px 18px;
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-inline-start: 3px solid var(--dh-tur, var(--color-primary));
+  border-radius: 8px 8px 8px 0;
+}
+.dh-gozgun__it[data-tur="ozel"]      { --dh-tur: #c8102e; }
+.dh-gozgun__it[data-tur="arastirma"] { --dh-tur: #0d6b8a; }
+.dh-gozgun__it[data-tur="analiz"]    { --dh-tur: #b07d05; }
+
+.dh-gozgun__tur {
+  align-self: start;
+  padding: 4px 9px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dh-tur);
+  border: 1px solid currentColor;
+  border-radius: 8px 8px 8px 0;
+}
+.dh-gozgun__title { margin: 0; font-size: 17px; line-height: 1.28; letter-spacing: -.015em; }
+.dh-gozgun__title a { color: #fff; text-decoration: none; }
+.dh-gozgun__title a:hover { color: var(--color-primary); }
+.dh-gozgun__sum {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, .66);
+}
+
+/* yöntem künyesi — bölümün imzası: işin ölçüsü */
+.dh-gozgun__yontem {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 1px;
+  margin: 4px 0 0;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 8px 8px 8px 0;
+  overflow: hidden;
+}
+.dh-gozgun__yontem > div {
+  padding: 9px 8px;
+  background: var(--color-gray-900);
+  text-align: center;
+}
+.dh-gozgun__yontem dt {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .5);
+  margin: 0 0 3px;
+  order: 2;
+}
+.dh-gozgun__yontem dd {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--dh-tur);
+  font-variant-numeric: tabular-nums;
+}
+.dh-gozgun__yontem > div { display: flex; flex-direction: column; }
+
+.dh-gozgun__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  font-size: 12px;
+  color: rgba(255, 255, 255, .55);
+}
+.dh-gozgun__yazar { font-weight: 700; color: rgba(255, 255, 255, .82); }
+.dh-gozgun__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.dh-gozgun__go:hover { color: var(--color-primary); }
+.dh-gozgun__go:hover i { transform: translateX(3px); }
+.dh-gozgun__go i { font-size: 11px; transition: transform .14s; }
+
+@media (max-width: 991.98px) {
+  .dh-gozgun { grid-template-columns: minmax(0, 1fr); }
+  .dh-gozgun__yontem { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(3, 1fr); }
+}
+/* Eski açık zemin kuralı (.dh-gozgun__meta span:first-child -> gray-700)
+   koyu bantta yazar adını okunmaz bırakıyordu — ölçüldü, override edildi. */
+#ozgun .dh-gozgun__meta span:first-child,
+#ozgun .dh-gozgun__yazar { color: rgba(255, 255, 255, .84) !important; font-family: inherit; }
+#ozgun .dh-gozgun__meta time,
+#ozgun .dh-gozgun__meta span:last-child { color: rgba(255, 255, 255, .58) !important; font-family: inherit; }
+#ozgun .dh-gozgun__it::before { content: none; }
