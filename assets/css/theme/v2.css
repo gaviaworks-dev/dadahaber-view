@@ -7045,7 +7045,7 @@ html.uc-dark .dh-ph--tool .dh-ph__meta { color: rgba(255, 255, 255, .62); }
   .dh-sw__box { order: 1; margin-left: 0; }
 }
 
-/* ==== v2/e-detay.css (896 satır) ==== */
+/* ==== v2/e-detay.css (894 satır) ==== */
 /* v2 — e-detay (bu dosyaya yalnız ilgili ajan yazar; cat >> ile SONA eklenir) */
 
 /* ============================================================================
@@ -7776,7 +7776,7 @@ html.uc-dark .dh-ayrim__l li + li { border-color: var(--color-gray-700); }
   gap: 40px;
   align-items: start;
 }
-.dh-artcol { min-width: 0; }
+.dh-artcol { min-width: 0; max-width: 740px; margin-inline: auto; }   /* satır uzunluğu 65-78 karakter bandında kalsın */
 
 /* reklam rayları — yapışkan ama kendi sütununda kalır, footer'a taşmaz */
 .dh-adrail {
@@ -7829,8 +7829,6 @@ html.uc-dark .dh-ad__box {
   .dh-artgrid { grid-template-columns: minmax(0, 1fr); }
   .dh-adrail { display: none; }
   .dh-ad--icerik { display: grid; }
-  /* raylar yokken metin yayılmasın — okunur genişlikte ortalanır */
-  .dh-artcol { max-width: 760px; margin-inline: auto; }
 }
 
 /* --- 8.3 · Haber Özeti kompakt ---------------------------------------------

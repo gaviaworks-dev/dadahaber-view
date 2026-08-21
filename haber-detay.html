@@ -955,6 +955,34 @@
       </div>
     </header>
 
+    <!-- 8.1 · Üst kategori şeridi — ana kategori + alt kategoriler.
+         "Alt Kategori" açıklaması KULLANILMAZ, yalnız isimler bağlantıdır. -->
+    <nav class="section panel dh-catbar dh-catbar--art" data-cat="gundem" aria-label="Gündem alt kategorileri">
+      <div class="container max-w-xl">
+        <div class="dh-catbar__row">
+          <span class="dh-catbar__root dh-catbar__root--link"><a class="dh-catbar__root-ad" href="gundem.html">GÜNDEM</a></span>
+          <div class="dh-catbar__inner swiper-parent">
+            <div class="swiper dh-catbar__swiper"
+              data-uc-swiper="items: auto; gap: 8; free: true; grab-cursor: true; next: .dh-catbar__nav--next; prev: .dh-catbar__nav--prev; disable-class: is-off; watchOverflow: true;">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><a class="dh-catbar__chip is-on" href="haber-liste.html" aria-current="page">Yerel Yönetim</a></div>
+                <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-liste.html">Siyaset</a></div>
+                <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-liste.html">Türkiye</a></div>
+                <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-liste.html">Toplum</a></div>
+                <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-liste.html">Hukuk</a></div>
+                <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-liste.html">Güvenlik</a></div>
+                <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-liste.html">Eğitim</a></div>
+                <div class="swiper-slide"><a class="dh-catbar__chip" href="haber-liste.html">Çevre</a></div>
+                <div class="swiper-slide"><a class="dh-catbar__chip" href="gundem.html#yerel">Yerel Haberler</a></div>
+              </div>
+            </div>
+            <div class="dh-catbar__nav dh-catbar__nav--prev" role="button" aria-label="Önceki kategoriler"><i class="unicon-chevron-left"></i></div>
+            <div class="dh-catbar__nav dh-catbar__nav--next" role="button" aria-label="Sonraki kategoriler"><i class="unicon-chevron-right"></i></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <article class="post type-post single-post dh-art">
       <!-- ANA GÖRSEL — referanstan FARKLI: banner'ın altında, içerikten önce -->
       <div class="container max-w-xl">
@@ -1895,6 +1923,7 @@
   <!-- include app script -->
   <script defer src="./assets/js/audio.js"></script>
   <script defer src="./assets/js/app.js"></script>
+    <script defer src="./assets/js/dh-tabs.js"></script>
     <script defer src="./assets/js/v2/dh-v2-nav.js"></script>
     <script defer src="./assets/js/v2/dh-v2-menu.js"></script>
     <script defer src="./assets/js/v2/dh-takip.js"></script>
