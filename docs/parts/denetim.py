@@ -5,6 +5,10 @@ import glob, os, re, sys, collections
 
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 sayfalar = sorted(glob.glob("*.html"))
+# Yönlendirme/uyumluluk sayfalarında kabuk yoktur (ör. eski rota -> yeni rota).
+# Bağlantı denetimine girerler, kabuk denetimine girmezler.
+_ham = {f: open(f, encoding="utf-8").read() for f in sayfalar}
+YONLENDIRME = {f for f, s in _ham.items() if 'http-equiv="refresh"' in s}
 metin = {f: open(f, encoding="utf-8").read() for f in sayfalar}
 idler = {f: re.findall(r'\bid="([^"]+)"', s) for f, s in metin.items()}
 hata = []
@@ -59,8 +63,10 @@ yok = [f for f, s in metin.items() if 'lang="tr"' not in s[:400]]
 if yok:
     hata.append('lang="tr" yok: %s' % ", ".join(yok))
 
-# 6) v2 kabuğu her sayfada (404/coming-soon footer taşımaz)
+# 6) v2 kabuğu her sayfada (404/coming-soon footer taşımaz,
+#    yönlendirme sayfalarında kabuk hiç yoktur)
 for f, s in metin.items():
+    if f in YONLENDIRME: continue
     if "dh-v2-nav__list" not in s: hata.append("%s: v2 gezinti yok" % f)
     if "theme/v2.css" not in s: hata.append("%s: v2.css bağlantısı yok" % f)
     if f not in ("404.html", "coming-soon.html") and "dh-v2-foot" not in s:

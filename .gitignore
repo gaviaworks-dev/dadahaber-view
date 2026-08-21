@@ -25,5 +25,10 @@ _icons.html
 
 # /v1/ ve /v2/ kopyaları yalnız main (yayın) dalında bulunur; çalışma dalında
 # tutulmaz. Yayın anında docs/parts/yayinla.sh üretir.
-v1/
-v2/
+#
+# DİKKAT: başında eğik çizgi ŞART. "v2/" deseni yol içindeki HER "v2" klasörünü
+# yutuyordu — assets/js/v2/ ve assets/css/theme/v2/ dâhil. Bu yüzden yeni
+# yazılan dh-giris.js ve dh-v2-menu.js hiçbir commit'e girmemişti ve yayında
+# menü/form davranışı ölü kalacaktı. Kural artık yalnız depo kökünü kapsıyor.
+/v1/
+/v2/

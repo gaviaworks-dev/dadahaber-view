@@ -1,0 +1,104 @@
+/* ============================================================================
+   v2 / DİĞER — tüm kategoriler dizini (diger.html)
+   "Diğer" perdeleme menüsünün sayfa karşılığı. Ana menüden çıkan hiçbir
+   kategori kaybolmasın diye tam dizin burada durur.
+   ========================================================================== */
+
+.dh-dir { display: grid; gap: 26px; }
+
+/* ana kategori kartları — kimlik rengi soldaki şeritten gelir */
+.dh-dir__main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.dh-dir__cat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+  text-decoration: none;
+  transition: border-color .14s, transform .14s;
+}
+html.uc-dark .dh-dir__cat {
+  background: var(--color-gray-900);
+  border-color: var(--color-gray-700);
+}
+.dh-dir__cat:hover { border-color: var(--dh-cat, var(--color-primary)); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .dh-dir__cat { transition: none; } .dh-dir__cat:hover { transform: none; } }
+.dh-dir__cat::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 4px;
+  height: 30px;
+  background: var(--dh-cat, var(--color-primary));
+}
+.dh-dir__cat b {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-dir__cat b { color: #fff; }
+.dh-dir__cat span {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: var(--color-gray-500);
+}
+.dh-dir__cat[data-cat="anlik"]   { --dh-cat: var(--dh-c-anlik); }
+.dh-dir__cat[data-cat="gundem"]  { --dh-cat: var(--dh-c-gundem); }
+.dh-dir__cat[data-cat="dunya"]   { --dh-cat: var(--dh-c-dunya); }
+.dh-dir__cat[data-cat="ekonomi"] { --dh-cat: var(--dh-c-ekonomi); }
+.dh-dir__cat[data-cat="savunma"] { --dh-cat: var(--dh-c-savunma); }
+.dh-dir__cat[data-cat="spor"]    { --dh-cat: var(--dh-c-spor); }
+.dh-dir__cat[data-cat="kadin"]   { --dh-cat: var(--dh-c-kadin); }
+.dh-dir__cat[data-cat="diger"]   { --dh-cat: var(--dh-c-diger); }
+
+/* dizin sütunları */
+.dh-dir__cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px 26px;
+}
+.dh-dir__grp h3 {
+  margin: 0 0 10px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--color-gray-200);
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-dir__grp h3 { border-color: var(--color-gray-700); }
+.dh-dir__grp ul { list-style: none; margin: 0; padding: 0; }
+.dh-dir__grp li + li { margin-top: 1px; }
+.dh-dir__grp a {
+  display: block;
+  padding: 5px 0;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-gray-800);
+  text-decoration: none;
+  transition: color .12s, padding-inline-start .12s;
+}
+html.uc-dark .dh-dir__grp a { color: rgba(255, 255, 255, .78); }
+.dh-dir__grp a:hover,
+.dh-dir__grp a:focus-visible { color: var(--color-primary-700); padding-inline-start: 5px; }
+html.uc-dark .dh-dir__grp a:hover { color: var(--color-primary); }
+
+@media (max-width: 575px) {
+  .dh-dir__main { grid-template-columns: 1fr 1fr; }
+  .dh-dir__cat { padding: 12px; gap: 9px; }
+  .dh-dir__cat b { font-size: 13.5px; }
+  .dh-dir__cat span { display: none; }
+  .dh-dir__cols { grid-template-columns: 1fr 1fr; gap: 18px; }
+}

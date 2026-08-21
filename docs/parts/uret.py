@@ -66,13 +66,13 @@ MENU = [
 
  ("savunma", "Savunma", "savunma.html",
   "Savunma sanayii, millî projeler ve güvenlik gündemi.",
-  [("Savunma sanayii", [("Savunma Sanayii","savunma.html"),("Millî Projeler","savunma.html#projeler"),
+  [("Savunma sanayii", [("Savunma Sanayii","savunma.html"),("Millî Projeler","savunma.html"),
                         ("İHA ve SİHA",L),("Hava Platformları",L),("Deniz Platformları",L),
                         ("Kara Sistemleri",L),("Füze ve Roket Sistemleri",L)]),
    ("Güvenlik", [("Millî Güvenlik",L),("Askerî Operasyonlar",L),("Sınır Güvenliği",L),
                  ("Terörle Mücadele",L),("Uluslararası Güvenlik",L),("NATO",L)]),
    ("İçerikler", [("Savunma Teknolojileri","teknoloji.html"),("İhracat ve Anlaşmalar",L),
-                  ("Savunma Analizi",L),("Uzman Görüşleri",L),("Savunma Videoları","video.html#savunma")])]),
+                  ("Savunma Analizi",L),("Uzman Görüşleri",L),("Savunma Videoları","video.html")])]),
 
  ("spor", "Spor", "spor.html",
   "Branşlar, canlı skorlar, puan durumu ve fikstür.",
@@ -93,7 +93,7 @@ MENU = [
   [("Gündem", [("Kadın Gündemi","kadin.html"),("Kadın Hakları",L),("Toplumsal Cinsiyet",L),
                ("Kadın ve Hukuk",L),("Kadın ve Çalışma Hayatı",L),("Başarı Hikâyeleri",L)]),
    ("Sağlık", [("Kadın Sağlığı","kadin.html#saglik"),("Hamilelik","hamilelik.html"),
-               ("Anne ve Çocuk","hamilelik.html#anne"),("Beslenme",L),("Ruh Sağlığı",L)]),
+               ("Anne ve Çocuk","hamilelik.html"),("Beslenme",L),("Ruh Sağlığı",L)]),
    ("Yaşam", [("Moda",L),("Güzellik",L),("Ev ve Yaşam",L),("Astroloji","astroloji.html"),
               ("Kadın Yazarlar","yazar-liste.html")])]),
 

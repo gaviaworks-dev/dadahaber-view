@@ -1,0 +1,616 @@
+/* ============================================================================
+   v2 / i-spor — spor bölümü: takım bağlantısı · takım kimliği · liste
+   sayfalarının yapışkan yan sütunu · puan durumu ve fikstür sadeleştirmesi
+
+   Kural: custom.min.css ve demo-six.min.css DEĞİŞTİRİLMEZ (v1 arşivi onları
+   paylaşıyor). Spor bölümüne ait tüm yeni CSS bu dosyadadır.
+
+   Ölçüm (1440x900, önce -> sonra):
+     futbol.html      4894 -> ölçüm raporda
+     puan durumu bloğu 1223px · tabloda 18 satır -> ilk görünümde 8 satır
+   ========================================================================== */
+
+
+/* ===========================================================
+   S-1 — PUAN DURUMUNDA TAKIM BAĞLANTISI
+   Arma + ad TEK bağlantıya sarılır (iki ayrı bağlantı, aynı
+   hedefe giden iki sekme durağı demek olurdu). Bağlantının
+   erişilebilir adı takım adının kendisidir; arma alt="" olduğu
+   için ada karışmaz — bu yüzden aria-label GEREKMEZ.
+   =========================================================== */
+
+.dh-stand__team > .dh-stand__link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  /* satır yüksekliğini büyütmeden dokunma payı */
+  padding: 4px 0;
+  margin: -4px 0;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 8px 8px 8px 0;
+}
+
+.dh-stand__team > .dh-stand__link .dh-stand__nm {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.16s ease, color 0.16s ease;
+}
+
+.dh-stand__team > .dh-stand__link:hover .dh-stand__nm,
+.dh-stand__team > .dh-stand__link:focus-visible .dh-stand__nm {
+  color: var(--dh-menu-ink);
+  border-bottom-color: currentColor;
+}
+
+html.uc-dark .dh-stand__team > .dh-stand__link:hover .dh-stand__nm,
+html.uc-dark .dh-stand__team > .dh-stand__link:focus-visible .dh-stand__nm {
+  color: var(--dh-brand);
+}
+
+.dh-stand__team > .dh-stand__link:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 1px;
+}
+
+
+/* ===========================================================
+   S-4a — TABLO KIRPMA + "TÜMÜNÜ GÖR"
+   İlk görünüm 8 satır. Kırpma sınıfla yapılır (display:none),
+   satırlar DOM'da kalır: veri kaybı yok, JS kapalıysa tablonun
+   tamamı görünür (aşamalı zenginleştirme).
+   =========================================================== */
+
+.dh-stand__gizli { display: none; }
+
+.dh-standmore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 16px;
+  border: 0;
+  border-top: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+  background: rgba(18, 18, 18, 0.022);
+  color: var(--dh-menu-ink);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.16s ease;
+}
+
+.dh-standmore:hover { background: rgba(252, 182, 35, 0.12); }
+
+.dh-standmore:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: -3px;
+}
+
+.dh-standmore__say {
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-500, #737373);
+}
+
+.dh-standmore__ok {
+  font-size: 10px;
+  transition: transform 0.18s ease;
+}
+
+.dh-standmore.is-open .dh-standmore__ok { transform: rotate(180deg); }
+
+html.uc-dark .dh-standmore {
+  border-top-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--dh-brand);
+}
+
+html.uc-dark .dh-standmore:hover { background: rgba(252, 182, 35, 0.14); }
+html.uc-dark .dh-standmore__say { color: rgba(255, 255, 255, 0.5); }
+
+
+/* ===========================================================
+   S-4b — KOMPAKT LİG SEÇİCİ
+   Ülke · Lig · Sezon tek satırda. Lig çip şeridi DOM'da kalır
+   (dh-tabs.js ona bağlı) ama JS <select> ürettiğinde gizlenir.
+   JS yoksa .dh-lgpick--kompakt hiç eklenmez, eski şerit çalışır.
+   Kazanç: iki satır -> bir satır (ölçüm raporda).
+   =========================================================== */
+
+.dh-lgpick--kompakt {
+  padding: 10px 18px 11px;
+}
+
+.dh-lgpick--kompakt .dh-lgpick__line:not(.dh-lgpick__line--sel) {
+  display: none;
+}
+
+.dh-lgpick--kompakt .dh-lgpick__line--sel {
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.dh-lgpick--kompakt .dh-pick__sel {
+  height: 34px;
+  font-size: 13px;
+}
+
+.dh-lgpick--kompakt .dh-pick__sel--lig { min-width: 186px; }
+
+.dh-lgpick--kompakt .dh-pick--lig { flex: 0 1 auto; min-width: 0; }
+
+/* Genel / İç Saha / Deplasman: küçük sekme kalır, nefesi daralır. */
+.dh-sport--lig .dh-sort--split {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.dh-sport--lig .dh-sort--split .dh-sort__tab {
+  padding: 5px 11px;
+  font-size: 12px;
+}
+
+.dh-sport--lig .dh-stand__wrap { margin-top: 10px; }
+
+@media (max-width: 767.98px) {
+  .dh-lgpick--kompakt { padding: 10px 14px 11px; }
+  .dh-lgpick--kompakt .dh-lgpick__line--sel { gap: 8px 10px; }
+  .dh-lgpick--kompakt .dh-pick { flex: 1 1 132px; }
+  .dh-lgpick--kompakt .dh-pick__sel--lig { min-width: 0; }
+}
+
+
+/* ===========================================================
+   S-4c — FİKSTÜR HAFTA GEÇİŞİ
+   Kompakt önceki / mevcut / sonraki. Uçlarda düğme disabled
+   olur (aria-disabled değil gerçek disabled: <button>).
+   =========================================================== */
+
+.dh-wknav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 12px 18px 0;
+  padding: 4px;
+  width: max-content;
+  max-width: calc(100% - 36px);
+  border: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+  border-radius: 8px 8px 8px 0;
+  background: rgba(18, 18, 18, 0.022);
+}
+
+.dh-wknav__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px 6px 6px 0;
+  background: #fff;
+  color: var(--dh-menu-ink);
+  font-size: 11px;
+  cursor: pointer;
+  transition: background 0.16s ease, opacity 0.16s ease;
+}
+
+.dh-wknav__btn:hover:not(:disabled) { background: rgba(252, 182, 35, 0.2); }
+
+.dh-wknav__btn:disabled {
+  opacity: 0.34;
+  cursor: default;
+}
+
+.dh-wknav__btn:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 1px;
+}
+
+.dh-wknav__lbl {
+  min-width: 92px;
+  text-align: center;
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-wknav {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+html.uc-dark .dh-wknav__btn {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+html.uc-dark .dh-wknav__lbl { color: #fff; }
+
+@media (max-width: 991.98px) {
+  .dh-wknav__btn { width: 44px; height: 44px; }
+}
+
+@media (max-width: 767.98px) {
+  .dh-wknav { margin: 10px 14px 0; max-width: calc(100% - 28px); }
+}
+
+
+/* ===========================================================
+   S-3 — SPOR LİSTE SAYFALARINDA YAPIŞKAN YAN SÜTUN
+   1200px+   : haberler | 320px yan sütun (yapışkan)
+   992-1199  : yan sütun akışın ALTINA düşer, iki sütun olur
+   <992      : tek sütun
+   Yan sütun GİZLENMEZ — veri kaybı olmaz (istek).
+
+   Yapışkan ofset 120px: v2 kabuğu yapışkanda 104px + 16 nefes
+   (HANDOFF "Kabuk ölçüleri"). max-height + overflow, sütun
+   ekrandan uzunsa alt ucunun görünmez kalmasını engeller;
+   sticky kap ızgara hücresi olduğu için footer'a TAŞMAZ.
+   =========================================================== */
+
+.dh-sprail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.dh-sprail__main { min-width: 0; }
+
+.dh-sprail__side {
+  min-width: 0;
+  position: sticky;
+  top: 120px;
+  max-height: calc(100vh - 136px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  /* odak halkası kırpılmasın */
+  padding: 2px;
+  margin: -2px;
+}
+
+.dh-sprail__inner {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  min-width: 0;
+}
+
+@media (max-width: 1199.98px) {
+  .dh-sprail {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .dh-sprail__side {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+  .dh-sprail__inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 991.98px) {
+  .dh-sprail__inner { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Yan sütun modülleri: .dh-sport ailesinin dar sürümü. */
+.dh-sport--yan { margin-top: 0; }
+
+.dh-sport--yan .dh-sport__head {
+  padding: 12px 14px 12px 18px;
+  gap: 9px;
+}
+
+.dh-sport--yan .dh-sport__kicker { font-size: 9.5px; }
+.dh-sport--yan .dh-sport__title { font-size: 15px; }
+.dh-sport--yan .dh-sport__ico { display: none; }
+
+.dh-sport--yan .dh-stand__wrap { margin-top: 0; }
+
+.dh-sport--yan .dh-stand th,
+.dh-sport--yan .dh-stand td {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-size: 12px;
+}
+
+.dh-sport--yan .dh-stand__nm { font-size: 12px; }
+
+.dh-sport--yan .dh-stand__crest {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.dh-sport--yan .dh-mcrail {
+  grid-auto-flow: row;
+  grid-auto-columns: auto;
+  gap: 10px;
+  padding: 12px 14px;
+  overflow: visible;
+}
+
+.dh-sport--yan .dh-mc__crest { width: 30px; height: 30px; }
+.dh-sport--yan .dh-mc__name { font-size: 12px; }
+
+/* Takım kısayolları */
+.dh-tkis {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 12px 14px;
+  margin: 0;
+  list-style: none;
+}
+
+.dh-tkis__it {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 40px;
+  padding: 6px 9px;
+  border: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+  border-radius: 8px 8px 8px 0;
+  background: #fff;
+  color: var(--color-gray-900);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.16s ease, background 0.16s ease;
+}
+
+.dh-tkis__it:hover,
+.dh-tkis__it:focus-visible {
+  border-color: rgba(252, 182, 35, 0.6);
+  background: rgba(252, 182, 35, 0.08);
+  color: var(--dh-menu-ink);
+}
+
+.dh-tkis__it:focus-visible {
+  outline: 3px solid var(--dh-brand);
+  outline-offset: 1px;
+}
+
+.dh-tkis__crest {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  object-fit: contain;
+}
+
+.dh-tkis__ad {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html.uc-dark .dh-tkis__it {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+html.uc-dark .dh-tkis__it:hover,
+html.uc-dark .dh-tkis__it:focus-visible {
+  border-color: rgba(252, 182, 35, 0.5);
+  background: rgba(252, 182, 35, 0.14);
+  color: var(--dh-brand);
+}
+
+
+/* ===========================================================
+   S-2 — DÖRT BÜYÜK TAKIM SAYFASINDA TAKIM KİMLİĞİ BLOĞU
+   Referans DÜZEN fanatik.com.tr takım sayfasıdır; oradan yalnız
+   kompozisyon alındı — renk, marka ve tipografi Dadahaber'in.
+   Armalar KURGUSAL (proje kuralı): assets/.../emblems/logo-*.svg
+   Takım rengi yalnız bu bloğun sol şeridinde; sayfa geneline
+   --color-primary override'ı EKLENMEZ (v1'den beri geçerli).
+   =========================================================== */
+
+.dh-tid {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 22px 18px 26px;
+  border: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+  border-radius: 16px;
+  /* kurumsal köşe imzası */
+  border-bottom-left-radius: 0;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(18, 18, 18, 0.04), 0 8px 24px rgba(18, 18, 18, 0.06);
+  overflow: hidden;
+}
+
+.dh-tid::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--dh-team, var(--dh-brand));
+}
+
+.dh-tid__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  flex: 0 0 96px;
+  padding: 10px;
+  border: 1px solid rgba(18, 18, 18, 0.07);
+  border-radius: 16px 16px 16px 0;
+  background: #fff;
+}
+
+.dh-tid__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dh-tid__txt {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dh-tid__kicker {
+  font-family: var(--dh-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-500, #737373);
+}
+
+.dh-tid__name {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-900);
+}
+
+.dh-tid__lead {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-gray-500, #737373);
+}
+
+.dh-tid__stats {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 0;
+  border: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+  border-radius: 12px 12px 12px 0;
+  overflow: hidden;
+}
+
+.dh-tid__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 66px;
+  padding: 9px 12px;
+  background: rgba(18, 18, 18, 0.018);
+}
+
+.dh-tid__stat + .dh-tid__stat {
+  border-left: 1px solid var(--panel-line, rgba(18, 18, 18, 0.08));
+}
+
+.dh-tid__stat.is-now { background: rgba(252, 182, 35, 0.14); }
+
+.dh-tid__stat dt {
+  font-family: var(--dh-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-500, #737373);
+}
+
+.dh-tid__stat dd {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-gray-900);
+}
+
+.dh-tid__note {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 11px;
+  color: var(--color-gray-500, #737373);
+}
+
+.dh-tid__more {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--dh-menu-ink);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.dh-tid__more:hover,
+.dh-tid__more:focus-visible {
+  border-bottom-color: var(--dh-brand);
+  color: var(--dh-menu-ink);
+}
+
+html.uc-dark .dh-tid {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: var(--color-gray-900);
+}
+
+html.uc-dark .dh-tid__logo {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+html.uc-dark .dh-tid__name,
+html.uc-dark .dh-tid__stat dd { color: #fff; }
+
+html.uc-dark .dh-tid__kicker,
+html.uc-dark .dh-tid__lead,
+html.uc-dark .dh-tid__note,
+html.uc-dark .dh-tid__stat dt { color: rgba(255, 255, 255, 0.6); }
+
+html.uc-dark .dh-tid__stats,
+html.uc-dark .dh-tid__stat + .dh-tid__stat { border-color: rgba(255, 255, 255, 0.1); }
+
+html.uc-dark .dh-tid__stat { background: rgba(255, 255, 255, 0.03); }
+html.uc-dark .dh-tid__stat.is-now { background: rgba(252, 182, 35, 0.16); }
+html.uc-dark .dh-tid__more { color: var(--dh-brand); }
+
+@media (max-width: 991.98px) {
+  .dh-tid {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 14px 16px;
+    padding: 16px 16px 16px 20px;
+  }
+  .dh-tid__logo { width: 72px; height: 72px; flex-basis: 72px; }
+  .dh-tid__name { font-size: 24px; }
+  .dh-tid__stats {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .dh-tid__stat { flex: 1 1 0; min-width: 0; }
+}
+
+@media (max-width: 389.98px) {
+  .dh-tid__logo { width: 60px; height: 60px; flex-basis: 60px; }
+  .dh-tid__name { font-size: 21px; }
+  .dh-tid__stat { padding: 8px 6px; }
+  .dh-tid__stat dd { font-size: 17px; }
+}
