@@ -28,11 +28,13 @@ FORMAT = [
 MENU = [
  ("anlik", "Anlık", "anlik.html",
   "Günün anlık gelişmelerinin toplandığı canlı merkez.",
-  [(None, [("Son Dakika","son-dakika.html"),("Canlı Gündem","anlik.html#canli"),
-           ("Canlı Yayın","video.html#canli"),("Dakika Dakika","anlik.html#dakika"),
-           ("Bugün Ne Oldu?","anlik.html#bugun")]),
-   (None, [("Gündem Takvimi","anlik.html#takvim"),("Güncellenen Haberler","anlik.html#guncellenen"),
-           ("Afet ve Acil Durum","anlik.html#afet"),("Trafik ve Ulaşım","anlik.html#trafik"),
+  # Alt başlıkların her biri kendi sayfası (docs/parts/anlik-uret.py üretir).
+  # Canlı Yayın ve Hava Durumu başka bölümlerin sayfalarına gider.
+  [(None, [("Son Dakika","son-dakika.html"),("Canlı Gündem","canli-gundem.html"),
+           ("Canlı Yayın","video.html#canli"),("Dakika Dakika","dakika-dakika.html"),
+           ("Bugün Ne Oldu?","bugun-ne-oldu.html")]),
+   (None, [("Gündem Takvimi","gundem-takvimi.html"),("Güncellenen Haberler","guncellenen-haberler.html"),
+           ("Afet ve Acil Durum","afet-acil-durum.html"),("Trafik ve Ulaşım","trafik-ulasim.html"),
            ("Hava Durumu","veri-harita.html#hava")])]),
 
  ("gundem", "Gündem", "gundem.html",
@@ -138,32 +140,30 @@ SOSYAL = [("Instagram","fa-instagram","#"),("YouTube","fa-youtube","#"),("X","fa
           ("Facebook","fa-facebook-f","#"),("LinkedIn","fa-linkedin-in","#"),("TikTok","fa-tiktok","#")]
 
 # ------------------------------------------------------------------- footer
+# Üç bağlantı sütunu + toplayıcı kurumsal şerit + yasal şerit.
+# Kurumsal ve iletişim ayrı sütunlar değil; tek satırda ve daha az maddeyle.
 FOOTER = [
  ("Kategoriler", [("Anlık","anlik.html"),("Gündem","gundem.html"),("Dünya","dunya.html"),
    ("Finans","ekonomi.html"),("Savunma","savunma.html"),("Spor","spor.html"),
-   ("Kadın","kadin.html"),("Teknoloji","teknoloji.html"),("Sağlık","saglik.html"),
-   ("Kültür &amp; Yaşam","kultur-yasam.html"),("Gelecek","gelecek.html"),
-   ("Tüm Kategoriler","diger.html")]),
+   ("Kadın","kadin.html"),("Tüm Kategoriler","diger.html")]),
  ("Formatlar", [("Haber Dinle","haber-dinle.html"),("Foto Fokus","foto-fokus.html"),
    ("Video Haber","video.html"),("İnfografik","infografik.html"),("Podcast","podcast.html"),
-   ("Dada Özet","dada-ozet.html"),("Dada Bağlam","dada-baglam.html"),
+   ("Video Galeri","video-galeri.html")]),
+ ("Keşfet", [("Dada Özet","dada-ozet.html"),("Dada Bağlam","dada-baglam.html"),
    ("Dada Doğrula","dada-dogrula.html"),("Farklı Bakışlar","farkli-bakislar.html"),
    ("Veri &amp; Harita","veri-harita.html"),("Sakin Akış","sakin-akis.html")]),
- ("Kurumsal", [("Hakkımızda","hakkimizda.html"),("Künye","kunye.html"),
-   ("Yayın İlkeleri","yayin-ilkeleri.html"),("Editoryal Bağımsızlık","yayin-ilkeleri.html#bagimsizlik"),
-   ("Şeffaflık Merkezi","yayin-ilkeleri.html#seffaflik"),
-   ("İnsan Kaynakları","coming-soon.html"),("Reklam","reklam.html"),
-   ("İş Birlikleri","reklam.html#sponsorluk"),("Resmî İlanlar","resmi-ilanlar.html")]),
- ("Destek ve İletişim", [("İletişim","iletisim.html"),("Bize Ulaşın","iletisim.html#form"),
-   ("Haber İhbarı","iletisim.html#ihbar"),("Öneri ve Şikâyet","iletisim.html#oneri"),
-   ("Hata Bildir","iletisim.html#hata"),("Doğrulama Talebi","dada-dogrula.html#talep"),
-   ("Sıkça Sorulan Sorular","iletisim.html#sss"),("Yardım Merkezi","iletisim.html#yardim")]),
 ]
 
+# Toplayıcı kurumsal şerit — Hakkımızda ve İletişim tek satırda, az maddeyle.
+KURUMSAL = [("Hakkımızda","hakkimizda.html"),("Künye","kunye.html"),
+            ("Yayın İlkeleri","yayin-ilkeleri.html"),("İletişim","iletisim.html"),
+            ("Yardım Merkezi","iletisim.html#yardim"),("Reklam","reklam.html"),
+            ("İnsan Kaynakları","coming-soon.html"),("Resmî İlanlar","resmi-ilanlar.html")]
+
 YASAL = [("Kullanım Koşulları","kullanim-sartlari.html"),
-         ("Gizlilik Politikası","kvkk.html"),
+         ("Gizlilik ve KVKK","kvkk.html"),
+         ("Aydınlatma Metni","aydinlatma-metni.html"),
          ("Çerez Politikası","cerezler.html"),
-         ("KVKK Aydınlatma Metni","aydinlatma-metni.html"),
          ("Açık Rıza Metni","cerezler.html#riza"),
          ("Telif Hakları","kullanim-sartlari.html#telif")]
 
@@ -319,59 +319,63 @@ def offcanvas():
 
 # ----------------------------------------------------------------- footer
 def footer():
-    """V1'in ortalanmış footer kompozisyonu + v2'nin grup içeriği.
-    V1: logo ve telif üstte ortada, bağlantılar yatay/ortalanmış, sosyal ve
-    uygulama rozetleri ortada, en altta telif. Gruplar korunur — hiçbir
-    bağlantı kaybolmasın."""
+    """Kardeş marka DadaFit footer kalıbı:
+       sol: marka + açıklama + sosyal ikonlar · orta: üç bağlantı sütunu ·
+       sağ: uygulama indirme. Altında toplayıcı kurumsal şerit, yasal şerit
+       ve en altta telif bilgilendirmesi. Sosyal hesaplar YALNIZ burada."""
     o = io.StringIO(); w = o.write
-    w('  <footer id="uc-footer" class="uc-footer dh-v2-foot dh-v2-foot--v1 panel uc-light">\n')
+    w('  <footer id="uc-footer" class="uc-footer dh-v2-foot panel uc-light">\n')
     w('    <div class="container max-w-xl">\n')
+    w('      <div class="dh-v2-foot__top">\n')
 
-    # 1. marka — solda, altında slogan ve açıklama (V1 düzeni)
-    w('      <div class="dh-v2-foot__brand">\n')
-    w('        <img src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="240px">\n')
-    w('        <p class="dh-v2-foot__slogan">Gündemin net hâli.</p>\n')
-    w('        <p class="dh-v2-foot__desc">Günün gelişmelerini bağlamıyla veren dijital haber platformu. '
-      'Haberin ne olduğunu, neden önemli olduğunu ve neye dayandığını aynı sayfada gösterir.</p>\n')
-    w('      </div>\n')
-
-    # 2. grup sütunları — ortalanmış
-    w('      <div class="dh-v2-foot__cols">\n')
-    for baslik, ogeler in FOOTER:
-        w('        <div class="dh-v2-foot__grp">\n')
-        w('          <h3>%s</h3>\n          <ul>\n' % baslik)
-        for t, h in ogeler:
-            w('            <li><a href="%s">%s</a></li>\n' % (h, t))
-        w('          </ul>\n        </div>\n')
-    w('      </div>\n')
-
-    # 3. kanallar — sosyal YALNIZ burada, uygulama rozetleriyle yan yana ortada
-    w('      <div class="dh-v2-foot__chan">\n')
-    w('        <div class="dh-v2-foot__soc">\n')
-    w('          <h3>Sosyal Medya</h3>\n')
-    w('          <div>\n')
+    # sol: marka
+    w('        <div class="dh-v2-foot__brand">\n')
+    w('          <img src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="200px">\n')
+    w('          <p class="dh-v2-foot__desc">Günün gelişmelerini bağlamıyla veren dijital haber platformu. '
+      'Haberin ne olduğunu, neden önemli olduğunu ve neye dayandığını aynı sayfada gösteriyoruz.</p>\n')
+    w('          <ul class="dh-v2-foot__soc">\n')
     for ad, ikon, h in SOSYAL:
-        w('            <a href="%s" aria-label="%s"><i class="fa-brands %s" aria-hidden="true"></i><span>%s</span></a>\n' % (h, ad, ikon, ad))
-    w('            <a href="#" aria-label="WhatsApp Kanalı"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span></a>\n')
-    w('            <a href="#" aria-label="RSS"><i class="fas fa-rss" aria-hidden="true"></i><span>RSS</span></a>\n')
-    w('          </div>\n')
+        w('            <li><a href="%s" aria-label="%s"><i class="fa-brands %s" aria-hidden="true"></i></a></li>\n' % (h, ad, ikon))
+    w('            <li><a href="#" aria-label="WhatsApp Kanalı"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></li>\n')
+    w('            <li><a href="#" aria-label="RSS"><i class="fas fa-rss" aria-hidden="true"></i></a></li>\n')
+    w('          </ul>\n')
     w('        </div>\n')
-    w('        <div class="dh-v2-foot__store">\n')
-    w('          <h3>Mobil Uygulamalar</h3>\n')
-    w('          <div>\n')
+
+    # orta: bağlantı sütunları
+    w('        <div class="dh-v2-foot__cols">\n')
+    for baslik, ogeler in FOOTER:
+        w('          <div class="dh-v2-foot__grp">\n')
+        w('            <h3>%s</h3>\n            <ul>\n' % baslik)
+        for t, h in ogeler:
+            w('              <li><a href="%s">%s</a></li>\n' % (h, t))
+        w('            </ul>\n          </div>\n')
+    w('        </div>\n')
+
+    # sağ: uygulama
+    w('        <div class="dh-v2-foot__app">\n')
+    w('          <h3>Dada Haber&rsquo;i İndir</h3>\n')
+    w('          <p>Gündemi cebinde taşı. Takip ettiğin başlıklar, kaydettiğin haberler ve '
+      'bildirimler uygulamada da seninle.</p>\n')
+    w('          <div class="dh-v2-foot__store">\n')
     w('            <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-apple" aria-hidden="true"></i><span><small>İndir</small><b>App Store</b></span></a>\n')
     w('            <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-google-play" aria-hidden="true"></i><span><small>İndir</small><b>Google Play</b></span></a>\n')
     w('          </div>\n')
     w('        </div>\n')
     w('      </div>\n')
 
-    # 4. yasal — V1'deki gibi yatay ve ortalanmış
-    w('      <nav class="dh-v2-foot__legal" aria-label="Yasal bağlantılar">\n')
+    # toplayıcı kurumsal şerit
+    w('      <nav class="dh-v2-foot__strip" aria-label="Kurumsal bağlantılar">\n')
+    for t, h in KURUMSAL:
+        w('        <a href="%s">%s</a>\n' % (h, t))
+    w('      </nav>\n')
+
+    # yasal şerit — etiketli
+    w('      <nav class="dh-v2-foot__strip dh-v2-foot__strip--yasal" aria-label="Yasal bağlantılar">\n')
+    w('        <span class="dh-v2-foot__striplbl">Yasal</span>\n')
     for t, h in YASAL:
         w('        <a href="%s">%s</a>\n' % (h, t))
     w('      </nav>\n')
 
-    # 5. telif bilgilendirmesi ve künye — en altta
     w('      <div class="dh-v2-foot__bottom">\n')
     w('        <p class="dh-v2-foot__rights">%s</p>\n' % TELIF)
     w('        <p class="dh-v2-foot__copy">Dada Haber &copy; 2026, Tüm Hakları Saklıdır. <span>Prototip · Bilgi mimarisi sürüm 2.1</span></p>\n')

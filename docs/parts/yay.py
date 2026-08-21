@@ -154,16 +154,24 @@ def isle(yol):
         open(yol, "w", encoding="utf-8").write(s)
     return rapor, None
 
-ok, atla = 0, []
-for yol in sorted(glob.glob("*.html")):
-    r, hata = isle(yol)
-    if hata:
-        atla.append((yol, hata))
-    else:
-        ok += 1
-        eksik = [] if "atlandi" in r else [x for x in ("menu", "header", "footer") if x not in r]
-        if eksik:
-            atla.append((yol, "eksik: " + ",".join(eksik)))
-print("işlenen: %d" % ok)
-for y, h in atla:
-    print("  ! %s — %s" % (y, h))
+def tumu():
+    ok, atla = 0, []
+    for yol in sorted(glob.glob("*.html")):
+        r, hata = isle(yol)
+        if hata:
+            atla.append((yol, hata))
+        else:
+            ok += 1
+            eksik = [] if "atlandi" in r else [x for x in ("menu", "header", "footer") if x not in r]
+            if eksik:
+                atla.append((yol, "eksik: " + ",".join(eksik)))
+    print("işlenen: %d" % ok)
+    for y, h in atla:
+        print("  ! %s — %s" % (y, h))
+
+
+# Betik doğrudan çalıştırıldığında tüm sayfalara yayar. İçe aktarıldığında
+# yalnız isle() kullanılabilir olsun diye ayrıldı: anlik-uret.py yeni ürettiği
+# sayfalara kabuğu tek tek koyuyor, site geneline dokunmuyor.
+if __name__ == "__main__":
+    tumu()

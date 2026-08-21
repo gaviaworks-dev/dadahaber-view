@@ -142,7 +142,7 @@ html.uc-dark .dh-v2-brand { background: var(--color-gray-900); }
 .dh-v2-brand__row {
   display: flex;
   align-items: stretch;
-  gap: 20px;
+  gap: 10px;
   min-height: var(--dh-brand-h);
   position: relative;          /* perdeleme paneli buna yaslanır */
 }
@@ -288,6 +288,9 @@ html.uc-dark .dh-v2-user__menu a:hover { background: rgba(255, 255, 255, .07); c
   list-style: none;
 }
 .dh-v2-nav__list > li { display: flex; position: static; }
+/* menü logonun hemen sağına yaslanır — ilk başlıkta sol dolgu yok */
+.dh-v2-nav__list > li:first-child > a { padding-inline-start: 0; }
+.dh-v2-nav__list > li:first-child > a::after { inset-inline-start: 0; }
 .dh-v2-nav__list > li > a {
   display: inline-flex;
   align-items: center;
@@ -472,7 +475,7 @@ html.uc-dark .dh-mega__cols a:hover { color: #fff; }
    Tek satırda logo + 8 başlık + 4 ikon + iki düğme var; 1279px altında
    sıkışmadan hamburger'e geçilir. */
 @media (max-width: 1439px) {
-  .dh-v2-brand__row { gap: 14px; }
+  .dh-v2-brand__row { gap: 8px; }
   .dh-v2-nav__list > li > a { padding: 0 10px; font-size: 14px; }
   .dh-v2-brand__logo img { width: 165px; }
   .dh-v2-brand__sep { margin: 0 8px; }
@@ -590,19 +593,21 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 .dh-v2-off__svc i { color: var(--color-primary); }
 
 /* ============================== 5. FOOTER =================================
-   V1'in ortalanmış kompozisyonu + v2'nin grup içeriği:
-   logo/slogan ortada · grup sütunları ortalanmış · sosyal ve uygulama ortada
-   · yasal bağlantılar yatay şerit · en altta telif bilgilendirmesi.
+   Kardeş marka DadaFit footer kalıbı:
+     sol   marka + açıklama + sosyal ikonlar
+     orta  üç bağlantı sütunu (Kategoriler · Formatlar · Keşfet)
+     sağ   uygulama indirme
+   altında toplayıcı kurumsal şerit, etiketli yasal şerit ve telif metni.
+   Kurumsal + Destek ayrı sütunlar değil; tek satırda, az maddeyle.
+   Sayfa zemininden footer'a geçiş bandıyla giriliyor (sert kesik yok).
    ========================================================================== */
 .dh-v2-foot {
   position: relative;
   background: var(--color-gray-900);
   color: rgba(255, 255, 255, .72);
-  padding: 48px 0 0;
+  padding: 52px 0 0;
   text-align: left;
 }
-/* V1'deki gibi geçişli: sayfa zemininden footer'a sert kesik yerine
-   yumuşak bir bant. Yükseklik 72px — kesiği yumuşatır, içerik itmez. */
 .dh-v2-foot::before {
   content: "";
   position: absolute;
@@ -612,162 +617,163 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
   pointer-events: none;
   background: linear-gradient(to bottom, rgba(23, 23, 23, 0) 0%, rgba(23, 23, 23, .45) 55%, var(--color-gray-900) 100%);
 }
-/* marka: logo solda, altında slogan ve açıklama */
-.dh-v2-foot__brand {
+
+.dh-v2-foot__top {
   display: grid;
-  justify-items: start;
-  padding-bottom: 28px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 2.4fr) minmax(0, 1.15fr);
+  gap: 48px;
+  padding-bottom: 36px;
 }
-.dh-v2-foot__brand img { width: 240px; height: auto; }
-.dh-v2-foot__slogan {
-  margin: 14px 0 0;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--color-primary);
-  letter-spacing: -.01em;
-}
+
+/* --- sol: marka --- */
+.dh-v2-foot__brand img { width: 200px; height: auto; }
 .dh-v2-foot__desc {
-  margin: 8px 0 0;
-  max-width: 58ch;
-  font-size: 13px;
-  line-height: 1.6;
+  margin: 16px 0 0;
+  font-size: 13.5px;
+  line-height: 1.65;
   color: rgba(255, 255, 255, .58);
 }
+.dh-v2-foot__soc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+.dh-v2-foot__soc a {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, .88);
+  background: rgba(255, 255, 255, .08);
+  border-radius: 8px 8px 8px 0;
+  transition: background .15s, color .15s;
+}
+.dh-v2-foot__soc a:hover,
+.dh-v2-foot__soc a:focus-visible { background: var(--color-primary); color: #000; }
+
+/* --- orta: bağlantı sütunları --- */
 .dh-v2-foot__cols {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px 32px;
-  padding: 28px 0;
-  border-top: 1px solid rgba(255, 255, 255, .12);
-  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 28px;
 }
-.dh-v2-foot__grp { text-align: left; }
 .dh-v2-foot h3 {
-  margin: 0 0 12px;
-  font-family: var(--dh-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--color-primary);
+  margin: 0 0 14px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  text-transform: none;
+  color: #fff;
 }
 .dh-v2-foot ul { list-style: none; margin: 0; padding: 0; }
-.dh-v2-foot li + li { margin-top: 1px; }
+.dh-v2-foot__cols li + li { margin-top: 2px; }
 .dh-v2-foot__cols a {
   display: block;
-  padding: 3px 0;
-  font-size: 13px;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, .72);
+  padding: 4px 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, .68);
   text-decoration: none;
   transition: color .12s;
 }
 .dh-v2-foot__cols a:hover,
 .dh-v2-foot__cols a:focus-visible { color: var(--color-primary); }
 
-/* sosyal + uygulama — ortada yan yana. Sosyal hesaplar YALNIZ burada. */
-.dh-v2-foot__chan {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 28px 56px;
-  padding: 26px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, .12);
+/* --- sağ: uygulama --- */
+.dh-v2-foot__app p {
+  margin: 0 0 16px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, .58);
 }
-.dh-v2-foot__chan > div { min-width: 0; }
-.dh-v2-foot__soc > div,
-.dh-v2-foot__store > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.dh-v2-foot__soc a {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 12px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-  text-decoration: none;
-  background: rgba(255, 255, 255, .07);
-  border-radius: 8px 8px 8px 0;
-  transition: background .15s, color .15s;
-}
-.dh-v2-foot__soc a:hover { background: var(--color-primary); color: #000; }
-.dh-v2-foot__store > div { gap: 8px; }
+.dh-v2-foot__store { display: grid; gap: 8px; }
 
-/* yasal bağlantılar — V1'deki gibi yatay şerit, dikey sütun oluşturmaz */
-.dh-v2-foot__legal {
+/* --- toplayıcı şeritler --- */
+.dh-v2-foot__strip {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 6px 0;
-  padding: 18px 0 14px;
+  gap: 4px 0;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255, 255, 255, .12);
 }
-.dh-v2-foot__legal a {
+.dh-v2-foot__strip a {
   position: relative;
-  padding: 2px 14px;
-  font-size: 12.5px;
+  padding: 3px 16px;
+  font-size: 13px;
   font-weight: 600;
   color: rgba(255, 255, 255, .78);
   text-decoration: none;
   transition: color .12s;
 }
-.dh-v2-foot__legal a:hover,
-.dh-v2-foot__legal a:focus-visible { color: var(--color-primary); }
-.dh-v2-foot__legal a + a::before {
+.dh-v2-foot__strip a:first-of-type { padding-inline-start: 0; }
+.dh-v2-foot__strip a:hover,
+.dh-v2-foot__strip a:focus-visible { color: var(--color-primary); }
+.dh-v2-foot__strip a + a::before {
   content: "";
   position: absolute;
   inset-inline-start: 0;
   top: 50%;
   transform: translateY(-50%);
   width: 1px;
-  height: 11px;
-  background: rgba(255, 255, 255, .22);
+  height: 12px;
+  background: rgba(255, 255, 255, .2);
 }
+.dh-v2-foot__striplbl {
+  margin-inline-end: 14px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+}
+.dh-v2-foot__strip--yasal a { font-size: 12.5px; color: rgba(255, 255, 255, .62); }
 
-.dh-v2-foot__bottom { padding: 0 0 26px; }
+/* --- en alt: telif --- */
+.dh-v2-foot__bottom {
+  padding: 16px 0 28px;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+}
 .dh-v2-foot__bottom p { margin: 0; }
-/* telif bilgilendirmesi — okunur ama footer'ın ana içeriğiyle rekabet etmez */
 .dh-v2-foot__rights {
-  max-width: 92ch;
+  max-width: 96ch;
   font-size: 11.5px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, .46);
+  color: rgba(255, 255, 255, .42);
 }
 .dh-v2-foot__copy {
-  margin-top: 14px !important;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, .08);
+  margin-top: 12px !important;
   font-size: 12px;
-  color: rgba(255, 255, 255, .58);
+  color: rgba(255, 255, 255, .55);
 }
 .dh-v2-foot__copy span {
-  font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 10.5px;
   letter-spacing: .04em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .38);
-}
-@media (max-width: 991px) {
-  .dh-v2-foot__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
-}
-@media (max-width: 767px) {
-  .dh-v2-foot { padding-top: 32px; }
-  .dh-v2-foot__brand img { width: 190px; }
-  .dh-v2-foot__legal { gap: 4px 0; }
-  .dh-v2-foot__legal a { padding: 2px 10px; font-size: 12px; }
-  .dh-v2-foot__chan { gap: 22px 28px; }
-}
-@media (max-width: 479px) {
-  .dh-v2-foot__cols { grid-template-columns: 1fr; gap: 18px; }
+  color: rgba(255, 255, 255, .34);
 }
 
-/* --- footer perdesi v2'de kapalı -------------------------------------------
-   Çok gruplu footer bir bilgi yüzeyi; perde olarak sabitlenince üst sütunlar
-   ekranın tepesine düşüyordu. Script bağlantısı da sayfalardan kaldırıldı. */
+@media (max-width: 1199px) {
+  .dh-v2-foot__top { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 36px; }
+  .dh-v2-foot__app { grid-column: 1 / -1; max-width: 420px; }
+}
+@media (max-width: 767px) {
+  .dh-v2-foot { padding-top: 36px; }
+  .dh-v2-foot__top { grid-template-columns: 1fr; gap: 28px; }
+  .dh-v2-foot__brand img { width: 170px; }
+  .dh-v2-foot__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dh-v2-foot__app { max-width: none; }
+  .dh-v2-foot__strip a { padding: 3px 10px; font-size: 12.5px; }
+  .dh-v2-foot__store { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 479px) {
+  .dh-v2-foot__cols { grid-template-columns: 1fr; gap: 20px; }
+  .dh-v2-foot__store { grid-template-columns: 1fr; }
+}
+
+/* --- footer perdesi v2'de kapalı ------------------------------------------ */
 body.dh-footer-reveal #uc-footer.dh-v2-foot {
   position: static !important;
   inset: auto !important;
