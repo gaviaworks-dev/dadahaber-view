@@ -12,3 +12,5 @@
 @import url("./v2/e-detay.css");  /* Video · haber detay modülleri · arama */
 @import url("./v2/f-diger.css");  /* Diğer — tüm kategoriler dizini */
 @import url("./v2/g-uyelik.css"); /* giriş · üye ol · şifremi unuttum */
+@import url("./v2/h-anlik.css");  /* Anlık alt sayfaları */
+@import url("./v2/i-spor.css");    /* spor liste yan sütunu · takım sayfaları */

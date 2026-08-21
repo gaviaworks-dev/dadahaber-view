@@ -121,6 +121,7 @@
   <!--  Menu panel -->
   <!--  Menu panel -->
   <!--  Menu panel -->
+  <!--  Menu panel -->
   <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">
     <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
       <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
@@ -444,6 +445,7 @@
 
     <!--  Bottom Actions Sticky -->
   <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
+  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
     <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop aria-label="Yukarı çık">
       <i class="icon-2 unicon-chevron-up"></i>
@@ -469,6 +471,28 @@
               <a href="infografik.html"><i class="fas fa-chart-bar" aria-hidden="true"></i><span>İnfografik</span></a>
               <a href="podcast.html"><i class="fas fa-podcast" aria-hidden="true"></i><span>Podcast</span></a>
             </nav>
+            <div class="dh-v2-brand__acts">
+              <a class="dh-v2-act dh-v2-act--ara uc-search-trigger" href="#uc-search-modal" data-uc-toggle aria-label="Ara">
+                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></a>
+              <a class="dh-v2-act" href="hesabim.html#bildirimler" aria-label="Bildirim merkezi">
+                <i class="fas fa-bell fs-4" aria-hidden="true"></i>
+                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>
+              <a class="dh-v2-act" href="hesabim.html#kaydedilenler" aria-label="Kaydedilenler">
+                <i class="fas fa-bookmark fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Kaydedilenler</span></a>
+              <div class="dh-v2-user" data-dh-user>
+                <button class="dh-v2-act" type="button" aria-expanded="false" aria-controls="dh-user-menu" aria-label="Hesap">
+                  <i class="fas fa-user-circle fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Hesap</span>
+                </button>
+                <div class="dh-v2-user__menu" id="dh-user-menu" hidden>
+                  <a href="giris.html"><i class="fas fa-right-to-bracket" aria-hidden="true"></i>Giriş Yap</a>
+                  <a href="uye-ol.html"><i class="fas fa-user-plus" aria-hidden="true"></i>Üye Ol</a>
+                  <a href="hesabim.html"><i class="fas fa-user-circle" aria-hidden="true"></i>Hesabım</a>
+                </div>
+              </div>
+              <span class="dh-v2-brand__sep" aria-hidden="true"></span>
+              <a class="dh-v2-signin" href="giris.html">Giriş Yap</a>
+              <a class="dh-v2-signup" href="uye-ol.html">Üye Ol</a>
+            </div>
           </div>
         </div>
       </div>
@@ -896,28 +920,6 @@
                 </li>
               </ul>
             </nav>
-            <div class="dh-v2-brand__acts">
-              <a class="dh-v2-act dh-v2-act--ara uc-search-trigger" href="#uc-search-modal" data-uc-toggle aria-label="Ara">
-                <i class="fas fa-search fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Ara</span></a>
-              <a class="dh-v2-act" href="hesabim.html#bildirimler" aria-label="Bildirim merkezi">
-                <i class="fas fa-bell fs-4" aria-hidden="true"></i>
-                <span class="dh-v2-act__badge">3</span><span class="dh-v2-act__label">Bildirim merkezi</span></a>
-              <a class="dh-v2-act" href="hesabim.html#kaydedilenler" aria-label="Kaydedilenler">
-                <i class="fas fa-bookmark fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Kaydedilenler</span></a>
-              <div class="dh-v2-user" data-dh-user>
-                <button class="dh-v2-act" type="button" aria-expanded="false" aria-controls="dh-user-menu" aria-label="Hesap">
-                  <i class="fas fa-user-circle fs-4" aria-hidden="true"></i><span class="dh-v2-act__label">Hesap</span>
-                </button>
-                <div class="dh-v2-user__menu" id="dh-user-menu" hidden>
-                  <a href="giris.html"><i class="fas fa-right-to-bracket" aria-hidden="true"></i>Giriş Yap</a>
-                  <a href="uye-ol.html"><i class="fas fa-user-plus" aria-hidden="true"></i>Üye Ol</a>
-                  <a href="hesabim.html"><i class="fas fa-user-circle" aria-hidden="true"></i>Hesabım</a>
-                </div>
-              </div>
-              <span class="dh-v2-brand__sep" aria-hidden="true"></span>
-              <a class="dh-v2-signin" href="giris.html">Giriş Yap</a>
-              <a class="dh-v2-signup" href="uye-ol.html">Üye Ol</a>
-            </div>
           </div>
         </div>
       </div>
@@ -1390,8 +1392,9 @@
   <footer id="uc-footer" class="uc-footer dh-v2-foot dh-v2-foot--v1 panel uc-light">
     <div class="container max-w-xl">
       <div class="dh-v2-foot__brand">
-        <img src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="260px">
+        <img src="./assets/images/logos/logo-white.png" alt="Dada Haber" srcset="./assets/images/logos/logo-white-300w.png 300w, ./assets/images/logos/logo-white-600w.png 600w, ./assets/images/logos/logo-white.png 1198w" sizes="240px">
         <p class="dh-v2-foot__slogan">Gündemin net hâli.</p>
+        <p class="dh-v2-foot__desc">Günün gelişmelerini bağlamıyla veren dijital haber platformu. Haberin ne olduğunu, neden önemli olduğunu ve neye dayandığını aynı sayfada gösterir.</p>
       </div>
       <div class="dh-v2-foot__cols">
         <div class="dh-v2-foot__grp">

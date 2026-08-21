@@ -58,6 +58,18 @@
   gap: 16px;
   min-height: var(--dh-fmt-h);
 }
+/* siyah bantta ikon seti ve giriş düğmeleri — mürekkep açık renge döner */
+.dh-v2-fmt .dh-v2-brand__acts { margin-inline-start: auto; }
+.dh-v2-fmt .dh-v2-act { color: rgba(255, 255, 255, .82); width: 34px; height: 34px; }
+.dh-v2-fmt .dh-v2-act:hover { color: #fff; background: rgba(255, 255, 255, .1); }
+.dh-v2-fmt .dh-v2-act i { font-size: 15px !important; }
+.dh-v2-fmt .dh-v2-brand__sep { background: rgba(255, 255, 255, .22); height: 18px; margin: 0 10px; }
+.dh-v2-fmt .dh-v2-signin { color: rgba(255, 255, 255, .88); padding: 6px 10px; font-size: 12.5px; }
+.dh-v2-fmt .dh-v2-signin:hover { color: #fff; background: rgba(255, 255, 255, .1); }
+.dh-v2-fmt .dh-v2-signup { padding: 6px 14px; font-size: 12.5px; }
+.dh-v2-fmt .dh-v2-signin:focus-visible,
+.dh-v2-fmt .dh-v2-signup:focus-visible { outline-color: var(--color-primary); }
+.dh-v2-fmt .dh-v2-user__menu { top: calc(100% + 8px); }
 .dh-v2-fmt__track {
   display: flex;
   align-items: center;
@@ -146,7 +158,6 @@ html.uc-dark .dh-v2-brand { background: var(--color-gray-900); }
   align-items: center;
   gap: 2px;
   flex: 0 0 auto;
-  margin-inline-start: auto;
 }
 /* ikon setini giriş düğmelerinden ayıran düz çizgi */
 .dh-v2-brand__sep {
@@ -484,7 +495,7 @@ html.uc-dark .dh-mega__cols a:hover { color: #fff; }
   .dh-v2-scrim { display: none; }
   .dh-v2-brand__row { min-height: 60px; gap: 8px; }
   .dh-v2-brand__logo img { width: 150px; }
-  .dh-v2-brand__sep, .dh-v2-signin, .dh-v2-signup { display: none; }
+  .dh-v2-fmt .dh-v2-signin, .dh-v2-fmt .dh-v2-signup, .dh-v2-fmt .dh-v2-brand__sep { display: none; }
 }
 @media (max-width: 575px) {
   .dh-v2-fmt__track a { padding: 7px 10px; font-size: 11.5px; }
@@ -584,30 +595,53 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
    · yasal bağlantılar yatay şerit · en altta telif bilgilendirmesi.
    ========================================================================== */
 .dh-v2-foot {
+  position: relative;
   background: var(--color-gray-900);
   color: rgba(255, 255, 255, .72);
   padding: 48px 0 0;
-  text-align: center;
+  text-align: left;
 }
-.dh-v2-foot__brand { padding-bottom: 26px; }
-.dh-v2-foot__brand img { width: 260px; height: auto; }
+/* V1'deki gibi geçişli: sayfa zemininden footer'a sert kesik yerine
+   yumuşak bir bant. Yükseklik 72px — kesiği yumuşatır, içerik itmez. */
+.dh-v2-foot::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: -72px;
+  height: 72px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(23, 23, 23, 0) 0%, rgba(23, 23, 23, .45) 55%, var(--color-gray-900) 100%);
+}
+/* marka: logo solda, altında slogan ve açıklama */
+.dh-v2-foot__brand {
+  display: grid;
+  justify-items: start;
+  padding-bottom: 28px;
+}
+.dh-v2-foot__brand img { width: 240px; height: auto; }
 .dh-v2-foot__slogan {
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   font-size: 15px;
   font-weight: 700;
   color: var(--color-primary);
   letter-spacing: -.01em;
 }
+.dh-v2-foot__desc {
+  margin: 8px 0 0;
+  max-width: 58ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, .58);
+}
 .dh-v2-foot__cols {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px 32px;
-  justify-content: center;
   padding: 28px 0;
   border-top: 1px solid rgba(255, 255, 255, .12);
   border-bottom: 1px solid rgba(255, 255, 255, .12);
 }
-.dh-v2-foot__grp { text-align: center; }
+.dh-v2-foot__grp { text-align: left; }
 .dh-v2-foot h3 {
   margin: 0 0 12px;
   font-family: var(--dh-mono);
@@ -636,7 +670,6 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: center;
   gap: 28px 56px;
   padding: 26px 0;
   border-bottom: 1px solid rgba(255, 255, 255, .12);
@@ -646,7 +679,6 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 .dh-v2-foot__store > div {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 6px;
 }
 .dh-v2-foot__soc a {
@@ -701,7 +733,6 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 /* telif bilgilendirmesi — okunur ama footer'ın ana içeriğiyle rekabet etmez */
 .dh-v2-foot__rights {
   max-width: 92ch;
-  margin-inline: auto !important;
   font-size: 11.5px;
   line-height: 1.65;
   color: rgba(255, 255, 255, .46);
