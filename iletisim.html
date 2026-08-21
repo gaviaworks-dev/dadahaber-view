@@ -1219,6 +1219,376 @@
         </div>
       </div>
     </div>
+
+    <!-- v2/A-8 — BAŞVURU KANALLARI
+         Kabuk (footer "Destek ve İletişim") ve haber detayı yedi ayrı çapayla
+         buraya iniyor. Her çapa kendi amacına göre alan soruyor; tek genel
+         form hepsini karşılamıyordu. Formlar PROTOTİPTİR, veri göndermez. -->
+    <div class="section pt-0 pb-4 lg:pb-6">
+      <div class="container max-w-xl">
+
+        <div class="dh-sec">
+          <h2 class="dh-sec__t">Başvuru Kanalları</h2>
+          <span class="dh-sec__n dh-num">YEDİ KANAL · ALINDI BİLGİSİ 3 İŞ GÜNÜ</span>
+        </div>
+
+        <div class="dh-basvlist">
+
+          <!-- 1 -->
+          <section class="dh-box dh-basv" id="ihbar" aria-labelledby="basv-ihbar">
+            <div class="dh-basv__hd">
+              <span class="dh-basv__ic" aria-hidden="true"><i class="fas fa-bullhorn"></i></span>
+              <span class="dh-basv__id">
+                <span class="dh-basv__k">Haber merkezi</span>
+                <h3 class="dh-basv__t" id="basv-ihbar">Haber İhbarı</h3>
+              </span>
+              <span class="dh-basv__n dh-num">7/24 AÇIK</span>
+            </div>
+            <p class="dh-basv__p">Gördüğünüz, duyduğunuz ya da belgesine ulaştığınız bir gelişmeyi haber merkezine iletin. Her ihbar yayımlanmadan önce doğrulanır. Kimliğinizin gizli kalmasını isterseniz kaynak korunur; bunu aşağıdaki kutuda belirtmeniz yeterli.</p>
+            <form class="dh-form" action="#" novalidate>
+              <div class="dh-form__2">
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="ih-baslik">Tek cümleyle ne oldu? <span class="req" aria-hidden="true">*</span></label>
+                  <input class="dh-input" id="ih-baslik" name="ihbar-baslik" type="text" placeholder="Örnek: Mahalledeki köprü iki gündür kapalı" required>
+                </div>
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="ih-yer">Yer ve tarih</label>
+                  <input class="dh-input" id="ih-yer" name="ihbar-yer" type="text" placeholder="İl / ilçe · gün">
+                </div>
+              </div>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="ih-metin">Ayrıntı <span class="req" aria-hidden="true">*</span></label>
+                <textarea class="dh-input" id="ih-metin" name="ihbar-metin" rows="4" placeholder="Ne olduğunu, kimlerin dahil olduğunu ve nasıl öğrendiğinizi yazın." required></textarea>
+              </div>
+              <div class="dh-form__2">
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="ih-dosya">Belge, fotoğraf veya video</label>
+                  <input class="dh-input" id="ih-dosya" name="ihbar-dosya" type="file" multiple>
+                </div>
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="ih-iletisim">Size nasıl ulaşalım?</label>
+                  <input class="dh-input" id="ih-iletisim" name="ihbar-iletisim" type="text" placeholder="E-posta ya da telefon">
+                </div>
+              </div>
+              <label class="dh-check">
+                <input type="checkbox" name="ihbar-gizli">
+                <span>Kimliğimin gizli kalmasını istiyorum; adım haberde ve yazışmalarda geçmesin.</span>
+              </label>
+              <label class="dh-check">
+                <input type="checkbox" name="kvkk" required>
+                <span><a href="aydinlatma-metni.html">KVKK Aydınlatma Metni</a>'ni okudum. Mesajımın başvurumun sonuçlandırılması amacıyla işlenmesini kabul ediyorum.</span>
+              </label>
+              <div class="hstack gap-2 flex-wrap">
+                <button class="dh-btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> İhbarı gönder</button>
+                <span class="dh-hd__s">Doğrudan yazmak isterseniz: <a href="mailto:ihbar@dadahaber.com">ihbar@dadahaber.com</a></span>
+              </div>
+            </form>
+          </section>
+
+          <!-- 2 -->
+          <section class="dh-box dh-basv" id="hata" aria-labelledby="basv-hata">
+            <div class="dh-basv__hd">
+              <span class="dh-basv__ic" aria-hidden="true"><i class="fas fa-bug"></i></span>
+              <span class="dh-basv__id">
+                <span class="dh-basv__k">Yazı işleri ve ürün</span>
+                <h3 class="dh-basv__t" id="basv-hata">Hata Bildir</h3>
+              </span>
+              <span class="dh-basv__n dh-num">İKİ TÜR HATA</span>
+            </div>
+            <p class="dh-basv__p">İki ayrı hata türünü aynı formdan alıyoruz: haberdeki maddi hata (yanlış isim, tarih, rakam, alıntı) ve sitedeki teknik arıza (açılmayan sayfa, bozuk görsel, çalışmayan ses). Hangisi olduğunu seçin; başvuru doğru masaya düşsün.</p>
+            <form class="dh-form" action="#" novalidate>
+              <div class="dh-form__2">
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="ht-tur">Hata türü <span class="req" aria-hidden="true">*</span></label>
+                  <select class="dh-input" id="ht-tur" name="hata-tur" required>
+                    <option value="">Seçin</option>
+                    <option>İçerikte maddi hata</option>
+                    <option>Yazım ve dil hatası</option>
+                    <option>Görsel veya altyazı hatası</option>
+                    <option>Sitede teknik arıza</option>
+                  </select>
+                </div>
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="ht-url">Hatanın olduğu sayfa</label>
+                  <input class="dh-input" id="ht-url" name="hata-url" type="url" placeholder="https://dadahaber.com/…">
+                </div>
+              </div>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="ht-metin">Hata ne, doğrusu ne? <span class="req" aria-hidden="true">*</span></label>
+                <textarea class="dh-input" id="ht-metin" name="hata-metin" rows="4" placeholder="Yanlış olan ifadeyi ve biliyorsanız doğrusunu yazın. Teknik arızada hangi cihaz ve tarayıcıyı kullandığınızı ekleyin." required></textarea>
+              </div>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="ht-mail">E-posta</label>
+                <input class="dh-input" id="ht-mail" name="hata-eposta" type="email" placeholder="Sonucu bildirmemizi isterseniz">
+              </div>
+              <label class="dh-check">
+                <input type="checkbox" name="kvkk" required>
+                <span><a href="aydinlatma-metni.html">KVKK Aydınlatma Metni</a>'ni okudum. Mesajımın başvurumun sonuçlandırılması amacıyla işlenmesini kabul ediyorum.</span>
+              </label>
+              <div class="hstack gap-2 flex-wrap">
+                <button class="dh-btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Hatayı bildir</button>
+                <span class="dh-hd__s">Maddi hata doğrulanırsa <a href="yayin-ilkeleri.html#duzeltme">düzeltme notu</a> haberin altına eklenir.</span>
+              </div>
+            </form>
+          </section>
+
+          <!-- 3 -->
+          <section class="dh-box dh-basv" id="oneri" aria-labelledby="basv-oneri">
+            <div class="dh-basv__hd">
+              <span class="dh-basv__ic" aria-hidden="true"><i class="fas fa-comment-dots"></i></span>
+              <span class="dh-basv__id">
+                <span class="dh-basv__k">Okur temsilcisi</span>
+                <h3 class="dh-basv__t" id="basv-oneri">Öneri ve Şikâyet</h3>
+              </span>
+              <span class="dh-basv__n dh-num">SONUÇ EN GEÇ 15 İŞ GÜNÜ</span>
+            </div>
+            <p class="dh-basv__p">Yayın çizgisi, bir haberin dili, yorum kuralları ya da sitenin işleyişi hakkındaki değerlendirmeniz okur temsilcisine iletilir. Şikâyet süreci <a href="yayin-ilkeleri.html#sikayet">Yayın İlkeleri'nin dokuzuncu maddesinde</a> adım adım yazılıdır.</p>
+            <form class="dh-form" action="#" novalidate>
+              <div class="dh-form__2">
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="on-tur">Başvuru türü <span class="req" aria-hidden="true">*</span></label>
+                  <select class="dh-input" id="on-tur" name="oneri-tur" required>
+                    <option value="">Seçin</option>
+                    <option>Öneri</option>
+                    <option>Şikâyet</option>
+                    <option>Teşekkür</option>
+                  </select>
+                </div>
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="on-alan">Hangi alanla ilgili?</label>
+                  <select class="dh-input" id="on-alan" name="oneri-alan">
+                    <option value="">Fark etmez</option>
+                    <option>Haber içeriği ve dili</option>
+                    <option>Görsel ve video kullanımı</option>
+                    <option>Yorumlar ve topluluk</option>
+                    <option>Reklam düzeni</option>
+                    <option>Site kullanımı</option>
+                  </select>
+                </div>
+              </div>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="on-metin">Anlatın <span class="req" aria-hidden="true">*</span></label>
+                <textarea class="dh-input" id="on-metin" name="oneri-metin" rows="4" placeholder="Bir habere ilişkinse haberin bağlantısını da ekleyin." required></textarea>
+              </div>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="on-mail">E-posta <span class="req" aria-hidden="true">*</span></label>
+                <input class="dh-input" id="on-mail" name="oneri-eposta" type="email" placeholder="ornek@eposta.com" required>
+              </div>
+              <label class="dh-check">
+                <input type="checkbox" name="kvkk" required>
+                <span><a href="aydinlatma-metni.html">KVKK Aydınlatma Metni</a>'ni okudum. Mesajımın başvurumun sonuçlandırılması amacıyla işlenmesini kabul ediyorum.</span>
+              </label>
+              <div class="hstack gap-2 flex-wrap">
+                <button class="dh-btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Okur temsilcisine gönder</button>
+                <span class="dh-hd__s">Doğrudan: <a href="mailto:okurtemsilcisi@dadahaber.com">okurtemsilcisi@dadahaber.com</a></span>
+              </div>
+            </form>
+          </section>
+
+          <!-- 4 -->
+          <section class="dh-box dh-basv" id="kaldirma" aria-labelledby="basv-kaldirma">
+            <div class="dh-basv__hd">
+              <span class="dh-basv__ic" aria-hidden="true"><i class="fas fa-user-shield"></i></span>
+              <span class="dh-basv__id">
+                <span class="dh-basv__k">Hukuk ve KVKK</span>
+                <h3 class="dh-basv__t" id="basv-kaldirma">İçerik Kaldırma Talebi</h3>
+              </span>
+              <span class="dh-basv__n dh-num">HUKUK BİRİMİ İNCELER</span>
+            </div>
+            <p class="dh-basv__p">Bir içeriğin yayından kaldırılmasını, erişime engellenmesini ya da adınızın çıkarılmasını talep edebilirsiniz. Talep hukuk birimince incelenir; haber değeri, kamu yararı ve kişilik hakları birlikte değerlendirilir. Sonuç olumlu ya da olumsuz, gerekçesiyle yazılı olarak bildirilir.</p>
+            <form class="dh-form" action="#" novalidate>
+              <div class="dh-form__2">
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="kl-url">İçeriğin adresi <span class="req" aria-hidden="true">*</span></label>
+                  <input class="dh-input" id="kl-url" name="kaldirma-url" type="url" placeholder="https://dadahaber.com/…" required>
+                </div>
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="kl-dayanak">Talebin dayanağı <span class="req" aria-hidden="true">*</span></label>
+                  <select class="dh-input" id="kl-dayanak" name="kaldirma-dayanak" required>
+                    <option value="">Seçin</option>
+                    <option>Kişilik haklarının ihlali</option>
+                    <option>KVKK kapsamında silme talebi</option>
+                    <option>Unutulma hakkı</option>
+                    <option>Telif hakkı ihlali</option>
+                    <option>Mahkeme veya kurum kararı</option>
+                  </select>
+                </div>
+              </div>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="kl-metin">Talebin gerekçesi <span class="req" aria-hidden="true">*</span></label>
+                <textarea class="dh-input" id="kl-metin" name="kaldirma-metin" rows="4" placeholder="İçeriğin hangi bölümünün, neden kaldırılmasını istediğinizi yazın." required></textarea>
+              </div>
+              <div class="dh-form__2">
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="kl-kimlik">Ad soyad / unvan <span class="req" aria-hidden="true">*</span></label>
+                  <input class="dh-input" id="kl-kimlik" name="kaldirma-kimlik" type="text" placeholder="Talep sahibi ya da vekili" required>
+                </div>
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="kl-belge">Karar veya vekâlet belgesi</label>
+                  <input class="dh-input" id="kl-belge" name="kaldirma-belge" type="file">
+                </div>
+              </div>
+              <label class="dh-check">
+                <input type="checkbox" name="kvkk" required>
+                <span><a href="aydinlatma-metni.html">KVKK Aydınlatma Metni</a>'ni okudum. Mesajımın başvurumun sonuçlandırılması amacıyla işlenmesini kabul ediyorum.</span>
+              </label>
+              <div class="hstack gap-2 flex-wrap">
+                <button class="dh-btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Talebi gönder</button>
+                <span class="dh-hd__s">Resmî tebligat için KEP: <a href="mailto:dadaist@hs01.kep.tr">dadaist@hs01.kep.tr</a></span>
+              </div>
+            </form>
+          </section>
+
+          <!-- 5 -->
+          <section class="dh-box dh-basv" id="basin" aria-labelledby="basv-basin">
+            <div class="dh-basv__hd">
+              <span class="dh-basv__ic" aria-hidden="true"><i class="fas fa-id-badge"></i></span>
+              <span class="dh-basv__id">
+                <span class="dh-basv__k">Kurumsal iletişim</span>
+                <h3 class="dh-basv__t" id="basv-basin">Basın İletişimi</h3>
+              </span>
+              <span class="dh-basv__n dh-num">HAFTA İÇİ 09.00 – 18.00</span>
+            </div>
+            <p class="dh-basv__p">Basın bülteni, davet, röportaj talebi ve kurum sözcülerine erişim bu kanaldan yürür. Basın bültenleri haber garantisi taşımaz; yayın kararı yazı işlerinindir ve <a href="yayin-ilkeleri.html#cikar">reklam ayrımı ilkesine</a> tabidir.</p>
+            <form class="dh-form" action="#" novalidate>
+              <div class="dh-form__2">
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="bs-kurum">Kurum <span class="req" aria-hidden="true">*</span></label>
+                  <input class="dh-input" id="bs-kurum" name="basin-kurum" type="text" placeholder="Şirket, kurum ya da ajans adı" required>
+                </div>
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="bs-tur">Talep türü <span class="req" aria-hidden="true">*</span></label>
+                  <select class="dh-input" id="bs-tur" name="basin-tur" required>
+                    <option value="">Seçin</option>
+                    <option>Basın bülteni gönderimi</option>
+                    <option>Etkinlik ve lansman daveti</option>
+                    <option>Röportaj talebi</option>
+                    <option>Kurum sözcüsüyle görüşme</option>
+                    <option>Marka ve logo kullanımı</option>
+                  </select>
+                </div>
+              </div>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="bs-metin">Konu <span class="req" aria-hidden="true">*</span></label>
+                <textarea class="dh-input" id="bs-metin" name="basin-metin" rows="4" placeholder="Konuyu, tarihi ve varsa ambargo saatini yazın." required></textarea>
+              </div>
+              <div class="dh-form__2">
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="bs-mail">Yetkili e-postası <span class="req" aria-hidden="true">*</span></label>
+                  <input class="dh-input" id="bs-mail" name="basin-eposta" type="email" placeholder="ornek@kurum.com" required>
+                </div>
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="bs-dosya">Bülten ve görsel dosyası</label>
+                  <input class="dh-input" id="bs-dosya" name="basin-dosya" type="file" multiple>
+                </div>
+              </div>
+              <label class="dh-check">
+                <input type="checkbox" name="kvkk" required>
+                <span><a href="aydinlatma-metni.html">KVKK Aydınlatma Metni</a>'ni okudum. Mesajımın başvurumun sonuçlandırılması amacıyla işlenmesini kabul ediyorum.</span>
+              </label>
+              <div class="hstack gap-2 flex-wrap">
+                <button class="dh-btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Basın talebini gönder</button>
+                <span class="dh-hd__s">Reklam ve iş birliği ayrı yürür: <a href="reklam.html">Reklam</a></span>
+              </div>
+            </form>
+          </section>
+
+          <!-- 6 — haber detayındaki "Editöre Sor" düğmesi buraya iner -->
+          <section class="dh-box dh-basv dh-basv--detay" id="editore-sor" aria-labelledby="basv-editor">
+            <div class="dh-basv__hd">
+              <span class="dh-basv__ic" aria-hidden="true"><i class="fas fa-edit"></i></span>
+              <span class="dh-basv__id">
+                <span class="dh-basv__k">Haberden geldiniz</span>
+                <h3 class="dh-basv__t" id="basv-editor">Editöre Sor</h3>
+              </span>
+              <span class="dh-basv__n dh-num">HABER DETAYI MODÜLÜ</span>
+            </div>
+            <p class="dh-basv__p">Okuduğunuz haberde anlaşılmayan, eksik kalan ya da merak ettiğiniz bir nokta varsa haberin editörüne doğrudan sorun. Soru, haberi hazırlayan masaya iletilir; genel ilgi taşıyan yanıtlar haberin altına <b>editör notu</b> olarak eklenebilir.</p>
+            <form class="dh-form" action="#" novalidate>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="es-url">Haberin adresi <span class="req" aria-hidden="true">*</span></label>
+                <input class="dh-input" id="es-url" name="editor-haber-url" type="url" placeholder="https://dadahaber.com/haber-detay.html" required>
+                <span class="dh-basv__hint">Haber sayfasındaki adresi kopyalayıp buraya yapıştırın; sorunuz doğru masaya düşsün.</span>
+              </div>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="es-soru">Sorunuz <span class="req" aria-hidden="true">*</span></label>
+                <textarea class="dh-input" id="es-soru" name="editor-soru" rows="4" placeholder="Haberin hangi bölümüyle ilgili, ne sormak istiyorsunuz?" required></textarea>
+              </div>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="es-mail">E-posta <span class="req" aria-hidden="true">*</span></label>
+                <input class="dh-input" id="es-mail" name="editor-eposta" type="email" placeholder="Yanıtı buraya gönderelim" required>
+              </div>
+              <label class="dh-check">
+                <input type="checkbox" name="editor-yayin">
+                <span>Sorum ve yanıtı, adım anılmadan haberin altında yayımlanabilir.</span>
+              </label>
+              <label class="dh-check">
+                <input type="checkbox" name="kvkk" required>
+                <span><a href="aydinlatma-metni.html">KVKK Aydınlatma Metni</a>'ni okudum. Mesajımın başvurumun sonuçlandırılması amacıyla işlenmesini kabul ediyorum.</span>
+              </label>
+              <div class="hstack gap-2 flex-wrap">
+                <button class="dh-btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Soruyu gönder</button>
+                <span class="dh-hd__s">Yanıtlar haberi hazırlayan masadan gelir.</span>
+              </div>
+            </form>
+          </section>
+
+          <!-- 7 — haber detayındaki "Eksik Bilgi Bildir" düğmesi buraya iner -->
+          <section class="dh-box dh-basv dh-basv--detay" id="eksik-bilgi" aria-labelledby="basv-eksik">
+            <div class="dh-basv__hd">
+              <span class="dh-basv__ic" aria-hidden="true"><i class="fas fa-exclamation-circle"></i></span>
+              <span class="dh-basv__id">
+                <span class="dh-basv__k">Haberden geldiniz</span>
+                <h3 class="dh-basv__t" id="basv-eksik">Eksik Bilgi Bildir</h3>
+              </span>
+              <span class="dh-basv__n dh-num">HABER DETAYI MODÜLÜ</span>
+            </div>
+            <p class="dh-basv__p">Haberde atlanmış bir taraf, verilmemiş bir rakam ya da sorulmamış bir soru varsa bildirin. Bu form hata bildirimi değildir: yazılanın yanlış olduğunu değil, <b>eksik</b> olduğunu söyler. Bildiriminiz doğrulanırsa haber güncellenir ve güncelleme geçmişine işlenir.</p>
+            <form class="dh-form" action="#" novalidate>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="eb-url">Haberin adresi <span class="req" aria-hidden="true">*</span></label>
+                <input class="dh-input" id="eb-url" name="eksik-haber-url" type="url" placeholder="https://dadahaber.com/haber-detay.html" required>
+                <span class="dh-basv__hint">Haber sayfasındaki adresi kopyalayıp buraya yapıştırın.</span>
+              </div>
+              <div class="dh-form__2">
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="eb-tur">Eksik olan ne? <span class="req" aria-hidden="true">*</span></label>
+                  <select class="dh-input" id="eb-tur" name="eksik-tur" required>
+                    <option value="">Seçin</option>
+                    <option>Bir tarafın görüşü alınmamış</option>
+                    <option>Sayı, veri ya da kaynak eksik</option>
+                    <option>Önceki gelişme aktarılmamış</option>
+                    <option>Bağlam eksik</option>
+                    <option>Diğer</option>
+                  </select>
+                </div>
+                <div class="dh-fld">
+                  <label class="dh-fld__l" for="eb-kaynak">Dayandığınız kaynak</label>
+                  <input class="dh-input" id="eb-kaynak" name="eksik-kaynak" type="text" placeholder="Bağlantı, belge adı ya da kurum">
+                </div>
+              </div>
+              <div class="dh-fld">
+                <label class="dh-fld__l" for="eb-metin">Ne eklenmeli? <span class="req" aria-hidden="true">*</span></label>
+                <textarea class="dh-input" id="eb-metin" name="eksik-metin" rows="4" placeholder="Haberin hangi bölümüne, hangi bilginin eklenmesi gerektiğini yazın." required></textarea>
+              </div>
+              <label class="dh-check">
+                <input type="checkbox" name="kvkk" required>
+                <span><a href="aydinlatma-metni.html">KVKK Aydınlatma Metni</a>'ni okudum. Mesajımın başvurumun sonuçlandırılması amacıyla işlenmesini kabul ediyorum.</span>
+              </label>
+              <div class="hstack gap-2 flex-wrap">
+                <button class="dh-btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Eksiği bildir</button>
+                <span class="dh-hd__s">Yanlış bilgi için: <a href="#hata">Hata Bildir</a></span>
+              </div>
+            </form>
+          </section>
+
+        </div>
+
+        <p class="dh-note dh-note--wide"><i class="fas fa-info-circle" aria-hidden="true"></i><span>Bu sayfadaki formlar prototiptir; gönderilen veriler bir sunucuya iletilmez. Gerçek başvuru için sayfanın üstündeki e-posta adreslerini kullanın.</span></p>
+
+      </div>
+    </div>
+
     </div>
 
     <!-- Wrapper end -->

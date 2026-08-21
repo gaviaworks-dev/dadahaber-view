@@ -1771,3 +1771,93 @@ body[data-dh-cat="dunya"] section[id],
 .dh-sehir__field input::placeholder { color: var(--color-gray-500); }
 .dh-sehir__plaka { color: var(--color-gray-500); }
 .dh-yerel__meta { color: var(--color-gray-500); }
+
+/* ============================================================================
+   v2 / A-8 — BAŞVURU KANALLARI (`iletisim.html`)
+   Kabuğun "Destek ve İletişim" sütunu ve haber detayının güven modülleri
+   yedi ayrı çapayla bu sayfaya iniyordu; hiçbirinin karşılığı yoktu.
+   Tek bileşen, yedi amaç: başlık satırı + kısa açıklama + amaca göre
+   değişen form iskeleti. Kutu `.dh-box` (koyu tema karşılığı zaten var),
+   form alanları `.dh-form/.dh-fld/.dh-input/.dh-check` — hepsi mevcut.
+   ========================================================================== */
+.dh-basvlist { display: grid; gap: 18px; }
+
+.dh-basv { padding: 20px; }
+@media (min-width: 768px) { .dh-basv { padding: 26px 28px; } }
+
+.dh-basv__hd {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--dh-line);
+}
+.dh-basv__ic {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-a-soft);
+  color: var(--color-gray-900);
+  font-size: 17px;
+}
+html.uc-dark .dh-basv__ic { background: rgba(252, 182, 35, .18); color: #fff; }
+
+.dh-basv__id { flex: 1 1 auto; min-width: 0; }
+.dh-basv__k {
+  display: block;
+  font-family: var(--dh-mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-basv__k { color: rgba(255, 255, 255, .62); }
+.dh-basv__t {
+  margin: 2px 0 0;
+  font-size: clamp(17px, 1.7vw, 20px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.015em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-basv__t { color: #fff; }
+.dh-basv__n {
+  flex: 0 0 auto;
+  text-align: right;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-basv__n { color: rgba(255, 255, 255, .58); }
+
+.dh-basv__p {
+  margin: 0 0 18px;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-basv__p { color: rgba(255, 255, 255, .74); }
+.dh-basv__p a { color: var(--dh-menu-ink); text-decoration: underline; text-underline-offset: 2px; }
+html.uc-dark .dh-basv__p a { color: var(--dh-brand); }
+.dh-basv__p b { color: var(--color-gray-900); font-weight: 700; }
+html.uc-dark .dh-basv__p b { color: #fff; }
+
+.dh-basv__hint {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-basv__hint { color: rgba(255, 255, 255, .58); }
+
+/* Haber detayından gelen iki kanal (Editöre Sor · Eksik Bilgi) sol kenarında
+   kurumsal imza taşır — okur "geldiğim yer burası" bilgisini kutuya bakınca alır. */
+.dh-basv--detay { border-left: 3px solid var(--dh-brand); border-bottom-left-radius: 0; }
+
+/* Dosya alanı `.dh-input`ın grid hizasına oturmuyordu (satır yüksekliği 
+   input yüksekliğinden kısa); dikey ortalama ile eşitlendi. */
+.dh-basv input[type="file"].dh-input { padding-top: 10px; padding-bottom: 10px; font-size: 13.5px; }
+
+/* Kabuk yapışkanda 104–106px; 124px = 106 + 18px nefes (A-6 ile aynı ölçü). */
+.dh-basv { scroll-margin-top: 124px; }
