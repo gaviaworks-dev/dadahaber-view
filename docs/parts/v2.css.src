@@ -11,3 +11,4 @@
 @import url("./v2/d-arac.css");   /* Farklı Bakışlar · Veri & Harita · Sakin Akış · Hesabım */
 @import url("./v2/e-detay.css");  /* Video · haber detay modülleri · arama */
 @import url("./v2/f-diger.css");  /* Diğer — tüm kategoriler dizini */
+@import url("./v2/g-uyelik.css"); /* giriş · üye ol · şifremi unuttum */

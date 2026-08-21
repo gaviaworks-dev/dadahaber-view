@@ -7846,3 +7846,305 @@ html.uc-dark .dh-dir__grp a:hover { color: var(--color-primary); }
   .dh-dir__cat span { display: none; }
   .dh-dir__cols { grid-template-columns: 1fr 1fr; gap: 18px; }
 }
+
+/* ==== v2/g-uyelik.css (300 satır) ==== */
+/* ============================================================================
+   v2 / ÜYELİK — giriş · üye ol · şifremi unuttum
+   Form iskeleti .dh-kform'dan geliyor (c-kesfet.css). Orası token'larını
+   [data-dh-cat="kesfet"] altında tanımladığı için aynı token seti burada
+   üyelik sayfaları adına yeniden verilir — bileşen kopyalanmaz, sadece
+   paleti değişir. Keşfet altını yerine kurumsal amber.
+   ========================================================================== */
+
+[data-dh-cat="uyelik"] {
+  --dh-k: var(--color-primary, #fcb623);
+  --dh-k-ink: #7a5f01;
+  --dh-k-surf: #fff;
+  --dh-k-line: rgba(18, 18, 18, .10);
+  --dh-k-line2: rgba(18, 18, 18, .06);
+  --dh-k-soft: rgba(252, 182, 35, .12);
+  --dh-k-mut: var(--color-gray-500, #737373);
+  --dh-k-r: 16px 16px 16px 0;
+  --dh-k-r-s: 8px 8px 8px 0;
+}
+html.uc-dark [data-dh-cat="uyelik"] {
+  --dh-k-ink: #f0b429;
+  --dh-k-surf: #141414;
+  --dh-k-line: rgba(255, 255, 255, .14);
+  --dh-k-line2: rgba(255, 255, 255, .08);
+  --dh-k-soft: rgba(240, 180, 41, .12);
+  --dh-k-mut: rgba(255, 255, 255, .62);
+}
+
+.dh-auth { padding: 28px 0 56px; }
+.dh-auth__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
+  gap: 40px;
+  align-items: start;
+}
+
+/* --- sol: neden hesap açılır ---------------------------------------------- */
+.dh-auth__side { padding-top: 8px; }
+.dh-auth__kicker {
+  display: inline-block;
+  padding: 5px 11px;
+  background: var(--dh-k-soft);
+  color: var(--dh-k-ink);
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-auth__kicker { color: var(--dh-k-ink); }
+.dh-auth__t {
+  margin: 16px 0 10px;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-auth__t { color: #fff; }
+.dh-auth__l {
+  margin: 0 0 26px;
+  max-width: 46ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--dh-k-mut);
+}
+.dh-auth__ben { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; max-width: 52ch; }
+.dh-auth__ben li { display: flex; gap: 12px; align-items: flex-start; }
+.dh-auth__ben i {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+  color: var(--color-gray-900);
+  background: var(--dh-k);
+  border-radius: 8px 8px 8px 0;
+}
+.dh-auth__ben b {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-auth__ben b { color: #fff; }
+.dh-auth__ben span {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--dh-k-mut);
+}
+
+/* --- sağ: form kolonu ------------------------------------------------------ */
+.dh-auth__main { min-width: 0; }
+
+/* giriş / üye ol geçişi */
+.dh-auth__tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 16px;
+  background: var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-auth__tabs { background: rgba(255, 255, 255, .07); }
+.dh-auth__tabs a {
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-gray-600);
+  text-decoration: none;
+  border-radius: 6px 6px 6px 0;
+  transition: background .14s, color .14s;
+}
+html.uc-dark .dh-auth__tabs a { color: rgba(255, 255, 255, .68); }
+.dh-auth__tabs a:hover { color: var(--color-gray-900); }
+html.uc-dark .dh-auth__tabs a:hover { color: #fff; }
+.dh-auth__tabs a[aria-current="page"] {
+  background: var(--dh-k);
+  color: var(--color-gray-900);
+}
+
+.dh-auth__form { grid-template-columns: 1fr !important; }
+.dh-auth__form .dh-kform__f { grid-column: 1 / -1; }
+
+/* şifre alanı: göster/gizle düğmesi input'un içine oturur */
+.dh-auth__pw { position: relative; display: flex; }
+.dh-auth__pw .dh-input { padding-inline-end: 46px; width: 100%; }
+.dh-auth__eye {
+  position: absolute;
+  inset-inline-end: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--dh-k-mut);
+  cursor: pointer;
+  border-radius: 6px;
+}
+.dh-auth__eye:hover { color: var(--color-gray-900); }
+html.uc-dark .dh-auth__eye:hover { color: #fff; }
+
+/* şifre gücü — dekoratif değil, kurala bağlı ölçüm */
+.dh-auth__pwm { display: grid; gap: 6px; }
+.dh-auth__pwbar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+.dh-auth__pwbar span {
+  height: 4px;
+  background: var(--color-gray-200);
+  border-radius: 2px;
+  transition: background .16s;
+}
+html.uc-dark .dh-auth__pwbar span { background: rgba(255, 255, 255, .14); }
+.dh-auth__pwm[data-guc="1"] span:nth-child(-n+1) { background: #c0392b; }
+.dh-auth__pwm[data-guc="2"] span:nth-child(-n+2) { background: #d98b0a; }
+.dh-auth__pwm[data-guc="3"] span:nth-child(-n+3) { background: #a5a213; }
+.dh-auth__pwm[data-guc="4"] span:nth-child(-n+4) { background: #1e7d33; }
+.dh-auth__pwl {
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--dh-k-mut);
+}
+
+/* satır içi yardımcı bağlantı (şifremi unuttum) */
+.dh-auth__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.dh-auth__link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dh-k-ink);
+  text-decoration: none;
+}
+.dh-auth__link:hover { text-decoration: underline; color: var(--dh-k-ink); }
+
+.dh-auth__form .dh-btn { width: 100%; justify-content: center; }
+
+/* alternatif giriş */
+.dh-auth__or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dh-k-mut);
+}
+.dh-auth__or::before,
+.dh-auth__or::after { content: ""; flex: 1 1 0; height: 1px; background: var(--dh-k-line); }
+.dh-auth__alt { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.dh-auth__alt a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 11px 12px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  text-decoration: none;
+  background: var(--dh-k-surf);
+  border: 1px solid var(--dh-k-line);
+  border-radius: 8px 8px 8px 0;
+  transition: border-color .14s;
+}
+html.uc-dark .dh-auth__alt a { color: #fff; }
+.dh-auth__alt a:hover { border-color: var(--dh-k); }
+
+.dh-auth__foot {
+  margin: 18px 0 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--dh-k-mut);
+}
+.dh-auth__foot a { font-weight: 700; color: var(--dh-k-ink); }
+
+/* prototip uyarısı — kullanıcı gerçek hesap açtığını sanmasın */
+.dh-auth__proto {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 16px;
+  padding: 12px 14px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--dh-k-mut);
+  background: var(--dh-k-soft);
+  border-radius: 8px 8px 8px 0;
+}
+.dh-auth__proto i { margin-top: 2px; color: var(--dh-k-ink); }
+
+/* --- adım göstergesi (şifremi unuttum) ------------------------------------ */
+.dh-auth__steps {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.dh-auth__steps li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--dh-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--dh-k-mut);
+}
+.dh-auth__steps { list-style: none; margin: 0 0 16px; padding: 0; }
+.dh-auth__steps li::before {
+  content: attr(data-n);
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  color: var(--color-gray-600);
+  background: var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-auth__steps li::before { background: rgba(255, 255, 255, .1); color: rgba(255,255,255,.7); }
+.dh-auth__steps li.is-on { color: var(--color-gray-900); }
+html.uc-dark .dh-auth__steps li.is-on { color: #fff; }
+.dh-auth__steps li.is-on::before { background: var(--dh-k); color: var(--color-gray-900); }
+.dh-auth__steps li + li::after { content: none; }
+
+@media (max-width: 991px) {
+  .dh-auth__grid { grid-template-columns: 1fr; gap: 28px; }
+  .dh-auth__side { order: 2; }
+  .dh-auth__main { order: 1; }
+  .dh-auth { padding: 20px 0 40px; }
+}
+@media (max-width: 575px) {
+  .dh-auth__alt { grid-template-columns: 1fr; }
+  .dh-auth__ben { gap: 12px; }
+}
