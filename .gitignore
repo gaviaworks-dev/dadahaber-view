@@ -22,3 +22,7 @@ assets/css/theme/main.min.css
 # geçici ekran görüntüsü / ikon kontrol sayfaları
 _sheet.html
 _icons.html
+
+# /v1/ kopyası yalnız main dalında bulunur; v2 çalışma dalında tutulmaz.
+# Yayın anında `python3 docs/parts/v1-kopya.py v1` ile üretilir.
+v1/

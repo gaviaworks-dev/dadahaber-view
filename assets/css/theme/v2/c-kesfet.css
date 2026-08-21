@@ -1578,3 +1578,7 @@ html.uc-dark .dh-kder__tab[aria-selected="true"] { color: var(--dh-k-onsolid); }
    beş kullanım vardı, hepsi buraya çekildi. */
 .dh-kmut { color: var(--dh-k-mut); }
 .dh-ksurf--pad { padding: 6px 18px; }
+
+/* (8) #saglik bölümündeki iddia ızgarası, üstündeki tıbbi bilgilendirme
+   notundan nefes alsın. */
+.dh-kids--gap { margin-top: 18px; }

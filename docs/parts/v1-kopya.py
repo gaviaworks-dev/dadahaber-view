@@ -31,6 +31,7 @@ for d in htmls:
                        capture_output=True, text=True, check=True).stdout
     s = s.replace('"./assets/', '"../assets/').replace("'./assets/", "'../assets/")
     s = s.replace('(./assets/', '(../assets/')
+    s = s.replace(' ./assets/', ' ../assets/')   # srcset içindeki virgülden sonraki yollar
     # donmuş kopya olduğunu sayfada görünür kıl
     s = s.replace("</body>", """  <div style="position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#111;color:#fff;
     font:500 12px/1.4 system-ui,sans-serif;padding:9px 14px;display:flex;gap:12px;align-items:center;
@@ -46,8 +47,11 @@ for d in htmls:
 kirik = []
 for d in os.listdir(HEDEF):
     s = open(os.path.join(HEDEF, d), encoding="utf-8").read()
-    if './assets/' in s:
-        kirik.append(d)
+    # dikkat: '../assets/' de './assets/' alt dizesini içerir — tırnakla ara
+    for kalip in ('"./assets/', "'./assets/", '(./assets/'):
+        if kalip in s:
+            kirik.append(d)
+            break
 print("%s -> %s/ : %d sayfa" % (DAL, HEDEF, n))
 if kirik:
     print("UYARI — hâlâ ./assets/ taşıyan sayfa: %s" % ", ".join(kirik[:5]))
