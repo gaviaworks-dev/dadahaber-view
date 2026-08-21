@@ -7,6 +7,9 @@ cd "$(git rev-parse --show-toplevel)"
 
 [ -z "$(git status --porcelain)" ] || { echo "HATA: çalışma dizini kirli."; exit 1; }
 
+echo "== statik denetim"
+python3 docs/parts/denetim.py
+
 echo "== v2.css düzleştiriliyor (yayında @import zinciri istenmiyor)"
 python3 docs/parts/duzlestir.py
 if ! git diff --quiet assets/css/theme/v2.css; then
