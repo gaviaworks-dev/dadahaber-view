@@ -23,6 +23,7 @@ assets/css/theme/main.min.css
 _sheet.html
 _icons.html
 
-# /v1/ kopyası yalnız main dalında bulunur; v2 çalışma dalında tutulmaz.
-# Yayın anında `python3 docs/parts/v1-kopya.py v1` ile üretilir.
+# /v1/ ve /v2/ kopyaları yalnız main (yayın) dalında bulunur; çalışma dalında
+# tutulmaz. Yayın anında docs/parts/yayinla.sh üretir.
 v1/
+v2/
