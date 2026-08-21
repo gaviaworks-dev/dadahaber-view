@@ -83,6 +83,13 @@ def isle(yol):
         else:
             return None, "custom.min.css bağlantısı yok"
 
+    # 4b) aktif menü betiği
+    if "js/v2/dh-v2-nav.js" not in s:
+        m = re.search(r'[ \t]*<script defer src="\./assets/js/app\.js"></script>[ \t]*\n', s)
+        if m:
+            s = s[:m.end()] + '    <script defer src="./assets/js/v2/dh-v2-nav.js"></script>\n' + s[m.end():]
+            rapor.append("navjs")
+
     # 5) yapışkan kenar sütunu ofseti: 136 → 120 (yeni kabuk yapışkanda 104px)
     if "offset: 136" in s:
         s = s.replace("offset: 136", "offset: 120")
