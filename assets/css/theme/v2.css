@@ -4,7 +4,7 @@
    Yeniden üret:    python3 docs/parts/duzlestir.py
    ========================================================================== */
 
-/* ==== v2/kabuk.css (1020 satır) ==== */
+/* ==== v2/kabuk.css (1254 satır) ==== */
 /* ============================================================================
    v2 / KABUK — format bandı · marka satırı · 8 başlıklı perdeleme menü · footer
    V1–V2 birleştirme (21 Ağustos 2026):
@@ -780,11 +780,12 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
   .dh-v2-foot__store { grid-template-columns: 1fr; }
 }
 
-/* --- footer perdesi v2'de kapalı ------------------------------------------ */
-body.dh-footer-reveal #uc-footer.dh-v2-foot {
-  position: static !important;
-  inset: auto !important;
-}
+/* --- footer perdesi AÇIK (V1 deseni, kullanıcı talebi) --------------------
+   Sayfa sonunda içerik sarmalayıcısı kalkar, arkada sabit bekleyen footer
+   ortaya çıkar. assets/js/footer-reveal.js sarmalayıcının altına footer
+   yüksekliği kadar boşluk yazar ve footer viewport'a sığmıyorsa perdeyi
+   kendi kapatır (güvenlik freni). Kural custom.min.css'te; v2'de yalnız
+   perdeyi devre dışı bırakan override KALDIRILDI. */
 
 /* ================= 6. MOBİL ALT GEZİNME — Keşfet vurgusu ================== */
 /* Alt menü: Anasayfa · Son Dakika · KEŞFET · Video · Menü
@@ -1025,6 +1026,239 @@ html.uc-offcanvas-page .backtotop-wrap { display: none !important; }
 }
 html.uc-dark .dh-pager__durum { color: var(--color-gray-400); }
 .dh-pager__nav.is-off { opacity: .38; cursor: default; pointer-events: none; }
+
+/* ============================================================================
+   8. KABUK TAM GENİŞLİK (kullanıcı talebi: "menü sola yaslanacak")
+   Ölçüm: header 1280px'lik ortalanmış kapta duruyordu; 1920px pencerede
+   solda 320px boşluk kalıyor, logo ve menü ekranın ortasına itiliyordu.
+   Header artık pencere genişliğini kullanıyor, sayfa gövdesi ve footer
+   ortalanmış kapta kalıyor — okuma satırları uzamasın diye.
+   ========================================================================== */
+.dh-v2-fmt > .container,
+.dh-v2-brand > .container {
+  /* .max-w-xl vendor'da !important taşıyor (ölçüldü: 1440px'te kap hâlâ
+     1280px'te kalıyordu), o yüzden burada da gerekiyor. */
+  max-width: none !important;
+  width: 100%;
+  padding-inline: 32px;
+}
+/* Perdeleme paneli de kabukla birlikte tam genişliğe çıkar; içerik
+   1600px'te ortalanır ki sütunlar 1920px'te aşırı yayılmasın. */
+.dh-mega__inner {
+  max-width: 1600px;
+  margin-inline: auto;
+}
+@media (max-width: 1279.98px) {
+  .dh-v2-fmt > .container,
+  .dh-v2-brand > .container { padding-inline: 24px; }
+}
+@media (max-width: 767.98px) {
+  .dh-v2-fmt > .container,
+  .dh-v2-brand > .container { padding-inline: 16px; }
+}
+
+/* --- 8.1 · footer alt bloğu ortalanır ------------------------------------
+   Kurumsal şerit, yasal şerit, telif metni ve künye satırı ortalandı;
+   üstteki marka + sütun + uygulama bloğu sola yaslı kalıyor. */
+.dh-v2-foot__strip { justify-content: center; }
+.dh-v2-foot__strip a:first-of-type { padding-inline-start: 16px; }
+.dh-v2-foot__strip--yasal .dh-v2-foot__striplbl { margin-inline: 0 14px; }
+.dh-v2-foot__bottom { text-align: center; }
+.dh-v2-foot__rights { margin-inline: auto !important; }
+
+/* --- 8.2 · alt kategori şeridi çipleri küçüldü ---------------------------
+   Ölçüm: çip 36px yüksek, 16px yazı, 15px yan dolgu — şerit 57px'e çıkıyor
+   ve sayfa başlığıyla aynı ağırlıkta okunuyordu. Çip bir gezinti kumandası,
+   başlık değil. Yeni: 30px yükseklik, 13.5px yazı, 12px dolgu.
+   Dokunma hedefi görünmez ::after ile 44px'te tutuluyor. */
+.dh-catbar__chip {
+  height: 30px;
+  padding: 0 12px;
+  font-size: 13.5px;
+  position: relative;
+}
+.dh-catbar__chip::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 44px;
+  transform: translateY(-50%);
+}
+.dh-catbar__row { min-height: 46px; }
+@media (max-width: 575.98px) {
+  .dh-catbar__chip { height: 28px; padding: 0 10px; font-size: 12.5px; }
+}
+
+/* --- 8.3 · içerik metinleri iki yana yaslı ------------------------------
+   Kullanıcı talebi: "içerik yazılarının tamamı sağa ve sola hizalı olacak".
+   Yalnız uzun soluklu GÖVDE metni yaslanır; başlık, etiket, kart özeti,
+   meta ve footer dokunulmaz — kısa satırlarda yaslama kelime aralarını
+   açıp okumayı bozar.
+   Sayfalar lang="tr" taşıdığı için hyphens: auto tireleme yapar ve
+   yaslamanın açtığı boşlukları kapatır. */
+.post-content > p,
+.post-content > ul > li,
+.post-content > ol > li,
+.dh-doc__sec > p,
+.dh-doc__body > p,
+.dh-doc__list > li,
+.dh-m__bd > p,
+.dh-yon__c > p,
+.dh-fact > p,
+.dh-kexp > p,
+.dh-ksec__hl > p,
+.dh-duz > p,
+.dh-yz > p,
+.dh-ekip > p,
+.dh-rev__body > p,
+.dh-auth__l,
+.dh-mega__job {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+/* çok dar sütunda yaslama nehir açar — mobilde sola döner */
+@media (max-width: 575.98px) {
+  .post-content > p,
+  .post-content > ul > li,
+  .post-content > ol > li,
+  .dh-doc__sec > p,
+  .dh-doc__body > p,
+  .dh-doc__list > li,
+  .dh-m__bd > p,
+  .dh-yon__c > p,
+  .dh-fact > p,
+  .dh-kexp > p,
+  .dh-ksec__hl > p,
+  .dh-duz > p,
+  .dh-yz > p,
+  .dh-ekip > p,
+  .dh-rev__body > p,
+  .dh-auth__l,
+  .dh-mega__job { text-align: start; }
+}
+
+/* --- 8.4 · "Tümünü Gör" bağlantıları tema diline döndü -------------------
+   Ölçüm: .dh-secbar__all 16px / ağırlık 500 / siyah — bölüm BAŞLIĞIYLA
+   neredeyse aynı ağırlıkta okunuyordu. Bu bir yan bağlantı, başlık değil:
+   küçüldü, kurumsal mürekkebe geçti, yönünü söyleyen chevron aldı. */
+.dh-secbar__all,
+.dh-sport__more,
+.dh-kesf__all,
+.dh-m__note[href] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: .01em;
+  color: var(--color-primary-700) !important;
+  text-decoration: none;
+  white-space: nowrap;
+}
+html.uc-dark .dh-secbar__all,
+html.uc-dark .dh-sport__more,
+html.uc-dark .dh-kesf__all,
+html.uc-dark .dh-m__note[href] { color: var(--color-primary) !important; }
+.dh-secbar__all::after,
+.dh-sport__more::after,
+.dh-kesf__all::after {
+  content: "\203A";
+  font-size: 15px;
+  line-height: 1;
+  transform: translateY(-1px);
+  transition: transform .14s;
+}
+.dh-secbar__all:hover::after,
+.dh-sport__more:hover::after,
+.dh-kesf__all:hover::after { transform: translate(3px, -1px); }
+/* .dh-kesf__all kendi ikonunu taşıyor, ikinci ok gerekmez */
+.dh-kesf__all:has(i)::after { content: none; }
+
+/* --- 8.5 · yazar ünvanı yalnız baş harfi büyük --------------------------
+   Ölçüm: .post-author .dh-byline small -> text-transform: uppercase
+   ("Editör" kaynakta doğru yazılmış, CSS büyütüyordu). Ad ve ünvan artık
+   kaynaktaki hâliyle görünür. */
+.post-author .dh-byline,
+.post-author .dh-byline *,
+.dh-byline small,
+.dh-card__author small,
+.dh-art-hauthor small,
+.dh-person__role {
+  text-transform: none !important;
+}
+
+/* --- 8.6 · sayfalama uç düğmelerindeki çift ok --------------------------
+   İki chevron alt alta diziliyordu; yan yana ve iç içe geçmiş duruyor. */
+.dh-pager__dbl {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+.dh-pager__dbl i + i { margin-inline-start: -5px; }
+.dh-pager__nav,
+.dh-pager__pg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- 8.7 · yüzen tema anahtarı: kaydırmalı şalter yerine ay düğmesi ------
+   Kullanıcı talebi. Vendor'ın switch mekanizması korunuyor
+   (app.js [data-darkmode-switch] input'a bağlı); yalnız görünüm değişiyor.
+   Ölçüm: vendor .switch etiketi 38x22 ray + topuz çiziyor ve .slider::before
+   kendi Unicons glifini basıyordu — bu yüzden ray tamamen gizlenip ikon
+   ETİKETİN ::after'ına konuldu (vendor oraya dokunmuyor).
+   Kutu, yukarı çık düğmesiyle aynı 40px ve aynı köşe imzası.
+   Açıkken ay, karanlık moddayken güneş. */
+.dh-v2-tema { width: 40px; height: 40px; }
+.dh-v2-tema__btn {
+  position: relative;
+  display: grid !important;
+  place-items: center;
+  width: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  height: 40px !important;
+  box-sizing: border-box;
+  margin: 0 !important;
+  cursor: pointer;
+  background: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+  transition: background .14s, border-color .14s;
+}
+html.uc-dark .dh-v2-tema__btn {
+  background: var(--color-gray-800);
+  border-color: var(--color-gray-700);
+}
+.dh-v2-tema__btn:hover { border-color: var(--color-primary); }
+.dh-v2-tema__btn input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+/* vendor'ın ray + topuz görseli tamamen kalkar */
+.dh-v2-tema__btn .slider { display: none !important; }
+.dh-v2-tema__btn::after {
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 1;
+  content: "\f186";              /* fa-moon */
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-v2-tema__btn::after {
+  content: "\f185";              /* fa-sun */
+  color: var(--color-primary);
+}
+.dh-v2-tema__btn:focus-within {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
 /* ==== v2/a-gundem.css (2432 satır) ==== */
 /* v2 — a-gundem (bu dosyaya yalnız ilgili ajan yazar; cat >> ile SONA eklenir) */

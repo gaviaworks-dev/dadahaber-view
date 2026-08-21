@@ -125,6 +125,8 @@
   <!--  Menu panel -->
   <!--  Menu panel -->
   <!--  Menu panel -->
+  <!--  Menu panel -->
+  <!--  Menu panel -->
   <div id="uc-menu-panel" role="dialog" aria-modal="true" aria-label="Ana menü" data-uc-offcanvas="overlay: true;">
     <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
       <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
@@ -451,12 +453,14 @@
   <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
+  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
+  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
     <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop aria-label="Yukarı çık">
       <i class="icon-2 unicon-chevron-up"></i>
     </a>
-    <div class="darkmode-trigger dh-v2-tema cstack w-40px h-40px rounded" data-darkmode-switch>
-      <label class="switch"><span class="sr-only">Karanlık mod</span><input type="checkbox"><span class="slider fs-5"></span></label>
+    <div class="darkmode-trigger dh-v2-tema" data-darkmode-switch>
+      <label class="switch dh-v2-tema__btn"><span class="sr-only">Karanlık mod</span><input type="checkbox"><span class="slider" aria-hidden="true"></span></label>
     </div>
   </div>
 
@@ -1474,6 +1478,7 @@
 
     <!-- include app script -->
     <script defer src="./assets/js/app.js"></script>
+    <script defer src="./assets/js/footer-reveal.js"></script>
     <script defer src="./assets/js/v2/dh-sayfalama.js"></script>
     <script defer src="./assets/js/v2/dh-v2-nav.js"></script>
     <script defer src="./assets/js/v2/dh-v2-menu.js"></script>

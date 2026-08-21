@@ -13,8 +13,8 @@ YUZEN = """  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
     <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop aria-label="Yukarı çık">
       <i class="icon-2 unicon-chevron-up"></i>
     </a>
-    <div class="darkmode-trigger dh-v2-tema cstack w-40px h-40px rounded" data-darkmode-switch>
-      <label class="switch"><span class="sr-only">Karanlık mod</span><input type="checkbox"><span class="slider fs-5"></span></label>
+    <div class="darkmode-trigger dh-v2-tema" data-darkmode-switch>
+      <label class="switch dh-v2-tema__btn"><span class="sr-only">Karanlık mod</span><input type="checkbox"><span class="slider" aria-hidden="true"></span></label>
     </div>
   </div>
 """
@@ -105,6 +105,13 @@ def isle(yol):
         if m:
             s = s[:m.end()] + '    <script defer src="./assets/js/v2/dh-v2-nav.js"></script>\n' + s[m.end():]
             rapor.append("navjs")
+
+    # 4b2) footer perdesi betiği (V1 deseni)
+    if "js/footer-reveal.js" not in s:
+        m = re.search(r'[ \t]*<script defer src="\./assets/js/app\.js"></script>[ \t]*\n', s)
+        if m:
+            s = s[:m.end()] + '    <script defer src="./assets/js/footer-reveal.js"></script>\n' + s[m.end():]
+            rapor.append("perde")
 
     # 4c) perdeleme menü + kullanıcı menüsü betiği
     if "js/v2/dh-v2-menu.js" not in s:
