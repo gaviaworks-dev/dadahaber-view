@@ -10,10 +10,47 @@ Dadahaber haber sitesinin yeni görünümü. Hazır bir haber teması (`demo-six
 üzerine bölüm bölüm revizyon uygulanıyor. Site tamamen **Türkçe**, deploy **GitHub Pages**.
 
 - Çalışma dizini: `~/Developer/Backend Projects/dadahaber-view`
-- **66 HTML sayfa** (R6'da 4 yeni: `basketbol` `formula1` `bisiklet` `astroloji`;
-  R7'de 7 yeni: `voleybol` `hamilelik` `hamilelik-detay` ve dört büyük takım sayfası).
+- **67 HTML sayfa** (R6'da 4 yeni: `basketbol` `formula1` `bisiklet` `astroloji`;
+  R7'de 7 yeni: `voleybol` `hamilelik` `hamilelik-detay` ve dört büyük takım sayfası;
+  R8'de 1 yeni: `arama.html`).
   Referans üçlü: `index.html` · `haber-liste.html` · `haber-detay.html`
 - Yerel sunucu: `python3 -m http.server 8765` → http://localhost:8765/
+
+### Depo ve yayın (R8 sonunda kuruldu)
+
+| | |
+|---|---|
+| Repo | https://github.com/gaviaworks-dev/dadahaber-view · **public** |
+| Yayın | https://gaviaworks-dev.github.io/dadahaber-view/ |
+| Pages kaynağı | `main` dalı, kök dizin (`/`) |
+| Hesap | `gaviaworks-dev` (gh CLI ile giriş yapılmış) |
+
+**Dal yapısı:**
+
+| Dal | Rol |
+|---|---|
+| `main` | Yayımlanan sürüm. Pages buradan servis eder. |
+| `v1` | R8 sonundaki hâlin **donmuş kopyası — SİLİNMEZ, üzerine commit atılmaz.** |
+| `v2` | **Çalışma dalı. Yeni iş buraya yapılır.** Hazır olunca `main`'e birleştirilir. |
+
+Üçü de şu an aynı commit'te (`c60abc4`). **Yeni oturumda önce `git checkout v2`.**
+
+`v1`'i sonradan görüntülemek için: `git checkout v1` + yerel sunucu.
+v2 yayına geçtiğinde v1'in bir kopyası `main` içinde `/v1/` klasörüne konulup
+`…/dadahaber-view/v1/` adresinden kalıcı erişilebilir yapılabilir (site göreli
+yol kullanır, kopya kendi içinde tutarlı çalışır).
+
+### Yayın tuzağı — bir kez yaşandı, tekrar etmesin
+
+Site Pages'te **`/dadahaber-view/` alt dizininden** servis ediliyor, yerelde ise
+kökten. Bu yüzden:
+
+- `"../assets/..."` yolları yerelde çalışır, **canlıda 404 verir** (tarayıcı `..`'yı
+  alan adı köküne çözer). R8'de 3 sayfada 123 referans bu yüzden kırıldı, hepsi
+  `"./assets/..."` yapıldı.
+- `href="/..."` kök-mutlak yol da aynı sebeple kırılır. Şu an repoda **yok**, eklenmemeli.
+- **Kural: her yol `./` ile başlar.** Push öncesi kontrol:
+  `grep -l '"\.\./assets/\|href="/[^/]' *.html`
 
 ---
 
@@ -31,9 +68,14 @@ Dadahaber haber sitesinin yeni görünümü. Hazır bir haber teması (`demo-six
 4. **Yeni kütüphane eklenmez.** Mevcutlarla çözülür (Swiper, native scroll-snap, vanilla JS).
 5. **Değiştirmeden önce ÖLÇ.** Tahminle düzenleme yapılmaz — Playwright ile canlı ölçüm.
 6. Her revizyon ayrı commit, ölçülen değerler commit mesajında.
-   ~~Push atılmaz.~~ **GÜNCELLENDİ (R7 sonu):** kullanıcı push istedi.
-   Ancak repoda **tanımlı `origin` yok** (`git remote -v` boş) — push için
-   önce uzak adres eklenmeli.
+   **GÜNCELLENDİ (R8 sonu):** `origin` tanımlı, push serbest. İş `v2` dalına
+   yapılır; `main` yalnız birleştirmeyle güncellenir, `v1`'e dokunulmaz.
+7. **Her sayfada `<meta name="robots" content="noindex, nofollow">` durur** ve
+   kökte `robots.txt` `Disallow: /` verir. Prototip arama motorlarına kapalıdır;
+   yeni sayfa eklerken noindex satırı unutulmamalı.
+8. Temanın kullanılmayan demo CSS varyantları (`demo-two…demo-ten`, `main.css` —
+   97 MB) `.gitignore`'da. Yerel diskte duruyorlar, repoya girmiyorlar.
+   Site yalnız `demo-six.min.css` + `custom.min.css` yükler.
 
 ---
 
@@ -425,3 +467,60 @@ Pages `main` kökünden. `v1` donmuş kopya, `v2` çalışma dalı.
 Temanın kullanılmayan demo CSS varyantları (demo-two…demo-ten, main.css — 97 MB)
 `.gitignore`'a alındı; site yalnız `demo-six.min.css` yükler. Tüm sayfalara
 `noindex` + `robots.txt` eklendi.
+
+---
+
+## R8 sonu — durum ve v2'de bekleyenler
+
+### Doğrulanmış durum (67 sayfa × 10 genişlik, canlı ölçüm)
+
+| Kontrol | Sonuç |
+|---|---|
+| Yatay taşma | **0 / 67** |
+| Sayfalama markup imzası | **38 sayfa / tek imza** |
+| Mobil alt gezinme | **0 sorunlu sayfa** |
+| 16px altı form alanı | **yok** |
+| Görselde CLS riski | **0** |
+| Tablette daralan kart | **0** |
+| Konsol / JS hatası | **yok** |
+| Canlı (Pages) 404 | **0** |
+
+### v2'de ele alınacaklar — öncelik sırasıyla
+
+1. **Haber görsellerinde `srcset` yok** (2344 görsel). 390px'te 1000px'lik dosya
+   iniyor. Türev boyut üretmek gerekiyor — görseller yer tutucu olduğu için
+   R8'de bilinçli ertelendi. Gerçek içerik/CMS geldiğinde görsel hattıyla çözülmeli.
+   Logo için türevler üretildi (`logo-300w/600w`, `*-96w`), kalıp orada.
+2. **İçerik hâlâ yer tutucu.** `haber-detay.html` R8'de Türkçeleştirildi ama
+   diğer detay sayfalarında ve kartlarda yer tutucu metin/görsel sürüyor.
+3. **Hukuki metinler onaydan geçmedi** (KVKK, çerezler, kullanım şartları,
+   aydınlatma, yayın ilkeleri, künye). Yayına çıkmadan hukuk okumalı.
+4. **Gilroy ticari font**, açık lisansı yok — public repoda yayımlanıyor
+   (kullanıcı bilerek onayladı). `dadahaber.com` için alan adı lisansı teyit edilmeli.
+5. **Hamilelik bölümü tıbbi onaydan geçmedi**; 40 haftanın değerleri yer tutucu.
+6. **Kulüp armaları yok**, oyuncu adları kurgusal — tescilli marka kullanımı
+   müşteri kararı.
+7. Kadın'da modülsüz 6 kategoride haber listesi süzülmüyor (gerçek süzme backend işi).
+8. `.dh-fx__cols` / `.dh-fx__row` ızgara şablonları site genelinde birbirini
+   tutmuyor; yalnız `.dh-hub__main` kapsamında düzeltildi.
+9. Ölü kod: `.dh-live__more` / `.dh-live__morebtn` CSS'i (markup'ı kalmadı),
+   `.dh-lgpick__scope`, eski `.dh-field*` kalıntıları.
+
+### R8'de kasten düzeltilmeyenler (tekrar açılmasın)
+
+- **Paragraf içi ve kart başlığı bağlantıları 44px altında** — WCAG 2.5.5'in
+  "inline" istisnası. Büyütmek tipografiyi ve kart düzenini bozar.
+- **Kart görseli üstündeki kategori etiketi 44×19** — büyütmek kapak
+  bağlantısının alanını çalar; habere gitmek isteyen kategoriye giderdi.
+- **Slider noktaları 8×8** — alan 15×40 yapıldı (merkezler 15px arayla, daha
+  fazlası komşuya biner). WCAG 2.5.8 (24×24) sağlanıyor.
+
+### Ölçüm ortamı
+
+Playwright + Chromium, kendi scratchpad'inde kuruldu (`npm i playwright` +
+`npx playwright install chromium`, `PLAYWRIGHT_BROWSERS_PATH` ile yerel klasöre).
+Kullanılan ölçüm scriptleri: taşma taraması, `elementFromPoint` ile etkin dokunma
+alanı, `Range` ile gerçek karakter/satır sayımı, alt dizin taklidi (`page.route`
+ile `/dadahaber-view/` öneki), CDP `CSS.getMatchedStylesForNode` ile hangi kuralın
+kazandığı. **Kaskad çakışmalarını tahminle değil CDP ile çöz** — R8'de dört ayrı
+"kural uygulanmıyor" vakası bu şekilde bulundu.
