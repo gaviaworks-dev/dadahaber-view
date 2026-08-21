@@ -35,7 +35,7 @@ w('          </div>\n        </section>\n\n')
 
 w('        <section class="section panel">\n')
 w('          <div class="container max-w-xl">\n')
-w('            <div class="dh-dir">\n')
+w('            <div class="dh-dizin">\n')
 
 # --- ana kategoriler
 w('              <div>\n')
@@ -44,9 +44,9 @@ w('                  <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Ana Kat
 w('                  <div class="dh-secbar__tools">\n')
 w('                    <span class="dh-nwstamp"><i class="fas fa-bars" aria-hidden="true"></i> %d başlık</span>\n' % len(ana))
 w('                  </div>\n                </div>\n')
-w('                <div class="dh-dir__main">\n')
+w('                <div class="dh-dizin__main">\n')
 for slug, ad, hub, is_, _ in ana:
-    w('                  <a class="dh-dir__cat" data-cat="%s" href="%s"><span><b>%s</b><span>%s</span></span></a>\n'
+    w('                  <a class="dh-dizin__cat" data-cat="%s" href="%s"><span><b>%s</b><span>%s</span></span></a>\n'
       % (slug, hub, ad, is_))
 w('                </div>\n              </div>\n\n')
 
@@ -58,9 +58,9 @@ w('                  <div class="dh-secbar__tools">\n')
 w('                    <span class="dh-nwstamp"><i class="fas fa-list" aria-hidden="true"></i> %d grup</span>\n'
   % len(diger[4]))
 w('                  </div>\n                </div>\n')
-w('                <div class="dh-dir__cols">\n')
+w('                <div class="dh-dizin__cols">\n')
 for baslik, ogeler in diger[4]:
-    w('                  <div class="dh-dir__grp">\n')
+    w('                  <div class="dh-dizin__grp">\n')
     w('                    <h3>%s</h3>\n                    <ul>\n' % baslik)
     for t, h in ogeler:
         w('                      <li><a href="%s"%s>%s</a></li>\n' % (h, ext(h), t))
@@ -72,9 +72,9 @@ w('              <div>\n')
 w('                <div class="section-header panel dh-secbar">\n')
 w('                  <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Yayın Formatları</h2>\n')
 w('                </div>\n')
-w('                <div class="dh-dir__main">\n')
+w('                <div class="dh-dizin__main">\n')
 for ad, h, ik in FORMAT:
-    w('                  <a class="dh-dir__cat" data-cat="diger" href="%s"><span><b>%s</b></span></a>\n' % (h, ad))
+    w('                  <a class="dh-dizin__cat" data-cat="diger" href="%s"><span><b>%s</b></span></a>\n' % (h, ad))
 w('                </div>\n              </div>\n')
 
 w('            </div>\n          </div>\n        </section>\n')

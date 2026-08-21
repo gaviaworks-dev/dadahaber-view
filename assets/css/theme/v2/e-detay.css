@@ -892,3 +892,11 @@ html.uc-dark .dh-tabs__t[aria-selected="true"] { color: #fff; }
 @media (max-width: 575px) {
   .dh-tabs__t { padding: 10px 11px; font-size: 12.5px; }
 }
+
+/* --- denetim: reklam yer tutucusu hem soluk hem çok küçüktü ---------------
+   Ölçüm: .dh-ad__k 9,5px ve #7c7c7c/#efefef = 3,63:1 (sitedeki en küçük
+   punto). Yeni: 11px ve --color-gray-500 (#5b5b5b/#efefef = 6,26:1). */
+.dh-ad__k { font-size: 11px; color: var(--color-gray-500); }
+.dh-ad__box { font-size: 12px; color: var(--color-gray-500); }
+html.uc-dark .dh-ad__k,
+html.uc-dark .dh-ad__box { color: var(--color-gray-400); }

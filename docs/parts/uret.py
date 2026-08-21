@@ -225,7 +225,8 @@ def header():
     w('\n      <!-- 2. Marka satırı — logo · ana menü (sola yaslı) · ikonlar · giriş -->\n')
     w('      <div class="dh-v2-brand panel z-2">\n        <div class="container max-w-xl">\n')
     w('          <div class="dh-v2-brand__row dh-v2-nav__bar">\n')
-    w('            <a class="uc-menu-trigger dh-v2-menu-trigger" href="#uc-menu-panel" data-uc-toggle aria-label="Menüyü aç"></a>\n')
+    w('            <a class="uc-menu-trigger dh-v2-menu-trigger" href="#uc-menu-panel" data-uc-toggle\n')
+    w('              aria-label="Menüyü aç" aria-expanded="false" aria-controls="uc-menu-panel"></a>\n')
     w('            <div class="dh-v2-brand__logo">\n')
     w('              <a href="index.html" aria-label="Dada Haber ana sayfa">\n')
     w('                <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="180px">\n')
@@ -272,7 +273,7 @@ def header():
 def offcanvas():
     o = io.StringIO(); w = o.write
     w('  <!--  Menu panel -->\n')
-    w('  <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">\n')
+    w('  <div id="uc-menu-panel" role="dialog" aria-modal="true" aria-label="Ana menü" data-uc-offcanvas="overlay: true;">\n')
     w('    <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">\n')
     w('      <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">\n')
     w('        <div class="uc-logo">\n')
@@ -345,7 +346,7 @@ def footer():
     w('        <div class="dh-v2-foot__cols">\n')
     for baslik, ogeler in FOOTER:
         w('          <div class="dh-v2-foot__grp">\n')
-        w('            <h3>%s</h3>\n            <ul>\n' % baslik)
+        w('            <h2>%s</h2>\n            <ul>\n' % baslik)
         for t, h in ogeler:
             w('              <li><a href="%s">%s</a></li>\n' % (h, t))
         w('            </ul>\n          </div>\n')
@@ -353,7 +354,7 @@ def footer():
 
     # sağ: uygulama
     w('        <div class="dh-v2-foot__app">\n')
-    w('          <h3>Dada Haber&rsquo;i İndir</h3>\n')
+    w('          <h2>Dada Haber&rsquo;i İndir</h2>\n')
     w('          <p>Gündemi cebinde taşı. Takip ettiğin başlıklar, kaydettiğin haberler ve '
       'bildirimler uygulamada da seninle.</p>\n')
     w('          <div class="dh-v2-foot__store">\n')

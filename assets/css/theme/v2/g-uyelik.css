@@ -298,3 +298,21 @@ html.uc-dark .dh-auth__steps li.is-on { color: #fff; }
   .dh-auth__alt { grid-template-columns: 1fr; }
   .dh-auth__ben { gap: 12px; }
 }
+
+/* --- denetim: ekmek kırıntısı açık zeminde görünmüyordu -------------------
+   Ölçüm: rgba(255,255,255,.52) üzerine #efefef = 1,08:1. Kırıntı bileşeni
+   koyu kahraman için tasarlanmış; açık zeminli üyelik sayfalarında
+   mürekkep koyuya döner. Yeni ölçüm: #5b5b5b/#efefef = 6,26:1. */
+[data-dh-cat="uyelik"] .dh-art-crumb,
+[data-dh-cat="uyelik"] .dh-art-crumb a,
+[data-dh-cat="uyelik"] .dh-art-crumb span,
+[data-dh-cat="uyelik"] .dh-art-crumb i { color: var(--color-gray-500); }
+[data-dh-cat="uyelik"] .dh-art-crumb a:hover { color: var(--color-gray-900); }
+/* dokunma hedefi: ev ikonu bağlantısı 10x20 idi */
+[data-dh-cat="uyelik"] .dh-art-crumb > a:first-child {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin-inline-start: -12px;
+}

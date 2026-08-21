@@ -124,7 +124,8 @@
   <!--  Menu panel -->
   <!--  Menu panel -->
   <!--  Menu panel -->
-  <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">
+  <!--  Menu panel -->
+  <div id="uc-menu-panel" role="dialog" aria-modal="true" aria-label="Ana menü" data-uc-offcanvas="overlay: true;">
     <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
       <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
         <div class="uc-logo">
@@ -449,6 +450,7 @@
   <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
+  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
     <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop aria-label="Yukarı çık">
       <i class="icon-2 unicon-chevron-up"></i>
@@ -504,7 +506,8 @@
       <div class="dh-v2-brand panel z-2">
         <div class="container max-w-xl">
           <div class="dh-v2-brand__row dh-v2-nav__bar">
-            <a class="uc-menu-trigger dh-v2-menu-trigger" href="#uc-menu-panel" data-uc-toggle aria-label="Menüyü aç"></a>
+            <a class="uc-menu-trigger dh-v2-menu-trigger" href="#uc-menu-panel" data-uc-toggle
+              aria-label="Menüyü aç" aria-expanded="false" aria-controls="uc-menu-panel"></a>
             <div class="dh-v2-brand__logo">
               <a href="index.html" aria-label="Dada Haber ana sayfa">
                 <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="180px">
@@ -1803,7 +1806,7 @@
         </div>
         <div class="dh-v2-foot__cols">
           <div class="dh-v2-foot__grp">
-            <h3>Kategoriler</h3>
+            <h2>Kategoriler</h2>
             <ul>
               <li><a href="anlik.html">Anlık</a></li>
               <li><a href="gundem.html">Gündem</a></li>
@@ -1816,7 +1819,7 @@
             </ul>
           </div>
           <div class="dh-v2-foot__grp">
-            <h3>Formatlar</h3>
+            <h2>Formatlar</h2>
             <ul>
               <li><a href="haber-dinle.html">Haber Dinle</a></li>
               <li><a href="foto-fokus.html">Foto Fokus</a></li>
@@ -1827,7 +1830,7 @@
             </ul>
           </div>
           <div class="dh-v2-foot__grp">
-            <h3>Keşfet</h3>
+            <h2>Keşfet</h2>
             <ul>
               <li><a href="dada-ozet.html">Dada Özet</a></li>
               <li><a href="dada-baglam.html">Dada Bağlam</a></li>
@@ -1839,7 +1842,7 @@
           </div>
         </div>
         <div class="dh-v2-foot__app">
-          <h3>Dada Haber&rsquo;i İndir</h3>
+          <h2>Dada Haber&rsquo;i İndir</h2>
           <p>Gündemi cebinde taşı. Takip ettiğin başlıklar, kaydettiğin haberler ve bildirimler uygulamada da seninle.</p>
           <div class="dh-v2-foot__store">
             <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-apple" aria-hidden="true"></i><span><small>İndir</small><b>App Store</b></span></a>
@@ -1930,6 +1933,7 @@
 
     <!-- include app script -->
     <script defer src="./assets/js/app.js"></script>
+    <script defer src="./assets/js/v2/dh-sayfalama.js"></script>
     <script defer src="./assets/js/v2/dh-v2-nav.js"></script>
     <script defer src="./assets/js/v2/dh-v2-menu.js"></script>
     <script defer src="./assets/js/v2/dh-arama.js"></script>

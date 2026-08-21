@@ -881,3 +881,140 @@ time,
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
 }
+
+/* ============================================================================
+   7. DENETİM DÜZELTMELERİ (UI/UX turu, 21 Ağustos 2026)
+   Her madde ÖLÇÜLEREK açıldı; ölçüm yorumda.
+   ========================================================================== */
+
+/* --- 7.1 · ikincil metin grisi hiçbir yüzeyde AA geçmiyordu ---------------
+   Ölçüm: --color-gray-400 #7c7c7c → beyaz 4,17:1 · #fafafa 4,00:1 ·
+   #efefef 3,63:1 · #dedede 3,10:1. Hepsi 4,5:1 eşiğinin altında.
+   Token tek adım koyulaştı: #6b6b6b → beyaz 5,33:1 · #efefef 4,64:1.
+   Vendor dosyasına dokunmadan, v2 katmanından. */
+:root { --color-gray-400: #6b6b6b; }
+html.uc-dark { --color-gray-400: #9a9a9a; }
+
+/* --- 7.2 · kabuk eylem düğmeleri: görünür kutu 34px, dokunma hedefi 44px --
+   Ölçüm: .dh-v2-act 34x34 (WCAG 2.5.5 için 44 gerek). Bant yüksekliği
+   36px olduğu için kutu büyütülmedi; hedef görünmez katmanla genişletildi. */
+.dh-v2-act { position: relative; }
+.dh-v2-act::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+/* aynı çözüm menü tetikleyicisi ve offcanvas kapatma düğmesi için */
+.dh-v2-menu-trigger { position: relative; }
+.dh-v2-menu-trigger::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 44px; height: 44px;
+  transform: translate(-50%, -50%);
+}
+.uc-offcanvas-close { position: relative; }
+.uc-offcanvas-close::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 44px; height: 44px;
+  transform: translate(-50%, -50%);
+}
+/* --- 7.3 · offcanvas kapatma düğmesinde odak halkası yoktu ---------------- */
+.uc-offcanvas-close:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 8px 8px 8px 0;
+}
+
+/* --- 7.4 · yüzen yığın alt gezintinin altında kalıyordu -------------------
+   Ölçüm: .backtotop-wrap alt kenarı 812, .dh-bnav üst kenarı 787 → 25px
+   örtüşme. İki ayrı sebep vardı:
+     1) vendor'ın .bottom-0 utility'si !important taşıyor,
+     2) yığının KENDİSİNDE vendor'ın gizle/göster animasyonundan gelen
+        transform: translateY(40px) var — bottom değeri kadar yukarı
+        itmiyor, 40px geri düşürüyor.
+   Bu yüzden ofset alt gezinti yüksekliği + o 40px. */
+@media (max-width: 991.98px) {
+  .backtotop-wrap.bottom-0 {
+    bottom: calc(var(--dh-bnav-h, 56px) + 40px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+/* --- 7.5 · yüzen "görüş bildir" düğmesi açık menünün üstüne biniyordu -----
+   Ölçüm: düğme z-index 1001, #uc-menu-panel 1000. */
+html.uc-offcanvas-page .position-right-turn,
+html.uc-offcanvas-page .backtotop-wrap { display: none !important; }
+/* Ölçüm: düğme çocuğu 1440px görünümde x=1444 — 4px taşıyordu. */
+.position-right-turn { inset-inline-end: 0 !important; }
+
+/* --- 7.6 · 1024px'te hiçbir gezinti yoktu --------------------------------
+   Ölçüm: 1024'te mega menü gizli (eşik 1280), alt gezinti de gizli
+   (eşik 992). Geriye yalnız hamburger kalıyordu. Alt gezinti eşiği
+   masaüstü menünün kapandığı yere çekildi. */
+@media (max-width: 1279.98px) {
+  .dh-bnav { display: block; }
+  body.uni-body { padding-bottom: calc(var(--dh-bnav-h, 56px) + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* --- 7.7 · footer alt satırları AA geçmiyordu ----------------------------
+   Ölçüm: rgba(255,255,255,.34)/#121212 = 3,10:1 · .42 = 4,10:1.
+   Yeni: .58 = 6,3:1 · .66 = 7,6:1. */
+.dh-v2-foot__rights { color: rgba(255, 255, 255, .66); }
+.dh-v2-foot__copy span { color: rgba(255, 255, 255, .58); font-size: 11px; }
+
+/* --- 7.8 · footer bölüm başlıkları h3'tü, h1'den sonra seviye atlıyordu ---
+   İşaretleme h2'ye çıktı; görsel ağırlık aynı kalsın diye boyut sabitlendi. */
+.dh-v2-foot h2 {
+  margin: 0 0 14px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  color: #fff;
+}
+
+/* --- 7.9 · köşe imzası bozuk bileşenler ----------------------------------
+   Kural: yarıçap 8px 8px 8px 0 (sol-alt keskin). Denetimde en sık
+   tekrarlayanlar düzeltildi. */
+.dh-store-badge { border-radius: 12px 12px 12px 0 !important; }
+.dh-share__btn,
+.dh-secbar__nav button,
+.dh-secbar__nav { border-radius: 8px 8px 8px 0 !important; }
+.dh-auth__eye { border-radius: 6px 6px 6px 0; }
+.dh-cta { border-radius: 16px 16px 16px 0 !important; }
+.position-right-turn { border-radius: 8px 0 0 8px !important; }
+.dh-tabs__t[aria-selected="true"],
+.dh-tabs__t { border-radius: 8px 8px 0 0; }
+
+/* --- 7.10 · 10px altı metin --------------------------------------------- */
+.dh-store-badge small { font-size: 11px; }
+.dh-auth__kicker,
+.dh-auth__or { font-size: 11px; }
+
+/* --- 7.11 · ölü sayfalama ve yer tutucu bağlantılar -----------------------
+   Prototipte hedefi olmayan kumandalar tıklanabilir görünmemeli. */
+[aria-disabled="true"] { cursor: default; opacity: .55; pointer-events: none; }
+
+/* --- 7.12 · SON DAKİKA rozeti manşeti örtüyordu --------------------------
+   Ölçüm (390px): rozet x=16–119, kayan öğe x=44 — 75px metin rozetin
+   altında kalıyordu. Şeride rozet genişliği kadar iç boşluk verildi. */
+@media (max-width: 767.98px) {
+  .dh-breaking__track,
+  .dh-breaking .swiper { padding-inline-start: 112px; }
+}
+
+/* --- 7.13 · sayfalama durum satırı ---------------------------------------
+   Sayfalayıcı artık gerçekten çalışıyor; hangi aralığın gösterildiğini
+   ekran okuyucuya ve göze aynı anda söyler. */
+.dh-pager__durum {
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  color: var(--color-gray-500);
+  text-align: center;
+}
+html.uc-dark .dh-pager__durum { color: var(--color-gray-400); }
+.dh-pager__nav.is-off { opacity: .38; cursor: default; pointer-events: none; }

@@ -123,7 +123,8 @@
   <!--  Menu panel -->
   <!--  Menu panel -->
   <!--  Menu panel -->
-  <div id="uc-menu-panel" data-uc-offcanvas="overlay: true;">
+  <!--  Menu panel -->
+  <div id="uc-menu-panel" role="dialog" aria-modal="true" aria-label="Ana menü" data-uc-offcanvas="overlay: true;">
     <div class="uc-offcanvas-bar bg-white text-dark dark:bg-gray-900 dark:text-white">
       <header class="uc-offcanvas-header hstack justify-between items-center pb-4 bg-white dark:bg-gray-900">
         <div class="uc-logo">
@@ -448,6 +449,7 @@
   <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
+  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
     <a class="btn btn-sm bg-primary text-white w-40px h-40px rounded" href="#" data-uc-backtotop aria-label="Yukarı çık">
       <i class="icon-2 unicon-chevron-up"></i>
@@ -503,7 +505,8 @@
       <div class="dh-v2-brand panel z-2">
         <div class="container max-w-xl">
           <div class="dh-v2-brand__row dh-v2-nav__bar">
-            <a class="uc-menu-trigger dh-v2-menu-trigger" href="#uc-menu-panel" data-uc-toggle aria-label="Menüyü aç"></a>
+            <a class="uc-menu-trigger dh-v2-menu-trigger" href="#uc-menu-panel" data-uc-toggle
+              aria-label="Menüyü aç" aria-expanded="false" aria-controls="uc-menu-panel"></a>
             <div class="dh-v2-brand__logo">
               <a href="index.html" aria-label="Dada Haber ana sayfa">
                 <img class="d-block dark:d-none" src="./assets/images/logos/logo.png" alt="Dada Haber" srcset="./assets/images/logos/logo-300w.png 300w, ./assets/images/logos/logo-600w.png 600w, ./assets/images/logos/logo.png 1198w" sizes="180px">
@@ -944,7 +947,7 @@
 
         <section class="section panel">
           <div class="container max-w-xl">
-            <div class="dh-dir">
+            <div class="dh-dizin">
               <div>
                 <div class="section-header panel dh-secbar">
                   <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Ana Kategoriler</h2>
@@ -952,14 +955,14 @@
                     <span class="dh-nwstamp"><i class="fas fa-bars" aria-hidden="true"></i> 7 başlık</span>
                   </div>
                 </div>
-                <div class="dh-dir__main">
-                  <a class="dh-dir__cat" data-cat="anlik" href="anlik.html"><span><b>Anlık</b><span>Günün anlık gelişmelerinin toplandığı canlı merkez.</span></span></a>
-                  <a class="dh-dir__cat" data-cat="gundem" href="gundem.html"><span><b>Gündem</b><span>Türkiye, siyaset, toplum, hukuk ve yerel haberler.</span></span></a>
-                  <a class="dh-dir__cat" data-cat="dunya" href="dunya.html"><span><b>Dünya</b><span>Bölgeler, diplomasi ve küresel gelişmeler.</span></span></a>
-                  <a class="dh-dir__cat" data-cat="ekonomi" href="ekonomi.html"><span><b>Finans</b><span>Piyasalar, kişisel finans, sektörler ve iş dünyası.</span></span></a>
-                  <a class="dh-dir__cat" data-cat="savunma" href="savunma.html"><span><b>Savunma</b><span>Savunma sanayii, millî projeler ve güvenlik gündemi.</span></span></a>
-                  <a class="dh-dir__cat" data-cat="spor" href="spor.html"><span><b>Spor</b><span>Branşlar, canlı skorlar, puan durumu ve fikstür.</span></span></a>
-                  <a class="dh-dir__cat" data-cat="kadin" href="kadin.html"><span><b>Kadın</b><span>Kadın gündemi, sağlık, hak ve yaşam içerikleri.</span></span></a>
+                <div class="dh-dizin__main">
+                  <a class="dh-dizin__cat" data-cat="anlik" href="anlik.html"><span><b>Anlık</b><span>Günün anlık gelişmelerinin toplandığı canlı merkez.</span></span></a>
+                  <a class="dh-dizin__cat" data-cat="gundem" href="gundem.html"><span><b>Gündem</b><span>Türkiye, siyaset, toplum, hukuk ve yerel haberler.</span></span></a>
+                  <a class="dh-dizin__cat" data-cat="dunya" href="dunya.html"><span><b>Dünya</b><span>Bölgeler, diplomasi ve küresel gelişmeler.</span></span></a>
+                  <a class="dh-dizin__cat" data-cat="ekonomi" href="ekonomi.html"><span><b>Finans</b><span>Piyasalar, kişisel finans, sektörler ve iş dünyası.</span></span></a>
+                  <a class="dh-dizin__cat" data-cat="savunma" href="savunma.html"><span><b>Savunma</b><span>Savunma sanayii, millî projeler ve güvenlik gündemi.</span></span></a>
+                  <a class="dh-dizin__cat" data-cat="spor" href="spor.html"><span><b>Spor</b><span>Branşlar, canlı skorlar, puan durumu ve fikstür.</span></span></a>
+                  <a class="dh-dizin__cat" data-cat="kadin" href="kadin.html"><span><b>Kadın</b><span>Kadın gündemi, sağlık, hak ve yaşam içerikleri.</span></span></a>
                 </div>
               </div>
 
@@ -970,8 +973,8 @@
                     <span class="dh-nwstamp"><i class="fas fa-list" aria-hidden="true"></i> 6 grup</span>
                   </div>
                 </div>
-                <div class="dh-dir__cols">
-                  <div class="dh-dir__grp">
+                <div class="dh-dizin__cols">
+                  <div class="dh-dizin__grp">
                     <h3>Teknoloji ve bilim</h3>
                     <ul>
                       <li><a href="teknoloji.html">Teknoloji</a></li>
@@ -985,7 +988,7 @@
                       <li><a href="haber-liste.html">Ürün İncelemeleri</a></li>
                     </ul>
                   </div>
-                  <div class="dh-dir__grp">
+                  <div class="dh-dizin__grp">
                     <h3>Sağlık ve yaşam</h3>
                     <ul>
                       <li><a href="saglik.html">Sağlık</a></li>
@@ -998,7 +1001,7 @@
                       <li><a href="https://dadamutfak.com/" target="_blank" rel="noopener">Gastronomi</a></li>
                     </ul>
                   </div>
-                  <div class="dh-dir__grp">
+                  <div class="dh-dizin__grp">
                     <h3>Kültür ve sanat</h3>
                     <ul>
                       <li><a href="kultur-yasam.html">Kültür &amp; Yaşam</a></li>
@@ -1012,7 +1015,7 @@
                       <li><a href="astroloji.html">Astroloji</a></li>
                     </ul>
                   </div>
-                  <div class="dh-dir__grp">
+                  <div class="dh-dizin__grp">
                     <h3>Gelecek ve eğitim</h3>
                     <ul>
                       <li><a href="gelecek.html">Gelecek</a></li>
@@ -1026,7 +1029,7 @@
                       <li><a href="haber-liste.html">Gençlerin Gündemi</a></li>
                     </ul>
                   </div>
-                  <div class="dh-dir__grp">
+                  <div class="dh-dizin__grp">
                     <h3>Keşfet formatları</h3>
                     <ul>
                       <li><a href="kesfet.html">Keşfet</a></li>
@@ -1039,7 +1042,7 @@
                       <li><a href="sakin-akis.html">Sakin Akış</a></li>
                     </ul>
                   </div>
-                  <div class="dh-dir__grp">
+                  <div class="dh-dizin__grp">
                     <h3>Medya ve arşiv</h3>
                     <ul>
                       <li><a href="video.html">Video</a></li>
@@ -1060,12 +1063,12 @@
                 <div class="section-header panel dh-secbar">
                   <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Yayın Formatları</h2>
                 </div>
-                <div class="dh-dir__main">
-                  <a class="dh-dir__cat" data-cat="diger" href="haber-dinle.html"><span><b>Haber Dinle</b></span></a>
-                  <a class="dh-dir__cat" data-cat="diger" href="foto-fokus.html"><span><b>Foto Fokus</b></span></a>
-                  <a class="dh-dir__cat" data-cat="diger" href="video.html"><span><b>Video Haber</b></span></a>
-                  <a class="dh-dir__cat" data-cat="diger" href="infografik.html"><span><b>İnfografik</b></span></a>
-                  <a class="dh-dir__cat" data-cat="diger" href="podcast.html"><span><b>Podcast</b></span></a>
+                <div class="dh-dizin__main">
+                  <a class="dh-dizin__cat" data-cat="diger" href="haber-dinle.html"><span><b>Haber Dinle</b></span></a>
+                  <a class="dh-dizin__cat" data-cat="diger" href="foto-fokus.html"><span><b>Foto Fokus</b></span></a>
+                  <a class="dh-dizin__cat" data-cat="diger" href="video.html"><span><b>Video Haber</b></span></a>
+                  <a class="dh-dizin__cat" data-cat="diger" href="infografik.html"><span><b>İnfografik</b></span></a>
+                  <a class="dh-dizin__cat" data-cat="diger" href="podcast.html"><span><b>Podcast</b></span></a>
                 </div>
               </div>
             </div>
@@ -1189,7 +1192,7 @@
         </div>
         <div class="dh-v2-foot__cols">
           <div class="dh-v2-foot__grp">
-            <h3>Kategoriler</h3>
+            <h2>Kategoriler</h2>
             <ul>
               <li><a href="anlik.html">Anlık</a></li>
               <li><a href="gundem.html">Gündem</a></li>
@@ -1202,7 +1205,7 @@
             </ul>
           </div>
           <div class="dh-v2-foot__grp">
-            <h3>Formatlar</h3>
+            <h2>Formatlar</h2>
             <ul>
               <li><a href="haber-dinle.html">Haber Dinle</a></li>
               <li><a href="foto-fokus.html">Foto Fokus</a></li>
@@ -1213,7 +1216,7 @@
             </ul>
           </div>
           <div class="dh-v2-foot__grp">
-            <h3>Keşfet</h3>
+            <h2>Keşfet</h2>
             <ul>
               <li><a href="dada-ozet.html">Dada Özet</a></li>
               <li><a href="dada-baglam.html">Dada Bağlam</a></li>
@@ -1225,7 +1228,7 @@
           </div>
         </div>
         <div class="dh-v2-foot__app">
-          <h3>Dada Haber&rsquo;i İndir</h3>
+          <h2>Dada Haber&rsquo;i İndir</h2>
           <p>Gündemi cebinde taşı. Takip ettiğin başlıklar, kaydettiğin haberler ve bildirimler uygulamada da seninle.</p>
           <div class="dh-v2-foot__store">
             <a class="dh-store-badge" href="hesabim.html#uygulama"><i class="fa-brands fa-apple" aria-hidden="true"></i><span><small>İndir</small><b>App Store</b></span></a>

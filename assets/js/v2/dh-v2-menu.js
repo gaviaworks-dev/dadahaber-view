@@ -127,4 +127,48 @@
       });
     }
   }
+  /* ------------------------------------------- mobil menü: aria + odak dönüşü
+     Vendor offcanvas'ı açılıp kapanıyor ama tetikleyicide aria-expanded
+     güncellenmiyor ve kapanışta odak gövdeye düşüyordu (denetimde ölçüldü).
+     Panelin sınıfını izleyip ikisini de düzeltiyoruz. */
+  var panel = document.getElementById('uc-menu-panel');
+  var tetikler = document.querySelectorAll('[aria-controls="uc-menu-panel"]');
+  if (panel && tetikler.length && window.MutationObserver) {
+    var sonAcik = false;
+    var izleyici = new MutationObserver(function () {
+      var acikMi = panel.classList.contains('uc-open');
+      if (acikMi === sonAcik) return;
+      sonAcik = acikMi;
+      for (var i = 0; i < tetikler.length; i++) {
+        tetikler[i].setAttribute('aria-expanded', String(acikMi));
+      }
+      if (!acikMi) {
+        /* Kapanışta odak, menüyü açan düğmeye döner. Vendor kapanış
+           animasyonunu bitirirken odağı gövdeye alıyor (ölçüldü), o yüzden
+           bir sonraki kareye erteleniyor. */
+        var gorunur = null;
+        for (var j = 0; j < tetikler.length; j++) {
+          if (tetikler[j].offsetParent !== null) { gorunur = tetikler[j]; break; }
+        }
+        /* panel kapanırken tetikleyici geçici olarak ölçülemez olabiliyor;
+           hiçbiri görünür bulunamazsa ilkine dönülür. */
+        if (!gorunur) gorunur = tetikler[0];
+        if (gorunur) {
+          /* Vendor kapanış animasyonu (duration:150) bittikten SONRA odağı
+             gövdeye alıyor; 60ms'te verilen odak geri alınıyordu (ölçüldü).
+             Hem animasyon sonrası zamanlayıcı hem vendor'ın 'hidden' olayı
+             kullanılıyor — hangisi önce gelirse. */
+          var geriVer = function () {
+            if (!panel.classList.contains('uc-open')) gorunur.focus();
+          };
+          setTimeout(geriVer, 300);
+          panel.addEventListener('hidden', function bir() {
+            panel.removeEventListener('hidden', bir);
+            setTimeout(geriVer, 0);
+          });
+        }
+      }
+    });
+    izleyici.observe(panel, { attributes: true, attributeFilter: ['class'] });
+  }
 })();
