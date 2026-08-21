@@ -1,1 +1,878 @@
 /* v2 — b-bolum (bu dosyaya yalnız ilgili ajan yazar; cat >> ile SONA eklenir) */
+
+/* ============================================================================
+   v2 / B — BÖLÜM MERKEZLERİ
+   ekonomi.html · gelecek.html · kultur-yasam.html
+   Dokümanın 4.4 / 4.6 / 4.9 grupları SAYFA YAPISINA çevrildi: her grup bir
+   bant, bandın içinde grubun TÜM alt başlıkları gerçek giriş kutusu olarak.
+   Kimlik rengi yalnız bu parçanın bileşenlerinde; kabuk kurumsal amber kalır.
+   ========================================================================== */
+
+/* --- B0. Kimlik anahtarları -----------------------------------------------
+   .dh-lb ve .dh-catbar perdesi custom.min.css'te data-cat ile tanımlı; üç yeni
+   kategori oraya yazılamayacağı için (v1 kopyası o dosyayı paylaşıyor) burada.
+   Mürekkep tonları beyaz zeminde ölçüldü:
+     ekonomi #1b7c83 4,93:1 · gelecek #6a1bd1 7,80:1 · kültür #b3204d 6,50:1
+   Koyu temada #121212 zeminde:
+     #5fd0d8 9,54:1 · #c4a6ff 9,20:1 · #ff8aa8 8,51:1
+   ------------------------------------------------------------------------- */
+.dh-lb[data-cat="ekonomi"] { --dh-cat: #2aa1a9; }
+.dh-lb[data-cat="gelecek"] { --dh-cat: #6a1bd1; }
+.dh-lb[data-cat="kultur"]  { --dh-cat: #b3204d; }
+
+.dh-catbar[data-cat="ekonomi"] { --dh-cat: #2aa1a9; }
+.dh-catbar[data-cat="gelecek"] { --dh-cat: #6a1bd1; }
+.dh-catbar[data-cat="kultur"]  { --dh-cat: #b3204d; }
+
+html.uc-dark .dh-catbar[data-cat="ekonomi"] { --dh-cat: #57d0d8; }
+html.uc-dark .dh-catbar[data-cat="gelecek"] { --dh-cat: #c4a6ff; }
+html.uc-dark .dh-catbar[data-cat="kultur"]  { --dh-cat: #ff8aa8; }
+
+/* Bölüm merkezinin sayfa geneli kimliği: yalnız .dh-b* bileşenleri okur. */
+body[data-dh-cat="ekonomi"] { --dh-bcat: #2aa1a9; --dh-bcat-ink: #1b7c83; }
+body[data-dh-cat="gelecek"] { --dh-bcat: #6a1bd1; --dh-bcat-ink: #6a1bd1; }
+body[data-dh-cat="kultur"]  { --dh-bcat: #b3204d; --dh-bcat-ink: #b3204d; }
+
+html.uc-dark body[data-dh-cat="ekonomi"] { --dh-bcat: #57d0d8; --dh-bcat-ink: #5fd0d8; }
+html.uc-dark body[data-dh-cat="gelecek"] { --dh-bcat: #c4a6ff; --dh-bcat-ink: #c4a6ff; }
+html.uc-dark body[data-dh-cat="kultur"]  { --dh-bcat: #ff8aa8; --dh-bcat-ink: #ff8aa8; }
+
+/* Ortak yüzey token'ları — .dh-finpanel ailesindeki hairline diliyle aynı */
+:root {
+  --dh-b-line: rgba(18, 18, 18, 0.09);
+  --dh-b-surface: #fff;
+  --dh-b-soft: rgba(18, 18, 18, 0.028);
+}
+
+html.uc-dark {
+  --dh-b-line: rgba(255, 255, 255, 0.12);
+  --dh-b-surface: var(--color-gray-900);
+  --dh-b-soft: rgba(255, 255, 255, 0.035);
+}
+
+/* --- B1. Grup bandı başlığı (.dh-bgrp) ------------------------------------
+   Bölüm başlığı (.dh-secbar) bir listeyi açar; GRUP bandı birden çok bölümü
+   kapsar, o yüzden bir kademe üstte durur: 4px kimlik şeridi + üst etiket +
+   h2 + tek cümlelik işlev + alt başlık sayacı.
+   ------------------------------------------------------------------------- */
+.dh-bgrp {
+  display: grid;
+  grid-template-columns: 4px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0 18px;
+  margin: 0 0 26px;
+}
+
+.dh-bgrp__bar {
+  align-self: stretch;
+  min-height: 46px;
+  border-radius: 3px 3px 3px 0;
+  background: var(--dh-bcat, var(--dh-brand));
+}
+
+.dh-bgrp__kicker {
+  display: block;
+  margin-bottom: 7px;
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-bgrp__kicker { color: rgba(255, 255, 255, 0.66); }
+
+.dh-bgrp__title {
+  margin: 0;
+  font-size: clamp(21px, 2.4vw, 30px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-bgrp__title { color: #fff; }
+
+.dh-bgrp__desc {
+  max-width: 62ch;
+  margin: 8px 0 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-bgrp__desc { color: rgba(255, 255, 255, 0.74); }
+
+.dh-bgrp__count {
+  flex: 0 0 auto;
+  align-self: center;
+  padding: 7px 12px;
+  border: 1px solid var(--dh-b-line);
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-b-surface);
+  font-family: var(--dh-mono);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--color-gray-600);
+}
+
+.dh-bgrp__count b {
+  font-weight: 700;
+  color: var(--dh-bcat-ink, var(--color-gray-900));
+}
+
+html.uc-dark .dh-bgrp__count { color: rgba(255, 255, 255, 0.74); }
+
+@media (max-width: 767.98px) {
+  .dh-bgrp {
+    grid-template-columns: 4px minmax(0, 1fr);
+    gap: 0 14px;
+    margin-bottom: 20px;
+  }
+  .dh-bgrp__count {
+    grid-column: 2;
+    justify-self: start;
+    margin-top: 12px;
+  }
+}
+
+/* --- B2. Alt başlık giriş ızgarası (.dh-blinks / .dh-blink) ----------------
+   Dokümandaki HER alt başlık burada gerçek bir giriş kutusu olur; menü
+   kopyası değil, ne bulacağını söyleyen bir kapı. Sayaç var(--dh-mono)
+   ile — v2'de veri sesi bu.
+   ------------------------------------------------------------------------- */
+.dh-blinks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  gap: 12px;
+  margin: 0 0 34px;
+  padding: 0;
+  list-style: none;
+}
+
+.dh-blink {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 96px;
+  padding: 14px 15px 13px 18px;
+  border: 1px solid var(--dh-b-line);
+  border-radius: 12px 12px 12px 0;
+  background: var(--dh-b-surface);
+  text-decoration: none;
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.dh-blink::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 0;
+  width: 3px;
+  border-radius: 2px 2px 2px 0;
+  background: var(--dh-bcat, var(--dh-brand));
+  opacity: .55;
+  transition: opacity .15s ease;
+}
+
+.dh-blink:hover,
+.dh-blink:focus-visible {
+  border-color: var(--dh-bcat, var(--dh-brand));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(18, 18, 18, .07);
+}
+
+.dh-blink:hover::before,
+.dh-blink:focus-visible::before { opacity: 1; }
+
+.dh-blink:focus-visible {
+  outline: 2px solid var(--dh-bcat, var(--dh-brand));
+  outline-offset: 2px;
+}
+
+.dh-blink__ad {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-blink__ad { color: #fff; }
+
+.dh-blink__ad i {
+  flex: 0 0 auto;
+  font-size: 11px;
+  color: var(--dh-bcat-ink, var(--color-gray-600));
+}
+
+.dh-blink__not {
+  flex: 1 1 auto;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-blink__not { color: rgba(255, 255, 255, 0.7); }
+
+.dh-blink__sayi {
+  font-family: var(--dh-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-blink__sayi { color: rgba(255, 255, 255, 0.6); }
+
+/* Sayfası olan alt başlık: kutu kimlik renginde dolgulu bir işaret taşır */
+.dh-blink--go .dh-blink__sayi { color: var(--dh-bcat-ink, var(--color-gray-600)); font-weight: 700; }
+
+@media (max-width: 575.98px) {
+  .dh-blinks { grid-template-columns: 1fr; gap: 10px; margin-bottom: 26px; }
+  .dh-blink { min-height: 0; }
+}
+
+/* --- B3. Sayaç şeridi (.dh-bstat) -----------------------------------------
+   Bölümün "şu an ne var" özeti. Rakam mono, etiket küçük.
+   ------------------------------------------------------------------------- */
+.dh-bstat {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--dh-b-line);
+  border-radius: 12px 12px 12px 0;
+  background: var(--dh-b-line);
+  list-style: none;
+}
+
+.dh-bstat__it {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 15px 17px;
+  background: var(--dh-b-surface);
+  text-decoration: none;
+}
+
+a.dh-bstat__it:hover { background: var(--dh-b-soft); }
+
+a.dh-bstat__it:focus-visible {
+  outline: 2px solid var(--dh-bcat, var(--dh-brand));
+  outline-offset: -2px;
+}
+
+.dh-bstat__val {
+  font-family: var(--dh-mono);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--dh-bcat-ink, var(--color-gray-900));
+}
+
+.dh-bstat__lbl {
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-bstat__lbl { color: rgba(255, 255, 255, 0.72); }
+
+/* --- B4. Fırsatlar: son başvuru tarihli, süzülebilir liste (.dh-firsat) ----
+   gelecek.html#firsatlar. Veri sayfadaki JSON bloğunda, işaretleme
+   data-dh-firsat-* niteliklerinde, davranış assets/js/v2/dh-firsat.js'te —
+   dh-astro.js / dh-kadin.js ile aynı sözleşme. Backend gelince yalnız JSON
+   değişir.
+   Süzgeç çipleri VERİ değiştiriyor, sayfa değiştirmiyor: HANDOFF R7 kararına
+   göre role="radiogroup" + role="radio" (tablist DEĞİL).
+   ------------------------------------------------------------------------- */
+.dh-firsat {
+  border: 1px solid var(--dh-b-line);
+  border-radius: 14px 14px 14px 0;
+  background: var(--dh-b-surface);
+  overflow: hidden;
+}
+
+.dh-firsat__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 18px;
+  padding: 15px 18px 14px 21px;
+  border-bottom: 1px solid var(--dh-b-line);
+  position: relative;
+}
+
+.dh-firsat__head::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 0;
+  width: 3px;
+  border-radius: 2px 2px 2px 0;
+  background: var(--dh-bcat, var(--dh-brand));
+}
+
+.dh-firsat__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-firsat__title { color: #fff; }
+
+.dh-firsat__sub {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-firsat__sub { color: rgba(255, 255, 255, 0.72); }
+
+.dh-firsat__sayi {
+  margin: 0;
+  font-family: var(--dh-mono);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--color-gray-600);
+}
+
+.dh-firsat__sayi b { font-weight: 700; color: var(--dh-bcat-ink, var(--color-gray-900)); }
+
+html.uc-dark .dh-firsat__sayi { color: rgba(255, 255, 255, 0.72); }
+
+/* ---- süzgeç ---- */
+.dh-firsat__filtre {
+  display: grid;
+  gap: 12px;
+  padding: 15px 18px 16px 21px;
+  border-bottom: 1px solid var(--dh-b-line);
+  background: var(--dh-b-soft);
+}
+
+.dh-firsat__grp {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.dh-firsat__lbl {
+  flex: 0 0 auto;
+  min-width: 92px;
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-firsat__lbl { color: rgba(255, 255, 255, 0.66); }
+
+.dh-firsat__chip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 13px;
+  border: 1px solid var(--dh-b-line);
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-b-surface);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-gray-700);
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease, color .15s ease;
+}
+
+/* R8 dokunma hedefi: görsel yükseklik 34px, etkin alan 44px */
+.dh-firsat__chip { position: relative; }
+
+.dh-firsat__chip::after {
+  content: "";
+  position: absolute;
+  inset: -5px -2px;
+}
+
+.dh-firsat__chip:hover { border-color: var(--dh-bcat, var(--dh-brand)); }
+
+.dh-firsat__chip[aria-checked="true"] {
+  border-color: var(--dh-bcat, var(--dh-brand));
+  background: var(--dh-bcat, var(--dh-brand));
+  color: #fff;
+}
+
+.dh-firsat__chip:focus-visible {
+  outline: 2px solid var(--dh-bcat, var(--dh-brand));
+  outline-offset: 2px;
+}
+
+html.uc-dark .dh-firsat__chip { color: rgba(255, 255, 255, 0.84); }
+
+/* Koyu temada kimlik renkleri AÇIK; üstüne beyaz metin 1,x:1 kalır.
+   Seçili çipin mürekkebi bu yüzden koyu gri-900 (ölçüm: #c4a6ff üstü
+   #121212 9,20:1 · #ff8aa8 üstü 8,51:1 · #57d0d8 üstü 9,54:1). */
+html.uc-dark .dh-firsat__chip[aria-checked="true"] { color: #121212; }
+
+/* ---- liste ---- */
+.dh-firsat__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dh-firsat__it {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 18px;
+  padding: 14px 18px 14px 21px;
+  border-bottom: 1px solid var(--dh-b-line);
+}
+
+.dh-firsat__it:last-child { border-bottom: 0; }
+
+.dh-firsat__it:hover { background: var(--dh-b-soft); }
+
+.dh-firsat__tarih {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 8px 4px;
+  border: 1px solid var(--dh-b-line);
+  border-radius: 10px 10px 10px 0;
+  background: var(--dh-b-soft);
+  font-family: var(--dh-mono);
+  line-height: 1;
+}
+
+.dh-firsat__gun { font-size: 20px; font-weight: 700; color: var(--color-gray-900); }
+.dh-firsat__ay  { font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--color-gray-600); }
+
+html.uc-dark .dh-firsat__gun { color: #fff; }
+html.uc-dark .dh-firsat__ay { color: rgba(255, 255, 255, 0.7); }
+
+.dh-firsat__ad {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.dh-firsat__ad a {
+  color: var(--color-gray-900);
+  text-decoration: none;
+}
+
+.dh-firsat__ad a:hover { text-decoration: underline; }
+
+.dh-firsat__ad a:focus-visible {
+  outline: 2px solid var(--dh-bcat, var(--dh-brand));
+  outline-offset: 2px;
+}
+
+html.uc-dark .dh-firsat__ad a { color: #fff; }
+
+.dh-firsat__meta {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-firsat__meta { color: rgba(255, 255, 255, 0.72); }
+
+.dh-firsat__tur {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-b-soft);
+  border: 1px solid var(--dh-b-line);
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--dh-bcat-ink, var(--color-gray-700));
+}
+
+.dh-firsat__kime {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dh-firsat__kime i { font-size: 11px; opacity: .7; }
+
+/* Kalan gün rozeti — yön renkleri custom.min.css'te AA ölçülmüş
+   (--dh-up 5,51:1 · --dh-down 5,94:1). Renge ek olarak metin de
+   uyarıyı taşıyor; renk körlüğü için tek işaret renk değil. */
+.dh-firsat__kal {
+  grid-row: span 2;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-b-soft);
+  font-family: var(--dh-mono);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--color-gray-700);
+}
+
+html.uc-dark .dh-firsat__kal { color: rgba(255, 255, 255, 0.82); }
+
+.dh-firsat__it.is-yakin .dh-firsat__kal {
+  background: var(--dh-down-soft);
+  color: var(--dh-down);
+}
+
+.dh-firsat__it.is-yakin .dh-firsat__tarih {
+  border-color: var(--dh-down);
+}
+
+.dh-firsat__it.is-yeni .dh-firsat__kal { color: var(--dh-up); background: var(--dh-up-soft); }
+
+.dh-firsat__bos {
+  margin: 0;
+  padding: 26px 21px;
+  font-size: 14px;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-firsat__bos { color: rgba(255, 255, 255, 0.72); }
+
+.dh-firsat__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding: 14px 18px 14px 21px;
+  border-top: 1px solid var(--dh-b-line);
+  background: var(--dh-b-soft);
+  font-size: 12.5px;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-firsat__foot { color: rgba(255, 255, 255, 0.72); }
+
+@media (max-width: 767.98px) {
+  .dh-firsat__it {
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 3px 14px;
+    padding: 13px 15px 14px 17px;
+  }
+  .dh-firsat__kal {
+    grid-row: auto;
+    grid-column: 2;
+    justify-self: start;
+    margin-top: 8px;
+  }
+  .dh-firsat__gun { font-size: 18px; }
+  .dh-firsat__lbl { min-width: 0; width: 100%; }
+  .dh-firsat__head,
+  .dh-firsat__filtre,
+  .dh-firsat__foot { padding-left: 17px; padding-right: 15px; }
+}
+
+/* --- B5. Kültür Takvimi (.dh-tkv) -----------------------------------------
+   kultur-yasam.html#takvim. Tarih + şehir + tür + mekân; tarih bloğu mono.
+   ------------------------------------------------------------------------- */
+.dh-tkv {
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--dh-b-line);
+  border-radius: 14px 14px 14px 0;
+  background: var(--dh-b-surface);
+  overflow: hidden;
+  list-style: none;
+  counter-reset: none;
+}
+
+.dh-tkv__it {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 18px;
+  padding: 14px 18px 14px 21px;
+  border-bottom: 1px solid var(--dh-b-line);
+  position: relative;
+}
+
+.dh-tkv__it:last-child { border-bottom: 0; }
+.dh-tkv__it:hover { background: var(--dh-b-soft); }
+
+.dh-tkv__it::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 0;
+  width: 3px;
+  border-radius: 2px 2px 2px 0;
+  background: var(--dh-bcat, var(--dh-brand));
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+
+.dh-tkv__it:hover::before { opacity: .8; }
+
+.dh-tkv__date {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  border: 1px solid var(--dh-b-line);
+  border-radius: 10px 10px 10px 0;
+  background: var(--dh-b-soft);
+  font-family: var(--dh-mono);
+  line-height: 1;
+}
+
+.dh-tkv__gun { font-size: 20px; font-weight: 700; color: var(--color-gray-900); }
+.dh-tkv__ay { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--color-gray-600); }
+
+html.uc-dark .dh-tkv__gun { color: #fff; }
+html.uc-dark .dh-tkv__ay { color: rgba(255, 255, 255, 0.7); }
+
+.dh-tkv__ad {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.dh-tkv__ad a { color: var(--color-gray-900); text-decoration: none; }
+.dh-tkv__ad a:hover { text-decoration: underline; }
+.dh-tkv__ad a:focus-visible { outline: 2px solid var(--dh-bcat, var(--dh-brand)); outline-offset: 2px; }
+html.uc-dark .dh-tkv__ad a { color: #fff; }
+
+.dh-tkv__meta {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 10px;
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-tkv__meta { color: rgba(255, 255, 255, 0.72); }
+
+.dh-tkv__meta i { font-size: 11px; opacity: .75; }
+
+.dh-tkv__tur {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border: 1px solid var(--dh-b-line);
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-b-soft);
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--dh-bcat-ink, var(--color-gray-700));
+}
+
+.dh-tkv__sehir {
+  grid-row: span 2;
+  justify-self: end;
+  font-family: var(--dh-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-gray-600);
+}
+
+html.uc-dark .dh-tkv__sehir { color: rgba(255, 255, 255, 0.74); }
+
+@media (max-width: 767.98px) {
+  .dh-tkv__it {
+    grid-template-columns: 62px minmax(0, 1fr);
+    padding: 13px 15px 14px 17px;
+  }
+  .dh-tkv__sehir {
+    grid-row: auto;
+    grid-column: 2;
+    justify-self: start;
+    margin-top: 7px;
+  }
+  .dh-tkv__gun { font-size: 18px; }
+}
+
+/* --- B6. Bölüm merkezi ritmi ----------------------------------------------
+   Gruplar arası nefes R7-N ile aynı: zeminli bantta üst 56 / alt 60
+   (mobil 36/40). Bölüm başlığı ile ray arası 26px (.dh-bgrp margin).
+   ------------------------------------------------------------------------- */
+.dh-bband { padding-top: 56px; padding-bottom: 60px; }
+
+@media (max-width: 767.98px) {
+  .dh-bband { padding-top: 36px; padding-bottom: 40px; }
+}
+
+/* Grup içindeki bölümler arası ayrım */
+.dh-bsec + .dh-bsec { margin-top: 40px; }
+
+@media (max-width: 767.98px) {
+  .dh-bsec + .dh-bsec { margin-top: 28px; }
+}
+
+/* Piyasa özeti şeridi bölüm merkezinde kompakt durur */
+.dh-eko-tick .dh-fintick__cell { min-width: 128px; }
+
+/* --- B7. Süzgeç satırı ve ızgara yerleşimi (düzeltme) ----------------------
+   · Etiket radiogroup'un DIŞINA alındı: role="radiogroup"un sahiplenmesi
+     gereken çocuklar yalnız role="radio" olmalı.
+   · .dh-firsat__it / .dh-tkv__it hücreleri açıkça konumlandırıldı; otomatik
+     yerleşim "span 2" taşıyan üçüncü hücreyi üçüncü satıra atıyordu.
+   ------------------------------------------------------------------------- */
+.dh-firsat__grp {
+  align-items: baseline;
+  gap: 8px 12px;
+}
+
+.dh-firsat__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.dh-firsat__it > .dh-firsat__tarih { grid-column: 1; grid-row: 1 / span 2; }
+.dh-firsat__it > .dh-firsat__ad    { grid-column: 2; grid-row: 1; }
+.dh-firsat__it > .dh-firsat__meta  { grid-column: 2; grid-row: 2; }
+.dh-firsat__it > .dh-firsat__kal   { grid-column: 3; grid-row: 1 / span 2; }
+
+.dh-tkv__it > .dh-tkv__date  { grid-column: 1; grid-row: 1 / span 2; }
+.dh-tkv__it > .dh-tkv__ad    { grid-column: 2; grid-row: 1; }
+.dh-tkv__it > .dh-tkv__meta  { grid-column: 2; grid-row: 2; }
+.dh-tkv__it > .dh-tkv__sehir { grid-column: 3; grid-row: 1 / span 2; }
+
+@media (max-width: 767.98px) {
+  .dh-firsat__it > .dh-firsat__kal { grid-column: 2; grid-row: 3; }
+  .dh-tkv__it > .dh-tkv__sehir { grid-column: 2; grid-row: 3; }
+  .dh-firsat__grp { align-items: flex-start; }
+}
+
+/* --- B8. Bölüm merkezi kart rayı (.dh-bray) --------------------------------
+   .dh-track flex; .dh-card'ın kendi genişliği yok, ray içinde verilmesi
+   gerekiyor. Ölçü .dh-kmod__ray ile aynı tutuldu ki site genelinde ray
+   kadansı sapmasın (268 / mobil 220). */
+.dh-bray > .dh-card { width: 268px; }
+
+@media (max-width: 767.98px) {
+  .dh-bray > .dh-card { width: 220px; }
+}
+
+/* --- B9. Finans paneli Ekonomi bölümünde ----------------------------------
+   .dh-finpanel aksanı custom.min.css'te yalnız data-cat="finans" için tanımlı.
+   ekonomi.html aynı paneli kendi kimliğiyle kullanıyor; renk aynı (#2aa1a9)
+   ama nitelik değerinin doğru olması gerekiyor ki markup yalan söylemesin. */
+.dh-finpanel[data-cat="ekonomi"] { --fin-accent: var(--dh-fin); }
+.dh-finpanel[data-cat="ekonomi"] .dh-finpanel__more { color: var(--dh-fin-ink); }
+
+html.uc-dark .dh-finpanel[data-cat="ekonomi"] .dh-finpanel__more { color: #5fd0d8; }
+
+/* --- B10. "Yeni eklendi" işareti (düzeltme) --------------------------------
+   İlk hâlde yeni eklenen kayıtların KALAN GÜN rozeti yeşile boyanıyordu.
+   Ekranda ölçüldü: yeşil rozet "bol zaman var" diye okunuyor, oysa bilgi
+   "kayıt yeni eklendi". Renk tek başına yanlış şey söylüyordu; yenilik
+   bilgisi artık METİNLE veriliyor, kalan gün rozeti nötr kalıyor. */
+.dh-firsat__it.is-yeni .dh-firsat__kal {
+  background: var(--dh-b-soft);
+  color: var(--color-gray-700);
+}
+
+html.uc-dark .dh-firsat__it.is-yeni .dh-firsat__kal { color: rgba(255, 255, 255, 0.82); }
+
+.dh-firsat__yeni {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--dh-up);
+}
+
+.dh-firsat__yeni i { font-size: 10px; }
+
+/* --- B11. Süzgeç çipi dokunma hedefi (ölçüldü, düzeltildi) -----------------
+   İlk hâl: görsel 34px + `::after { inset: -5px -2px }` = 44px. 390px'te
+   elementFromPoint ile ölçüldü: dört köşeden yalnız 2'si tutuyordu.
+   Sebep: çipler sarıyor, satır arası 8px; alt satırdaki çipin ::after'ı
+   5px yukarı taşıp üsttekinin alt kenarına biniyor ve DOM'da sonra geldiği
+   için noktayı kapıyordu. Etkin yükseklik 44 değil ~42px kalıyordu.
+   Çözüm: görsel yükseklik 38px, taşma 3px (2×3=6 < 8px boşluk → binme yok).
+   Yeniden ölçüm: 4/4. */
+.dh-firsat__chip {
+  min-height: 38px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.dh-firsat__chip::after { inset: -3px -2px; }
+
+/* --- B12. Mobilde 12px okunabilirlik tabanı --------------------------------
+   R8-Y kuralı custom.min.css'te açık bir seçici listesiyle uygulanıyor;
+   bu parçanın yeni etiketleri o listede yok. Aynı taban burada tekrarlanıyor.
+   Kural aynı: yalnız telefon kırılımı, yalnız 11,5px ALTI etiketler
+   (11,5 ve üstüne dokunulmuyor ki tipografik hiyerarşi bozulmasın). */
+@media (max-width: 767.98px) {
+  .dh-bgrp__kicker,
+  .dh-firsat__lbl,
+  .dh-firsat__tur,
+  .dh-firsat__ay,
+  .dh-firsat__yeni,
+  .dh-tkv__tur,
+  .dh-tkv__ay {
+    font-size: 12px;
+  }
+}
+
+/* --- B13. Grup içi dikey ritim (temizlik) ----------------------------------
+   Önce boş bir <div class="dh-bsec" style="margin-top:26px"> ile aralık
+   veriliyordu; inline stil ve anlamsız düğüm. Aralık artık komşuluk
+   seçicisiyle kuruluyor — bölüm başlığı/ray arası ölçüsüyle aynı: 26px. */
+.dh-finsum + .dh-blinks,
+.dh-bstat + .dh-blinks { margin-top: 26px; }

@@ -621,3 +621,96 @@ html.uc-dark .dh-ayrim__l li + li { border-color: var(--color-gray-700); }
 }
 .dh-oplab__n { font-size: 12.5px; line-height: 1.4; color: var(--color-gray-500); }
 .uc-dark .dh-oplab__n, .dh-lb .dh-oplab__n, .dh-op .dh-oplab__n { color: rgba(255, 255, 255, .72); }
+
+/* ============================================================================
+   v2 / ANA SAYFA KEŞFET ŞERİDİ (index.html)
+   Dokümanın kararı: "Keşfet, Dada Haber'in özgün haber ve anlatım
+   formatlarını tek merkezde toplar." Ana sayfada bu kararın görünür olması
+   için sekiz format tek şeritte, her biri ne işe yaradığıyla birlikte.
+   ========================================================================== */
+
+.dh-kesf { padding: 56px 0 60px; background: var(--color-gray-900); color: #fff; }
+@media (max-width: 767px) { .dh-kesf { padding: 36px 0 40px; } }
+.dh-kesf__hd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.dh-kesf__k {
+  display: block;
+  margin-bottom: 7px;
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+.dh-kesf__t { margin: 0 0 8px; font-size: 28px; font-weight: 800; letter-spacing: -.025em; line-height: 1.12; }
+.dh-kesf__l { margin: 0; max-width: 64ch; font-size: 14.5px; line-height: 1.55; color: rgba(255, 255, 255, .68); }
+.dh-kesf__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 8px 8px 8px 0;
+  background: var(--color-primary);
+  color: #000;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: filter .15s;
+}
+.dh-kesf__all:hover { filter: brightness(1.1); color: #000; }
+.dh-kesf__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.dh-kesf__c {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 18px 20px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 8px 8px 8px 0;
+  background: rgba(255, 255, 255, .04);
+  color: #fff;
+  text-decoration: none;
+  transition: border-color .15s, background .15s, transform .15s;
+}
+.dh-kesf__c:hover,
+.dh-kesf__c:focus-visible {
+  border-color: var(--color-primary);
+  background: rgba(255, 255, 255, .08);
+  transform: translateY(-2px);
+  color: #fff;
+}
+.dh-kesf__ic {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 8px 8px 8px 0;
+  background: rgba(252, 182, 35, .16);
+  color: var(--color-primary);
+  font-size: 14px;
+}
+.dh-kesf__n { font-size: 16px; font-weight: 800; letter-spacing: -.02em; }
+.dh-kesf__d { font-size: 13px; line-height: 1.5; color: rgba(255, 255, 255, .7); flex: 1 1 auto; }
+.dh-kesf__m {
+  font-family: var(--dh-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .45);
+  padding-top: 2px;
+}
+@media (max-width: 1199px) { .dh-kesf__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 767px) { .dh-kesf__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .dh-kesf__t { font-size: 23px; } }
+@media (max-width: 479px) { .dh-kesf__grid { grid-template-columns: 1fr; } }

@@ -1,1 +1,1773 @@
 /* v2 — a-gundem (bu dosyaya yalnız ilgili ajan yazar; cat >> ile SONA eklenir) */
+
+/* ============================================================================
+   v2 / A-1 — KİMLİK RENKLERİ VE ORTAK SAYFA SESİ
+   Şimdi · Gündem · Dünya sayfalarının ortak temeli.
+
+   KURAL: kategori rengi sayfa geneline uygulanmaz — `--color-primary`
+   override'ı YOK. Kimlik iki yerden gelir:
+     1) .dh-lb[data-cat] banner perdesi (custom.min.css'teki --dh-cat)
+     2) bu dosyadaki bileşenlerin okuduğu --dh-a-cat
+   Ayrı bir değişken adı bilerek seçildi: --dh-cat'i .dh-lb ve .dh-catbar
+   kendi kapsamlarında zaten tanımlıyor, onların hesabına karışmayalım.
+
+   Beyaz zeminde mürekkep olarak ölçülen kontrastlar (WCAG, #fff üstünde):
+     #c8102e 5,90:1 · #1b2a4a 13,9:1 · #0d6b8a 6,02:1  → üçü de AA geçiyor.
+   Siyah zeminde (koyu tema gövdesi bg-black) aynı tonlar 3,6:1'e düşüyor;
+   bu yüzden koyu temada açılmış karşılıkları kullanılıyor (8,3–8,7:1).
+   ========================================================================== */
+
+/* --- .dh-lb perdesi (custom.min.css'te bu üç değer tanımlı değildi) ------- */
+.dh-lb[data-cat="simdi"]  { --dh-cat: #c8102e; }
+.dh-lb[data-cat="gundem"] { --dh-cat: #1b2a4a; }
+.dh-lb[data-cat="dunya"]  { --dh-cat: #0d6b8a; }
+
+/* --- alt kategori şeridi -------------------------------------------------- */
+.dh-catbar[data-cat="simdi"]  { --dh-cat: #c8102e; }
+.dh-catbar[data-cat="gundem"] { --dh-cat: #1b2a4a; }
+.dh-catbar[data-cat="dunya"]  { --dh-cat: #0d6b8a; }
+
+/* Koyu temada şerit zemini gri-800; lacivert ve bordo orada kayboluyor. */
+html.uc-dark .dh-catbar[data-cat="simdi"]  { --dh-cat: #ff7a86; }
+html.uc-dark .dh-catbar[data-cat="gundem"] { --dh-cat: #8fa8d6; }
+html.uc-dark .dh-catbar[data-cat="dunya"]  { --dh-cat: #57c6e6; }
+
+/* --- sayfa kapsamındaki bileşen rengi ------------------------------------ */
+/* Yedek: data-dh-cat taşımayan bir bağlamda kurumsal ambere düş.
+   (Kendi kendine var() ile yazılmaz — özel değişkende döngü, değeri
+   "guaranteed-invalid" yapıp kalıtımı da keser.) */
+body { --dh-a-cat: var(--dh-brand); --dh-a-soft: rgba(252, 182, 35, .14); }
+body[data-dh-cat="simdi"]  { --dh-a-cat: #c8102e; --dh-a-soft: rgba(200, 16, 46, .10); }
+body[data-dh-cat="gundem"] { --dh-a-cat: #1b2a4a; --dh-a-soft: rgba(27, 42, 74, .10); }
+body[data-dh-cat="dunya"]  { --dh-a-cat: #0d6b8a; --dh-a-soft: rgba(13, 107, 138, .10); }
+
+html.uc-dark body[data-dh-cat="simdi"]  { --dh-a-cat: #ff7a86; --dh-a-soft: rgba(255, 122, 134, .16); }
+html.uc-dark body[data-dh-cat="gundem"] { --dh-a-cat: #8fa8d6; --dh-a-soft: rgba(143, 168, 214, .16); }
+html.uc-dark body[data-dh-cat="dunya"]  { --dh-a-cat: #57c6e6; --dh-a-soft: rgba(87, 198, 230, .16); }
+
+
+/* --- .dh-lb--v2: banner alt satırına kendi ızgara alanı ------------------
+   .dh-lb__topinner adlandırılmış alanlı bir ızgara; alanı olmayan çocuk
+   otomatik yerleşip BLOKLAŞIYOR (R7-T3 (d)'de takım sayfasında ölçüldü,
+   kutu 1132px'e yayılıp fotoğrafın açık bölgesini kapsıyordu). Alt satıra
+   kendi alanı verilir ve içeriğine yaslanır. */
+.dh-lb--v2 .dh-lb__topinner {
+  grid-template-areas:
+    "crumb nav"
+    "lead  nav"
+    "title nav"
+    "rule  nav";
+}
+
+.dh-lb--v2 .dh-lb__lead {
+  grid-area: lead;
+  justify-self: start;
+  margin: 8px 0 0;
+}
+
+.dh-lb--v2 .dh-lb__title { margin-top: 6px; }
+
+/* --- ortak küçük parçalar ------------------------------------------------ */
+
+/* Bölüm başlığının sağındaki veri damgası (.dh-astro__stamp ile aynı ölçek,
+   kapsamı bu üç sayfa). Saat/sayı taşıdığı için veri sesi: mono. */
+.dh-nwstamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+}
+
+.dh-nwstamp i { font-size: 11px; color: var(--dh-a-cat); }
+.dh-nwstamp b,
+.dh-nwstamp time {
+  font-family: var(--dh-mono);
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-700);
+}
+
+html.uc-dark .dh-nwstamp { color: var(--color-gray-300); }
+html.uc-dark .dh-nwstamp b,
+html.uc-dark .dh-nwstamp time { color: #fff; }
+
+/* Bölüm altındaki tek cümlelik açıklama. Başlık çubuğunun 26px'lik
+   nefesini yemesin diye üstten -12px geri alınır. */
+.dh-nwintro {
+  margin: -12px 0 20px;
+  max-width: 68ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-nwintro { color: var(--color-gray-300); }
+
+/* Bölüm sonu düğmesi — köşe imzası 8px 8px 8px 0 */
+.dh-nwmore { display: flex; justify-content: center; margin-top: 26px; }
+
+.dh-nwmore__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 8px 8px 8px 0;
+  border: 1px solid var(--color-gray-100);
+  background: #fff;
+  color: var(--color-gray-900);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: .18s cubic-bezier(.22, .61, .36, 1);
+}
+
+.dh-nwmore__btn i { font-size: 11px; color: var(--dh-a-cat); transition: transform .18s; }
+.dh-nwmore__btn:hover {
+  border-color: var(--dh-a-cat);
+  color: var(--dh-a-cat);
+}
+.dh-nwmore__btn:hover i { transform: translateX(3px); }
+
+html.uc-dark .dh-nwmore__btn {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .12);
+  color: #fff;
+}
+html.uc-dark .dh-nwmore__btn:hover { border-color: var(--dh-a-cat); color: var(--dh-a-cat); }
+
+/* ============================================================================
+   v2 / A-2 — ŞİMDİ SAYFASI BİLEŞENLERİ (simdi.html)
+   Dokümanın 4.1'indeki on alt başlığın tamamı sayfada bölüm karşılığı buldu.
+   Beş yeni bileşen; "Dakika Dakika" için mevcut .dh-live yeniden kullanıldı,
+   "Hava Durumu" için mevcut .dh-panel--weather yeniden kullanıldı.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------- .dh-nwlist
+   Tek satır listesi. Dört kılık:
+     --brk   Son Dakika        (kimlik rengi sol şerit + bayrak)
+     --ozet  Bugün Ne Oldu?    (numaralı)
+     --cal   Gündem Takvimi    (gün ayraçlı, ileri tarihli)
+     --upd   Güncellenen Haberler (mono güncelleme notu)
+   Zaman damgaları --dh-mono ile: v2'de saat/rakam veri sesidir.          */
+.dh-nwlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-gray-100);
+}
+
+html.uc-dark .dh-nwlist { border-top-color: rgba(255, 255, 255, .10); }
+
+.dh-nwlist__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: 18px;
+  padding: 16px 0 16px 16px;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+html.uc-dark .dh-nwlist__item { border-bottom-color: rgba(255, 255, 255, .10); }
+
+/* Sol kimlik çubuğu — 3px, satırın yüksekliğince */
+.dh-nwlist__item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 3px;
+  border-radius: 2px 2px 0 0;
+  background: var(--color-gray-100);
+}
+
+html.uc-dark .dh-nwlist__item::before { background: rgba(255, 255, 255, .14); }
+
+.dh-nwlist__item.is-now::before { background: var(--dh-a-cat); }
+.dh-nwlist__item:hover::before { background: var(--dh-a-cat); }
+
+.dh-nwlist__time {
+  font-family: var(--dh-mono);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--dh-a-cat);
+  font-variant-numeric: tabular-nums;
+  padding-top: 1px;
+}
+
+.dh-nwlist__num {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-a-soft);
+  color: var(--dh-a-cat);
+  font-family: var(--dh-mono);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.dh-nwlist__body { min-width: 0; }
+
+.dh-nwlist__flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+  padding: 0 9px;
+  height: 20px;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-a-cat);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .09em;
+}
+
+/* Koyu temada kimlik rengi açık; üstünde beyaz metin okunmaz. */
+html.uc-dark .dh-nwlist__flag { color: var(--color-gray-900); }
+
+.dh-nwlist__title {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.dh-nwlist__title a {
+  color: var(--color-gray-900);
+  text-decoration: none;
+  transition: color .15s;
+}
+
+.dh-nwlist__title a:hover { color: var(--dh-a-cat); }
+html.uc-dark .dh-nwlist__title a { color: #fff; }
+html.uc-dark .dh-nwlist__title a:hover { color: var(--dh-a-cat); }
+
+.dh-nwlist__sum {
+  margin: 5px 0 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-nwlist__sum { color: var(--color-gray-300); }
+
+/* Güncelleme künyesi — tamamı veri, tamamı mono */
+.dh-nwlist__note {
+  display: block;
+  margin-top: 7px;
+  font-family: var(--dh-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-500);
+}
+
+.dh-nwlist__note time { font-weight: 700; color: var(--dh-a-cat); }
+html.uc-dark .dh-nwlist__note { color: var(--color-gray-300); }
+
+.dh-nwlist__tag {
+  align-self: center;
+  flex: 0 0 auto;
+  padding: 0 10px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px 8px 8px 0;
+  border: 1px solid var(--color-gray-100);
+  background: var(--color-gray-10, #fafafa);
+  color: var(--color-gray-500);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+
+html.uc-dark .dh-nwlist__tag {
+  background: var(--color-gray-800);
+  border-color: rgba(255, 255, 255, .12);
+  color: var(--color-gray-200);
+}
+
+/* Gün ayracı (takvim) */
+.dh-nwlist__day {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 0 0 8px;
+}
+
+.dh-nwlist__day:first-child { margin-top: 14px; }
+
+.dh-nwlist__day span {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--dh-a-cat);
+  white-space: nowrap;
+}
+
+.dh-nwlist__day::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--color-gray-100);
+}
+
+html.uc-dark .dh-nwlist__day::after { background: rgba(255, 255, 255, .12); }
+
+/* --brk: son dakika satırları biraz daha ağır */
+.dh-nwlist--brk .dh-nwlist__title { font-size: 17.5px; }
+
+/* --ozet: numaralı liste, zaman sütunu yok */
+.dh-nwlist--ozet .dh-nwlist__item { grid-template-columns: 34px minmax(0, 1fr); }
+
+/* --upd: özet yerine künye satırı var, sıkı dursun */
+.dh-nwlist--upd .dh-nwlist__item { padding-top: 14px; padding-bottom: 14px; }
+
+@media (max-width: 767.98px) {
+  .dh-nwlist__item {
+    grid-template-columns: 52px minmax(0, 1fr);
+    grid-template-areas: "time body" "tag  tag";
+    row-gap: 8px;
+    column-gap: 12px;
+  }
+  .dh-nwlist__time, .dh-nwlist__num { grid-area: time; }
+  .dh-nwlist__body { grid-area: body; }
+  .dh-nwlist__tag { grid-area: tag; justify-self: start; margin-left: 64px; }
+  .dh-nwlist--ozet .dh-nwlist__item { grid-template-columns: 44px minmax(0, 1fr); }
+  .dh-nwlist__title { font-size: 15.5px; }
+  .dh-nwlist--brk .dh-nwlist__title { font-size: 16px; }
+}
+
+/* --------------------------------------------------------------- .dh-nwtopic
+   Canlı Gündem kartı — .dh-track içinde kayan ray öğesi.                 */
+.dh-nwtopic {
+  display: block;
+  width: 268px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dh-nwtopic__fig {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 16px 16px 16px 0;
+  background: var(--color-gray-50);
+}
+
+.dh-nwtopic__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform .4s cubic-bezier(.22, .61, .36, 1);
+}
+
+.dh-nwtopic:hover .dh-nwtopic__img { transform: scale(1.05); }
+
+/* Görsel üstü rozet: koyu zemin + beyaz metin (ölçülen en açık pikselde
+   bile >= 4,5:1 olsun diye tam opak koyu kutu kullanıldı, gradyan değil). */
+.dh-nwtopic__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 8px 8px 8px 0;
+  background: #c8102e;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .09em;
+}
+
+.dh-nwtopic__title {
+  display: block;
+  margin: 12px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.36;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+  transition: color .15s;
+}
+
+.dh-nwtopic:hover .dh-nwtopic__title { color: var(--dh-a-cat); }
+html.uc-dark .dh-nwtopic__title { color: #fff; }
+
+.dh-nwtopic__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 11.5px;
+  color: var(--color-gray-500);
+}
+
+.dh-nwtopic__cnt {
+  font-family: var(--dh-mono);
+  font-weight: 700;
+  color: var(--dh-a-cat);
+}
+
+.dh-nwtopic__meta time {
+  font-family: var(--dh-mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+html.uc-dark .dh-nwtopic__meta { color: var(--color-gray-300); }
+
+@media (max-width: 575.98px) {
+  .dh-nwtopic { width: 232px; }
+}
+
+/* ---------------------------------------------------------------- .dh-nwplay
+   Canlı Yayın: sol sahne + sağ yayın akışı.                              */
+.dh-nwplay {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+.dh-nwplay__stage {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 16px 16px 16px 0;
+  background: var(--color-gray-900);
+  text-decoration: none;
+}
+
+.dh-nwplay__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform .5s cubic-bezier(.22, .61, .36, 1);
+}
+
+.dh-nwplay__stage:hover .dh-nwplay__img { transform: scale(1.03); }
+
+/* Alt yazının okunması için tabandan yukarı sabit perde. Kenar
+   yumuşatma (mask) DEĞİL — düz gradyan perde. */
+.dh-nwplay__stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .62) 32%,
+      rgba(0, 0, 0, .10) 62%, rgba(0, 0, 0, .28) 100%);
+}
+
+.dh-nwplay__live {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 8px 8px 8px 0;
+  background: #c8102e;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .09em;
+}
+
+.dh-nwplay__btn {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .94);
+  color: var(--color-gray-900);
+  font-size: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  transition: transform .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+.dh-nwplay__stage:hover .dh-nwplay__btn { transform: translate(-50%, -50%) scale(1.08); }
+
+.dh-nwplay__cap {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dh-nwplay__cap b {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.dh-nwplay__cap span {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .86);
+}
+
+.dh-nwplay__side {
+  border: 1px solid var(--color-gray-100);
+  border-radius: 16px 16px 16px 0;
+  background: #fff;
+  padding: 16px 18px 8px;
+}
+
+html.uc-dark .dh-nwplay__side {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .12);
+}
+
+.dh-nwplay__sidehead {
+  display: block;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-gray-100);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--dh-a-cat);
+}
+
+html.uc-dark .dh-nwplay__sidehead { border-bottom-color: rgba(255, 255, 255, .12); }
+
+.dh-nwplay__eps { list-style: none; margin: 0; padding: 0; }
+
+.dh-nwplay__ep {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.dh-nwplay__ep:last-child { border-bottom: 0; }
+html.uc-dark .dh-nwplay__ep { border-bottom-color: rgba(255, 255, 255, .10); }
+
+.dh-nwplay__eptime {
+  font-family: var(--dh-mono);
+  font-size: 13.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-gray-500);
+}
+
+.dh-nwplay__ep.is-now .dh-nwplay__eptime { color: var(--dh-a-cat); }
+html.uc-dark .dh-nwplay__eptime { color: var(--color-gray-300); }
+
+.dh-nwplay__epname {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+
+.dh-nwplay__epname small {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-nwplay__epname { color: #fff; }
+html.uc-dark .dh-nwplay__epname small { color: var(--color-gray-300); }
+
+.dh-nwplay__ep.is-now .dh-nwplay__epname small { color: var(--dh-a-cat); font-weight: 700; }
+
+@media (max-width: 991.98px) {
+  .dh-nwplay { grid-template-columns: minmax(0, 1fr); }
+  .dh-nwplay__cap b { font-size: 16px; }
+  .dh-nwplay__btn { width: 54px; height: 54px; font-size: 17px; }
+}
+
+/* ---------------------------------------------------------------- .dh-nwstat
+   Afet ve Acil Durum + Trafik ve Ulaşım durum panosu. Tek bileşen, iki
+   bölümde de aynı; durum seviyesi data-lv ile verilir.
+   Seviye renkleri kategori renginden BAĞIMSIZ: bunlar uyarı semantiği
+   taşıyor, kimlik değil. Beyaz zeminde ölçülen mürekkep kontrastları:
+     kritik  #b3121f 6,58:1 · uyari #8a4b00 6,12:1
+     dikkat  #3e5c8a 5,73:1 · ok    #1d6b3a 5,44:1                        */
+.dh-nwstat {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+.dh-nwstat--trafik { grid-template-columns: minmax(0, 1fr); }
+
+.dh-nwstat__rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 16px 16px 16px 0;
+  background: #fff;
+  overflow: hidden;
+}
+
+html.uc-dark .dh-nwstat__rows {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .12);
+}
+
+.dh-nwstat__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 15px 18px 15px 21px;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.dh-nwstat__row:last-child { border-bottom: 0; }
+html.uc-dark .dh-nwstat__row { border-bottom-color: rgba(255, 255, 255, .10); }
+
+.dh-nwstat__row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--dh-lv, var(--color-gray-200));
+}
+
+.dh-nwstat__row[data-lv="kritik"] { --dh-lv: #b3121f; }
+.dh-nwstat__row[data-lv="uyari"]  { --dh-lv: #8a4b00; }
+.dh-nwstat__row[data-lv="dikkat"] { --dh-lv: #3e5c8a; }
+.dh-nwstat__row[data-lv="ok"]     { --dh-lv: #1d6b3a; }
+
+/* Koyu temada aynı dört ton açıldı (siyah zeminde >= 4,5:1). */
+html.uc-dark .dh-nwstat__row[data-lv="kritik"] { --dh-lv: #ff8189; }
+html.uc-dark .dh-nwstat__row[data-lv="uyari"]  { --dh-lv: #f0b45a; }
+html.uc-dark .dh-nwstat__row[data-lv="dikkat"] { --dh-lv: #9db6dd; }
+html.uc-dark .dh-nwstat__row[data-lv="ok"]     { --dh-lv: #67c98c; }
+
+.dh-nwstat__ic {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px 12px 12px 0;
+  background: color-mix(in srgb, var(--dh-lv) 12%, transparent);
+  color: var(--dh-lv);
+  font-size: 17px;
+}
+
+.dh-nwstat__body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+
+.dh-nwstat__name {
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-nwstat__name { color: #fff; }
+
+.dh-nwstat__desc {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-nwstat__desc { color: var(--color-gray-300); }
+
+.dh-nwstat__lv {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 11px;
+  border-radius: 8px 8px 8px 0;
+  border: 1px solid var(--dh-lv);
+  color: var(--dh-lv);
+  font-family: var(--dh-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+  .dh-nwstat__row {
+    grid-template-columns: 40px minmax(0, 1fr);
+    grid-template-areas: "ic body" "lv lv";
+    row-gap: 10px;
+  }
+  .dh-nwstat__ic { grid-area: ic; width: 40px; height: 40px; }
+  .dh-nwstat__body { grid-area: body; }
+  .dh-nwstat__lv { grid-area: lv; justify-self: start; margin-left: 54px; }
+}
+
+/* ---------------------------------------------------------------- .dh-nwacil
+   Acil çağrı numaraları. Numara = veri: mono ve büyük.                   */
+.dh-nwacil {
+  border: 1px solid var(--color-gray-100);
+  border-radius: 16px 16px 16px 0;
+  background: var(--color-gray-10, #fafafa);
+  padding: 18px;
+}
+
+html.uc-dark .dh-nwacil {
+  background: var(--color-gray-800);
+  border-color: rgba(255, 255, 255, .12);
+}
+
+.dh-nwacil__head {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--dh-a-cat);
+}
+
+.dh-nwacil__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.dh-nwacil__it {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 8px 8px 8px 0;
+  background: #fff;
+  border: 1px solid var(--color-gray-100);
+}
+
+html.uc-dark .dh-nwacil__it {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .10);
+}
+
+.dh-nwacil__num {
+  font-family: var(--dh-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--dh-a-cat);
+  min-width: 44px;
+}
+
+.dh-nwacil__ad {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-gray-700);
+}
+
+html.uc-dark .dh-nwacil__ad { color: var(--color-gray-200); }
+
+.dh-nwacil__note {
+  margin: 12px 0 0;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-nwacil__note { color: var(--color-gray-300); }
+
+@media (max-width: 991.98px) {
+  .dh-nwstat { grid-template-columns: minmax(0, 1fr); }
+  .dh-nwacil__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 479.98px) {
+  .dh-nwacil__list { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------------------------------------------------------------- .dh-nwhava
+   Hava Durumu bölümü: mevcut .dh-panel--weather + Veri & Harita'ya köprü. */
+.dh-nwhava {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 20px;
+  align-items: center;
+}
+
+.dh-nwhava .dh-panel { width: 100%; }
+
+.dh-nwhava__go {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.dh-nwhava__go p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-nwhava__go p { color: var(--color-gray-300); }
+
+@media (max-width: 1199.98px) {
+  .dh-nwhava { grid-template-columns: minmax(0, 1fr); align-items: start; }
+}
+
+/* ============================================================================
+   v2 / A-3 — GÜNDEM SAYFASI BİLEŞENLERİ (gundem.html)
+   Dokümanın 4.2'sindeki üç grup sayfa yapısına çevrildi:
+     Temel kategoriler → .dh-gkat
+     Yerel haberler    → .dh-sehir (çalışan şehir seçici) + .dh-yerel
+     Özgün içerikler   → .dh-gozgun
+   ========================================================================== */
+
+/* .dh-nwstat__ic zemini color-mix ile üretiliyor; desteklemeyen motorda
+   arka plan boş kalmasın diye önce düz bir taban verildi. */
+.dh-nwstat__ic { background: var(--color-gray-10, #fafafa); }
+html.uc-dark .dh-nwstat__ic { background: var(--color-gray-800); }
+@supports (background: color-mix(in srgb, red 10%, transparent)) {
+  .dh-nwstat__ic,
+  html.uc-dark .dh-nwstat__ic {
+    background: color-mix(in srgb, var(--dh-lv) 14%, transparent);
+  }
+}
+
+/* ------------------------------------------------------------------ .dh-gkat
+   Sekiz temel kategori kutucuğu. Her kutu: ikon · ad · son başlık · sayaç.  */
+.dh-gkat {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dh-gkat__it {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 18px 18px 16px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 16px 16px 16px 0;
+  background: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  transition: .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+html.uc-dark .dh-gkat__it {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .12);
+}
+
+/* Üstte 3px kimlik şeridi — mega menü panelindeki şeritle aynı dil. */
+.dh-gkat__it::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--dh-a-cat);
+  opacity: .35;
+  transition: opacity .2s;
+}
+
+.dh-gkat__it:hover { border-color: var(--dh-a-cat); transform: translateY(-2px); }
+.dh-gkat__it:hover::before { opacity: 1; }
+
+.dh-gkat__ic {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px 10px 10px 0;
+  background: var(--dh-a-soft);
+  color: var(--dh-a-cat);
+  font-size: 15px;
+}
+
+.dh-gkat__ad {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-gkat__ad { color: #fff; }
+
+.dh-gkat__son {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-gray-500);
+  flex: 1 1 auto;
+}
+
+html.uc-dark .dh-gkat__son { color: var(--color-gray-300); }
+
+.dh-gkat__sayi {
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--dh-a-cat);
+}
+
+@media (max-width: 1199.98px) { .dh-gkat { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 767.98px)  { .dh-gkat { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+@media (max-width: 419.98px)  { .dh-gkat { grid-template-columns: minmax(0, 1fr); } }
+
+/* ----------------------------------------------------------------- .dh-sehir
+   YEREL DENEYİM: 81 il, arama, localStorage'a yazılan "Şehrim".
+   Sol sütun seçici, sağ sütun seçili ilin künyesi ve haberleri.          */
+.dh-sehir {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 20px;
+  align-items: start;
+}
+
+.dh-sehir__pick,
+.dh-sehir__panel {
+  border: 1px solid var(--color-gray-100);
+  border-radius: 16px 16px 16px 0;
+  background: #fff;
+  padding: 22px;
+}
+
+html.uc-dark .dh-sehir__pick,
+html.uc-dark .dh-sehir__panel {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .12);
+}
+
+.dh-sehir__kicker {
+  margin: 0 0 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--dh-a-cat);
+}
+
+.dh-sehir__h {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-sehir__h { color: #fff; }
+
+.dh-sehir__lead {
+  margin: 8px 0 16px;
+  max-width: 62ch;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-sehir__lead { color: var(--color-gray-300); }
+
+.dh-sehir__quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.dh-sehir__q {
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 8px 8px 8px 0;
+  border: 1px solid var(--color-gray-100);
+  background: var(--color-gray-10, #fafafa);
+  color: var(--color-gray-700);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .16s;
+}
+
+.dh-sehir__q:hover { border-color: var(--dh-a-cat); color: var(--dh-a-cat); }
+.dh-sehir__q.is-on { background: var(--dh-a-cat); border-color: var(--dh-a-cat); color: #fff; }
+html.uc-dark .dh-sehir__q.is-on { color: var(--color-gray-900); }
+
+html.uc-dark .dh-sehir__q {
+  background: var(--color-gray-800);
+  border-color: rgba(255, 255, 255, .12);
+  color: var(--color-gray-200);
+}
+
+.dh-sehir__search { margin-bottom: 14px; }
+
+.dh-sehir__lbl {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-sehir__lbl { color: var(--color-gray-300); }
+
+.dh-sehir__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  height: 46px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+  background: var(--color-gray-10, #fafafa);
+}
+
+html.uc-dark .dh-sehir__field {
+  background: var(--color-gray-800);
+  border-color: rgba(255, 255, 255, .12);
+}
+
+.dh-sehir__field i { color: var(--dh-a-cat); font-size: 13px; }
+
+.dh-sehir__field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: none;
+  outline: none;
+  /* 16px taban: iOS 16px altında alanı zorla yakınlaştırıyor (R8-3). */
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-gray-900);
+}
+
+.dh-sehir__field input::placeholder { color: var(--color-gray-400); font-weight: 500; }
+html.uc-dark .dh-sehir__field input { color: #fff; }
+html.uc-dark .dh-sehir__field input::placeholder { color: var(--color-gray-300); }
+
+.dh-sehir__count {
+  display: block;
+  margin-top: 8px;
+  font-size: 11.5px;
+  color: var(--color-gray-500);
+}
+
+.dh-sehir__count b {
+  font-family: var(--dh-mono);
+  font-weight: 700;
+  color: var(--dh-a-cat);
+}
+
+html.uc-dark .dh-sehir__count { color: var(--color-gray-300); }
+
+/* 81 il ızgarası — dikeyde sınırlı, kendi içinde kayar. */
+.dh-sehir__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 6px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 2px;
+  scrollbar-width: thin;
+}
+
+.dh-sehir__il {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+  background: #fff;
+  color: var(--color-gray-700);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: .14s;
+}
+
+html.uc-dark .dh-sehir__il {
+  background: var(--color-gray-800);
+  border-color: rgba(255, 255, 255, .10);
+  color: var(--color-gray-200);
+}
+
+.dh-sehir__il:hover { border-color: var(--dh-a-cat); color: var(--dh-a-cat); }
+
+.dh-sehir__il.is-on {
+  background: var(--dh-a-cat);
+  border-color: var(--dh-a-cat);
+  color: #fff;
+}
+
+html.uc-dark .dh-sehir__il.is-on { color: var(--color-gray-900); }
+
+.dh-sehir__plaka {
+  flex: 0 0 auto;
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-gray-400);
+  font-variant-numeric: tabular-nums;
+}
+
+.dh-sehir__il.is-on .dh-sehir__plaka { color: inherit; opacity: .75; }
+html.uc-dark .dh-sehir__plaka { color: var(--color-gray-300); }
+
+.dh-sehir__ad { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.dh-sehir__bos {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--color-gray-500);
+}
+
+/* ---- sağ sütun: seçili ilin künyesi ---- */
+.dh-sehir__card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  grid-template-areas: "plaka id" "durum durum" "sil sil";
+  gap: 4px 14px;
+  align-items: center;
+  padding: 14px;
+  margin-bottom: 18px;
+  border-radius: 12px 12px 12px 0;
+  background: var(--dh-a-soft);
+}
+
+.dh-sehir__cardplaka {
+  grid-area: plaka;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 10px 10px 10px 0;
+  background: var(--dh-a-cat);
+  color: #fff;
+  font-family: var(--dh-mono);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+html.uc-dark .dh-sehir__cardplaka { color: var(--color-gray-900); }
+
+.dh-sehir__cardid { grid-area: id; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.dh-sehir__cardid b {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-900);
+}
+
+.dh-sehir__cardid span { font-size: 12px; font-weight: 600; color: var(--color-gray-500); }
+
+html.uc-dark .dh-sehir__cardid b { color: #fff; }
+html.uc-dark .dh-sehir__cardid span { color: var(--color-gray-200); }
+
+.dh-sehir__durum {
+  grid-area: durum;
+  margin: 8px 0 0;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--color-gray-500);
+}
+
+.dh-sehir__durum.is-on { color: var(--dh-a-cat); font-weight: 700; }
+html.uc-dark .dh-sehir__durum { color: var(--color-gray-200); }
+
+.dh-sehir__sil {
+  grid-area: sil;
+  justify-self: start;
+  margin-top: 8px;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 8px 8px 8px 0;
+  border: 1px solid var(--color-gray-200);
+  background: transparent;
+  color: var(--color-gray-700);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dh-sehir__sil:hover { border-color: var(--dh-a-cat); color: var(--dh-a-cat); }
+html.uc-dark .dh-sehir__sil { color: var(--color-gray-100); border-color: rgba(255, 255, 255, .24); }
+
+.dh-sehir__panelh {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+}
+
+.dh-sehir__panelh b { color: var(--dh-a-cat); }
+html.uc-dark .dh-sehir__panelh { color: #fff; }
+
+/* ---- seçili ilin haber listesi ---- */
+.dh-yerel { list-style: none; margin: 0 0 18px; padding: 0; }
+
+.dh-yerel__it {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.dh-yerel__it:last-child { border-bottom: 0; }
+html.uc-dark .dh-yerel__it { border-bottom-color: rgba(255, 255, 255, .10); }
+
+.dh-yerel__tag {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 9px;
+  border-radius: 8px 8px 8px 0;
+  background: var(--dh-a-soft);
+  color: var(--dh-a-cat);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.dh-yerel__title { margin: 0; font-size: 14.5px; font-weight: 700; line-height: 1.4; }
+
+.dh-yerel__title a {
+  color: var(--color-gray-900);
+  text-decoration: none;
+  transition: color .15s;
+}
+
+.dh-yerel__title a:hover { color: var(--dh-a-cat); }
+html.uc-dark .dh-yerel__title a { color: #fff; }
+
+.dh-yerel__sum { margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--color-gray-500); }
+html.uc-dark .dh-yerel__sum { color: var(--color-gray-300); }
+
+.dh-yerel__meta {
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-gray-400);
+}
+
+html.uc-dark .dh-yerel__meta { color: var(--color-gray-300); }
+
+@media (max-width: 1199.98px) {
+  .dh-sehir { grid-template-columns: minmax(0, 1fr); }
+  .dh-sehir__grid { max-height: 280px; }
+}
+
+@media (max-width: 575.98px) {
+  .dh-sehir__pick, .dh-sehir__panel { padding: 16px; }
+  .dh-sehir__grid { grid-template-columns: repeat(auto-fill, minmax(126px, 1fr)); }
+  .dh-sehir__h { font-size: 19px; }
+}
+
+/* --------------------------------------------------------------- .dh-gozgun
+   Özgün içerikler: Özel Haber · Araştırma · Gündem Analizi.
+   Etiket standardı R6'daki "görünür tür etiketi" kuralını sürdürür.      */
+.dh-gozgun {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dh-gozgun__it {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 20px 20px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 16px 16px 16px 0;
+  background: #fff;
+}
+
+html.uc-dark .dh-gozgun__it {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .12);
+}
+
+.dh-gozgun__it::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 3px;
+  background: var(--dh-a-cat);
+}
+
+.dh-gozgun__tur {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 11px;
+  border-radius: 8px 8px 8px 0;
+  border: 1px solid var(--dh-a-cat);
+  color: var(--dh-a-cat);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.dh-gozgun__title { margin: 0; font-size: 18px; font-weight: 800; line-height: 1.3; letter-spacing: -0.015em; }
+
+.dh-gozgun__title a { color: var(--color-gray-900); text-decoration: none; transition: color .15s; }
+.dh-gozgun__title a:hover { color: var(--dh-a-cat); }
+html.uc-dark .dh-gozgun__title a { color: #fff; }
+
+.dh-gozgun__sum {
+  margin: 0;
+  flex: 1 1 auto;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-gozgun__sum { color: var(--color-gray-300); }
+
+.dh-gozgun__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+  color: var(--color-gray-500);
+}
+
+.dh-gozgun__meta time,
+.dh-gozgun__meta span:last-child { font-family: var(--dh-mono); font-weight: 500; }
+.dh-gozgun__meta span:first-child { font-weight: 700; color: var(--color-gray-700); font-family: inherit; }
+html.uc-dark .dh-gozgun__meta { color: var(--color-gray-300); }
+html.uc-dark .dh-gozgun__meta span:first-child { color: #fff; }
+
+.dh-gozgun__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+  min-height: 44px;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  color: var(--dh-a-cat);
+  text-decoration: none;
+}
+
+.dh-gozgun__go i { font-size: 10px; transition: transform .18s; }
+.dh-gozgun__go:hover i { transform: translateX(3px); }
+
+@media (max-width: 991.98px) { .dh-gozgun { grid-template-columns: minmax(0, 1fr); } }
+
+/* ============================================================================
+   v2 / A-4 — DÜNYA SAYFASI BİLEŞENLERİ (dunya.html)
+   Dokümanın 4.3'ü:
+     Bölgeler → .dh-bolge (seçici şerit) + .dh-dcard (haber kartı)
+     Konular  → .dh-dkonu
+   Şerit VERİ değiştiriyor, sayfa değiştirmiyor: semantiği radiogroup
+   (R7'de kararlaştırıldı; tablist modül değiştiren şeride ayrılmıştır).
+   ========================================================================== */
+
+.dh-bolge { display: block; }
+
+/* Kayan şerit. Kenar yumuşatma (mask) YOK — sağ kenar net biter. */
+.dh-bolge__rail {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 2px 2px 12px;
+  margin: 0 -2px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dh-bolge__rail::-webkit-scrollbar { display: none; }
+
+.dh-bolge__b {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+  background: #fff;
+  color: var(--color-gray-700);
+  font-size: 13.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: .16s cubic-bezier(.22, .61, .36, 1);
+}
+
+.dh-bolge__b i { font-size: 13px; color: var(--dh-a-cat); transition: color .16s; }
+
+html.uc-dark .dh-bolge__b {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .12);
+  color: var(--color-gray-200);
+}
+
+.dh-bolge__b:hover { border-color: var(--dh-a-cat); color: var(--dh-a-cat); }
+
+.dh-bolge__b.is-on {
+  background: var(--dh-a-cat);
+  border-color: var(--dh-a-cat);
+  color: #fff;
+}
+
+.dh-bolge__b.is-on i { color: inherit; }
+/* Koyu temada kimlik rengi açık ton; üstünde koyu mürekkep gerekiyor. */
+html.uc-dark .dh-bolge__b.is-on { color: var(--color-gray-900); }
+
+.dh-bolge__b:focus-visible { outline: 2px solid var(--dh-a-cat); outline-offset: 2px; }
+
+/* Seçili bölgenin künyesi */
+.dh-bolge__id {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  margin: 6px 0 20px;
+  border-left: 3px solid var(--dh-a-cat);
+  background: var(--dh-a-soft);
+  border-radius: 0 12px 12px 0;
+}
+
+.dh-bolge__ad {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-bolge__ad { color: #fff; }
+
+.dh-bolge__ozet {
+  margin: 0;
+  max-width: 72ch;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-gray-700);
+}
+
+html.uc-dark .dh-bolge__ozet { color: var(--color-gray-100); }
+
+.dh-bolge__kapsam {
+  font-family: var(--dh-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-bolge__kapsam { color: var(--color-gray-200); }
+
+/* Bölgeye göre değişen haber ızgarası */
+.dh-bolge__liste {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 1199.98px) { .dh-bolge__liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 575.98px)  { .dh-bolge__liste { grid-template-columns: minmax(0, 1fr); gap: 10px; } }
+
+/* ----------------------------------------------------------------- .dh-dcard
+   Dünya haber kartı: yer ve saat künyesi mono (veri sesi).               */
+.dh-dcard { min-width: 0; }
+
+.dh-dcard__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dh-dcard__fig {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 16px 16px 16px 0;
+  background: var(--color-gray-50);
+}
+
+.dh-dcard__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform .4s cubic-bezier(.22, .61, .36, 1);
+}
+
+.dh-dcard__link:hover .dh-dcard__img { transform: scale(1.05); }
+
+/* Görsel üstü kategori ETİKETİ — tek hap istisnası burada değil; bu bir
+   künye rozeti, köşe imzası uygulanır. Zemin tam opak koyu: fotoğraf
+   açık çıksa bile beyaz metin >= 4,5:1 kalsın. */
+.dh-dcard__tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 8px 8px 8px 0;
+  background: rgba(18, 18, 18, .88);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.dh-dcard__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 12px;
+  flex: 1 1 auto;
+}
+
+.dh-dcard__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.36;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+  transition: color .15s;
+}
+
+.dh-dcard__link:hover .dh-dcard__title { color: var(--dh-a-cat); }
+html.uc-dark .dh-dcard__title { color: #fff; }
+
+.dh-dcard__sum {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--color-gray-500);
+  flex: 1 1 auto;
+}
+
+html.uc-dark .dh-dcard__sum { color: var(--color-gray-300); }
+
+.dh-dcard__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-gray-500);
+}
+
+.dh-dcard__yer { font-weight: 700; color: var(--dh-a-cat); }
+.dh-dcard__saat { font-variant-numeric: tabular-nums; }
+html.uc-dark .dh-dcard__meta { color: var(--color-gray-300); }
+
+/* ----------------------------------------------------------------- .dh-dkonu
+   Altı konu başlığı — .dh-gkat ile aynı dil, üç sütun.                   */
+.dh-dkonu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dh-dkonu__it {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  grid-template-areas: "ic ad" "ic son" "ic sayi";
+  column-gap: 14px;
+  row-gap: 4px;
+  align-content: start;
+  height: 100%;
+  padding: 18px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 16px 16px 16px 0;
+  background: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  transition: .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+html.uc-dark .dh-dkonu__it {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .12);
+}
+
+.dh-dkonu__it::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--dh-a-cat);
+  opacity: .35;
+  transition: opacity .2s;
+}
+
+.dh-dkonu__it:hover { border-color: var(--dh-a-cat); transform: translateY(-2px); }
+.dh-dkonu__it:hover::before { opacity: 1; }
+
+.dh-dkonu__ic {
+  grid-area: ic;
+  align-self: start;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px 10px 10px 0;
+  background: var(--dh-a-soft);
+  color: var(--dh-a-cat);
+  font-size: 16px;
+}
+
+.dh-dkonu__ad {
+  grid-area: ad;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-dkonu__ad { color: #fff; }
+
+.dh-dkonu__son {
+  grid-area: son;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-gray-500);
+}
+
+html.uc-dark .dh-dkonu__son { color: var(--color-gray-300); }
+
+.dh-dkonu__sayi {
+  grid-area: sayi;
+  margin-top: 4px;
+  font-family: var(--dh-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--dh-a-cat);
+}
+
+@media (max-width: 991.98px) { .dh-dkonu { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 575.98px) { .dh-dkonu { grid-template-columns: minmax(0, 1fr); gap: 10px; } }
+
+/* ============================================================================
+   v2 / A-5 — KOYU TEMA DÜZELTMESİ (ölçülerek bulundu)
+   HATA: seçili durum kuralları (.X.is-on, özgüllük 0,2,0) koyu tema taban
+   kurallarının (html.uc-dark .X, özgüllük 0,2,1) ALTINDA kalıyordu.
+   Sonuç: koyu temada seçili şehir çipi / seçili il / seçili bölge düğmesi
+   zemini gri-800'e düşüyor, üstündeki koyu mürekkeple 1,2:1 çıkıyordu —
+   yani seçim GÖRÜNMÜYORDU (1440/dark ekran görüntüsünde yakalandı).
+   Çözüm: koyu temada seçili durum için ayrı, daha özgül kural.
+   ========================================================================== */
+html.uc-dark .dh-sehir__q.is-on,
+html.uc-dark .dh-sehir__il.is-on,
+html.uc-dark .dh-bolge__b.is-on {
+  background: var(--dh-a-cat);
+  border-color: var(--dh-a-cat);
+  color: var(--color-gray-900);
+}
+
+html.uc-dark .dh-bolge__b.is-on i { color: var(--color-gray-900); }
+html.uc-dark .dh-sehir__il.is-on .dh-sehir__plaka { color: var(--color-gray-900); opacity: .7; }
+
+/* Aynı özgüllük tuzağı hover'da da vardı. */
+html.uc-dark .dh-sehir__q:hover,
+html.uc-dark .dh-sehir__il:hover,
+html.uc-dark .dh-bolge__b:hover { border-color: var(--dh-a-cat); color: var(--dh-a-cat); }
+html.uc-dark .dh-sehir__q.is-on:hover,
+html.uc-dark .dh-sehir__il.is-on:hover,
+html.uc-dark .dh-bolge__b.is-on:hover { color: var(--color-gray-900); }
+
+/* ============================================================================
+   v2 / A-6 — ANCHOR YASLAMASI (ölçülerek bulundu)
+   Kabuğun yapışkan başlığı `position: fixed` ve 1440px'te 106px yüksek.
+   Mega menü ve footer bu sayfalara #dakika / #takvim / #iller gibi
+   anchor'larla iniyor; ölçümde hedef başlık y=59'da, yani başlığın
+   ALTINDA kalıyordu. 124px = 106 + 18px nefes.
+   ========================================================================== */
+body[data-dh-cat="simdi"] section[id],
+body[data-dh-cat="gundem"] section[id],
+body[data-dh-cat="dunya"] section[id],
+#iller { scroll-margin-top: 124px; }
+
+/* ============================================================================
+   v2 / A-7 — KONTRAST DÜZELTMESİ (hesaplandı)
+   --color-gray-400 (#7c7c7c) beyaz üstünde 4,18:1 — WCAG AA (4,5:1) ALTINDA.
+   Üç yerde kullanılmıştı: plaka rozeti, yerel haber künyesi, arama
+   yer tutucusu. Hepsi gray-500'e (#5b5b5b, beyaz üstünde 6,79:1) çekildi.
+   ========================================================================== */
+.dh-sehir__field input::placeholder { color: var(--color-gray-500); }
+.dh-sehir__plaka { color: var(--color-gray-500); }
+.dh-yerel__meta { color: var(--color-gray-500); }

@@ -18,3 +18,7 @@ assets/css/theme/demo-nine*.css
 assets/css/theme/demo-ten*.css
 assets/css/theme/main.css
 assets/css/theme/main.min.css
+
+# geçici ekran görüntüsü / ikon kontrol sayfaları
+_sheet.html
+_icons.html

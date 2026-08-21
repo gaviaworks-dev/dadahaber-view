@@ -524,3 +524,116 @@ alanı, `Range` ile gerçek karakter/satır sayımı, alt dizin taklidi (`page.r
 ile `/dadahaber-view/` öneki), CDP `CSS.getMatchedStylesForNode` ile hangi kuralın
 kazandığı. **Kaskad çakışmalarını tahminle değil CDP ile çöz** — R8'de dört ayrı
 "kural uygulanmıyor" vakası bu şekilde bulundu.
+
+---
+
+# v2 — Nihai Menü Haritası bilgi mimarisi
+
+**Yeni oturumda önce `docs/V2-IA.md` oku.** Menü metni, sıra ve gruplama orada;
+o dosyadan sapılmaz. Kaynak: `Dada_Haber_Nihai_Menu_Haritasi (1).docx`
+(Sürüm 1.0, 19 Ağustos 2026).
+
+## v2'nin taşıyıcı kararı: v1 donmuş kalmalı
+
+`main` içinde `/v1/` klasörü v1'in yayındaki kopyasıdır ve varlıkları
+`../assets/` üzerinden **paylaşır**. Bu ancak v2 varlık ağacına yalnız
+EKLEME yaparsa güvenlidir. Bu yüzden v2'de:
+
+| Dosya | Kural |
+|---|---|
+| `assets/css/theme/custom.min.css` | **DEĞİŞTİRİLMEZ.** Tüm v2 CSS'i `assets/css/theme/v2/` altına. |
+| `assets/js/dh-*.js` | **DEĞİŞTİRİLMEZ.** Yeni davranış `assets/js/v2/`. |
+| `assets/images/**` | Yalnız eklenir, mevcut dosya değiştirilmez/silinmez. |
+| `assets/css/theme/demo-six.min.css` | Vendor, dokunulmaz (v1'den beri). |
+
+`/v1/` kopyasını üreten betik: `docs/parts/v1-kopya.py` (yayın anında çalışır).
+Donmuş kopyanın etiketi: `v1` dalı + `v1-donmus` git etiketi.
+
+## Kabuk tek kaynaktan yayılır — elle düzenlenmez
+
+```bash
+python3 docs/parts/uret.py     # header.html · offcanvas.html · footer.html üretir
+python3 docs/parts/yay.py      # tüm kök *.html sayfalarına yayar (idempotent)
+```
+
+`uret.py` içindeki `MENU` / `BANT` / `SOSYAL` / `FOOTER` yapıları dokümandan
+birebir kopyalanmıştır. Menü değişecekse **orayı** değiştir, sayfaları değil.
+
+`yay.py` her sayfada dört şeyi yapar: offcanvas bloğunu, `<!-- Header start -->`
+… `</header>` aralığını ve `<footer id="uc-footer">` … `</footer>` aralığını
+değiştirir; eksikse `v2.css` ve `dh-v2-nav.js` bağlantılarını ekler.
+`404.html` ve `coming-soon.html` bilerek footer almaz (`.dh-minifoot` taşırlar).
+
+Aktif menü başlığı markup'a gömülmez: sayfa `<body data-dh-cat="spor">` yazar,
+`assets/js/v2/dh-v2-nav.js` işaretler. Böylece kabuk yeniden yayıldığında
+aktif işaret kaybolmaz.
+
+Yeni sayfa `docs/parts/sayfa-sablon.html`'den türetilir.
+
+## Kabuk ölçüleri
+
+| Katman | Yükseklik |
+|---|---|
+| Üst servis bandı | 40px (yapışkanda gizlenir) |
+| Marka satırı | 84px (yapışkanda 56px) |
+| Ana gezinti | 48px |
+| **Toplam** | **172px · yapışkanda 104px** |
+
+Yapışkan kenar sütunu ofseti bu yüzden `136` → `120` yapıldı.
+
+## v2'de eklenen tasarım dili
+
+- **Veri ve doğrulama sesi:** sayısal/zaman/künye/doğrulama bilgisi
+  `var(--dh-mono)` (sistem monospace), 10–11px, `letter-spacing: .08em`,
+  versal. Yeni font İNDİRİLMEDİ. Bu ses "bu bir kayıt/ölçüm" demek —
+  Haber Karnesi, Dada Doğrula kararları, güncelleme saatleri, arama meta'sı.
+- **11 kategori kimlik rengi** `v2/kabuk.css` `:root`'unda: `--dh-c-simdi`
+  `--dh-c-gundem` `--dh-c-dunya` `--dh-c-ekonomi` `--dh-c-teknoloji`
+  `--dh-c-gelecek` `--dh-c-spor` `--dh-c-saglik` `--dh-c-kultur` `--dh-c-video`
+  `--dh-c-kesfet`. Kimlik yalnız banner perdesi ve şeritlerde; sayfa geneline
+  `--color-primary` override'ı EKLENMEZ (v1'den beri geçerli).
+- **Karar/tür etiketleri renkle ayrışmaz, metinle ayrışır.** Renk körlüğü ve
+  gri baskı için etiketin kendisi kararın adını taşır (Doğru / Yanlış /
+  Kısmen Doğru / Bağlamdan Koparılmış / Manipülasyon / Yapay Zekâ İçeriği ·
+  Görüş / Analiz / Yorum).
+
+## v2'de ölçerek yakalanan gerçek hatalar
+
+1. **Vendor `uc-drop` mega paneli 250px'e kilitliyordu.** `stretch: x` inline
+   `width: 1248px` yazıyor ama kullanılan genişlik 250px kalıyordu
+   (`min-width: 250px` + drop'un kendi konumlandırması). Panel saf CSS'e
+   taşındı: `.dh-v2-nav__bar { position: relative }` + `.dh-mega { position:
+   absolute; inset-inline: 0 }` + `:hover` / `:focus-within`. Ölçülen genişlik
+   artık 1248px = container.
+2. **Karanlık mod sınıfı `uc-dark`, `dark` DEĞİL.** İlk yazılan 18 `html.dark`
+   seçicisi hiç uygulanmıyordu. URL ile tetikleme: `?dark=1`.
+   `localStorage.setItem('darkMode','true')` çalışmaz.
+3. **Footer perdesi 671px'lik yeni footer'la kırılıyordu.** `footer-reveal.js`
+   güvenlik freni `yükseklik + 80 > innerHeight` koşuluna bakıyor; 800px
+   viewport'ta 671+80 = 751 < 800 olduğu için perde açık kalıyor ve footer'ın
+   üst sütunları ekranın tepesine düşüyordu. Script 67 sayfadan kaldırıldı.
+   6 sütunlu footer bir bilgi yüzeyi, perde değil.
+4. **Sayfa şablonunda `#page-url` eksikti.** `assets/js/app.js` her sayfada
+   `document.getElementById('page-url').value` yazıyor; GÖRÜŞ BİLDİR bloğu
+   olmayan sayfa `pageerror` veriyor. Blok şablona geri kondu.
+5. **992–1279 arasında gezintiyi yatay kaydırmak mega paneli kırpıyordu.**
+   Kaydırma kaldırıldı; 11 başlık 12.5px yazı + 8px iç boşlukla sığıyor
+   (992px'te liste 960px kutuda 807px'te bitiyor, ölçüldü).
+6. **Tema kalıntısı kırık bağlantılar:** `blog-category.html`
+   `blog-details.html` `page-author.html` `infografik-detay.html`
+   `href="to_top"` — 82 sayfada düzeltildi. Site genelinde kırık iç bağlantı
+   sayısı artık **0**.
+
+## v2 açık kalanlar
+
+- `v2.css` parçaları `@import` ile toplanıyor. Prototip için yeterli; gerçek
+  yayında tek dosyaya düzleştirilmeli (paralel indirmeyi engelliyor).
+- Alt kategorilerin çoğu gerçek sayfa değil, `haber-liste.html`'e bağlanıyor.
+  Backend gelince kategori yönlendirmesi kurulmalı.
+- Dada Doğrula iddiaları ve Farklı Bakışlar kaynak adları **kurgusaldır**;
+  gerçek kişi/yayın organına iddia veya görüş atfedilmemiştir. Gerçek içerik
+  gelince editoryal onay şart.
+- Hesabım sayfası prototiptir; gerçek kişisel veri toplamaz, tercihler
+  yalnız `localStorage`'da. KVKK kapsamı ayrıca ele alınmalı.
+- v1'den devreden açıklar (Gilroy lisansı, sarı zeminde beyaz metin AA,
+  hukuk onayı, kulüp armaları, hamilelik tıbbi onayı) **aynen duruyor.**
