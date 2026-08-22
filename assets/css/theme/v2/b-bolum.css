@@ -1012,3 +1012,62 @@ html.uc-dark .dh-blinks__nav {
   .dh-blinks__nav { display: none; }
   .dh-blinks--ray { grid-auto-columns: minmax(212px, 1fr); }
 }
+
+/* --- Ekonomik takvim sayfası: süzgeç şeridi ------------------------------
+   Şerit görünen bölümü değil, o bölümün VERİSİNİ süzüyor — bu yüzden
+   radiogroup, tablist değil (dh-tabs.js'teki aynı ayrım). */
+.dh-tkfilt {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-tkfilt { background: rgba(255,255,255,.04); border-color: var(--color-gray-700); }
+.dh-tkfilt__grp { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.dh-tkfilt__lbl {
+  margin-inline-end: 6px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+.dh-tkfilt__b {
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-gray-800);
+  background: #fff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+  cursor: pointer;
+  transition: border-color .14s, background .14s, color .14s;
+}
+html.uc-dark .dh-tkfilt__b { background: var(--color-gray-900); border-color: var(--color-gray-700); color: #fff; }
+.dh-tkfilt__b:hover { border-color: var(--color-primary); }
+.dh-tkfilt__b.is-on {
+  background: var(--color-gray-900);
+  border-color: var(--color-gray-900);
+  color: #fff;
+}
+html.uc-dark .dh-tkfilt__b.is-on { background: var(--color-primary); border-color: var(--color-primary); color: #000; }
+.dh-tkfilt__b:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+.dh-tkfilt__say { margin: 2px 0 0; font-size: 12.5px; color: var(--color-gray-500); }
+.dh-tkfilt__say b { color: var(--color-gray-900); font-variant-numeric: tabular-nums; }
+html.uc-dark .dh-tkfilt__say b { color: #fff; }
+.dh-tkfilt__bos {
+  margin: 14px 0 0;
+  padding: 16px;
+  font-size: 13.5px;
+  color: var(--color-gray-600);
+  background: var(--color-gray-50);
+  border: 1px dashed var(--color-gray-300);
+  border-radius: 8px 8px 8px 0;
+}
+.dh-tkvm--sayfa .dh-tkvm__it[hidden] { display: none; }
+/* faiz sayfası: tablolar iki sütun */
+.dh-fingrid--sayfa { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 991.98px) { .dh-fingrid--sayfa { grid-template-columns: minmax(0, 1fr); } }
