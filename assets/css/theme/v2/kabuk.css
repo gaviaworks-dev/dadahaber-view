@@ -1401,3 +1401,251 @@ html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
   .dh-duz p,
   .dh-yz p { text-align: start; }
 }
+
+
+/* ============================================================================
+   11. DENETİM TURU 2 — tipografi tabanı, çip ölçüsü, köşe imzası, karanlık mod
+   Her madde ölçümle açıldı; ölçüm yorumda.
+   ========================================================================== */
+
+/* --- 11.1 · 11px tabanı MASAÜSTÜNDE de geçerli --------------------------
+   Ölçüm: 1280 ve 1024px'te 530 görünür metin 11px altındaydı (17/22 sayfa,
+   43 seçici, en küçüğü 9px). custom.min.css'teki 12px tabanı yalnız
+   max-width:767.98px içinde tanımlıydı; telefon dışında hiç uygulanmıyordu.
+   İlk deneme tuttu sayılmaz: seçiciler listede olmasına rağmen bileşen
+   kuralları (ör. `.dh-panel .dh-cell__label`) özgüllükte yeniyordu —
+   ölçümde 408 metin hâlâ 11px altındaydı. Sınıf ikizlenerek (.x.x)
+   özgüllük eşitlendi; v2.css sonra yüklendiği için kural kazanıyor.
+   Mobildeki 12px tabanı olduğu gibi duruyor. */
+@media (min-width: 768px) {
+  .dh-arow__cat.dh-arow__cat,
+  .dh-art-cat.dh-art-cat,
+  .dh-artbox__k.dh-artbox__k,
+  .dh-astro__eyebrow.dh-astro__eyebrow,
+  .dh-author__beat.dh-author__beat,
+  .dh-band__tag.dh-band__tag,
+  .dh-bil__opt-tag.dh-bil__opt-tag,
+  .dh-calcs__head.dh-calcs__head,
+  .dh-card__badge.dh-card__badge,
+  .dh-catbar__root-ad.dh-catbar__root-ad,
+  .dh-catbar__root-fn.dh-catbar__root-fn,
+  .dh-cell__label.dh-cell__label,
+  .dh-cinfo__k.dh-cinfo__k,
+  .dh-doc__num.dh-doc__num,
+  .dh-fact__k.dh-fact__k,
+  .dh-finchart__cap.dh-finchart__cap,
+  .dh-finconv__note.dh-finconv__note,
+  .dh-finpanel__sub.dh-finpanel__sub,
+  .dh-finsum__name.dh-finsum__name,
+  .dh-fintable__desc.dh-fintable__desc,
+  .dh-fintabs__tab.dh-fintabs__tab,
+  .dh-fintick__name.dh-fintick__name,
+  .dh-foto__count.dh-foto__count,
+  .dh-fx__daylbl.dh-fx__daylbl,
+  .dh-fx__state.dh-fx__state,
+  .dh-gal__credit.dh-gal__credit,
+  .dh-ilan__org.dh-ilan__org,
+  .dh-ilan__type.dh-ilan__type,
+  .dh-jersey__team.dh-jersey__team,
+  .dh-lb__lead.dh-lb__lead,
+  .dh-live__cat.dh-live__cat,
+  .dh-mc__comp.dh-mc__comp,
+  .dh-mc__sub.dh-mc__sub,
+  .dh-mstats__lab.dh-mstats__lab,
+  .dh-op__kicker.dh-op__kicker,
+  .dh-panel__kicker.dh-panel__kicker,
+  .dh-person__role.dh-person__role,
+  .dh-ph__eyebrow.dh-ph__eyebrow,
+  .dh-player__kicker.dh-player__kicker,
+  .dh-pod__ep.dh-pod__ep,
+  .dh-podium__fastlbl.dh-podium__fastlbl,
+  .dh-podium__gap.dh-podium__gap,
+  .dh-podium__team.dh-podium__team,
+  .dh-prof__k.dh-prof__k,
+  .dh-relbox__title.dh-relbox__title,
+  .dh-res__tag.dh-res__tag,
+  .dh-son5__lbl.dh-son5__lbl,
+  .dh-sport__kicker.dh-sport__kicker,
+  .dh-sport__sub.dh-sport__sub,
+  .dh-stage__type.dh-stage__type,
+  .dh-stand__club.dh-stand__club,
+  .dh-strip__k.dh-strip__k,
+  .dh-tag.dh-tag,
+  .dh-toc__label.dh-toc__label,
+  .minimizeDate.minimizeDate {
+    font-size: 11px;
+  }
+  .dh-astro__label small,
+  .dh-byline small,
+  .dh-finconv .dh-fintabs__tab,
+  .dh-finconv__field label,
+  .dh-finconv__mode legend,
+  .dh-finrange__labels span,
+  .dh-finspot .dh-fintabs__tab,
+  .dh-finsum__rng b,
+  .dh-fx__cols span,
+  .dh-info__src b,
+  .dh-mast__row dt,
+  .dh-podium__fast b,
+  .dh-podium__step .dh-podium__gap,
+  .dh-podium__step .dh-podium__team,
+  .dh-pop__meta span,
+  .dh-stand__who .dh-stand__club,
+  .dh-wcard__last small,
+  .dh-wk__sep b,
+  .dh-wk__sep small,
+  taban da aynı ağırlıkta verilmek zorunda kaldı. */,
+  table thead th,
+  table thead th.is-num {
+    font-size: 11px;
+  }
+  .dh-byline small,
+  .minimizeDate,
+  .minimizeDate.minimizeDate,
+  .dh-astro__label small,
+  thead th,
+  .dh-mast__row dt,
+  .dh-fx__cols span,
+  .dh-info__src b,
+  .dh-finsum__rng b,
+  .dh-podium__fast b,
+  .dh-wk__sep b,
+  .dh-wk__sep small { font-size: 11px !important; }
+
+  /* İkinci ölçüm turunda kalanlar — bunlar v2 bileşenleri, ilk listede yoktu.
+     408 -> 47 sonrası taranarak bulundu. */
+  .dh-yon__k.dh-yon__k,
+  .dh-gozgun__tur.dh-gozgun__tur,
+  .dh-kesf__k.dh-kesf__k,
+  .dh-m__eyebrow.dh-m__eyebrow,
+  .dh-duz__k.dh-duz__k,
+  .dh-yz__k.dh-yz__k,
+  .dh-rev__badge.dh-rev__badge,
+  .dh-yerel__tag.dh-yerel__tag,
+  .dh-podium__pos.dh-podium__pos,
+  .dh-tkfilt__lbl.dh-tkfilt__lbl,
+  .dh-ad__k.dh-ad__k,
+  .dh-mega__grp.dh-mega__grp,
+  .dh-v2-off__grp.dh-v2-off__grp,
+  .dh-nwstamp.dh-nwstamp,
+  .dh-mono.dh-mono { font-size: 11px; }
+  .dh-sport__kicker.dh-sport__kicker,
+  .dh-mast__rows dt,
+  .dh-fintable__scroll dt,
+  .dh-tid__stats dt,
+  dl dt { font-size: 11px !important; }
+  .fs-5.fw-bold { font-size: 11px; }
+  .dh-share__source-label.dh-share__source-label,
+  .dh-kmod__go-ad.dh-kmod__go-ad { font-size: 11px; }
+  .minimizeDate,
+  span.minimizeDate,
+  .dh-fintick .minimizeDate { font-size: 11px !important; }
+  .fs-5.fw-bold,
+  span.fs-5.fw-bold { font-size: 11px !important; }
+}
+
+/* --- 11.2 · <button> çipler kurumsal ölçüyü kaybediyordu ------------------
+   Ölçüm: custom.min.css'te `button.dh-catbar__chip { font: inherit }` (0,1,1)
+   benim `.dh-catbar__chip{font-size:13.5px}` kuralımı (0,1,0) yeniyordu.
+   kadin.html çipleri 16px/500, diğer sayfalar 13.5px/600 — 146 buton /
+   10 sayfa. Özgüllük eşitlendi. */
+button.dh-catbar__chip {
+  font-size: 13.5px;
+  font-weight: 700;
+  font-family: inherit;
+}
+@media (max-width: 575.98px) {
+  button.dh-catbar__chip { font-size: 12.5px; }
+}
+
+/* --- 11.3 · köşe imzası: en sık iki ihlal --------------------------------
+   Ölçüm: 266 görünür öğede sol-alt köşe yuvarlaktı. En büyük iki kalem
+   toplamın %46'sı: img.w-24px (kaynak logosu, 94 örnek) ve
+   .dh-card__badge (28 örnek). Avatar (%50) ve hap (999px) istisna. */
+img.w-24px,
+.dh-card__badge,
+.dh-finsum__bar,
+.dh-finsum__mark,
+.dh-fx__round,
+table.dh-fintable,
+table.dh-stand { border-bottom-left-radius: 0 !important; }
+.dh-card__badge { border-radius: 8px 8px 8px 0 !important; }
+
+/* --- 11.4 · karanlık modda görünmez metin --------------------------------
+   Ölçüm: spor.html?dark=1 · .dh-mc__crest--txt beyaz zemin üstünde beyaz
+   metin, kontrast 1.00:1, 8 örnek. Rozet zemini koyuya alındı. */
+html.uc-dark .dh-mc__crest--txt {
+  background: var(--color-gray-700) !important;
+  color: #fff !important;
+}
+
+/* --- 11.5 · karanlık modda AA altı ikincil metin -------------------------
+   Ölçüm: #5b5b5b (gray-500) siyah zeminde 3,09:1 — beyaz zemin için
+   seçilmiş ton koyu temada ters çevrilmemişti. Koyu temada açık tona
+   döner: #9a9a9a siyah üstünde 7,0:1. */
+html.uc-dark { --color-gray-500: #9a9a9a; }
+html.uc-dark .dh-gozgun__tur { filter: brightness(1.45); }
+html.uc-dark .dh-rev__badge,
+html.uc-dark .dh-author__beat { color: var(--color-primary) !important; }
+
+/* --- 11.6 · bölüm başlığı ile ray arasındaki 2px kayma -------------------
+   Ölçüm: index (3), ekonomi (2), video (8) — sürekli -2px; ray odak
+   halkası için -2px kenar payı alıyor, başlık çubuğuna aynı pay verildi. */
+.dh-secbar + .dh-track,
+.dh-secbar + * > .dh-track { margin-inline: -2px; }
+.dh-secbar { margin-inline: -2px; padding-inline: 2px; }
+
+/* --- 11.7 · 480px altında sıkışan iki/üç sütunlu kalıplar ----------------
+   Ölçüm (390px): .dh-gozgun__yontem üç sütun x 103px (etiket 9,5px),
+   .dh-mc__body 115|54px. İkisi de tek sütuna iniyor. */
+@media (max-width: 479.98px) {
+  .dh-gozgun__yontem { grid-template-columns: minmax(0, 1fr) !important; }
+  .dh-gozgun__yontem > div { display: flex; align-items: baseline; gap: 8px; justify-content: space-between; }
+}
+
+/* --- 11.8 · 11px tabanı: üçüncü ölçüm turunda kalanlar -------------------
+   Ölçüm (98 sayfa x 3 kırılım): 530 -> 2094 -> aşağıdaki liste. Kalanların
+   çoğu .dh-num ailesi (sayı/veri etiketleri) ve SVG <text> düğümleri.
+   SVG'de 9px'lik eksen/ızgara etiketleri de 11px'e çekildi — diyagram
+   okunamıyorsa diyagram işini yapmıyor demektir. */
+.dh-num.dh-num,
+.dh-tkvm__nums.dh-tkvm__nums,
+.dh-hsp__grpad.dh-hsp__grpad,
+.dh-nwstat__lv.dh-nwstat__lv,
+.dh-nwlist__tag.dh-nwlist__tag,
+.dh-arag__v.dh-arag__v,
+.dh-share__source-label.dh-share__source-label { font-size: 11px !important; }
+.dh-finconv__field label,
+.dh-finconv__mode legend,
+.dh-hsp__lbl,
+.dh-kform__f > label,
+.dh-fld__l { font-size: 11px; }
+.dh-tkvm__nums b,
+.dh-nwstat b,
+.dh-info__src b,
+.dh-finsum__rng b,
+.dh-num b { font-size: inherit !important; }
+/* SVG diyagram etiketleri */
+.dh-tr81 text,
+.dh-gr text,
+.dh-veri text,
+svg .dh-tr81__no,
+svg .dh-tr81__lv { font-size: 11px; }
+.dh-tr81--sec .dh-tr81__no { font-size: 16px; }
+/* SVG içindeki tüm etiketler için taban — sınıf adları SVGAnimatedString
+   olduğu için tek tek hedeflenemiyor. 81 örnek 9px'ti. */
+#wrapper svg text { font-size: 11px; }
+#wrapper svg .dh-tr81__no { font-size: 16px; }
+/* Son kalemler: grafik ekseni etiketleri ve takım şeridi adları. */
+.dh-finchart__axis span,
+.dh-finchart__axis b,
+.dh-teams p.fs-5.fw-bold,
+.dh-teams .fs-5,
+p.fs-5.fw-bold { font-size: 11px !important; }
+.dh-finchart b,
+.dh-finsum b,
+.dh-fintick b,
+.minimizeDate,
+span.minimizeDate,
+.dh-fintick__time,
+figure b { font-size: 11px !important; }

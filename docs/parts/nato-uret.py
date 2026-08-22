@@ -11,6 +11,8 @@ import json, os, re, subprocess, sys
 kok = subprocess.run(["git", "rev-parse", "--show-toplevel"],
                      capture_output=True, text=True, check=True).stdout.strip()
 os.chdir(kok)
+sys.path.insert(0, os.path.join(kok, "docs", "parts"))
+from sayfa_basligi import basli
 SABLON = "docs/parts/sayfa-sablon.html"
 HEDEF = "nato.html"
 G = "./assets/images/main/posts/img-%02d.jpg"
@@ -143,16 +145,11 @@ for a, ad, kod, yil, bask, ozet, kapsam, hs in ULKE:
 
 g = []
 w = g.append
-w('        <section class="section panel pt-4 pb-0">\n          <div class="container max-w-xl">\n')
-w('            <nav class="dh-art-crumb" aria-label="Sayfa yolu">')
-w('<a href="index.html" aria-label="Anasayfa"><i class="fas fa-home-lg-alt" aria-hidden="true"></i></a>')
-w('<i class="fas fa-chevron-right" aria-hidden="true"></i><a href="savunma.html">Savunma</a>')
-w('<i class="fas fa-chevron-right" aria-hidden="true"></i><span aria-current="page">NATO</span></nav>\n')
-w('            <h1 class="h3 xl:h2 mt-2 mb-1 text-black dark:text-white">NATO</h1>\n')
-w('            <p class="fs-5 text-gray-600 dark:text-white dark:text-opacity-60 m-0" style="max-width:74ch">')
-w('İttifakın gündemi üye ülke üzerinden okunur: bir ülke seçin, o ülkenin ittifak içindeki ')
-w('konumu ve son gelişmeleri aşağıda görünsün.</p>\n')
-w('          </div>\n        </section>\n\n')
+w(basli("Savunma", "NATO",
+        "İttifakın gündemi üye ülke üzerinden okunur: bir ülke seçin, o ülkenin ittifak "
+        "içindeki konumu ve son gelişmeleri aşağıda görünsün.",
+        [("Savunma", "savunma.html"), ("NATO", None)], "img-04.jpg", "50% 44%",
+        ["Üye ülke: <b>%d</b>" % len(ULKE), "Veri: <b>prototip</b>"]))
 
 w('        <section class="section panel" id="uyeler" aria-labelledby="dh-nato-t">\n')
 w('          <div class="container max-w-xl">\n')

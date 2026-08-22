@@ -13,6 +13,8 @@ import json, os, re, subprocess, sys
 kok = subprocess.run(["git", "rev-parse", "--show-toplevel"],
                      capture_output=True, text=True, check=True).stdout.strip()
 os.chdir(kok)
+sys.path.insert(0, os.path.join(kok, "docs", "parts"))
+from sayfa_basligi import basli
 SABLON = "docs/parts/sayfa-sablon.html"
 HEDEF = "iller.html"
 
@@ -102,16 +104,11 @@ def izgara():
     return "".join(o)
 
 g = []; w = g.append
-w('        <section class="section panel pt-4 pb-0"><div class="container max-w-xl">\n')
-w('          <nav class="dh-art-crumb" aria-label="Sayfa yolu"><a href="index.html" aria-label="Anasayfa">'
-  '<i class="fas fa-home-lg-alt" aria-hidden="true"></i></a><i class="fas fa-chevron-right" aria-hidden="true"></i>'
-  '<a href="gundem.html">Gündem</a><i class="fas fa-chevron-right" aria-hidden="true"></i>'
-  '<span aria-current="page">81 İl</span></nav>\n')
-w('          <h1 class="h3 xl:h2 mt-2 mb-1 text-black dark:text-white">81 İl</h1>\n')
-w('          <p class="fs-5 text-gray-600 dark:text-white dark:text-opacity-60 m-0" style="max-width:74ch">'
-  'Bir il seçin: o ilin bölgesi, plakası ve son yerel gündemi aşağıda açılsın. '
-  'Izgara plaka sırasına göre dizilidir, gerçek coğrafi sınır göstermez.</p>\n')
-w('        </div></section>\n\n')
+w(basli("Gündem", "81 İl",
+        "Bir il seçin: o ilin bölgesi, plakası ve son yerel gündemi aşağıda açılsın. "
+        "Izgara plaka sırasına göre dizilidir, gerçek coğrafi sınır göstermez.",
+        [("Gündem", "gundem.html"), ("81 İl", None)], "img-06.jpg", "50% 52%",
+        ["<b>81</b> il", "<b>7</b> bölge"]))
 w('        <section class="section panel" id="harita" aria-labelledby="dh-iller-t">\n')
 w('          <div class="container max-w-xl">\n')
 w('            <div class="section-header panel dh-secbar">\n')

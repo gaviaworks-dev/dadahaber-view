@@ -11,6 +11,8 @@ import os, re, subprocess, sys
 kok = subprocess.run(["git", "rev-parse", "--show-toplevel"],
                      capture_output=True, text=True, check=True).stdout.strip()
 os.chdir(kok)
+sys.path.insert(0, os.path.join(kok, "docs", "parts"))
+from sayfa_basligi import basli
 SABLON = "docs/parts/sayfa-sablon.html"
 
 # ---------------------------------------------------------------- takvim
@@ -112,16 +114,11 @@ def tablo(baslik, altyazi, basliklar, satirlar, tid):
 def govde_takvim():
     o = []; w = o.append
     yuksek = sum(1 for t in TAKVIM if t[7] == "yuksek")
-    w('        <section class="section panel pt-4 pb-0"><div class="container max-w-xl">\n')
-    w('          <nav class="dh-art-crumb" aria-label="Sayfa yolu"><a href="index.html" aria-label="Anasayfa">'
-      '<i class="fas fa-home-lg-alt" aria-hidden="true"></i></a><i class="fas fa-chevron-right" aria-hidden="true"></i>'
-      '<a href="ekonomi.html">Finans</a><i class="fas fa-chevron-right" aria-hidden="true"></i>'
-      '<span aria-current="page">Ekonomik Takvim</span></nav>\n')
-    w('          <h1 class="h3 xl:h2 mt-2 mb-1 text-black dark:text-white">Ekonomik Takvim</h1>\n')
-    w('          <p class="fs-5 text-gray-600 dark:text-white dark:text-opacity-60 m-0" style="max-width:74ch">'
-      'Önümüzdeki yedi günde açıklanacak veriler, saatleri ve piyasa beklentileri. '
-      'Saatler Türkiye saatidir.</p>\n')
-    w('        </div></section>\n\n')
+    w(basli("Finans", "Ekonomik Takvim",
+            "Önümüzdeki yedi günde açıklanacak veriler, saatleri ve piyasa beklentileri. "
+            "Saatler Türkiye saatidir.",
+            [("Finans", "ekonomi.html"), ("Ekonomik Takvim", None)], "img-13.jpg", "50% 46%",
+            ["<b>%d</b> veri" % len(TAKVIM), "<b>%d</b> yüksek etkili" % yuksek]))
     w('        <section class="section panel"><div class="container max-w-xl">\n')
     w('          <div class="section-header panel dh-secbar">\n')
     w('            <h2 class="h5 xl:h4 m-0 text-black dark:text-white">Bu Hafta</h2>\n')
@@ -173,16 +170,11 @@ def govde_faiz():
         return ('                    <tr%s><th scope="row" class="dh-fintable__name">'
                 '<span class="dh-fintable__code">%s</span>%s</th>%s</tr>\n' % (d, ad, ac, h))
 
-    w('        <section class="section panel pt-4 pb-0"><div class="container max-w-xl">\n')
-    w('          <nav class="dh-art-crumb" aria-label="Sayfa yolu"><a href="index.html" aria-label="Anasayfa">'
-      '<i class="fas fa-home-lg-alt" aria-hidden="true"></i></a><i class="fas fa-chevron-right" aria-hidden="true"></i>'
-      '<a href="ekonomi.html">Finans</a><i class="fas fa-chevron-right" aria-hidden="true"></i>'
-      '<span aria-current="page">Faiz Oranları</span></nav>\n')
-    w('          <h1 class="h3 xl:h2 mt-2 mb-1 text-black dark:text-white">Faiz Oranları</h1>\n')
-    w('          <p class="fs-5 text-gray-600 dark:text-white dark:text-opacity-60 m-0" style="max-width:74ch">'
-      'Merkez bankası politika faizleri, mevduat ve kredi oranları bir arada. '
-      'Oranlar yıllıktır; bankalar arası ortalamayı gösterir.</p>\n')
-    w('        </div></section>\n\n')
+    w(basli("Finans", "Faiz Oranları",
+            "Merkez bankası politika faizleri, mevduat ve kredi oranları bir arada. "
+            "Oranlar yıllıktır; bankalar arası ortalamayı gösterir.",
+            [("Finans", "ekonomi.html"), ("Faiz Oranları", None)], "img-09.jpg", "50% 50%",
+            ["<b>4</b> tablo", "<b>8</b> merkez bankası"]))
     w('        <section class="section panel"><div class="container max-w-xl">\n')
     w('          <div class="dh-fingrid dh-fingrid--sayfa">\n')
 

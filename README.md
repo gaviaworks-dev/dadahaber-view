@@ -53,6 +53,32 @@ python3 -m http.server 8765     # → http://localhost:8765/
 ekleme yapar** — `custom.min.css` ve mevcut `assets/js/dh-*.js` v2'de
 değiştirilmemiştir. Tüm v2 CSS'i `assets/css/theme/v2/` altındadır.
 
+## v2.1 — V1/V2 birleştirme turu (22 Ağustos 2026)
+
+Ana menü **8 başlık**: `Anlık · Gündem · Dünya · Finans · Savunma · Spor ·
+Kadın · Diğer`. Menüden çıkan hiçbir kategori silinmedi — hepsi "Diğer"
+perdeleme panelinde ve `diger.html` dizininde.
+
+Kabuk iki satır: siyah **format bandı** (Haber Dinle · Foto Fokus ·
+Video Haber · İnfografik · Podcast + ikon seti + Giriş/Üye Ol) ve
+**marka satırı** (logo solda, menü sağa yaslı).
+
+Sayfa sayısı 82 -> **98**. Yeni sayfalar:
+
+| Sayfa | Ne |
+|---|---|
+| `anlik.html` + 7 alt sayfa | "Şimdi" yerine "Anlık"; alt başlıklar artık ayrı sayfa |
+| `giris` `uye-ol` `sifremi-unuttum` | üyelik akışı, çalışan doğrulama |
+| `diger.html` | tüm kategoriler dizini |
+| `nato.html` | üye ülke seçici |
+| `iller.html` | 81 il, şematik Türkiye ızgarası |
+| `ekonomik-takvim.html` | 34 veri, ülke + etki süzgeci |
+| `faiz-oranlari.html` | 4 tablo, 8 merkez bankası |
+
+**Yeni sayfa yazarken:** sayfa başlığı standardı `.dh-ph--photo` —
+`docs/parts/sayfa_basligi.py` içindeki `basli()` yardımcısını kullan.
+Üreteçler `docs/parts/*-uret.py`; sayfalar elle yazılmaz.
+
 ## v2 — bilgi mimarisi
 
 v2, `Dada_Haber_Nihai_Menu_Haritasi` (Sürüm 1.0, 19 Ağustos 2026) dokümanına

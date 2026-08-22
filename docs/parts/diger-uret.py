@@ -12,6 +12,8 @@ kok = subprocess.run(["git", "rev-parse", "--show-toplevel"],
                      capture_output=True, text=True, check=True).stdout.strip()
 os.chdir(kok)
 sys.path.insert(0, os.path.join(kok, "docs", "parts"))
+from sayfa_basligi import basli
+sys.path.insert(0, os.path.join(kok, "docs", "parts"))
 from uret import MENU, FORMAT, ext          # noqa: E402
 
 SABLON = "docs/parts/sayfa-sablon.html"
@@ -22,16 +24,10 @@ diger = [m for m in MENU if m[0] == "diger"][0]
 
 g = []
 w = g.append
-w('        <section class="section panel pt-4 pb-0">\n')
-w('          <div class="container max-w-xl">\n')
-w('            <nav class="dh-art-crumb" aria-label="Sayfa yolu">')
-w('<a href="index.html" aria-label="Anasayfa"><i class="fas fa-home-lg-alt" aria-hidden="true"></i></a>')
-w('<i class="fas fa-chevron-right" aria-hidden="true"></i>')
-w('<span aria-current="page">Tüm Kategoriler</span></nav>\n')
-w('            <h1 class="h3 xl:h2 mt-2 mb-1 text-black dark:text-white">Tüm Kategoriler</h1>\n')
-w('            <p class="fs-5 text-gray-600 dark:text-white dark:text-opacity-60 m-0">')
-w('Ana menüde yer alan başlıklar ve menüden çıkan tüm kategoriler, formatlar ve servisler bu dizinde.</p>\n')
-w('          </div>\n        </section>\n\n')
+w(basli("Dada Haber", "Tüm Kategoriler",
+        "Ana menüde yer alan başlıklar ve menüden çıkan tüm kategoriler, formatlar "
+        "ve servisler bu dizinde.",
+        [("Tüm Kategoriler", None)], "img-11.jpg", "50% 48%"))
 
 w('        <section class="section panel">\n')
 w('          <div class="container max-w-xl">\n')
