@@ -67,7 +67,9 @@ for i, il in enumerate(ILLER):
     plaka = i + 1
     bol = IL_BOLGE.get(il, "—")
     haberler = []
-    for j in range(3):
+    # REVİZE (22 Ağustos akşamı): önce 5'e çıktı, sonra "sol tarafta
+    # 4 + 4 şeklinde toplamda 8 haber" istendi — iki sütun, dört satır.
+    for j in range(8):
         b, o, e = MANSET[(i + j * 3) % len(MANSET)]
         haberler.append({
             "baslik": b.format(il=il), "ozet": o, "yer": il,

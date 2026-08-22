@@ -13,6 +13,51 @@ python3 -m http.server 8765     # → http://localhost:8765/
 python3 docs/parts/denetim.py   # 100 sayfa TEMİZ vermeli
 ```
 
+## ► 22 Ağustos gecesi turu — HEPSİ BİTTİ
+
+| | İş | Commit |
+|---|---|---|
+| A | iller.html: 8 haber · 4+4 ızgara · ortalı sarı CTA | `v2-B43` |
+| B | trafik-ulasim.html: 10 şehirli seçici + şehrim yap | `v2-B44` |
+| C | guncellenen-haberler + afet: şeffaf ek içerik bloğu | `v2-B45` |
+| D | hava-durumu: zebra + alt bölümler seçili ili taşıyor | `v2-B43/B46` |
+
+Ayrıca aynı turda: bülten açılır penceresi kaldırıldı (`v2-B40`),
+iki zebra gerilemesi düzeltildi (`v2-B40`), akış aralığı başlık satırına
+alındı · mağaza rozetleri · açılan giriş ikonu (`v2-B41`), özet kartları
+şeffaflaştı · kabuktan hesap ikonu kalktı (`v2-B42`).
+
+## ÖLÇÜM TUZAĞI — JS düzenledikten sonra
+
+`assets/js/v2/*.js` değiştirdikten sonra iframe ölçümü ESKİ betiği
+çalıştırıyor. Bir tur "düğme çizilmiyor" sanıldı, sebep buydu.
+Sayfayı `location.reload()` ile yenile, sonra ölç.
+
+## Site kuralları — yeni yazarken bunlara uy
+
+### Zebra (§16, kabuk.css)
+İçerik bölümleri sırayla **beyaz (solid) ↔ şeffaf (arkası boş)**.
+`:nth-child(... of ...)` ile, markup'a sınıf basılmadan.
+GİRMEYENLER: `.dh-ph`/`.dh-lb` kahraman başlıkları · `.dh-catbar` ·
+`[class*="py-"]` ve `.dh-serit` tam genişlik bantları · `.dh-kesf`
+(kendi koyu zemini var — beyaza çevrilince metin görünmez olmuştu).
+Bölüm alt payı `--dh-sec-gap` (48px).
+**Yeni bölüm eklerken:** kendi zeminini dayatma, zebraya bırak.
+Şerit istiyorsan `.dh-serit` kullan.
+
+### Ölçek merdiveni
+`--dh-t-3xs 11 · -2xs 12,5 · -xs 14 · -s 16 · -m 18 · -l 22 · -xl 26 ·
+-2xl 30 · -3xl 36`. **Çıplak px yazma.**
+Donmuş `custom.min.css` için elle override yazma:
+`python3 docs/parts/olcek-uret.py`.
+
+### Kurumsal sarı zeminde mürekkep
+`#fcb623` üstünde **daima koyu** (`--color-gray-900`) — §12.
+
+### İkon yazı tipi
+Bu projede `.fas` ailesi **"Font Awesome 6 Pro"** (fontawesome-5.css
+içinde). `::before` ile ikon çizerken "Free" yazma, glif gelmez.
+
 ## YAYIN — 22 Ağustos 2026 kapanışı
 
 | Adres | Ne |

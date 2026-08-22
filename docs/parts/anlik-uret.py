@@ -417,7 +417,41 @@ EK["guncellenen"] = """    <section class="section dh-serit dh-serit--ak bg-whit
         </div>
       </div>
     </section>
-"""
+
+
+    <section class="section panel" id="ilke" aria-labelledby="dh-ilke-t">
+      <div class="container max-w-xl">
+        <div class="section-header panel dh-secbar">
+          <h2 class="h5 xl:h4 m-0 text-black dark:text-white" id="dh-ilke-t">Bir Haber Neden Güncellenir?</h2>
+          <div class="dh-secbar__tools">
+            <a href="yayin-ilkeleri.html" class="dh-secbar__all fs-5 text-underline-none text-black dark:text-white">Yayın İlkeleri</a>
+          </div>
+        </div>
+        <p class="dh-nwintro">Güncelleme haberin geçmişini silmez. Her değişiklik saatiyle kaydedilir; düzeltme gerektiren durumlarda ayrı bir not eklenir.</p>
+        <ul class="dh-ilke">
+          <li class="dh-ilke__it">
+            <span class="dh-ilke__ic" aria-hidden="true"><i class="fas fa-plus"></i></span>
+            <b class="dh-ilke__t">Yeni bilgi eklendi</b>
+            <span class="dh-ilke__d">Gelişme sürüyor; doğrulanan her yeni ayrıntı habere işlenir. Başlık değişmez.</span>
+          </li>
+          <li class="dh-ilke__it">
+            <span class="dh-ilke__ic" aria-hidden="true"><i class="fas fa-pen"></i></span>
+            <b class="dh-ilke__t">İfade netleştirildi</b>
+            <span class="dh-ilke__d">Anlam aynı kalır, cümle daha açık yazılır. Metin içinde iz bırakılmaz, kayıt burada tutulur.</span>
+          </li>
+          <li class="dh-ilke__it">
+            <span class="dh-ilke__ic" aria-hidden="true"><i class="fas fa-triangle-exclamation"></i></span>
+            <b class="dh-ilke__t">Düzeltme yapıldı</b>
+            <span class="dh-ilke__d">Yanlış bir bilgi yayımlandıysa habere düzeltme notu eklenir ve not silinmez.</span>
+          </li>
+          <li class="dh-ilke__it">
+            <span class="dh-ilke__ic" aria-hidden="true"><i class="fas fa-reply"></i></span>
+            <b class="dh-ilke__t">Yanıt hakkı kullanıldı</b>
+            <span class="dh-ilke__d">Haberde adı geçen kurum ya da kişinin yanıtı, kısaltılmadan habere eklenir.</span>
+          </li>
+        </ul>
+      </div>
+    </section>"""
 
 EK["afet"] = """    <section class="section panel dh-serit bg-gray-10 dark:bg-gray-800" id="deprem" aria-labelledby="dh-nwek-afet-t">
       <div class="section-outer panel py-4 lg:py-8">
@@ -467,7 +501,41 @@ EK["afet"] = """    <section class="section panel dh-serit bg-gray-10 dark:bg-gr
         </div>
       </div>
     </section>
-"""
+
+
+    <section class="section panel" id="hazirlik" aria-labelledby="dh-hazirlik-t">
+      <div class="container max-w-xl">
+        <div class="section-header panel dh-secbar">
+          <h2 class="h5 xl:h4 m-0 text-black dark:text-white" id="dh-hazirlik-t">Afet Öncesi Hazırlık</h2>
+          <div class="dh-secbar__tools">
+            <a href="https://www.afad.gov.tr/" rel="noopener noreferrer" target="_blank" class="dh-secbar__all fs-5 text-underline-none text-black dark:text-white">AFAD</a>
+          </div>
+        </div>
+        <p class="dh-nwintro">Bu sayfa resmî bir uyarı kanalı değildir. Aşağıdakiler hatırlatmadır; afet anında AFAD ve valilik duyurularını esas alın.</p>
+        <ul class="dh-ilke">
+          <li class="dh-ilke__it">
+            <span class="dh-ilke__ic" aria-hidden="true"><i class="fas fa-box-open"></i></span>
+            <b class="dh-ilke__t">Afet çantası hazır mı?</b>
+            <span class="dh-ilke__d">Su, kuru gıda, ilk yardım seti, el feneri, düdük, powerbank ve kimlik fotokopisi. Yılda bir tazeleyin.</span>
+          </li>
+          <li class="dh-ilke__it">
+            <span class="dh-ilke__ic" aria-hidden="true"><i class="fas fa-people-roof"></i></span>
+            <b class="dh-ilke__t">Buluşma noktası belirleyin</b>
+            <span class="dh-ilke__d">Ev içinde ve dışında iki ayrı nokta. Hane halkının tamamı ezbere bilsin.</span>
+          </li>
+          <li class="dh-ilke__it">
+            <span class="dh-ilke__ic" aria-hidden="true"><i class="fas fa-couch"></i></span>
+            <b class="dh-ilke__t">Devrilebilecekleri sabitleyin</b>
+            <span class="dh-ilke__d">Dolap, kitaplık ve televizyon duvara sabitlenmeli; yatak başına ağır eşya konmamalı.</span>
+          </li>
+          <li class="dh-ilke__it">
+            <span class="dh-ilke__ic" aria-hidden="true"><i class="fas fa-mobile-screen"></i></span>
+            <b class="dh-ilke__t">Haberleşmeyi planlayın</b>
+            <span class="dh-ilke__d">Şebeke yoğunsa arama yerine kısa mesaj. Şehir dışından bir kişiyi ortak irtibat seçin.</span>
+          </li>
+        </ul>
+      </div>
+    </section>"""
 
 EK["trafik"] = """    <section class="section panel dh-serit bg-gray-10 dark:bg-gray-800" id="yol" aria-labelledby="dh-nwek-trafik-t">
       <div class="section-outer panel py-4 lg:py-8">
@@ -518,7 +586,13 @@ EK["trafik"] = """    <section class="section panel dh-serit bg-gray-10 dark:bg-
         </div>
       </div>
     </section>
-"""
+
+
+    <script type="application/json" id="dh-trafik-data">
+{"varsayilan":"istanbul","sehirler":{"istanbul":{"ad":"İstanbul","bolge":"Marmara","nufus":"15,9 mn nüfus","saat":"08.00","yogunluk":34,"sikisik":"E-5 Bakırköy — Zeytinburnu","satirlar":[{"ad":"Kuzey Marmara Otoyolu","aciklama":"Hafif yoğunluk; gişe çıkışlarında kısa kuyruk.","lv":"normal","etiket":"NORMAL","ikon":"fa-road"},{"ad":"Marmaray · Metro","aciklama":"Marmaray'da 4 dakikalık gecikme, metro hatları normal.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-train-subway"},{"ad":"Şehir hatları","aciklama":"Boğaz hattında lodos nedeniyle iki sefer iptal.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-ship"},{"ad":"İstanbul · Sabiha Gökçen","aciklama":"Ortalama gecikme 6 dakika. Kapanan pist yok.","lv":"normal","etiket":"NORMAL","ikon":"fa-plane"}]},"ankara":{"ad":"Ankara","bolge":"İç Anadolu","nufus":"5,8 mn nüfus","saat":"09.13","yogunluk":51,"sikisik":"Eskişehir Yolu — Söğütözü kavşağı","satirlar":[{"ad":"Çevre yolu","aciklama":"Konya Yolu bağlantısında bakım çalışması, tek şerit kapalı.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-road"},{"ad":"Ankaray · Metro","aciklama":"M4 hattında sefer sıklığı artırıldı, aksama yok.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-train-subway"},{"ad":"Deniz ulaşımı · yok","aciklama":"Şehirde deniz ulaşımı bulunmuyor.","lv":"normal","etiket":"NORMAL","ikon":"fa-ship"},{"ad":"Esenboğa","aciklama":"Ortalama gecikme 4 dakika. Sis uyarısı yok.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-plane"}]},"izmir":{"ad":"İzmir","bolge":"Ege","nufus":"4,5 mn nüfus","saat":"10.26","yogunluk":68,"sikisik":"Mustafa Kemal Sahil Bulvarı","satirlar":[{"ad":"İzmir Çevre Yolu","aciklama":"Trafik akıcı; Gaziemir çıkışında kısa yavaşlama.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-road"},{"ad":"İZBAN · Metro","aciklama":"İZBAN'da 6 dakikalık gecikme, metro normal.","lv":"normal","etiket":"NORMAL","ikon":"fa-train-subway"},{"ad":"Vapur hatları","aciklama":"Karşıyaka — Konak seferleri normal.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-ship"},{"ad":"Adnan Menderes","aciklama":"Gecikme yok.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-plane"}]},"bursa":{"ad":"Bursa","bolge":"Marmara","nufus":"3,2 mn nüfus","saat":"11.39","yogunluk":85,"sikisik":"Ankara Yolu — Ovaakça","satirlar":[{"ad":"Bursa çevre yolu","aciklama":"İnegöl yönünde yol çalışması sürüyor.","lv":"normal","etiket":"NORMAL","ikon":"fa-road"},{"ad":"Bursaray","aciklama":"Seferler normal.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-train-subway"},{"ad":"Mudanya hattı","aciklama":"Deniz otobüsü seferleri normal.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-ship"},{"ad":"Yenişehir","aciklama":"Gecikme yok.","lv":"normal","etiket":"NORMAL","ikon":"fa-plane"}]},"antalya":{"ad":"Antalya","bolge":"Akdeniz","nufus":"2,7 mn nüfus","saat":"12.52","yogunluk":47,"sikisik":"Konyaaltı — Lara aksı","satirlar":[{"ad":"D-400 karayolu","aciklama":"Turizm sezonu yoğunluğu; Kemer yönü sıkışık.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-road"},{"ad":"Antray","aciklama":"Seferler normal.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-train-subway"},{"ad":"Kaleiçi marina","aciklama":"Tur tekneleri normal çalışıyor.","lv":"normal","etiket":"NORMAL","ikon":"fa-ship"},{"ad":"Antalya","aciklama":"Yoğun tarifede ortalama 9 dakika gecikme.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-plane"}]},"adana":{"ad":"Adana","bolge":"Akdeniz","nufus":"2,3 mn nüfus","saat":"13.05","yogunluk":64,"sikisik":"Turhan Cemal Beriker Bulvarı","satirlar":[{"ad":"Tarsus — Adana — Gaziantep otoyolu","aciklama":"Trafik akıcı; Pozantı bakımı tamamlandı.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-road"},{"ad":"Adana Metro","aciklama":"Seferler normal.","lv":"normal","etiket":"NORMAL","ikon":"fa-train-subway"},{"ad":"Deniz ulaşımı · yok","aciklama":"Şehirde deniz ulaşımı bulunmuyor.","lv":"normal","etiket":"NORMAL","ikon":"fa-ship"},{"ad":"Çukurova","aciklama":"Gecikme yok.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-plane"}]},"konya":{"ad":"Konya","bolge":"İç Anadolu","nufus":"2,3 mn nüfus","saat":"14.18","yogunluk":81,"sikisik":"Yeni İstanbul Caddesi","satirlar":[{"ad":"Konya — Ankara yolu","aciklama":"Yol çalışması yok, akış normal.","lv":"normal","etiket":"NORMAL","ikon":"fa-road"},{"ad":"Tramvay","aciklama":"Seferler normal.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-train-subway"},{"ad":"Deniz ulaşımı · yok","aciklama":"Şehirde deniz ulaşımı bulunmuyor.","lv":"normal","etiket":"NORMAL","ikon":"fa-ship"},{"ad":"Konya","aciklama":"Gecikme yok.","lv":"normal","etiket":"NORMAL","ikon":"fa-plane"}]},"gaziantep":{"ad":"Gaziantep","bolge":"Güneydoğu Anadolu","nufus":"2,1 mn nüfus","saat":"15.31","yogunluk":43,"sikisik":"Şehitkâmil — Karataş bağlantısı","satirlar":[{"ad":"Şanlıurfa yolu","aciklama":"Ağır taşıt yoğunluğu; sağ şerit yavaş.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-road"},{"ad":"Gaziray","aciklama":"Seferler normal.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-train-subway"},{"ad":"Deniz ulaşımı · yok","aciklama":"Şehirde deniz ulaşımı bulunmuyor.","lv":"normal","etiket":"NORMAL","ikon":"fa-ship"},{"ad":"Oğuzeli","aciklama":"Gecikme yok.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-plane"}]},"trabzon":{"ad":"Trabzon","bolge":"Karadeniz","nufus":"0,8 mn nüfus","saat":"16.44","yogunluk":60,"sikisik":"Sahil yolu — Değirmendere","satirlar":[{"ad":"Karadeniz sahil yolu","aciklama":"Sağanak nedeniyle iki noktada su birikintisi.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-road"},{"ad":"Raylı sistem · yok","aciklama":"Şehirde raylı sistem bulunmuyor.","lv":"normal","etiket":"NORMAL","ikon":"fa-train-subway"},{"ad":"Liman","aciklama":"Yolcu seferleri normal.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-ship"},{"ad":"Trabzon","aciklama":"Rüzgâr nedeniyle ortalama 12 dakika gecikme.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-plane"}]},"samsun":{"ad":"Samsun","bolge":"Karadeniz","nufus":"1,4 mn nüfus","saat":"17.57","yogunluk":77,"sikisik":"Atatürk Bulvarı — sahil kesimi","satirlar":[{"ad":"Samsun — Ordu yolu","aciklama":"Trafik akıcı.","lv":"normal","etiket":"NORMAL","ikon":"fa-road"},{"ad":"Samulaş tramvay","aciklama":"Seferler normal.","lv":"uyari","etiket":"DİKKAT","ikon":"fa-train-subway"},{"ad":"Liman","aciklama":"Yük trafiği normal.","lv":"kritik","etiket":"YOĞUN","ikon":"fa-ship"},{"ad":"Çarşamba","aciklama":"Gecikme yok.","lv":"normal","etiket":"NORMAL","ikon":"fa-plane"}]}}}
+    </script>
+
+    <script defer src="./assets/js/v2/dh-trafik.js"></script>"""
 
 
 # ---------------------------------------------------------- taşınan gövdeler
@@ -952,53 +1026,39 @@ GOVDE["trafik"] = """      <div class="container max-w-xl">
         <div class="section-header panel dh-secbar">
           <h2 class="h5 xl:h4 m-0 text-black dark:text-white" id="dh-trafik-t">Trafik ve Ulaşım</h2>
           <div class="dh-secbar__tools">
-            <span class="dh-nwstamp"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> İstanbul · <time datetime="2026-08-21T09:45">09:45</time></span>
+            <span class="dh-nwstamp"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span data-dh-trafik-kapsam></span></span>
             <a href="veri-harita.html" class="dh-secbar__all fs-5 text-underline-none text-black dark:text-white">Şehir Verileri</a>
           </div>
         </div>
-        <div class="dh-nwstat dh-nwstat--trafik">
-          <ul class="dh-nwstat__rows">
-            <li class="dh-nwstat__row" data-lv="kritik">
-              <span class="dh-nwstat__ic" aria-hidden="true"><i class="fas fa-car"></i></span>
-              <span class="dh-nwstat__body">
-                <b class="dh-nwstat__name">İstanbul trafik yoğunluğu</b>
-                <span class="dh-nwstat__desc">Avrupa yakası %78, Anadolu yakası %64. En yoğun güzergâh: D-100 Mecidiyeköy yönü.</span>
-              </span>
-              <span class="dh-nwstat__lv">%71 YOĞUN</span>
-            </li>
-            <li class="dh-nwstat__row" data-lv="uyari">
-              <span class="dh-nwstat__ic" aria-hidden="true"><i class="fas fa-helmet-safety"></i></span>
-              <span class="dh-nwstat__body">
-                <b class="dh-nwstat__name">Kuzey Marmara Otoyolu</b>
-                <span class="dh-nwstat__desc">Kurtköy gişeleri çıkışında bakım çalışması, bir şerit kapalı. Tahmini bitiş 16:00.</span>
-              </span>
-              <span class="dh-nwstat__lv">ŞERİT KAPALI</span>
-            </li>
-            <li class="dh-nwstat__row" data-lv="ok">
-              <span class="dh-nwstat__ic" aria-hidden="true"><i class="fas fa-train-subway"></i></span>
-              <span class="dh-nwstat__body">
-                <b class="dh-nwstat__name">Raylı sistemler</b>
-                <span class="dh-nwstat__desc">Marmaray ve metro hatlarında sefer aksaması yok. Sabah arızası 08:36'da giderildi.</span>
-              </span>
-              <span class="dh-nwstat__lv">NORMAL</span>
-            </li>
-            <li class="dh-nwstat__row" data-lv="dikkat">
-              <span class="dh-nwstat__ic" aria-hidden="true"><i class="fas fa-ship"></i></span>
-              <span class="dh-nwstat__body">
-                <b class="dh-nwstat__name">Deniz ulaşımı</b>
-                <span class="dh-nwstat__desc">Yalova ve Bandırma hatlarında lodos nedeniyle iki sefer iptal edildi.</span>
-              </span>
-              <span class="dh-nwstat__lv">2 SEFER İPTAL</span>
-            </li>
-            <li class="dh-nwstat__row" data-lv="ok">
-              <span class="dh-nwstat__ic" aria-hidden="true"><i class="fas fa-plane-departure"></i></span>
-              <span class="dh-nwstat__body">
-                <b class="dh-nwstat__name">Hava ulaşımı</b>
-                <span class="dh-nwstat__desc">İstanbul ve Sabiha Gökçen'de ortalama gecikme 6 dakika. Kapanan pist yok.</span>
-              </span>
-              <span class="dh-nwstat__lv">NORMAL</span>
-            </li>
-          </ul>
+        <div class="dh-trf" data-dh-trafik>
+          <div class="dh-trf__cips" role="radiogroup" aria-label="Şehir seçimi">
+            <button type="button" class="dh-trf__cip" role="radio" aria-checked="false" data-dh-trafik-sec="istanbul">İstanbul</button>
+            <button type="button" class="dh-trf__cip" role="radio" aria-checked="false" data-dh-trafik-sec="ankara">Ankara</button>
+            <button type="button" class="dh-trf__cip" role="radio" aria-checked="false" data-dh-trafik-sec="izmir">İzmir</button>
+            <button type="button" class="dh-trf__cip" role="radio" aria-checked="false" data-dh-trafik-sec="bursa">Bursa</button>
+            <button type="button" class="dh-trf__cip" role="radio" aria-checked="false" data-dh-trafik-sec="antalya">Antalya</button>
+            <button type="button" class="dh-trf__cip" role="radio" aria-checked="false" data-dh-trafik-sec="adana">Adana</button>
+            <button type="button" class="dh-trf__cip" role="radio" aria-checked="false" data-dh-trafik-sec="konya">Konya</button>
+            <button type="button" class="dh-trf__cip" role="radio" aria-checked="false" data-dh-trafik-sec="gaziantep">Gaziantep</button>
+            <button type="button" class="dh-trf__cip" role="radio" aria-checked="false" data-dh-trafik-sec="trabzon">Trabzon</button>
+            <button type="button" class="dh-trf__cip" role="radio" aria-checked="false" data-dh-trafik-sec="samsun">Samsun</button>
+          </div>
+          <div class="dh-trf__ust">
+            <div class="dh-trf__id">
+              <h3 class="dh-trf__ad" data-dh-trafik-ad>İstanbul</h3>
+              <button type="button" class="dh-trf__kaydet" data-dh-trafik-kaydet>Şehrim yap</button>
+            </div>
+            <div class="dh-trf__olcu">
+              <span class="dh-trf__lbl">Trafik yoğunluğu</span>
+              <div class="dh-trf__bar" data-lv="normal"><span data-dh-trafik-bar></span></div>
+              <b class="dh-trf__yuzde" data-dh-trafik-yogunluk>%0</b>
+            </div>
+            <p class="dh-trf__sik"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> En sıkışık güzergâh: <b data-dh-trafik-sikisik></b></p>
+          </div>
+          <div class="dh-nwstat dh-nwstat--trafik">
+            <ul class="dh-nwstat__rows" data-dh-trafik-satirlar aria-live="polite"></ul>
+          </div>
+          <p class="dh-trf__not"><i class="fas fa-circle-info" aria-hidden="true"></i> Değerler prototip için üretilmiştir; gerçek ölçüm değildir. Resmî bilgi için ilgili belediye ve karayolları duyurularını esas alın.</p>
         </div>
       </div>"""
 

@@ -206,14 +206,20 @@ w('            </div>\n')
 w('          </div>\n        </section>\n\n')
 
 # --- saatlik ---
-w('        <section class="section dh-serit dh-hv__saatsec bg-gray-10 dark:bg-gray-800" id="saatlik" '
+# REVİZE (22 Ağustos akşamı): "başlangıç sayfası beyaz, sonra şeffaf
+# şeklinde devam edecek bir zebra modu ile yapalım."
+# Şerit kalıbı bırakıldı — kendi zeminini dayattığı için zebra sırasına
+# giremiyordu. Artık düz bölüm: §16 sırayla beyaz/şeffaf veriyor.
+w('        <section class="section panel dh-hv__saatsec" id="saatlik" '
   'aria-labelledby="dh-hvs-t">\n')
-w('          <div class="section-outer panel py-4 lg:py-8">\n')
+w('          <div class="section-outer panel">\n')
 w('            <div class="container max-w-xl">\n')
 w('              <div class="section-header panel dh-secbar">\n')
-w('                <h2 class="h5 xl:h4 m-0 text-black dark:text-white" id="dh-hvs-t">Saatlik Seyir</h2>\n')
+w('                <h2 class="h5 xl:h4 m-0 text-black dark:text-white" id="dh-hvs-t">'
+  '<span data-dh-hava-ad2>İstanbul</span> · Saatlik Seyir</h2>\n')
 w('                <div class="dh-secbar__tools"><span class="dh-nwstamp">'
-  '<i class="fas fa-clock" aria-hidden="true"></i> 24 saat · iki saatte bir</span></div>\n')
+  '<i class="fas fa-clock" aria-hidden="true"></i> '
+  '<span data-dh-hava-ilcead2></span> · 24 saat</span></div>\n')
 w('              </div>\n')
 w('              <p class="dh-nwintro">Seçtiğiniz nokta için sıcaklık ve yağış ihtimalinin gün içi seyri. '
   'Şerit yatay kaydırılabilir.</p>\n')
@@ -225,7 +231,8 @@ w('          </div>\n        </section>\n\n')
 w('        <section class="section panel" id="gunluk" aria-labelledby="dh-hvg-t">\n')
 w('          <div class="container max-w-xl">\n')
 w('            <div class="section-header panel dh-secbar">\n')
-w('              <h2 class="h5 xl:h4 m-0 text-black dark:text-white" id="dh-hvg-t">Yedi Günlük Tahmin</h2>\n')
+w('              <h2 class="h5 xl:h4 m-0 text-black dark:text-white" id="dh-hvg-t">'
+  '<span data-dh-hava-ad3>İstanbul</span> · Yedi Günlük Tahmin</h2>\n')
 w('              <div class="dh-secbar__tools"><a href="anlik.html" class="dh-secbar__all">Anlık Merkezi</a></div>\n')
 w('            </div>\n')
 w('            <div class="dh-hv__tablo" tabindex="0" role="region" aria-label="Yedi günlük tahmin tablosu">\n')

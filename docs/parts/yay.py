@@ -211,6 +211,28 @@ def isle(yol):
                 s = s[:k2] + BILDIRIM + s[k2:]
                 rapor.append("bildirim")
 
+    # 8a3) bülten açılır penceresi kaldırılır (talep: "bu kısım kalkacak")
+    #      Vendor app-head-bs.js 10 saniye sonra açıyordu; işaretleme
+    #      buradan siliniyor, bayrağı da dh-bulten.js yazıyor.
+    i = s.find('<div id="uc-newsletter-modal"')
+    if i != -1:
+        b = satir_basi(s, i)
+        e = kapat_div(s, i)
+        if e == -1:
+            return None, "uc-newsletter-modal kapanmıyor"
+        while e < len(s) and s[e] in " \t":
+            e += 1
+        if e < len(s) and s[e] == "\n":
+            e += 1
+        s = s[:b] + s[e:]
+        rapor.append("bulten")
+
+    if "js/v2/dh-bulten.js" not in s:
+        m = re.search(r'[ \t]*<script defer src="\./assets/js/app\.js"></script>[ \t]*\n', s)
+        if m:
+            s = s[:m.end()] + '    <script defer src="./assets/js/v2/dh-bulten.js"></script>\n' + s[m.end():]
+            rapor.append("bultenjs")
+
     # 8b) rıza betiği
     if "js/v2/dh-cerez.js" not in s:
         m = re.search(r'[ \t]*<script defer src="\./assets/js/v2/dh-v2-menu\.js"></script>[ \t]*\n', s)

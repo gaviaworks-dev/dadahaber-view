@@ -2703,3 +2703,44 @@ body[data-dh-cat="dunya"] { --dh-a-ink: #fff; }
 
 .dh-bolge__b.is-on,
 .dh-bolge__b.is-on i { color: var(--dh-a-ink); }
+
+/* --- REVİZE (22 Ağustos akşamı) · il gündemi: 4+4 ızgara -------------
+   Talep: "Sol tarafta 4 + 4 şeklinde toplamda 8 haber olup, ilin detay
+   haberi şeklinde bir buton oluştur."
+   Liste iki sütuna açılıyor; düğme iki sütunu birden alıp ortada duruyor. */
+@media (min-width: 768px) {
+  .dh-bolge__liste {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 26px;
+    align-content: start;
+  }
+  .dh-bolge__liste > .dh-bolge__tumu { grid-column: 1 / -1; }
+}
+
+/* --- REVİZE (22 Ağustos akşamı) · il gündemi: tümünü oku düğmesi ------
+   Talep: "İlin haberlerinin tamamını okuması için de renkli buton
+   yapalım, ortalı şekilde." Liste 3'ten 5 habere çıktı; düğme listenin
+   altında, ortada. Kurumsal sarı zeminde KOYU mürekkep (§12). */
+.dh-bolge__tumu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: fit-content;
+  min-height: 44px;
+  margin: 22px auto 0;
+  padding: 12px 26px;
+  font-size: var(--dh-t-2xs);
+  font-weight: 800;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-radius: 8px 8px 8px 0;
+  text-decoration: none;
+  transition: background .15s;
+}
+.dh-bolge__tumu:hover { background: #ffca4d; color: var(--color-gray-900); }
+.dh-bolge__tumu:focus-visible { outline: 3px solid var(--dh-menu-ink); outline-offset: 2px; }
+.dh-bolge__tumu i { font-size: var(--dh-t-3xs); }

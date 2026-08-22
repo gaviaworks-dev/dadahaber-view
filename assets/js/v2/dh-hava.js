@@ -57,8 +57,15 @@
     var s = sapma(ilce);
     var ilceAd = v.ilceler[ilce] || v.ilceler[0];
 
+    /* REVİZE (22 Ağustos gecesi): "il seçtikten sonra detayları
+       verebilecek şekilde işlem yapabilir." Alt bölümler (Saatlik Seyir,
+       Yedi Günlük Tahmin) artık seçili ilin adını taşıyor — okur
+       aşağı indiğinde hangi ilin verisine baktığını kaybetmiyor. */
     yaz('ad', v.ad);
+    yaz('ad2', v.ad);
+    yaz('ad3', v.ad);
     yaz('ilcead', ilceAd);
+    yaz('ilcead2', ilceAd);
     yaz('kapsam', v.bolge + ' · Plaka ' + v.plaka + ' · ' + v.ilceler.length + ' ilçe');
 
     var n = v.simdi;

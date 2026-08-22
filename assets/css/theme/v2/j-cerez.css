@@ -27,18 +27,29 @@
   border-top: 3px solid var(--color-primary);
   box-shadow: 0 -18px 40px rgba(18, 18, 18, .22);
 }
+/* REVİZE (22 Ağustos akşamı): "Yazıyı yatay olarak yayabilirsin,
+   solundan biraz nefes payı ver, çok kenarda; genel içeriği biraz daha
+   dar yapabiliriz."
+   ÖLÇÜM ÖNCE: kap 1280px ama metin `max-width: 92ch` yüzünden erken
+   sarıyor, dört satıra çıkıp sağda boşluk bırakıyordu; sol kenar payı
+   da 0'a yakındı.
+   YENİ: kap 1180px (biraz dar), metin tavanı kalktı — kendi sütununu
+   sonuna kadar kullanıyor, satır sayısı düşüyor. Sol/sağ 40px pay. */
 .dh-cz__wrap {
   flex: 1 1 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 18px 32px;
-  width: min(1280px, 100% - 48px);
+  gap: 18px 40px;
+  width: min(1180px, 100% - 80px);
   margin-inline: auto;
+  padding-inline-start: 4px;
 }
 .dh-cz__txt {
   margin: 0;
-  max-width: 92ch;
+  /* Tavan kaldırıldı: metin kendi ızgara sütununu sonuna kadar
+     kullansın, erken sarmasın. */
+  max-width: none;
   font-size: var(--dh-t-2xs);
   line-height: 1.65;
   color: rgba(255, 255, 255, .76);
@@ -310,6 +321,9 @@ html.dh-cz-acik .dh-bnav { bottom: auto; }
   justify-content: center;
   padding: 14px 16px;
   pointer-events: none;
+  /* Kartın arkası tamamen kapatmasın: sayfanın %10'luk bir perdesi
+     kalsın ki okur nerede olduğunu kaybetmesin. */
+  background: rgba(18, 18, 18, .1);
 }
 .dh-bld__kart {
   pointer-events: auto;
@@ -320,8 +334,8 @@ html.dh-cz-acik .dh-bnav { bottom: auto; }
   /* REVİZE: "yatayda çok geniş olmuş, daraltalım." 620 -> 480px.
      İki düğme + çan kutusu 480px'te rahat sığıyor, metin üç satıra
      çıkmıyor (ölçüldü). */
-  width: min(480px, 100%);
-  padding: 20px 48px 20px 20px;
+  width: min(430px, 100%);
+  padding: 20px 20px 20px 46px;
   background: #fff;
   border: 1px solid rgba(18, 18, 18, .1);
   border-radius: 14px 14px 14px 0;
@@ -392,10 +406,12 @@ html.uc-dark .dh-bld__btn--ana {
 .dh-bld__btn--ana:hover,
 html.uc-dark .dh-bld__btn--ana:hover { background: #ffca4d; border-color: #ffca4d; }
 
+/* REVİZE: "Arka plana %10 gibi şeffaflık ver, kapatma kısmını sola
+   alarak biraz daha daraltabilirsin." Kapatma SOL üstte, kart 430px. */
 .dh-bld__x {
   position: absolute;
   top: 6px;
-  inset-inline-end: 6px;
+  inset-inline-start: 4px;
   width: 44px;
   height: 44px;
   display: grid;

@@ -1359,9 +1359,15 @@ html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
    dikeyde çok uzuyordu; 992px üstünde iki kolona geçiyor.
    Yan sütunda (dar kap) tek sütun kalır — orada iki kolon sıkışırdı. */
 @media (min-width: 992px) {
+  /* GERİLEME DÜZELTMESİ (22 Ağustos akşamı): sabit iki sütun, DAR kapta
+     kartı eziyordu. ÖLÇÜM (index "DİĞER HABERLER"): kap 608px → kart
+     296px; kart satır düzeninde (görsel + metin) ve gövde 608→783px'e
+     taşıp başlığı kırpıyordu.
+     Sütun sayısı artık kabın genişliğine bakıyor: 340px'in altına
+     düşecekse tek sütunda kalır. 1fr yerine auto-fit + minmax. */
   .dh-cards--list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 12px 16px;
     align-content: start;
   }
@@ -2154,19 +2160,25 @@ figure b { font-size: 11px !important; }
      · tam genişlik bantları [class*="py-"] ve .dh-serit — bunlar zaten
        kendi kurumsal zeminini taşıyor, desenin ritmini bozmasın diye
        sayıma girmiyor
+     · .dh-kesf — KENDİ KOYU ZEMİNİ VAR (e-detay.css: gray-900 + beyaz
+       metin). Zebra onu beyaza çevirince metin beyaz-üstüne-beyaz kaldı,
+       bölüm görünmez oldu. GERİLEME, ekrandan yakalandı.
+       Tüm sayfalar tarandı: bölüm düzeyinde kendi zeminini yazan
+       BAŞKA sınıf yok (dh-band ailesi zeminini __veil/__media
+       çocuklarından alıyor, zebradan etkilenmiyor).
    ========================================================================== */
 
 /* Sayılan küme: .wrap'in doğrudan çocuğu olan içerik bölümleri. */
-.wrap > .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"]):nth-child(odd of .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"])) {
+.wrap > .section:not(.dh-catbar):not(.dh-serit):not(.dh-kesf):not([class*="dh-ph"]):not([class*="py-"]):nth-child(odd of .section:not(.dh-catbar):not(.dh-serit):not(.dh-kesf):not([class*="dh-ph"]):not([class*="py-"])) {
   /* Vendor `bg-gray-10` / `bg-white` / `bg-gray-25` yardımcıları
      `!important` yazıyor; ölçümde 15 sayfada zebrayı yeniyorlardı
      (astroloji, ekonomi, hamilelik, kultur-yasam ...). Aynı silah. */
   background: #fff !important;
 }
-.wrap > .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"]):nth-child(even of .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"])) {
+.wrap > .section:not(.dh-catbar):not(.dh-serit):not(.dh-kesf):not([class*="dh-ph"]):not([class*="py-"]):nth-child(even of .section:not(.dh-catbar):not(.dh-serit):not(.dh-kesf):not([class*="dh-ph"]):not([class*="py-"])) {
   background: transparent !important;
 }
-html.uc-dark .wrap > .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"]):nth-child(odd of .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"])) {
+html.uc-dark .wrap > .section:not(.dh-catbar):not(.dh-serit):not(.dh-kesf):not([class*="dh-ph"]):not([class*="py-"]):nth-child(odd of .section:not(.dh-catbar):not(.dh-serit):not(.dh-kesf):not([class*="dh-ph"]):not([class*="py-"])) {
   background: var(--color-gray-900);
 }
 
@@ -2180,3 +2192,105 @@ html.uc-dark .wrap > .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"
 .wrap > .section:not(.dh-catbar):not([class*="py-"]):not(:has(> .section-outer[class*="py-"])) {
   padding-bottom: var(--dh-sec-gap) !important;
 }
+
+
+/* ============================================================================
+   17. REVİZE TURU 4 — 22 Ağustos akşamı
+   ========================================================================== */
+
+/* --- 17.1 · uygulama mağaza rozetleri -----------------------------------
+   Talep: "App taraflarının görüntüsünü bu şekilde yap." (örnek: çerçeveli,
+   içi zeminden hafif açık, ikon solda, üstte küçük 'İndir', altında
+   mağaza adı — dikey dizili iki rozet.)
+   ÖLÇÜM ÖNCE: rozetler yan yana, dolu koyu zeminli (gray-900) ve
+   footer'ın kendi koyu zemininde kutu sınırı okunmuyordu.
+   YENİ: zeminden %8 açık dolgu + belirgin çerçeve; alt alta dizilir. */
+/* Kap sınıfı `.dh-v2-foot__store` (ölçüldü; `.dh-store-badges` vendor
+   adı, bu footer'da kullanılmıyor). */
+.dh-v2-foot__store {
+  flex-direction: column;
+  gap: 10px;
+  max-width: 260px;
+}
+.dh-v2-foot .dh-store-badge {
+  gap: 14px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, .08) !important;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 14px 14px 14px 0 !important;
+  transition: background .18s, border-color .18s, transform .18s;
+}
+.dh-v2-foot .dh-store-badge:hover {
+  background: rgba(255, 255, 255, .14) !important;
+  border-color: rgba(255, 255, 255, .4);
+  transform: none;
+}
+.dh-v2-foot .dh-store-badge i { font-size: var(--dh-t-xl); }
+.dh-v2-foot .dh-store-badge small {
+  font-size: var(--dh-t-2xs);
+  font-weight: 500;
+  color: rgba(255, 255, 255, .78);
+}
+.dh-v2-foot .dh-store-badge b { font-size: var(--dh-t-m); font-weight: 800; }
+
+/* --- 17.2 · Giriş Yap / Üye Ol: açılan ikon --------------------------
+   Talep: "Üye ol ve kayıt kısmı bu şekilde olsun (DadaGastro örneği):
+   ikon set olsun, üzerine gelince yana açılsın."
+   Kapalıyken yalnız ikon; imleç üstüne gelince ya da klavye odağı
+   girince etiket yana açılıyor. Genişlik animasyonu yerine `max-width`
+   + `opacity` kullanıldı: metin düzeni yeniden hesaplanmıyor, kabuk
+   yüksekliği sabit kalıyor.
+   Erişilebilirlik: etiket DOM'da her zaman var, yalnız görsel olarak
+   katlanıyor; ekran okuyucu ikisini de okur. */
+.dh-v2-signin,
+.dh-v2-signup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: gap .18s ease;
+}
+.dh-v2-signin::before,
+.dh-v2-signup::before {
+  /* Ölçüldü: bu projede `.fas` ailesi "Font Awesome 6 Pro"
+     (fontawesome-5.css içinde). "Free" yazınca glif çizilmiyordu. */
+  font-family: "Font Awesome 6 Pro", "Font Awesome 5 Pro", "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: var(--dh-t-2xs);
+  line-height: 1;
+  flex: none;
+}
+.dh-v2-signin::before { content: "\f2f6"; }   /* right-to-bracket */
+.dh-v2-signup::before { content: "\f234"; }   /* user-plus */
+
+.dh-v2-signin > span,
+.dh-v2-signup > span {
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  transition: max-width .22s ease, opacity .16s ease;
+}
+.dh-v2-signin:hover > span,
+.dh-v2-signup:hover > span,
+.dh-v2-signin:focus-visible > span,
+.dh-v2-signup:focus-visible > span {
+  max-width: 12ch;
+  opacity: 1;
+}
+.dh-v2-signin:hover, .dh-v2-signup:hover,
+.dh-v2-signin:focus-visible, .dh-v2-signup:focus-visible { gap: 7px; }
+
+@media (max-width: 991.98px) {
+  /* Dokunmatikte hover yok: etiketler her zaman açık. */
+  .dh-v2-signin > span,
+  .dh-v2-signup > span { max-width: 12ch; opacity: 1; }
+  .dh-v2-signin, .dh-v2-signup { gap: 7px; }
+}
+/* Perde menüdeki (offcanvas) aynı adlı bağlantılar KATLANMAZ — orada yer
+   bol ve ikon-only okunmaz. Onlarda etiket doğrudan metin düğümü,
+   `> span` yok; ikon da eklenmemeli. */
+.dh-v2-off .dh-v2-signin::before,
+.dh-v2-off .dh-v2-signup::before,
+#uc-menu-panel .dh-v2-signin::before,
+#uc-menu-panel .dh-v2-signup::before { content: none; }

@@ -125,6 +125,19 @@
     if (liste) {
       liste.textContent = '';
       for (var j = 0; j < hs.length; j++) liste.appendChild(kart(hs[j]));
+
+      /* REVİZE (22 Ağustos akşamı): "ilin haberlerinin tamamını okuması
+         için de renkli buton yapalım, ortalı şekilde."
+         Düğme listeyle birlikte çiziliyor ki seçilen ilin adını taşısın.
+         Hedef sayfa haber listesi; il adı sorgu dizesine değil, metne
+         yazılıyor (prototipte süzgeç yok). */
+      var cta = document.createElement('a');
+      cta.className = 'dh-bolge__tumu';
+      cta.href = 'haber-liste.html';
+      cta.setAttribute('data-il', b.ad || '');
+      cta.innerHTML = (b.ad || '') + ' haberlerinin tamamı'
+        + '<i class="fas fa-arrow-right" aria-hidden="true"></i>';
+      liste.appendChild(cta);
     }
 
     for (var k = 0; k < dugmeler.length; k++) {

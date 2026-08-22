@@ -40,7 +40,11 @@ html.uc-dark body[data-dh-cat="anlik"] { --dh-a-cat: #ff7a86; --dh-a-soft: rgba(
   padding: 18px 20px;
   border: 1px solid var(--color-gray-100);
   border-radius: 16px 16px 16px 0;
-  background: #fff;
+  /* REVİZE (22 Ağustos akşamı): "arka planı şeffaf olsun."
+     Kart artık dolu beyaz değil; bulunduğu bölümün zeminini gösteriyor.
+     Zebra deseniyle (§16) birlikte çalışıyor: beyaz bölümde beyaz,
+     şeffaf bölümde sayfa zemini. Kutu sınırını çerçeve veriyor. */
+  background: transparent;
   color: inherit;
   text-decoration: none;
   transition: border-color .18s, box-shadow .18s;
@@ -212,3 +216,227 @@ html.uc-dark .dh-nwgo__d  { color: rgba(255, 255, 255, .60); }
 @media (max-width: 419.98px) {
   .dh-nwgo { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* --- REVİZE (22 Ağustos akşamı) · akış aralığı başlık satırına taşındı --
+   Talep: "Tümü / Son 1 Saat kısmını Dakika Dakika kısmının satırına
+   uygun şekilde koy."
+   ÖLÇÜM: `.dh-live__bar` üst 648 / yükseklik 30; `.dh-live__periods`
+   üst 704 — 56px altta, ayrı satırda duruyordu. Sağdaki damga
+   ("Akış 09.47'de güncellendi") 1185–1344 arasında.
+   YENİ: aralık çipleri başlık satırının sağına, damganın soluna
+   çekiliyor. Markup taşınmadı; başlık satırı zaten flex, çipler
+   negatif üst payla aynı hizaya geliyor ve damga sağda kalıyor. */
+@media (min-width: 768px) {
+  .dh-live__bar { flex-wrap: nowrap; }
+  .dh-live__bar .dh-secbar__tools { margin-inline-start: 16px; }
+  .dh-live__periods {
+    /* Ölçüm: -30px ile merkezler 28px kayıyordu (663 / 691).
+       -58px ikisini üst üste getiriyor. */
+    margin-top: -58px !important;
+    margin-inline-end: 190px;   /* damganın genişliği + nefes payı */
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 1;
+  }
+  /* Çiplerin altındaki akış, kalkan yüksekliği geri kazansın. */
+  .dh-live__periods + * { margin-top: 48px; }
+}
+@media (max-width: 767.98px) {
+  /* Dar ekranda yan yana sığmıyor; alt satırda kalır. */
+  .dh-live__periods { margin-top: 14px !important; }
+}
+
+/* ============================================================================
+   TRAFİK VE ULAŞIM — şehir seçici (trafik-ulasim.html)
+   Talep: "Sadece İstanbul oluşturulmuş, Ankara'daki kişi bunu nasıl
+   kullanacak?" On şehir çipten seçiliyor; yoğunluk göstergesi, en
+   sıkışık güzergâh ve dört ulaşım satırı seçime göre yeniden yazılıyor.
+   Markup docs/parts/trafik-uret.py, mantık assets/js/v2/dh-trafik.js
+   ========================================================================== */
+
+.dh-trf { display: grid; gap: 18px; }
+
+.dh-trf__cips { display: flex; flex-wrap: wrap; gap: 8px; }
+.dh-trf__cip {
+  min-height: 34px;
+  padding: 7px 14px;
+  font-family: inherit;
+  font-size: var(--dh-t-2xs);
+  font-weight: 700;
+  color: var(--color-gray-700);
+  background: #fff;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+  cursor: pointer;
+  transition: border-color .14s, background .14s, color .14s;
+}
+html.uc-dark .dh-trf__cip {
+  background: var(--color-gray-900);
+  border-color: var(--color-gray-700);
+  color: rgba(255, 255, 255, .82);
+}
+.dh-trf__cip:hover { border-color: var(--color-primary); }
+.dh-trf__cip:focus-visible { outline: 3px solid var(--dh-menu-ink); outline-offset: 2px; }
+/* Kurumsal sarı zeminde KOYU mürekkep — §12. */
+.dh-trf__cip.is-on,
+html.uc-dark .dh-trf__cip.is-on {
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.dh-trf__ust {
+  display: grid;
+  gap: 12px;
+  padding: 18px 20px;
+  border: 1px solid rgba(18, 18, 18, .09);
+  border-radius: 12px 12px 12px 0;
+}
+html.uc-dark .dh-trf__ust { border-color: rgba(255, 255, 255, .1); }
+.dh-trf__id { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.dh-trf__ad {
+  margin: 0;
+  font-size: var(--dh-t-l);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-trf__ad { color: #fff; }
+.dh-trf__kaydet {
+  min-height: 34px;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: var(--dh-t-3xs);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--dh-menu-ink);
+  background: transparent;
+  border: 1px solid rgba(252, 182, 35, .55);
+  border-radius: 8px 8px 8px 0;
+  cursor: pointer;
+}
+.dh-trf__kaydet.is-on {
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+html.uc-dark .dh-trf__kaydet { color: var(--color-primary); }
+html.uc-dark .dh-trf__kaydet.is-on { color: var(--color-gray-900); }
+
+.dh-trf__olcu { display: flex; align-items: center; gap: 12px; }
+.dh-trf__lbl {
+  flex: none;
+  font-size: var(--dh-t-3xs);
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+.dh-trf__bar {
+  flex: 1 1 auto;
+  height: 8px;
+  min-width: 0;
+  background: var(--color-gray-100);
+  border-radius: 999px;
+  overflow: hidden;
+}
+html.uc-dark .dh-trf__bar { background: var(--color-gray-700); }
+.dh-trf__bar > span {
+  display: block;
+  height: 100%;
+  background: var(--dh-lv, #1f7a3d);
+  transition: width .25s ease;
+}
+.dh-trf__bar[data-lv="normal"]  { --dh-lv: #1f7a3d; }
+.dh-trf__bar[data-lv="uyari"]   { --dh-lv: #b07d05; }
+.dh-trf__bar[data-lv="kritik"]  { --dh-lv: #c8102e; }
+.dh-trf__yuzde {
+  flex: none;
+  font-size: var(--dh-t-s);
+  font-weight: 800;
+  color: var(--color-gray-900);
+  font-variant-numeric: tabular-nums;
+}
+html.uc-dark .dh-trf__yuzde { color: #fff; }
+
+.dh-trf__sik {
+  margin: 0;
+  font-size: var(--dh-t-2xs);
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-trf__sik { color: var(--color-gray-300); }
+.dh-trf__sik i { margin-inline-end: 7px; color: var(--dh-menu-ink); }
+html.uc-dark .dh-trf__sik i { color: var(--color-primary); }
+.dh-trf__sik b { color: var(--color-gray-900); font-weight: 700; }
+html.uc-dark .dh-trf__sik b { color: #fff; }
+
+.dh-trf__not {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 4px 0 0;
+  font-size: var(--dh-t-3xs);
+  line-height: 1.55;
+  color: var(--color-gray-500);
+}
+.dh-trf__not i { margin-top: 2px; color: var(--color-primary); }
+
+@media (max-width: 575.98px) {
+  .dh-trf__olcu { flex-wrap: wrap; }
+  .dh-trf__bar { order: 3; flex-basis: 100%; }
+}
+
+/* --- REVİZE (22 Ağustos gecesi) · liste sonrası ek içerik --------------
+   Talep: "Bu alana ek bir içerik çıkart, arka planı şeffaf olacak
+   şekilde." (guncellenen-haberler.html ve afet-acil-durum.html'de liste
+   bittikten sonra boş kalan bant.)
+   Bölüm kendi zeminini DAYATMIYOR — zebra sırasına katılıyor (§16);
+   kartlar da şeffaf, sınırı yalnız çerçeve veriyor. */
+.dh-ilke {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dh-ilke__it {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-areas: "ic t" "ic d";
+  gap: 4px 14px;
+  align-content: start;
+  padding: 16px 18px;
+  background: transparent;
+  border: 1px solid rgba(18, 18, 18, .1);
+  border-radius: 12px 12px 12px 0;
+}
+html.uc-dark .dh-ilke__it { border-color: rgba(255, 255, 255, .12); }
+.dh-ilke__ic {
+  grid-area: ic;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-size: var(--dh-t-xs);
+  color: var(--dh-menu-ink);
+  background: rgba(252, 182, 35, .16);
+  border-radius: 10px 10px 10px 0;
+}
+html.uc-dark .dh-ilke__ic { color: var(--color-primary); }
+.dh-ilke__t {
+  grid-area: t;
+  font-size: var(--dh-t-xs);
+  font-weight: 800;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-ilke__t { color: #fff; }
+.dh-ilke__d {
+  grid-area: d;
+  font-size: var(--dh-t-2xs);
+  line-height: 1.6;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-ilke__d { color: var(--color-gray-300); }
