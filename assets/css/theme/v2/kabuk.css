@@ -1321,3 +1321,83 @@ html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
 @media (max-width: 991.98px) {
   .dh-doc { grid-template-columns: minmax(0, 1fr) !important; }
 }
+
+/* --- 8.8 · uzun tek sütunlu haber listeleri iki kolona açılır ------------
+   Kullanıcı: "uzun olunca güzel olmuyor". .dh-cards--list tek sütunda
+   dikeyde çok uzuyordu; 992px üstünde iki kolona geçiyor.
+   Yan sütunda (dar kap) tek sütun kalır — orada iki kolon sıkışırdı. */
+@media (min-width: 992px) {
+  .dh-cards--list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+    align-content: start;
+  }
+  /* dar kaplarda (yan sütun, hub rayı) tek sütun kalsın */
+  .dh-hub__news .dh-cards--list,
+  .dh-tkm__ray .dh-cards--list,
+  .col-3 .dh-cards--list,
+  .md\:col-3 .dh-cards--list,
+  .sidebar-wrap .dh-cards--list { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- 8.9 · footer sosyal ikonları: nefes payı ve alt çizgi ----------------
+   Kullanıcı: açıklama metninden iki satır aşağıdan başlasın, altı çizili
+   olmasın. Ölçüm: üst boşluk 20px'ti (metin satır yüksekliği 22px), iki
+   satırlık pay için 44px'e çıkarıldı. */
+/* .dh-v2-foot ul (0,1,1) benim .dh-v2-foot__soc'umu (0,1,0) yeniyordu —
+   ölçüldü: computed margin-top 0px. Seçici özgüllüğü eşitlendi. */
+.dh-v2-foot ul.dh-v2-foot__soc { margin-top: 44px; }
+.dh-v2-foot__soc a,
+.dh-v2-foot__soc a:hover,
+.dh-v2-foot__soc a:focus,
+.dh-v2-foot__soc a:visited {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+}
+
+/* --- 8.10 · 11px altı yazı tabanı ---------------------------------------
+   Ölçüm (390px, 12 sayfa): en küçük görünür metin 9px, 22 ayrı seçicide
+   11px altı değer vardı. Kurumsal taban 11px; etiket rolündeki metinler
+   harf aralığıyla küçük DURUR ama 11px'in altına inmez. */
+.dh-v2-off__grp,
+.dh-tkvm__ulke,
+.dh-fincard__label,
+.dh-ara__n,
+.dh-kesf__m,
+.dh-dcard__tag,
+.dh-rank { font-size: 11px !important; }
+.dh-karne__lab,
+.dh-mc__lbl,
+.dh-mc__crest--txt,
+.dh-kaynak__tur,
+.dh-v2-act__badge { font-size: 11px !important; }
+.dh-arag__m,
+.dh-vgrid__m,
+.dh-fx__round,
+.dh-nato__kod { font-size: 11px !important; }
+.dh-tr81--sec .dh-tr81__lv { font-size: 11px; }
+.dh-tr81--sec .dh-tr81__no { font-size: 16px; }
+/* rozet kutusu büyüyen yazıyı taşımasın */
+.dh-v2-act__badge { min-width: 17px; height: 17px; }
+
+/* --- 8.11 · bilgilendirme kutularında metin kutunun tamamını kullanır -----
+   Kullanıcı: "bu tarz bilgilendirme içeriklerini soldan sağa sayfanın
+   tamamına yaz". Ölçüm: .dh-medinfo__body p max-width 92ch ile kilitliydi;
+   1248px'lik kutunun sağında geniş boşluk kalıyordu. Kilit kalktı, metin
+   Yatırım Uyarısı bandındaki gibi iki yana yaslandı. */
+.dh-medinfo__body p,
+.dh-medinfo__txt,
+.dh-duz p,
+.dh-yz p {
+  max-width: none !important;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+@media (max-width: 575.98px) {
+  .dh-medinfo__body p,
+  .dh-medinfo__txt,
+  .dh-duz p,
+  .dh-yz p { text-align: start; }
+}
