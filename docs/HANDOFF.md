@@ -4,6 +4,95 @@ Bu dosya oturum devri içindir. Yeni bir oturuma başlarken önce bunu oku.
 
 ---
 
+# ► V1–V2 BİRLEŞTİRME TURU (22 Ağustos 2026)
+
+Talimat: "Dada Haber V1–V2 Birleştirme ve Arayüz Revizyon Talimatı" +
+oturum içinde gelen ~30 ek istek. Bu bölüm o turda DEĞİŞEN KARARLARI
+yazar; altındaki tarihsel kayıt olduğu gibi durur.
+
+## Kabuk (docs/parts/uret.py -> yay.py, 98 sayfa)
+
+| | Önce | Şimdi |
+|---|---|---|
+| Üst bant | Son Dakika · Piyasalar · Hava · Şehrim · Bülten · sosyal | **yayın formatları** (Haber Dinle · Foto Fokus · Video Haber · İnfografik · Podcast) + sağda ikon seti, ayraç, Giriş Yap / Üye Ol |
+| Ana menü | ayrı satır, 11 başlık, sola yaslı | **marka satırında**, 8 başlık, **sağa yaslı**, büyük harf, `--dh-menu-ink` |
+| Arama | menü satırında alan | kaldırıldı; ikon arama kipini açıyor |
+| Kabuk kabı | tam genişlik denendi | **sayfa içeriğiyle hizalı** (1280px kap) |
+| Footer | 5 sütun, sola yaslı | DadaFit kalıbı: marka + 3 sütun + uygulama, toplayıcı kurumsal şerit, etiketli yasal şerit, telif |
+| Footer perdesi | kapalı | **açık** (footer-reveal.js, 992px+ ve footer viewport'a sığıyorsa) |
+| Karanlık mod | yüzen şalter | yukarı çık düğmesinin altında **ay düğmesi** + menüdeki Görünüm ayarı |
+| Mobil alt gezinme | Anasayfa · Son Dakika · Menü · Dinle · Ara | Anasayfa · Son Dakika · **KEŞFET** (kalıcı vurgulu) · Video · Menü |
+
+## Bilgi mimarisi
+
+- **"Şimdi" -> "Anlık"**, dosya `anlik.html`; `simdi.html` uyumluluk sayfası.
+- Ana menü 8 başlık: Anlık · Gündem · Dünya · **Finans** (= ekonomi.html) ·
+  Savunma · Spor · Kadın · **Diğer**. Menüden çıkan hiçbir kategori silinmedi,
+  hepsi "Diğer" panelinde ve `diger.html` dizininde.
+- Anlık artık one-page değil: `canli-gundem` `dakika-dakika` `bugun-ne-oldu`
+  `gundem-takvimi` `guncellenen-haberler` `afet-acil-durum` `trafik-ulasim`.
+- Yeni sayfalar: `giris` `uye-ol` `sifremi-unuttum` `diger` `nato` `iller`
+  `ekonomik-takvim` `faiz-oranlari`. Toplam 82 -> **98 sayfa**.
+
+## Değişen tasarım kararları (eski kayda AYKIRI, bilerek)
+
+1. **Tipografi tek aile.** "Veri ve doğrulama sesi" için kullanılan sistem
+   monospace kaldırıldı; `--dh-mono` artık kurumsal Gilroy'a bağlı. Aynı ses
+   harf aralığı, büyük harf ve ağırlıkla veriliyor. Token adı korundu.
+   Bedeli kapatıldı: tablo/skor alanlarında `font-variant-numeric: tabular-nums`.
+2. **"Tümünü Gör" bağlantısında chevron VAR.** Eski kayıtta "yanında chevron
+   yok" yazıyordu; kullanıcı bağlantının tema diline uymadığını söyleyince
+   12,5px/700 kurumsal mürekkep + yön chevron'u yapıldı.
+3. **Metin iki yana yaslı.** Uzun gövde metni `text-align: justify` +
+   `hyphens: auto`; 576px altında sola döner. Başlık, etiket, kart özeti,
+   meta ve footer dokunulmadı.
+4. **11px tabanı masaüstünde de geçerli.** custom.min.css'teki 12px tabanı
+   yalnız `max-width:767.98px` içindeydi; 1280px'te 530 metin 11px altındaydı.
+   Aynı seçici listesi `v2/kabuk.css` §11.1'de 768px üstü için 11px tabanıyla,
+   sınıf ikizlenerek (`.x.x`) yazıldı — bileşen kuralları özgüllükte yeniyordu.
+
+## Yeni bileşen ve betikler (hepsi v2 ağacında, vendor dokunulmadı)
+
+`assets/js/v2/` : `dh-v2-menu.js` (perdeleme menü + kullanıcı menüsü + offcanvas
+aria/odak) · `dh-giris.js` (üyelik formları) · `dh-sayfalama.js` (çalışan
+sayfalama + daha fazla yükle) · `dh-takvim.js` (ekonomik takvim süzgeci) ·
+`dh-spor.js` (tablo kırpma, lig seçici, fikstür haftası)
+
+`assets/css/theme/v2/` : `f-diger.css` `g-uyelik.css` `h-anlik.css` `i-spor.css`
+(+ mevcut parçalara eklemeler). `v2.css` düzleştirilmiş çıktıdır, elle düzenlenmez.
+
+`docs/parts/` üreteçleri: `uret.py` (kabuk) · `diger-uret.py` · `uyelik-uret.py`
+· `anlik-uret.py` · `nato-uret.py` · `iller-uret.py` · `finsayfa-uret.py` ·
+`sayfa_basligi.py` (ortak görselli sayfa başlığı). Sayfa başlığı standardı:
+`.dh-ph--photo` — **yeni sayfa yazarken bunu kullan.**
+
+## Bu turda ölçerek yakalanan gerçek hatalar
+
+1. `.gitignore`'daki `v2/` deseni `assets/js/v2/` ve `assets/css/theme/v2/`
+   yollarını da yutuyordu; yeni yazılan 7 dosya hiçbir commit'e girmemişti.
+   Yayında menü açılmayacak, form doğrulaması ölü kalacaktı. Kural `/v2/` oldu.
+2. `diger.html` tamamen çöküyordu: `.dh-dir` sınıfı v1'in finans üçgeniyle
+   (`width:0;height:0`) çakışıyordu. Sınıf `.dh-dizin` oldu.
+3. NATO ülke seçicisi sessizce ölüydü: bileşen kökte `data-dh-bolge` arıyor,
+   yalnız sınıf verilmişti. Tıklama hiçbir şey yapmıyordu, konsol temizdi.
+4. Yüzen yığın alt gezintinin altında kalıyordu — iki sebep: vendor'ın
+   `.bottom-0` utility'si `!important`, ve yığının kendisinde
+   `translateY(40px)` transform'u.
+5. `button.dh-catbar__chip { font: inherit }` (0,1,1) çip ölçüsünü yeniyordu:
+   10 sayfada 146 çip 16px/500 çıkıyordu.
+6. Karanlık modda `.dh-mc__crest--txt` beyaz üstüne beyazdı — kontrast 1,00:1.
+
+## Hâlâ açık
+
+- **Sarı zeminde beyaz metin 1,77:1** (SON DAKİKA rozeti, kategori etiketleri).
+  Eski kayıtta "kullanıcı bilerek seçti" yazıyor, dokunulmadı. Koyu mürekkebe
+  dönmek tek satır: `--dh-on-brand: var(--color-gray-900)` (10,58:1).
+- Kart başlığı rolü 10, bölüm başlığı 6 farklı tip değeri taşıyor; köşe
+  imzasını bozan 266 örnek donmuş `custom.min.css`'ten geliyor. İkisi de
+  ölçüldü, kapsamlı ölçek birleştirmesi yapılmadı.
+
+---
+
 # ► GÜNCEL DURUM (v2 yayında)
 
 **Son güncelleme: 21 Ağustos 2026.** Aşağıdaki "Proje" bölümü ve R1–R8

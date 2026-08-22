@@ -42,7 +42,7 @@ MENU = [
   [("Temel kategoriler", [("Siyaset",L),("Türkiye",L),("Toplum",L),("Hukuk",L),
                           ("Güvenlik",L),("Eğitim",L),("Çevre",L),("Afet",L)]),
    ("Yerel haberler", [("Yerel Haberler","gundem.html#yerel"),("İstanbul",L),("Ankara",L),
-                       ("İzmir",L),("81 İl","gundem.html#iller")]),
+                       ("İzmir",L),("81 İl","iller.html")]),
    ("Özgün içerikler", [("Özel Haber",L),("Araştırma",L),("Gündem Analizi",L)])]),
 
  ("dunya", "Dünya", "dunya.html",
@@ -57,8 +57,8 @@ MENU = [
   [("Piyasalar", [("Piyasa Ekranı","finans.html"),("Döviz","doviz.html"),("Altın","altin.html"),
                   ("Borsa","borsa.html"),("Kripto Para","kripto.html"),
                   ("Akaryakıt Fiyatları","finans.html#akaryakit"),
-                  ("Faiz Oranları","finans.html#faiz"),
-                  ("Ekonomik Takvim","finans.html#takvim")]),
+                  ("Faiz Oranları","faiz-oranlari.html"),
+                  ("Ekonomik Takvim","ekonomik-takvim.html")]),
    ("Ekonomi", [("Türkiye Ekonomisi",L),("Dünya Ekonomisi",L),("Bankacılık",L),
                 ("Kişisel Finans",L),("Enflasyon",L),("Ekonomi Analizi",L)]),
    ("Sektörler", [("İş Dünyası",L),("Şirketler",L),("Girişimcilik",L),("Çalışma Hayatı",L),
@@ -70,7 +70,7 @@ MENU = [
                         ("İHA ve SİHA",L),("Hava Platformları",L),("Deniz Platformları",L),
                         ("Kara Sistemleri",L),("Füze ve Roket Sistemleri",L)]),
    ("Güvenlik", [("Millî Güvenlik",L),("Askerî Operasyonlar",L),("Sınır Güvenliği",L),
-                 ("Terörle Mücadele",L),("Uluslararası Güvenlik",L),("NATO",L)]),
+                 ("Terörle Mücadele",L),("Uluslararası Güvenlik",L),("NATO","nato.html")]),
    ("İçerikler", [("Savunma Teknolojileri","teknoloji.html"),("İhracat ve Anlaşmalar",L),
                   ("Savunma Analizi",L),("Uzman Görüşleri",L),("Savunma Videoları","video.html")])]),
 

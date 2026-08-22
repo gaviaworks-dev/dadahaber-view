@@ -773,11 +773,12 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
   .dh-v2-foot__store { grid-template-columns: 1fr; }
 }
 
-/* --- footer perdesi v2'de kapalı ------------------------------------------ */
-body.dh-footer-reveal #uc-footer.dh-v2-foot {
-  position: static !important;
-  inset: auto !important;
-}
+/* --- footer perdesi AÇIK (V1 deseni, kullanıcı talebi) --------------------
+   Sayfa sonunda içerik sarmalayıcısı kalkar, arkada sabit bekleyen footer
+   ortaya çıkar. assets/js/footer-reveal.js sarmalayıcının altına footer
+   yüksekliği kadar boşluk yazar ve footer viewport'a sığmıyorsa perdeyi
+   kendi kapatır (güvenlik freni). Kural custom.min.css'te; v2'de yalnız
+   perdeyi devre dışı bırakan override KALDIRILDI. */
 
 /* ================= 6. MOBİL ALT GEZİNME — Keşfet vurgusu ================== */
 /* Alt menü: Anasayfa · Son Dakika · KEŞFET · Video · Menü
@@ -847,14 +848,17 @@ html.uc-offcanvas-page .dh-bnav { display: none; }
 /* --- sağ alt yüzen tema anahtarı ------------------------------------------
    Yukarı çık düğmesinin ALTINDA sabit. Mobilde alt gezinme çubuğunun
    üstünde kalır, çubuğun altına gizlenmez. */
+/* Sarmalayıcı ŞEFFAF: zemin ve çerçeve yalnız etikette. İkisinde birden
+   olunca dıştaki kutunun kenarı etiketin arkasından çizgi gibi taşıyordu
+   (ekran görüntüsüyle yakalandı). */
 .dh-v2-tema {
-  background: var(--color-gray-100);
-  border: 1px solid var(--color-gray-200);
-}
-html.uc-dark .dh-v2-tema {
-  background: var(--color-gray-800);
-  border-color: var(--color-gray-700);
-  color: #fff;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  width: auto;
+  height: auto;
+  line-height: 0;
 }
 @media (max-width: 991.98px) {
   .backtotop-wrap { bottom: var(--dh-bnav-h, 62px); }
@@ -1018,3 +1022,630 @@ html.uc-offcanvas-page .backtotop-wrap { display: none !important; }
 }
 html.uc-dark .dh-pager__durum { color: var(--color-gray-400); }
 .dh-pager__nav.is-off { opacity: .38; cursor: default; pointer-events: none; }
+
+/* ============================================================================
+   8. KABUK TAM GENİŞLİK (kullanıcı talebi: "menü sola yaslanacak")
+   Ölçüm: header 1280px'lik ortalanmış kapta duruyordu; 1920px pencerede
+   solda 320px boşluk kalıyor, logo ve menü ekranın ortasına itiliyordu.
+   Header artık pencere genişliğini kullanıyor, sayfa gövdesi ve footer
+   ortalanmış kapta kalıyor — okuma satırları uzamasın diye.
+   ========================================================================== */
+/* Kabuk kabı SAYFA İÇERİĞİYLE HİZALI (kullanıcı: "menüyü daralt, son dakika
+   kısmından başlasın"). Ölçüm: tam genişlikte header 32..1408, içerik kabı
+   80..1360 idi — her iki yanda 48px kayma vardı. Artık logo, menü, son dakika
+   şeridi ve tüm sayfa içeriği aynı sol/sağ kenarı paylaşıyor.
+   Bantların ZEMİNİ tam genişlikte kalır, yalnız içerik hizalanır. */
+.dh-v2-fmt > .container,
+.dh-v2-brand > .container {
+  max-width: 1280px !important;
+  width: 100%;
+  padding-inline: 16px;
+}
+/* Perdeleme paneli de kabukla birlikte tam genişliğe çıkar; içerik
+   1600px'te ortalanır ki sütunlar 1920px'te aşırı yayılmasın. */
+.dh-mega__inner {
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+
+/* --- 8.1 · footer alt bloğu ortalanır ------------------------------------
+   Kurumsal şerit, yasal şerit, telif metni ve künye satırı ortalandı;
+   üstteki marka + sütun + uygulama bloğu sola yaslı kalıyor. */
+.dh-v2-foot__strip { justify-content: center; }
+.dh-v2-foot__strip a:first-of-type { padding-inline-start: 16px; }
+.dh-v2-foot__strip--yasal .dh-v2-foot__striplbl { margin-inline: 0 14px; }
+.dh-v2-foot__bottom { text-align: center; }
+.dh-v2-foot__rights { margin-inline: auto !important; }
+
+/* --- 8.2 · alt kategori şeridi çipleri küçüldü ---------------------------
+   Ölçüm: çip 36px yüksek, 16px yazı, 15px yan dolgu — şerit 57px'e çıkıyor
+   ve sayfa başlığıyla aynı ağırlıkta okunuyordu. Çip bir gezinti kumandası,
+   başlık değil. Yeni: 30px yükseklik, 13.5px yazı, 12px dolgu.
+   Dokunma hedefi görünmez ::after ile 44px'te tutuluyor. */
+.dh-catbar__chip {
+  height: 30px;
+  padding: 0 12px;
+  font-size: 13.5px;
+  position: relative;
+}
+.dh-catbar__chip::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 44px;
+  transform: translateY(-50%);
+}
+.dh-catbar__row { min-height: 46px; }
+@media (max-width: 575.98px) {
+  .dh-catbar__chip { height: 28px; padding: 0 10px; font-size: 12.5px; }
+}
+
+/* --- 8.3 · içerik metinleri iki yana yaslı ------------------------------
+   Kullanıcı talebi: "içerik yazılarının tamamı sağa ve sola hizalı olacak".
+   Yalnız uzun soluklu GÖVDE metni yaslanır; başlık, etiket, kart özeti,
+   meta ve footer dokunulmaz — kısa satırlarda yaslama kelime aralarını
+   açıp okumayı bozar.
+   Sayfalar lang="tr" taşıdığı için hyphens: auto tireleme yapar ve
+   yaslamanın açtığı boşlukları kapatır. */
+.post-content > p,
+.post-content > ul > li,
+.post-content > ol > li,
+.dh-doc__sec > p,
+.dh-doc__body > p,
+.dh-doc__list > li,
+.dh-m__bd > p,
+.dh-yon__c > p,
+.dh-fact > p,
+.dh-kexp > p,
+.dh-ksec__hl > p,
+.dh-duz > p,
+.dh-yz > p,
+.dh-ekip > p,
+.dh-rev__body > p,
+.dh-auth__l,
+.dh-mega__job {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+/* çok dar sütunda yaslama nehir açar — mobilde sola döner */
+@media (max-width: 575.98px) {
+  .post-content > p,
+  .post-content > ul > li,
+  .post-content > ol > li,
+  .dh-doc__sec > p,
+  .dh-doc__body > p,
+  .dh-doc__list > li,
+  .dh-m__bd > p,
+  .dh-yon__c > p,
+  .dh-fact > p,
+  .dh-kexp > p,
+  .dh-ksec__hl > p,
+  .dh-duz > p,
+  .dh-yz > p,
+  .dh-ekip > p,
+  .dh-rev__body > p,
+  .dh-auth__l,
+  .dh-mega__job { text-align: start; }
+}
+
+/* --- 8.4 · "Tümünü Gör" bağlantıları tema diline döndü -------------------
+   Ölçüm: .dh-secbar__all 16px / ağırlık 500 / siyah — bölüm BAŞLIĞIYLA
+   neredeyse aynı ağırlıkta okunuyordu. Bu bir yan bağlantı, başlık değil:
+   küçüldü, kurumsal mürekkebe geçti, yönünü söyleyen chevron aldı. */
+.dh-secbar__all,
+.dh-sport__more,
+.dh-kesf__all,
+.dh-m__note[href] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: .01em;
+  color: var(--color-primary-700) !important;
+  text-decoration: none;
+  white-space: nowrap;
+}
+html.uc-dark .dh-secbar__all,
+html.uc-dark .dh-sport__more,
+html.uc-dark .dh-kesf__all,
+html.uc-dark .dh-m__note[href] { color: var(--color-primary) !important; }
+.dh-secbar__all::after,
+.dh-sport__more::after,
+.dh-kesf__all::after {
+  content: "\203A";
+  font-size: 15px;
+  line-height: 1;
+  transform: translateY(-1px);
+  transition: transform .14s;
+}
+.dh-secbar__all:hover::after,
+.dh-sport__more:hover::after,
+.dh-kesf__all:hover::after { transform: translate(3px, -1px); }
+/* .dh-kesf__all kendi ikonunu taşıyor, ikinci ok gerekmez */
+.dh-kesf__all:has(i)::after { content: none; }
+
+/* --- 8.5 · yazar ünvanı yalnız baş harfi büyük --------------------------
+   Ölçüm: .post-author .dh-byline small -> text-transform: uppercase
+   ("Editör" kaynakta doğru yazılmış, CSS büyütüyordu). Ad ve ünvan artık
+   kaynaktaki hâliyle görünür. */
+.post-author .dh-byline,
+.post-author .dh-byline *,
+.dh-byline small,
+.dh-card__author small,
+.dh-art-hauthor small,
+.dh-person__role {
+  text-transform: none !important;
+}
+
+/* --- 8.6 · sayfalama uç düğmelerindeki çift ok --------------------------
+   İki chevron alt alta diziliyordu; yan yana ve iç içe geçmiş duruyor. */
+.dh-pager__dbl {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+.dh-pager__dbl i + i { margin-inline-start: -5px; }
+.dh-pager__nav,
+.dh-pager__pg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- 8.7 · yüzen tema anahtarı: kaydırmalı şalter yerine ay düğmesi ------
+   Kullanıcı talebi. Vendor'ın switch mekanizması korunuyor
+   (app.js [data-darkmode-switch] input'a bağlı); yalnız görünüm değişiyor.
+   Ölçüm: vendor .switch etiketi 38x22 ray + topuz çiziyor ve .slider::before
+   kendi Unicons glifini basıyordu — bu yüzden ray tamamen gizlenip ikon
+   ETİKETİN ::after'ına konuldu (vendor oraya dokunmuyor).
+   Kutu, yukarı çık düğmesiyle aynı 40px ve aynı köşe imzası.
+   Açıkken ay, karanlık moddayken güneş. */
+.dh-v2-tema__btn {
+  position: relative;
+  display: grid !important;
+  place-items: center;
+  width: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  height: 40px !important;
+  box-sizing: border-box;
+  margin: 0 !important;
+  cursor: pointer;
+  background: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+  transition: background .14s, border-color .14s;
+}
+html.uc-dark .dh-v2-tema__btn {
+  background: var(--color-gray-800);
+  border-color: var(--color-gray-700);
+}
+.dh-v2-tema__btn:hover { border-color: var(--color-primary); }
+.dh-v2-tema__btn input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+/* vendor'ın ray + topuz görseli tamamen kalkar */
+.dh-v2-tema__btn .slider { display: none !important; }
+.dh-v2-tema__btn::after {
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 1;
+  content: "\f186";              /* fa-moon */
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-v2-tema__btn::after {
+  content: "\f185";              /* fa-sun */
+  color: var(--color-primary);
+}
+.dh-v2-tema__btn:focus-within {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   9. ANA MENÜ V1 DÜZENİNE DÖNDÜ (kullanıcı görseline göre)
+   Logo solda, menü başlıkları SAĞA yaslı, büyük harf, kurumsal mürekkep.
+   Mürekkep --dh-menu-ink (#7a5f01): beyaz zeminde 6,06:1 — AA geçiyor.
+   Marka amberi (#fcb623) metin olarak 1,88:1 kalırdı, o yüzden koyu ton.
+   ========================================================================== */
+.dh-v2-brand__row .dh-v2-nav {
+  margin-inline-start: auto;
+  flex: 0 1 auto;
+  justify-content: flex-end;
+}
+.dh-v2-nav__list { justify-content: flex-end; }
+/* sağa yaslanınca ilk başlığın sol dolgusu geri gelir, son başlığınki gider */
+.dh-v2-nav__list > li:first-child > a { padding-inline-start: 14px; }
+.dh-v2-nav__list > li:first-child > a::after { inset-inline-start: 10px; }
+.dh-v2-nav__list > li:last-child > a { padding-inline-end: 0; }
+.dh-v2-nav__list > li:last-child > a::after { inset-inline-end: 0; }
+
+.dh-v2-nav__list > li > a {
+  padding: 0 14px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--dh-menu-ink, #7a5f01);
+}
+html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
+.dh-v2-nav__list > li > a i { font-size: 10px; opacity: .6; }
+/* aktif ve açık başlık kategori kimliğine döner */
+.dh-v2-nav__list > li.is-open > a,
+.dh-v2-nav__list > li > a[aria-current="page"] { color: var(--dh-cat, var(--color-primary-700)); }
+
+@media (max-width: 1439px) {
+  .dh-v2-nav__list > li > a { padding: 0 11px; font-size: 14px; }
+  .dh-v2-nav__list > li:first-child > a { padding-inline-start: 11px; }
+}
+@media (max-width: 1339px) {
+  .dh-v2-nav__list > li > a { padding: 0 9px; font-size: 13px; letter-spacing: 0; }
+  .dh-v2-nav__list > li:first-child > a { padding-inline-start: 9px; }
+}
+
+/* ============================================================================
+   10. BELGE SAYFALARI — metin sayfaya yayılıyor
+   Kullanıcı: "yasal sayfalar tasarıma uygun şekilde sayfaya yayılsın".
+   Ölçüm (1440px): .dh-doc ızgarası 924px + 268px, ama .dh-doc__body
+   max-width: 567,63px ile kilitliydi — ilk sütunun 356px'i boş kalıyordu.
+   Metin 65 karakter/satırdı; klasik okuma bandının alt ucu.
+   Yeni: gövde 74ch'e kadar açılıyor (~700px, ~75 karakter), yan sütun
+   sağ kenara yaslanıyor, arta kalan boşluk aradaki oluğa gidiyor.
+   Kapsam: kullanim-sartlari · kvkk · cerezler · aydinlatma-metni ·
+   yayin-ilkeleri ve aynı kalıbı kullanan tüm belge sayfaları.
+   ========================================================================== */
+.dh-doc {
+  grid-template-columns: minmax(0, 74ch) 268px !important;
+  justify-content: space-between;
+  column-gap: 48px;
+}
+.dh-doc__body { max-width: none !important; }
+/* sayfa girişindeki özet cümle de aynı bandı kullanır (ölçüm: 566px'ti) */
+.dh-ph__sub { max-width: 74ch; }
+.dh-doc__sec > p,
+.dh-doc__body > p,
+.dh-doc__list > li { max-width: none; }
+
+@media (max-width: 1199.98px) {
+  .dh-doc { grid-template-columns: minmax(0, 1fr) 240px !important; column-gap: 32px; }
+}
+@media (max-width: 991.98px) {
+  .dh-doc { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+/* --- 8.8 · uzun tek sütunlu haber listeleri iki kolona açılır ------------
+   Kullanıcı: "uzun olunca güzel olmuyor". .dh-cards--list tek sütunda
+   dikeyde çok uzuyordu; 992px üstünde iki kolona geçiyor.
+   Yan sütunda (dar kap) tek sütun kalır — orada iki kolon sıkışırdı. */
+@media (min-width: 992px) {
+  .dh-cards--list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+    align-content: start;
+  }
+  /* dar kaplarda (yan sütun, hub rayı) tek sütun kalsın */
+  .dh-hub__news .dh-cards--list,
+  .dh-tkm__ray .dh-cards--list,
+  .col-3 .dh-cards--list,
+  .md\:col-3 .dh-cards--list,
+  .sidebar-wrap .dh-cards--list { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- 8.9 · footer sosyal ikonları: nefes payı ve alt çizgi ----------------
+   Kullanıcı: açıklama metninden iki satır aşağıdan başlasın, altı çizili
+   olmasın. Ölçüm: üst boşluk 20px'ti (metin satır yüksekliği 22px), iki
+   satırlık pay için 44px'e çıkarıldı. */
+/* .dh-v2-foot ul (0,1,1) benim .dh-v2-foot__soc'umu (0,1,0) yeniyordu —
+   ölçüldü: computed margin-top 0px. Seçici özgüllüğü eşitlendi. */
+.dh-v2-foot ul.dh-v2-foot__soc { margin-top: 44px; }
+.dh-v2-foot__soc a,
+.dh-v2-foot__soc a:hover,
+.dh-v2-foot__soc a:focus,
+.dh-v2-foot__soc a:visited {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+}
+
+/* --- 8.10 · 11px altı yazı tabanı ---------------------------------------
+   Ölçüm (390px, 12 sayfa): en küçük görünür metin 9px, 22 ayrı seçicide
+   11px altı değer vardı. Kurumsal taban 11px; etiket rolündeki metinler
+   harf aralığıyla küçük DURUR ama 11px'in altına inmez. */
+.dh-v2-off__grp,
+.dh-tkvm__ulke,
+.dh-fincard__label,
+.dh-ara__n,
+.dh-kesf__m,
+.dh-dcard__tag,
+.dh-rank { font-size: 11px !important; }
+.dh-karne__lab,
+.dh-mc__lbl,
+.dh-mc__crest--txt,
+.dh-kaynak__tur,
+.dh-v2-act__badge { font-size: 11px !important; }
+.dh-arag__m,
+.dh-vgrid__m,
+.dh-fx__round,
+.dh-nato__kod { font-size: 11px !important; }
+.dh-tr81--sec .dh-tr81__lv { font-size: 11px; }
+.dh-tr81--sec .dh-tr81__no { font-size: 16px; }
+/* rozet kutusu büyüyen yazıyı taşımasın */
+.dh-v2-act__badge { min-width: 17px; height: 17px; }
+
+/* --- 8.11 · bilgilendirme kutularında metin kutunun tamamını kullanır -----
+   Kullanıcı: "bu tarz bilgilendirme içeriklerini soldan sağa sayfanın
+   tamamına yaz". Ölçüm: .dh-medinfo__body p max-width 92ch ile kilitliydi;
+   1248px'lik kutunun sağında geniş boşluk kalıyordu. Kilit kalktı, metin
+   Yatırım Uyarısı bandındaki gibi iki yana yaslandı. */
+.dh-medinfo__body p,
+.dh-medinfo__txt,
+.dh-duz p,
+.dh-yz p {
+  max-width: none !important;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+@media (max-width: 575.98px) {
+  .dh-medinfo__body p,
+  .dh-medinfo__txt,
+  .dh-duz p,
+  .dh-yz p { text-align: start; }
+}
+
+
+/* ============================================================================
+   11. DENETİM TURU 2 — tipografi tabanı, çip ölçüsü, köşe imzası, karanlık mod
+   Her madde ölçümle açıldı; ölçüm yorumda.
+   ========================================================================== */
+
+/* --- 11.1 · 11px tabanı MASAÜSTÜNDE de geçerli --------------------------
+   Ölçüm: 1280 ve 1024px'te 530 görünür metin 11px altındaydı (17/22 sayfa,
+   43 seçici, en küçüğü 9px). custom.min.css'teki 12px tabanı yalnız
+   max-width:767.98px içinde tanımlıydı; telefon dışında hiç uygulanmıyordu.
+   İlk deneme tuttu sayılmaz: seçiciler listede olmasına rağmen bileşen
+   kuralları (ör. `.dh-panel .dh-cell__label`) özgüllükte yeniyordu —
+   ölçümde 408 metin hâlâ 11px altındaydı. Sınıf ikizlenerek (.x.x)
+   özgüllük eşitlendi; v2.css sonra yüklendiği için kural kazanıyor.
+   Mobildeki 12px tabanı olduğu gibi duruyor. */
+@media (min-width: 768px) {
+  .dh-arow__cat.dh-arow__cat,
+  .dh-art-cat.dh-art-cat,
+  .dh-artbox__k.dh-artbox__k,
+  .dh-astro__eyebrow.dh-astro__eyebrow,
+  .dh-author__beat.dh-author__beat,
+  .dh-band__tag.dh-band__tag,
+  .dh-bil__opt-tag.dh-bil__opt-tag,
+  .dh-calcs__head.dh-calcs__head,
+  .dh-card__badge.dh-card__badge,
+  .dh-catbar__root-ad.dh-catbar__root-ad,
+  .dh-catbar__root-fn.dh-catbar__root-fn,
+  .dh-cell__label.dh-cell__label,
+  .dh-cinfo__k.dh-cinfo__k,
+  .dh-doc__num.dh-doc__num,
+  .dh-fact__k.dh-fact__k,
+  .dh-finchart__cap.dh-finchart__cap,
+  .dh-finconv__note.dh-finconv__note,
+  .dh-finpanel__sub.dh-finpanel__sub,
+  .dh-finsum__name.dh-finsum__name,
+  .dh-fintable__desc.dh-fintable__desc,
+  .dh-fintabs__tab.dh-fintabs__tab,
+  .dh-fintick__name.dh-fintick__name,
+  .dh-foto__count.dh-foto__count,
+  .dh-fx__daylbl.dh-fx__daylbl,
+  .dh-fx__state.dh-fx__state,
+  .dh-gal__credit.dh-gal__credit,
+  .dh-ilan__org.dh-ilan__org,
+  .dh-ilan__type.dh-ilan__type,
+  .dh-jersey__team.dh-jersey__team,
+  .dh-lb__lead.dh-lb__lead,
+  .dh-live__cat.dh-live__cat,
+  .dh-mc__comp.dh-mc__comp,
+  .dh-mc__sub.dh-mc__sub,
+  .dh-mstats__lab.dh-mstats__lab,
+  .dh-op__kicker.dh-op__kicker,
+  .dh-panel__kicker.dh-panel__kicker,
+  .dh-person__role.dh-person__role,
+  .dh-ph__eyebrow.dh-ph__eyebrow,
+  .dh-player__kicker.dh-player__kicker,
+  .dh-pod__ep.dh-pod__ep,
+  .dh-podium__fastlbl.dh-podium__fastlbl,
+  .dh-podium__gap.dh-podium__gap,
+  .dh-podium__team.dh-podium__team,
+  .dh-prof__k.dh-prof__k,
+  .dh-relbox__title.dh-relbox__title,
+  .dh-res__tag.dh-res__tag,
+  .dh-son5__lbl.dh-son5__lbl,
+  .dh-sport__kicker.dh-sport__kicker,
+  .dh-sport__sub.dh-sport__sub,
+  .dh-stage__type.dh-stage__type,
+  .dh-stand__club.dh-stand__club,
+  .dh-strip__k.dh-strip__k,
+  .dh-tag.dh-tag,
+  .dh-toc__label.dh-toc__label,
+  .minimizeDate.minimizeDate {
+    font-size: 11px;
+  }
+  .dh-astro__label small,
+  .dh-byline small,
+  .dh-finconv .dh-fintabs__tab,
+  .dh-finconv__field label,
+  .dh-finconv__mode legend,
+  .dh-finrange__labels span,
+  .dh-finspot .dh-fintabs__tab,
+  .dh-finsum__rng b,
+  .dh-fx__cols span,
+  .dh-info__src b,
+  .dh-mast__row dt,
+  .dh-podium__fast b,
+  .dh-podium__step .dh-podium__gap,
+  .dh-podium__step .dh-podium__team,
+  .dh-pop__meta span,
+  .dh-stand__who .dh-stand__club,
+  .dh-wcard__last small,
+  .dh-wk__sep b,
+  .dh-wk__sep small,
+  taban da aynı ağırlıkta verilmek zorunda kaldı. */,
+  table thead th,
+  table thead th.is-num {
+    font-size: 11px;
+  }
+  .dh-byline small,
+  .minimizeDate,
+  .minimizeDate.minimizeDate,
+  .dh-astro__label small,
+  thead th,
+  .dh-mast__row dt,
+  .dh-fx__cols span,
+  .dh-info__src b,
+  .dh-finsum__rng b,
+  .dh-podium__fast b,
+  .dh-wk__sep b,
+  .dh-wk__sep small { font-size: 11px !important; }
+
+  /* İkinci ölçüm turunda kalanlar — bunlar v2 bileşenleri, ilk listede yoktu.
+     408 -> 47 sonrası taranarak bulundu. */
+  .dh-yon__k.dh-yon__k,
+  .dh-gozgun__tur.dh-gozgun__tur,
+  .dh-kesf__k.dh-kesf__k,
+  .dh-m__eyebrow.dh-m__eyebrow,
+  .dh-duz__k.dh-duz__k,
+  .dh-yz__k.dh-yz__k,
+  .dh-rev__badge.dh-rev__badge,
+  .dh-yerel__tag.dh-yerel__tag,
+  .dh-podium__pos.dh-podium__pos,
+  .dh-tkfilt__lbl.dh-tkfilt__lbl,
+  .dh-ad__k.dh-ad__k,
+  .dh-mega__grp.dh-mega__grp,
+  .dh-v2-off__grp.dh-v2-off__grp,
+  .dh-nwstamp.dh-nwstamp,
+  .dh-mono.dh-mono { font-size: 11px; }
+  .dh-sport__kicker.dh-sport__kicker,
+  .dh-mast__rows dt,
+  .dh-fintable__scroll dt,
+  .dh-tid__stats dt,
+  dl dt { font-size: 11px !important; }
+  .fs-5.fw-bold { font-size: 11px; }
+  .dh-share__source-label.dh-share__source-label,
+  .dh-kmod__go-ad.dh-kmod__go-ad { font-size: 11px; }
+  .minimizeDate,
+  span.minimizeDate,
+  .dh-fintick .minimizeDate { font-size: 11px !important; }
+  .fs-5.fw-bold,
+  span.fs-5.fw-bold { font-size: 11px !important; }
+}
+
+/* --- 11.2 · <button> çipler kurumsal ölçüyü kaybediyordu ------------------
+   Ölçüm: custom.min.css'te `button.dh-catbar__chip { font: inherit }` (0,1,1)
+   benim `.dh-catbar__chip{font-size:13.5px}` kuralımı (0,1,0) yeniyordu.
+   kadin.html çipleri 16px/500, diğer sayfalar 13.5px/600 — 146 buton /
+   10 sayfa. Özgüllük eşitlendi. */
+button.dh-catbar__chip {
+  font-size: 13.5px;
+  font-weight: 700;
+  font-family: inherit;
+}
+@media (max-width: 575.98px) {
+  button.dh-catbar__chip { font-size: 12.5px; }
+}
+
+/* --- 11.3 · köşe imzası: en sık iki ihlal --------------------------------
+   Ölçüm: 266 görünür öğede sol-alt köşe yuvarlaktı. En büyük iki kalem
+   toplamın %46'sı: img.w-24px (kaynak logosu, 94 örnek) ve
+   .dh-card__badge (28 örnek). Avatar (%50) ve hap (999px) istisna. */
+img.w-24px,
+.dh-card__badge,
+.dh-finsum__bar,
+.dh-finsum__mark,
+.dh-fx__round,
+table.dh-fintable,
+table.dh-stand { border-bottom-left-radius: 0 !important; }
+.dh-card__badge { border-radius: 8px 8px 8px 0 !important; }
+
+/* --- 11.4 · karanlık modda görünmez metin --------------------------------
+   Ölçüm: spor.html?dark=1 · .dh-mc__crest--txt beyaz zemin üstünde beyaz
+   metin, kontrast 1.00:1, 8 örnek. Rozet zemini koyuya alındı. */
+html.uc-dark .dh-mc__crest--txt {
+  background: var(--color-gray-700) !important;
+  color: #fff !important;
+}
+
+/* --- 11.5 · karanlık modda AA altı ikincil metin -------------------------
+   Ölçüm: #5b5b5b (gray-500) siyah zeminde 3,09:1 — beyaz zemin için
+   seçilmiş ton koyu temada ters çevrilmemişti. Koyu temada açık tona
+   döner: #9a9a9a siyah üstünde 7,0:1. */
+html.uc-dark { --color-gray-500: #9a9a9a; }
+html.uc-dark .dh-gozgun__tur { filter: brightness(1.45); }
+html.uc-dark .dh-rev__badge,
+html.uc-dark .dh-author__beat { color: var(--color-primary) !important; }
+
+/* --- 11.6 · bölüm başlığı ile ray arasındaki 2px kayma -------------------
+   Ölçüm: index (3), ekonomi (2), video (8) — sürekli -2px; ray odak
+   halkası için -2px kenar payı alıyor, başlık çubuğuna aynı pay verildi. */
+.dh-secbar + .dh-track,
+.dh-secbar + * > .dh-track { margin-inline: -2px; }
+.dh-secbar { margin-inline: -2px; padding-inline: 2px; }
+
+/* --- 11.7 · 480px altında sıkışan iki/üç sütunlu kalıplar ----------------
+   Ölçüm (390px): .dh-gozgun__yontem üç sütun x 103px (etiket 9,5px),
+   .dh-mc__body 115|54px. İkisi de tek sütuna iniyor. */
+@media (max-width: 479.98px) {
+  .dh-gozgun__yontem { grid-template-columns: minmax(0, 1fr) !important; }
+  .dh-gozgun__yontem > div { display: flex; align-items: baseline; gap: 8px; justify-content: space-between; }
+}
+
+/* --- 11.8 · 11px tabanı: üçüncü ölçüm turunda kalanlar -------------------
+   Ölçüm (98 sayfa x 3 kırılım): 530 -> 2094 -> aşağıdaki liste. Kalanların
+   çoğu .dh-num ailesi (sayı/veri etiketleri) ve SVG <text> düğümleri.
+   SVG'de 9px'lik eksen/ızgara etiketleri de 11px'e çekildi — diyagram
+   okunamıyorsa diyagram işini yapmıyor demektir. */
+.dh-num.dh-num,
+.dh-tkvm__nums.dh-tkvm__nums,
+.dh-hsp__grpad.dh-hsp__grpad,
+.dh-nwstat__lv.dh-nwstat__lv,
+.dh-nwlist__tag.dh-nwlist__tag,
+.dh-arag__v.dh-arag__v,
+.dh-share__source-label.dh-share__source-label { font-size: 11px !important; }
+.dh-finconv__field label,
+.dh-finconv__mode legend,
+.dh-hsp__lbl,
+.dh-kform__f > label,
+.dh-fld__l { font-size: 11px; }
+.dh-tkvm__nums b,
+.dh-nwstat b,
+.dh-info__src b,
+.dh-finsum__rng b,
+.dh-num b { font-size: inherit !important; }
+/* SVG diyagram etiketleri */
+.dh-tr81 text,
+.dh-gr text,
+.dh-veri text,
+svg .dh-tr81__no,
+svg .dh-tr81__lv { font-size: 11px; }
+.dh-tr81--sec .dh-tr81__no { font-size: 16px; }
+/* SVG içindeki tüm etiketler için taban — sınıf adları SVGAnimatedString
+   olduğu için tek tek hedeflenemiyor. 81 örnek 9px'ti. */
+#wrapper svg text { font-size: 11px; }
+#wrapper svg .dh-tr81__no { font-size: 16px; }
+/* Son kalemler: grafik ekseni etiketleri ve takım şeridi adları. */
+.dh-finchart__axis span,
+.dh-finchart__axis b,
+.dh-teams p.fs-5.fw-bold,
+.dh-teams .fs-5,
+p.fs-5.fw-bold { font-size: 11px !important; }
+.dh-finchart b,
+.dh-finsum b,
+.dh-fintick b,
+.minimizeDate,
+span.minimizeDate,
+.dh-fintick__time,
+figure b { font-size: 11px !important; }

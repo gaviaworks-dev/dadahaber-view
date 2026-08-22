@@ -316,3 +316,48 @@ html.uc-dark .dh-auth__steps li.is-on { color: #fff; }
   min-height: 44px;
   margin-inline-start: -12px;
 }
+
+/* --- iletişim: başvuru formları açılır-kapanır ---------------------------
+   Yedi form alt alta açıktı; okur hangisini dolduracağını seçmeden önce
+   hepsini kaydırmak zorundaydı. Başlık satırı seçim kumandası oldu,
+   yalnız açık olan formun alanları görünüyor. Native <details> — yeni JS yok.
+   İlk başlık (Haber İhbarı) açık gelir. */
+.dh-basv--acilir { padding: 0 !important; overflow: hidden; }
+.dh-basv--acilir > .dh-basv__hd {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  list-style: none;
+  margin: 0;
+}
+.dh-basv--acilir > .dh-basv__hd::-webkit-details-marker { display: none; }
+.dh-basv--acilir > .dh-basv__hd:hover { background: var(--color-gray-50); }
+html.uc-dark .dh-basv--acilir > .dh-basv__hd:hover { background: rgba(255, 255, 255, .05); }
+.dh-basv--acilir > .dh-basv__hd:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: -3px;
+}
+.dh-basv__ok {
+  margin-inline-start: auto;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  font-size: 11px;
+  color: var(--color-gray-500);
+  border-radius: 8px 8px 8px 0;
+  transition: transform .16s ease, background .14s;
+}
+.dh-basv--acilir[open] > .dh-basv__hd .dh-basv__ok { transform: rotate(180deg); }
+.dh-basv--acilir > .dh-basv__hd:hover .dh-basv__ok { background: var(--color-gray-100); }
+@media (prefers-reduced-motion: reduce) { .dh-basv__ok { transition: none; } }
+.dh-basv__body {
+  padding: 0 18px 20px;
+  border-top: 1px solid var(--color-gray-200);
+  padding-top: 16px;
+}
+html.uc-dark .dh-basv__body { border-color: var(--color-gray-700); }
+/* rozet açılır başlıkta okla çakışmasın */
+.dh-basv--acilir .dh-basv__n { margin-inline-start: 0; }

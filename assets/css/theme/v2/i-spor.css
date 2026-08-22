@@ -712,3 +712,40 @@ html.uc-dark .dh-tkm__ray .dh-fx__tv { color: var(--color-primary); }
     align-items: start;
   }
 }
+
+/* --- NATO: ülke seçici (bölge bileşeninin ülke sürümü) -------------------
+   Bileşen dunya.html'deki .dh-bolge; yalnız düğme içine ülke kodu rozeti
+   ekleniyor ve ray daha çok seçeneği taşıyacak şekilde ayarlanıyor. */
+.dh-nato__kod {
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  height: 20px;
+  padding: 0 5px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-radius: 8px 8px 8px 0;
+  font-variant-numeric: tabular-nums;
+}
+.dh-bolge--nato .dh-bolge__b { gap: 8px; }
+.dh-bolge--nato .dh-bolge__b[aria-checked="true"] .dh-nato__kod {
+  background: var(--color-gray-900);
+  color: var(--color-primary);
+}
+html.uc-dark .dh-bolge--nato .dh-bolge__b[aria-checked="true"] .dh-nato__kod {
+  background: #fff;
+  color: var(--color-gray-900);
+}
+.dh-nato__not {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 18px 0 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--color-gray-500);
+}
+.dh-nato__not i { margin-top: 2px; color: var(--color-primary); }

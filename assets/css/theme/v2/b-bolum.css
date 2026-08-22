@@ -876,3 +876,198 @@ html.uc-dark .dh-firsat__it.is-yeni .dh-firsat__kal { color: rgba(255, 255, 255,
    seçicisiyle kuruluyor — bölüm başlığı/ray arası ölçüsüyle aynı: 26px. */
 .dh-finsum + .dh-blinks,
 .dh-bstat + .dh-blinks { margin-top: 26px; }
+
+/* ============================================================================
+   YATIRIM UYARISI — haberlerin hemen üstünde, tam genişlikte yatay bant
+   Önce: kutu sağ rayda (veya finans.html'de sayfa dibinde) duruyordu ve
+   gövdesi iki sütuna bölünüyordu; ikinci paragraf birincinin YANINDA
+   başlıyordu. Şimdi tek akış: başlık solda, metin sağda alt alta.
+   Yasal bir uyarı kenar bilgisi değil, okurun haberlere girmeden önce
+   görmesi gereken şey — o yüzden akışın içinde ve tam genişlikte.
+   ========================================================================== */
+.dh-finuyari { padding-block: 0 8px !important; }
+.dh-finuyari__box {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 0;
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  border-inline-start: 3px solid var(--color-primary);
+  border-radius: 8px 8px 8px 0;
+  overflow: hidden;
+}
+html.uc-dark .dh-finuyari__box {
+  background: rgba(255, 255, 255, .04);
+  border-color: var(--color-gray-700);
+  border-inline-start-color: var(--color-primary);
+}
+.dh-finuyari__hd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px;
+  border-inline-end: 1px solid var(--color-gray-200);
+}
+html.uc-dark .dh-finuyari__hd { border-color: var(--color-gray-700); }
+.dh-finuyari__ic {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-radius: 8px 8px 8px 0;
+}
+.dh-finuyari__t {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-finuyari__t { color: #fff; }
+/* TEK AKIŞ: paragraflar alt alta, sütuna bölünmez */
+.dh-finuyari__bd {
+  padding: 16px 20px;
+  columns: auto !important;
+  column-count: 1 !important;
+}
+.dh-finuyari__bd p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--color-gray-600);
+  text-align: justify;
+  hyphens: auto;
+}
+.dh-finuyari__bd p + p {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--color-gray-200);
+}
+html.uc-dark .dh-finuyari__bd p + p { border-color: var(--color-gray-700); }
+.dh-finuyari__bd b { font-weight: 700; color: var(--color-gray-900); }
+html.uc-dark .dh-finuyari__bd b { color: #fff; }
+
+@media (max-width: 767.98px) {
+  .dh-finuyari__box { grid-template-columns: minmax(0, 1fr); }
+  .dh-finuyari__hd { border-inline-end: 0; border-bottom: 1px solid var(--color-gray-200); padding: 14px 16px; }
+  .dh-finuyari__bd { padding: 14px 16px; }
+  .dh-finuyari__bd p { text-align: start; }
+}
+
+/* --- Finans hub kategori kartları: iki satırlık ızgara -> tek sıra ray ----
+   Ölçüm: 9 kart 5+4 olarak iki satıra düşüyordu; ikinci satır tek başına
+   asimetrik duruyordu. Tek sırada kayan ray hem simetriyi çözüyor hem
+   sayfada 190px yer kazandırıyor. Gezinme mevcut dh-track.js ile. */
+.dh-blinks-wrap { position: relative; }
+.dh-blinks--ray {
+  display: grid !important;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(232px, 1fr);
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+  padding: 2px;
+}
+.dh-blinks--ray::-webkit-scrollbar { display: none; }
+.dh-blinks--ray > .dh-blink { scroll-snap-align: start; min-width: 0; }
+.dh-blinks__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  font-size: 15px;
+  color: var(--color-gray-800);
+  background: #fff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: opacity .14s, border-color .14s;
+}
+html.uc-dark .dh-blinks__nav {
+  background: var(--color-gray-900);
+  border-color: var(--color-gray-700);
+  color: #fff;
+}
+.dh-blinks__nav:hover { border-color: var(--color-primary); }
+.dh-blinks__nav--prev { inset-inline-start: -14px; }
+.dh-blinks__nav--next { inset-inline-end: -14px; }
+.dh-blinks__nav[disabled],
+.dh-blinks__nav.is-off { opacity: 0; pointer-events: none; }
+.dh-blinks__nav:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+@media (max-width: 991.98px) {
+  .dh-blinks__nav { display: none; }
+  .dh-blinks--ray { grid-auto-columns: minmax(212px, 1fr); }
+}
+
+/* --- Ekonomik takvim sayfası: süzgeç şeridi ------------------------------
+   Şerit görünen bölümü değil, o bölümün VERİSİNİ süzüyor — bu yüzden
+   radiogroup, tablist değil (dh-tabs.js'teki aynı ayrım). */
+.dh-tkfilt {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-tkfilt { background: rgba(255,255,255,.04); border-color: var(--color-gray-700); }
+.dh-tkfilt__grp { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.dh-tkfilt__lbl {
+  margin-inline-end: 6px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+.dh-tkfilt__b {
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-gray-800);
+  background: #fff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+  cursor: pointer;
+  transition: border-color .14s, background .14s, color .14s;
+}
+html.uc-dark .dh-tkfilt__b { background: var(--color-gray-900); border-color: var(--color-gray-700); color: #fff; }
+.dh-tkfilt__b:hover { border-color: var(--color-primary); }
+.dh-tkfilt__b.is-on {
+  background: var(--color-gray-900);
+  border-color: var(--color-gray-900);
+  color: #fff;
+}
+html.uc-dark .dh-tkfilt__b.is-on { background: var(--color-primary); border-color: var(--color-primary); color: #000; }
+.dh-tkfilt__b:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+.dh-tkfilt__say { margin: 2px 0 0; font-size: 12.5px; color: var(--color-gray-500); }
+.dh-tkfilt__say b { color: var(--color-gray-900); font-variant-numeric: tabular-nums; }
+html.uc-dark .dh-tkfilt__say b { color: #fff; }
+.dh-tkfilt__bos {
+  margin: 14px 0 0;
+  padding: 16px;
+  font-size: 13.5px;
+  color: var(--color-gray-600);
+  background: var(--color-gray-50);
+  border: 1px dashed var(--color-gray-300);
+  border-radius: 8px 8px 8px 0;
+}
+.dh-tkvm--sayfa .dh-tkvm__it[hidden] { display: none; }
+/* faiz sayfası: tablolar iki sütun */
+.dh-fingrid--sayfa { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 991.98px) { .dh-fingrid--sayfa { grid-template-columns: minmax(0, 1fr); } }

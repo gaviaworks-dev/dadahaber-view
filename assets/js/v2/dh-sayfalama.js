@@ -83,8 +83,12 @@
       var h = [];
       var kenar = function (yon, etiket, kapali) {
         var ok = yon === 'geri' ? 'left' : 'right';
-        var ic = '<i class="unicon-chevron-' + ok + '" aria-hidden="true"></i>';
-        if (etiket.indexOf('İlk') === 0 || etiket.indexOf('Son') === 0) ic += ic;
+        var tek = '<i class="unicon-chevron-' + ok + '" aria-hidden="true"></i>';
+        /* Uç düğmelerde çift chevron: iki <i> yan yana durmalı. Doğrudan
+           art arda konunca blok gibi alt alta diziliyordu (ölçüldü). */
+        var ic = (etiket.indexOf('İlk') === 0 || etiket.indexOf('Son') === 0)
+          ? '<span class="dh-pager__dbl">' + tek + tek + '</span>'
+          : tek;
         return kapali
           ? '<span class="dh-pager__nav is-off" aria-disabled="true" aria-label="' + etiket + '">' + ic + '</span>'
           : '<a class="dh-pager__nav" href="#" data-git="' + etiket + '" aria-label="' + etiket + '">' + ic + '</a>';
