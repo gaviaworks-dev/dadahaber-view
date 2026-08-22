@@ -3917,7 +3917,7 @@ html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
 #ozgun .dh-gozgun__meta span:last-child { color: rgba(255, 255, 255, .58) !important; font-family: inherit; }
 #ozgun .dh-gozgun__it::before { content: none; }
 
-/* ==== v2/b-bolum.css (959 satır) ==== */
+/* ==== v2/b-bolum.css (1014 satır) ==== */
 /* v2 — b-bolum (bu dosyaya yalnız ilgili ajan yazar; cat >> ile SONA eklenir) */
 
 /* ============================================================================
@@ -4876,6 +4876,61 @@ html.uc-dark .dh-finuyari__bd b { color: #fff; }
   .dh-finuyari__hd { border-inline-end: 0; border-bottom: 1px solid var(--color-gray-200); padding: 14px 16px; }
   .dh-finuyari__bd { padding: 14px 16px; }
   .dh-finuyari__bd p { text-align: start; }
+}
+
+/* --- Finans hub kategori kartları: iki satırlık ızgara -> tek sıra ray ----
+   Ölçüm: 9 kart 5+4 olarak iki satıra düşüyordu; ikinci satır tek başına
+   asimetrik duruyordu. Tek sırada kayan ray hem simetriyi çözüyor hem
+   sayfada 190px yer kazandırıyor. Gezinme mevcut dh-track.js ile. */
+.dh-blinks-wrap { position: relative; }
+.dh-blinks--ray {
+  display: grid !important;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(232px, 1fr);
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+  padding: 2px;
+}
+.dh-blinks--ray::-webkit-scrollbar { display: none; }
+.dh-blinks--ray > .dh-blink { scroll-snap-align: start; min-width: 0; }
+.dh-blinks__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  font-size: 15px;
+  color: var(--color-gray-800);
+  background: #fff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: opacity .14s, border-color .14s;
+}
+html.uc-dark .dh-blinks__nav {
+  background: var(--color-gray-900);
+  border-color: var(--color-gray-700);
+  color: #fff;
+}
+.dh-blinks__nav:hover { border-color: var(--color-primary); }
+.dh-blinks__nav--prev { inset-inline-start: -14px; }
+.dh-blinks__nav--next { inset-inline-end: -14px; }
+.dh-blinks__nav[disabled],
+.dh-blinks__nav.is-off { opacity: 0; pointer-events: none; }
+.dh-blinks__nav:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+@media (max-width: 991.98px) {
+  .dh-blinks__nav { display: none; }
+  .dh-blinks--ray { grid-auto-columns: minmax(212px, 1fr); }
 }
 
 /* ==== v2/c-kesfet.css (1584 satır) ==== */
