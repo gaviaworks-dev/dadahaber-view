@@ -17,7 +17,7 @@ yazar. Böylece iki taraf birbirinden sapmaz ve betik yeniden çalıştırılabi
 
 Dokunulmayanlar:
   · son-dakika.html — zaten vardı, yalnız şeritte adı geçer.
-  · "Canlı Yayın" → video.html#canli, "Hava Durumu" → veri-harita.html#hava.
+  · "Canlı Yayın" → video.html#canli, "Hava Durumu" → hava-durumu.html.
     Başka bölümlerin sayfaları; şeritte adları geçer, sayfaları burada üretilmez.
   · anlik.html'in #son-dakika, #yayin, #hava bölümleri yerinde kalır —
     merkez sayfa boşalmasın.
@@ -62,7 +62,7 @@ ALT = [
      "Uyarı seviyeleri ve acil çağrı numaraları."),
     ("trafik",      "Trafik ve Ulaşım",     "trafik-ulasim.html",       "fa-car",
      "Yol, raylı sistem, deniz ve hava ulaşımı."),
-    ("hava",        "Hava Durumu",          "veri-harita.html#hava",    "fa-cloud-sun",
+    ("hava",        "Hava Durumu",          "hava-durumu.html",    "fa-cloud-sun",
      "Sekiz günlük tahmin ve uyarı haritası."),
 ]
 AD = {k: a for k, a, h, i, d in ALT}
@@ -369,8 +369,9 @@ EK["takvim"] = """    <section class="section panel pt-5 lg:pt-6 pb-0" id="ileri
     </section>
 """
 
-EK["guncellenen"] = """    <section class="section panel pt-5 lg:pt-6 pb-0" id="duzeltme" aria-labelledby="dh-nwek-guncellenen-t">
-      <div class="container max-w-xl">
+EK["guncellenen"] = """    <section class="section dh-serit dh-serit--ak bg-white dark:bg-gray-900" id="duzeltme" aria-labelledby="dh-nwek-guncellenen-t">
+      <div class="section-outer panel py-4 lg:py-8">
+        <div class="container max-w-xl">
         <div class="section-header panel dh-secbar">
           <h2 class="h5 xl:h4 m-0 text-black dark:text-white" id="dh-nwek-guncellenen-t">Düzeltme ve Yanıt Notları</h2>
           <div class="dh-secbar__tools">
@@ -413,12 +414,14 @@ EK["guncellenen"] = """    <section class="section panel pt-5 lg:pt-6 pb-0" id="
             <span class="dh-nwlist__tag">DÜZELTME</span>
           </li>
         </ul>
+        </div>
       </div>
     </section>
 """
 
-EK["afet"] = """    <section class="section panel pt-5 lg:pt-6 pb-0" id="deprem" aria-labelledby="dh-nwek-afet-t">
-      <div class="container max-w-xl">
+EK["afet"] = """    <section class="section panel dh-serit bg-gray-10 dark:bg-gray-800" id="deprem" aria-labelledby="dh-nwek-afet-t">
+      <div class="section-outer panel py-4 lg:py-8">
+        <div class="container max-w-xl">
         <div class="section-header panel dh-secbar">
           <h2 class="h5 xl:h4 m-0 text-black dark:text-white" id="dh-nwek-afet-t">Son 24 Saatte Hissedilen Depremler</h2>
           <div class="dh-secbar__tools">
@@ -461,12 +464,14 @@ EK["afet"] = """    <section class="section panel pt-5 lg:pt-6 pb-0" id="deprem"
             <span class="dh-nwlist__tag">3,3</span>
           </li>
         </ul>
+        </div>
       </div>
     </section>
 """
 
-EK["trafik"] = """    <section class="section panel pt-5 lg:pt-6 pb-0" id="yol" aria-labelledby="dh-nwek-trafik-t">
-      <div class="container max-w-xl">
+EK["trafik"] = """    <section class="section panel dh-serit bg-gray-10 dark:bg-gray-800" id="yol" aria-labelledby="dh-nwek-trafik-t">
+      <div class="section-outer panel py-4 lg:py-8">
+        <div class="container max-w-xl">
         <div class="section-header panel dh-secbar">
           <h2 class="h5 xl:h4 m-0 text-black dark:text-white" id="dh-nwek-trafik-t">Şehirlerarası Yol Durumu</h2>
           <div class="dh-secbar__tools">
@@ -509,6 +514,7 @@ EK["trafik"] = """    <section class="section panel pt-5 lg:pt-6 pb-0" id="yol" 
               <span class="dh-nwstat__lv">NORMAL</span>
             </li>
           </ul>
+        </div>
         </div>
       </div>
     </section>

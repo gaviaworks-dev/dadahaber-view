@@ -1,0 +1,417 @@
+/* ============================================================================
+   v2 / J-RIZA — çerez rıza bandı + Gizlilik Tercih Merkezi
+   Talep (22 Ağustos): "örnekteki gibi yapalım" — tam genişlik bilgilendirme
+   bandı + Seçenekler / Tümünü Reddet / Kabul Et, ve kategori bazlı onay
+   paneli.
+
+   Vendor bandı (#uc-gdpr-notification) DOM'da KALIR: app-head-bs.js ona
+   koşulsuz addEventListener bağlıyor ve o dosya v1 arşiviyle paylaşılıyor,
+   değiştirilemez. Görsel olarak burada kapatılıyor.
+   ========================================================================== */
+
+.uc-gdpr-notification { display: none !important; }
+
+.dh-cz[hidden] { display: none; }
+
+/* --- bant --------------------------------------------------------------- */
+.dh-cz__band {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 1080;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 0 22px;
+  background: var(--color-gray-900);
+  border-top: 3px solid var(--color-primary);
+  box-shadow: 0 -18px 40px rgba(18, 18, 18, .22);
+}
+.dh-cz__wrap {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px 32px;
+  width: min(1280px, 100% - 48px);
+  margin-inline: auto;
+}
+.dh-cz__txt {
+  margin: 0;
+  max-width: 92ch;
+  font-size: var(--dh-t-2xs);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, .76);
+  text-align: start;
+}
+.dh-cz__txt a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.dh-cz__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Köşe imzası: sol-alt keskin — kurumsal kalıp. */
+.dh-cz__btn {
+  min-height: 44px;
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: var(--dh-t-2xs);
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .38);
+  border-radius: 8px 8px 8px 0;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.dh-cz__btn:hover { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .62); }
+.dh-cz__btn:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+
+/* Kurumsal sarı zeminde KOYU mürekkep — §12 kararı. */
+.dh-cz__btn--ana {
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.dh-cz__btn--ana:hover { background: #ffca4d; border-color: #ffca4d; color: var(--color-gray-900); }
+
+.dh-cz__kapat {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin-inline-end: 8px;
+  display: grid;
+  place-items: center;
+  font-size: var(--dh-t-s);
+  color: rgba(255, 255, 255, .62);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.dh-cz__kapat:hover { color: #fff; }
+.dh-cz__kapat:focus-visible { outline: 3px solid var(--color-primary); outline-offset: -3px; }
+
+/* --- tercih paneli ------------------------------------------------------- */
+.dh-cz__perde {
+  position: fixed;
+  inset: 0;
+  z-index: 1090;
+  background: rgba(18, 18, 18, .58);
+}
+.dh-cz__perde[hidden], .dh-cz__panel[hidden] { display: none; }
+
+.dh-cz__panel {
+  position: fixed;
+  z-index: 1100;
+  inset-block: 5vh;
+  inset-inline: 50%;
+  translate: -50% 0;
+  width: min(620px, calc(100% - 32px));
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px 12px 12px 0;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(18, 18, 18, .35);
+}
+html.uc-dark .dh-cz__panel { background: var(--color-gray-800); }
+
+.dh-cz__hd {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(18, 18, 18, .1);
+}
+html.uc-dark .dh-cz__hd { border-bottom-color: rgba(255, 255, 255, .12); }
+.dh-cz__h {
+  margin: 0;
+  font-size: var(--dh-t-l);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-cz__h { color: #fff; }
+.dh-cz__x {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: var(--dh-t-s);
+  color: var(--color-gray-500);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.dh-cz__x:hover { color: var(--color-gray-900); }
+html.uc-dark .dh-cz__x:hover { color: #fff; }
+.dh-cz__x:focus-visible { outline: 3px solid var(--dh-menu-ink); outline-offset: -3px; }
+
+.dh-cz__gv {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 18px 20px;
+}
+.dh-cz__lead {
+  margin: 0 0 16px;
+  font-size: var(--dh-t-2xs);
+  line-height: 1.7;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-cz__lead { color: var(--color-gray-300); }
+
+.dh-cz__list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.dh-cz__it {
+  padding: 14px 16px;
+  background: var(--color-gray-10);
+  border: 1px solid rgba(18, 18, 18, .09);
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-cz__it {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .1);
+}
+.dh-cz__itHd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.dh-cz__itAd {
+  font-size: var(--dh-t-xs);
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-cz__itAd { color: #fff; }
+.dh-cz__itTxt {
+  margin: 6px 0 0;
+  font-size: var(--dh-t-2xs);
+  line-height: 1.6;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-cz__itTxt { color: var(--color-gray-300); }
+/* Yeşil yerine kurumsal mürekkep: "her zaman etkin" bir DURUM bildirimi,
+   bir onay düğmesi değil. #1f7a3d beyaz üstünde 4,84:1. */
+.dh-cz__hep {
+  flex: none;
+  font-size: var(--dh-t-3xs);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #1f7a3d;
+}
+html.uc-dark .dh-cz__hep { color: #63c98a; }
+
+/* anahtar */
+.dh-cz__sw { flex: none; display: inline-flex; cursor: pointer; }
+.dh-cz__sw input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+}
+.dh-cz__swUi {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 28px;
+  background: var(--color-gray-200);
+  border-radius: 999px;
+  transition: background .16s;
+}
+.dh-cz__swUi::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  inset-inline-start: 3px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(18, 18, 18, .3);
+  transition: translate .16s;
+}
+.dh-cz__sw input:checked + .dh-cz__swUi { background: #1f7a3d; }
+.dh-cz__sw input:checked + .dh-cz__swUi::after { translate: 20px 0; }
+.dh-cz__sw input:focus-visible + .dh-cz__swUi { outline: 3px solid var(--dh-menu-ink); outline-offset: 2px; }
+
+.dh-cz__not {
+  margin: 16px 0 0;
+  font-size: var(--dh-t-3xs);
+  line-height: 1.6;
+  color: var(--color-gray-500);
+}
+.dh-cz__not a { color: var(--dh-menu-ink); text-decoration: underline; text-underline-offset: 2px; }
+html.uc-dark .dh-cz__not a { color: var(--color-primary); }
+
+.dh-cz__ft {
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 16px 20px;
+  background: var(--color-gray-10);
+  border-top: 1px solid rgba(18, 18, 18, .1);
+}
+html.uc-dark .dh-cz__ft {
+  background: var(--color-gray-900);
+  border-top-color: rgba(255, 255, 255, .12);
+}
+.dh-cz__btn--gvz {
+  color: var(--color-gray-900);
+  border-color: rgba(18, 18, 18, .28);
+}
+.dh-cz__btn--gvz:hover { background: rgba(18, 18, 18, .06); border-color: rgba(18, 18, 18, .5); }
+html.uc-dark .dh-cz__btn--gvz { color: #fff; border-color: rgba(255, 255, 255, .38); }
+html.uc-dark .dh-cz__btn--gvz:hover { background: rgba(255, 255, 255, .1); }
+
+/* Panel açıkken arka plan kaymasın. */
+html.dh-cz-kilit, html.dh-cz-kilit body { overflow: hidden; }
+
+/* Bant açıkken mobil alt gezinme ve yüzen yığın bandın altında kalmasın. */
+html.dh-cz-acik .dh-bnav { bottom: auto; }
+
+@media (max-width: 991.98px) {
+  .dh-cz__wrap { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .dh-cz__acts { justify-content: stretch; }
+  .dh-cz__btn { flex: 1 1 auto; }
+}
+@media (max-width: 575.98px) {
+  .dh-cz__band { padding: 16px 0 18px; }
+  .dh-cz__wrap { width: calc(100% - 32px); }
+  .dh-cz__txt { font-size: var(--dh-t-3xs); }
+  .dh-cz__panel { inset-block: 2vh; }
+}
+
+
+/* ============================================================================
+   BİLDİRİM İZNİ KARTI (yumuşak soru)
+   Talep: "ilk sayfaya giren için bu yapıyı yapalım, daha kurumsal olsun."
+   Tarayıcının kendi izin kutusu doğrudan açılmıyor; önce site kendi kartıyla
+   neden istediğini söylüyor. Kart üstte, kabuğun altında duruyor — tarayıcı
+   kutusunun çıktığı yerle aynı hizada, okur ikisini bir arada okuyor.
+   ========================================================================== */
+
+.dh-bld[hidden] { display: none; }
+.dh-bld {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 1070;
+  display: flex;
+  justify-content: center;
+  padding: 14px 16px;
+  pointer-events: none;
+}
+.dh-bld__kart {
+  pointer-events: auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  width: min(620px, 100%);
+  padding: 22px 52px 22px 22px;
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, .1);
+  border-radius: 14px 14px 14px 0;
+  box-shadow: 0 22px 48px rgba(18, 18, 18, .22);
+}
+html.uc-dark .dh-bld__kart {
+  background: var(--color-gray-800);
+  border-color: rgba(255, 255, 255, .12);
+}
+/* Marka yazısı geniş bir kelime markası; 72px kare kutuda küçücük kalıyordu
+   (ölçüldü). Yerine kurumsal zeminli çan: kartın ne sorduğunu tek bakışta
+   söylüyor. Sarı zeminde koyu mürekkep — §12. */
+.dh-bld__mark {
+  flex: none;
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  font-size: var(--dh-t-l);
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-radius: 12px 12px 12px 0;
+}
+
+.dh-bld__h {
+  margin: 0 0 6px;
+  font-size: var(--dh-t-m);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-bld__h { color: #fff; }
+.dh-bld__p {
+  margin: 0 0 14px;
+  font-size: var(--dh-t-2xs);
+  line-height: 1.6;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-bld__p { color: var(--color-gray-300); }
+
+.dh-bld__acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.dh-bld__btn {
+  min-height: 44px;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: var(--dh-t-2xs);
+  font-weight: 700;
+  color: var(--color-gray-900);
+  background: transparent;
+  border: 1px solid rgba(18, 18, 18, .28);
+  border-radius: 8px 8px 8px 0;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.dh-bld__btn:hover { background: rgba(18, 18, 18, .06); border-color: rgba(18, 18, 18, .5); }
+.dh-bld__btn:focus-visible { outline: 3px solid var(--dh-menu-ink); outline-offset: 2px; }
+html.uc-dark .dh-bld__btn { color: #fff; border-color: rgba(255, 255, 255, .34); }
+html.uc-dark .dh-bld__btn:hover { background: rgba(255, 255, 255, .1); }
+
+/* Kurumsal sarı zeminde koyu mürekkep — §12. */
+.dh-bld__btn--ana,
+html.uc-dark .dh-bld__btn--ana {
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.dh-bld__btn--ana:hover,
+html.uc-dark .dh-bld__btn--ana:hover { background: #ffca4d; border-color: #ffca4d; }
+
+.dh-bld__x {
+  position: absolute;
+  top: 6px;
+  inset-inline-end: 6px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: var(--dh-t-s);
+  color: var(--color-gray-500);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.dh-bld__x:hover { color: var(--color-gray-900); }
+html.uc-dark .dh-bld__x:hover { color: #fff; }
+.dh-bld__x:focus-visible { outline: 3px solid var(--dh-menu-ink); outline-offset: -3px; }
+
+@media (max-width: 575.98px) {
+  .dh-bld__kart {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 18px 48px 18px 18px;
+  }
+  .dh-bld__mark { width: 56px; height: 56px; }
+  .dh-bld__btn { flex: 1 1 auto; }
+}

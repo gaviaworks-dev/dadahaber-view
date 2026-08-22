@@ -25,7 +25,7 @@ html.uc-dark .dh-m { background: rgba(255, 255, 255, .03); border-color: var(--c
 html.uc-dark .dh-m__hd { border-color: var(--color-gray-700); }
 .dh-m__eyebrow {
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -34,7 +34,7 @@ html.uc-dark .dh-m__hd { border-color: var(--color-gray-700); }
 }
 html.uc-dark .dh-m__eyebrow { color: var(--color-primary); }
 .dh-m__title { margin: 0; font-size: 16px; font-weight: 800; letter-spacing: -.015em; }
-.dh-m__note { margin-inline-start: auto; font-size: 11.5px; color: var(--color-gray-500); }
+.dh-m__note { margin-inline-start: auto; font-size: 11px; color: var(--color-gray-500); }
 .dh-m__bd { padding: 16px 18px 18px; }
 .dh-m__bd > :last-child { margin-bottom: 0; }
 
@@ -47,7 +47,7 @@ html.uc-dark .dh-m__eyebrow { color: var(--color-primary); }
   grid-template-columns: 22px 1fr;
   gap: 10px;
   padding: 7px 0;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
 }
 .dh-ozet15 li + li { border-top: 1px dashed var(--color-gray-200); }
@@ -86,13 +86,13 @@ html.uc-dark .dh-yon__c { background: rgba(255, 255, 255, .03); border-color: va
   display: block;
   margin-bottom: 8px;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--color-gray-500);
 }
-.dh-yon__t { margin: 0 0 6px; font-size: 15px; font-weight: 800; letter-spacing: -.015em; }
+.dh-yon__t { margin: 0 0 6px; font-size: 16px; font-weight: 800; letter-spacing: -.015em; }
 .dh-yon__c p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--color-gray-700); }
 html.uc-dark .dh-yon__c p { color: rgba(255, 255, 255, .78); }
 @media (max-width: 767px) { .dh-yon { grid-template-columns: 1fr; } }
@@ -124,7 +124,7 @@ html.uc-dark .dh-baglamk__row a:hover { color: var(--color-primary); }
 .dh-karne { border-inline-start: 3px solid var(--dh-c-gundem); }
 .dh-karne__ozet {
   margin: 0 0 14px;
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.55;
   color: var(--color-gray-700);
 }
@@ -144,20 +144,20 @@ html.uc-dark .dh-karne__cell { background: var(--color-gray-900); }
 .dh-karne__lab {
   display: block;
   font-family: var(--dh-mono);
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .09em;
   text-transform: uppercase;
   color: var(--color-gray-500);
   margin-bottom: 5px;
 }
-.dh-karne__val { font-size: 15px; font-weight: 800; letter-spacing: -.015em; }
+.dh-karne__val { font-size: 16px; font-weight: 800; letter-spacing: -.015em; }
 .dh-karne__val--iyi { color: #1a6b2a; }
 .dh-karne__val--dikkat { color: #8a5a00; }
 .dh-karne__val--yok { color: var(--color-gray-500); font-weight: 500; }
 html.uc-dark .dh-karne__val--iyi { color: #5fce7c; }
 html.uc-dark .dh-karne__val--dikkat { color: #f0c14b; }
-.dh-karne__val i { font-size: 12px; margin-inline-end: 4px; }
+.dh-karne__val i { font-size: 12.5px; margin-inline-end: 4px; }
 
 /* --- kaynaklar ve belgeler -------------------------------------------------- */
 .dh-kaynak ol { list-style: none; margin: 0; padding: 0; counter-reset: dh-k; }
@@ -188,7 +188,7 @@ html.uc-dark .dh-kaynak li { border-color: var(--color-gray-700); }
   border-radius: 4px 4px 4px 0;
   background: var(--color-gray-100);
   font-family: var(--dh-mono);
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -230,7 +230,7 @@ html.uc-dark .dh-duz { background: rgba(200, 16, 46, .14); }
   display: block;
   margin-bottom: 5px;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -245,7 +245,7 @@ html.uc-dark .dh-duz__k { color: #ff8a9c; }
   padding: 14px 16px;
   border: 1px dashed var(--color-gray-300);
   border-radius: 8px 8px 8px 0;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.55;
   color: var(--color-gray-600);
 }
@@ -254,7 +254,7 @@ html.uc-dark .dh-yz { border-color: var(--color-gray-700); color: rgba(255, 255,
   display: block;
   margin-bottom: 5px;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -288,10 +288,10 @@ html.uc-dark .dh-yz b { color: #fff; }
 html.uc-dark .dh-eylem__b { background: rgba(255, 255, 255, .03); border-color: var(--color-gray-700); color: #fff; }
 .dh-eylem__b:hover { border-color: var(--color-primary); background: rgba(252, 182, 35, .08); color: var(--color-gray-900); }
 html.uc-dark .dh-eylem__b:hover { color: #fff; }
-.dh-eylem__b i { color: var(--color-primary-700); font-size: 15px; }
+.dh-eylem__b i { color: var(--color-primary-700); font-size: 16px; }
 html.uc-dark .dh-eylem__b i { color: var(--color-primary); }
-.dh-eylem__t { font-size: 13.5px; font-weight: 700; letter-spacing: -.01em; }
-.dh-eylem__d { font-size: 11.5px; line-height: 1.35; color: var(--color-gray-500); }
+.dh-eylem__t { font-size: 14px; font-weight: 700; letter-spacing: -.01em; }
+.dh-eylem__d { font-size: 11px; line-height: 1.35; color: var(--color-gray-500); }
 .dh-eylem__b.is-on { border-color: var(--color-primary); background: rgba(252, 182, 35, .14); }
 @media (max-width: 991px) { .dh-eylem { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 479px) { .dh-eylem { grid-template-columns: 1fr; } }
@@ -303,7 +303,7 @@ html.uc-dark .dh-eylem__b i { color: var(--color-primary); }
   gap: 8px;
   margin: 0 0 8px;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -323,7 +323,7 @@ html.uc-dark .dh-eylem__b i { color: var(--color-primary); }
 /* bölüm başlığının altındaki tek cümlelik işlev — mega menüdeki dille aynı */
 .dh-vsec__lead {
   margin: 5px 0 0;
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.45;
   color: var(--color-gray-500);
   max-width: 62ch;
@@ -363,10 +363,10 @@ html.uc-dark .dh-vgrid__c { background: rgba(255, 255, 255, .03); border-color: 
 }
 .dh-vgrid__fig img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .dh-vgrid__bd { display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
-.dh-vgrid__t { font-size: 14.5px; font-weight: 800; letter-spacing: -.015em; }
+.dh-vgrid__t { font-size: 14px; font-weight: 800; letter-spacing: -.015em; }
 .dh-vgrid__m {
   font-family: var(--dh-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: .05em;
   text-transform: uppercase;
   color: var(--color-gray-500);
@@ -388,7 +388,7 @@ html.uc-dark .dh-varch li + li { border-color: var(--color-gray-700); }
 }
 .dh-varch a:hover { background: var(--color-gray-50); color: inherit; }
 html.uc-dark .dh-varch a:hover { background: rgba(255, 255, 255, .05); }
-.dh-varch b { font-size: 15px; font-weight: 800; letter-spacing: -.015em; }
+.dh-varch b { font-size: 16px; font-weight: 800; letter-spacing: -.015em; }
 .dh-varch time,
 .dh-varch span {
   font-family: var(--dh-mono);
@@ -412,7 +412,7 @@ html.uc-dark .dh-varch a:hover { background: rgba(255, 255, 255, .05); }
   display: inline-block;
   margin-inline-start: 5px;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .04em;
   opacity: .6;
@@ -435,13 +435,13 @@ html.uc-dark .dh-filt__bar { background: rgba(255, 255, 255, .03); border-color:
   gap: 8px;
   margin: 0 0 12px;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--color-gray-500);
 }
-.dh-filt__t i { color: var(--color-primary-700); font-size: 12px; }
+.dh-filt__t i { color: var(--color-primary-700); font-size: 12.5px; }
 html.uc-dark .dh-filt__t i { color: var(--color-primary); }
 .dh-filt__grid {
   display: grid;
@@ -450,7 +450,7 @@ html.uc-dark .dh-filt__t i { color: var(--color-primary); }
 }
 .dh-filt__f { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
 .dh-filt__lab {
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: -.005em;
   color: var(--color-gray-600);
@@ -462,7 +462,7 @@ html.uc-dark .dh-filt__lab { color: rgba(255, 255, 255, .7); }
   border: 1px solid var(--color-gray-300);
   border-radius: 8px 8px 8px 0;
   background: #fff;
-  font-size: 13px;
+  font-size: 12.5px;
   font-family: inherit;
   color: var(--color-gray-900);
   max-width: 100%;
@@ -475,7 +475,7 @@ html.uc-dark .dh-filt__sel { background: var(--color-gray-900); border-color: va
   border: 1px solid var(--color-gray-300);
   border-radius: 8px 8px 8px 0;
   background: none;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--color-gray-700);
   cursor: pointer;
@@ -497,8 +497,8 @@ html.uc-dark .dh-filt__clr:hover { color: var(--color-primary); }
   border-bottom: 2px solid var(--color-gray-200);
 }
 html.uc-dark .dh-arag__h { border-color: var(--color-gray-700); }
-.dh-arag__t { margin: 0; font-size: 17px; font-weight: 800; letter-spacing: -.02em; }
-.dh-arag__all { font-size: 12px; font-weight: 700; color: var(--color-primary-700); text-decoration: none; white-space: nowrap; }
+.dh-arag__t { margin: 0; font-size: 18px; font-weight: 800; letter-spacing: -.02em; }
+.dh-arag__all { font-size: 12.5px; font-weight: 700; color: var(--color-primary-700); text-decoration: none; white-space: nowrap; }
 html.uc-dark .dh-arag__all { color: var(--color-primary); }
 .dh-arag__l { list-style: none; margin: 0; padding: 0; }
 .dh-arag__l li + li { border-top: 1px solid var(--color-gray-200); }
@@ -515,10 +515,10 @@ html.uc-dark .dh-arag__l li + li { border-color: var(--color-gray-700); }
 }
 .dh-arag__l a:hover { background: var(--color-gray-50); color: inherit; }
 html.uc-dark .dh-arag__l a:hover { background: rgba(255, 255, 255, .05); }
-.dh-arag__l b { font-size: 15px; font-weight: 700; letter-spacing: -.015em; flex: 1 1 260px; }
+.dh-arag__l b { font-size: 16px; font-weight: 700; letter-spacing: -.015em; flex: 1 1 260px; }
 .dh-arag__m {
   font-family: var(--dh-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: .05em;
   text-transform: uppercase;
   color: var(--color-gray-500);
@@ -530,7 +530,7 @@ html.uc-dark .dh-arag__l a:hover { background: rgba(255, 255, 255, .05); }
   padding: 3px 9px;
   border-radius: 6px 6px 6px 0;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -554,7 +554,7 @@ html.uc-dark .dh-arag__l a:hover { background: rgba(255, 255, 255, .05); }
   padding: 3px 9px;
   border-radius: 6px 6px 6px 0;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .07em;
   text-transform: uppercase;
@@ -583,14 +583,14 @@ html.uc-dark .dh-ayrim { background: rgba(255, 255, 255, .03); border-color: var
   display: block;
   margin-bottom: 6px;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--color-gray-500);
 }
-.dh-ayrim__h { margin: 0 0 6px; font-size: 19px; font-weight: 800; letter-spacing: -.02em; }
-.dh-ayrim__p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--color-gray-600); }
+.dh-ayrim__h { margin: 0 0 6px; font-size: 18px; font-weight: 800; letter-spacing: -.02em; }
+.dh-ayrim__p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--color-gray-600); }
 html.uc-dark .dh-ayrim__p { color: rgba(255, 255, 255, .72); }
 .dh-ayrim__l { list-style: none; margin: 0; padding: 0; align-self: center; }
 .dh-ayrim__l li {
@@ -599,7 +599,7 @@ html.uc-dark .dh-ayrim__p { color: rgba(255, 255, 255, .72); }
   gap: 12px;
   align-items: baseline;
   padding: 8px 0;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--color-gray-700);
 }
@@ -643,14 +643,14 @@ html.uc-dark .dh-ayrim__l li + li { border-color: var(--color-gray-700); }
   display: block;
   margin-bottom: 7px;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--color-primary);
 }
-.dh-kesf__t { margin: 0 0 8px; font-size: 28px; font-weight: 800; letter-spacing: -.025em; line-height: 1.12; }
-.dh-kesf__l { margin: 0; max-width: 64ch; font-size: 14.5px; line-height: 1.55; color: rgba(255, 255, 255, .68); }
+.dh-kesf__t { margin: 0 0 8px; font-size: 30px; font-weight: 800; letter-spacing: -.025em; line-height: 1.12; }
+.dh-kesf__l { margin: 0; max-width: 64ch; font-size: 14px; line-height: 1.55; color: rgba(255, 255, 255, .68); }
 .dh-kesf__all {
   display: inline-flex;
   align-items: center;
@@ -659,7 +659,7 @@ html.uc-dark .dh-ayrim__l li + li { border-color: var(--color-gray-700); }
   border-radius: 8px 8px 8px 0;
   background: var(--color-primary);
   color: #000;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
@@ -700,10 +700,10 @@ html.uc-dark .dh-ayrim__l li + li { border-color: var(--color-gray-700); }
   font-size: 14px;
 }
 .dh-kesf__n { font-size: 16px; font-weight: 800; letter-spacing: -.02em; }
-.dh-kesf__d { font-size: 13px; line-height: 1.5; color: rgba(255, 255, 255, .7); flex: 1 1 auto; }
+.dh-kesf__d { font-size: 12.5px; line-height: 1.5; color: rgba(255, 255, 255, .7); flex: 1 1 auto; }
 .dh-kesf__m {
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .07em;
   text-transform: uppercase;
@@ -712,7 +712,7 @@ html.uc-dark .dh-ayrim__l li + li { border-color: var(--color-gray-700); }
 }
 @media (max-width: 1199px) { .dh-kesf__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 767px) { .dh-kesf__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .dh-kesf__t { font-size: 23px; } }
+  .dh-kesf__t { font-size: 22px; } }
 @media (max-width: 479px) { .dh-kesf__grid { grid-template-columns: 1fr; } }
 
 /* ============================================================================
@@ -746,7 +746,7 @@ html.uc-dark .dh-ayrim__l li + li { border-color: var(--color-gray-700); }
 /* placeholder olduğu açıkça yazar — boş kutu "bozuk" gibi görünmesin */
 .dh-ad__k {
   font-family: var(--dh-mono);
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -788,8 +788,8 @@ html.uc-dark .dh-ad__box {
    kaplar: başlık satırı ve madde aralıkları daraltıldı. */
 .dh-ozet15--kompakt .dh-m__hd { padding: 9px 16px; }
 .dh-ozet15--kompakt .dh-m__bd { padding: 10px 16px 12px; }
-.dh-ozet15--kompakt li { padding: 5px 0; font-size: 14.5px; line-height: 1.45; }
-.dh-ozet15--kompakt .dh-m__title { font-size: 15px; }
+.dh-ozet15--kompakt li { padding: 5px 0; font-size: 14px; line-height: 1.45; }
+.dh-ozet15--kompakt .dh-m__title { font-size: 16px; }
 
 /* --- 8.4 · Değerlendirme kartları açılır-kapanır ---------------------------
    Varsayılan: başlık görünür (kısa özet). Uzun metin istekle açılır.
@@ -816,7 +816,7 @@ html.uc-dark .dh-ad__box {
   place-items: center;
   width: 20px;
   height: 20px;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-gray-500);
   transition: transform .16s ease;
 }
@@ -853,7 +853,7 @@ html.uc-dark .dh-tabs__bar { border-color: var(--color-gray-700); }
   padding: 11px 14px;
   border: 0;
   background: none;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
   color: var(--color-gray-600);
@@ -897,6 +897,64 @@ html.uc-dark .dh-tabs__t[aria-selected="true"] { color: #fff; }
    Ölçüm: .dh-ad__k 9,5px ve #7c7c7c/#efefef = 3,63:1 (sitedeki en küçük
    punto). Yeni: 11px ve --color-gray-500 (#5b5b5b/#efefef = 6,26:1). */
 .dh-ad__k { font-size: 11px; color: var(--color-gray-500); }
-.dh-ad__box { font-size: 12px; color: var(--color-gray-500); }
+.dh-ad__box { font-size: 12.5px; color: var(--color-gray-500); }
 html.uc-dark .dh-ad__k,
 html.uc-dark .dh-ad__box { color: var(--color-gray-400); }
+
+/* ============================================================================
+   REVİZE (22 Ağustos akşamı) · haber künyesi ve gövde ritmi
+   ========================================================================== */
+
+/* --- A · YAZAR KÜNYESİ: ad solda, sayılar sağda -------------------------
+   Talep: "Yazarın adı soyadı BÜYÜK, alt tarafta unvan sadece baş harfi
+   büyük; bunlar sol tarafa, görseliyle birlikte. Tarih, okuma süresi,
+   görüntülenme hepsi sağa yaslı. Bu sayfalandırmanın tamamı için geçerli."
+
+   ÖLÇÜM (haber-detay.html): künye satırı `.dh-art-hmeta` flex ve
+   `justify-content: normal` — yazar, ayraç, tarih, süre, görüntülenme
+   hepsi soldan sıraya diziliyordu.
+   YENİ: yazar bloğu solda kalır, istatistikler `margin-inline-start:auto`
+   ile sağa gider. Ayraç noktaları artık iki grubu ayırmıyor, gizlenir. */
+.dh-art-hmeta { justify-content: space-between; }
+.dh-art-hauthor { margin-inline-end: auto; }
+/* İlk ayraç yazarla sayıların arasında kalıyordu; gruplar ayrıldığı için
+   gereksiz. Sayılar arasındaki ayraçlar duruyor. */
+.dh-art-hauthor + .dh-art-hsep { display: none; }
+.dh-art-hstat + .dh-art-hsep { display: inline-block; }
+
+/* Ad SOYAD büyük harf, unvan yalnız ilk harf büyük. */
+.dh-art-hauthor b {
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  font-weight: 800;
+}
+.dh-art-hauthor small { text-transform: none; }
+
+@media (max-width: 767.98px) {
+  /* Dar ekranda sağa yaslama iki satıra düşerdi; alt alta ve sola. */
+  .dh-art-hmeta { justify-content: flex-start; }
+  .dh-art-hauthor { margin-inline-end: 0; }
+}
+
+/* --- B · GÖVDE PARAGRAF ARALIĞI ----------------------------------------
+   Talep: "Editör içerisindeki yazıların mesafeleri birbirinden çok fazla,
+   ara mesafeleri biraz daha kısaltalım. Bu tüm sitedeki yapı için geçerli."
+
+   ÖLÇÜM (haber-detay.html gövdesi): paragraf 18px/34,2px satır yüksekliği
+   (oran 1,90) ve 26px alt boşluk. Toplam satır arası nefes 60px'e çıkıyordu.
+   YENİ: satır yüksekliği 1,68 (30,2px) · paragraf arası 18px.
+   Okunabilirlik eşiği korundu — gövde metni için önerilen aralık 1,5–1,8.
+   Başlıklar ve listeler ayrı; onların ritmi bozulmuyor. */
+.dh-art .post-content > p,
+.dh-art .post-content > div > p {
+  line-height: 1.68 !important;
+  margin-bottom: 18px !important;
+}
+.dh-art .post-content > ul,
+.dh-art .post-content > ol { margin-bottom: 18px; }
+.dh-art .post-content > ul > li,
+.dh-art .post-content > ol > li { margin-bottom: 7px; line-height: 1.62; }
+/* Ara başlıktan sonraki paragraf başlığa yapışmasın, ondan öncekiyse
+   fazladan nefes almasın: ritim tek yönde toplanıyor. */
+.dh-art .post-content > h2,
+.dh-art .post-content > h3 { margin-top: 30px; margin-bottom: 12px; }

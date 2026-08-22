@@ -7,6 +7,8 @@ HDR = open(os.path.join(d, "header.html"), encoding="utf-8").read()
 OFF = open(os.path.join(d, "offcanvas.html"), encoding="utf-8").read()
 FTR = open(os.path.join(d, "footer.html"), encoding="utf-8").read()
 BNV = open(os.path.join(d, "bnav.html"), encoding="utf-8").read()
+CEREZ = open(os.path.join(d, "cerez.html"), encoding="utf-8").read()
+BILDIRIM = open(os.path.join(d, "bildirim.html"), encoding="utf-8").read()
 
 YUZEN = """  <!-- Sağ alt yüzen yığın: yukarı çık + karanlık mod -->
   <div class="backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack">
@@ -156,6 +158,71 @@ def isle(yol):
             e += 1
         s = s[:b] + BNV + s[e:]
         rapor.append("bnav")
+
+    # 8) çerez rıza bandı + Gizlilik Tercih Merkezi — tek kaynak
+    #    SINIF ADI: .dh-cz. `.dh-riza` KULLANILAMAZ — cerezler.html'de
+    #    aynı adla eski bir bileşen var; ilk sürüm onu yay.py ile ezdi.
+    #    Vendor bandı (#uc-gdpr-notification) DOM'da KALIR: app-head-bs.js ona
+    #    koşulsuz addEventListener bağlıyor ve o dosya v1 ile paylaşılıyor.
+    #    Görsel olarak j-riza.css kapatıyor.
+    i = s.find('<div class="dh-cz"')
+    if i != -1:
+        b = satir_basi(s, i)
+        e = kapat_div(s, i)
+        if e == -1:
+            return None, "dh-cz kapanmıyor"
+        while e < len(s) and s[e] in " \t":
+            e += 1
+        if e < len(s) and s[e] == "\n":
+            e += 1
+        if s[b:e] != CEREZ:
+            s = s[:b] + CEREZ + s[e:]
+            rapor.append("cerez")
+    else:
+        k = s.rfind("</body>")
+        if k != -1:
+            b = satir_basi(s, k)
+            s = s[:b] + CEREZ + s[b:]
+            rapor.append("cerez")
+
+    # 8a2) bildirim izni kartı — çerez bandının hemen ardından
+    i = s.find('<div class="dh-bld"')
+    if i != -1:
+        b = satir_basi(s, i)
+        e = kapat_div(s, i)
+        if e == -1:
+            return None, "dh-bld kapanmıyor"
+        while e < len(s) and s[e] in " \t":
+            e += 1
+        if e < len(s) and s[e] == "\n":
+            e += 1
+        if s[b:e] != BILDIRIM:
+            s = s[:b] + BILDIRIM + s[e:]
+            rapor.append("bildirim")
+    else:
+        j = s.find('<div class="dh-cz"')
+        if j != -1:
+            k2 = kapat_div(s, j)
+            if k2 != -1:
+                while k2 < len(s) and s[k2] in " \t":
+                    k2 += 1
+                if k2 < len(s) and s[k2] == "\n":
+                    k2 += 1
+                s = s[:k2] + BILDIRIM + s[k2:]
+                rapor.append("bildirim")
+
+    # 8b) rıza betiği
+    if "js/v2/dh-cerez.js" not in s:
+        m = re.search(r'[ \t]*<script defer src="\./assets/js/v2/dh-v2-menu\.js"></script>[ \t]*\n', s)
+        if m:
+            s = s[:m.end()] + '    <script defer src="./assets/js/v2/dh-cerez.js"></script>\n' + s[m.end():]
+            rapor.append("cerezjs")
+
+    if "js/v2/dh-bildirim.js" not in s:
+        m = re.search(r'[ \t]*<script defer src="\./assets/js/v2/dh-cerez\.js"></script>[ \t]*\n', s)
+        if m:
+            s = s[:m.end()] + '    <script defer src="./assets/js/v2/dh-bildirim.js"></script>\n' + s[m.end():]
+            rapor.append("bildirimjs")
 
     if s != orj:
         open(yol, "w", encoding="utf-8").write(s)

@@ -59,7 +59,7 @@ html.uc-dark body[data-dh-cat="anlik"] { --dh-a-cat: #ff7a86; --dh-a-soft: rgba(
   border-radius: 14px 14px 14px 0;
   background: var(--dh-a-soft);
   color: var(--dh-a-cat);
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .dh-nwsum__body { display: block; min-width: 0; }
@@ -68,7 +68,7 @@ html.uc-dark body[data-dh-cat="anlik"] { --dh-a-cat: #ff7a86; --dh-a-soft: rgba(
    satırı bu yüzden açıklama, gövde metninden bir tık iri ve koyu. */
 .dh-nwsum__d {
   display: block;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.5;
   color: var(--color-gray-800);
@@ -110,7 +110,7 @@ html.uc-dark body[data-dh-cat="anlik"] { --dh-a-cat: #ff7a86; --dh-a-soft: rgba(
   padding: 0 18px;
   border-radius: 8px 8px 8px 0;
   border: 1px solid var(--color-gray-100);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   white-space: nowrap;
   color: var(--color-gray-900);
@@ -137,7 +137,7 @@ html.uc-dark .dh-nwsum__go { border-color: rgba(255, 255, 255, .12); color: #fff
 
 @media (max-width: 559.98px) {
   .dh-nwsum { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 16px; }
-  .dh-nwsum__ic { width: 44px; height: 44px; font-size: 17px; }
+  .dh-nwsum__ic { width: 44px; height: 44px; font-size: 18px; }
 }
 
 
@@ -175,7 +175,7 @@ html.uc-dark .dh-nwsum__go { border-color: rgba(255, 255, 255, .12); color: #fff
   border-radius: 11px 11px 11px 0;
   background: var(--color-gray-50);
   color: var(--dh-a-cat);
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .dh-nwgo__body { display: block; min-width: 0; }
@@ -191,7 +191,7 @@ html.uc-dark .dh-nwsum__go { border-color: rgba(255, 255, 255, .12); color: #fff
 .dh-nwgo__d {
   display: block;
   margin-top: 2px;
-  font-size: 12px;
+  font-size: 12.5px;
   line-height: 1.45;
   color: var(--color-gray-600);
 }

@@ -75,7 +75,7 @@ html.uc-dark body[data-dh-cat="dunya"]  { --dh-a-cat: #57c6e6; --dh-a-soft: rgba
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 500;
   color: var(--color-gray-500);
   white-space: nowrap;
@@ -86,7 +86,7 @@ html.uc-dark body[data-dh-cat="dunya"]  { --dh-a-cat: #57c6e6; --dh-a-soft: rgba
 .dh-nwstamp time {
   font-family: var(--dh-mono);
   font-weight: 700;
-  font-size: 11.5px;
+  font-size: 11px;
   letter-spacing: -0.01em;
   color: var(--color-gray-700);
 }
@@ -120,7 +120,7 @@ html.uc-dark .dh-nwintro { color: var(--color-gray-300); }
   border: 1px solid var(--color-gray-100);
   background: #fff;
   color: var(--color-gray-900);
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   text-decoration: none;
   transition: .18s cubic-bezier(.22, .61, .36, 1);
@@ -194,7 +194,7 @@ html.uc-dark .dh-nwlist__item::before { background: rgba(255, 255, 255, .14); }
 
 .dh-nwlist__time {
   font-family: var(--dh-mono);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.02em;
@@ -212,7 +212,7 @@ html.uc-dark .dh-nwlist__item::before { background: rgba(255, 255, 255, .14); }
   background: var(--dh-a-soft);
   color: var(--dh-a-cat);
   font-family: var(--dh-mono);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -228,7 +228,7 @@ html.uc-dark .dh-nwlist__item::before { background: rgba(255, 255, 255, .14); }
   border-radius: 8px 8px 8px 0;
   background: var(--dh-a-cat);
   color: #fff;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .09em;
 }
@@ -238,7 +238,7 @@ html.uc-dark .dh-nwlist__flag { color: var(--color-gray-900); }
 
 .dh-nwlist__title {
   margin: 0;
-  font-size: 16.5px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.35;
   letter-spacing: -0.01em;
@@ -256,7 +256,7 @@ html.uc-dark .dh-nwlist__title a:hover { color: var(--dh-a-cat); }
 
 .dh-nwlist__sum {
   margin: 5px 0 0;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.55;
   color: var(--color-gray-500);
 }
@@ -268,7 +268,7 @@ html.uc-dark .dh-nwlist__sum { color: var(--color-gray-300); }
   display: block;
   margin-top: 7px;
   font-family: var(--dh-mono);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--color-gray-500);
@@ -288,7 +288,7 @@ html.uc-dark .dh-nwlist__note { color: var(--color-gray-300); }
   border: 1px solid var(--color-gray-100);
   background: var(--color-gray-10, #fafafa);
   color: var(--color-gray-500);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .08em;
   white-space: nowrap;
@@ -312,7 +312,7 @@ html.uc-dark .dh-nwlist__tag {
 .dh-nwlist__day:first-child { margin-top: 14px; }
 
 .dh-nwlist__day span {
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .09em;
   text-transform: uppercase;
@@ -330,7 +330,7 @@ html.uc-dark .dh-nwlist__tag {
 html.uc-dark .dh-nwlist__day::after { background: rgba(255, 255, 255, .12); }
 
 /* --brk: son dakika satırları biraz daha ağır */
-.dh-nwlist--brk .dh-nwlist__title { font-size: 17.5px; }
+.dh-nwlist--brk .dh-nwlist__title { font-size: 18px; }
 
 /* --ozet: numaralı liste, zaman sütunu yok */
 .dh-nwlist--ozet .dh-nwlist__item { grid-template-columns: 34px minmax(0, 1fr); }
@@ -349,7 +349,7 @@ html.uc-dark .dh-nwlist__day::after { background: rgba(255, 255, 255, .12); }
   .dh-nwlist__body { grid-area: body; }
   .dh-nwlist__tag { grid-area: tag; justify-self: start; margin-left: 64px; }
   .dh-nwlist--ozet .dh-nwlist__item { grid-template-columns: 44px minmax(0, 1fr); }
-  .dh-nwlist__title { font-size: 15.5px; }
+  .dh-nwlist__title { font-size: 16px; }
   .dh-nwlist--brk .dh-nwlist__title { font-size: 16px; }
 }
 
@@ -394,7 +394,7 @@ html.uc-dark .dh-nwlist__day::after { background: rgba(255, 255, 255, .12); }
   border-radius: 8px 8px 8px 0;
   background: #c8102e;
   color: #fff;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .09em;
 }
@@ -402,7 +402,7 @@ html.uc-dark .dh-nwlist__day::after { background: rgba(255, 255, 255, .12); }
 .dh-nwtopic__title {
   display: block;
   margin: 12px 0 0;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.36;
   letter-spacing: -0.01em;
@@ -418,7 +418,7 @@ html.uc-dark .dh-nwtopic__title { color: #fff; }
   align-items: center;
   gap: 10px;
   margin-top: 8px;
-  font-size: 11.5px;
+  font-size: 11px;
   color: var(--color-gray-500);
 }
 
@@ -510,7 +510,7 @@ html.uc-dark .dh-nwtopic__meta { color: var(--color-gray-300); }
   border-radius: 50%;
   background: rgba(255, 255, 255, .94);
   color: var(--color-gray-900);
-  font-size: 20px;
+  font-size: 22px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
   transition: transform .2s cubic-bezier(.22, .61, .36, 1);
 }
@@ -559,7 +559,7 @@ html.uc-dark .dh-nwplay__side {
   display: block;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--color-gray-100);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -584,7 +584,7 @@ html.uc-dark .dh-nwplay__ep { border-bottom-color: rgba(255, 255, 255, .10); }
 
 .dh-nwplay__eptime {
   font-family: var(--dh-mono);
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   color: var(--color-gray-500);
@@ -603,7 +603,7 @@ html.uc-dark .dh-nwplay__eptime { color: var(--color-gray-300); }
 }
 
 .dh-nwplay__epname small {
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 500;
   color: var(--color-gray-500);
 }
@@ -616,7 +616,7 @@ html.uc-dark .dh-nwplay__epname small { color: var(--color-gray-300); }
 @media (max-width: 991.98px) {
   .dh-nwplay { grid-template-columns: minmax(0, 1fr); }
   .dh-nwplay__cap b { font-size: 16px; }
-  .dh-nwplay__btn { width: 54px; height: 54px; font-size: 17px; }
+  .dh-nwplay__btn { width: 54px; height: 54px; font-size: 18px; }
 }
 
 /* ---------------------------------------------------------------- .dh-nwstat
@@ -692,13 +692,13 @@ html.uc-dark .dh-nwstat__row[data-lv="ok"]     { --dh-lv: #67c98c; }
   border-radius: 12px 12px 12px 0;
   background: color-mix(in srgb, var(--dh-lv) 12%, transparent);
   color: var(--dh-lv);
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .dh-nwstat__body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 
 .dh-nwstat__name {
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.35;
   color: var(--color-gray-900);
@@ -724,7 +724,7 @@ html.uc-dark .dh-nwstat__desc { color: var(--color-gray-300); }
   border: 1px solid var(--dh-lv);
   color: var(--dh-lv);
   font-family: var(--dh-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .04em;
   white-space: nowrap;
@@ -758,7 +758,7 @@ html.uc-dark .dh-nwacil {
 .dh-nwacil__head {
   display: block;
   margin-bottom: 12px;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .09em;
   text-transform: uppercase;
@@ -807,7 +807,7 @@ html.uc-dark .dh-nwacil__ad { color: var(--color-gray-200); }
 
 .dh-nwacil__note {
   margin: 12px 0 0;
-  font-size: 11.5px;
+  font-size: 11px;
   line-height: 1.55;
   color: var(--color-gray-500);
 }
@@ -843,7 +843,7 @@ html.uc-dark .dh-nwacil__note { color: var(--color-gray-300); }
 
 .dh-nwhava__go p {
   margin: 0;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--color-gray-500);
 }
@@ -928,7 +928,7 @@ html.uc-dark .dh-gkat__it {
   border-radius: 10px 10px 10px 0;
   background: var(--dh-a-soft);
   color: var(--dh-a-cat);
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .dh-gkat__ad {
@@ -941,7 +941,7 @@ html.uc-dark .dh-gkat__it {
 html.uc-dark .dh-gkat__ad { color: #fff; }
 
 .dh-gkat__son {
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.5;
   color: var(--color-gray-500);
   flex: 1 1 auto;
@@ -987,7 +987,7 @@ html.uc-dark .dh-sehir__panel {
 
 .dh-sehir__kicker {
   margin: 0 0 6px;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .09em;
   text-transform: uppercase;
@@ -996,7 +996,7 @@ html.uc-dark .dh-sehir__panel {
 
 .dh-sehir__h {
   margin: 0;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -1008,7 +1008,7 @@ html.uc-dark .dh-sehir__h { color: #fff; }
 .dh-sehir__lead {
   margin: 8px 0 16px;
   max-width: 62ch;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--color-gray-500);
 }
@@ -1029,7 +1029,7 @@ html.uc-dark .dh-sehir__lead { color: var(--color-gray-300); }
   border: 1px solid var(--color-gray-100);
   background: var(--color-gray-10, #fafafa);
   color: var(--color-gray-700);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   cursor: pointer;
   transition: .16s;
@@ -1050,7 +1050,7 @@ html.uc-dark .dh-sehir__q {
 .dh-sehir__lbl {
   display: block;
   margin-bottom: 6px;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -1076,7 +1076,7 @@ html.uc-dark .dh-sehir__field {
   border-color: rgba(255, 255, 255, .12);
 }
 
-.dh-sehir__field i { color: var(--dh-a-cat); font-size: 13px; }
+.dh-sehir__field i { color: var(--dh-a-cat); font-size: 12.5px; }
 
 .dh-sehir__field input {
   flex: 1 1 auto;
@@ -1097,7 +1097,7 @@ html.uc-dark .dh-sehir__field input::placeholder { color: var(--color-gray-300);
 .dh-sehir__count {
   display: block;
   margin-top: 8px;
-  font-size: 11.5px;
+  font-size: 11px;
   color: var(--color-gray-500);
 }
 
@@ -1130,7 +1130,7 @@ html.uc-dark .dh-sehir__count { color: var(--color-gray-300); }
   border-radius: 8px 8px 8px 0;
   background: #fff;
   color: var(--color-gray-700);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   text-align: left;
   cursor: pointer;
@@ -1169,7 +1169,7 @@ html.uc-dark .dh-sehir__plaka { color: var(--color-gray-300); }
 
 .dh-sehir__bos {
   margin: 12px 0 0;
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--color-gray-500);
 }
 
@@ -1197,7 +1197,7 @@ html.uc-dark .dh-sehir__plaka { color: var(--color-gray-300); }
   background: var(--dh-a-cat);
   color: #fff;
   font-family: var(--dh-mono);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
 }
 
@@ -1206,13 +1206,13 @@ html.uc-dark .dh-sehir__cardplaka { color: var(--color-gray-900); }
 .dh-sehir__cardid { grid-area: id; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 
 .dh-sehir__cardid b {
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--color-gray-900);
 }
 
-.dh-sehir__cardid span { font-size: 12px; font-weight: 600; color: var(--color-gray-500); }
+.dh-sehir__cardid span { font-size: 12.5px; font-weight: 600; color: var(--color-gray-500); }
 
 html.uc-dark .dh-sehir__cardid b { color: #fff; }
 html.uc-dark .dh-sehir__cardid span { color: var(--color-gray-200); }
@@ -1220,7 +1220,7 @@ html.uc-dark .dh-sehir__cardid span { color: var(--color-gray-200); }
 .dh-sehir__durum {
   grid-area: durum;
   margin: 8px 0 0;
-  font-size: 11.5px;
+  font-size: 11px;
   line-height: 1.5;
   color: var(--color-gray-500);
 }
@@ -1238,7 +1238,7 @@ html.uc-dark .dh-sehir__durum { color: var(--color-gray-200); }
   border: 1px solid var(--color-gray-200);
   background: transparent;
   color: var(--color-gray-700);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -1248,7 +1248,7 @@ html.uc-dark .dh-sehir__sil { color: var(--color-gray-100); border-color: rgba(2
 
 .dh-sehir__panelh {
   margin: 0 0 12px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--color-gray-900);
@@ -1280,12 +1280,12 @@ html.uc-dark .dh-yerel__it { border-bottom-color: rgba(255, 255, 255, .10); }
   border-radius: 8px 8px 8px 0;
   background: var(--dh-a-soft);
   color: var(--dh-a-cat);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .08em;
 }
 
-.dh-yerel__title { margin: 0; font-size: 14.5px; font-weight: 700; line-height: 1.4; }
+.dh-yerel__title { margin: 0; font-size: 14px; font-weight: 700; line-height: 1.4; }
 
 .dh-yerel__title a {
   color: var(--color-gray-900);
@@ -1316,7 +1316,7 @@ html.uc-dark .dh-yerel__meta { color: var(--color-gray-300); }
 @media (max-width: 575.98px) {
   .dh-sehir__pick, .dh-sehir__panel { padding: 16px; }
   .dh-sehir__grid { grid-template-columns: repeat(auto-fill, minmax(126px, 1fr)); }
-  .dh-sehir__h { font-size: 19px; }
+  .dh-sehir__h { font-size: 18px; }
 }
 
 /* --------------------------------------------------------------- .dh-gozgun
@@ -1363,7 +1363,7 @@ html.uc-dark .dh-gozgun__it {
   border-radius: 8px 8px 8px 0;
   border: 1px solid var(--dh-a-cat);
   color: var(--dh-a-cat);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .09em;
   text-transform: uppercase;
@@ -1378,7 +1378,7 @@ html.uc-dark .dh-gozgun__title a { color: #fff; }
 .dh-gozgun__sum {
   margin: 0;
   flex: 1 1 auto;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--color-gray-500);
 }
@@ -1390,7 +1390,7 @@ html.uc-dark .dh-gozgun__sum { color: var(--color-gray-300); }
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  font-size: 11.5px;
+  font-size: 11px;
   color: var(--color-gray-500);
 }
 
@@ -1413,7 +1413,7 @@ html.uc-dark .dh-gozgun__meta span:first-child { color: #fff; }
   text-decoration: none;
 }
 
-.dh-gozgun__go i { font-size: 10px; transition: transform .18s; }
+.dh-gozgun__go i { font-size: 11px; transition: transform .18s; }
 .dh-gozgun__go:hover i { transform: translateX(3px); }
 
 @media (max-width: 991.98px) { .dh-gozgun { grid-template-columns: minmax(0, 1fr); } }
@@ -1454,14 +1454,14 @@ html.uc-dark .dh-gozgun__meta span:first-child { color: #fff; }
   border-radius: 8px 8px 8px 0;
   background: #fff;
   color: var(--color-gray-700);
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
   cursor: pointer;
   transition: .16s cubic-bezier(.22, .61, .36, 1);
 }
 
-.dh-bolge__b i { font-size: 13px; color: var(--dh-a-cat); transition: color .16s; }
+.dh-bolge__b i { font-size: 12.5px; color: var(--dh-a-cat); transition: color .16s; }
 
 html.uc-dark .dh-bolge__b {
   background: var(--color-gray-900);
@@ -1497,7 +1497,7 @@ html.uc-dark .dh-bolge__b.is-on { color: var(--color-gray-900); }
 
 .dh-bolge__ad {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--color-gray-900);
@@ -1508,7 +1508,7 @@ html.uc-dark .dh-bolge__ad { color: #fff; }
 .dh-bolge__ozet {
   margin: 0;
   max-width: 72ch;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--color-gray-700);
 }
@@ -1517,7 +1517,7 @@ html.uc-dark .dh-bolge__ozet { color: var(--color-gray-100); }
 
 .dh-bolge__kapsam {
   font-family: var(--dh-mono);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--color-gray-500);
@@ -1579,7 +1579,7 @@ html.uc-dark .dh-bolge__kapsam { color: var(--color-gray-200); }
   border-radius: 8px 8px 8px 0;
   background: rgba(18, 18, 18, .88);
   color: #fff;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .08em;
 }
@@ -1594,7 +1594,7 @@ html.uc-dark .dh-bolge__kapsam { color: var(--color-gray-200); }
 
 .dh-dcard__title {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.36;
   letter-spacing: -0.01em;
@@ -1702,7 +1702,7 @@ html.uc-dark .dh-dkonu__ad { color: #fff; }
 
 .dh-dkonu__son {
   grid-area: son;
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.5;
   color: var(--color-gray-500);
 }
@@ -1802,7 +1802,7 @@ body[data-dh-cat="dunya"] section[id],
   border-radius: 8px 8px 8px 0;
   background: var(--dh-a-soft);
   color: var(--color-gray-900);
-  font-size: 17px;
+  font-size: 18px;
 }
 html.uc-dark .dh-basv__ic { background: rgba(252, 182, 35, .18); color: #fff; }
 
@@ -1810,7 +1810,7 @@ html.uc-dark .dh-basv__ic { background: rgba(252, 182, 35, .18); color: #fff; }
 .dh-basv__k {
   display: block;
   font-family: var(--dh-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--color-gray-500);
@@ -1818,7 +1818,7 @@ html.uc-dark .dh-basv__ic { background: rgba(252, 182, 35, .18); color: #fff; }
 html.uc-dark .dh-basv__k { color: rgba(255, 255, 255, .62); }
 .dh-basv__t {
   margin: 2px 0 0;
-  font-size: clamp(17px, 1.7vw, 20px);
+  font-size: clamp(18px, 1.7vw, 22px);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -.015em;
@@ -1834,7 +1834,7 @@ html.uc-dark .dh-basv__n { color: rgba(255, 255, 255, .58); }
 
 .dh-basv__p {
   margin: 0 0 18px;
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.62;
   color: var(--color-gray-600);
 }
@@ -1857,7 +1857,7 @@ html.uc-dark .dh-basv__hint { color: rgba(255, 255, 255, .58); }
 
 /* Dosya alanı `.dh-input`ın grid hizasına oturmuyordu (satır yüksekliği 
    input yüksekliğinden kısa); dikey ortalama ile eşitlendi. */
-.dh-basv input[type="file"].dh-input { padding-top: 10px; padding-bottom: 10px; font-size: 13.5px; }
+.dh-basv input[type="file"].dh-input { padding-top: 10px; padding-bottom: 10px; font-size: 14px; }
 
 /* Kabuk yapışkanda 104–106px; 124px = 106 + 18px nefes (A-6 ile aynı ölçü). */
 .dh-basv { scroll-margin-top: 124px; }
@@ -1893,7 +1893,7 @@ html.uc-dark .dh-riza { background: var(--color-gray-900); border-color: rgba(25
   background: var(--dh-soft);
   color: var(--color-gray-500);
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: .08em;
 }
 html.uc-dark .dh-riza__k { background: rgba(255, 255, 255, .06); color: rgba(255, 255, 255, .62); }
@@ -1935,7 +1935,7 @@ html.uc-dark .dh-riza__row.is-kilit .dh-sw__txt b .fa-lock { color: rgba(255, 25
 @media (min-width: 768px) { .dh-riza__foot { padding: 14px 22px; } }
 .dh-riza__state {
   margin: 0;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.5;
   font-weight: 600;
   color: var(--color-gray-900);
@@ -1964,7 +1964,7 @@ html.uc-dark .dh-riza__stamp { color: rgba(255, 255, 255, .58); }
 .dh-ekip__lead {
   margin: -6px 0 18px;
   max-width: 76ch;
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.62;
   color: var(--color-gray-600);
 }
@@ -1981,7 +1981,7 @@ html.uc-dark .dh-ekip__lead { color: rgba(255, 255, 255, .74); }
 .dh-spon__lead {
   margin: -6px 0 20px;
   max-width: 82ch;
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.62;
   color: var(--color-gray-600);
 }
@@ -2007,12 +2007,12 @@ html.uc-dark .dh-spon__lead a { color: var(--dh-brand); }
   border-radius: 8px 8px 8px 0;
   background: var(--dh-a-soft);
   color: var(--color-gray-900);
-  font-size: 15px;
+  font-size: 16px;
 }
 html.uc-dark .dh-sponcard__ic { background: rgba(252, 182, 35, .18); color: #fff; }
 .dh-sponcard__t {
   margin: 0 0 8px;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -.015em;
@@ -2035,7 +2035,7 @@ html.uc-dark .dh-sponcard__p { color: rgba(255, 255, 255, .72); }
   padding: 5px 0;
 }
 .dh-sponcard__rows dt {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--color-gray-500);
 }
@@ -2102,7 +2102,7 @@ html.uc-dark .dh-tkvm__it[data-onem="yuksek"] { border-left-color: #fff; }
 html.uc-dark .dh-tkvm__when { color: rgba(255, 255, 255, .6); }
 .dh-tkvm__when b {
   font-family: var(--dh-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: .08em;
   color: var(--color-gray-900);
 }
@@ -2112,7 +2112,7 @@ html.uc-dark .dh-tkvm__when b { color: #fff; }
 .dh-tkvm__ulke {
   display: block;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--color-gray-500);
@@ -2121,7 +2121,7 @@ html.uc-dark .dh-tkvm__ulke { color: rgba(255, 255, 255, .6); }
 .dh-tkvm__ad {
   display: block;
   margin-top: 2px;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.35;
   color: var(--color-gray-900);
@@ -2141,7 +2141,7 @@ html.uc-dark .dh-tkvm__nums { color: rgba(255, 255, 255, .58); }
   padding: 3px 9px;
   border: 1px solid var(--dh-line2);
   border-radius: 8px 8px 8px 0;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--color-gray-600);
 }
@@ -2185,14 +2185,14 @@ html.uc-dark .dh-tkvm__it[data-onem="yuksek"] .dh-tkvm__onem {
 .dh-grafik__name {
   flex: 1 1 100%;
   font-family: var(--dh-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--color-gray-500);
 }
 html.uc-dark .dh-grafik__name { color: rgba(255, 255, 255, .62); }
 .dh-grafik__val {
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: -.02em;
   font-variant-numeric: tabular-nums;
@@ -2253,7 +2253,7 @@ html.uc-dark .dh-grafik__rng { color: rgba(255, 255, 255, .58); }
 .dh-ykol__k {
   display: block;
   font-family: var(--dh-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--color-gray-500);
@@ -2261,7 +2261,7 @@ html.uc-dark .dh-grafik__rng { color: rgba(255, 255, 255, .58); }
 html.uc-dark .dh-ykol__k { color: rgba(255, 255, 255, .62); }
 .dh-ykol__t {
   margin: 4px 0 0;
-  font-size: clamp(19px, 2.1vw, 25px);
+  font-size: clamp(18px, 2.1vw, 26px);
   font-weight: 800;
   line-height: 1.14;
   letter-spacing: -.02em;
@@ -2299,7 +2299,7 @@ html.uc-dark .dh-ykol__p { color: rgba(255, 255, 255, .74); }
 html.uc-dark .dh-ykol__gun { color: rgba(255, 255, 255, .6); }
 .dh-ykol__gun b {
   font-family: var(--dh-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: .08em;
   color: var(--color-gray-900);
 }
@@ -2350,7 +2350,7 @@ html.uc-dark .dh-ykol__meta { color: rgba(255, 255, 255, .58); }
   margin-top: 14px;
   padding-top: 12px;
   border-top: 1px solid var(--dh-line);
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--dh-menu-ink);
   text-decoration: none;
@@ -2404,7 +2404,7 @@ html.uc-dark .dh-yarsiv__lbl { color: rgba(255, 255, 255, .6); }
 }
 .dh-yarsiv__list li + li { border-top: 1px solid var(--dh-line); }
 .dh-yarsiv__list a {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--color-gray-900);
   text-decoration: none;
@@ -2458,18 +2458,43 @@ html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
    Bölüm koyu zemine alındı: "Dada Haber imzalı" damgası sayfanın geri
    kalanından ayrılsın diye. Format kimliği sol raydan geliyor.
    ========================================================================== */
+/* REVİZE (22 Ağustos, revizeler.docx): bölüm siyah banttan kurumsal
+   AÇIK GRİ banda alındı. Talepte "sarı ya da gri — kurumsal açıdan hangisi
+   daha iyiyse" deniyordu; gri seçildi:
+     · Kurumsal sarı bir VURGU rengi. SON DAKİKA rozeti, birincil düğme ve
+       "Tümünü Gör" bağlantısı onunla çalışıyor. Geniş bir alanı sarıya
+       boyamak bu vurguları bölüm içinde etkisiz bırakır.
+     · Bölümün kimliği üç format renginden geliyor (özel #c8102e,
+       araştırma #0d6b8a, analiz #b07d05). Sarı zeminde analiz rengi
+       (amber) kayboluyor; grinin üstünde üçü de ayrışıyor.
+     · Site zaten bu dili konuşuyor: tam genişlik bantları --color-gray-10
+       (#fafafa) taşıyor (index'teki Takımlar bandı). Bölüm o kalıba
+       bağlandı, yeni bir zemin dili icat edilmedi.
+   Karanlık kipte bant gray-800'e döner; kartlar gray-900'de kalır. */
+/* ZEBRA (§16, 22 Ağustos akşamı): bölüm kendi zeminini DAYATMIYOR artık,
+   zebra sırasına katılıyor — beyaz ya da şeffaf, sayfadaki yerine göre.
+   Önceki turda "gri olsun" denmişti; o karar site genelinde tek zemin
+   yokken alınmıştı. Zebra kuralı artık üstte.
+   Karanlık kipte bant kimliğini koruyor. */
 #ozgun {
   position: relative;
-  background: var(--color-gray-900);
-  padding-block: 40px 44px !important;
+  padding-block: var(--dh-sec-gap) 44px !important;
 }
-#ozgun .dh-secbar { border-bottom-color: rgba(255, 255, 255, .14); }
-#ozgun .dh-secbar h2 { color: #fff !important; }
+#ozgun .dh-secbar { border-bottom-color: rgba(18, 18, 18, .12); }
 #ozgun .dh-nwstamp {
-  color: var(--color-primary);
-  border: 1px solid rgba(252, 182, 35, .35);
+  color: var(--dh-menu-ink);
+  border: 1px solid rgba(252, 182, 35, .55);
+  background: rgba(252, 182, 35, .12);
   padding: 5px 10px;
   border-radius: 8px 8px 8px 0;
+}
+html.uc-dark #ozgun { background: var(--color-gray-800); }
+html.uc-dark #ozgun .dh-secbar h2 { color: #fff !important; }
+html.uc-dark #ozgun .dh-secbar { border-bottom-color: rgba(255, 255, 255, .14); }
+html.uc-dark #ozgun .dh-nwstamp {
+  color: var(--color-primary);
+  border-color: rgba(252, 182, 35, .35);
+  background: transparent;
 }
 
 .dh-gozgun {
@@ -2482,19 +2507,37 @@ html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
   flex-direction: column;
   gap: 10px;
   padding: 20px 20px 18px;
-  background: rgba(255, 255, 255, .04);
-  border: 1px solid rgba(255, 255, 255, .1);
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, .09);
   border-inline-start: 3px solid var(--dh-tur, var(--color-primary));
   border-radius: 8px 8px 8px 0;
 }
+html.uc-dark .dh-gozgun__it {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .1);
+}
 .dh-gozgun__it[data-tur="ozel"]      { --dh-tur: #c8102e; }
 .dh-gozgun__it[data-tur="arastirma"] { --dh-tur: #0d6b8a; }
-.dh-gozgun__it[data-tur="analiz"]    { --dh-tur: #b07d05; }
+/* Karanlık kipte format renkleri açılıyor. Bu, bölüm zemini AÇIK GRİYE
+   alınırken ortaya çıkan eski bir eksik: kart zemini o zaman da koyuydu
+   (#121212 üstünde rgba(255,255,255,.04)) ve ölçüm 3,18:1 / 3,11:1
+   veriyordu — çip etiketi 11px, yöntem sayısı 16px/800, ikisi de AA'nın
+   büyük metin eşiğinin altında. Açık kipteki tonlar korunuyor.
+     #ef5350 / #121212 = 5,41:1     #4aa8c9 / #121212 = 6,95:1 */
+html.uc-dark .dh-gozgun__it[data-tur="ozel"]      { --dh-tur: #ef5350; }
+html.uc-dark .dh-gozgun__it[data-tur="arastirma"] { --dh-tur: #4aa8c9; }
+/* Açık zeminde amber kimlik rengi koyulaştı: #b07d05 beyaz üstünde
+   3,63:1 (ölçüldü — çip etiketi 11px ve yöntem sayısı 16px/800, ikisi de
+   AA'nın büyük metin eşiğinin altında). #8f6503 -> 5,21:1.
+   Karanlık kipte zemin koyu olduğu için özgün ton korunuyor:
+   #b07d05 / #121212 = 5,20:1. */
+.dh-gozgun__it[data-tur="analiz"]    { --dh-tur: #8f6503; }
+html.uc-dark .dh-gozgun__it[data-tur="analiz"] { --dh-tur: #b07d05; }
 
 .dh-gozgun__tur {
   align-self: start;
   padding: 4px 9px;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -2502,15 +2545,17 @@ html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
   border: 1px solid currentColor;
   border-radius: 8px 8px 8px 0;
 }
-.dh-gozgun__title { margin: 0; font-size: 17px; line-height: 1.28; letter-spacing: -.015em; }
-.dh-gozgun__title a { color: #fff; text-decoration: none; }
+.dh-gozgun__title { margin: 0; font-size: 18px; line-height: 1.28; letter-spacing: -.015em; }
+.dh-gozgun__title a { color: var(--color-gray-900); text-decoration: none; }
+html.uc-dark .dh-gozgun__title a { color: #fff; }
 .dh-gozgun__title a:hover { color: var(--color-primary); }
 .dh-gozgun__sum {
   margin: 0;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, .66);
+  color: var(--color-gray-600);
 }
+html.uc-dark .dh-gozgun__sum { color: rgba(255, 255, 255, .66); }
 
 /* yöntem künyesi — bölümün imzası: işin ölçüsü */
 .dh-gozgun__yontem {
@@ -2519,25 +2564,31 @@ html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
   grid-auto-columns: 1fr;
   gap: 1px;
   margin: 4px 0 0;
-  background: rgba(255, 255, 255, .1);
-  border: 1px solid rgba(255, 255, 255, .1);
+  background: rgba(18, 18, 18, .1);
+  border: 1px solid rgba(18, 18, 18, .1);
   border-radius: 8px 8px 8px 0;
   overflow: hidden;
 }
 .dh-gozgun__yontem > div {
   padding: 9px 8px;
-  background: var(--color-gray-900);
+  background: #fff;
   text-align: center;
 }
+html.uc-dark .dh-gozgun__yontem {
+  background: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+html.uc-dark .dh-gozgun__yontem > div { background: var(--color-gray-900); }
 .dh-gozgun__yontem dt {
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .07em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .5);
+  color: var(--color-gray-500);
   margin: 0 0 3px;
   order: 2;
 }
+html.uc-dark .dh-gozgun__yontem dt { color: rgba(255, 255, 255, .5); }
 .dh-gozgun__yontem dd {
   margin: 0;
   font-size: 16px;
@@ -2555,21 +2606,28 @@ html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
   gap: 4px 12px;
   margin-top: auto;
   padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, .1);
-  font-size: 12px;
+  border-top: 1px solid rgba(18, 18, 18, .09);
+  font-size: 12.5px;
+  color: var(--color-gray-500);
+}
+html.uc-dark .dh-gozgun__meta {
+  border-top-color: rgba(255, 255, 255, .1);
   color: rgba(255, 255, 255, .55);
 }
-.dh-gozgun__yazar { font-weight: 700; color: rgba(255, 255, 255, .82); }
+.dh-gozgun__yazar { font-weight: 700; color: var(--color-gray-900); }
+html.uc-dark .dh-gozgun__yazar { color: rgba(255, 255, 255, .82); }
 .dh-gozgun__go {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   font-size: 12.5px;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--dh-menu-ink);
   text-decoration: none;
 }
-.dh-gozgun__go:hover { color: var(--color-primary); }
+.dh-gozgun__go:hover { color: var(--color-gray-900); }
+html.uc-dark .dh-gozgun__go,
+html.uc-dark .dh-gozgun__go:hover { color: var(--color-primary); }
 .dh-gozgun__go:hover i { transform: translateX(3px); }
 .dh-gozgun__go i { font-size: 11px; transition: transform .14s; }
 
@@ -2580,9 +2638,13 @@ html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
 /* Eski açık zemin kuralı (.dh-gozgun__meta span:first-child -> gray-700)
    koyu bantta yazar adını okunmaz bırakıyordu — ölçüldü, override edildi. */
 #ozgun .dh-gozgun__meta span:first-child,
-#ozgun .dh-gozgun__yazar { color: rgba(255, 255, 255, .84) !important; font-family: inherit; }
+#ozgun .dh-gozgun__yazar { color: var(--color-gray-900) !important; font-family: inherit; }
 #ozgun .dh-gozgun__meta time,
-#ozgun .dh-gozgun__meta span:last-child { color: rgba(255, 255, 255, .58) !important; font-family: inherit; }
+#ozgun .dh-gozgun__meta span:last-child { color: var(--color-gray-500) !important; font-family: inherit; }
+html.uc-dark #ozgun .dh-gozgun__meta span:first-child,
+html.uc-dark #ozgun .dh-gozgun__yazar { color: rgba(255, 255, 255, .84) !important; }
+html.uc-dark #ozgun .dh-gozgun__meta time,
+html.uc-dark #ozgun .dh-gozgun__meta span:last-child { color: rgba(255, 255, 255, .58) !important; }
 #ozgun .dh-gozgun__it::before { content: none; }
 
 /* --- 81 İl sayfası: şematik ızgara + il künyesi ---------------------------
@@ -2612,8 +2674,8 @@ html.uc-dark .dh-tr81--sec .dh-tr81__box { fill: rgba(255, 255, 255, .07); }
 .dh-tr81--sec text { fill: var(--color-gray-800); pointer-events: none; }
 html.uc-dark .dh-tr81--sec text { fill: rgba(255, 255, 255, .82); }
 .dh-tr81--sec .dh-tr81__c[aria-checked="true"] text { fill: var(--color-gray-900); }
-.dh-tr81--sec .dh-tr81__no { font-size: 15px; font-weight: 800; }
-.dh-tr81--sec .dh-tr81__lv { font-size: 9px; font-weight: 600; letter-spacing: -.01em; }
+.dh-tr81--sec .dh-tr81__no { font-size: 16px; font-weight: 800; }
+.dh-tr81--sec .dh-tr81__lv { font-size: 11px; font-weight: 600; letter-spacing: -.01em; }
 .dh-tr81--sec .dh-tr81__c:focus-visible .dh-tr81__box {
   stroke: var(--color-primary);
   stroke-width: 3;
@@ -2623,3 +2685,21 @@ html.uc-dark .dh-tr81--sec text { fill: rgba(255, 255, 255, .82); }
   .dh-bolge--iller { grid-template-columns: minmax(0, 1fr); }
   .dh-iller__map { position: static; max-width: 560px; }
 }
+
+/* --- BÖLGE SEÇİCİ · seçili çipin mürekkebi kimlik rengine bağlandı ------
+   ÖLÇÜM: nato.html açık temada `.dh-bolge__b.is-on` beyaz / #fcb623 =
+   1,77:1. Sebep: sayfa `data-dh-cat="savunma"` taşıyor ama bu kategori
+   için `--dh-a-cat` eşlemesi YOK; varsayılana (kurumsal amber) düşüyor
+   ve çip beyaz mürekkeple `color:#fff` alıyordu.
+   Kategori paletini genişletmek yerine mürekkep ayrı token'a bağlandı:
+   kimlik rengi koyu olan kategoriler beyaz, amber varsayılan koyu.
+   Karanlık moddaki `html.uc-dark .dh-bolge__b.is-on` (0,2,1) kuralı
+   daha özgül; orada mürekkep zaten koyu ve öyle kalıyor. */
+body { --dh-a-ink: var(--color-gray-900); }
+body[data-dh-cat="simdi"],
+body[data-dh-cat="anlik"],
+body[data-dh-cat="gundem"],
+body[data-dh-cat="dunya"] { --dh-a-ink: #fff; }
+
+.dh-bolge__b.is-on,
+.dh-bolge__b.is-on i { color: var(--dh-a-ink); }

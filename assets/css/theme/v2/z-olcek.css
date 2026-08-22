@@ -1,0 +1,432 @@
+/* ============================================================================
+   v2 / Z-OLCEK — tipografi merdiveni · custom.min.css override'ları
+   ÜRETİLMİŞ DOSYA. ELLE DÜZENLEME.   python3 docs/parts/olcek-uret.py
+
+   Merdiven: 11 · 12,5 · 14 · 16 · 18 · 22 · 26 · 30 · 36
+   custom.min.css'teki merdiven dışı her font-size bildirimi, AYNI seçici
+   ve AYNI ortam sorgusu içinde en yakın kademeye çekilir. Kaynak dosya
+   donmuş: /v1/ arşivi onu paylaşıyor (v1-kopya.py yalnız HTML kopyalar).
+
+   Yükleme sırası v2.css içinde İLK: custom.min.css'i yener, v2'nin kendi
+   parçalarını yenmez. v2'de zaten tanımlı seçiciler atlanır.
+
+   Kapsam dışı: ikon/glif seçicileri ve 40px üstü dekoratif ölçüler.
+   ========================================================================== */
+
+.ad-header h1 { font-size: 26px; }  /* 24px */
+.ad-ana-label { font-size: 12.5px; }  /* 12px */
+.fs-7 { font-size: 12.5px !important; }  /* 12px !important */
+.custom-btn { font-size: 12.5px; }  /* 12px */
+.datetime.fs-5 { font-size: 12.5px !important; }  /* 12px !important */
+.order-number { font-size: 26px; }  /* 24px */
+.gz-sponsor-section .gz-sponsor-text strong { font-size: 16px; }  /* 15px */
+.gz-sponsor-section .gz-card .gz-card-title { font-size: 12.5px; }  /* 13px */
+.weather-title { font-size: 12.5px; }  /* 12px */
+.prayer-title { font-size: 12.5px; }  /* 12px */
+.city-change-btn { font-size: 12.5px; }  /* 12px */
+#cityNoResults { font-size: 12.5px; }  /* 13px */
+.dh-breaking__label { font-size: 16px; }  /* 0.9375rem */
+.dh-breaking__title { font-size: 16px; }  /* 0.9375rem */
+.dh-breaking__all { font-size: 16px; }  /* 0.9375rem */
+.dh-band__mark { font-size: 18px; }  /* 17px */
+.dh-band__word { font-size: 22px; }  /* 21px */
+.dh-band__title { font-size: clamp(26px, 1.1rem + 1.9vw, 36px); }  /* clamp(1.6rem, 1.1rem + 1.9vw, 2.35rem) */
+.dh-band__text { font-size: 18px; }  /* 1.0625rem */
+.dh-band__cta { font-size: 16px; }  /* 0.9375rem */
+.dh-rcard__chip { font-size: 11px; }  /* 11.5px */
+.dh-rcard__facts, .dh-rcard__stats { font-size: 12.5px; }  /* 12px */
+.dh-store-badge b { font-size: 16px; }  /* 15px */
+.dh-akis__eyebrow { font-size: 12.5px; }  /* 12px */
+.dh-akis__title { font-size: clamp(26px, 1.1rem + 1.4vw, 36px); }  /* clamp(1.5rem, 1.1rem + 1.4vw, 2.125rem) */
+.dh-akis__lead { font-size: 16px; }  /* 15.5px */
+.dh-akis__all { font-size: 14px; }  /* 13.5px */
+.dh-akis__nav button { font-size: 12.5px; }  /* 13px */
+.dh-short__cat { font-size: 11px; }  /* 9.5px */
+.dh-short__play { font-size: 16px; }  /* 15px */
+.dh-short__views { font-size: 11px; }  /* 11.5px */
+.dh-reel__cat { font-size: 11px; }  /* 10.5px */
+.dh-reel__playbtn { font-size: 22px; }  /* 20px */
+.dh-reel__info h3 { font-size: 18px; }  /* 18.5px */
+.dh-reel__act .ic { font-size: 18px; }  /* 19px */
+.dh-reels__brand .ic { font-size: 16px; }  /* 15px */
+.dh-reels__brand small { font-size: 11px; }  /* 11.5px */
+.dh-card--row .dh-card__meta { font-size: 11px; }  /* 11.5px */
+.dh-card--row .dh-card__author span { font-size: 12.5px; }  /* 12px */
+.dh-art-crumb { font-size: 12.5px; }  /* 13px */
+.dh-art-title { font-size: clamp(26px, 1.1rem + 1.9vw, 36px); }  /* clamp(1.65rem, 1.1rem + 1.9vw, 2.25rem) */
+.dh-art-hauthor b { font-size: 14px; }  /* 13.5px */
+.dh-art-hauthor small { font-size: 11px; }  /* 11.5px */
+.dh-art-hstat { font-size: 12.5px; }  /* 13px */
+.dh-art .post-content > p, .dh-art .post-content > div > p { font-size: 18px !important; }  /* 17px !important */
+.dh-art .post-content h2 { font-size: 26px; }  /* 27px */
+.dh-art .post-content h3 { font-size: 22px; }  /* 21px */
+.dh-share__source { font-size: 14px; }  /* 13.5px */
+.dh-share__source-label { font-size: 11px; }  /* 10.5px */
+.dh-share__btn { font-size: 14px; }  /* 13.5px */
+.dh-footer-brand .footer-social p { font-size: 12.5px !important; }  /* 13px !important */
+.dh-foot-soc a { font-size: 16px; }  /* 15px */
+.dh-store-badge b { font-size: 14px; }  /* 13.5px */
+.dh-footer-brand .footer-top-logo-desc p { font-size: 12.5px !important; }  /* 13px !important */
+.dh-panel__kicker { font-size: 11px; }  /* 10.5px */
+.dh-panel__place { font-size: 18px; }  /* 17px */
+.dh-panel__countdown { font-size: 12.5px; }  /* 12px */
+.dh-cell__label { font-size: 11px; }  /* 10.5px */
+.dh-cell__icon { font-size: 18px; }  /* 17px */
+.dh-teams__lead { font-size: 14px; }  /* 13.5px */
+.dh-teams .swiper-slide p { font-size: 11px !important; }  /* 10.5px !important */
+.dh-rev__eyebrow { font-size: 12.5px; }  /* 12px */
+.dh-rev__avg b { font-size: 36px; }  /* 40px */
+.dh-rev__stars { font-size: 12.5px; }  /* 13px */
+.dh-rev__rec { font-size: 11px; }  /* 11.5px */
+.dh-rev__bar { font-size: 12.5px; }  /* 12px */
+.dh-rev__avatar { font-size: 16px; }  /* 15px */
+.dh-rev__badge { font-size: 11px; }  /* 10.5px */
+.dh-rev__when { font-size: 12.5px; }  /* 12px */
+.dh-rev__text { font-size: 14px !important; }  /* 14.5px !important */
+.dh-rev__like { font-size: 12.5px; }  /* 12px */
+.dh-watch { font-size: 14px; }  /* 13.5px */
+.dh-watch__ic { font-size: 12.5px; }  /* 12px */
+.dh-card--wide .dh-card__meta { font-size: 11px; }  /* 11.5px */
+.dh-card--wide .dh-card__cat { font-size: 11px; }  /* 9px */
+.dh-card__cat { font-size: 11px; }  /* 10px */
+.dh-calc__ic { font-size: 16px; }  /* 15px */
+.dh-calc__txt span { font-size: 12.5px; }  /* 12px */
+.dh-calc__go { font-size: 12.5px; }  /* 12px */
+.dh-tag { font-size: 11px; }  /* 10.5px */
+.dh-tag--lg { font-size: 12.5px; }  /* 12px */
+.dh-secbar__nav button { font-size: 12.5px; }  /* 13px */
+.dh-foto__open { font-size: 12.5px; }  /* 12px */
+.dh-pod__play { font-size: 18px; }  /* 19px */
+.dh-info__src { font-size: 11px; }  /* 10.5px */
+.dh-info__zoom { font-size: 12.5px; }  /* 12px */
+.dh-info__title { font-size: 16px; }  /* 15px */
+.dh-card__excerpt { font-size: 14px; }  /* 13.5px */
+.dh-author__name { font-size: 12.5px; }  /* 13px */
+.dh-author__beat { font-size: 11px; }  /* 10px */
+.dh-author__title { font-size: 14px; }  /* 13.5px */
+.dh-lb__crumb { font-size: 11px; }  /* 11.5px */
+.dh-lb__title { font-size: clamp(26px, 3.4vw, 36px); }  /* clamp(26px, 3.4vw, 44px) */
+.dh-sort__tab { font-size: 12.5px; }  /* 13px */
+.dh-rev__item--reply .dh-rev__avatar { font-size: 12.5px; }  /* 13px */
+.dh-ph__title { font-size: clamp(26px, 3.4vw, 36px); }  /* clamp(26px, 3.4vw, 44px) */
+.dh-ph__sub { font-size: 16px; }  /* 15.5px */
+.dh-doc__body { font-size: 18px; }  /* 1.0625rem */
+.dh-doc__h3 { font-size: 18px; }  /* 1.0625rem */
+.dh-doc__note { font-size: 16px; }  /* 15px */
+.dh-toc__label { font-size: 11px; }  /* 10.5px */
+.dh-toc__link { font-size: 14px; }  /* 13.5px */
+.dh-serie__name { font-size: 18px; }  /* 19px */
+.dh-serie__open { font-size: 12.5px; }  /* 13px */
+.dh-vid__play { font-size: 18px; }  /* 17px */
+.dh-mhead__eyebrow { font-size: 11px; }  /* 11.5px */
+.dh-mhead__lead { font-size: 16px; }  /* 15px */
+.dh-finpanel__title { font-size: 16px; }  /* 15px */
+.dh-finpanel__more { font-size: 12.5px; }  /* 12px */
+.dh-finpanel__foot { font-size: 11px; }  /* 11.5px */
+.dh-fintabs__tab { font-size: 12.5px; }  /* 12px */
+.dh-fintable thead th { font-size: 11px; }  /* 10.5px */
+.dh-fintable tbody th, .dh-fintable tbody td { font-size: 12.5px; }  /* 13px */
+.dh-fintable__code { font-size: 12.5px; }  /* 13px */
+.dh-fintable__time { font-size: 12.5px !important; }  /* 12px !important */
+.dh-fintick__live { font-size: 11px; }  /* 10.5px */
+.dh-fintick__name { font-size: 11px; }  /* 10.5px */
+.dh-fintick__val { font-size: 18px; }  /* 19px */
+.dh-fintick .dh-chg { font-size: 12.5px; }  /* 12px */
+.dh-fincard .dh-chg { font-size: 12.5px; }  /* 12px */
+.dh-fincard__val { font-size: 18px; }  /* 17px */
+.dh-finspot__num { font-size: 36px; }  /* 34px */
+.dh-finspot__unit { font-size: 16px; }  /* 15px */
+.dh-finspot__stats dt { font-size: 12.5px; }  /* 12px */
+.dh-finspot__stats dd { font-size: 14px; }  /* 13.5px */
+.dh-finrange__labels > span { font-size: 11px; }  /* 10px */
+.dh-finchart__axis { font-size: 11px; }  /* 10.5px */
+.dh-finconv__control input { font-size: 16px; }  /* 15px */
+.dh-finconv__unit { font-size: 12.5px; }  /* 12px */
+.dh-finhead__title { font-size: clamp(26px, 3.2vw, 36px); }  /* clamp(26px, 3.2vw, 40px) */
+.dh-gal__count { font-size: 12.5px; }  /* 13px */
+.dh-gal__captxt { font-size: 14px; }  /* 14.5px */
+.dh-gal__no { font-size: 11px; }  /* 10px */
+.dh-ep__num { font-size: 22px; }  /* 21px */
+.dh-ep__dur { font-size: 11px; }  /* 10px */
+.dh-ep__title { font-size: 14px; }  /* 14.5px */
+.dh-ep__meta { font-size: 12.5px; }  /* 12px */
+.dh-ep__go { font-size: 12.5px; }  /* 12px */
+.dh-player__title { font-size: 22px; }  /* 20px */
+.dh-player__sub { font-size: 12.5px; }  /* 13px */
+.dh-player__btn { font-size: 18px; }  /* 17px */
+.dh-player__skip { font-size: 12.5px; }  /* 12px */
+.dh-player__speed { font-size: 12.5px; }  /* 12px */
+.dh-vmeta { font-size: 12.5px; }  /* 13px */
+.dh-mbox__note { font-size: 12.5px; }  /* 12px */
+.dh-arch__count { font-size: 12.5px; }  /* 12px */
+.dh-arow__time { font-size: 12.5px; }  /* 13px */
+.dh-arow__title { font-size: 16px; }  /* 15px */
+.dh-catbar__lead { font-size: 11px; }  /* 10.5px */
+.dh-sport__ico { font-size: 16px; }  /* 15px */
+.dh-sport__kicker { font-size: 11px; }  /* 10.5px */
+.dh-sort--mini .dh-sort__tab { font-size: 12.5px; }  /* 12px */
+.dh-stand thead th { font-size: 11px; }  /* 10.5px */
+.dh-stand tbody td, .dh-stand tbody th { font-size: 14px; }  /* 13.5px */
+.dh-stand .dh-stand__pts { font-size: 14px; }  /* 14.5px */
+.dh-rank--grid { font-size: 11px; }  /* 11.5px */
+.dh-legend__it { font-size: 12.5px; }  /* 12px */
+.dh-mc__comp { font-size: 11px; }  /* 10.5px */
+.dh-mc__state { font-size: 11px; }  /* 11.5px */
+.dh-mc[data-branch="basketbol"] .dh-mc__score { font-size: 26px; }  /* 27px */
+.dh-mc__sets li b { font-size: 16px; }  /* 15px */
+.dh-mc__val { font-size: 12.5px; }  /* 12px */
+.dh-mc__foot { font-size: 11px; }  /* 11.5px */
+.dh-fx__daylbl { font-size: 11px; }  /* 10.5px */
+.dh-fx__when { font-size: 12.5px; }  /* 13px */
+.dh-fx__side { font-size: 14px; }  /* 13.5px */
+.dh-fx__circuit { font-size: 14px; }  /* 13.5px */
+.dh-fx__country { font-size: 12.5px; }  /* 12px */
+.dh-fx__meta { font-size: 11px; }  /* 11.5px */
+.dh-podium__pos { font-size: 12.5px; }  /* 12px */
+.dh-podium__pilot { font-size: 12.5px; }  /* 13px */
+.dh-podium__gap { font-size: 11px; }  /* 11.5px */
+.dh-podium__fastlbl { font-size: 11px; }  /* 10.5px */
+.dh-stage__route b { font-size: 14px; }  /* 13.5px */
+.dh-stage__route em { font-size: 11px; }  /* 11.5px */
+.dh-stage__km, .dh-stage__alt { font-size: 11px; }  /* 11.5px */
+.dh-jersey .dh-cell__value { font-size: 14px; }  /* 13.5px */
+.dh-jersey__team { font-size: 11px; }  /* 10.5px */
+.dh-jersey__ico { font-size: 22px; }  /* 21px */
+.dh-leagues__it { font-size: 12.5px; }  /* 13px */
+.dh-tchip span { font-size: 12.5px; }  /* 13px */
+.dh-tcard__nm { font-size: 14px; }  /* 13.5px */
+.dh-relbox__title { font-size: 11px; }  /* 10.5px */
+.dh-relbox__list a { font-size: 14px; }  /* 14.5px */
+.dh-mast__title { font-size: 18px; }  /* 1.0625rem */
+.dh-mast__hint { font-size: 12.5px; }  /* 12px */
+.dh-mast__row dd, .dh-mast__v { font-size: 16px; }  /* 15px */
+.dh-person__name { font-size: 14px; }  /* 14.5px */
+.dh-person__role { font-size: 11px; }  /* 10.5px */
+.dh-hd__s { font-size: 12.5px; }  /* 13px */
+.dh-finhead__quote .dh-finspot__num { font-size: clamp(36px, 5vw, 52px); }  /* clamp(34px, 5vw, 52px) */
+.dh-finhead__delta .dh-chg { font-size: 12.5px; }  /* 13px */
+.dh-finhead__stamp { font-size: 11px; }  /* 11.5px */
+.dh-finkap a { font-size: 12.5px; }  /* 13px */
+.dh-finrel__name { font-size: 12.5px; }  /* 13px */
+.dh-finrel__val { font-size: 12.5px; }  /* 13px */
+.dh-finrel .dh-chg { font-size: 12.5px; }  /* 12px */
+.dh-astro__eyebrow { font-size: 11px; }  /* 10.5px */
+.dh-catbar__chip--astro .dh-astro__label b { font-size: 14px; }  /* 13.5px */
+.dh-catbar__chip--astro .dh-astro__label small { font-size: 11px; }  /* 10.5px */
+.dh-astro__stamp { font-size: 12.5px; }  /* 12px */
+.dh-panel--astro .dh-cell__value { font-size: 16px; }  /* 15px */
+.dh-astro__text p:first-child { font-size: 18px; }  /* 17.5px */
+.dh-astro__facet-ic { font-size: 12.5px; }  /* 13px */
+.dh-zod__sum { font-size: 14px; }  /* 13.5px */
+.dh-sky__item h3 { font-size: 16px; }  /* 16.5px */
+.dh-sky__item p { font-size: 14px; }  /* 14.5px */
+.dh-live__badge { font-size: 12.5px; }  /* 12px */
+.dh-live__day span { font-size: 11px; }  /* 11.5px */
+.dh-live__time { font-size: 18px; }  /* 17px */
+.dh-live__cat { font-size: 11px; }  /* 10.5px */
+.dh-live__sum { font-size: 14px; }  /* 14.5px */
+.dh-podium__pilot { font-size: 14px; }  /* 13.5px */
+.dh-mile__y { font-size: 12.5px; }  /* 12px */
+.dh-mile__t { font-size: 16px; }  /* 15.5px */
+.dh-input { font-size: 16px; }  /* 15px */
+.dh-check { font-size: 14px; }  /* 13.5px */
+.dh-cinfo__ic { font-size: 16px; }  /* 15px */
+.dh-cinfo__k { font-size: 11px; }  /* 10.5px */
+.dh-cinfo__v { font-size: 14px; }  /* 14.5px */
+.dh-map__pin { font-size: 16px; }  /* 15px */
+.dh-map__t { font-size: 14px; }  /* 14.5px */
+.dh-map__s { font-size: 12.5px; }  /* 13px */
+.dh-rate thead th { font-size: 11px; }  /* 10.5px */
+.dh-rate__name { font-size: 14px; }  /* 14.5px */
+.dh-ilan__date { font-size: 12.5px; }  /* 12px */
+.dh-ilan__org { font-size: 11px; }  /* 10.5px */
+.dh-ilan__title { font-size: 16px; }  /* 15.5px */
+.dh-ilan__left { font-size: 12.5px; }  /* 12px */
+.dh-wcard__name { font-size: 18px; }  /* 17px */
+.dh-wcard__beat { font-size: 11px; }  /* 10px */
+.dh-wcard__stat { font-size: 12.5px; }  /* 12px */
+.dh-wcard__last { font-size: 14px; }  /* 13.5px */
+.dh-wcard__last small { font-size: 11px; }  /* 10px */
+.dh-follow { font-size: 12.5px; }  /* 13px */
+.dh-soc a { font-size: 12.5px; }  /* 13px */
+.dh-prof__name { font-size: clamp(26px, 2.6vw, 36px); }  /* clamp(24px, 2.6vw, 34px) */
+.dh-prof__bio { font-size: 16px; }  /* 15.5px */
+.dh-prof__n { font-size: 22px; }  /* 20px */
+.dh-prof__k { font-size: 11px; }  /* 10.5px */
+.dh-op__kicker { font-size: 11px; }  /* 10.5px */
+.dh-op__name { font-size: 22px; }  /* 20px */
+.dh-op__beat { font-size: 12.5px; }  /* 12px */
+.dh-op__body { font-size: 18px; }  /* 1.0625rem */
+.dh-op__lead { font-size: 18px; }  /* 1.1875rem */
+.dh-op__quote { font-size: 18px; }  /* 1.1875rem */
+.dh-op__sign { font-size: 12.5px; }  /* 13px */
+.dh-oops__t { font-size: clamp(26px, 3vw, 36px); }  /* clamp(24px, 3vw, 36px) */
+.dh-chip { font-size: 12.5px; }  /* 13px */
+.dh-cd__k { font-size: 11px; }  /* 10px */
+.dh-fintick__stamp { font-size: 12.5px; }  /* 12px */
+.dh-field { font-size: 12.5px; }  /* 13px */
+.dh-person__mail { font-size: 12.5px; }  /* 12px */
+.dh-fact__k { font-size: 11px; }  /* 10px */
+.dh-fact__t { font-size: 16px; }  /* 16.5px */
+.dh-lb .swiper-main .swiper-slide .post-category .dh-tag, .dh-lb .swiper-main .swiper-slide .post-category > a, .dh-lb .swiper-main .swiper-slide .post-category > span { font-size: 11px !important; }  /* 11.5px !important */
+.dh-lb .swiper-main .swiper-slide .post-title { font-size: clamp(22px, 2.1vw, 30px); }  /* clamp(20px, 2.1vw, 32px) */
+.dh-lb .swiper-thumbs .swiper-slide h3 { font-size: 12.5px !important; }  /* 13px !important */
+.dh-lb .swiper-thumbs .swiper-slide .post-meta, .dh-lb .swiper-thumbs .swiper-slide .post-meta * { font-size: 11px !important; }  /* 10.5px !important */
+.dh-yn__btn { font-size: 12.5px; }  /* 13px */
+.dh-yn__label, .dh-bil__label { font-size: 12.5px; }  /* 12px */
+.dh-yn__count, .dh-bil__count { font-size: 11px; }  /* 11.5px */
+.dh-yn__ok { font-size: 12.5px; }  /* 13px */
+.dh-bil__qtext { font-size: 14px; }  /* 13.5px */
+.dh-bil__legend { font-size: 12.5px; }  /* 12px */
+.dh-bil__kvkk { font-size: 12.5px; }  /* 12px */
+.dh-bil__done h3 { font-size: 18px; }  /* 17px */
+.dh-bil__done p { font-size: 14px; }  /* 13.5px */
+.post-header .post-meta .post-author .dh-byline > small { font-size: 11px; }  /* 10px */
+.dh-finsum__name { font-size: 11px; }  /* 10.5px */
+.dh-finsum__top .dh-chg { font-size: 12.5px; }  /* 12px */
+.dh-finsum__val { font-size: 22px; }  /* 23px */
+.dh-lgpick__lead { font-size: 11px; }  /* 10.5px */
+.dh-fx__cols { font-size: 11px; }  /* 9.5px */
+.dh-fx__ha { font-size: 11px; }  /* 9px */
+.dh-tchip span { font-size: 12.5px; }  /* 13px */
+.dh-medinfo__txt { font-size: 14px; }  /* 13.5px */
+.dh-medinfo__ttl { font-size: 18px; }  /* 17px */
+.dh-medinfo__body p { font-size: 14px; }  /* 13.5px */
+.dh-wk__eyebrow { font-size: 11px; }  /* 10.5px */
+.dh-wk__today { font-size: 12.5px; }  /* 13px */
+.dh-wk__stamp { font-size: 12.5px; }  /* 12px */
+.dh-wk__no { font-size: 18px; }  /* 17px */
+.dh-wk__lbl { font-size: 11px; }  /* 9.5px */
+.dh-wk__sep b { font-size: 11px; }  /* 11.5px */
+.dh-wk__sep small { font-size: 11px; }  /* 10px */
+.dh-wk__big { font-size: 36px; }  /* 34px */
+.dh-wk__unit { font-size: 16px; }  /* 15px */
+.dh-panel--gebe .dh-cell__value { font-size: 16px; }  /* 15px */
+.dh-wk__ozet { font-size: 18px; }  /* 17.5px */
+.dh-brk__title { font-size: 16px; }  /* 15.5px */
+.dh-brk__body p { font-size: 14px; }  /* 14.5px */
+.dh-brk__note { font-size: 12.5px; }  /* 12px */
+.dh-tri__no { font-size: 18px; }  /* 19px */
+.dh-tri__ttl h3 { font-size: 16px; }  /* 16.5px */
+.dh-tri__range { font-size: 12.5px; }  /* 12px */
+.dh-tri__lead { font-size: 14px; }  /* 14.5px */
+.dh-tri__list li { font-size: 14px; }  /* 13.5px */
+.dh-tri__go { font-size: 14px; }  /* 13.5px */
+.dh-hesap__tag { font-size: 11px; }  /* 11.5px */
+.dh-hesap__ic { font-size: 18px; }  /* 17px */
+.dh-hesap__ttl { font-size: 18px; }  /* 17px */
+.dh-hesap__sub { font-size: 14px; }  /* 13.5px */
+.dh-fld__help { font-size: 12.5px; }  /* 12px */
+.dh-res__tag { font-size: 11px; }  /* 10.5px */
+.dh-res__k { font-size: 11px; }  /* 11.5px */
+.dh-res__v { font-size: 18px; }  /* 17px */
+.dh-res__goto { font-size: 12.5px; }  /* 13px */
+.dh-res__note { font-size: 12.5px; }  /* 12px */
+.dh-ph__stamp { font-size: clamp(36px, 6.4vw, 96px); }  /* clamp(48px, 6.4vw, 96px) */
+.dh-strip__t { font-size: clamp(18px, 2vw, 26px); }  /* clamp(19px, 2vw, 26px) */
+.dh-fintick__val { font-size: 16px; }  /* 15px */
+.dh-fintick .dh-chg { font-size: 11px; }  /* 11.5px */
+.dh-finsum__val { font-size: 18px; }  /* 19px */
+.dh-finspot__num { font-size: 26px; }  /* 24px */
+.dh-finspot__unit { font-size: 12.5px; }  /* 13px */
+.dh-finhead__quote .dh-finspot__num { font-size: clamp(26px, 3vw, 30px); }  /* clamp(24px, 3vw, 30px) */
+.dh-artbox__k { font-size: 11px; }  /* 10.5px */
+.dh-artbox__t { font-size: 16px; }  /* 15.5px */
+.dh-artbox__go { font-size: 14px; }  /* 13.5px */
+.post-content .dh-medinfo__txt { font-size: 14px; }  /* 13.5px */
+.dh-art .post-content .dh-medinfo > .dh-medinfo__txt { font-size: 14px !important; }  /* 13.5px !important */
+.dh-pick__lbl { font-size: 11px; }  /* 10.5px */
+.dh-pick__sel { font-size: 12.5px; }  /* 13px */
+.dh-catbar__root-sep { font-size: 11px; }  /* 8px */
+.dh-kmod__go-ad { font-size: 11px; }  /* 10.5px */
+.dh-cell--go .dh-cell__value { font-size: 16px; }  /* 15px */
+.dh-cell--go .dh-cell__go { font-size: 11px; }  /* 9px */
+.dh-chk__box { font-size: 11px; }  /* 10px */
+.dh-panel--kar .dh-cell__value { font-size: 26px; }  /* 24px */
+.dh-kmod__note { font-size: 12.5px; }  /* 12px */
+.dh-secbar--dar h2 { font-size: 16px; }  /* 15px */
+.dh-card__author .dh-byline > b { font-size: 12.5px; }  /* 12px */
+.dh-card__author .dh-byline > small { font-size: 11px; }  /* 9.5px */
+.dh-mcrail--sik .dh-mc__crest, .dh-mcrail--sik .dh-mc__crest--txt { font-size: 11px; }  /* 9.5px */
+.dh-mcrail--sik .dh-mc__name { font-size: 11px; }  /* 11.5px */
+.dh-mcrail--sik .dh-mc__score { font-size: 18px; }  /* 17px */
+.dh-hub__side .dh-podium__pilot { font-size: 11px; }  /* 11.5px */
+.dh-hub__side .dh-podium__team { font-size: 11px; }  /* 9.5px */
+.dh-hub__side .dh-podium__gap { font-size: 11px; }  /* 10px */
+.dh-hub__side .dh-podium__pos { font-size: 11px; }  /* 10.5px */
+.dh-hub__side .dh-podium__fast { font-size: 11px; }  /* 10.5px */
+.dh-stand--motor .dh-rank { font-size: 11px; }  /* 10px */
+.dh-stand--motor .dh-stand__nm { font-size: 12.5px; }  /* 12px */
+.dh-stand--motor .dh-stand__club { font-size: 11px; }  /* 10px */
+.dh-hub__news .dh-card--row .dh-card__title { font-size: 14px; }  /* 14.5px */
+.dh-hub__news .dh-card--row .dh-card__meta { font-size: 11px; }  /* 10.5px */
+.dh-sport__sub { font-size: 11px; }  /* 10.5px */
+.dh-son5__lbl { font-size: 11px; }  /* 10.5px */
+.dh-son5__it { font-size: 11px; }  /* 11.5px */
+.dh-find__l { font-size: 12.5px; }  /* 12px */
+
+@media (max-width: 767.98px) {
+  .custom-data-header th, .custom-data-cell { font-size: 12.5px; }  /* 13px */
+  .dh-card--wide .dh-card__title { font-size: 18px; }  /* 17px */
+  .dh-secbar__nav button { font-size: 12.5px; }  /* 12px */
+  .dh-serie__facts { font-size: 11px; }  /* 11.5px */
+  .dh-serie__open { font-size: 12.5px; }  /* 12px */
+  .dh-vid__title { font-size: 14px; }  /* 14.5px */
+  .dh-vid__meta { font-size: 11px; }  /* 11.5px */
+  .dh-mhead__title { font-size: 22px; }  /* 23px */
+  .dh-mstats__num { font-size: 22px; }  /* 21px */
+  .dh-mstats__lab { font-size: 11px; }  /* 10px */
+  .dh-gal__tool { font-size: 12.5px; }  /* 12px */
+  .dh-gal__count b { font-size: 16px; }  /* 15px */
+  .dh-gal__captxt { font-size: 14px; }  /* 13.5px */
+  .dh-player__title { font-size: 18px; }  /* 17px */
+  .dh-player__btn { font-size: 16px; }  /* 15px */
+  .dh-arow__cat { font-size: 11px; }  /* 10px */
+  .dh-podium__pilot { font-size: 12.5px; }  /* 12px */
+  .dh-podium__team { font-size: 11px; }  /* 10px */
+  .dh-arow__cat, .dh-art-cat, .dh-artbox__k, .dh-astro__eyebrow, .dh-author__beat, .dh-band__tag, .dh-bil__opt-tag, .dh-calcs__head, .dh-card__badge, .dh-catbar__root-ad, .dh-catbar__root-fn, .dh-cell__label, .dh-cinfo__k, .dh-doc__num, .dh-fact__k, .dh-finchart__cap, .dh-finconv__note, .dh-finpanel__sub, .dh-finsum__name, .dh-fintable__desc, .dh-fintabs__tab, .dh-fintick__name, .dh-foto__count, .dh-fx__daylbl, .dh-fx__state, .dh-gal__credit, .dh-ilan__org, .dh-ilan__type, .dh-jersey__team, .dh-lb__lead, .dh-live__cat, .dh-mc__comp, .dh-mc__sub, .dh-mstats__lab, .dh-op__kicker, .dh-panel__kicker, .dh-person__role, .dh-ph__eyebrow, .dh-player__kicker, .dh-pod__ep, .dh-podium__fastlbl, .dh-podium__gap, .dh-podium__team, .dh-prof__k, .dh-relbox__title, .dh-res__tag, .dh-son5__lbl, .dh-sport__kicker, .dh-sport__sub, .dh-stage__type, .dh-stand__club, .dh-strip__k, .dh-tag, .dh-toc__label, .dh-vid__ep, .dh-wcard__beat, .dh-wk__eyebrow, .dh-zod__el, small { font-size: 12.5px; }  /* 12px */
+  .dh-byline small, .dh-wcard__last small, .dh-astro__label small, .minimizeDate, .dh-mast__row dt, .dh-fx__cols span, .dh-info__src b, .dh-finsum__rng b, .dh-finconv__field label, .dh-finrange__labels span, .dh-stand__club, .dh-fintabs__tab, .dh-pop__meta span, table thead th, table thead th.is-num, .dh-finconv .dh-fintabs__tab, .dh-finspot .dh-fintabs__tab, .dh-finconv__mode legend, .dh-wk__sep b, .dh-wk__sep small, .dh-stand__who .dh-stand__club, .dh-podium__step .dh-podium__team, .dh-podium__step .dh-podium__gap, .dh-podium__fast b { font-size: 12.5px; }  /* 12px */
+  .dh-byline small, .minimizeDate, .dh-astro__label small, thead th { font-size: 12.5px !important; }  /* 12px !important */
+}
+
+@media (max-width: 600px) {
+  .economy-table-container table { font-size: 12.5px; }  /* 12px */
+}
+
+@media (max-width: 479.98px) {
+  .gz-sponsor-section .gz-sponsor-text { font-size: 12.5px; }  /* 12px */
+  .gz-sponsor-section .gz-sponsor-text strong { font-size: 12.5px; }  /* 13px */
+}
+
+@media (max-width: 575.98px) {
+  .dh-breaking__label { font-size: 12.5px; }  /* 0.8125rem */
+  .dh-card__title { font-size: 18px; }  /* 17px */
+  .dh-card--row .dh-card__title { font-size: 16px; }  /* 15px */
+  .dh-watch { font-size: 12.5px; }  /* 12px */
+  .dh-fintick__val { font-size: 18px; }  /* 17px */
+  .dh-finhead__lead { font-size: 12.5px; }  /* 13px */
+  .dh-ep__title { font-size: 14px; }  /* 13.5px */
+  .dh-sport__title { font-size: 16px; }  /* 16.5px */
+  .dh-live__time { font-size: 16px; }  /* 15px */
+  .dh-fincard__name { font-size: 12.5px; }  /* 13px */
+  .dh-fincard__val { font-size: 16px; }  /* 15px */
+  .dh-finsum__links a { font-size: 11px; }  /* 11.5px */
+  .dh-lgpick__lead { font-size: 11px; }  /* 9.5px */
+  .dh-wk__today { font-size: 12.5px; }  /* 12px */
+  .dh-wk__no { font-size: 16px; }  /* 15px */
+  .dh-wk__sep b { font-size: 11px; }  /* 10.5px */
+  .dh-wk__ozet { font-size: 16px; }  /* 15.5px */
+  .dh-pick__lbl { font-size: 11px; }  /* 9.5px */
+  .dh-sort--split .dh-sort__tab { font-size: 12.5px; }  /* 12px */
+  .dh-catbar__root { font-size: 11px; }  /* 10.5px */
+  .dh-catbar__root-fn { font-size: 11px; }  /* 10.5px */
+}
+
+@media (max-width: 1199.98px) {
+  .dh-rcard__title { font-size: 16px; }  /* 15px */
+  .dh-finsum__val { font-size: 22px; }  /* 21px */
+}
+
+@media (max-width: 991.98px) {
+  .dh-fincard__val { font-size: 14px; }  /* 14.5px */
+}

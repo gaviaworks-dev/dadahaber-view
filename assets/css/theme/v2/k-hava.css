@@ -1,0 +1,339 @@
+/* ============================================================================
+   v2 / K-HAVA — hava-durumu.html
+   Talep (revize-2.docx, madde 1): "Hava durumu sayfasını ayrı bir sayfada
+   gösterelim... il ve ilçe seçerek gösterim yapabiliriz."
+
+   İl seçimi iller.html'deki şematik ızgaranın (.dh-tr81) aynısı — yeni
+   bir seçim dili icat edilmedi. Bu dosya yalnız hava sayfasının kendi
+   parçalarını tanımlıyor.
+   ========================================================================== */
+
+.dh-hv__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 620px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+/* --- il arama + ızgara --------------------------------------------------- */
+.dh-hv__ara {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 0 14px;
+  min-height: 46px;
+  background: #fff;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-hv__ara { background: var(--color-gray-900); border-color: var(--color-gray-700); }
+.dh-hv__ara i { color: var(--color-gray-400); }
+.dh-hv__ara input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--dh-t-xs);
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-hv__ara input { color: #fff; }
+.dh-hv__ara input::placeholder { color: var(--color-gray-400); }
+.dh-hv__ara:focus-within { border-color: var(--dh-menu-ink); }
+
+.dh-hv__map .dh-tr81 { width: 100%; height: auto; }
+.dh-hv__map .dh-tr81__c { cursor: pointer; }
+.dh-hv__not {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 12px 0 0;
+  font-size: var(--dh-t-3xs);
+  line-height: 1.55;
+  color: var(--color-gray-500);
+}
+.dh-hv__not i { margin-top: 2px; color: var(--color-primary); }
+
+/* --- seçili il paneli ---------------------------------------------------- */
+.dh-hv__yan {
+  position: sticky;
+  top: 120px;
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  background: var(--color-gray-10);
+  border: 1px solid rgba(18, 18, 18, .09);
+  border-radius: 12px 12px 12px 0;
+}
+html.uc-dark .dh-hv__yan {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .1);
+}
+
+.dh-hv__kapsam {
+  display: block;
+  font-size: var(--dh-t-3xs);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+.dh-hv__ad {
+  margin: 4px 0 2px;
+  font-size: var(--dh-t-l);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-hv__ad { color: #fff; }
+.dh-hv__ilceAd {
+  font-size: var(--dh-t-2xs);
+  font-weight: 700;
+  color: var(--dh-menu-ink);
+}
+html.uc-dark .dh-hv__ilceAd { color: var(--color-primary); }
+
+/* ilçe çipleri */
+.dh-hv__ilceler { display: flex; flex-wrap: wrap; gap: 8px; }
+.dh-hv__ilce {
+  min-height: 34px;
+  padding: 7px 12px;
+  font-family: inherit;
+  font-size: var(--dh-t-2xs);
+  font-weight: 700;
+  color: var(--color-gray-700);
+  background: #fff;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+  cursor: pointer;
+  transition: border-color .14s, background .14s;
+}
+html.uc-dark .dh-hv__ilce {
+  background: var(--color-gray-800);
+  border-color: var(--color-gray-700);
+  color: rgba(255, 255, 255, .82);
+}
+.dh-hv__ilce:hover { border-color: var(--color-primary); }
+/* Kurumsal sarı zeminde KOYU mürekkep — §12. */
+.dh-hv__ilce.is-on,
+html.uc-dark .dh-hv__ilce.is-on {
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.dh-hv__ilce:focus-visible { outline: 3px solid var(--dh-menu-ink); outline-offset: 2px; }
+
+/* uyarı */
+.dh-hv__uyari[hidden] { display: none; }
+.dh-hv__uyari {
+  padding: 12px 14px;
+  border-inline-start: 3px solid var(--dh-lv, var(--color-primary));
+  background: rgba(252, 182, 35, .12);
+  border-radius: 0 8px 8px 0;
+}
+.dh-hv__uyari[data-lv="sari"] { --dh-lv: #b07d05; }
+.dh-hv__uyari[data-lv="turuncu"] { --dh-lv: #b34700; background: rgba(179, 71, 0, .1); }
+.dh-hv__ulv {
+  display: block;
+  font-size: var(--dh-t-3xs);
+  font-weight: 800;
+  letter-spacing: .1em;
+  color: var(--dh-lv);
+}
+.dh-hv__utx {
+  margin: 4px 0 0;
+  font-size: var(--dh-t-2xs);
+  line-height: 1.55;
+  color: var(--color-gray-700);
+}
+html.uc-dark .dh-hv__utx { color: rgba(255, 255, 255, .82); }
+html.uc-dark .dh-hv__uyari[data-lv="sari"] { --dh-lv: #f0b429; }
+html.uc-dark .dh-hv__uyari[data-lv="turuncu"] { --dh-lv: #ff8a3d; }
+
+/* anlık değerler */
+.dh-hv__derece {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.dh-hv__derece b {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.03em;
+  color: var(--color-gray-900);
+  font-variant-numeric: tabular-nums;
+}
+html.uc-dark .dh-hv__derece b { color: #fff; }
+.dh-hv__derece span {
+  font-size: var(--dh-t-xs);
+  font-weight: 700;
+  color: var(--color-gray-600);
+}
+html.uc-dark .dh-hv__derece span { color: var(--color-gray-300); }
+
+.dh-hv__cells {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 14px 0 0;
+  background: rgba(18, 18, 18, .09);
+  border: 1px solid rgba(18, 18, 18, .09);
+  border-radius: 8px 8px 8px 0;
+  overflow: hidden;
+}
+html.uc-dark .dh-hv__cells {
+  background: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+.dh-hv__cell { padding: 10px 12px; background: #fff; }
+html.uc-dark .dh-hv__cell { background: var(--color-gray-800); }
+.dh-hv__cell dt {
+  margin: 0 0 3px;
+  font-size: var(--dh-t-3xs) !important;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+.dh-hv__cell dt i { margin-inline-end: 5px; opacity: .7; }
+.dh-hv__cell dd {
+  margin: 0;
+  font-size: var(--dh-t-xs);
+  font-weight: 700;
+  color: var(--color-gray-900);
+  font-variant-numeric: tabular-nums;
+}
+html.uc-dark .dh-hv__cell dd { color: #fff; }
+.dh-hv__guncel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--dh-t-3xs);
+  font-weight: 600;
+  color: var(--color-gray-500);
+}
+
+/* --- saatlik şerit ------------------------------------------------------- */
+.dh-hv__saatlik {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 2px;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+.dh-hv__saatlik::-webkit-scrollbar { display: none; }
+.dh-hv__sa {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  min-width: 92px;
+  padding: 14px 10px;
+  background: #fff;
+  border: 1px solid rgba(18, 18, 18, .09);
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-hv__sa {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .1);
+}
+.dh-hv__saat {
+  font-size: var(--dh-t-3xs);
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--color-gray-500);
+  font-variant-numeric: tabular-nums;
+}
+.dh-hv__ikon { font-size: var(--dh-t-s); color: var(--dh-menu-ink); }
+html.uc-dark .dh-hv__ikon { color: var(--color-primary); }
+.dh-hv__sd {
+  font-size: var(--dh-t-m);
+  font-weight: 800;
+  color: var(--color-gray-900);
+  font-variant-numeric: tabular-nums;
+}
+html.uc-dark .dh-hv__sd { color: #fff; }
+.dh-hv__sy { font-size: var(--dh-t-3xs); font-weight: 600; color: var(--color-gray-500); }
+
+/* --- yedi günlük tablo --------------------------------------------------- */
+.dh-hv__tablo { overflow-x: auto; }
+.dh-hv__t {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.dh-hv__t thead th {
+  padding: 10px 12px;
+  font-size: var(--dh-t-3xs);
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  text-align: start;
+  color: var(--color-gray-500);
+  border-bottom: 1px solid rgba(18, 18, 18, .12);
+  white-space: nowrap;
+}
+html.uc-dark .dh-hv__t thead th { border-bottom-color: rgba(255, 255, 255, .14); }
+.dh-hv__t tbody td,
+.dh-hv__t tbody th {
+  padding: 12px;
+  font-size: var(--dh-t-xs);
+  font-weight: 600;
+  text-align: start;
+  color: var(--color-gray-700);
+  border-bottom: 1px solid rgba(18, 18, 18, .06);
+  white-space: nowrap;
+}
+html.uc-dark .dh-hv__t tbody td,
+html.uc-dark .dh-hv__t tbody th {
+  color: rgba(255, 255, 255, .82);
+  border-bottom-color: rgba(255, 255, 255, .08);
+}
+.dh-hv__gun b { display: block; font-weight: 800; color: var(--color-gray-900); }
+html.uc-dark .dh-hv__gun b { color: #fff; }
+.dh-hv__gun small {
+  display: block;
+  font-size: var(--dh-t-3xs);
+  font-weight: 600;
+  color: var(--color-gray-500);
+}
+.dh-hv__gd i { margin-inline-end: 7px; color: var(--dh-menu-ink); }
+html.uc-dark .dh-hv__gd i { color: var(--color-primary); }
+.dh-hv__gmax b { font-size: var(--dh-t-s); font-weight: 800; color: var(--color-gray-900); }
+html.uc-dark .dh-hv__gmax b { color: #fff; }
+.dh-hv__gmin { color: var(--color-gray-500) !important; }
+
+.dh-hv__kaynak {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  background: rgba(252, 182, 35, .12);
+  border-inline-start: 3px solid var(--color-primary);
+  border-radius: 0 8px 8px 0;
+  font-size: var(--dh-t-2xs);
+  line-height: 1.6;
+  color: var(--color-gray-700);
+}
+html.uc-dark .dh-hv__kaynak { color: rgba(255, 255, 255, .82); }
+.dh-hv__kaynak i { margin-top: 3px; color: var(--dh-menu-ink); }
+html.uc-dark .dh-hv__kaynak i { color: var(--color-primary); }
+.dh-hv__kaynak a { color: var(--dh-menu-ink); text-decoration: underline; text-underline-offset: 2px; }
+html.uc-dark .dh-hv__kaynak a { color: var(--color-primary); }
+
+@media (max-width: 1199.98px) {
+  .dh-hv__grid { grid-template-columns: minmax(0, 1fr); }
+  .dh-hv__yan { position: static; }
+  .dh-hv__map .dh-tr81 { max-width: 620px; }
+}
+@media (max-width: 575.98px) {
+  .dh-hv__cells { grid-template-columns: minmax(0, 1fr); }
+  .dh-hv__yan { padding: 16px; }
+}

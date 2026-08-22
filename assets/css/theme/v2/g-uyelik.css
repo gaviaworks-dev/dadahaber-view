@@ -42,7 +42,7 @@ html.uc-dark [data-dh-cat="uyelik"] {
   background: var(--dh-k-soft);
   color: var(--dh-k-ink);
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -51,7 +51,7 @@ html.uc-dark [data-dh-cat="uyelik"] {
 html.uc-dark .dh-auth__kicker { color: var(--dh-k-ink); }
 .dh-auth__t {
   margin: 16px 0 10px;
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(30px, 4vw, 36px);
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -.025em;
@@ -61,7 +61,7 @@ html.uc-dark .dh-auth__t { color: #fff; }
 .dh-auth__l {
   margin: 0 0 26px;
   max-width: 46ch;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--dh-k-mut);
 }
@@ -73,14 +73,14 @@ html.uc-dark .dh-auth__t { color: #fff; }
   place-items: center;
   width: 32px;
   height: 32px;
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--color-gray-900);
   background: var(--dh-k);
   border-radius: 8px 8px 8px 0;
 }
 .dh-auth__ben b {
   display: block;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-gray-900);
 }
@@ -88,7 +88,7 @@ html.uc-dark .dh-auth__ben b { color: #fff; }
 .dh-auth__ben span {
   display: block;
   margin-top: 2px;
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.5;
   color: var(--dh-k-mut);
 }
@@ -110,7 +110,7 @@ html.uc-dark .dh-auth__tabs { background: rgba(255, 255, 255, .07); }
 .dh-auth__tabs a {
   padding: 10px 12px;
   text-align: center;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-gray-600);
   text-decoration: none;
@@ -186,7 +186,7 @@ html.uc-dark .dh-auth__pwbar span { background: rgba(255, 255, 255, .14); }
   gap: 10px;
 }
 .dh-auth__link {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--dh-k-ink);
   text-decoration: none;
@@ -202,7 +202,7 @@ html.uc-dark .dh-auth__pwbar span { background: rgba(255, 255, 255, .14); }
   gap: 12px;
   margin: 18px 0;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -217,7 +217,7 @@ html.uc-dark .dh-auth__pwbar span { background: rgba(255, 255, 255, .14); }
   justify-content: center;
   gap: 9px;
   padding: 11px 12px;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-gray-900);
   text-decoration: none;
@@ -231,7 +231,7 @@ html.uc-dark .dh-auth__alt a { color: #fff; }
 
 .dh-auth__foot {
   margin: 18px 0 0;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--dh-k-mut);
 }
@@ -264,7 +264,7 @@ html.uc-dark .dh-auth__alt a { color: #fff; }
   align-items: center;
   gap: 8px;
   font-family: var(--dh-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -277,7 +277,7 @@ html.uc-dark .dh-auth__alt a { color: #fff; }
   place-items: center;
   width: 20px;
   height: 20px;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-gray-600);
   background: var(--color-gray-100);
   border-radius: 8px 8px 8px 0;
@@ -361,3 +361,11 @@ html.uc-dark .dh-basv--acilir > .dh-basv__hd:hover { background: rgba(255, 255, 
 html.uc-dark .dh-basv__body { border-color: var(--color-gray-700); }
 /* rozet açılır başlıkta okla çakışmasın */
 .dh-basv--acilir .dh-basv__n { margin-inline-start: 0; }
+
+/* --- SEKME · karanlık modda seçili sekmenin mürekkebi -------------------
+   ÖLÇÜM: giris/uye-ol/sifremi-unuttum, karanlık mod — seçili sekme
+   beyaz / kurumsal sarı = 1,77:1.
+   Sebep özgüllük: `html.uc-dark .dh-auth__tabs a` (0,2,1) beyaz veriyor;
+   üstteki `.dh-auth__tabs a[aria-current="page"]` (0,2,0) kaybediyordu.
+   Zemin (--dh-k) her iki temada da sarı; mürekkep koyu olmalı. */
+html.uc-dark .dh-auth__tabs a[aria-current="page"] { color: var(--color-gray-900); }

@@ -62,7 +62,7 @@
 .dh-v2-fmt .dh-v2-brand__acts { margin-inline-start: auto; }
 .dh-v2-fmt .dh-v2-act { color: rgba(255, 255, 255, .82); width: 34px; height: 34px; }
 .dh-v2-fmt .dh-v2-act:hover { color: #fff; background: rgba(255, 255, 255, .1); }
-.dh-v2-fmt .dh-v2-act i { font-size: 15px !important; }
+.dh-v2-fmt .dh-v2-act i { font-size: 16px !important; }
 .dh-v2-fmt .dh-v2-brand__sep { background: rgba(255, 255, 255, .22); height: 18px; margin: 0 10px; }
 .dh-v2-fmt .dh-v2-signin { color: rgba(255, 255, 255, .88); padding: 6px 10px; font-size: 12.5px; }
 .dh-v2-fmt .dh-v2-signin:hover { color: #fff; background: rgba(255, 255, 255, .1); }
@@ -87,7 +87,7 @@
   gap: 7px;
   flex: 0 0 auto;
   padding: 7px 12px;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: .01em;
   white-space: nowrap;
@@ -96,7 +96,7 @@
   transition: color .14s, background .14s;
 }
 .dh-v2-fmt__track a:first-child { padding-inline-start: 0; }
-.dh-v2-fmt__track a i { color: var(--color-primary); font-size: 13px; }
+.dh-v2-fmt__track a i { color: var(--color-primary); font-size: 12.5px; }
 .dh-v2-fmt__track a:hover,
 .dh-v2-fmt__track a:focus-visible { color: #fff; background: rgba(255, 255, 255, .07); }
 .dh-v2-fmt__track a + a { position: relative; }
@@ -113,7 +113,7 @@
 .dh-v2-fmt__user { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
 .dh-v2-signin {
   padding: 6px 12px;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   color: rgba(255, 255, 255, .88);
   text-decoration: none;
@@ -122,7 +122,7 @@
 .dh-v2-signin:hover, .dh-v2-signin:focus-visible { color: var(--color-primary); }
 .dh-v2-signup {
   padding: 6px 14px;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   color: #000;
   background: var(--color-primary);
@@ -196,7 +196,7 @@ html.uc-dark .dh-v2-act:hover { color: #fff; background: rgba(255, 255, 255, .07
   padding: 0 3px;
   display: grid;
   place-items: center;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1;
   color: #fff;
@@ -216,7 +216,7 @@ html.uc-dark .dh-v2-act:hover { color: #fff; background: rgba(255, 255, 255, .07
 /* giriş / üye ol — kabuğun tek dolu düğmesi, hiyerarşi net kalsın */
 .dh-v2-signin {
   padding: 8px 12px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   white-space: nowrap;
   color: var(--color-gray-800);
@@ -230,7 +230,7 @@ html.uc-dark .dh-v2-signin:hover { color: #fff; background: rgba(255, 255, 255, 
 .dh-v2-signup {
   margin-inline-start: 6px;
   padding: 8px 15px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   white-space: nowrap;
   color: #000;
@@ -266,7 +266,7 @@ html.uc-dark .dh-v2-user__menu {
   align-items: center;
   gap: 10px;
   padding: 9px 10px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--color-gray-800);
   text-decoration: none;
@@ -297,7 +297,7 @@ html.uc-dark .dh-v2-user__menu a:hover { background: rgba(255, 255, 255, .07); c
   gap: 5px;
   position: relative;
   padding: 0 13px;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: -.01em;
   color: var(--color-gray-800);
@@ -324,7 +324,7 @@ html.uc-dark .dh-v2-nav__list > li > a { color: rgba(255, 255, 255, .84); }
 .dh-v2-nav__list > li > a[aria-current="page"] { color: var(--dh-cat, var(--color-primary-700)); }
 html.uc-dark .dh-v2-nav__list > li.is-open > a,
 html.uc-dark .dh-v2-nav__list > li > a[aria-current="page"] { color: #fff; }
-.dh-v2-nav__list > li > a i { font-size: 9px; opacity: .5; transition: transform .16s; }
+.dh-v2-nav__list > li > a i { font-size: 11px; opacity: .5; transition: transform .16s; }
 .dh-v2-nav__list > li.is-open > a i { transform: rotate(180deg); }
 
 .dh-v2-nav__list > li > a[data-cat="anlik"],    .dh-mega[data-cat="anlik"]    { --dh-cat: var(--dh-c-anlik); }
@@ -412,7 +412,7 @@ html.uc-dark .dh-mega__head { border-color: var(--color-gray-700); }
 html.uc-dark .dh-mega__title { color: #fff; }
 .dh-mega__job {
   margin: 8px 0 16px;
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.5;
   color: var(--color-gray-500);
 }
@@ -421,7 +421,7 @@ html.uc-dark .dh-mega__title { color: #fff; }
   align-items: center;
   gap: 6px;
   padding: 8px 14px;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   text-decoration: none;
   color: #fff;
@@ -439,7 +439,7 @@ html.uc-dark .dh-mega__title { color: #fff; }
   margin-bottom: 10px;
   padding-bottom: 6px;
   border-bottom: 1px solid var(--color-gray-200);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .09em;
   text-transform: uppercase;
@@ -451,7 +451,7 @@ html.uc-dark .dh-mega__grp { border-color: var(--color-gray-700); }
 .dh-mega__cols a {
   display: block;
   padding: 5px 0;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.35;
   color: var(--color-gray-800);
@@ -490,7 +490,7 @@ html.uc-dark .dh-mega__cols a:hover { color: #fff; }
     background: none;
     border: 0;
     color: inherit;
-    font-size: 20px;
+    font-size: 22px;
   }
 }
 @media (min-width: 1280px) { .dh-v2-menu-trigger { display: none; } }
@@ -501,21 +501,21 @@ html.uc-dark .dh-mega__cols a:hover { color: #fff; }
   .dh-v2-fmt .dh-v2-signin, .dh-v2-fmt .dh-v2-signup, .dh-v2-fmt .dh-v2-brand__sep { display: none; }
 }
 @media (max-width: 575px) {
-  .dh-v2-fmt__track a { padding: 7px 10px; font-size: 11.5px; }
+  .dh-v2-fmt__track a { padding: 7px 10px; font-size: 11px; }
   .dh-v2-brand__logo img { width: 128px; }
   .dh-v2-act { width: 36px; height: 36px; }
 }
 
 /* ==================== 4. MOBİL AÇILIR MENÜ (offcanvas) ==================== */
 .dh-v2-off__slogan {
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--color-gray-500);
   margin: 0 0 12px;
   padding-inline-start: 10px;
   border-inline-start: 2px solid var(--color-primary);
 }
 .dh-v2-off__user { display: flex; gap: 8px; margin: 0 0 16px; }
-.dh-v2-off__user a { flex: 1 1 0; text-align: center; padding: 10px 12px; font-size: 13px; }
+.dh-v2-off__user a { flex: 1 1 0; text-align: center; padding: 10px 12px; font-size: 12.5px; }
 .dh-v2-off__user .dh-v2-signin {
   color: var(--color-gray-900);
   border: 1px solid var(--color-gray-300);
@@ -530,7 +530,7 @@ html.uc-dark .dh-v2-off__list > li { border-color: var(--color-gray-700); }
   align-items: center;
   gap: 10px;
   padding: 13px 0;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--color-gray-900);
   text-decoration: none;
@@ -555,7 +555,7 @@ html.uc-dark .dh-v2-off__list > li > a { color: #fff; }
 .dh-v2-off__list .uc-nav-sub a {
   display: block;
   padding: 7px 0;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--color-gray-600);
   text-decoration: none;
@@ -565,7 +565,7 @@ html.uc-dark .dh-v2-off__list .uc-nav-sub a { color: rgba(255, 255, 255, .72); }
   display: block;
   margin: 10px 0 4px;
   font-family: var(--dh-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .09em;
   text-transform: uppercase;
@@ -629,7 +629,7 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 .dh-v2-foot__brand img { width: 200px; height: auto; }
 .dh-v2-foot__desc {
   margin: 16px 0 0;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.65;
   color: rgba(255, 255, 255, .58);
 }
@@ -674,7 +674,7 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 .dh-v2-foot__cols a {
   display: block;
   padding: 4px 0;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.45;
   color: rgba(255, 255, 255, .68);
   text-decoration: none;
@@ -686,7 +686,7 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 /* --- sağ: uygulama --- */
 .dh-v2-foot__app p {
   margin: 0 0 16px;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.65;
   color: rgba(255, 255, 255, .58);
 }
@@ -704,7 +704,7 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 .dh-v2-foot__strip a {
   position: relative;
   padding: 3px 16px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   color: rgba(255, 255, 255, .78);
   text-decoration: none;
@@ -725,7 +725,7 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 }
 .dh-v2-foot__striplbl {
   margin-inline-end: 14px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 800;
   color: #fff;
 }
@@ -739,17 +739,17 @@ html.uc-dark .dh-v2-off__svc a { background: rgba(255, 255, 255, .06); color: #f
 .dh-v2-foot__bottom p { margin: 0; }
 .dh-v2-foot__rights {
   max-width: 96ch;
-  font-size: 11.5px;
+  font-size: 11px;
   line-height: 1.65;
   color: rgba(255, 255, 255, .42);
 }
 .dh-v2-foot__copy {
   margin-top: 12px !important;
-  font-size: 12px;
+  font-size: 12.5px;
   color: rgba(255, 255, 255, .55);
 }
 .dh-v2-foot__copy span {
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: .04em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, .34);
@@ -827,7 +827,7 @@ html.uc-dark .dh-v2-off__view { background: rgba(255, 255, 255, .06); }
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--color-gray-900);
 }
@@ -1066,7 +1066,7 @@ html.uc-dark .dh-pager__durum { color: var(--color-gray-400); }
 .dh-catbar__chip {
   height: 30px;
   padding: 0 12px;
-  font-size: 13.5px;
+  font-size: 14px;
   position: relative;
 }
 .dh-catbar__chip::after {
@@ -1076,6 +1076,21 @@ html.uc-dark .dh-pager__durum { color: var(--color-gray-400); }
   top: 50%;
   height: 44px;
   transform: translateY(-50%);
+}
+/* ÇAKIŞMA — 22 Ağustos akşamı ölçülerek bulundu.
+   Vendor `.dh-catbar__chip.is-now::after` (0,2,1) sezon işaretini
+   `bottom:0; height:3px` amber şerit olarak çiziyor. Yukarıdaki dokunma
+   hedefi (0,1,1) `top:50%` yazıyor ve vendor `top` yazmadığı için o
+   kazanıyordu: 3px şerit çipin DİKEY ORTASINA düşüyor, "Aslan
+   23 Temmuz – 22 Ağustos" satırının üstü çizilmiş gibi görünüyordu.
+   (ölçüldü: top 28px, height 3px, bg #fcb623)
+   Sezon işareti alt kenara geri alındı; dokunma hedefi diğer çiplerde
+   olduğu gibi çalışmaya devam ediyor. */
+.dh-catbar__chip.is-now::after {
+  top: auto;
+  bottom: 0;
+  height: 3px;
+  transform: none;
 }
 .dh-catbar__row { min-height: 46px; }
 @media (max-width: 575.98px) {
@@ -1158,7 +1173,7 @@ html.uc-dark .dh-m__note[href] { color: var(--color-primary) !important; }
 .dh-sport__more::after,
 .dh-kesf__all::after {
   content: "\203A";
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1;
   transform: translateY(-1px);
   transition: transform .14s;
@@ -1271,14 +1286,14 @@ html.uc-dark .dh-v2-tema__btn::after {
 
 .dh-v2-nav__list > li > a {
   padding: 0 14px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
   letter-spacing: .01em;
   text-transform: uppercase;
   color: var(--dh-menu-ink, #7a5f01);
 }
 html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
-.dh-v2-nav__list > li > a i { font-size: 10px; opacity: .6; }
+.dh-v2-nav__list > li > a i { font-size: 11px; opacity: .6; }
 /* aktif ve açık başlık kategori kimliğine döner */
 .dh-v2-nav__list > li.is-open > a,
 .dh-v2-nav__list > li > a[aria-current="page"] { color: var(--dh-cat, var(--color-primary-700)); }
@@ -1288,7 +1303,7 @@ html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
   .dh-v2-nav__list > li:first-child > a { padding-inline-start: 11px; }
 }
 @media (max-width: 1339px) {
-  .dh-v2-nav__list > li > a { padding: 0 9px; font-size: 13px; letter-spacing: 0; }
+  .dh-v2-nav__list > li > a { padding: 0 9px; font-size: 12.5px; letter-spacing: 0; }
   .dh-v2-nav__list > li:first-child > a { padding-inline-start: 9px; }
 }
 
@@ -1303,10 +1318,27 @@ html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
    Kapsam: kullanim-sartlari · kvkk · cerezler · aydinlatma-metni ·
    yayin-ilkeleri ve aynı kalıbı kullanan tüm belge sayfaları.
    ========================================================================== */
+/* REVİZE (22 Ağustos akşamı): "Yasal sayfalar ya da ilkeler kısmında
+   sağ taraftaki içindekiler dar oluşturuldu; bunu daha da genişletebiliriz,
+   yazı kısmına doğru."
+   ÖLÇÜM: kap 1280px, gövde 746px, yan sütun 268px, oluk 48px →
+   sağ sütun kabın %21'i, uzun bölüm başlıkları iki-üç satıra kırılıyordu.
+   YENİ: yan sütun 340px (%27). Gövde 74ch tavanını korur ama artık
+   1fr yerine ölçülü daralır: 892px'e kadar açılabilirken 74ch (~700px)
+   sınırı devrede kaldığı için okuma bandı bozulmuyor. */
 .dh-doc {
-  grid-template-columns: minmax(0, 74ch) 268px !important;
+  grid-template-columns: minmax(0, 74ch) 340px !important;
   justify-content: space-between;
   column-gap: 48px;
+}
+/* Yan sütunun kendi genişliği vendor'da 268px sabit yazılmış (0,1,0);
+   ızgara hücresini doldursun. */
+/* Vendor `justify-self: end` + sabit genişlik yazıyor; hücre 340px olsa
+   da kutu içeriği kadar kalıyordu (ölçüldü: 232–297px, sayfaya göre
+   değişiyor). Hücreyi doldursun. */
+.dh-doc .dh-doc__aside {
+  width: auto !important;
+  justify-self: stretch !important;
 }
 .dh-doc__body { max-width: none !important; }
 /* sayfa girişindeki özet cümle de aynı bandı kullanır (ölçüm: 566px'ti) */
@@ -1316,7 +1348,7 @@ html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
 .dh-doc__list > li { max-width: none; }
 
 @media (max-width: 1199.98px) {
-  .dh-doc { grid-template-columns: minmax(0, 1fr) 240px !important; column-gap: 32px; }
+  .dh-doc { grid-template-columns: minmax(0, 1fr) 300px !important; column-gap: 32px; }
 }
 @media (max-width: 991.98px) {
   .dh-doc { grid-template-columns: minmax(0, 1fr) !important; }
@@ -1546,11 +1578,11 @@ html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
 
 /* --- 11.2 · <button> çipler kurumsal ölçüyü kaybediyordu ------------------
    Ölçüm: custom.min.css'te `button.dh-catbar__chip { font: inherit }` (0,1,1)
-   benim `.dh-catbar__chip{font-size:13.5px}` kuralımı (0,1,0) yeniyordu.
+   benim `.dh-catbar__chip{font-size:14px}` kuralımı (0,1,0) yeniyordu.
    kadin.html çipleri 16px/500, diğer sayfalar 13.5px/600 — 146 buton /
    10 sayfa. Özgüllük eşitlendi. */
 button.dh-catbar__chip {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   font-family: inherit;
 }
@@ -1649,3 +1681,491 @@ p.fs-5.fw-bold { font-size: 11px !important; }
 span.minimizeDate,
 .dh-fintick__time,
 figure b { font-size: 11px !important; }
+
+
+/* ============================================================================
+   12. KURUMSAL ZEMİN ÜZERİNDE MÜREKKEP — sarı/beyaz 1,77:1 kapatıldı
+   Karar: kullanıcı onayı (22 Ağustos), koyu mürekkebe dönüldü.
+
+   ÖLÇÜM (Playwright, 1440px, 6 sayfa): beyaz metin + kurumsal sarı zemin
+   18 örnek / 5 seçici — hepsi 1,77:1:
+       6x  button.btn.btn-primary          "Kabul Et" (çerez bandı)
+       6x  .btn-primary > span.sm-hide-text "GÖRÜŞ BİLDİR"
+       3x  a.bg-primary.text-white          kategori etiketi
+       2x  .custom-btn.bg-primary.text-white > span  sayaç
+       1x  a.dh-breaking__label             "SON DAKİKA"
+
+   DEVİR NOTUNUN "tek satır" REÇETESİ EKSİK: --dh-on-brand token'ı bu 18
+   örneğin YALNIZCA 1'ini (.dh-breaking__label) besliyor. Kalan 17 örnek
+   vendor utility'lerinden (.text-white !important, .btn-primary'nin
+   --bs-btn-color'ı) geliyor; token'a hiç bakmıyorlar. Üçü de ayrı yazıldı.
+
+   Ayrıca token custom.min.css'te DEĞİŞTİRİLEMEZ (denetim.py 7. kural,
+   v1 arşivi aynı dosyayı paylaşıyor) — override buraya yazıldı.
+
+   custom.min.css:2019 token'ı #fff yapmıştı; gerekçesi sarı footer
+   (.dh-footer-brand) idi. O footer v2'de YOK (0/98 sayfa; yerine
+   .dh-v2-foot geldi). Beyaz mürekkebin tek gerekçesi böylece düşmüş oldu.
+
+   Yeni ölçüm: #121212 / #fcb623 = 10,58:1 (AA + AAA).
+   ========================================================================== */
+
+/* --- 12.1 · token: kurumsal zemin mürekkebi koyuya döndü ----------------
+   .dh-breaking__label, .dh-secbar__nav button:hover, .dh-pod__play —
+   hover/dinamik durumlar da bu yoldan düzeliyor (statik tarama görmez). */
+:root {
+  --dh-on-brand: var(--color-gray-900);
+  --dh-on-brand-soft: rgba(18, 18, 18, 0.78);
+  --dh-on-brand-line: rgba(18, 18, 18, 0.24);
+}
+
+/* --- 12.2 · Bootstrap .btn-primary ---------------------------------------
+   Renk doğrudan değil, düğmenin kendi değişkeninden veriliyor; böylece
+   hover / active / disabled durumları da tutarlı kalıyor (vendor hover'da
+   zemini #b79200'a indiriyor: #121212 üstünde 6,04:1, AA geçiyor). */
+.btn-primary {
+  --bs-btn-color: var(--color-gray-900);
+  --bs-btn-hover-color: var(--color-gray-900);
+  --bs-btn-active-color: var(--color-gray-900);
+  --bs-btn-disabled-color: var(--color-gray-900);
+}
+
+/* --- 12.3 · .bg-primary + .text-white utility ikilisi --------------------
+   Vendor .text-white'ı `!important` ile yazıyor (0,1,0). Sınıf ikizlemek
+   yerine burada iki sınıf zaten eşleşiyor (0,2,0) — !important ile
+   birlikte kural kazanıyor. Çocuklara miras yoluyla iniyor; kendi
+   .text-white'ı olan çocuk için ayrıca inen seçici yazıldı.
+   DİKKAT: yalnız .bg-primary ile BİRLİKTE geçerli — koyu zemin
+   üstündeki .text-white'a dokunulmuyor. */
+.bg-primary.text-white,
+.text-white.bg-primary,
+.bg-primary .text-white,
+.bg-primary.bg-primary > * {
+  color: var(--color-gray-900) !important;
+}
+
+/* --- 12.4 · karanlık modun `dark:text-white` varyantı -------------------
+   ÖLÇÜM (98 sayfa × karanlık mod): 12.2/12.3 uygulandıktan SONRA hâlâ
+   94 örnek 1,77:1 kalmıştı — "GÖRÜŞ BİLDİR" düğmesi 94 sayfada.
+   Sebep: vendor `:where(.uc-dark) .dark\:text-white` kuralı `!important`
+   ile beyaz yazıyor. `:where()` özgüllüğe SIFIR katkı verdiği için
+   seçici (0,1,0); iki sınıfla eşleşen kural (0,2,0) onu yeniyor.
+   Zemin karanlık modda da kurumsal sarı — mürekkep koyu kalmalı. */
+.btn-primary.dark\:text-white,
+.bg-primary.dark\:text-white,
+.btn-primary.dark\:text-white > *,
+.bg-primary.dark\:text-white > * {
+  color: var(--color-gray-900) !important;
+}
+
+/* --- 12.5 · `.bg-primary` üzerinde MİRAS yoluyla gelen beyaz -----------
+   ÖLÇÜM: 12.4'ten sonra karanlık modda 18 örnek kalmıştı (finans
+   sayfalarındaki kategori etiketi, 6 sayfa × 3 kırılım).
+   Bu kez kural elemanın KENDİSİNDE değil: <a class="text-none bg-primary
+   px-1 ..."> hiçbir mürekkep sınıfı taşımıyor; beyazı `<body>`'deki
+   `dark:text-white`'tan MİRAS alıyor. Seçici ne kadar özgül yazılırsa
+   yazılsın miras zincirine karışmıyor — mürekkebi zeminin kendisine
+   yazmak gerekiyor.
+   Kurumsal sarı zeminin mürekkebi her iki temada da koyudur; doğrudan
+   bildirim mirası kesiyor, `!important` gerekmiyor. */
+.bg-primary { color: var(--color-gray-900); }
+
+
+/* ============================================================================
+   13. TİPOGRAFİ ÖLÇEĞİ — dağınık boyutlar tek merdivene indi
+   Karar: kullanıcı onayı (22 Ağustos) — "tam birleştirme".
+
+   ÖLÇÜM ÖNCESİ (98 sayfa × 1440px, tarayıcıda hesaplanmış boyut):
+     kart başlığı 22 · bölüm başlığı 23 · lead 13 · meta 11 farklı değer
+     toplam 4.580 metin öğesi, 33 ayrı px değeri
+     yoğunluk: 13px(927) 11px(693) 14px(456) 16px(377) 17,6px(306)
+     0,5px komşular: 13/13,5 · 14/14,5 · 15/15,5 · 16/16,5 · 17/17,5/17,6
+
+   MERDİVEN — 9 kademe:
+     11 · 12,5 · 14 · 16 · 18 · 22 · 26 · 30 · 36
+   Kademeler mevcut yığılma noktalarına oturtuldu; en çok kullanılan üç
+   boyut (13→12,5 · 11 · 14) yerinde kaldı ya da 0,5px oynadı.
+
+   BU BÖLÜM YALNIZ BAŞLIK TOKEN'LARINI TAŞIR. Ölçümde 17,6 / 23,2 / 30,4
+   ve 15px'in kaynağı vendor `.h1…​.h6` yardımcı sınıflarıydı; bunlar
+   demo-six.min.css'te `--sizes-heading-h*-size` token'ından besleniyor
+   (`.h4`, `.xl\:h4`, `.lg\:h2` … hepsi aynı token). Token custom.min.css
+   :root'unda tanımlı; oraya yazılamaz (denetim.py 7. kural, v1 arşivi
+   aynı dosyayı paylaşıyor) — v2.css daha sonra yüklendiği için buradaki
+   :root aynı özgüllükte kazanıyor.
+
+     h1  clamp(1,9rem→2,5rem)   30,4 → 40      olacak  26 → 36
+     h2  clamp(1,45rem→1,9rem)  23,2 → 30,4    olacak  22 → 30
+     h3  clamp(1,2rem→1,45rem)  19,2 → 23,2    olacak  18 → 22
+     h4  1,1rem = 17,6                         olacak  18
+     h5  1rem   = 16                           olacak  16   (değişmedi)
+     h6  0,9375rem = 15                        olacak  14
+
+   h1–h3 akışkan kalıyor: iki kademe arasında sürekli değer üretiyorlar.
+   Merdiven bu üçünde uçları bağlar, aradaki genişliklerde değil — v1'den
+   gelen akışkan başlık kararı korundu.
+   Satır yüksekliği (1,12) ve harf aralığı (-0,02em) değişmedi.
+   ========================================================================== */
+
+:root {
+  /* merdiven — bileşen kuralları bu adları çağırsın, çıplak px yazmasın */
+  --dh-t-3xs: 11px;
+  --dh-t-2xs: 12.5px;
+  --dh-t-xs:  14px;
+  --dh-t-s:   16px;
+  --dh-t-m:   18px;
+  --dh-t-l:   22px;
+  --dh-t-xl:  26px;
+  --dh-t-2xl: 30px;
+  --dh-t-3xl: 36px;
+
+  /* vendor başlık ölçeği merdivene oturtuldu */
+  --sizes-heading-h1-size: clamp(26px, 1.35rem + 2.2vw, 36px);
+  --sizes-heading-h2-size: clamp(22px, 1.1rem + 1.4vw, 30px);
+  --sizes-heading-h3-size: clamp(18px, 1rem + 0.8vw, 22px);
+  --sizes-heading-h4-size: var(--dh-t-m);
+  --sizes-heading-h5-size: var(--dh-t-s);
+  --sizes-heading-h6-size: var(--dh-t-xs);
+}
+
+
+/* --- 13.2 · custom.min.css'ten gelen merdiven dışı bildirimler ------------
+   Elle yazılmıyor: docs/parts/olcek-uret.py donmuş custom.min.css'i
+   ayrıştırıp merdiven dışı her font-size için aynı seçici ve aynı ortam
+   sorgusuyla bir override üretiyor -> assets/css/theme/v2/z-olcek.css.
+   O dosya v2.css'in İLK parçası; custom.min.css'i yener, buradaki v2
+   kararlarını yenmez. İkon/glif seçicileri ve 40px üstü dekoratif
+   ölçüler (ör. .dh-ph__stamp filigran rakamı) kapsam dışı. */
+
+/* --- 13.3 · vendor `.fs-*` yardımcı sınıfları ----------------------------
+   demo-six.min.css'te sekiz kademe, hepsi `!important`:
+     fs-1 1,75rem=28 · fs-2 1,5rem=24 · fs-3 1,25rem=20 · fs-4 1,125rem=18
+     fs-5 1rem=16 · fs-6 .925rem=14,8 · fs-7 .875rem=14 · fs-8 .75rem=12
+   Ölçümde en görünür kalemi fs-6: kabuk eylem etiketleri (.dh-v2-act__label)
+   dahil 216 öğe 14,8px çıkıyordu. Kaynak dosya vendor, olcek-uret.py yalnız
+   custom.min.css'i ayrıştırıyor — bu dört satır elle yazıldı.
+   fs-4 / fs-5 / fs-7 zaten merdiven üstünde, dokunulmadı. */
+.fs-1 { font-size: var(--dh-t-2xl) !important; }   /* 28   -> 30   */
+.fs-2 { font-size: var(--dh-t-xl) !important; }    /* 24   -> 26   */
+.fs-3 { font-size: var(--dh-t-l) !important; }     /* 20   -> 22   */
+.fs-6 { font-size: var(--dh-t-xs) !important; }    /* 14,8 -> 14   */
+.fs-8 { font-size: var(--dh-t-2xs) !important; }   /* 12   -> 12,5 */
+
+
+/* ============================================================================
+   14. REVİZE TURU — 22 Ağustos, revizeler.docx
+   ========================================================================== */
+
+/* --- 14.1 · kaydırıcı yanındaki haber listesi tek sütuna döndü -----------
+   Talep: "Sol taraftaki kartları liste olarak eski yapıdaki gibi
+   oluşturalım... Savunmadaki yapı gibi olacak."
+
+   ÖLÇÜM (index, 1440px): SPOR/PİYASALAR/SAĞLIK/TEKNOLOJİ/OYUN/KADIN
+   bloklarında .dh-cards--list 620px kaba iki sütun (302+302) sığıyordu
+   ama blok `overflow: hidden` taşıyor ve kaydırıcı sağdan biniyordu:
+   ikinci sütunun başlığı ve meta satırı kırpılıyordu (ekran görüntüsü 1).
+
+   §8.8'de iki sütun kararı vardı ("uzun olunca güzel olmuyor"); o karar
+   KAYDIRICISIZ uzun listeler için geçerli kalıyor — Köşe Yazıları (8
+   kart) hâlâ iki sütun. Yalnız kaydırıcıyla YAN YANA duran listeler tek
+   sütuna dönüyor; orada zaten 4 kart var, dikeyde uzamıyor. */
+@media (min-width: 992px) {
+  /* İki markup varyantı var, ölçülerek bulundu:
+       index ve kategori sayfaları -> .block-layout > (.swiper | liste)
+       finans aileleri (altın, borsa, döviz, kripto), hamilelik
+                              -> .block-content > .row > (kolon[.swiper] | kolon)
+     İkincisinde .block-layout ATASI YOK; ilk yazılan kural bu altı
+     sayfayı ıskalamıştı (altin, borsa, doviz, finans, kripto, hamilelik
+     — 98 sayfa tarandı, hepsi bu). */
+  .block-layout:has(.swiper) .dh-cards--list,
+  .row:has(.swiper) .dh-cards--list { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- 14.2 · bölüm başlığı üstünde standart boşluk ------------------------
+   Talep: "Başlıklar yukarıda çizgilere çok yakın, tüm sayfalandırmada
+   belli bir standart boşluk yapısı olsun."
+
+   ÖLÇÜM (20 sayfa, 1440px) — bölüm başlığının bölüm üst kenarına uzaklığı:
+       0px  8 örnek   video.html "Dada 60", "Son Dakika Videoları"
+      26px  1         finans.html "Finans Gündemi"
+      32px  1         spor.html "SPOR GÜNDEMİ"
+      40px  6         gundem.html "Özgün İçerikler"
+      48px 21         pt-5 lg:pt-6 taşıyan bölümler  <- fiilî standart
+      64px 30         py-4 lg:py-8 taşıyan tam genişlik bantları
+
+   Karar: içerik bölümlerinde tek standart 48px; tam genişlik bantları
+   (py-*) kendi 64px'inde kalıyor — bant zaten renk değiştirerek ayrılıyor,
+   içi daha ferah olmalı. Açıkça pt-0 yazılmış bölümlere dokunulmuyor
+   (kahraman görselinin altına bilerek yapışan düzenler).
+   `.dh-catbar` de dışarıda: o bir bölüm değil, gezinti kumandası —
+   kendi simetrik payını §15.3'te alıyor (ölçüldü: bu kural üst 48px
+   veriyordu, alt 14px kalıyordu; şerit asimetrik duruyordu). */
+:root { --dh-sec-gap: 48px; }
+
+/* İç sarmalayıcı istisnası: bir kısım blok dolgusunu kendi
+   `.section-outer.py-4 lg:py-8` çocuğunda taşıyor (index'teki SPOR,
+   Takımlar, PİYASALAR ...). Dış kaba da dolgu verilince 64px 112px'e
+   çıkıyordu — ölçüldü, 29 başlık. `:has()` ile bu kaplar dışarıda.
+
+   Öğe adı DEĞİL sınıf: bölümlerin bir kısmı <div class="section">
+   (ör. finans.html .dh-finnews, spor.html hub). `section.section`
+   yazılınca bunlar dışarıda kalıyordu — ölçümde 26px ve 32px olarak
+   göründüler. Kimlik seçicisiyle yazılmış blok kutuları (#ozgun gibi)
+   kendi dolgusunu korur; onlar bölüm değil, kutu. */
+.section:not(.dh-catbar):not([class*="py-"]):not([class*="pt-0"]):not(:has(> .section-outer[class*="py-"])):not(:has(> .section-outer[class*="pt-"])) {
+  padding-top: var(--dh-sec-gap) !important;
+}
+/* bölüm dolgusu tek kaynak olsun: başlık kendi payını eklemesin */
+.section:not(.dh-catbar):not([class*="py-"]):not([class*="pt-0"]):not(:has(> .section-outer[class*="py-"])):not(:has(> .section-outer[class*="pt-"])) > .container > .section-header:first-child,
+.section:not(.dh-catbar):not([class*="py-"]):not([class*="pt-0"]):not(:has(> .section-outer[class*="py-"])):not(:has(> .section-outer[class*="pt-"])) > .container > .block-header:first-child,
+.section:not(.dh-catbar):not([class*="py-"]):not([class*="pt-0"]):not(:has(> .section-outer[class*="py-"])):not(:has(> .section-outer[class*="pt-"])) > .container > .section-inner:first-child > .block-layout:first-child > .block-header:first-child {
+  margin-top: 0 !important;
+}
+
+/* --- 14.3 · footer alt bloğu: telif solda, Gavia Works imzası sağda ------
+   Talep: "Footer kısmında yazı 2 satırda bitsin, alt tarafta ise Gavia
+   Works imzasını sağ tarafta, tüm hakları yazısını sol tarafa koyalım."
+
+   ÖLÇÜM (1440px): telif metni 96ch kapta üç satıra iniyordu (kap 704px,
+   metin 331 karakter). İki satır için satır başına ~166 karakter gerekir;
+   11px Gilroy'da ortalama karakter 5,3px -> ~880px. Kap 1180px'e açıldı,
+   iki satırda bitiyor ve 1280px'lik sayfa kabından taşmıyor.
+
+   §8.1 alt bloğu ortalamıştı; ortalama YALNIZ telif paragrafında kalıyor,
+   son satır iki uca yaslanıyor. 767px altında alt alta ve ortalı. */
+.dh-v2-foot__rights { max-width: 1180px; }
+
+.dh-v2-foot__sign {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+  /* REVİZE (22 Ağustos, ikinci tur): "kaynak cümlesinden sonra aşağıda
+     insin". Telif satırı yasal paragrafın dibindeydi (12px); paragrafın
+     kendi satır aralığı 18px, iki blok tek paragraf gibi okunuyordu.
+     28px, footer'ın diğer blok araları ile aynı ritim. */
+  margin-top: 28px;
+  text-align: start;
+}
+.dh-v2-foot__sign .dh-v2-foot__copy { margin-top: 0 !important; }
+.dh-v2-foot__gavia {
+  margin: 0;
+  font-size: var(--dh-t-2xs);
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: rgba(255, 255, 255, .72);
+  white-space: nowrap;
+}
+.dh-v2-foot__gavia span {
+  margin-inline-end: 6px;
+  font-size: var(--dh-t-3xs);
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .34);
+}
+@media (max-width: 767.98px) {
+  .dh-v2-foot__sign { justify-content: center; text-align: center; }
+}
+
+/* --- 14.4 · kurumsal şerit (dh-serit) -----------------------------------
+   Talep: "Afet sayfasında son 24 saat kısmının arkasını takımlar kısmı
+   gibi yapalım." + "Şehirlerarası Yol Durumu arka planı da takımlardaki
+   gibi olsun."
+
+   Referans index.html'deki Takımlar bandı: tam genişlik kap +
+   `bg-gray-10 dark:bg-gray-800` + iç `.section-outer.py-4 lg:py-8`.
+   Yeni bir zemin dili icat edilmedi, o kalıbın adı kondu: .dh-serit.
+   Markup anlik-uret.py'de üretiliyor; buradaki kural yalnız şeridin
+   sayfa kenarına dayanan komşularla arasını ayırıyor. */
+/* REVİZE (22 Ağustos, ikinci tur): şerit üstündeki tabloya yapışıyordu.
+   ÖLÇÜM (trafik-ulasim.html, 1440px): şeridin üstündeki bölüm `pb-0`
+   taşıyor, son kartın altı 1100px, şeridin üst kenarı da 1100px —
+   arada BOŞLUK YOK. Şeridin altında ise sonraki bölüm kendi 48px'ini
+   veriyor. Kullanıcı "aşağıdaki Anlık bölümü gibi mesafe" istedi:
+   üst kenara da aynı standart (--dh-sec-gap, 48px) verildi.
+   Şeridin kendi 64px iç dolgusu bantın İÇİ; bu ise bandın sayfadan
+   ayrılma payı — ikisi ayrı iş. */
+.dh-serit { position: relative; margin-top: var(--dh-sec-gap); }
+/* Ard arda gelen iki şerit tek bant gibi okunsun, arada sayfa zemini
+   görünmesin. */
+.dh-serit + .dh-serit { margin-top: 0; }
+/* Sayfanın ilk bölümü şeritse kahraman görselinden ayrılmasın. */
+.dh-ph + .dh-serit,
+.dh-ph--photo + .dh-serit { margin-top: 0; }
+/* Şerit içindeki liste kabı, kartlı bölümlerdeki gibi altta da nefes alsın.
+   Takımlar bandı `pb-0` taşıyor çünkü altında kaydırıcı var; burada liste
+   bitiyor, alt dolgu simetrik kalıyor. */
+.dh-serit > .section-outer > .container > *:last-child { margin-bottom: 0; }
+
+
+/* ============================================================================
+   15. REVİZE TURU 3 — 22 Ağustos, ekrandan gelen istekler
+   ========================================================================== */
+
+/* --- 15.1/15.2 · ray okları ve kart araları --------------------------
+   Kurallar b-bolum.css'e yazıldı: `.dh-blinks__nav` ve `.dh-blinks--ray`
+   orada tanımlı ve b-bolum.css v2.css içinde kabuk.css'ten SONRA
+   geliyor — buraya yazılan override ölçümde kaybediyordu (ok bindirmesi
+   18px kalmıştı). Bileşenin sahibi dosyada düzeltildi.
+   Yalnız vendor'ın `.dh-track` rayı burada kalıyor (custom.min.css'te
+   tanımlı, v2 her yerde onu yeniyor). */
+.dh-track { gap: 20px; }
+
+/* --- 15.3 · kategori çip şeridi ortalandı -------------------------------
+   Talep: "tüm sitede bu alanları ortalı şekilde olsun, üst ve aşağıdan
+   hizalamalara dikkat edelim."
+
+   ÖLÇÜM: şerit `nav.section.dh-catbar` olduğu için §14.2'nin bölüm
+   boşluğu kuralına yakalanıyordu: üst 48px, alt 10px — asimetrik.
+   Şerit bir bölüm değil, bir gezinti kumandası; kendi simetrik payını
+   alıyor ve §14.2'nin dışına çıkarılıyor. */
+.dh-catbar.section:not([class*="py-"]):not([class*="pt-0"]) {
+  padding-block: 14px !important;
+}
+/* Çipler ortada; sol etiket kendi yerinde kalır, ortalamayı bozmasın diye
+   sağa aynı genişlikte görünmez bir denge payı verilir. */
+.dh-catbar__row { justify-content: center; }
+.dh-catbar__inner { flex: 0 1 auto; }
+.dh-catbar__inner .dh-track,
+.dh-catbar__inner .dh-catbar__list { justify-content: center; }
+
+/* --- 15.4 · sayfa sonu ile footer arasında standart pay ------------------
+   Talep: "site genelinde sayfaların altında belli bir boşluk verelim, bu
+   şekilde sıfır gibi olmasın."
+   ÖLÇÜM: iller.html'de son blok footer'a yapışıktı (0px). §14.2 üst payı
+   standartlaştırmıştı; alt pay da aynı ölçeğe bağlanıyor. */
+.wrap > :last-child:not([class*="py-"]) { padding-bottom: var(--dh-sec-gap) !important; }
+
+/* --- 15.5 · koyu görsel üstündeki metin okunmuyor ------------------------
+   Talep: "bu kısımlarda yazı okunmuyor, katmanların üzerini çıkartalım,
+   yazıların beyazlığı belirgin olsun."
+   Sorun üst üste binen üç saydam katman: görselin kendi karartması +
+   kutunun rgba zemini + satırın rgba zemini. Beyaz metin bunların
+   toplamında griye düşüyordu. Katman sayısı ikiye indi, metin tam beyaz. */
+/* ÖLÇÜLDÜ (astroloji.html üst bandı): başlıklar rgba(255,255,255,.94),
+   tarihler rgba(255,255,255,.62). Saydam beyaz, altındaki görselin
+   karartmasıyla karışıp griye düşüyordu. Talep: "bunları komple beyaz
+   yapalım, katman kısmındaki renk yapısı yazının ARKASINDA kalsın."
+   Metin tam opak beyaz; okunurluğu perde sağlıyor, metnin kendisi
+   saydamlaştırılmıyor. Site genelinde kaydırıcı/lider bantları. */
+.dh-lb__list,
+.dh-lb__side {
+  background: rgba(18, 18, 18, .62);
+  backdrop-filter: blur(2px);
+}
+.dh-lb__list .dh-lb__it,
+.dh-lb__side .dh-lb__it { background: transparent; }
+
+/* Başlıklar: tam beyaz. */
+.dh-lb h3,
+.dh-lb h3 a,
+.dh-lb .post-title,
+.dh-lb .post-title a,
+.dh-lb__it a,
+.dh-lb__it .dh-lb__t,
+.dh-lb__list h3,
+.dh-lb__list h3 a { color: #fff !important; }
+
+/* Tarih ve meta: beyaz kalır, yalnız bir tık kısılır ki hiyerarşi
+   kaybolmasın — .82 beyaz, koyu perdede 12:1 üstünde. */
+.dh-lb .minimizeDate,
+.dh-lb .minimizeNumber,
+.dh-lb time,
+.dh-lb .post-meta,
+.dh-lb .post-meta *,
+.dh-lb__it time,
+.dh-lb__it .dh-lb__when { color: rgba(255, 255, 255, .82) !important; }
+
+/* ÖZGÜLLÜK — ölçüldü: yukarıdaki (0,1,1) kurallar kaybediyordu.
+   custom.min.css `.dh-lb .swiper-thumbs .swiper-slide h3` (0,3,1) ve
+   `.dh-lb .swiper-thumbs .swiper-slide .post-meta *` (0,4,1) yazıyor,
+   ikisi de !important. Aynı bağlam aynı derinlikte yazıldı. */
+.dh-lb .swiper-thumbs .swiper-slide h3,
+.dh-lb .swiper-thumbs .swiper-slide h3 a,
+.dh-lb .swiper-main .swiper-slide h3,
+.dh-lb .swiper-main .swiper-slide .post-title,
+.dh-lb .swiper-main .swiper-slide .post-title a { color: #fff !important; }
+
+.dh-lb .swiper-thumbs .swiper-slide .post-meta,
+.dh-lb .swiper-thumbs .swiper-slide .post-meta *,
+.dh-lb .swiper-thumbs .swiper-slide .minimizeDate,
+.dh-lb .swiper-thumbs .swiper-slide time,
+.dh-lb .swiper-main .swiper-slide .post-meta,
+.dh-lb .swiper-main .swiper-slide .post-meta * { color: rgba(255, 255, 255, .82) !important; }
+
+/* Tarih/sayaç öğeleri her kalıpta aynı yerde durmuyor (.post-meta içinde,
+   .dh-lb__it içinde ya da doğrudan slaytta). Ölçümde .62 kalıyorlardı.
+   Sınıf ikizlemesiyle (0,5,0) tek kuralda toplandı. */
+.dh-lb .swiper-slide .minimizeDate.minimizeDate,
+.dh-lb .swiper-slide .minimizeNumber.minimizeNumber,
+.dh-lb .swiper-slide time.minimizeDate,
+.dh-lb .swiper-slide .post-date span,
+.dh-lb .swiper-slide .post-date span span { color: rgba(255, 255, 255, .82) !important; }
+
+/* ÖZGÜLLÜK — ölçüldü: kazanan kural
+   `.dh-lb .swiper-thumbs .swiper-slide .post-date span` = (0,4,2).
+   Yukarıdaki (0,4,0) ve (0,3,1) kurallar kaybediyordu. Aynı bağlam
+   yazılıp sınıf ikizlendi: (0,6,2). */
+.dh-lb .swiper-thumbs .swiper-slide .post-date span.minimizeDate.minimizeDate,
+.dh-lb .swiper-thumbs .swiper-slide .post-date span.minimizeNumber.minimizeNumber,
+.dh-lb .swiper-thumbs .swiper-slide .post-meta.post-meta span,
+.dh-lb .swiper-main .swiper-slide .post-date span.minimizeDate.minimizeDate,
+.dh-lb .swiper-main .swiper-slide .post-meta.post-meta span { color: rgba(255, 255, 255, .82) !important; }
+
+/* Görsel üstündeki metni saydamlaştıran vendor opaklık yardımcıları
+   (text-opacity-60 vb.) bu bantta etkisiz — perde zaten var. */
+.dh-lb [class*="text-opacity"] { --bs-text-opacity: 1; opacity: 1; }
+
+
+/* ============================================================================
+   16. ZEBRA DESENİ — bölümler beyaz ↔ şeffaf dönüşümlü
+   Talep (22 Ağustos): "Bir section'la başladığın zaman solid bir renkle,
+   arka tarafı boş olan da diğer section olsun." Kullanıcı teyidi:
+   solid = BEYAZ (zaten sayfa genelinde kullanılıyor), diğeri renk değil,
+   ARKASI BOŞ — sayfa zemini görünür.
+
+   ÖLÇÜM ÖNCE (99 sayfa, 1440px):
+     kurala uyan 24 · zebra kırık 49 sayfa/146 ihlal ·
+     yapışık bölüm 75 sayfa/256 ihlal
+   En bozuk: video(29) veri-harita(21) anlik(19) hamilelik(13) index(11)
+
+   NEDEN MARKUP'A DOKUNULMADI: 100 sayfaya sınıf basmak yerine
+   `:nth-child(... of ...)` kullanıldı — seçici, kardeşler arasında
+   YALNIZ eşleşenleri sayar. Chrome 111+ destekliyor (ölçüldü: bu
+   tarayıcıda `CSS.supports('selector(:nth-child(odd of .x))')` = true).
+   Destek yoksa desen uygulanmaz, sayfa bozulmaz — güvenli bozulma.
+
+   ZEBRAYA GİRMEYENLER (bilerek):
+     · kahraman başlık .dh-ph / .dh-lb / .dh-finhead — kendi görseli var
+     · çip şeridi .dh-catbar — bölüm değil, gezinti kumandası (§15.3)
+     · tam genişlik bantları [class*="py-"] ve .dh-serit — bunlar zaten
+       kendi kurumsal zeminini taşıyor, desenin ritmini bozmasın diye
+       sayıma girmiyor
+   ========================================================================== */
+
+/* Sayılan küme: .wrap'in doğrudan çocuğu olan içerik bölümleri. */
+.wrap > .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"]):nth-child(odd of .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"])) {
+  /* Vendor `bg-gray-10` / `bg-white` / `bg-gray-25` yardımcıları
+     `!important` yazıyor; ölçümde 15 sayfada zebrayı yeniyorlardı
+     (astroloji, ekonomi, hamilelik, kultur-yasam ...). Aynı silah. */
+  background: #fff !important;
+}
+.wrap > .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"]):nth-child(even of .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"])) {
+  background: transparent !important;
+}
+html.uc-dark .wrap > .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"]):nth-child(odd of .section:not(.dh-catbar):not(.dh-serit):not([class*="dh-ph"]):not([class*="py-"])) {
+  background: var(--color-gray-900);
+}
+
+/* --- 16.1 · yapışık bölümler --------------------------------------------
+   §14.2 üst payı standartlaştırmıştı ama `pb-0` taşıyan bölümler alttan
+   sıfır kalıyordu; zebra açılınca iki farklı zemin dikişsiz birleşiyor ve
+   desen okunmuyordu. Alt pay da aynı ölçeğe bağlandı.
+   `pb-*` yazılmış bölümlere dokunulmuyor — orada karar verilmiş. */
+/* Vendor `.pb-0` kuralı `!important` yazıyor (ölçüldü: kural eklendikten
+   sonra da padding-bottom 0px kaldı). Aynı silahla eşitlendi. */
+.wrap > .section:not(.dh-catbar):not([class*="py-"]):not(:has(> .section-outer[class*="py-"])) {
+  padding-bottom: var(--dh-sec-gap) !important;
+}

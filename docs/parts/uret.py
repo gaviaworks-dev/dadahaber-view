@@ -35,7 +35,7 @@ MENU = [
            ("Bugün Ne Oldu?","bugun-ne-oldu.html")]),
    (None, [("Gündem Takvimi","gundem-takvimi.html"),("Güncellenen Haberler","guncellenen-haberler.html"),
            ("Afet ve Acil Durum","afet-acil-durum.html"),("Trafik ve Ulaşım","trafik-ulasim.html"),
-           ("Hava Durumu","veri-harita.html#hava")])]),
+           ("Hava Durumu","hava-durumu.html")])]),
 
  ("gundem", "Gündem", "gundem.html",
   "Türkiye, siyaset, toplum, hukuk ve yerel haberler.",

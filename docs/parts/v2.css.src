@@ -4,6 +4,7 @@
    custom.min.css DEĞİŞTİRİLMEZ; /v1/ kopyası onu paylaşıyor. Tüm v2 CSS'i burada.
    Parçalar çakışmasın diye ayrı dosyalarda; yayından önce düzleştirilir.
    ========================================================================== */
+@import url("./v2/z-olcek.css"); /* ÜRETİLMİŞ: tipografi merdiveni (olcek-uret.py) — İLK sırada: custom.min.css'i yener, v2 parçalarını yenmez */
 @import url("./v2/kabuk.css");    /* kabuk: header · mega menü · footer */
 @import url("./v2/a-gundem.css"); /* Şimdi · Gündem · Dünya */
 @import url("./v2/b-bolum.css");  /* Ekonomi · Gelecek · Kültür & Yaşam */
@@ -14,3 +15,5 @@
 @import url("./v2/g-uyelik.css"); /* giriş · üye ol · şifremi unuttum */
 @import url("./v2/h-anlik.css");  /* Anlık alt sayfaları */
 @import url("./v2/i-spor.css");    /* spor liste yan sütunu · takım sayfaları */
+@import url("./v2/j-cerez.css");   /* çerez rıza bandı · Gizlilik Tercih Merkezi */
+@import url("./v2/k-hava.css");    /* hava-durumu.html — il/ilçe seçimli tahmin */
