@@ -4,6 +4,79 @@ Bu dosya oturum devri içindir. Yeni bir oturuma başlarken önce bunu oku.
 
 ---
 
+# ► SIRADAKİ OTURUM BURADAN BAŞLASIN
+
+```bash
+cd ~/Developer/"Backend Projects"/dadahaber-view
+git checkout v2 && git pull
+python3 -m http.server 8765     # → http://localhost:8765/
+python3 docs/parts/denetim.py   # 98 sayfa TEMİZ vermeli
+```
+
+## Kullanıcının onayını bekleyen iki karar
+
+1. **Sarı zeminde beyaz metin 1,77:1.** SON DAKİKA rozeti, kategori
+   etiketleri, "GÖRÜŞ BİLDİR" düğmesi. Eski kayıtta "kullanıcı bilerek
+   seçti" yazdığı için 22 Ağustos turunda da dokunulmadı.
+   Değiştirmek tek satır: `--dh-on-brand: var(--color-gray-900)` → 10,58:1.
+2. **Tipografi ölçeği birleştirmesi.** Ölçüldü, uygulanmadı:
+   kart başlığı rolü **10**, bölüm başlığı **6**, meta satırı **5**,
+   lead/özet **9** farklı değer taşıyor. `index.html` tek başına 7 farklı
+   kart-başlığı boyutu kullanıyor. Birleştirme 98 sayfada görsel etki
+   yaratacağı için onay istendi, bekliyor.
+
+## Ölçülmüş ama yapılmamış işler
+
+- **Köşe imzası:** 266 görünür öğede sol-alt köşe hâlâ yuvarlak. En sık iki
+  kalem (`img.w-24px` 94, `.dh-card__badge` 28) düzeltildi; kalanların kaynağı
+  donmuş `custom.min.css` (310 `border-radius` bildiriminin 154'ü simetrik).
+  Düzeltme `v2/` altında override olarak yazılmalı.
+- **Yarıçap ölçeği dağınık:** 864 örnek keskin ama 8px değil (12/14/16/18px).
+  Üç kademeye indirilmesi öneriliyor (`--dh-r-s/-m/-l`).
+- **Dokunma hedefi:** 390px'te kontrollerin bir kısmı 44×44 altında.
+  Kabuk düğmeleri, offcanvas kapatma ve menü tetikleyicisi görünmez
+  `::after` katmanıyla 44px'e çıkarıldı; kart içi küçük bağlantılar ve
+  swiper noktaları (8×8) hâlâ küçük.
+- **Footer sosyal bağlantıları `href="#"`** — 8 hesap, gerçek adres yok.
+
+## Tuzaklar — tekrar etmesin
+
+1. **`.gitignore`'da yol içi desen kullanma.** `v2/` deseni `assets/js/v2/`
+   ve `assets/css/theme/v2/` yollarını da yutuyordu; yeni yazılan 7 dosya
+   hiçbir commit'e girmemişti ve yayında menü/form ölü kalacaktı.
+   Kural artık `/v2/`. **Yeni dosya yazınca `git status --ignored` ile bak.**
+2. **v1 sınıf adlarıyla çakışma.** `.dh-dir` v1'de finans yön üçgeniydi
+   (`width:0;height:0`); v2'de aynı adı kullanınca `diger.html` her
+   kırılımda 8×0 piksele çöktü. **Yeni sınıf adını
+   `grep -c '\.<ad>' assets/css/theme/custom.min.css` ile kontrol et.**
+3. **Bileşen sözleşmelerini oku.** `dh-bolge.js` kökte `data-dh-bolge`
+   niteliği arıyor; yalnız sınıf verilince seçici sessizce ölüyor —
+   tıklama hiçbir şey yapmıyor ama konsol da temiz.
+4. **Özgüllük yarışı.** Vendor `custom.min.css` sık sık iki sınıflı
+   (0,1,1) veya `!important` kural yazıyor. v2'den override ederken
+   ölç: `getComputedStyle` beklediğini vermiyorsa sınıfı ikizle (`.x.x`)
+   ya da özgüllüğü eşitle.
+5. **Ölçmeden "düzeldi" deme.** Bu turda üç bileşen (NATO seçici, sayfalama,
+   sekmeler) markup ve CSS doğru göründüğü hâlde ölüydü; hepsi tıklanarak
+   yakalandı.
+
+## Sayfa üretme kuralı
+
+Sayfalar **elle yazılmaz**, `docs/parts/*-uret.py` üretir:
+`uret.py` (kabuk) · `diger-uret.py` · `uyelik-uret.py` · `anlik-uret.py` ·
+`nato-uret.py` · `iller-uret.py` · `finsayfa-uret.py`.
+Sayfa başlığı için `docs/parts/sayfa_basligi.py` içindeki `basli()` —
+standart `.dh-ph--photo`. Üretimden sonra sırayla:
+
+```bash
+python3 docs/parts/uret.py        # kabuk parçaları
+python3 docs/parts/yay.py         # 98 sayfaya yay
+python3 docs/parts/duzlestir.py   # v2.css'i düzleştir
+python3 docs/parts/denetim.py     # kapı
+```
+
+---
+
 # ► V1–V2 BİRLEŞTİRME TURU (22 Ağustos 2026)
 
 Talimat: "Dada Haber V1–V2 Birleştirme ve Arayüz Revizyon Talimatı" +
@@ -95,15 +168,16 @@ sayfalama + daha fazla yükle) · `dh-takvim.js` (ekonomik takvim süzgeci) ·
 
 # ► GÜNCEL DURUM (v2 yayında)
 
-**Son güncelleme: 21 Ağustos 2026.** Aşağıdaki "Proje" bölümü ve R1–R8
+**Son güncelleme: 22 Ağustos 2026.** Aşağıdaki "Proje" bölümü ve R1–R8
 anlatımı **v1 dönemine aittir, tarihsel kayıttır.** Bugünkü gerçek durum budur:
 
 | | |
 |---|---|
 | Çalışma dizini | `~/Developer/Backend Projects/dadahaber-view` |
 | **Çalışma dalı** | **`v2`** — yeni oturumda `git checkout v2` |
-| Sayfa sayısı | **82** (v1'de 67 idi) |
+| Sayfa sayısı | **98** (22 Ağu turunda 82'ydi, v1'de 67) |
 | Yerel sunucu | `python3 -m http.server 8765` → http://localhost:8765/ |
+| Son yayın | `v2` dalı `1d04e8f` → `main` (98 sayfa) |
 
 ## Yayın
 
@@ -148,12 +222,29 @@ Sırayla: statik denetim → `v2.css` düzleştirme → `main` ağacını `v2`'d
 yeniden kurma → kök sayfaları `/v2/` altına taşıma + köke yönlendirme →
 `/v1/` arşivini `v1` dalından üretme → ağaç doğrulama → push.
 
-## Son doğrulama durumu
+## Son doğrulama durumu (22 Ağustos 2026)
 
-- `python3 docs/parts/denetim.py` → **82 sayfa, 7 kontrolün hepsi TEMİZ**
-- Playwright (1440/1000/390 + koyu tema) → tüm sayfalar temiz, canlı `/v2/` dâhil
-- İkon taraması → 230 ikon, boş glif 0
+- `python3 docs/parts/denetim.py` → **98 sayfa, 7 kontrolün hepsi TEMİZ**
+- Playwright tam site taraması: **98 sayfa × 3 kırılım = 294 yükleme**
+    - yatay taşma **0** · konsol hatası **0** · her sayfada tek `<h1>`
+    - render edilen yazı tipi ailesi tek: Gilroy
+      (tek istisna: astroloji burç glifleri → sistem yedeği Apple Symbols)
+- Kabuk kabı ile sayfa içerik kabı hizası: 22 sayfa × 1440/1920px, **sapma 0px**
 - Kırık iç bağlantı 0 · kırık çapa 0 · yinelenen id 0
+
+### Doğrulanmış davranışlar (tıklanarak ölçüldü)
+
+| Ne | Nerede |
+|---|---|
+| Perdeleme menü: hover, klavye, Escape, odak dönüşü | tüm sayfalar |
+| Arama kipi açılıyor | tüm sayfalar |
+| Sayfalama + "daha fazla yükle" gerçekten çalışıyor | 39 sayfa |
+| Haber detay sekmeleri (Bağlam/Karne/Kaynak/Güncelleme) | `haber-detay` |
+| Üyelik formu doğrulaması (boş, kısa şifre, eşleşmeyen) | `giris` `uye-ol` `sifremi-unuttum` |
+| Ekonomik takvim süzgeci (ülke + etki, boş durum dâhil) | `ekonomik-takvim` |
+| Ülke / il seçicileri | `nato` `iller` |
+| Puan durumu "Tümünü Gör" + fikstür hafta geçişi | `futbol` `basketbol` `voleybol` |
+| İletişim formları akordiyonu (tek seferde bir tanesi) | `iletisim` |
 
 ---
 
