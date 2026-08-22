@@ -70,7 +70,7 @@ MENU = [
                         ("İHA ve SİHA",L),("Hava Platformları",L),("Deniz Platformları",L),
                         ("Kara Sistemleri",L),("Füze ve Roket Sistemleri",L)]),
    ("Güvenlik", [("Millî Güvenlik",L),("Askerî Operasyonlar",L),("Sınır Güvenliği",L),
-                 ("Terörle Mücadele",L),("Uluslararası Güvenlik",L),("NATO",L)]),
+                 ("Terörle Mücadele",L),("Uluslararası Güvenlik",L),("NATO","nato.html")]),
    ("İçerikler", [("Savunma Teknolojileri","teknoloji.html"),("İhracat ve Anlaşmalar",L),
                   ("Savunma Analizi",L),("Uzman Görüşleri",L),("Savunma Videoları","video.html")])]),
 
