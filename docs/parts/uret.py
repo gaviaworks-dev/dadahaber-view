@@ -42,7 +42,7 @@ MENU = [
   [("Temel kategoriler", [("Siyaset",L),("Türkiye",L),("Toplum",L),("Hukuk",L),
                           ("Güvenlik",L),("Eğitim",L),("Çevre",L),("Afet",L)]),
    ("Yerel haberler", [("Yerel Haberler","gundem.html#yerel"),("İstanbul",L),("Ankara",L),
-                       ("İzmir",L),("81 İl","gundem.html#iller")]),
+                       ("İzmir",L),("81 İl","iller.html")]),
    ("Özgün içerikler", [("Özel Haber",L),("Araştırma",L),("Gündem Analizi",L)])]),
 
  ("dunya", "Dünya", "dunya.html",

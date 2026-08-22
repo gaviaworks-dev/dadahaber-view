@@ -1329,7 +1329,7 @@ html.uc-dark .dh-v2-nav__list > li > a { color: var(--color-primary); }
   .dh-doc { grid-template-columns: minmax(0, 1fr) !important; }
 }
 
-/* ==== v2/a-gundem.css (2586 satır) ==== */
+/* ==== v2/a-gundem.css (2625 satır) ==== */
 /* v2 — a-gundem (bu dosyaya yalnız ilgili ajan yazar; cat >> ile SONA eklenir) */
 
 /* ============================================================================
@@ -3916,6 +3916,45 @@ html.uc-dark .dh-yarsiv__list span { color: rgba(255, 255, 255, .58); }
 #ozgun .dh-gozgun__meta time,
 #ozgun .dh-gozgun__meta span:last-child { color: rgba(255, 255, 255, .58) !important; font-family: inherit; }
 #ozgun .dh-gozgun__it::before { content: none; }
+
+/* --- 81 İl sayfası: şematik ızgara + il künyesi ---------------------------
+   Izgara veri-harita.html'deki .dh-tr81 kalıbı; burada kutular seçilebilir.
+   Coğrafi harita DEĞİL — plaka sırasına göre dizili şematik ızgara; sayfa
+   bunu hem başlıkta hem <desc> içinde söylüyor. */
+.dh-bolge--iller {
+  display: grid;
+  grid-template-columns: minmax(0, 620px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+.dh-iller__map { position: sticky; top: 120px; }
+.dh-tr81--sec { width: 100%; height: auto; }
+.dh-tr81--sec .dh-tr81__c { cursor: pointer; }
+.dh-tr81--sec .dh-tr81__box {
+  fill: var(--color-gray-100);
+  transition: fill .14s, stroke .14s;
+}
+html.uc-dark .dh-tr81--sec .dh-tr81__box { fill: rgba(255, 255, 255, .07); }
+.dh-tr81--sec .dh-tr81__c:hover .dh-tr81__box { fill: rgba(252, 182, 35, .35); }
+.dh-tr81--sec .dh-tr81__c[aria-checked="true"] .dh-tr81__box {
+  fill: var(--color-primary);
+  stroke: var(--color-gray-900);
+  stroke-width: 2;
+}
+.dh-tr81--sec text { fill: var(--color-gray-800); pointer-events: none; }
+html.uc-dark .dh-tr81--sec text { fill: rgba(255, 255, 255, .82); }
+.dh-tr81--sec .dh-tr81__c[aria-checked="true"] text { fill: var(--color-gray-900); }
+.dh-tr81--sec .dh-tr81__no { font-size: 15px; font-weight: 800; }
+.dh-tr81--sec .dh-tr81__lv { font-size: 9px; font-weight: 600; letter-spacing: -.01em; }
+.dh-tr81--sec .dh-tr81__c:focus-visible .dh-tr81__box {
+  stroke: var(--color-primary);
+  stroke-width: 3;
+}
+.dh-iller__yan { min-width: 0; }
+@media (max-width: 1199.98px) {
+  .dh-bolge--iller { grid-template-columns: minmax(0, 1fr); }
+  .dh-iller__map { position: static; max-width: 560px; }
+}
 
 /* ==== v2/b-bolum.css (1073 satır) ==== */
 /* v2 — b-bolum (bu dosyaya yalnız ilgili ajan yazar; cat >> ile SONA eklenir) */
