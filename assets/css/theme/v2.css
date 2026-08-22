@@ -438,7 +438,7 @@
   .dh-fincard__val { font-size: 14px; }  /* 14.5px */
 }
 
-/* ==== v2/kabuk.css (2171 satır) ==== */
+/* ==== v2/kabuk.css (2182 satır) ==== */
 /* ============================================================================
    v2 / KABUK — format bandı · marka satırı · 8 başlıklı perdeleme menü · footer
    V1–V2 birleştirme (21 Ağustos 2026):
@@ -2374,7 +2374,18 @@ figure b { font-size: 11px !important; }
 
    §8.1 alt bloğu ortalamıştı; ortalama YALNIZ telif paragrafında kalıyor,
    son satır iki uca yaslanıyor. 767px altında alt alta ve ortalı. */
-.dh-v2-foot__rights { max-width: 1180px; }
+/* REVİZE (22 Ağustos akşamı): "Bilgilendirme metni çok yatay, biraz
+   daraltalım; altındaki 2026 içeriğini de sola yaslayalım."
+   1180px'te tek satır 166 karaktere çıkıyordu — göz satır sonunu
+   kaybediyor. 980px (~92 karakter) klasik okuma bandının üst ucu;
+   metin üç satıra iniyor ama her satır rahat taranıyor.
+   Ortalama kaldırıldı: paragraf da telif satırı da sola yaslı. */
+.dh-v2-foot__rights {
+  max-width: 980px;
+  margin-inline: 0 !important;
+  text-align: start;
+}
+.dh-v2-foot__bottom { text-align: start; }
 
 .dh-v2-foot__sign {
   display: flex;
@@ -11342,7 +11353,7 @@ html.uc-dark .dh-nwgo__d  { color: rgba(255, 255, 255, .60); }
   .dh-nwgo { grid-template-columns: minmax(0, 1fr); }
 }
 
-/* ==== v2/i-spor.css (884 satır) ==== */
+/* ==== v2/i-spor.css (1164 satır) ==== */
 /* ============================================================================
    v2 / i-spor — spor bölümü: takım bağlantısı · takım kimliği · liste
    sayfalarının yapışkan yan sütunu · puan durumu ve fikstür sadeleştirmesi
@@ -12228,7 +12239,287 @@ html.uc-dark .dh-bolge--nato .dh-bolge__b[aria-checked="true"] .dh-nato__kod {
   }
 }
 
-/* ==== v2/j-cerez.css (417 satır) ==== */
+/* ============================================================================
+   REVİZE (22 Ağustos akşamı) · takım sayfası sağ sütunu
+   ========================================================================== */
+
+/* --- A · sütun dengesi -------------------------------------------------
+   Talep: "Oynadığı maç ve ligdeki yeri kısmı — sol tarafta yerimiz var,
+   orayla beraber dengeleyebiliriz, yukarıdaki filtreyle aynı hizada
+   olabilir; sağ tarafta haber bölümünü biraz daha ufaltabiliriz."
+
+   ÖLÇÜM: sağ sütun `lg:col-4` = 373px. İçindeki `.dh-statcells` üç
+   sütunlu ve doğal genişliği 644px — 371px kapta yatay kaydırmaya
+   düşüyordu. `.dh-mcrail` de 884px içerikle kaydırıyordu.
+   YENİ: sağ sütun 460px (haber sütunu ~756px'e iner, iki kolon kartı
+   hâlâ rahat). Yukarıdaki filtre satırıyla aynı sağ kenarı paylaşır. */
+@media (min-width: 992px) {
+  .dh-tkm__col {
+    flex: 0 0 460px !important;
+    max-width: 460px !important;
+    width: 460px !important;
+  }
+}
+
+/* Üç sütunlu veri hücreleri 460px'te de sıkışıyordu. İki sütuna indi.
+   ÖLÇÜM: `.dh-statcells` vendor'da `display:flex; overflow-x:auto` ve
+   `.dh-cell { min-width: 92px }` — ızgaraya çevirmek yetmiyordu, hücre
+   taban genişliği kaydırmayı sürdürüyordu. İkisi birden çözüldü. */
+.dh-tkm__ray .dh-statcells,
+.dh-tkm__ray .dh-panel__cells {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  overflow-x: visible !important;
+}
+.dh-tkm__ray .dh-statcells .dh-cell,
+.dh-tkm__ray .dh-panel__cells .dh-cell { min-width: 0 !important; }
+
+/* --- B · son maçlar rayı: kaydırma çubuğu yerine önceki/sonraki -------
+   Talep: "Scrollbar'la sağa doğru götürülüyor, buna gerek yok; önceki
+   maç / sonraki maç mantığında gitsin."
+   Düğmeler docs/parts/takim-ray-uret.py ile eklendi, mantık mevcut
+   assets/js/dh-track.js'ten geliyor (yeni betik yazılmadı).
+   Ray tek kart genişliğine sabitlendi: bir adım = bir maç. */
+/* Bir adım = BİR maç: ray genişliği kadar sütun. `1fr` verilseydi üç
+   kart birden sığar ve kart 109px'e düşerdi (ölçüldü). */
+/* KAYDIRMA YOK, TEK KART: dh-mcnav.js bir anda bir maç gösteriyor.
+   Önce yatay kaydırma denendi ve ray programlı kaydırmayı kabul etmedi
+   (ölçüldü: scrollWidth 1214 / clientWidth 394 iken `scrollLeft = 400`
+   ataması 0'da kalıyordu; snap kapatılınca da değişmedi). Kaydırma
+   çubuğu da, snap çakışması da böylece ortadan kalktı. */
+.dh-tkm__ray .dh-mcrail--tek {
+  display: block !important;
+  overflow: visible !important;
+  scroll-snap-type: none !important;
+}
+.dh-tkm__ray .dh-mcrail--tek > * { min-width: 0 !important; width: auto !important; }
+.dh-tkm__ray .dh-mcrail--tek > [hidden] { display: none !important; }
+
+.dh-mcnav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.dh-mcnav__n {
+  margin-inline-end: auto;
+  font-size: var(--dh-t-3xs);
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--color-gray-500);
+  font-variant-numeric: tabular-nums;
+}
+.dh-mcnav__b {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  font-size: var(--dh-t-2xs);
+  color: var(--color-gray-800);
+  background: #fff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px 8px 8px 0;
+  cursor: pointer;
+  transition: border-color .14s, opacity .14s;
+}
+html.uc-dark .dh-mcnav__b {
+  background: var(--color-gray-900);
+  border-color: var(--color-gray-700);
+  color: #fff;
+}
+.dh-mcnav__b:hover { border-color: var(--color-primary); }
+.dh-mcnav__b:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+.dh-mcnav__b[disabled] { opacity: .32; pointer-events: none; }
+
+@media (max-width: 991.98px) {
+  .dh-tkm__ray .dh-statcells,
+  .dh-tkm__ray .dh-panel__cells { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+}
+
+/* --- REVİZE · canlı skorlarda dal sekmeleri (spor.html #canli) ----------
+   Talep: "Burada bir tab menü oluşturabiliriz: futbolun canlısı,
+   basketbolun canlısı, tenisin canlısı. Sayfalandırma çok dağılmış."
+   Sekmeler dh-canli.js tarafından kartların `data-branch` değerinden
+   üretilir — markup'a gömülü liste yok, kart eklenince sekme de gelir. */
+.dh-canli__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.dh-canli__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: var(--dh-t-2xs);
+  font-weight: 700;
+  color: var(--color-gray-700);
+  background: #fff;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+  cursor: pointer;
+  transition: border-color .14s, background .14s, color .14s;
+}
+html.uc-dark .dh-canli__tab {
+  background: var(--color-gray-900);
+  border-color: var(--color-gray-700);
+  color: rgba(255, 255, 255, .82);
+}
+.dh-canli__tab i { font-size: var(--dh-t-3xs); opacity: .75; }
+/* Sayaç rozeti: kaç maç var, sekmeye basmadan görünsün. */
+.dh-canli__tab b {
+  min-width: 18px;
+  padding: 1px 5px;
+  font-size: var(--dh-t-3xs);
+  font-weight: 800;
+  text-align: center;
+  color: var(--color-gray-600);
+  background: var(--color-gray-10);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+html.uc-dark .dh-canli__tab b { background: rgba(255, 255, 255, .1); color: rgba(255, 255, 255, .78); }
+.dh-canli__tab:hover { border-color: var(--color-primary); }
+.dh-canli__tab:focus-visible { outline: 3px solid var(--dh-menu-ink); outline-offset: 2px; }
+/* Kurumsal sarı zeminde KOYU mürekkep — §12. */
+.dh-canli__tab.is-on,
+html.uc-dark .dh-canli__tab.is-on {
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.dh-canli__tab.is-on i { opacity: 1; }
+.dh-canli__tab.is-on b { background: rgba(18, 18, 18, .14); color: var(--color-gray-900); }
+
+/* Sekme süzgeci kartları gizlerken ray boşluk bırakmasın. */
+.dh-canli .dh-mcrail > [hidden] { display: none !important; }
+
+/* ============================================================================
+   TAKIM DİZİNİ (takim.html) — dal + lig süzgeci, arama
+   Markup docs/parts/takim-uret.py, mantık assets/js/v2/dh-takimlar.js
+   ========================================================================== */
+
+.dh-tkl__filtre {
+  display: grid;
+  gap: 12px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  background: var(--color-gray-10);
+  border: 1px solid rgba(18, 18, 18, .09);
+  border-radius: 12px 12px 12px 0;
+}
+html.uc-dark .dh-tkl__filtre {
+  background: var(--color-gray-900);
+  border-color: rgba(255, 255, 255, .1);
+}
+.dh-tkl__satir { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.dh-tkl__lbl {
+  flex: 0 0 42px;
+  padding-top: 8px;
+  font-size: var(--dh-t-3xs);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+.dh-tkl__cips { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 0; min-width: 0; }
+.dh-tkl__cip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: var(--dh-t-2xs);
+  font-weight: 700;
+  color: var(--color-gray-700);
+  background: #fff;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+  cursor: pointer;
+  transition: border-color .14s, background .14s, color .14s;
+}
+html.uc-dark .dh-tkl__cip {
+  background: var(--color-gray-800);
+  border-color: var(--color-gray-700);
+  color: rgba(255, 255, 255, .82);
+}
+.dh-tkl__cip[hidden] { display: none; }
+.dh-tkl__cip i { font-size: var(--dh-t-3xs); opacity: .75; }
+.dh-tkl__cip:hover { border-color: var(--color-primary); }
+.dh-tkl__cip:focus-visible { outline: 3px solid var(--dh-menu-ink); outline-offset: 2px; }
+/* Kurumsal sarı zeminde KOYU mürekkep — §12. */
+.dh-tkl__cip.is-on,
+html.uc-dark .dh-tkl__cip.is-on {
+  color: var(--color-gray-900);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.dh-tkl__ara {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  min-height: 44px;
+  background: #fff;
+  border: 1px solid var(--color-gray-100);
+  border-radius: 8px 8px 8px 0;
+}
+html.uc-dark .dh-tkl__ara { background: var(--color-gray-800); border-color: var(--color-gray-700); }
+.dh-tkl__ara i { color: var(--color-gray-400); }
+.dh-tkl__ara input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--dh-t-xs);
+  color: var(--color-gray-900);
+}
+html.uc-dark .dh-tkl__ara input { color: #fff; }
+.dh-tkl__ara:focus-within { border-color: var(--dh-menu-ink); }
+
+.dh-tkl__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+.dh-tkl__grid > [hidden] { display: none !important; }
+
+.dh-tkl__bos {
+  margin: 20px 0 0;
+  padding: 16px 18px;
+  font-size: var(--dh-t-xs);
+  color: var(--color-gray-600);
+  background: var(--color-gray-10);
+  border-inline-start: 3px solid var(--color-primary);
+  border-radius: 0 8px 8px 0;
+}
+html.uc-dark .dh-tkl__bos { background: var(--color-gray-900); color: var(--color-gray-300); }
+
+.dh-tkl__not {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 22px 0 0;
+  font-size: var(--dh-t-3xs);
+  line-height: 1.55;
+  color: var(--color-gray-500);
+}
+.dh-tkl__not i { margin-top: 2px; color: var(--color-primary); }
+
+@media (max-width: 575.98px) {
+  .dh-tkl__satir { flex-direction: column; gap: 8px; }
+  .dh-tkl__lbl { padding-top: 0; }
+  .dh-tkl__grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
+
+/* ==== v2/j-cerez.css (421 satır) ==== */
 /* ============================================================================
    v2 / J-RIZA — çerez rıza bandı + Gizlilik Tercih Merkezi
    Talep (22 Ağustos): "örnekteki gibi yapalım" — tam genişlik bilgilendirme
@@ -12548,8 +12839,11 @@ html.dh-cz-acik .dh-bnav { bottom: auto; }
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 18px;
-  width: min(620px, 100%);
-  padding: 22px 52px 22px 22px;
+  /* REVİZE: "yatayda çok geniş olmuş, daraltalım." 620 -> 480px.
+     İki düğme + çan kutusu 480px'te rahat sığıyor, metin üç satıra
+     çıkmıyor (ölçüldü). */
+  width: min(480px, 100%);
+  padding: 20px 48px 20px 20px;
   background: #fff;
   border: 1px solid rgba(18, 18, 18, .1);
   border-radius: 14px 14px 14px 0;
@@ -12584,6 +12878,7 @@ html.uc-dark .dh-bld__kart {
 html.uc-dark .dh-bld__h { color: #fff; }
 .dh-bld__p {
   margin: 0 0 14px;
+  max-width: 34ch;
   font-size: var(--dh-t-2xs);
   line-height: 1.6;
   color: var(--color-gray-600);

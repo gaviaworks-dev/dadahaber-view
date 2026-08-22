@@ -1933,7 +1933,18 @@ figure b { font-size: 11px !important; }
 
    §8.1 alt bloğu ortalamıştı; ortalama YALNIZ telif paragrafında kalıyor,
    son satır iki uca yaslanıyor. 767px altında alt alta ve ortalı. */
-.dh-v2-foot__rights { max-width: 1180px; }
+/* REVİZE (22 Ağustos akşamı): "Bilgilendirme metni çok yatay, biraz
+   daraltalım; altındaki 2026 içeriğini de sola yaslayalım."
+   1180px'te tek satır 166 karaktere çıkıyordu — göz satır sonunu
+   kaybediyor. 980px (~92 karakter) klasik okuma bandının üst ucu;
+   metin üç satıra iniyor ama her satır rahat taranıyor.
+   Ortalama kaldırıldı: paragraf da telif satırı da sola yaslı. */
+.dh-v2-foot__rights {
+  max-width: 980px;
+  margin-inline: 0 !important;
+  text-align: start;
+}
+.dh-v2-foot__bottom { text-align: start; }
 
 .dh-v2-foot__sign {
   display: flex;

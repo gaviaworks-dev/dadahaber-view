@@ -317,8 +317,11 @@ html.dh-cz-acik .dh-bnav { bottom: auto; }
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 18px;
-  width: min(620px, 100%);
-  padding: 22px 52px 22px 22px;
+  /* REVİZE: "yatayda çok geniş olmuş, daraltalım." 620 -> 480px.
+     İki düğme + çan kutusu 480px'te rahat sığıyor, metin üç satıra
+     çıkmıyor (ölçüldü). */
+  width: min(480px, 100%);
+  padding: 20px 48px 20px 20px;
   background: #fff;
   border: 1px solid rgba(18, 18, 18, .1);
   border-radius: 14px 14px 14px 0;
@@ -353,6 +356,7 @@ html.uc-dark .dh-bld__kart {
 html.uc-dark .dh-bld__h { color: #fff; }
 .dh-bld__p {
   margin: 0 0 14px;
+  max-width: 34ch;
   font-size: var(--dh-t-2xs);
   line-height: 1.6;
   color: var(--color-gray-600);

@@ -13,143 +13,100 @@ python3 -m http.server 8765     # → http://localhost:8765/
 python3 docs/parts/denetim.py   # 100 sayfa TEMİZ vermeli
 ```
 
-## AÇIK REVİZE LİSTESİ — 22 Ağustos akşamı, ekrandan gelen istekler
+## YAYIN — 22 Ağustos 2026 kapanışı
 
-Kullanıcı hızlı yazdı, hepsi kayıtta. **Sıra bu, bittikçe üstünü çiz.**
-Hepsi bitince `sayfa-dizini.html` ile birlikte `docs/parts/yayinla.sh`
-çalıştırılıp deploy edilecek ve link paylaşılacak.
+| Adres | Ne |
+|---|---|
+| **`/v2/sayfa-dizini.html`** | **Sayfa Dizini** — 100 sayfa, 17 bölüm, ad + adres |
+| `/v2/` | güncel sürüm |
+| `/v1/` | donmuş arşiv |
 
-### ~~1. ZEBRA DESENİ + BÖLÜM BOŞLUKLARI~~ ✔ BİTTİ (`v2-B35`)
-402 ihlal → 0. Kural §16'da: `:nth-child(... of ...)`, markup'a dokunulmadı.
-**Kural (kullanıcı onayladı):** içerik bölümleri sırayla
-**beyaz (solid) ↔ şeffaf (arkası boş, sayfa zemini görünür)** gitsin.
-Ard arda aynı zemin gelmesin. Komşu bölümler yapışmasın.
-Kahraman başlık (`.dh-ph`, `.dh-lb`), çip şeridi (`.dh-catbar`) ve
-footer zebraya GİRMEZ.
+https://gaviaworks-dev.github.io/dadahaber-view/v2/sayfa-dizini.html
 
-**ÖLÇÜLDÜ (99 sayfa, 1440px):**
-| | Sayfa | İhlal |
-|---|---|---|
-| Kurala uyan | 24 | — |
-| Zebra kırık | 49 | 146 |
-| Yapışık bölüm (0px) | 75 | 256 |
+## AÇIK İŞ YOK
 
-En bozuk: `video`(14+15) `veri-harita`(10+11) `anlik`(9+10)
-`hamilelik`(6+7) `index`(8+3) `sakin-akis`(5+5) `gundem` de listede.
-Temiz olanlar tek akışlı sayfalar (yasal metinler, giriş, iller, künye).
+22 Ağustos akşamı ekrandan gelen **10 maddenin hepsi kapandı**
+(`v2-B35` … `v2-B39`). Ayrıca `revizeler.docx` ve `revize-2.docx`
+tamamen bitti. Sıradaki oturum yeni istekle başlayabilir.
 
-**Kullanıcı "hepsini bir anda çevirme" dedi:** önce `gundem.html`e
-uygula, göster, onay al, sonra yay.
-
-### ~~2. YAZAR KÜNYESİ~~ ✔ BİTTİ (`v2-B36`)
-Yazar solda 0px, sayılar sağda 0px, ad uppercase. Eski istek:
-Ad SOYAD büyük harf · unvan alt satırda yalnız ilk harf büyük · ikisi
-SOLDA, görselle birlikte. Tarih · okuma süresi · görüntülenme SAĞA yaslı.
-
-### ~~3. EDİTÖR METİN ARALIKLARI~~ ✔ BİTTİ (`v2-B36`)
-Satır yüksekliği 1,90 → 1,68 · paragraf arası 26 → 18px. Eski istek:
-Haber detay/içerik sayfalarında paragraf araları çok açık; daraltılacak.
-
-### ~~4. KOYU GÖRSEL ÜSTÜ METİN~~ ✔ BİTTİ (`v2-B36`)
-Başlık tam beyaz, tarih .82. Özgüllük iki turda çözüldü. Eski istek:
-Kaydırıcı/lider bandındaki başlık ve tarih tam BEYAZ olsun; renk katmanı
-yazının ARKASINDA kalsın. Örnek: `astroloji.html` üst bant
-("Haftanın gökyüzü", "Öne çıkan üç geçiş").
-NOT: `kabuk.css` §15.5'te bir deneme var ama ekranda doğrulanmadı.
-
-### 5. spor.html CANLI BÖLÜMÜ
-Üçlü panel kaldırıldı ✔. Kalan: canlı skorlar için DAL BAZLI SEKME
-menüsü (futbol · basketbol · tenis ...). "Sayfalandırma çok dağılmış."
-
-### 6. takim.html — TAKIM LİSTESİ
-Şu an yalnız Süper Lig ve az takım var. Alt ligler de eklenecek,
-filtreleme yapısı ve detaylı liste sayfası kurulacak.
-Dallar (futbol/basketbol/voleybol) ayrımı zaten iyi, korunacak.
-
-### 7. DÖRT BÜYÜK SAYFALARI (takim-trabzonspor vb.)
-"Oynadığı maç · ligdeki yeri" bloğu sola dengelensin, ÜSTTEKİ FİLTREYLE
-AYNI HİZADA olsun. Sağdaki haber bölümü biraz daraltılsın.
-
-### 8. TAKIM SAYFASI SAĞ SÜTUN — son maçlar / fikstür
-Yatay kaydırma çubuğuyla sağa gidiyor. Bunun yerine "önceki maç /
-sonraki maç" gezinmesi (lider modu) olsun; scrollbar olmasın.
-
-### 9. astroloji.html
-- Günlük burç yorumunda metin ÜSTÜ ÇİZİLİ görünüyor — hata, düzeltilecek.
-- Zebra burada tam oturmamış.
-- Burç çarkının üstündeki ikon setleri tasarım diline uymuyor; kendi
-  konseptimize göre yeniden. İkonların ALTINDAKİ ÇİZGİLER kaldırılacak.
-
-### 10. YASAL SAYFALAR — "İçindekiler" sütunu
-Sağdaki içindekiler dar; metne doğru genişletilecek.
-
-## KALAN: 5 · 6 · 7 · 8 · 9 · 10  (aşağıdaki başlıklar)
-
-## Bitenler (bu oturum, commit sırasıyla)
-
-`v2-B23` sarı zemin kontrastı · `v2-B24` tipografi merdiveni ·
-`v2-B25` revizeler.docx 7 madde · `v2-B26` şerit/liste/footer ·
-`v2-B27` çerez rıza bandı + Gizlilik Tercih Merkezi ·
-`v2-B28` bildirim izni kartı · `v2-B29` ray okları/çip şeridi/sayfa sonu ·
-`v2-B30` finans haber bandı + puan filtresi sağa ·
-`v2-B31` spor listesi tam genişlik · `v2-B32` spor.html üst düzeni ·
-`v2-B33` **hava-durumu.html** (99. sayfa) ·
-`v2-B34` **sayfa-dizini.html** (100. sayfa) + spor tekrar panel kaldırma
-+ Genel/İç Saha sekme hizası · `v2-B35` **zebra deseni** (402 ihlal → 0) ·
-`v2-B36` yazar künyesi + gövde ritmi + lider bandı mürekkebi
-
-**revizeler.docx ve revize-2.docx'in bütün maddeleri kapandı.**
-
-## Kapanan kararlar — 22 Ağustos ikinci turu
-
-Devir notundaki iki açık karar da kapandı. Yeniden açmadan önce commit
-gövdelerini oku; ikisi de "tek satır" sanılıyordu, ikisi de değildi.
-
-1. **Sarı zeminde beyaz metin** (`v2-B23`). 1,77:1 → 10,58:1.
-2. **Tipografi ölçeği** (`v2-B24`). 33 px değeri → 9 kademeli merdiven:
-   **11 · 12,5 · 14 · 16 · 18 · 22 · 26 · 30 · 36**. Üreteç:
-   `docs/parts/olcek-uret.py` → `assets/css/theme/v2/z-olcek.css`.
-
-## Revize turları — 22 Ağustos
+## Bu oturumda ne yapıldı — commit sırasıyla
 
 | Commit | İş |
 |---|---|
-| `v2-B25` | revizeler.docx — 7 madde (liste düzeni, footer imzası, bölüm boşluğu, şeritler, Özgün İçerikler grisi) |
-| `v2-B26` | şerit üst boşluğu · iç sayfa listeleri · footer alt satırı |
-| `v2-B27` | çerez rıza bandı + **Gizlilik Tercih Merkezi** |
-| `v2-B28` | ilk ziyarette bildirim izni kartı (yumuşak soru) |
-| `v2-B29` | ray okları dışarı · kart araları · çip şeridi ortalandı · sayfa sonu payı |
-| `v2-B30` | revize-2: finans alt sayfası **görselli haber bandı** · puan filtresi sağa |
-| `v2-B31` | revize-2: spor sayfalarında liste **tam genişlik** (formula1 ölçüsü) |
-| `v2-B32` | revize-2: spor.html üst düzeni — F1 kalktı, haber solda, puan sağda |
-| `v2-B33` | revize-2: **hava-durumu.html** — 81 il · ilçe · saatlik · 7 gün (99. sayfa) |
+| `v2-B23` | kurumsal sarı zeminde mürekkep 1,77:1 → 10,58:1 |
+| `v2-B24` | tipografi ölçeği: 33 px değeri → 9 kademeli merdiven |
+| `v2-B25` | revizeler.docx — 7 madde |
+| `v2-B26` | şerit boşluğu · iç sayfa listeleri · footer alt satırı |
+| `v2-B27` | **çerez rıza bandı + Gizlilik Tercih Merkezi** |
+| `v2-B28` | **bildirim izni kartı** (yumuşak soru) |
+| `v2-B29` | ray okları dışarı · çip şeridi ortalandı · sayfa sonu payı |
+| `v2-B30` | finans alt sayfası görselli haber bandı · puan filtresi sağa |
+| `v2-B31` | spor listesi tam genişlik (formula1 ölçüsü) |
+| `v2-B32` | spor.html üst düzeni — F1 kalktı, haber solda, puan sağda |
+| `v2-B33` | **hava-durumu.html** — 81 il · ilçe · saatlik · 7 gün |
+| `v2-B34` | **sayfa-dizini.html** · spor tekrar panel · sekme hizası |
+| `v2-B35` | **zebra deseni** — 402 ihlal → 0 |
+| `v2-B36` | yazar künyesi · gövde ritmi · lider bandı mürekkebi |
+| `v2-B37` | yasal sayfa içindekiler · astroloji üstü çizili hatası |
+| `v2-B38` | takım sağ sütunu · önceki/sonraki maç · bildirim kartı · footer |
+| `v2-B39` | canlı skor dal sekmeleri · takım dizini süzgeci |
 
-**revize-2.docx'in beş maddesi de kapandı.**
+## Site kuralları — yeni yazarken bunlara uy
 
-## Yeni bileşenler ve üreteçler (bu turlarda)
+### Zebra (§16, kabuk.css)
+İçerik bölümleri sırayla **beyaz (solid) ↔ şeffaf (arkası boş)**.
+`:nth-child(... of ...)` ile yapılıyor, markup'a sınıf basılmıyor.
+Zebraya GİRMEYENLER: `.dh-ph` / `.dh-lb` kahraman başlıkları,
+`.dh-catbar` çip şeridi, `[class*="py-"]` ve `.dh-serit` tam genişlik
+bantları. Bölüm alt payı `--dh-sec-gap` (48px).
 
-`docs/parts/` : `olcek-uret.py` (tipografi merdiveni) · `finbant-uret.py`
-(finans başlıkları) · `spor-duzen-uret.py` (spor liste düzeni) ·
-`spor-hub-uret.py` (spor.html üstü) · `hava-uret.py` (hava sayfası) ·
-`astro-cark-uret.py` (burç çarkı) · `iller_veri.py` (**81 il TEK KAYNAK** —
-iller-uret.py ve hava-uret.py ortak kullanıyor) · `cerez.html` ·
-`bildirim.html`
+### Ölçek merdiveni
+`--dh-t-3xs 11 · -2xs 12,5 · -xs 14 · -s 16 · -m 18 · -l 22 · -xl 26 ·
+-2xl 30 · -3xl 36`. **Çıplak px yazma.**
+Donmuş `custom.min.css` için elle override yazma, üreteci çalıştır:
+`python3 docs/parts/olcek-uret.py`.
 
-`assets/js/v2/` : `dh-cerez.js` · `dh-bildirim.js` · `dh-hava.js`
+### Kurumsal sarı zeminde mürekkep
+`#fcb623` üstünde **daima koyu** (`--color-gray-900`) — §12.
 
-`assets/css/theme/v2/` : `z-olcek.css` (üretilmiş, İLK parça) ·
-`j-cerez.css` · `k-hava.css`
+## Üreteçler — sayfa elle yazılmaz
 
-## Bileşen yazarken — bu turda üç kez ısırdı
+`docs/parts/`: `uret.py` (kabuk) · `yay.py` (100 sayfaya yay) ·
+`duzlestir.py` (v2.css) · `denetim.py` (kapı) · `olcek-uret.py`
+(tipografi) · `dizin-uret.py` (**sayfa dizini**) · `hava-uret.py` ·
+`takim-uret.py` (**takım dizini**) · `takim-ray-uret.py` ·
+`spor-duzen-uret.py` · `spor-hub-uret.py` · `finbant-uret.py` ·
+`astro-cark-uret.py` · `iller-uret.py` · `iller_veri.py` (81 il TEK
+KAYNAK) · `anlik-uret.py` · `diger-uret.py` · `uyelik-uret.py` ·
+`nato-uret.py` · `finsayfa-uret.py` · `sayfa_basligi.py`
 
-1. **Kökün DIŞINDAKİ hedefler.** `dh-hava.js` saatlik ve 7 günlük blokları
-   bulamıyordu; ikisi ayrı `<section>` içinde, bileşen kökünün dışında.
-   Arama önce kök içinde, bulamazsa belgede yapılır.
+Sıra: `uret.py` → `yay.py` → `duzlestir.py` → `denetim.py`
+
+## Yeni bileşenler (assets/js/v2/)
+
+`dh-cerez.js` çerez rızası · `dh-bildirim.js` bildirim izni ·
+`dh-hava.js` il/ilçe hava · `dh-canli.js` canlı skor sekmeleri ·
+`dh-takimlar.js` takım süzgeci · `dh-mcnav.js` önceki/sonraki maç
+
+## Bileşen yazarken — bu turda ısıran altı şey
+
+1. **Kökün DIŞINDAKİ hedefler.** `dh-hava.js` saatlik ve 7 günlük
+   blokları bulamıyordu; ayrı `<section>` içindeydiler. Arama önce kök
+   içinde, bulamazsa belgede yapılır.
 2. **Nitelik adı çakışması.** Gösterim hedefi ile çip listesi aynı
-   `data-dh-hava-ilce` adını taşıyordu; sayım 8 yerine 9 çıktı.
-3. **Sınıf adı çakışması.** Çerez bandına önce `.dh-riza` adı verildi;
-   `cerezler.html`'de AYNI adla bir bileşen vardı ve `yay.py` onu ezdi.
-   Ad `.dh-cz` oldu. **Yeni sınıf adını yazmadan önce `grep` at.**
+   `data-dh-hava-ilce` adını taşıyordu.
+3. **Sınıf adı çakışması.** Çerez bandına `.dh-riza` denince
+   `cerezler.html`'deki aynı adlı bileşeni `yay.py` ezdi. **Yeni sınıf
+   adını yazmadan önce `grep` at.**
+4. **Override'ı bileşenin sahibi dosyaya yaz.** Ray oku düzeltmesi
+   `kabuk.css`'te kaybetti; `.dh-blinks__nav` `b-bolum.css`'te tanımlı
+   ve o dosya sonra yükleniyor.
+5. **JS sınıfa mı niteliğe mi bakıyor?** `dh-track.js`
+   `.dh-track[id]` SINIFINI arıyor; rayda yalnız `data-dh-track`
+   NİTELİĞİ vardı, düğmeler sessizce ölüydü.
+6. **`scroll-snap` programlı kaydırmayı geri çekiyor.** Takım rayında
+   `scrollLeft = 400` ataması 0'da kaldı. Kaydırma bırakılıp kartlar
+   tek tek gösterildi (`dh-mcnav.js`).
 
 ## Ölçek merdiveni — yeni kural
 
@@ -353,7 +310,7 @@ anlatımı **v1 dönemine aittir, tarihsel kayıttır.** Bugünkü gerçek durum
 |---|---|
 | Çalışma dizini | `~/Developer/Backend Projects/dadahaber-view` |
 | **Çalışma dalı** | **`v2`** — yeni oturumda `git checkout v2` |
-| Sayfa sayısı | **99** (hava-durumu.html eklendi; 22 Ağu turunda 82, v1'de 67) |
+| Sayfa sayısı | **100** (hava-durumu + sayfa-dizini eklendi; v1'de 67) |
 | Yerel sunucu | `python3 -m http.server 8765` → http://localhost:8765/ |
 | Son yayın | `v2` dalı `1d04e8f` → `main` (98 sayfa) — **B23–B33 henüz YAYINLANMADI** |
 
